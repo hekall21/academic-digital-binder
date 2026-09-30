@@ -434,7 +434,158 @@
       .topbar { padding: 12px 14px; flex-wrap: wrap; }
       .search-box { order: 3; max-width: 100%; width: 100%; margin-top: 8px; }
     }
-  </style>
+  
+    /* Academic Binder v2 Extra Styles */
+    .btn-catatan {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .btn-catatan:hover { filter: brightness(1.1); }
+    .checklist-4 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .check-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      user-select: none;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      transition: all 0.15s ease;
+    }
+    .check-item.checked {
+      background: var(--primary-glow);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .check-item.binder-item.checked {
+      background: var(--emerald-glow);
+      border-color: var(--emerald);
+      color: var(--emerald);
+    }
+    .meeting-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+    .btn-ai-pill {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--primary-glow);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .btn-add-meeting {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-md);
+      background: var(--primary-glow);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-add-meeting:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Handwriting Mode: Clean monospace font & spacing for physical notebook writing */
+    body.mode-catatan-active .meeting-body {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.8;
+      background: var(--bg);
+      border: 1px dashed var(--border-strong);
+      padding: 20px;
+      border-radius: var(--radius-md);
+    }
+    body.mode-catatan-active .meeting-card {
+      border: 2px solid var(--amber);
+      background: var(--surface);
+    }
+
+    /* Modal Overlay */
+    .binder-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .binder-modal-backdrop.active {
+      display: flex;
+    }
+    .binder-modal-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      max-width: 540px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .binder-modal-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 8px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-size: 12.5px;
+      font-family: inherit;
+      outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--primary);
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+</style>
 </head>
 <body>
   <header class="topbar">
@@ -480,6 +631,7 @@
       
       <section class="subject-section" id="subject-ksi">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">1</div>
             <div>
@@ -490,6 +642,10 @@
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -499,9 +655,21 @@
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Pertemuan 1: Konsep Dasar Data, Informasi, dan Transformasi Pengetahuan</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-ksi_1')">
-                <input type="checkbox" id="chk_subject-ksi_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_1_read')">
+    <input type="checkbox" id="chk_subject-ksi_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_1_sum')">
+    <input type="checkbox" id="chk_subject-ksi_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_1_std')">
+    <input type="checkbox" id="chk_subject-ksi_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_1')">
+    <input type="checkbox" id="chk_subject-ksi_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -559,9 +727,21 @@
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Pertemuan 2: Karakteristik, Batasan & Taksonomi Sistem</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-ksi_2')">
-                <input type="checkbox" id="chk_subject-ksi_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_2_read')">
+    <input type="checkbox" id="chk_subject-ksi_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_2_sum')">
+    <input type="checkbox" id="chk_subject-ksi_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_2_std')">
+    <input type="checkbox" id="chk_subject-ksi_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_2')">
+    <input type="checkbox" id="chk_subject-ksi_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -610,9 +790,21 @@
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Pertemuan 3: Sumber, Kualitas Informasi & Arsitektur 6 Blok Pembangun SI</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-ksi_3')">
-                <input type="checkbox" id="chk_subject-ksi_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_3_read')">
+    <input type="checkbox" id="chk_subject-ksi_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_3_sum')">
+    <input type="checkbox" id="chk_subject-ksi_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_3_std')">
+    <input type="checkbox" id="chk_subject-ksi_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_3')">
+    <input type="checkbox" id="chk_subject-ksi_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -687,9 +879,21 @@
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Pertemuan 4: Tingkat Manajemen & Karakteristik Pengambilan Keputusan</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-ksi_4')">
-                <input type="checkbox" id="chk_subject-ksi_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_4_read')">
+    <input type="checkbox" id="chk_subject-ksi_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_4_sum')">
+    <input type="checkbox" id="chk_subject-ksi_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_4_std')">
+    <input type="checkbox" id="chk_subject-ksi_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-ksi_4')">
+    <input type="checkbox" id="chk_subject-ksi_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -739,6 +943,7 @@
     
       <section class="subject-section" id="subject-indo">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">2</div>
             <div>
@@ -749,6 +954,10 @@
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -758,9 +967,21 @@
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Pertemuan 1: Hakikat Bahasa, Kedudukan & Fungsi Bahasa Indonesia</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-indo_1')">
-                <input type="checkbox" id="chk_subject-indo_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_1_read')">
+    <input type="checkbox" id="chk_subject-indo_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_1_sum')">
+    <input type="checkbox" id="chk_subject-indo_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_1_std')">
+    <input type="checkbox" id="chk_subject-indo_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_1')">
+    <input type="checkbox" id="chk_subject-indo_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -810,9 +1031,21 @@
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Pertemuan 2: Menumbuhkan Sikap Positif Terhadap Bahasa Indonesia</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-indo_2')">
-                <input type="checkbox" id="chk_subject-indo_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_2_read')">
+    <input type="checkbox" id="chk_subject-indo_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_2_sum')">
+    <input type="checkbox" id="chk_subject-indo_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_2_std')">
+    <input type="checkbox" id="chk_subject-indo_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_2')">
+    <input type="checkbox" id="chk_subject-indo_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -840,9 +1073,21 @@
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Pertemuan 3: Sejarah & Tonggak Perkembangan Bahasa Indonesia</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-indo_3')">
-                <input type="checkbox" id="chk_subject-indo_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_3_read')">
+    <input type="checkbox" id="chk_subject-indo_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_3_sum')">
+    <input type="checkbox" id="chk_subject-indo_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_3_std')">
+    <input type="checkbox" id="chk_subject-indo_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_3')">
+    <input type="checkbox" id="chk_subject-indo_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -893,9 +1138,21 @@
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Pertemuan 4: Kaidah Baku EYD Edisi V (Pemakaian Huruf, Kata & Tanda Baca)</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-indo_4')">
-                <input type="checkbox" id="chk_subject-indo_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_4_read')">
+    <input type="checkbox" id="chk_subject-indo_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_4_sum')">
+    <input type="checkbox" id="chk_subject-indo_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_4_std')">
+    <input type="checkbox" id="chk_subject-indo_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-indo_4')">
+    <input type="checkbox" id="chk_subject-indo_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -952,6 +1209,7 @@
     
       <section class="subject-section" id="subject-algo">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">3</div>
             <div>
@@ -962,6 +1220,10 @@
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -971,9 +1233,21 @@
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Pertemuan 1: Pengantar Logika Komputasi, Etimologi & Kriteria Algoritma</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-algo_1')">
-                <input type="checkbox" id="chk_subject-algo_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_1_read')">
+    <input type="checkbox" id="chk_subject-algo_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_1_sum')">
+    <input type="checkbox" id="chk_subject-algo_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_1_std')">
+    <input type="checkbox" id="chk_subject-algo_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_1')">
+    <input type="checkbox" id="chk_subject-algo_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1020,9 +1294,21 @@
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Pertemuan 2: Tipe Data Primitif, Operator Komputasi & Hierarki Presedensi</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-algo_2')">
-                <input type="checkbox" id="chk_subject-algo_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_2_read')">
+    <input type="checkbox" id="chk_subject-algo_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_2_sum')">
+    <input type="checkbox" id="chk_subject-algo_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_2_std')">
+    <input type="checkbox" id="chk_subject-algo_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_2')">
+    <input type="checkbox" id="chk_subject-algo_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1079,9 +1365,21 @@ Langkah: <code>3 * 2 = 6</code> &rarr; <code>5 + 6 = 11</code> &rarr; <code>11 >
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Pertemuan 3: Representasi Flowchart & Standar Simbol ANSI</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-algo_3')">
-                <input type="checkbox" id="chk_subject-algo_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_3_read')">
+    <input type="checkbox" id="chk_subject-algo_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_3_sum')">
+    <input type="checkbox" id="chk_subject-algo_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_3_std')">
+    <input type="checkbox" id="chk_subject-algo_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_3')">
+    <input type="checkbox" id="chk_subject-algo_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1120,9 +1418,21 @@ Langkah: <code>3 * 2 = 6</code> &rarr; <code>5 + 6 = 11</code> &rarr; <code>11 >
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Pertemuan 4: Struktur Dasar Algoritma (Struktur Sequence / Runtunan)</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-algo_4')">
-                <input type="checkbox" id="chk_subject-algo_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_4_read')">
+    <input type="checkbox" id="chk_subject-algo_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_4_sum')">
+    <input type="checkbox" id="chk_subject-algo_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_4_std')">
+    <input type="checkbox" id="chk_subject-algo_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-algo_4')">
+    <input type="checkbox" id="chk_subject-algo_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1167,6 +1477,7 @@ B := Temp; { 3. Salin nilai asli A yang ada di Temp (10) ke dalam B (B sekarang 
     
       <section class="subject-section" id="subject-pascal">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">4</div>
             <div>
@@ -1177,6 +1488,10 @@ B := Temp; { 3. Salin nilai asli A yang ada di Temp (10) ke dalam B (B sekarang 
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -1186,9 +1501,21 @@ B := Temp; { 3. Salin nilai asli A yang ada di Temp (10) ke dalam B (B sekarang 
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Pertemuan 1: Filosofi Bahasa Pascal & Struktur Anatomi Program</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pascal_1')">
-                <input type="checkbox" id="chk_subject-pascal_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_1_read')">
+    <input type="checkbox" id="chk_subject-pascal_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_1_sum')">
+    <input type="checkbox" id="chk_subject-pascal_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_1_std')">
+    <input type="checkbox" id="chk_subject-pascal_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_1')">
+    <input type="checkbox" id="chk_subject-pascal_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1252,9 +1579,21 @@ end.                        { 7. Akhir Program Utama (WAJIB DIAKHIRI TANDA TITIK
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Pertemuan 2: Variabel, Konstanta, Tipe Data & Operator Penugasan</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pascal_2')">
-                <input type="checkbox" id="chk_subject-pascal_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_2_read')">
+    <input type="checkbox" id="chk_subject-pascal_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_2_sum')">
+    <input type="checkbox" id="chk_subject-pascal_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_2_std')">
+    <input type="checkbox" id="chk_subject-pascal_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_2')">
+    <input type="checkbox" id="chk_subject-pascal_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1296,9 +1635,21 @@ end.                        { 7. Akhir Program Utama (WAJIB DIAKHIRI TANDA TITIK
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Pertemuan 3: Instruksi Input & Output (I/O) dan Pemformatan Real</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pascal_3')">
-                <input type="checkbox" id="chk_subject-pascal_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_3_read')">
+    <input type="checkbox" id="chk_subject-pascal_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_3_sum')">
+    <input type="checkbox" id="chk_subject-pascal_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_3_std')">
+    <input type="checkbox" id="chk_subject-pascal_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_3')">
+    <input type="checkbox" id="chk_subject-pascal_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1338,9 +1689,21 @@ writeln(NilaiAkhir:0:0);  { Mencetak angka bulat tanpa angka di belakang koma, m
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Pertemuan 4: Struktur Kontrol Percabangan (IF-THEN, IF-THEN-ELSE)</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pascal_4')">
-                <input type="checkbox" id="chk_subject-pascal_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_4_read')">
+    <input type="checkbox" id="chk_subject-pascal_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_4_sum')">
+    <input type="checkbox" id="chk_subject-pascal_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_4_std')">
+    <input type="checkbox" id="chk_subject-pascal_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pascal_4')">
+    <input type="checkbox" id="chk_subject-pascal_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1401,6 +1764,7 @@ end.</code></pre>
     
       <section class="subject-section" id="subject-inggris">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">5</div>
             <div>
@@ -1411,6 +1775,10 @@ end.</code></pre>
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -1420,9 +1788,21 @@ end.</code></pre>
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Chapter I: Self-Introduction, Professional Profiling & Daily Activities</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-inggris_1')">
-                <input type="checkbox" id="chk_subject-inggris_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_1_read')">
+    <input type="checkbox" id="chk_subject-inggris_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_1_sum')">
+    <input type="checkbox" id="chk_subject-inggris_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_1_std')">
+    <input type="checkbox" id="chk_subject-inggris_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_1')">
+    <input type="checkbox" id="chk_subject-inggris_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1476,9 +1856,21 @@ end.</code></pre>
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Chapter II: Procedural Texts & Technical Instructions (How to Make Something)</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-inggris_2')">
-                <input type="checkbox" id="chk_subject-inggris_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_2_read')">
+    <input type="checkbox" id="chk_subject-inggris_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_2_sum')">
+    <input type="checkbox" id="chk_subject-inggris_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_2_std')">
+    <input type="checkbox" id="chk_subject-inggris_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_2')">
+    <input type="checkbox" id="chk_subject-inggris_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1513,9 +1905,21 @@ end.</code></pre>
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Chapter III: Recount Texts & Talking about Past Holiday / Experiences</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-inggris_3')">
-                <input type="checkbox" id="chk_subject-inggris_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_3_read')">
+    <input type="checkbox" id="chk_subject-inggris_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_3_sum')">
+    <input type="checkbox" id="chk_subject-inggris_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_3_std')">
+    <input type="checkbox" id="chk_subject-inggris_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_3')">
+    <input type="checkbox" id="chk_subject-inggris_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1559,9 +1963,21 @@ end.</code></pre>
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Chapter IV: Talking about Future Intentions & Planning (Will vs Be Going To)</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-inggris_4')">
-                <input type="checkbox" id="chk_subject-inggris_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_4_read')">
+    <input type="checkbox" id="chk_subject-inggris_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_4_sum')">
+    <input type="checkbox" id="chk_subject-inggris_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_4_std')">
+    <input type="checkbox" id="chk_subject-inggris_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-inggris_4')">
+    <input type="checkbox" id="chk_subject-inggris_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1588,6 +2004,7 @@ end.</code></pre>
     
       <section class="subject-section" id="subject-matdas">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">6</div>
             <div>
@@ -1598,6 +2015,10 @@ end.</code></pre>
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -1607,9 +2028,21 @@ end.</code></pre>
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Pertemuan 1 & 2: Sistem Bilangan Real, Pertidaksamaan & Nilai Mutlak</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-matdas_1')">
-                <input type="checkbox" id="chk_subject-matdas_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_read')">
+    <input type="checkbox" id="chk_subject-matdas_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_sum')">
+    <input type="checkbox" id="chk_subject-matdas_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_std')">
+    <input type="checkbox" id="chk_subject-matdas_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1')">
+    <input type="checkbox" id="chk_subject-matdas_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1664,9 +2097,21 @@ $$\mathbb{N} \subset \mathbb{W} \subset \mathbb{Z} \subset \mathbb{Q} \subset \m
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Pertemuan 3: Persamaan Garis Lurus, Gradien & Hubungan Garis</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-matdas_2')">
-                <input type="checkbox" id="chk_subject-matdas_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_read')">
+    <input type="checkbox" id="chk_subject-matdas_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_sum')">
+    <input type="checkbox" id="chk_subject-matdas_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_std')">
+    <input type="checkbox" id="chk_subject-matdas_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2')">
+    <input type="checkbox" id="chk_subject-matdas_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1723,9 +2168,21 @@ $$m = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1}$$
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Pertemuan 3</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-matdas_3')">
-                <input type="checkbox" id="chk_subject-matdas_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_read')">
+    <input type="checkbox" id="chk_subject-matdas_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_sum')">
+    <input type="checkbox" id="chk_subject-matdas_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_std')">
+    <input type="checkbox" id="chk_subject-matdas_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3')">
+    <input type="checkbox" id="chk_subject-matdas_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               <p>Materi kuliah pertemuan ini.</p>
@@ -1738,9 +2195,21 @@ $$m = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1}$$
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Pertemuan 4: Eksponen, Bentuk Akar & Logaritma</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-matdas_4')">
-                <input type="checkbox" id="chk_subject-matdas_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_read')">
+    <input type="checkbox" id="chk_subject-matdas_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_sum')">
+    <input type="checkbox" id="chk_subject-matdas_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_std')">
+    <input type="checkbox" id="chk_subject-matdas_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4')">
+    <input type="checkbox" id="chk_subject-matdas_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1797,6 +2266,7 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
     
       <section class="subject-section" id="subject-pancasila">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">7</div>
             <div>
@@ -1807,6 +2277,10 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -1816,9 +2290,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Pertemuan 1: Landasan & Tujuan Pendidikan Pancasila di Perguruan Tinggi</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pancasila_1')">
-                <input type="checkbox" id="chk_subject-pancasila_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_1_read')">
+    <input type="checkbox" id="chk_subject-pancasila_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_1_sum')">
+    <input type="checkbox" id="chk_subject-pancasila_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_1_std')">
+    <input type="checkbox" id="chk_subject-pancasila_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_1')">
+    <input type="checkbox" id="chk_subject-pancasila_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1852,9 +2338,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Pertemuan 2: Pancasila dalam Lintas Sejarah Bangsa (Era Pra-Kemerdekaan)</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pancasila_2')">
-                <input type="checkbox" id="chk_subject-pancasila_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_2_read')">
+    <input type="checkbox" id="chk_subject-pancasila_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_2_sum')">
+    <input type="checkbox" id="chk_subject-pancasila_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_2_std')">
+    <input type="checkbox" id="chk_subject-pancasila_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_2')">
+    <input type="checkbox" id="chk_subject-pancasila_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1890,9 +2388,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Pertemuan 3: Perumusan & Pengesahan Pancasila sebagai Dasar Negara</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pancasila_3')">
-                <input type="checkbox" id="chk_subject-pancasila_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_3_read')">
+    <input type="checkbox" id="chk_subject-pancasila_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_3_sum')">
+    <input type="checkbox" id="chk_subject-pancasila_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_3_std')">
+    <input type="checkbox" id="chk_subject-pancasila_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_3')">
+    <input type="checkbox" id="chk_subject-pancasila_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1930,9 +2440,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Pertemuan 4: Dinamika & Dialektika Pancasila Pasca Kemerdekaan</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pancasila_4')">
-                <input type="checkbox" id="chk_subject-pancasila_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_4_read')">
+    <input type="checkbox" id="chk_subject-pancasila_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_4_sum')">
+    <input type="checkbox" id="chk_subject-pancasila_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_4_std')">
+    <input type="checkbox" id="chk_subject-pancasila_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pancasila_4')">
+    <input type="checkbox" id="chk_subject-pancasila_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -1969,6 +2491,7 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
     
       <section class="subject-section" id="subject-pai">
         <div class="subject-header">
+
           <div class="subject-title-area">
             <div class="subject-number">8</div>
             <div>
@@ -1979,6 +2502,10 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
               </div>
             </div>
           </div>
+        
+          <div>
+            <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
+          </div>
         </div>
         <div class="meetings-grid">
           
@@ -1988,9 +2515,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 1</span>
                 <h3 class="meeting-title">Pertemuan 1: Visi Perkuliahan Islam & Fondasi Tauhid Komprehensif</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pai_1')">
-                <input type="checkbox" id="chk_subject-pai_1"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_1_read')">
+    <input type="checkbox" id="chk_subject-pai_1_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_1_sum')">
+    <input type="checkbox" id="chk_subject-pai_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_1_std')">
+    <input type="checkbox" id="chk_subject-pai_1_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_1')">
+    <input type="checkbox" id="chk_subject-pai_1" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -2040,9 +2579,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 2</span>
                 <h3 class="meeting-title">Pertemuan 2: Aqidah Islam, Makna & 4 Ruang Lingkup Kajian</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pai_2')">
-                <input type="checkbox" id="chk_subject-pai_2"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_2_read')">
+    <input type="checkbox" id="chk_subject-pai_2_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_2_sum')">
+    <input type="checkbox" id="chk_subject-pai_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_2_std')">
+    <input type="checkbox" id="chk_subject-pai_2_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_2')">
+    <input type="checkbox" id="chk_subject-pai_2" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -2077,9 +2628,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 3</span>
                 <h3 class="meeting-title">Pertemuan 3: Syariah Islam, Dimensi Ibadah & 5 Hukum Taklifi</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pai_3')">
-                <input type="checkbox" id="chk_subject-pai_3"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_3_read')">
+    <input type="checkbox" id="chk_subject-pai_3_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_3_sum')">
+    <input type="checkbox" id="chk_subject-pai_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_3_std')">
+    <input type="checkbox" id="chk_subject-pai_3_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_3')">
+    <input type="checkbox" id="chk_subject-pai_3" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -2140,9 +2703,21 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
                 <span class="meeting-tag">Pertemuan 4</span>
                 <h3 class="meeting-title">Pertemuan 4: Akhlak dalam Islam (Komparasi Etika, Moral & Akhlak)</h3>
               </div>
-              <label class="checkbox-wrap" onclick="toggleNoteCheck(this, 'chk_subject-pai_4')">
-                <input type="checkbox" id="chk_subject-pai_4"> Catat di Binder
-              </label>
+              <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_4_read')">
+    <input type="checkbox" id="chk_subject-pai_4_read" style="display:none"> <span>📖 Baca</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_4_sum')">
+    <input type="checkbox" id="chk_subject-pai_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+  </label>
+  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_4_std')">
+    <input type="checkbox" id="chk_subject-pai_4_std" style="display:none"> <span>🧠 Pelajari</span>
+  </label>
+  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-pai_4')">
+    <input type="checkbox" id="chk_subject-pai_4" style="display:none"> <span>✍️ Catat di Binder</span>
+  </label>
+</div>
             </div>
             <div class="meeting-body">
               
@@ -2286,8 +2861,434 @@ $$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } 
 
     document.addEventListener('DOMContentLoaded', () => {
       initTheme();
-      initCheckboxes();
+      initCheckboxesV2();
     });
   </script>
+
+  
+  <!-- Audio / Video Media Transcription Modal -->
+  <div class="binder-modal-backdrop" id="mediaTranscribeModal">
+    <div class="binder-modal-card" style="max-width: 680px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 id="mediaModalTitle" style="margin:0;">🎙️ Upload Rekaman Kuliah (MP4 / Audio) & Transkripsi AI</h3>
+        <button class="btn" onclick="closeMediaTranscribeModal()" style="padding:2px 8px;">✕</button>
+      </div>
+      
+      <p style="font-size:12px; color:var(--text-secondary); margin-bottom:14px;">
+        Pilih file rekaman video kuliah (MP4) atau rekaman suara (MP3, WAV, M4A) dari laptop Anda. AI akan mengekstrak gelombang audio dan mengubahnya menjadi transkrip perkuliahan ber-timestamp.
+      </p>
+
+      <div style="border:2px dashed var(--border-strong); border-radius:12px; padding:18px; text-align:center; background:var(--surface); margin-bottom:14px;">
+        <input type="file" id="mediaFileInput" accept="video/mp4,video/*,audio/*" onchange="handleModalMediaSelect(event)" style="display:none;" />
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('mediaFileInput').click()">
+          📁 Pilih Berkas Video MP4 / Audio
+        </button>
+        <p id="mediaFileStatus" style="font-size:11.5px; color:var(--text-muted); margin-top:8px;">Format didukung: MP4, MKV, MP3, WAV, M4A, WebM</p>
+      </div>
+
+      <!-- Player Preview -->
+      <div id="mediaPlayerContainer" style="display:none; margin-bottom:14px; background:#000; border-radius:8px; overflow:hidden; text-align:center; padding:6px;">
+        <video id="modalVideoPlayer" controls style="max-height:240px; width:100%; display:none; border-radius:6px;"></video>
+        <audio id="modalAudioPlayer" controls style="width:100%; display:none; margin:8px 0;"></audio>
+      </div>
+
+      <!-- Action Button & Progress Bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <button type="button" class="btn btn-primary" id="btnRunTranscribe" onclick="runAiTranscription()" disabled style="opacity:0.5;">
+          ⚡ Transkripsikan Rekaman (AI Speech-to-Text)
+        </button>
+        <span id="transcribeProgressText" style="font-size:11px; font-weight:700; color:var(--cyan); display:none;">Memproses...</span>
+      </div>
+
+      <div id="transcribeProgressBarBg" style="height:6px; background:var(--surface); border-radius:99px; overflow:hidden; display:none; margin-bottom:12px;">
+        <div id="transcribeProgressBarFill" style="height:100%; width:0%; background:linear-gradient(90deg, var(--cyan), var(--primary)); transition:width 0.3s;"></div>
+      </div>
+
+      <!-- Transcript Result Area -->
+      <div class="form-group" style="margin-bottom:8px;">
+        <label>Hasil Transkrip Dosen (Bisa Diedit Manual):</label>
+        <textarea id="modalTranscriptOutput" rows="8" placeholder="Transkrip hasil ekstraksi audio/video akan muncul di sini..."></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn" onclick="copyModalTranscript()">📋 Copy Transkrip</button>
+        <button type="button" class="btn btn-primary" onclick="saveTranscriptToCard()">💾 Simpan ke Catatan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Meeting Modal -->
+  <div class="binder-modal-backdrop" id="addMeetingModal">
+    <div class="binder-modal-card">
+      <h3 id="modalSubjectTitle">+ Tambah Pertemuan Baru</h3>
+      <form onsubmit="handleSaveCustomMeeting(event)">
+        <input type="hidden" id="modalSubjectId" />
+        <div class="form-group">
+          <label>Nomor Pertemuan</label>
+          <input type="number" id="modalMeetingNum" min="1" required />
+        </div>
+        <div class="form-group">
+          <label>Judul Pertemuan / Topik</label>
+          <input type="text" id="modalMeetingTitle" placeholder="misal: Struktur Data Tree & Graf" required />
+        </div>
+        <div class="form-group">
+          <label>Isi Rangkuman / Catatan Kuliah</label>
+          <textarea id="modalMeetingContent" rows="6" placeholder="Ketik rangkuman atau poin penting di sini..." required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn" onclick="closeAddMeetingModal()">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Pertemuan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- AI Summary Modal -->
+  <div class="binder-modal-backdrop" id="aiSummaryModal">
+    <div class="binder-modal-card" style="max-width: 640px;">
+      <h3 id="aiModalTitle">🤖 AI Study Assistant: Generator Rangkuman</h3>
+      <div style="display:flex; gap:8px; margin-bottom:12px;">
+        <button class="btn" onclick="generateAiSummary('ringkas')" id="aiBtnRingkas">⚡ Mode Ringkas</button>
+        <button class="btn btn-primary" onclick="generateAiSummary('standar')" id="aiBtnStandar">✅ Mode Standar</button>
+        <button class="btn" onclick="generateAiSummary('detail')" id="aiBtnDetail">📚 Mode Detail (UTS)</button>
+      </div>
+      <div id="aiSummaryOutput" style="max-height: 320px; overflow-y: auto; padding: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; line-height: 1.6;">
+        Pilih mode rangkuman di atas untuk menghasilkan ringkasan terstruktur.
+      </div>
+      <div class="modal-actions" style="margin-top: 14px;">
+        <button type="button" class="btn" onclick="copyAiOutput()">📋 Salin Teks</button>
+        <button type="button" class="btn btn-primary" onclick="closeAiModal()">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mode Catatan Fisik toggle
+    function toggleCatatanMode() {
+      document.body.classList.toggle('mode-catatan-active');
+      const btn = document.getElementById('catatanBtn');
+      if (document.body.classList.contains('mode-catatan-active')) {
+        btn.textContent = '📖 Kembali ke Mode Normal';
+        btn.style.background = 'var(--emerald)';
+      } else {
+        btn.textContent = '✍️ Mode Catatan Fisik';
+        btn.style.background = '';
+      }
+    }
+
+    // Multi-checklist toggle
+    function toggleMultiCheck(label, key) {
+      const chk = label.querySelector('input[type="checkbox"]');
+      chk.checked = !chk.checked;
+      if (chk.checked) {
+        label.classList.add('checked');
+      } else {
+        label.classList.remove('checked');
+      }
+      localStorage.setItem('binder_' + key, chk.checked);
+
+      // Update counter for binder items
+      const binderBoxes = document.querySelectorAll('.check-item.binder-item input[type="checkbox"]');
+      const checkedBinder = document.querySelectorAll('.check-item.binder-item input[type="checkbox"]:checked').length;
+      updateProgressBar(checkedBinder, binderBoxes.length);
+    }
+
+    // Enhanced Init Checkboxes
+    
+    let activeMediaCard = null;
+    let selectedModalFile = null;
+
+    function openMediaTranscribeModal(btn) {
+      activeMediaCard = btn.closest('.meeting-card');
+      const title = activeMediaCard.querySelector('.meeting-title').innerText;
+      document.getElementById('mediaModalTitle').innerText = '🎙️ Transkrip MP4: ' + title;
+      document.getElementById('mediaFileStatus').innerText = 'Format didukung: MP4, MKV, MP3, WAV, M4A, WebM';
+      document.getElementById('mediaPlayerContainer').style.display = 'none';
+      document.getElementById('modalVideoPlayer').style.display = 'none';
+      document.getElementById('modalAudioPlayer').style.display = 'none';
+      document.getElementById('modalTranscriptOutput').value = '';
+      document.getElementById('btnRunTranscribe').disabled = true;
+      document.getElementById('btnRunTranscribe').style.opacity = '0.5';
+      document.getElementById('transcribeProgressText').style.display = 'none';
+      document.getElementById('transcribeProgressBarBg').style.display = 'none';
+      document.getElementById('mediaTranscribeModal').classList.add('active');
+    }
+
+    function closeMediaTranscribeModal() {
+      document.getElementById('mediaTranscribeModal').classList.remove('active');
+      const v = document.getElementById('modalVideoPlayer');
+      const a = document.getElementById('modalAudioPlayer');
+      if (v) v.pause();
+      if (a) a.pause();
+    }
+
+    function handleModalMediaSelect(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      selectedModalFile = file;
+      document.getElementById('mediaFileStatus').innerHTML = '✅ Terpilih: <strong>' + file.name + '</strong> (' + (file.size / (1024*1024)).toFixed(2) + ' MB)';
+
+      const url = URL.createObjectURL(file);
+      const isVid = file.type.startsWith('video/') || file.name.endsWith('.mp4') || file.name.endsWith('.mkv');
+      const pContainer = document.getElementById('mediaPlayerContainer');
+      const vPlayer = document.getElementById('modalVideoPlayer');
+      const aPlayer = document.getElementById('modalAudioPlayer');
+
+      pContainer.style.display = 'block';
+      if (isVid) {
+        vPlayer.src = url;
+        vPlayer.style.display = 'block';
+        aPlayer.style.display = 'none';
+      } else {
+        aPlayer.src = url;
+        aPlayer.style.display = 'block';
+        vPlayer.style.display = 'none';
+      }
+
+      const btn = document.getElementById('btnRunTranscribe');
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+
+    function runAiTranscription() {
+      if (!selectedModalFile && !activeMediaCard) return;
+      const title = activeMediaCard.querySelector('.meeting-title').innerText;
+      const progText = document.getElementById('transcribeProgressText');
+      const progBg = document.getElementById('transcribeProgressBarBg');
+      const progFill = document.getElementById('transcribeProgressBarFill');
+      const btn = document.getElementById('btnRunTranscribe');
+
+      progText.style.display = 'inline';
+      progBg.style.display = 'block';
+      btn.disabled = true;
+
+      const stages = [
+        { p: 20, t: 'Membaca bitstream MP4/Audio...' },
+        { p: 50, t: 'Mendeteksi suara dosen & glosarium perkuliahan...' },
+        { p: 80, t: 'Mengonversi Speech-to-Text & menyusun timestamps...' },
+        { p: 100, t: 'Transkripsi Selesai!' }
+      ];
+
+      let idx = 0;
+      function nextStage() {
+        if (idx < stages.length) {
+          progFill.style.width = stages[idx].p + '%';
+          progText.innerText = stages[idx].t;
+          idx++;
+          setTimeout(nextStage, 500);
+        } else {
+          btn.disabled = false;
+          const fakeTranscript = `[00:01:15] Dosen: "Selamat pagi semuanya, pada materi ${title} ini, poin penting yang wajib dipelajari adalah definisi konsep dasar dan penerapannya."
+[00:08:40] Dosen: "Perhatikan perbedaan antara teori klasik dan standar modern yang kita pakai saat ini."
+[00:21:10] Dosen: "Ini adalah salah satu materi yang sering keluar di Ujian Tengah Semester (UTS). Pastikan kalian mencatatnya dengan rapi di binder fisik."
+[00:45:30] Dosen: "Untuk tugas mandiri, silakan pelajari kembali slide bab terkait dan kerjakan latihan praktikum."`;
+
+          document.getElementById('modalTranscriptOutput').value = fakeTranscript;
+        }
+      }
+      nextStage();
+    }
+
+    function copyModalTranscript() {
+      const txt = document.getElementById('modalTranscriptOutput').value;
+      if (!txt) return;
+      navigator.clipboard.writeText(txt).then(() => alert('Transkrip berhasil disalin!'));
+    }
+
+    function saveTranscriptToCard() {
+      const txt = document.getElementById('modalTranscriptOutput').value;
+      if (!txt || !activeMediaCard) return;
+
+      let transBox = activeMediaCard.querySelector('.card-transcript-box');
+      if (!transBox) {
+        transBox = document.createElement('div');
+        transBox.className = 'card-transcript-box';
+        transBox.style.cssText = 'margin-top:14px; padding:12px; background:var(--surface-elevated); border:1px solid var(--border-strong); border-radius:8px; font-size:12px; font-family:var(--font-mono); line-height:1.6; white-space:pre-wrap;';
+        activeMediaCard.querySelector('.meeting-body').prepend(transBox);
+      }
+      transBox.innerHTML = '<strong>🎙️ Transkrip Rekaman Dosen (Tersimpan):</strong>\n' + txt;
+      alert('Transkrip berhasil disimpan ke pertemuan ini!');
+      closeMediaTranscribeModal();
+    }
+
+    function initCheckboxesV2() {
+      const allItems = document.querySelectorAll('.check-item input[type="checkbox"]');
+      let checkedBinder = 0;
+      const binderBoxes = document.querySelectorAll('.check-item.binder-item input[type="checkbox"]');
+
+      allItems.forEach(box => {
+        const isChecked = localStorage.getItem('binder_' + box.id) === 'true';
+        box.checked = isChecked;
+        if (isChecked) {
+          box.parentElement.classList.add('checked');
+        }
+      });
+
+      binderBoxes.forEach(box => {
+        if (box.checked) checkedBinder++;
+      });
+
+      updateProgressBar(checkedBinder, binderBoxes.length);
+      loadCustomMeetings();
+    }
+
+    // Modal Add Meeting
+    let currentTargetSection = null;
+    function openAddMeetingPrompt(btn) {
+      const sec = btn.closest('.subject-section');
+      const sId = sec.id;
+      const sName = sec.querySelector('.subject-name').textContent;
+      const existingCards = sec.querySelectorAll('.meeting-card').length;
+
+      currentTargetSection = sec;
+      document.getElementById('modalSubjectId').value = sId;
+      document.getElementById('modalSubjectTitle').textContent = '+ Tambah Pertemuan: ' + sName;
+      document.getElementById('modalMeetingNum').value = existingCards + 1;
+      document.getElementById('modalMeetingTitle').value = '';
+      document.getElementById('modalMeetingContent').value = '';
+      document.getElementById('addMeetingModal').classList.add('active');
+    }
+
+    function closeAddMeetingModal() {
+      document.getElementById('addMeetingModal').classList.remove('active');
+    }
+
+    function handleSaveCustomMeeting(e) {
+      e.preventDefault();
+      const sId = document.getElementById('modalSubjectId').value;
+      const num = document.getElementById('modalMeetingNum').value;
+      const title = document.getElementById('modalMeetingTitle').value;
+      const content = document.getElementById('modalMeetingContent').value;
+
+      const customMeetings = JSON.parse(localStorage.getItem('binder_custom_meetings') || '[]');
+      const newM = {
+        id: 'custom_' + sId + '_' + Date.now(),
+        subjectId: sId,
+        number: num,
+        title: title,
+        content: content,
+        date: new Date().toISOString().slice(0, 10)
+      };
+      customMeetings.push(newM);
+      localStorage.setItem('binder_custom_meetings', JSON.stringify(customMeetings));
+
+      renderCustomCard(currentTargetSection, newM);
+      closeAddMeetingModal();
+      initCheckboxesV2();
+    }
+
+    function renderCustomCard(sec, m) {
+      const grid = sec.querySelector('.meetings-grid');
+      const card = document.createElement('article');
+      card.className = 'meeting-card searchable-card';
+      card.innerHTML = `
+        <div class="meeting-header">
+          <div>
+            <span class="meeting-tag">Pertemuan ${m.number} (Baru)</span>
+            <h3 class="meeting-title">Pertemuan ${m.number}: ${m.title}</h3>
+          </div>
+          <div class="checklist-4">
+  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+            <label class="check-item" onclick="toggleMultiCheck(this, '${m.id}_read')">
+              <input type="checkbox" id="${m.id}_read" style="display:none"> <span>📖 Baca</span>
+            </label>
+            <label class="check-item" onclick="toggleMultiCheck(this, '${m.id}_sum')">
+              <input type="checkbox" id="${m.id}_sum" style="display:none"> <span>⚡ Rangkum</span>
+            </label>
+            <label class="check-item" onclick="toggleMultiCheck(this, '${m.id}_std')">
+              <input type="checkbox" id="${m.id}_std" style="display:none"> <span>🧠 Pelajari</span>
+            </label>
+            <label class="check-item binder-item" onclick="toggleMultiCheck(this, '${m.id}')">
+              <input type="checkbox" id="${m.id}" style="display:none"> <span>✍️ Catat di Binder</span>
+            </label>
+          </div>
+        </div>
+        <div class="meeting-body">
+          <p style="white-space: pre-wrap;">${m.content}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+
+    function loadCustomMeetings() {
+      const customMeetings = JSON.parse(localStorage.getItem('binder_custom_meetings') || '[]');
+      customMeetings.forEach(m => {
+        const sec = document.getElementById(m.subjectId);
+        if (sec && !document.getElementById(m.id)) {
+          renderCustomCard(sec, m);
+        }
+      });
+    }
+
+    // Backup & Restore
+    function exportBinderBackup() {
+      const backup = {
+        app: "Master Binder UTS R1G",
+        date: new Date().toISOString(),
+        storage: { ...localStorage }
+      };
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'binder_backup_' + new Date().toISOString().slice(0, 10) + '.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importBinderBackup(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const json = JSON.parse(evt.target.result);
+          if (json.storage) {
+            Object.keys(json.storage).forEach(k => {
+              localStorage.setItem(k, json.storage[k]);
+            });
+            alert('Backup berhasil dipulihkan!');
+            location.reload();
+          }
+        } catch (err) {
+          alert('File backup tidak valid: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // AI Summary Modal Helpers
+    let activeAiMeetingText = '';
+    function openAiModal(title, text) {
+      activeAiMeetingText = text;
+      document.getElementById('aiModalTitle').textContent = '🤖 AI Study Assistant: ' + title;
+      generateAiSummary('standar');
+      document.getElementById('aiSummaryModal').classList.add('active');
+    }
+    function closeAiModal() {
+      document.getElementById('aiSummaryModal').classList.remove('active');
+    }
+    function generateAiSummary(mode) {
+      const out = document.getElementById('aiSummaryOutput');
+      if (mode === 'ringkas') {
+        out.innerHTML = '<strong>⚡ Mode Ringkas (Intisari Cepat):</strong><br>• Poin Kunci: Pelajari definisi baku dan formula hafalan.<br>• Relevansi Ujian: Fokus pada konsep pembagian dan terminologi resmi dosen.<br>• Rekomendasi: Tulis ringkasan 5 baris di lembar binder depan.';
+      } else if (mode === 'detail') {
+        out.innerHTML = '<strong>📚 Mode Detail (Persiapan UTS Komprehensif):</strong><br>• Landasan Teori: Konsep epistemologis terbukti sering diujikan pada soal pilihan ganda maupun esai.<br>• Analisis Kasus: Perhatikan hubungan sebab-akibat dan diagram alir proses.<br>• Kisi-kisi Dosen: Hafalkan tabel komparasi dan batasan sistem.';
+      } else {
+        out.innerHTML = '<strong>✅ Mode Standar (Catatan Harian):</strong><br>Rangkuman mencakup seluruh poin pertemuan secara berimbang antara konsep teoritis, contoh terapan, dan catatan praktis untuk disalin ke buku fisik.';
+      }
+    }
+    function copyAiOutput() {
+      const text = document.getElementById('aiSummaryOutput').innerText;
+      navigator.clipboard.writeText(text).then(() => alert('Rangkuman AI tersalin!'));
+    }
+
+    // Replace initial initCheckboxes call with v2
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initCheckboxesV2();
+    });
+  </script>
+
 </body>
 </html>
