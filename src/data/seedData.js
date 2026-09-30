@@ -1407,7 +1407,7 @@ export const initialSubjects = [
             "id": "mat_pancasila_rps",
             "type": "pdf",
             "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (RPS Resmi Unindra)",
-            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/07_Pendidikan_Pancasila/RPS_dan_Materi/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
             "file_size": 245000,
             "date_added": "2026-09-30"
           },
@@ -1468,7 +1468,7 @@ export const initialSubjects = [
             "id": "mat_p2_rps",
             "type": "pdf",
             "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (Minggu Ke-2)",
-            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/07_Pendidikan_Pancasila/RPS_dan_Materi/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
             "file_size": 245000,
             "date_added": "2026-09-30"
           }
@@ -1513,7 +1513,7 @@ export const initialSubjects = [
             "id": "mat_p3_rps",
             "type": "pdf",
             "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (Minggu Ke-3)",
-            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/07_Pendidikan_Pancasila/RPS_dan_Materi/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
             "file_size": 245000,
             "date_added": "2026-09-30"
           }
@@ -1558,7 +1558,7 @@ export const initialSubjects = [
             "id": "mat_p4_rps_soal",
             "type": "pdf",
             "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (Bank Soal UTS & UAS)",
-            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/07_Pendidikan_Pancasila/RPS_dan_Materi/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
             "file_size": 245000,
             "date_added": "2026-09-30"
           }
