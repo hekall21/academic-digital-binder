@@ -906,164 +906,114 @@ end.
 
 ---
 
-## 6. Matematika Dasar
+## 6. Matematika Dasar (Kalkulus Sistem Informasi)
 * **Dosen Pengampu:** Dr. Munali, M.Pd.
-* **Jadwal & Ruang:** Kamis • 09:10 - 10:50 WIB • Ruang R.4.4-4
-
-### Pertemuan 1 & 2: Sistem Bilangan Real, Pertidaksamaan & Nilai Mutlak
-- [ ] *Sudah disalin ke lembar binder fisik*
-
-
-#### 1. Hierarki & Klasifikasi Himpunan Bilangan
-<p>Dalam analisis matematika dasar, sistem bilangan terstruktur secara hierarkis:</p>
-$$\mathbb{N} \subset \mathbb{W} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$$
-<ul>
-  <li>**Bilangan Asli ($\mathbb{N}$ - Natural Numbers):** $\{1, 2, 3, 4, ...\}$.</li>
-  <li>**Bilangan Cacah ($\mathbb{W}$ - Whole Numbers):** $\{0, 1, 2, 3, ...\}$.</li>
-  <li>**Bilangan Bulat ($\mathbb{Z}$ - Integers):** $\{..., -3, -2, -1, 0, 1, 2, 3, ...\}$.</li>
-  <li>**Bilangan Rasional ($\mathbb{Q}$):** Bilangan yang dapat dinyatakan dalam bentuk pecahan $\frac{a}{b}$ dengan $a, b \in \mathbb{Z}$ dan $b \neq 0$. Memiliki representasi desimal berhenti (misal $0.75$) atau desimal berulang tak hingga (misal $0.333...$).</li>
-  <li>**Bilangan Irasional:** Bilangan yang tidak dapat dinyatakan dalam pecahan $\frac{a}{b}$. Desimal tak berulang dan tak terhingga (contoh: $\sqrt{2} \approx 1.4142...$, $\pi \approx 3.14159...$, $e \approx 2.71828...$).</li>
-  <li>**Bilangan Real ($\mathbb{R}$):** Gabungan himpunan seluruh bilangan rasional dan irasional yang memenuhi garis bilangan kontinu.</li>
-</ul>
-
-#### 2. Pertidaksamaan Aljabar & Teorema Pembalikan Tanda
-<p>Pertidaksamaan adalah pernyataan matematis yang memuat relasi pembanding ($<, >, \le, \ge$).</p>
-> [!CAUTION]
-> **🚨 TEOREMA EMAS PERTIDAKSAMAAN: PEMBALIKAN TANDA KETAKSAMAAN**
-> Jika kedua ruas dari suatu pertidaksamaan **dikalikan atau dibagi oleh suatu bilangan negatif**, maka **arah tanda ketaksamaan WAJIB DIBALIK**!<br>
-  $$\text{Jika } a < b \text{ dan } c < 0, \text{ maka } a \cdot c > b \cdot c \quad \text{dan} \quad \frac{a}{c} > \frac{b}{c}$$
-<p>**Contoh Soal Langkah Demi Langkah:**</p>
-<p>Selesaikan pertidaksamaan: $-3x + 5 \le 14$</p>
-<ol>
-  <li>Kurangkan kedua ruas dengan 5: $-3x \le 14 - 5 \iff -3x \le 9$.</li>
-  <li>Bagi kedua ruas dengan bilangan negatif $-3$ (TANDA DIBALIK!):
-    $$x \ge \frac{9}{-3} \iff x \ge -3$$
-  </li>
-  <li>Himpunan Penyelesaian (HP): $HP = \{x \mid x \ge -3, x \in \mathbb{R}\}$ atau dalam notasi interval tertutup: $[-3, \infty)$.</li>
-</ol>
-
-#### 3. Pertidaksamaan Nilai Mutlak (|x|)
-<p>Nilai mutlak menyatakan jarak suatu bilangan dari titik 0 pada garis bilangan (selalu bernilai non-negatif $|x| \ge 0$).</p>
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Sifat Bentuk Nilai Mutlak</th><th>Ekuivalensi Rumus Penyelesaian</th><th>Interpretasi Geometris</th></tr></thead>
-    <tbody>
-      <tr><td>**$|x| < a$ (dengan $a > 0$)**</td><td>$$-a < x < a$$</td><td>Jarak $x$ ke titik 0 kurang dari $a$ (daerah di dalam pita interval).</td></tr>
-      <tr><td>**$|x| > a$ (dengan $a > 0$)**</td><td>$$x < -a \quad \text{atau} \quad x > a$$</td><td>Jarak $x$ ke titik 0 lebih jauh dari $a$ (daerah di sayap luar).</td></tr>
-      <tr><td>**$|f(x)| \le |g(x)|$**</td><td>$$(f(x) + g(x))(f(x) - g(x)) \le 0$$</td><td>Penyelesaian menggunakan rumus selisih kuadrat $a^2 - b^2 \le 0$.</td></tr>
-    </tbody>
-  </table>
-</div>
-
+* **Jadwal & Ruang:** Kamis • 07:30 - 10:00 WIB • Ruang R.4.3-2
+* **Berkas Rujukan Asli:** Slide PDF & PPT Dosen di `Tugas_Kuliah/06_Matematika_Dasar/Materi_dan_Rangkuman/`
 
 ---
 
-### Pertemuan 3: Persamaan Garis Lurus, Gradien & Hubungan Garis
+### Pertemuan 1: Sistem Bilangan Real, Operasi Aljabar & Notasi Interval
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 📖 A. Materi Asli Slide Dosen (PDF 1789117602):
+1. **10 Himpunan Bilangan:**
+   * Bilangan Asli ($\mathbb{N}$): $\{1, 2, 3, 4, ...\}$
+   * Bilangan Cacah: $\{0, 1, 2, 3, ...\}$
+   * Bilangan Bulat ($\mathbb{Z}$): $\{..., -2, -1, 0, 1, 2, ...\}$
+   * Bilangan Rasional ($\mathbb{Q}$): Pecahan $rac{p}{q}$ ($q 
+eq 0$), desimal berhenti ($rac{3}{8}=0.375$) atau berulang ($rac{13}{11}=1.181818...$).
+   * Bilangan Irasional: Desimal tak berulang ($\sqrt{2}=1.41421...$, $\pi=3.14159...$).
+   * Bilangan Real ($\mathbb{R}$): Gabungan bilangan rasional dan irasional ($\mathbb{R} = \mathbb{Q} \cup \mathbb{Q}'$).
+   * Imajiner ($i = \sqrt{-1}$), Kompleks ($a + bi$), Prima, dan Komposit.
+2. **5 Sifat Operasi Aljabar:**
+   * Komutatif: $x + y = y + x$ dan $x \cdot y = y \cdot x$
+   * Asosiatif: $(x+y)+z = x+(y+z)$ dan $(x \cdot y) \cdot z = x \cdot (y \cdot z)$
+   * Distributif: $x(y+z) = xy + xz$
+   * Elemen Identitas: Penjumlahan ($0$), Perkalian ($1$)
+   * Balikan (Invers): Invers aditif ($-x$), Invers perkalian ($x^{-1} = rac{1}{x}$)
+3. **4 Sifat Urutan Garis Bilangan:**
+   * Trikotomi: Tepat satu berlaku ($x < y$, $x = y$, atau $x > y$).
+   * Ketransitifan: $x < y \land y < z \implies x < z$.
+   * Penambahan: $x < y \iff x + z < y + z$.
+   * Perkalian: Jika $z > 0 \implies xz < yz$. **Jika $z < 0 \implies xz > yz$ (Tanda dibalik!)**.
+4. **Notasi Selang (Interval):**
+   * $(a, b) = \{x \in \mathbb{R} \mid a < x < b\}$ (terbuka)
+   * $[a, b] = \{x \in \mathbb{R} \mid a \le x \le b\}$ (tertutup)
 
-#### 1. Konsep Gradien (Kemiringan Garis)
-<p>Gradien (dilambangkan $m$) adalah ukuran kemiringan atau kecuraman suatu garis terhadap sumbu horizontal $X$. Gradien merupakan rasio perubahan nilai ordinat ($\Delta y$) terhadap perubahan absis ($\Delta x$):</p>
-$$m = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1}$$
-
-#### 2. Bentuk-Bentuk Persamaan Garis Lurus
-<ol>
-  <li>**Bentuk Eksplisit:** $y = mx + c$, di mana $m$ adalah gradien dan $c$ adalah titik potong sumbu $Y$ di koordinat $(0, c)$.</li>
-  <li>**Bentuk Umum (Implisit):** $Ax + By + C = 0$. Gradien garis ini adalah:
-    $$m = -\frac{A}{B}$$
-  </li>
-  <li>**Persamaan Garis Melalui Titik $(x_1, y_1)$ dengan Gradien $m$:**
-    $$y - y_1 = m(x - x_1)$$
-  </li>
-  <li>**Persamaan Garis Melalui Dua Titik $(x_1, y_1)$ dan $(x_2, y_2)$ :**
-    $$\frac{y - y_1}{y_2 - y_1} = \frac{x - x_1}{x_2 - x_1}$$
-  </li>
-</ol>
-
-#### 3. Hubungan Posisi Antara Dua Garis Lurus
-<ul>
-  <li>**Dua Garis Sejajar ($g_1 \parallel g_2$):** Memiliki kemiringan yang sama persis sehingga kedua garis tidak akan pernah berpotongan:
-    $$m_1 = m_2$$
-  </li>
-  <li>**Dua Garis Tegak Lurus ($g_1 \perp g_2$):** Berpotongan membentuk sudut siku-siku $90^\circ$. Hasil kali kedua gradiennya sama dengan $-1$:
-    $$m_1 \cdot m_2 = -1 \iff m_2 = -\frac{1}{m_1}$$
-  </li>
-</ul>
-
-#### 4. Pembahasan Soal Kontekstual Kuliah Dr. Munali
-> [!TIP]
-> **✈️ Soal Kontekstual Penerbangan (Slide 7 Dr. Munali)**
-> <p>**Soal:** Suatu pesawat A bergerak melalui koordinat $(0,4)$ dan $(4,6)$. Pesawat B bergerak melalui koordinat $(4,4)$ dan $(8,6)$. Hitung gradien masing-masing pesawat dan simpulkan hubungan lintasannya!</p>
-  <p>**Penyelesaian Rinci:**</p>
-  <ol>
-    <li>Gradien Pesawat A:
-      $$m_A = \frac{y_2 - y_1}{x_2 - x_1} = \frac{6 - 4}{4 - 0} = \frac{2}{4} = \frac{1}{2}$$
-    </li>
-    <li>Gradien Pesawat B:
-      $$m_B = \frac{y_2 - y_1}{x_2 - x_1} = \frac{6 - 4}{8 - 4} = \frac{2}{4} = \frac{1}{2}$$
-    </li>
-    <li>**Kesimpulan:** Karena $m_A = m_B = \frac{1}{2}$, maka lintasan terbang pesawat A dan pesawat B adalah **SEJAJAR** ($g_A \parallel g_B$). Kedua pesawat terbang pada arah koridor yang sama dan tidak akan bertabrakan dalam kondisi lintasan tersebut.</li>
-  </ol>
-
+#### 🤖 B. Rangkuman Cerdas AI (Logika Sistem Informasi):
+* **Mengapa Mahasiswa IT Wajib Memahami Ini?** Pembagian tipe data komputasi (Integer vs Float/Double) didasarkan pada karakteristik desimal rasional dan irasional.
+* **Aturan Kurung:** Kurung siku `[ ]` jika ada tanda sama dengan ($\le$ atau $\ge$). Kurung biasa `( )` jika murni $<$ atau $>$ atau $\pm\infty$.
 
 ---
 
-### Pertemuan 3
+### Pertemuan 2: Pertidaksamaan Bilangan Real & Himpunan Penyelesaian (HP)
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 📖 A. Materi Asli Slide Dosen (PDF 1789631769):
+1. **5 Langkah Baku Menentukan HP (Slide 6):**
+   * Buat ruas kanan menjadi nol ($f(x) < 0$ atau $f(x) > 0$).
+   * Faktorkan persamaan dan cari titik-titik pemecah (pembuat nol pembilang dan penyebut).
+   * Plot titik-titik pemecah pada garis bilangan.
+   * Uji titik (gunakan $x = 0$) untuk menentukan tanda interval ($+$ atau $-$).
+   * Tuliskan Himpunan Penyelesaian (HP) dalam notasi selang/interval.
+2. **Pembahasan Latihan Soal Slide 7:**
+   * **Soal a:** $2x - 7 < 4x - 2 \iff -2x < 5 \iff x > -rac{5}{2} \implies HP = (-rac{5}{2}, \infty)$.
+   * **Soal b:** $-5 \le 2x + 6 < 4 \iff -11 \le 2x < -2 \iff -rac{11}{2} \le x < -1 \implies HP = [-rac{11}{2}, -1)$.
+   * **Soal g (Kuadrat):** $x^2 - x < 6 \iff (x-3)(x+2) < 0 \implies HP = (-2, 3)$.
+   * **Soal Rasional (Slide 13 a):** $rac{x-1}{x+2} \ge 0 \implies HP = (-\infty, -2) \cup [1, \infty)$ (syarat penyebut $x 
+eq -2$).
 
+#### 🤖 B. Rangkuman Cerdas AI (Tips Ujian UTS):
+* **Dilarang kali silang variabel** pada bentuk pecahan karena tanda $x$ belum tentu positif. Selalu pindah ke ruas kiri dan samakan penyebut.
+* **Titik penyebut selalu lingkaran kosong** (tidak boleh kurung siku) karena pembagian dengan nol tidak terdefinisi.
 
 ---
 
-### Pertemuan 4: Eksponen, Bentuk Akar & Logaritma
+### Pertemuan 3: Pertidaksamaan Nilai Mutlak & Konsep Pemetaan Fungsi
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 📖 A. Materi Asli Slide Dosen (PDF 1790406762):
+1. **Definisi Nilai Mutlak:** Jarak non-negatif dari titik 0 pada garis bilangan:
+   $$|x| = x 	ext{ (jika } x \ge 0) \quad 	ext{dan} \quad |x| = -x 	ext{ (jika } x < 0)$$
+2. **Sifat Penting:**
+   * $|x| < a \iff -a < x < a$ (interval di dalam)
+   * $|x| > a \iff x < -a \lor x > a$ (sayap di luar)
+   * $|x| \le |y| \iff x^2 \le y^2$
+3. **Pembahasan Latihan Soal Slide 3:**
+   * $|2x + 3| \ge |4x + 5| \iff (2x+3)^2 - (4x+5)^2 \ge 0 \iff (6x+8)(-2x-2) \ge 0 \iff (3x+4)(x+1) \le 0 \implies HP = [-rac{4}{3}, -1]$.
+4. **Konsep Fungsi $f: X 	o Y$:**
+   * Setiap $x \in X$ (Domain) dipetakan tepat ke satu $f(x) \in Y$ (Kodomain). Himpunan nilai output disebut Range ($R_f$).
+   * Fungsi Genap: $f(-x) = f(x)$ (simetris sumbu Y, contoh $f(x) = x^2 - 2$).
+   * Fungsi Ganjil: $f(-x) = -f(x)$ (simetris titik origin, contoh $g(x) = x^3 - 2x$).
+   * Syarat Domain Alami: bentuk akar $\sqrt{p(x)} \implies p(x) \ge 0$; bentuk pecahan $rac{p(x)}{q(x)} \implies q(x) 
+eq 0$.
 
-#### 1. 8 Sifat Utama Eksponen (Bilangan Berpangkat)
-<ol>
-  <li>$a^m \cdot a^n = a^{m+n}$ (Perkalian basis sama: pangkat dijumlahkan).</li>
-  <li>$\frac{a^m}{a^n} = a^{m-n}$ (Pembagian basis sama: pangkat dikurangkan).</li>
-  <li>$(a^m)^n = a^{m \cdot n}$ (Pangkat dipangkatkan: pangkat dikalikan).</li>
-  <li>$(a \cdot b)^n = a^n \cdot b^n$ (Pangkat perkalian didistribusikan).</li>
-  <li>$\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}$ dengan $b \neq 0$.</li>
-  <li>$a^0 = 1$ untuk setiap $a \neq 0$ (Setiap bilangan real bukan nol berpangkat 0 adalah 1).</li>
-  <li>$a^{-n} = \frac{1}{a^n}$ (Pangkat negatif diubah menjadi pecahan positif di penyebut).</li>
-  <li>$a^{m/n} = \sqrt[n]{a^m}$ (Pangkat pecahan ekuivalen dengan bentuk radikal akar).</li>
-</ol>
+#### 🤖 B. Rangkuman Cerdas AI:
+* Jika kedua ruas bernilai mutlak ($|A| \ge |B|$), jangan buka 4 kondisi! Cukup gunakan rumus $(A+B)(A-B) \ge 0$ untuk menghemat waktu saat UTS.
 
-#### 2. Operasi Bentuk Akar & Merasionalkan Penyebut
-<ul>
-  <li>Penjumlahan/Pengurangan: $p\sqrt{a} \pm q\sqrt{a} = (p \pm q)\sqrt{a}$.</li>
-  <li>Perkalian Sekawan: $(\sqrt{a} + \sqrt{b})(\sqrt{a} - \sqrt{b}) = a - b$.</li>
-  <li>**Teknik Merasionalkan Penyebut Pecahan:**
-    <ul>
-      <li>Bentuk $\frac{a}{\sqrt{b}}$ dikalikan $\frac{\sqrt{b}}{\sqrt{b}}$:
-        $$\frac{a}{\sqrt{b}} = \frac{a\sqrt{b}}{b}$$
-      </li>
-      <li>Bentuk $\frac{c}{\sqrt{a} + \sqrt{b}}$ dikalikan bentuk sekawan $\frac{\sqrt{a} - \sqrt{b}}{\sqrt{a} - \sqrt{b}}$:
-        $$\frac{c}{\sqrt{a} + \sqrt{b}} = \frac{c(\sqrt{a} - \sqrt{b})}{a - b}$$
-      </li>
-    </ul>
-  </li>
-</ul>
+---
 
-#### 3. Logaritma: Definisi & 10 Sifat Pokok
-<p>**Definisi:** Logaritma adalah invers (kebalikan) dari operasi eksponen. Jika $a^c = b$, maka:</p>
-$$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } b > 0$$
-<p>**10 Sifat Fundamental Logaritma:**</p>
-<ol>
-  <li>$^a\log a = 1$</li>
-  <li>$^a\log 1 = 0$</li>
-  <li>$^a\log (b \cdot c) = ^a\log b + ^a\log c$</li>
-  <li>$^a\log \left(\frac{b}{c}\right) = ^a\log b - ^a\log c$</li>
-  <li>$^a\log (b^n) = n \cdot ^a\log b$</li>
-  <li>$^{a^m}\log (b^n) = \frac{n}{m} \cdot ^a\log b$</li>
-  <li>$^a\log b = \frac{^c\log b}{^c\log a}$ (Sifat ganti basis)</li>
-  <li>$^a\log b = \frac{1}{^b\log a}$</li>
-  <li>$^a\log b \cdot ^b\log c = ^a\log c$ (Sifat rantai)</li>
-  <li>$a^{^a\log b} = b$</li>
-</ol>
+### Pertemuan 4: Persamaan Garis Lurus, Gradien & Grafik Parabola Kuadrat
+- [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 📖 A. Materi Asli Slide PPT Dosen (PPT 1695823532):
+1. **Koordinat Kartesius 2D:** Kuadran I ($+,+$), Kuadran II ($-,+$), Kuadran III ($-, -$), Kuadran IV ($+, -$).
+2. **Bentuk Garis Lurus & Rumus Gradien ($m$):**
+   * Eksplisit: $y = mx + c$
+   * Implisit: $Ax + By + C = 0 \implies m = -rac{A}{B}$
+   * Melalui 2 titik: $m = rac{y_2 - y_1}{x_2 - x_1}$
+   * Melalui 1 titik: $y - y_1 = m(x - x_1)$
+3. **Hubungan Dua Garis:**
+   * Sejajar: $m_1 = m_2$
+   * Tegak Lurus: $m_1 \cdot m_2 = -1 \iff m_2 = -rac{1}{m_1}$
+4. **Grafik Parabola Kuadrat $f(x) = ax^2 + bx + c$:**
+   * $a > 0$: terbuka ke atas (titik minimum); $a < 0$: terbuka ke bawah (titik maksimum).
+   * Diskriminan $D = b^2 - 4ac$: $D > 0$ memotong di 2 titik; $D = 0$ menyinggung sumbu X; $D < 0$ tidak memotong sumbu X.
+
+#### 🤖 B. Rangkuman Cerdas AI:
+* Formula garis lurus $y = mx + c$ adalah model dasar algoritma **Linear Regression** pada Machine Learning untuk membaca tren data.
+* Hafalan kilat tegak lurus: "Lawan dan kebalikan" (misal $m_1 = 3 \implies m_2 = -rac{1}{3}$).
 
 ---
 

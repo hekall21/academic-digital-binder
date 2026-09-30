@@ -42,6 +42,7 @@ export function MeetingDetailView({
   onUpdateSummary,
 }) {
   const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'handwriting', 'materials', 'transcript'
+  const [contentSubView, setContentSubView] = useState('slide'); // 'slide' (Isi Lengkap PDF/PPT) vs 'ai' (Rangkuman AI)
   const [summaryMode, setSummaryMode] = useState('standar'); // 'ringkas', 'standar', 'detail'
   const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   const [aiProgress, setAiProgress] = useState({ pct: 0, msg: '' });
@@ -440,64 +441,120 @@ export function MeetingDetailView({
         </button>
       </div>
 
-      {/* TAB 1: SUMMARY VIEW */}
+      {/* TAB 1: SUMMARY & SLIDE VIEW (DUAL VIEW) */}
       {activeTab === 'summary' && (
         <div className="space-y-6">
-          {/* Mode Selector (Ringkas / Standar / Detail) */}
-          <div className="flex items-center justify-between p-3 rounded-xl bg-[#11131B] border border-white/10 no-print">
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400 font-semibold">Tingkat Detail Rangkuman:</span>
-              <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-white/5">
-                {['ringkas', 'standar', 'detail'].map((m) => (
-                  <button
-                    key={m}
-                    onClick={() => {
-                      setSummaryMode(m);
-                      if (!meeting.summaries?.[m]) {
-                        handleGenerateSummary(m);
-                      }
-                    }}
-                    className={`px-3 py-1 rounded text-xs font-semibold capitalize transition-all ${
-                      summaryMode === m
-                        ? 'bg-indigo-600 text-white shadow'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    {m}
-                  </button>
-                ))}
-              </div>
-            </div>
+          {/* Dual-View Switcher: Isi Lengkap PDF/PPT vs Rangkuman Cerdas AI */}
+          <div className="flex flex-col sm:flex-row items-center gap-2 p-1.5 bg-[#181B26] border border-white/10 rounded-2xl no-print shadow-sm">
+            <button
+              onClick={() => setContentSubView('slide')}
+              className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                contentSubView === 'slide'
+                  ? 'bg-gradient-to-r from-indigo-600 via-indigo-700 to-cyan-600 text-white shadow-lg'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+              }`}
+            >
+              <FileText className="w-4 h-4 text-cyan-300" />
+              <span>📖 Isi Lengkap Modul PDF & Slide PPT Dosen</span>
+            </button>
 
-            <span className="text-xs text-slate-500 hidden sm:inline">
-              {summaryMode === 'ringkas'
-                ? '⚡ Ringkas: Glosarium & Intisari Cepat'
-                : summaryMode === 'detail'
-                ? '📚 Detail: Elaborasi Mendalam Kisi-Kisi UTS'
-                : '✅ Standar: Catatan Kuliah Lengkap'}
-            </span>
+            <button
+              onClick={() => setContentSubView('ai')}
+              className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                contentSubView === 'ai'
+                  ? 'bg-gradient-to-r from-indigo-600 via-indigo-700 to-cyan-600 text-white shadow-lg'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+              }`}
+            >
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span>🤖 Rangkuman Cerdas AI (Step-by-Step & Siap UTS)</span>
+            </button>
           </div>
 
-          {/* Summary Content Body */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm leading-relaxed">
-            {currentSummaryHtml ? (
+          {/* VIEW A: SLIDE & MODUL ASLI DARI DOSEN */}
+          {contentSubView === 'slide' && (
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm leading-relaxed space-y-4">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                  <h3 className="font-heading font-bold text-sm text-white">
+                    Materi Asli Slide PDF & Diktat Perkuliahan
+                  </h3>
+                </div>
+                <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20">
+                  Verbatim & Ekstraksi Dosen
+                </span>
+              </div>
+
               <div
                 className="academic-summary-content text-slate-200 text-sm sm:text-base space-y-4"
-                dangerouslySetInnerHTML={{ __html: currentSummaryHtml }}
+                dangerouslySetInnerHTML={{
+                  __html: meeting.raw_slide_content || meeting.summaries?.standar || '<p>Materi slide sedang diproses.</p>',
+                }}
               />
-            ) : (
-              <div className="text-center py-12 text-slate-400 space-y-3">
-                <Sparkles className="w-8 h-8 mx-auto text-indigo-400 animate-bounce" />
-                <p className="text-base font-semibold text-white">Rangkuman belum dibuat untuk mode ini.</p>
-                <button
-                  onClick={() => handleGenerateSummary(summaryMode)}
-                  className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold"
-                >
-                  Generate Rangkuman AI Sekarang
-                </button>
+            </div>
+          )}
+
+          {/* VIEW B: RANGKUMAN CERDAS AI */}
+          {contentSubView === 'ai' && (
+            <div className="space-y-6">
+              {/* Mode Selector (Ringkas / Standar / Detail) */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-[#11131B] border border-white/10 no-print">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-400 font-semibold">Pilih Format AI:</span>
+                  <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-white/5">
+                    {['ringkas', 'standar', 'detail'].map((m) => (
+                      <button
+                        key={m}
+                        onClick={() => {
+                          setSummaryMode(m);
+                          if (!meeting.summaries?.[m]) {
+                            handleGenerateSummary(m);
+                          }
+                        }}
+                        className={`px-3 py-1 rounded text-xs font-semibold capitalize transition-all ${
+                          summaryMode === m
+                            ? 'bg-indigo-600 text-white shadow'
+                            : 'text-slate-400 hover:text-white'
+                        }`}
+                      >
+                        {m}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <span className="text-xs text-slate-400">
+                  {summaryMode === 'ringkas'
+                    ? '⚡ Ringkas: Glosarium & Intisari Cepat'
+                    : summaryMode === 'detail'
+                    ? '📚 Detail: Penjelasan Komprehensif & Kisi-Kisi UTS'
+                    : '✅ Standar: Rangkuman Step-by-Step Berimbang'}
+                </span>
               </div>
-            )}
-          </div>
+
+              {/* Summary Content Body */}
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm leading-relaxed">
+                {currentSummaryHtml ? (
+                  <div
+                    className="academic-summary-content text-slate-200 text-sm sm:text-base space-y-4"
+                    dangerouslySetInnerHTML={{ __html: currentSummaryHtml }}
+                  />
+                ) : (
+                  <div className="text-center py-12 text-slate-400 space-y-3">
+                    <Sparkles className="w-8 h-8 mx-auto text-indigo-400 animate-bounce" />
+                    <p className="text-base font-semibold text-white">Rangkuman belum dibuat untuk mode ini.</p>
+                    <button
+                      onClick={() => handleGenerateSummary(summaryMode)}
+                      className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold"
+                    >
+                      Generate Rangkuman AI Sekarang
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

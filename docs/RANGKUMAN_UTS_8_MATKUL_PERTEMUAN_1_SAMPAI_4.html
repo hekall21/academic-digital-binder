@@ -2004,263 +2004,392 @@ end.</code></pre>
     
       <section class="subject-section" id="subject-matdas">
         <div class="subject-header">
-
           <div class="subject-title-area">
             <div class="subject-number">6</div>
             <div>
-              <h2 class="subject-name">Matematika Dasar</h2>
+              <h2 class="subject-name">Matematika Dasar (Kalkulus Sistem Informasi)</h2>
               <div class="subject-meta">
                 <span class="meta-tag highlight">Dr. Munali, M.Pd.</span>
-                <span class="meta-tag">Kamis • 09:10 - 10:50 WIB • Ruang R.4.4-4</span>
+                <span class="meta-tag">Kamis • 07:30 - 10:00 WIB • Ruang R.4.3-2</span>
+                <span class="meta-tag" style="background:rgba(6,182,212,0.15); color:var(--cyan); border-color:var(--cyan);">Slide PDF & PPT Asli</span>
               </div>
             </div>
           </div>
-        
           <div>
             <button class="btn-add-meeting" onclick="openAddMeetingPrompt(this)">+ Tambah Pertemuan</button>
           </div>
         </div>
+
+        <!-- Banner Fitur Dual View: Materi Asli Slide vs Rangkuman AI -->
+        <div style="background:linear-gradient(135deg, rgba(6,182,212,0.12), rgba(99,102,241,0.08)); border:1px solid var(--border-strong); border-radius:var(--radius-lg); padding:16px 20px; margin-bottom:24px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+            <span style="font-size:16px;">✨</span>
+            <h3 style="font-size:14px; font-weight:800; color:var(--text-main); margin:0;">
+              Dual-View: Materi Asli Slide Dosen (PDF/PPT) & Rangkuman Cerdas AI
+            </h3>
+          </div>
+          <p style="font-size:12px; color:var(--text-secondary); line-height:1.6; margin:0;">
+            Kini dilengkapi dengan <strong>Isi Lengkap Slide Asli Dosen</strong> (definisi baku, rumus aljabar rapi, latihan soal a s.d. i dari slide) serta <strong>Versi Rangkuman AI Step-by-Step</strong> yang menyajikan cara cepat, analogi, dan tips anti-jebakan saat ujian UTS.
+          </p>
+        </div>
+
         <div class="meetings-grid">
           
+          <!-- Pertemuan 1 -->
           <article class="meeting-card searchable-card">
             <div class="meeting-header">
               <div>
-                <span class="meeting-tag">Pertemuan 1</span>
-                <h3 class="meeting-title">Pertemuan 1 & 2: Sistem Bilangan Real, Pertidaksamaan & Nilai Mutlak</h3>
+                <span class="meeting-tag">Pertemuan 1 • Slide PDF 1789117602</span>
+                <h3 class="meeting-title">Pertemuan 1: Sistem Bilangan Real, Operasi Aljabar, dan Notasi Interval</h3>
               </div>
               <div class="checklist-4">
-  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_read')">
-    <input type="checkbox" id="chk_subject-matdas_1_read" style="display:none"> <span>📖 Baca</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_sum')">
-    <input type="checkbox" id="chk_subject-matdas_1_sum" style="display:none"> <span>⚡ Rangkum</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_std')">
-    <input type="checkbox" id="chk_subject-matdas_1_std" style="display:none"> <span>🧠 Pelajari</span>
-  </label>
-  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1')">
-    <input type="checkbox" id="chk_subject-matdas_1" style="display:none"> <span>✍️ Catat di Binder</span>
-  </label>
-</div>
+                <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_read')">
+                  <input type="checkbox" id="chk_subject-matdas_1_read" style="display:none"> <span>📖 Baca</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_sum')">
+                  <input type="checkbox" id="chk_subject-matdas_1_sum" style="display:none"> <span>⚡ Rangkum</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1_std')">
+                  <input type="checkbox" id="chk_subject-matdas_1_std" style="display:none"> <span>🧠 Pelajari</span>
+                </label>
+                <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_1')">
+                  <input type="checkbox" id="chk_subject-matdas_1" style="display:none"> <span>✍️ Catat di Binder</span>
+                </label>
+              </div>
             </div>
             <div class="meeting-body">
               
-<h4>1. Hierarki & Klasifikasi Himpunan Bilangan</h4>
-<p>Dalam analisis matematika dasar, sistem bilangan terstruktur secara hierarkis:</p>
-$$\mathbb{N} \subset \mathbb{W} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$$
-<ul>
-  <li><strong>Bilangan Asli ($\mathbb{N}$ - Natural Numbers):</strong> $\{1, 2, 3, 4, ...\}$.</li>
-  <li><strong>Bilangan Cacah ($\mathbb{W}$ - Whole Numbers):</strong> $\{0, 1, 2, 3, ...\}$.</li>
-  <li><strong>Bilangan Bulat ($\mathbb{Z}$ - Integers):</strong> $\{..., -3, -2, -1, 0, 1, 2, 3, ...\}$.</li>
-  <li><strong>Bilangan Rasional ($\mathbb{Q}$):</strong> Bilangan yang dapat dinyatakan dalam bentuk pecahan $\frac{a}{b}$ dengan $a, b \in \mathbb{Z}$ dan $b \neq 0$. Memiliki representasi desimal berhenti (misal $0.75$) atau desimal berulang tak hingga (misal $0.333...$).</li>
-  <li><strong>Bilangan Irasional:</strong> Bilangan yang tidak dapat dinyatakan dalam pecahan $\frac{a}{b}$. Desimal tak berulang dan tak terhingga (contoh: $\sqrt{2} \approx 1.4142...$, $\pi \approx 3.14159...$, $e \approx 2.71828...$).</li>
-  <li><strong>Bilangan Real ($\mathbb{R}$):</strong> Gabungan himpunan seluruh bilangan rasional dan irasional yang memenuhi garis bilangan kontinu.</li>
-</ul>
+              <!-- Bagian 1: Materi Asli Dosen -->
+              <div style="background:rgba(6,182,212,0.06); border-left:4px solid var(--cyan); padding:12px 16px; border-radius:6px; margin-bottom:16px;">
+                <h4 style="margin-top:0; color:var(--cyan); font-size:13.5px;">📖 BAGIAN A: ISI LENGKAP SLIDE PDF DOSEN (Dr. Munali, M.Pd.)</h4>
+                <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">
+                  <em>Sumber Asli: 1789117602_Pert_1_Matematika_-_Sistem_Bilangan_Real.pdf (Slide 1–17)</em>
+                </p>
 
-<h4>2. Pertidaksamaan Aljabar & Teorema Pembalikan Tanda</h4>
-<p>Pertidaksamaan adalah pernyataan matematis yang memuat relasi pembanding ($<, >, \le, \ge$).</p>
-<div class="callout callout-danger">
-  <div class="callout-title">🚨 TEOREMA EMAS PERTIDAKSAMAAN: PEMBALIKAN TANDA KETAKSAMAAN</div>
-  Jika kedua ruas dari suatu pertidaksamaan <strong>dikalikan atau dibagi oleh suatu bilangan negatif</strong>, maka <strong>arah tanda ketaksamaan WAJIB DIBALIK</strong>!<br>
-  $$\text{Jika } a < b \text{ dan } c < 0, \text{ maka } a \cdot c > b \cdot c \quad \text{dan} \quad \frac{a}{c} > \frac{b}{c}$$
-</div>
-<p><strong>Contoh Soal Langkah Demi Langkah:</strong></p>
-<p>Selesaikan pertidaksamaan: $-3x + 5 \le 14$</p>
-<ol>
-  <li>Kurangkan kedua ruas dengan 5: $-3x \le 14 - 5 \iff -3x \le 9$.</li>
-  <li>Bagi kedua ruas dengan bilangan negatif $-3$ (TANDA DIBALIK!):
-    $$x \ge \frac{9}{-3} \iff x \ge -3$$
-  </li>
-  <li>Himpunan Penyelesaian (HP): $HP = \{x \mid x \ge -3, x \in \mathbb{R}\}$ atau dalam notasi interval tertutup: $[-3, \infty)$.</li>
-</ol>
+                <p><strong>1. Klasifikasi 10 Himpunan Bilangan:</strong></p>
+                <ul>
+                  <li><strong>Bilangan Asli (&naturals;):</strong> {1, 2, 3, 4, ...}</li>
+                  <li><strong>Bilangan Cacah:</strong> {0, 1, 2, 3, 4, ...}</li>
+                  <li><strong>Bilangan Bulat (&integers;):</strong> {..., -3, -2, -1, 0, 1, 2, 3, ...}</li>
+                  <li><strong>Bilangan Rasional (&rationals;):</strong> Bilangan hasil bagi dua bulat p/q (q &ne; 0), desimal berhenti (contoh: 3/8 = 0,375) atau berulang (contoh: 13/11 = 1,181818...).</li>
+                  <li><strong>Bilangan Irasional:</strong> Desimal tak berulang dan tak terhingga (contoh: &radic;2 = 1,41421..., &pi; = 3,14159...).</li>
+                  <li><strong>Bilangan Real (&reals;):</strong> Gabungan rasional dan irasional (&reals; = &rationals; &cup; &rationals;').</li>
+                  <li><strong>Bilangan Imajiner:</strong> Bentuk i = &radic;(-1).</li>
+                  <li><strong>Bilangan Kompleks (&complexes;):</strong> Bentuk a + bi.</li>
+                  <li><strong>Bilangan Prima:</strong> Bilangan bulat &gt; 1 yang hanya habis dibagi 1 dan dirinya sendiri {2, 3, 5, 7, 11, ...}.</li>
+                  <li><strong>Bilangan Komposit:</strong> Bilangan asli &gt; 1 selain bilangan prima {4, 6, 8, 9, 10, ...}.</li>
+                </ul>
 
-<h4>3. Pertidaksamaan Nilai Mutlak (|x|)</h4>
-<p>Nilai mutlak menyatakan jarak suatu bilangan dari titik 0 pada garis bilangan (selalu bernilai non-negatif $|x| \ge 0$).</p>
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Sifat Bentuk Nilai Mutlak</th><th>Ekuivalensi Rumus Penyelesaian</th><th>Interpretasi Geometris</th></tr></thead>
-    <tbody>
-      <tr><td><strong>$|x| < a$ (dengan $a > 0$)</strong></td><td>$$-a < x < a$$</td><td>Jarak $x$ ke titik 0 kurang dari $a$ (daerah di dalam pita interval).</td></tr>
-      <tr><td><strong>$|x| > a$ (dengan $a > 0$)</strong></td><td>$$x < -a \quad \text{atau} \quad x > a$$</td><td>Jarak $x$ ke titik 0 lebih jauh dari $a$ (daerah di sayap luar).</td></tr>
-      <tr><td><strong>$|f(x)| \le |g(x)|$</strong></td><td>$$(f(x) + g(x))(f(x) - g(x)) \le 0$$</td><td>Penyelesaian menggunakan rumus selisih kuadrat $a^2 - b^2 \le 0$.</td></tr>
-    </tbody>
-  </table>
-</div>
+                <p><strong>2. Lima Sifat Operasi Hitung Aljabar Real (Slide 13):</strong></p>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th>Sifat</th><th>Penjumlahan</th><th>Perkalian</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>1. Komutatif</strong></td><td>x + y = y + x</td><td>x &middot; y = y &middot; x</td></tr>
+                      <tr><td><strong>2. Asosiatif</strong></td><td>(x + y) + z = x + (y + z)</td><td>(x &middot; y) &middot; z = x &middot; (y &middot; z)</td></tr>
+                      <tr><td><strong>3. Distributif</strong></td><td colspan="2">x &middot; (y + z) = x&middot;y + x&middot;z</td></tr>
+                      <tr><td><strong>4. Elemen Identitas</strong></td><td>x + 0 = x (identitas penjumlahan: 0)</td><td>x &middot; 1 = x (identitas perkalian: 1)</td></tr>
+                      <tr><td><strong>5. Invers (Balikan)</strong></td><td>x + (-x) = 0 (invers aditif)</td><td>x &middot; x<sup>-1</sup> = 1 untuk x &ne; 0 (invers multiplikatif)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p><strong>3. Empat Sifat Urutan Garis Bilangan (Slide 14):</strong></p>
+                <ol>
+                  <li><em>Trikotomi:</em> Tepat satu kondisi berlaku: x &lt; y, x = y, atau x &gt; y.</li>
+                  <li><em>Ketransitifan:</em> x &lt; y dan y &lt; z &implies; x &lt; z.</li>
+                  <li><em>Penambahan:</em> x &lt; y &iff; x + z &lt; y + z.</li>
+                  <li><em>Perkalian:</em> Jika z positif: x &lt; y &iff; xz &lt; yz. <strong>Bilamana z negatif: x &lt; y &iff; xz &gt; yz (Arah Tanda Dibalik!)</strong>.</li>
+                </ol>
+
+                <p><strong>4. Notasi Selang (Interval) Garis Bilangan (Slide 16):</strong></p>
+                <ul>
+                  <li><code>(a, b) = { x &isin; &reals; | a &lt; x &lt; b }</code> (Selang terbuka, kurung biasa)</li>
+                  <li><code>[a, b] = { x &isin; &reals; | a &le; x &le; b }</code> (Selang tertutup, kurung siku)</li>
+                  <li><code>[a, b) = { x &isin; &reals; | a &le; x &lt; b }</code> &amp; <code>(a, b] = { x &isin; &reals; | a &lt; x &le; b }</code></li>
+                  <li><code>(-&infin;, b] = { x &isin; &reals; | x &le; b }</code> &amp; <code>[a, &infin;) = { x &isin; &reals; | x &ge; a }</code></li>
+                </ul>
+              </div>
+
+              <!-- Bagian 2: Rangkuman Cerdas AI -->
+              <div style="background:rgba(99,102,241,0.06); border-left:4px solid var(--primary); padding:12px 16px; border-radius:6px;">
+                <h4 style="margin-top:0; color:var(--primary); font-size:13.5px;">🤖 BAGIAN B: RANGKUMAN CERDAS AI (LOGIKA IT & PERSIAPAN UTS)</h4>
+                <ul>
+                  <li><strong>Mengapa Mahasiswa IT Wajib Memahami Ini?</strong> Dalam pemrograman dan basis data, pembagian integer vs floating-point berasal dari sifat desimal rasional (berhenti) vs irasional (tak berulang). Menentukan tipe data kolom database (INT, DECIMAL, FLOAT) membutuhkan pemahaman rentang interval sistem bilangan real.</li>
+                  <li><strong>Rumus Cepat Membaca Interval:</strong> Tanda kurung siku <code>[ ]</code> berarti titik batas IKUT MASUK (ada tanda sama dengan &le; atau &ge;). Tanda kurung biasa <code>( )</code> berarti titik batas HANYA SEBAGAI PAGAR (tidak ikut masuk). Tak terhingga (&infin;) selalu menggunakan kurung biasa.</li>
+                </ul>
+              </div>
 
             </div>
           </article>
-        
+
+          <!-- Pertemuan 2 -->
           <article class="meeting-card searchable-card">
             <div class="meeting-header">
               <div>
-                <span class="meeting-tag">Pertemuan 2</span>
-                <h3 class="meeting-title">Pertemuan 3: Persamaan Garis Lurus, Gradien & Hubungan Garis</h3>
+                <span class="meeting-tag">Pertemuan 2 • Slide PDF 1789631769</span>
+                <h3 class="meeting-title">Pertemuan 2: Pertidaksamaan Bilangan Real & Langkah Penentuan Himpunan Penyelesaian (HP)</h3>
               </div>
               <div class="checklist-4">
-  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_read')">
-    <input type="checkbox" id="chk_subject-matdas_2_read" style="display:none"> <span>📖 Baca</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_sum')">
-    <input type="checkbox" id="chk_subject-matdas_2_sum" style="display:none"> <span>⚡ Rangkum</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_std')">
-    <input type="checkbox" id="chk_subject-matdas_2_std" style="display:none"> <span>🧠 Pelajari</span>
-  </label>
-  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2')">
-    <input type="checkbox" id="chk_subject-matdas_2" style="display:none"> <span>✍️ Catat di Binder</span>
-  </label>
-</div>
+                <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_read')">
+                  <input type="checkbox" id="chk_subject-matdas_2_read" style="display:none"> <span>📖 Baca</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_sum')">
+                  <input type="checkbox" id="chk_subject-matdas_2_sum" style="display:none"> <span>⚡ Rangkum</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2_std')">
+                  <input type="checkbox" id="chk_subject-matdas_2_std" style="display:none"> <span>🧠 Pelajari</span>
+                </label>
+                <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_2')">
+                  <input type="checkbox" id="chk_subject-matdas_2" style="display:none"> <span>✍️ Catat di Binder</span>
+                </label>
+              </div>
             </div>
             <div class="meeting-body">
               
-<h4>1. Konsep Gradien (Kemiringan Garis)</h4>
-<p>Gradien (dilambangkan $m$) adalah ukuran kemiringan atau kecuraman suatu garis terhadap sumbu horizontal $X$. Gradien merupakan rasio perubahan nilai ordinat ($\Delta y$) terhadap perubahan absis ($\Delta x$):</p>
-$$m = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1}$$
+              <!-- Bagian 1: Materi Asli Dosen -->
+              <div style="background:rgba(6,182,212,0.06); border-left:4px solid var(--cyan); padding:12px 16px; border-radius:6px; margin-bottom:16px;">
+                <h4 style="margin-top:0; color:var(--cyan); font-size:13.5px;">📖 BAGIAN A: ISI LENGKAP SLIDE PDF DOSEN (Dr. Munali, M.Pd.)</h4>
+                <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">
+                  <em>Sumber Asli: 1789631769_Pert_2_Matematika_-_Pertidaksamaan_Bilangan_Real_RG.pdf (Slide 6 & 7)</em>
+                </p>
 
-<h4>2. Bentuk-Bentuk Persamaan Garis Lurus</h4>
-<ol>
-  <li><strong>Bentuk Eksplisit:</strong> $y = mx + c$, di mana $m$ adalah gradien dan $c$ adalah titik potong sumbu $Y$ di koordinat $(0, c)$.</li>
-  <li><strong>Bentuk Umum (Implisit):</strong> $Ax + By + C = 0$. Gradien garis ini adalah:
-    $$m = -\frac{A}{B}$$
-  </li>
-  <li><strong>Persamaan Garis Melalui Titik $(x_1, y_1)$ dengan Gradien $m$:</strong>
-    $$y - y_1 = m(x - x_1)$$
-  </li>
-  <li><strong>Persamaan Garis Melalui Dua Titik $(x_1, y_1)$ dan $(x_2, y_2)$ :</strong>
-    $$\frac{y - y_1}{y_2 - y_1} = \frac{x - x_1}{x_2 - x_1}$$
-  </li>
-</ol>
+                <p><strong>5 Langkah Baku Menentukan Pertidaksamaan Bilangan Real (Slide 6):</strong></p>
+                <ol>
+                  <li>Buat agar ruas kanan menjadi nol dan sederhanakan bentuk pertidaksamaan.</li>
+                  <li>Tentukan hasil variabelnya (jika pengali negatif, tanda pertidaksamaan wajib dibalik).</li>
+                  <li>Cari titik-titik pemecah (pembuat nol pembilang dan pembuat nol penyebut).</li>
+                  <li>Gambarkan titik-titik pemecah pada garis bilangan.</li>
+                  <li>Lakukan uji titik untuk menentukan tanda interval (+) dan (-) di setiap selang.</li>
+                </ol>
 
-<h4>3. Hubungan Posisi Antara Dua Garis Lurus</h4>
-<ul>
-  <li><strong>Dua Garis Sejajar ($g_1 \parallel g_2$):</strong> Memiliki kemiringan yang sama persis sehingga kedua garis tidak akan pernah berpotongan:
-    $$m_1 = m_2$$
-  </li>
-  <li><strong>Dua Garis Tegak Lurus ($g_1 \perp g_2$):</strong> Berpotongan membentuk sudut siku-siku $90^\circ$. Hasil kali kedua gradiennya sama dengan $-1$:
-    $$m_1 \cdot m_2 = -1 \iff m_2 = -\frac{1}{m_1}$$
-  </li>
-</ul>
+                <p><strong>Pembahasan Lengkap Latihan Soal dari Slide Dosen (Slide 7):</strong></p>
+                
+                <div style="background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:12px; margin-bottom:10px;">
+                  <strong style="color:var(--cyan);">Soal a: 2x - 7 &lt; 4x - 2</strong>
+                  <div style="font-family:var(--font-mono); font-size:12px; margin-top:4px; line-height:1.6;">
+                    &bull; Pindahkan variabel x: 2x - 4x &lt; -2 + 7<br>
+                    &bull; -2x &lt; 5<br>
+                    &bull; Bagi -2 (TANDA DIBALIK!): x &gt; -5/2<br>
+                    <span style="color:var(--emerald); font-weight:700;">&bull; HP = { x &isin; &reals; | x &gt; -2.5 } = (-5/2, &infin;)</span>
+                  </div>
+                </div>
 
-<h4>4. Pembahasan Soal Kontekstual Kuliah Dr. Munali</h4>
-<div class="callout callout-success">
-  <div class="callout-title">✈️ Soal Kontekstual Penerbangan (Slide 7 Dr. Munali)</div>
-  <p><strong>Soal:</strong> Suatu pesawat A bergerak melalui koordinat $(0,4)$ dan $(4,6)$. Pesawat B bergerak melalui koordinat $(4,4)$ dan $(8,6)$. Hitung gradien masing-masing pesawat dan simpulkan hubungan lintasannya!</p>
-  <p><strong>Penyelesaian Rinci:</strong></p>
-  <ol>
-    <li>Gradien Pesawat A:
-      $$m_A = \frac{y_2 - y_1}{x_2 - x_1} = \frac{6 - 4}{4 - 0} = \frac{2}{4} = \frac{1}{2}$$
-    </li>
-    <li>Gradien Pesawat B:
-      $$m_B = \frac{y_2 - y_1}{x_2 - x_1} = \frac{6 - 4}{8 - 4} = \frac{2}{4} = \frac{1}{2}$$
-    </li>
-    <li><strong>Kesimpulan:</strong> Karena $m_A = m_B = \frac{1}{2}$, maka lintasan terbang pesawat A dan pesawat B adalah <strong>SEJAJAR</strong> ($g_A \parallel g_B$). Kedua pesawat terbang pada arah koridor yang sama dan tidak akan bertabrakan dalam kondisi lintasan tersebut.</li>
-  </ol>
-</div>
+                <div style="background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:12px; margin-bottom:10px;">
+                  <strong style="color:var(--cyan);">Soal b: -5 &le; 2x + 6 &lt; 4 (Pertidaksamaan Ganda)</strong>
+                  <div style="font-family:var(--font-mono); font-size:12px; margin-top:4px; line-height:1.6;">
+                    &bull; Kurangkan 6 di ketiga ruas: -5 - 6 &le; 2x &lt; 4 - 6<br>
+                    &bull; -11 &le; 2x &lt; -2<br>
+                    &bull; Bagi 2 ketiga ruas: -11/2 &le; x &lt; -1<br>
+                    <span style="color:var(--emerald); font-weight:700;">&bull; HP = [ -11/2, -1 )</span>
+                  </div>
+                </div>
+
+                <div style="background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:12px; margin-bottom:10px;">
+                  <strong style="color:var(--cyan);">Soal g: Pertidaksamaan Kuadrat x&sup2; - x &lt; 6</strong>
+                  <div style="font-family:var(--font-mono); font-size:12px; margin-top:4px; line-height:1.6;">
+                    &bull; Buat ruas kanan nol: x&sup2; - x - 6 &lt; 0<br>
+                    &bull; Faktorkan: (x - 3)(x + 2) &lt; 0<br>
+                    &bull; Titik pemecah: x = 3 dan x = -2<br>
+                    &bull; Uji titik x = 0: (0 - 3)(0 + 2) = -6 (Tanda Negatif -)<br>
+                    &bull; Karena diminta &lt; 0, ambil daerah negatif antara -2 dan 3<br>
+                    <span style="color:var(--emerald); font-weight:700;">&bull; HP = (-2, 3)</span>
+                  </div>
+                </div>
+
+                <div style="background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:12px;">
+                  <strong style="color:var(--cyan);">Soal Pecahan Rasional (Slide 13 a): (x - 1) / (x + 2) &ge; 0</strong>
+                  <div style="font-family:var(--font-mono); font-size:12px; margin-top:4px; line-height:1.6;">
+                    &bull; Titik pembuat nol pembilang: x - 1 = 0 &implies; x = 1 (lingkaran penuh karena &ge; 0)<br>
+                    &bull; Syarat penyebut tidak boleh nol: x + 2 &ne; 0 &implies; x &ne; -2 (lingkaran KOSONG)<br>
+                    &bull; Garis bilangan: [+] (-2) [-] (1) [+]<br>
+                    <span style="color:var(--emerald); font-weight:700;">&bull; HP = (-&infin;, -2) &cup; [1, &infin;)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bagian 2: Rangkuman Cerdas AI -->
+              <div style="background:rgba(99,102,241,0.06); border-left:4px solid var(--primary); padding:12px 16px; border-radius:6px;">
+                <h4 style="margin-top:0; color:var(--primary); font-size:13.5px;">🤖 BAGIAN B: RANGKUMAN CERDAS AI (TIPS & TRIK CEPAT UTS)</h4>
+                <ul>
+                  <li><strong>DILARANG Mengalikan Silang Penyebut Berisi Variabel:</strong> Jangan pernah mengalikan silang x ke kanan (seperti 1/x &lt; 2 ⟹ 1 &lt; 2x) karena tanda x belum tentu positif! Selalu pindahkan semua suku ke ruas kiri.</li>
+                  <li><strong>Trik Cepat Uji Garis Bilangan:</strong> Letakkan angka x = 0 pada garis bilangan, lalu hitung nilainya. Daerah yang memuat angka 0 akan mendapatkan tanda sesuai hasil hitungan tersebut, lalu lakukan pergantian tanda (+ / -) berselang-seling.</li>
+                </ul>
+              </div>
 
             </div>
           </article>
-        
+
+          <!-- Pertemuan 3 -->
           <article class="meeting-card searchable-card">
             <div class="meeting-header">
               <div>
-                <span class="meeting-tag">Pertemuan 3</span>
-                <h3 class="meeting-title">Pertemuan 3</h3>
+                <span class="meeting-tag">Pertemuan 3 • Slide PDF 1790406762</span>
+                <h3 class="meeting-title">Pertemuan 3: Pertidaksamaan Nilai Mutlak & Konsep Pemetaan Fungsi (Domain & Range)</h3>
               </div>
               <div class="checklist-4">
-  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_read')">
-    <input type="checkbox" id="chk_subject-matdas_3_read" style="display:none"> <span>📖 Baca</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_sum')">
-    <input type="checkbox" id="chk_subject-matdas_3_sum" style="display:none"> <span>⚡ Rangkum</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_std')">
-    <input type="checkbox" id="chk_subject-matdas_3_std" style="display:none"> <span>🧠 Pelajari</span>
-  </label>
-  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3')">
-    <input type="checkbox" id="chk_subject-matdas_3" style="display:none"> <span>✍️ Catat di Binder</span>
-  </label>
-</div>
-            </div>
-            <div class="meeting-body">
-              <p>Materi kuliah pertemuan ini.</p>
-            </div>
-          </article>
-        
-          <article class="meeting-card searchable-card">
-            <div class="meeting-header">
-              <div>
-                <span class="meeting-tag">Pertemuan 4</span>
-                <h3 class="meeting-title">Pertemuan 4: Eksponen, Bentuk Akar & Logaritma</h3>
+                <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_read')">
+                  <input type="checkbox" id="chk_subject-matdas_3_read" style="display:none"> <span>📖 Baca</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_sum')">
+                  <input type="checkbox" id="chk_subject-matdas_3_sum" style="display:none"> <span>⚡ Rangkum</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3_std')">
+                  <input type="checkbox" id="chk_subject-matdas_3_std" style="display:none"> <span>🧠 Pelajari</span>
+                </label>
+                <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_3')">
+                  <input type="checkbox" id="chk_subject-matdas_3" style="display:none"> <span>✍️ Catat di Binder</span>
+                </label>
               </div>
-              <div class="checklist-4">
-  <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_read')">
-    <input type="checkbox" id="chk_subject-matdas_4_read" style="display:none"> <span>📖 Baca</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_sum')">
-    <input type="checkbox" id="chk_subject-matdas_4_sum" style="display:none"> <span>⚡ Rangkum</span>
-  </label>
-  <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_std')">
-    <input type="checkbox" id="chk_subject-matdas_4_std" style="display:none"> <span>🧠 Pelajari</span>
-  </label>
-  <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4')">
-    <input type="checkbox" id="chk_subject-matdas_4" style="display:none"> <span>✍️ Catat di Binder</span>
-  </label>
-</div>
             </div>
             <div class="meeting-body">
               
-<h4>1. 8 Sifat Utama Eksponen (Bilangan Berpangkat)</h4>
-<ol>
-  <li>$a^m \cdot a^n = a^{m+n}$ (Perkalian basis sama: pangkat dijumlahkan).</li>
-  <li>$\frac{a^m}{a^n} = a^{m-n}$ (Pembagian basis sama: pangkat dikurangkan).</li>
-  <li>$(a^m)^n = a^{m \cdot n}$ (Pangkat dipangkatkan: pangkat dikalikan).</li>
-  <li>$(a \cdot b)^n = a^n \cdot b^n$ (Pangkat perkalian didistribusikan).</li>
-  <li>$\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}$ dengan $b \neq 0$.</li>
-  <li>$a^0 = 1$ untuk setiap $a \neq 0$ (Setiap bilangan real bukan nol berpangkat 0 adalah 1).</li>
-  <li>$a^{-n} = \frac{1}{a^n}$ (Pangkat negatif diubah menjadi pecahan positif di penyebut).</li>
-  <li>$a^{m/n} = \sqrt[n]{a^m}$ (Pangkat pecahan ekuivalen dengan bentuk radikal akar).</li>
-</ol>
+              <!-- Bagian 1: Materi Asli Dosen -->
+              <div style="background:rgba(6,182,212,0.06); border-left:4px solid var(--cyan); padding:12px 16px; border-radius:6px; margin-bottom:16px;">
+                <h4 style="margin-top:0; color:var(--cyan); font-size:13.5px;">📖 BAGIAN A: ISI LENGKAP SLIDE PDF DOSEN (Dr. Munali, M.Pd.)</h4>
+                <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">
+                  <em>Sumber Asli: 1790406762_Pert_3_Matematika_-_Fungsi_RegPagi.pdf (18 Slide Lengkap)</em>
+                </p>
 
-<h4>2. Operasi Bentuk Akar & Merasionalkan Penyebut</h4>
-<ul>
-  <li>Penjumlahan/Pengurangan: $p\sqrt{a} \pm q\sqrt{a} = (p \pm q)\sqrt{a}$.</li>
-  <li>Perkalian Sekawan: $(\sqrt{a} + \sqrt{b})(\sqrt{a} - \sqrt{b}) = a - b$.</li>
-  <li><strong>Teknik Merasionalkan Penyebut Pecahan:</strong>
-    <ul>
-      <li>Bentuk $\frac{a}{\sqrt{b}}$ dikalikan $\frac{\sqrt{b}}{\sqrt{b}}$:
-        $$\frac{a}{\sqrt{b}} = \frac{a\sqrt{b}}{b}$$
-      </li>
-      <li>Bentuk $\frac{c}{\sqrt{a} + \sqrt{b}}$ dikalikan bentuk sekawan $\frac{\sqrt{a} - \sqrt{b}}{\sqrt{a} - \sqrt{b}}$:
-        $$\frac{c}{\sqrt{a} + \sqrt{b}} = \frac{c(\sqrt{a} - \sqrt{b})}{a - b}$$
-      </li>
-    </ul>
-  </li>
-</ul>
+                <p><strong>1. Definisi & 8 Sifat Nilai Mutlak (Slide 2):</strong></p>
+                <p>Nilai mutlak |x| adalah jarak x dari titik pusat pada garis bilangan (selalu bernilai non-negatif |x| &ge; 0):</p>
+                <ul>
+                  <li><code>|x| = x jika x &ge; 0</code> dan <code>|x| = -x jika x &lt; 0</code></li>
+                  <li><code>|a &middot; b| = |a| &middot; |b|</code> dan <code>|a / b| = |a| / |b|</code> (b &ne; 0)</li>
+                  <li><code>|a + b| &le; |a| + |b|</code> (Ketaksamaan Segitiga)</li>
+                  <li><code>|x| &lt; a &iff; -a &lt; x &lt; a</code> (Interval di dalam pita)</li>
+                  <li><code>|x| &gt; a &iff; x &lt; -a atau x &gt; a</code> (Sayap di luar interval)</li>
+                  <li><code>|x| &le; |y| &iff; x&sup2; &le; y&sup2;</code> (Metode Kuadrat Kedua Ruas)</li>
+                </ul>
 
-<h4>3. Logaritma: Definisi & 10 Sifat Pokok</h4>
-<p><strong>Definisi:</strong> Logaritma adalah invers (kebalikan) dari operasi eksponen. Jika $a^c = b$, maka:</p>
-$$^a\log b = c \quad \text{dengan basis } a > 0, a \neq 1, \text{ dan numerus } b > 0$$
-<p><strong>10 Sifat Fundamental Logaritma:</strong></p>
-<ol>
-  <li>$^a\log a = 1$</li>
-  <li>$^a\log 1 = 0$</li>
-  <li>$^a\log (b \cdot c) = ^a\log b + ^a\log c$</li>
-  <li>$^a\log \left(\frac{b}{c}\right) = ^a\log b - ^a\log c$</li>
-  <li>$^a\log (b^n) = n \cdot ^a\log b$</li>
-  <li>$^{a^m}\log (b^n) = \frac{n}{m} \cdot ^a\log b$</li>
-  <li>$^a\log b = \frac{^c\log b}{^c\log a}$ (Sifat ganti basis)</li>
-  <li>$^a\log b = \frac{1}{^b\log a}$</li>
-  <li>$^a\log b \cdot ^b\log c = ^a\log c$ (Sifat rantai)</li>
-  <li>$a^{^a\log b} = b$</li>
-</ol>
+                <p><strong>2. Pembahasan Soal Nilai Mutlak Dosen (Slide 3):</strong></p>
+                <div style="background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:12px; margin-bottom:10px;">
+                  <strong style="color:var(--cyan);">Contoh: Selesaikan |2x + 3| &ge; |4x + 5|</strong>
+                  <div style="font-family:var(--font-mono); font-size:12px; margin-top:4px; line-height:1.6;">
+                    &bull; Kuadratkan kedua ruas: (2x + 3)&sup2; &ge; (4x + 5)&sup2;<br>
+                    &bull; (2x + 3)&sup2; - (4x + 5)&sup2; &ge; 0<br>
+                    &bull; Gunakan rumus A&sup2; - B&sup2; = (A + B)(A - B):<br>
+                    &nbsp;&nbsp;[(2x + 3) + (4x + 5)] &middot; [(2x + 3) - (4x + 5)] &ge; 0<br>
+                    &bull; (6x + 8)(-2x - 2) &ge; 0<br>
+                    &bull; Bagi dengan -4 (TANDA BERBALIK): (3x + 4)(x + 1) &le; 0<br>
+                    <span style="color:var(--emerald); font-weight:700;">&bull; HP = [ -4/3, -1 ]</span>
+                  </div>
+                </div>
+
+                <p><strong>3. Definisi Fungsi & Sifat Pemetaan (Slide 4, 7, 12):</strong></p>
+                <ul>
+                  <li><strong>Fungsi f: X &rarr; Y:</strong> Menghubungkan setiap elemen x pada daerah asal (Domain D<sub>f</sub>) dengan tepat satu nilai f(x) pada daerah kawan (Kodomain). Kumpulan nilai f(x) disebut Range (R<sub>f</sub>).</li>
+                  <li><strong>Fungsi Genap:</strong> f(-x) = f(x) (Simetris sumbu Y). Contoh: f(x) = x&sup2; - 2.</li>
+                  <li><strong>Fungsi Ganjil:</strong> f(-x) = -f(x) (Simetris titik origin (0,0)). Contoh: g(x) = x&sup3; - 2x.</li>
+                  <li><strong>Syarat Domain Alami:</strong>
+                    <ul>
+                      <li>Bentuk akar: f(x) = &radic;(p(x)) &implies; p(x) &ge; 0 (di dalam akar tidak boleh negatif).</li>
+                      <li>Bentuk pecahan: f(x) = p(x) / q(x) &implies; q(x) &ne; 0 (penyebut tidak boleh nol).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Bagian 2: Rangkuman Cerdas AI -->
+              <div style="background:rgba(99,102,241,0.06); border-left:4px solid var(--primary); padding:12px 16px; border-radius:6px;">
+                <h4 style="margin-top:0; color:var(--primary); font-size:13.5px;">🤖 BAGIAN B: RANGKUMAN CERDAS AI (METODE SINGKAT)</h4>
+                <ul>
+                  <li><strong>Jembatan Keledai Nilai Mutlak:</strong>
+                    <ul>
+                      <li>Jika tanda <strong>&lt; (Lebih Kecil)</strong>: x terjepit <strong>DI DALAM</strong> (-a &lt; x &lt; a).</li>
+                      <li>Jika tanda <strong>&gt; (Lebih Besar)</strong>: x terpisah <strong>DI LUAR</strong> (x &lt; -a ATAU x &gt; a).</li>
+                    </ul>
+                  </li>
+                  <li><strong>Cara Cepat Mutlak Ganda:</strong> Ketika kedua ruas punya tanda mutlak (|A| &ge; |B|), gunakan langsung pemfaktoran <code>(A + B)(A - B) &ge; 0</code> tanpa perlu menjabarkan 4 kasus terpisah!</li>
+                </ul>
+              </div>
 
             </div>
           </article>
-        
+
+          <!-- Pertemuan 4 -->
+          <article class="meeting-card searchable-card">
+            <div class="meeting-header">
+              <div>
+                <span class="meeting-tag">Pertemuan 4 • Slide PPT Persamaan Garis</span>
+                <h3 class="meeting-title">Pertemuan 4: Persamaan Garis Lurus, Gradien & Grafik Parabola Fungsi Kuadrat</h3>
+              </div>
+              <div class="checklist-4">
+                <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_read')">
+                  <input type="checkbox" id="chk_subject-matdas_4_read" style="display:none"> <span>📖 Baca</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_sum')">
+                  <input type="checkbox" id="chk_subject-matdas_4_sum" style="display:none"> <span>⚡ Rangkum</span>
+                </label>
+                <label class="check-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4_std')">
+                  <input type="checkbox" id="chk_subject-matdas_4_std" style="display:none"> <span>🧠 Pelajari</span>
+                </label>
+                <label class="check-item binder-item" onclick="toggleMultiCheck(this, 'chk_subject-matdas_4')">
+                  <input type="checkbox" id="chk_subject-matdas_4" style="display:none"> <span>✍️ Catat di Binder</span>
+                </label>
+              </div>
+            </div>
+            <div class="meeting-body">
+              
+              <!-- Bagian 1: Materi Asli Dosen -->
+              <div style="background:rgba(6,182,212,0.06); border-left:4px solid var(--cyan); padding:12px 16px; border-radius:6px; margin-bottom:16px;">
+                <h4 style="margin-top:0; color:var(--cyan); font-size:13.5px;">📖 BAGIAN A: ISI LENGKAP SLIDE PPT DOSEN (Dr. Munali, M.Pd.)</h4>
+                <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">
+                  <em>Sumber Asli: 1695823532_KULIAH_MINGGU_KE-III_(PERSAMAAN_GARIS_LURUS).pptx & Modul Fungsi Kuadrat</em>
+                </p>
+
+                <p><strong>1. Komponen Koordinat Kartesius 2D & Rumus Gradien (m):</strong></p>
+                <ul>
+                  <li><strong>Sumbu X (Absis) & Sumbu Y (Ordinat):</strong> Titik potong (0,0) disebut origin. Terbagi menjadi Kuadran I (+,+), II (-,+), III (-,-), IV (+,-).</li>
+                  <li><strong>Rumus Gradien (Kemiringan Garis) Melalui 2 Titik:</strong>
+                    <div style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--cyan); margin:6px 0;">
+                      m = &Delta;y / &Delta;x = (y₂ - y₁) / (x₂ - x₁)
+                    </div>
+                  </li>
+                  <li><strong>Bentuk Persamaan Garis Lurus:</strong>
+                    <ul>
+                      <li>Bentuk Eksplisit: <code>y = mx + c</code> (gradien m, titik potong sumbu Y di (0,c)).</li>
+                      <li>Bentuk Implisit Umum: <code>Ax + By + C = 0</code> (gradien m = -A / B).</li>
+                      <li>Garis melalui titik (x₁, y₁) bergradien m: <code>y - y₁ = m(x - x₁)</code>.</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <p><strong>2. Hubungan Dua Garis Lurus:</strong></p>
+                <ul>
+                  <li><strong>Dua Garis Sejajar:</strong> Memiliki kemiringan sama persis: <code>m₁ = m₂</code>.</li>
+                  <li><strong>Dua Garis Tegak Lurus:</strong> Berpotongan siku-siku 90&deg;: <code>m₁ &middot; m₂ = -1 &iff; m₂ = -1 / m₁</code>.</li>
+                </ul>
+
+                <p><strong>3. Karakteristik Parabola Fungsi Kuadrat f(x) = ax&sup2; + bx + c:</strong></p>
+                <ul>
+                  <li>Bukaan kurva: Jika <strong>a &gt; 0</strong> kurva terbuka ke atas (punya titik minimum). Jika <strong>a &lt; 0</strong> terbuka ke bawah (punya titik maksimum).</li>
+                  <li>Diskriminan: <code>D = b&sup2; - 4ac</code>:
+                    <ul>
+                      <li>D &gt; 0: Memotong sumbu X di 2 titik berbeda.</li>
+                      <li>D = 0: Menyinggung sumbu X di 1 titik tunggal.</li>
+                      <li>D &lt; 0: Tidak memotong sumbu X (melayang definit).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Bagian 2: Rangkuman Cerdas AI -->
+              <div style="background:rgba(99,102,241,0.06); border-left:4px solid var(--primary); padding:12px 16px; border-radius:6px;">
+                <h4 style="margin-top:0; color:var(--primary); font-size:13.5px;">🤖 BAGIAN B: RANGKUMAN CERDAS AI (KISI-KISI UTS)</h4>
+                <ul>
+                  <li><strong>Penerapan Nyata di Bidang Sistem Informasi:</strong> Rumus garis lurus y = mx + c adalah algoritma <em>Simple Linear Regression</em> pada Machine Learning untuk memprediksi tren data penjualan atau proyeksi kapasitas server.</li>
+                  <li><strong>Hafalan Kilat Tegak Lurus:</strong> "Lawan dan Kebalikan". Kalau garis pertama gradiennya 2 (positif 2/1), maka garis yang tegak lurus langsung ganti tanda jadi minus dan balik angkanya jadi -1/2!</li>
+                </ul>
+              </div>
+
+            </div>
+          </article>
+
         </div>
       </section>
     
