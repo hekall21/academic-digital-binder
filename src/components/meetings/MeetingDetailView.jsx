@@ -27,9 +27,20 @@ import {
   FileVideo,
   RefreshCw,
   ExternalLink,
+  Image as ImageIcon,
 } from 'lucide-react';
 import { generateSummary, generateHandwritingFormat, SUMMARY_MODES } from '../../lib/aiSummaryEngine';
 import { transcribeMediaFile } from '../../lib/transcriptionEngine';
+
+const CHEATSHEET_MAP = {
+  'subject-matdas': { title: 'Matematika Dasar', image: '/images/MATEMATIKA_DASAR_UTS_P1_P4.jpg' },
+  'subject-algo': { title: 'Algoritma 1', image: '/images/ALGORITMA_DAN_PASCAL_UTS_P1_P4.jpg' },
+  'subject-pascal': { title: 'Pemrograman 1 (Pascal)', image: '/images/ALGORITMA_DAN_PASCAL_UTS_P1_P4.jpg' },
+  'subject-ksi': { title: 'Konsep Sistem Informasi', image: '/images/KONSEP_SISTEM_INFORMASI_UTS_P1_P4.jpg' },
+  'subject-indo': { title: 'Bahasa Indonesia', image: '/images/BAHASA_INDONESIA_UTS_P1_P4.jpg' },
+  'subject-pancasila': { title: 'Pendidikan Pancasila', image: '/images/PENDIDIKAN_PANCASILA_UTS_P1_P4.jpg' },
+  'subject-pai': { title: 'Pendidikan Agama Islam', image: '/images/PENDIDIKAN_AGAMA_ISLAM_UTS_P1_P4.jpg' },
+};
 
 export function MeetingDetailView({
   subject,
@@ -439,6 +450,20 @@ export function MeetingDetailView({
             <span className="w-2 h-2 rounded-full bg-emerald-400" title="Transkrip Tersedia" />
           )}
         </button>
+
+        {CHEATSHEET_MAP[subject.id] && (
+          <button
+            onClick={() => setActiveTab('cheatsheet')}
+            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
+              activeTab === 'cheatsheet'
+                ? 'bg-cyan-600 text-white shadow-md'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+            }`}
+          >
+            <ImageIcon className="w-4 h-4 text-cyan-400" />
+            <span>Kartu Cheatsheet HD (JPG)</span>
+          </button>
+        )}
       </div>
 
       {/* TAB 1: SUMMARY & SLIDE VIEW (DUAL VIEW) */}
@@ -892,6 +917,52 @@ export function MeetingDetailView({
                 )}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 5: CHEATSHEET HD (JPG) VIEW */}
+      {activeTab === 'cheatsheet' && CHEATSHEET_MAP[subject.id] && (
+        <div className="space-y-4">
+          <div className="p-4 rounded-xl bg-[#181B26] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 className="text-sm font-bold font-heading text-white flex items-center gap-2">
+                <span>Kartu Cheatsheet HD: {CHEATSHEET_MAP[subject.id].title}</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                  Resolusi Tinggi 1200px • Bebas Error Render
+                </span>
+              </h3>
+              <p className="text-xs text-slate-400">
+                Formula matematika, simbol ANSI flowchart, aturan EYD V, dan konsep kunci terkunci permanen dalam format JPG.
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href={CHEATSHEET_MAP[subject.id].image}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-all shadow"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span>Buka Tab Penuh ↗</span>
+              </a>
+              <a
+                href={CHEATSHEET_MAP[subject.id].image}
+                download
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 text-xs font-semibold"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Unduh JPG</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-[#090A0F] border border-white/10 flex justify-center overflow-x-auto shadow-2xl">
+            <img
+              src={CHEATSHEET_MAP[subject.id].image}
+              alt={`Cheatsheet ${CHEATSHEET_MAP[subject.id].title}`}
+              className="max-w-full h-auto rounded-xl shadow-lg border border-white/10"
+            />
           </div>
         </div>
       )}

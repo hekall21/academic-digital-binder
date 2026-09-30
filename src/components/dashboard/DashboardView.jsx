@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   GraduationCap,
   Calendar,
@@ -12,7 +12,75 @@ import {
   Plus,
   Play,
   Share2,
+  Image as ImageIcon,
+  ExternalLink,
+  Download,
+  Check,
+  RefreshCw,
 } from 'lucide-react';
+
+const CHEATSHEET_GALLERY = [
+  {
+    id: 'matdas',
+    subjectId: 'subject-matdas',
+    icon: '📐',
+    title: 'Matematika Dasar',
+    code: 'TI-106',
+    color: '#06B6D4',
+    topics: 'Sistem Bilangan Real, Operasi Aljabar, Pertidaksamaan & Interval, Nilai Mutlak, Fungsi & Parabola',
+    image: '/images/MATEMATIKA_DASAR_UTS_P1_P4.jpg',
+  },
+  {
+    id: 'algo',
+    subjectId: 'subject-algo',
+    icon: '⚡',
+    title: 'Algoritma & Pascal',
+    code: 'TI-103',
+    color: '#6366F1',
+    topics: 'Logika Al-Khawarizmi, Flowchart Standar ANSI, Struktur Program Pascal, I/O, IF-THEN-ELSE',
+    image: '/images/ALGORITMA_DAN_PASCAL_UTS_P1_P4.jpg',
+  },
+  {
+    id: 'ksi',
+    subjectId: 'subject-ksi',
+    icon: '🌐',
+    title: 'Konsep Sistem Informasi',
+    code: 'TI-101',
+    color: '#3B82F6',
+    topics: 'Data vs Informasi Gordon Davis, Piramida DIKW, 6 Blok Pembangun Burch, Anthony Triangle',
+    image: '/images/KONSEP_SISTEM_INFORMASI_UTS_P1_P4.jpg',
+  },
+  {
+    id: 'indo',
+    subjectId: 'subject-indo',
+    icon: '🔤',
+    title: 'Bahasa Indonesia',
+    code: 'MKWK107',
+    color: '#EC4899',
+    topics: '13 Ciri Hakikat Bahasa, 3 Pilar Sikap Arifin, EYD V, Diksi & Hukum Peluluhan K/T/S/P',
+    image: '/images/BAHASA_INDONESIA_UTS_P1_P4.jpg',
+  },
+  {
+    id: 'pancasila',
+    subjectId: 'subject-pancasila',
+    icon: '🇮🇩',
+    title: 'Pendidikan Pancasila',
+    code: 'MK02',
+    color: '#EF4444',
+    topics: '4 Landasan Pendidikan, Lintasan Sejarah Pra/Pasca Kemerdekaan, Dasar Negara & 15 Kisi UTS',
+    image: '/images/PENDIDIKAN_PANCASILA_UTS_P1_P4.jpg',
+  },
+  {
+    id: 'pai',
+    subjectId: 'subject-pai',
+    icon: '🕌',
+    title: 'Pendidikan Agama Islam',
+    code: 'MK01',
+    color: '#10B981',
+    topics: 'Tauhid 3 Dimensi, Aqidah 4 Ruang Lingkup, Syariah 5 Hukum Taklifi, Akhlak Mahmudah',
+    image: '/images/PENDIDIKAN_AGAMA_ISLAM_UTS_P1_P4.jpg',
+  },
+];
 
 export function DashboardView({
   stats,
@@ -23,6 +91,7 @@ export function DashboardView({
   onOpenAddMeeting,
 }) {
   const continueItem = stats.continueStudying;
+  const [selectedPreviewImage, setSelectedPreviewImage] = useState(null);
 
   return (
     <div className="space-y-8 pb-12">
@@ -31,13 +100,13 @@ export function DashboardView({
         <div className="relative z-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Academic Command Center • Semester 1</span>
+            <span>Academic Command Center • Unindra Semester 1 R1G</span>
           </div>
           <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Selamat Datang di Academic Digital Binder
+            Academic Digital Binder: Kurikulum Resmi Dosen
           </h1>
           <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-            Pusat manajemen terintegrasi untuk 8 mata kuliah, materi dosen, transkrip rekaman, rangkuman AI, dan pelacakan salin ke buku fisik Anda.
+            Pusat catatan terpadu untuk 8 mata kuliah, ekstraksi verbatim materi PDF/PPT dosen Unindra, transkrip rekaman, rumus matematika presisi, serta panduan salin ke buku binder fisikmu.
           </p>
         </div>
 
@@ -45,9 +114,8 @@ export function DashboardView({
         <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-cyan-500/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* 5 Core Metric Cards (Section 3 of Binder.txt) */}
+      {/* 5 Core Metric Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-        {/* Metric 1 */}
         <div className="p-4 rounded-xl bg-[#11131B] dark:bg-[#11131B] light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-indigo-400 mb-2">
             <GraduationCap className="w-5 h-5" />
@@ -59,7 +127,6 @@ export function DashboardView({
           <p className="text-xs text-slate-400 mt-0.5 font-medium">Mata Kuliah Aktif</p>
         </div>
 
-        {/* Metric 2 */}
         <div className="p-4 rounded-xl bg-[#11131B] dark:bg-[#11131B] light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-cyan-400 mb-2">
             <Calendar className="w-5 h-5" />
@@ -71,7 +138,6 @@ export function DashboardView({
           <p className="text-xs text-slate-400 mt-0.5 font-medium">Total Pertemuan</p>
         </div>
 
-        {/* Metric 3 */}
         <div className="p-4 rounded-xl bg-[#11131B] dark:bg-[#11131B] light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-violet-400 mb-2">
             <FileText className="w-5 h-5" />
@@ -83,7 +149,6 @@ export function DashboardView({
           <p className="text-xs text-slate-400 mt-0.5 font-medium">Materi & Slide Dosen</p>
         </div>
 
-        {/* Metric 4 */}
         <div className="p-4 rounded-xl bg-[#11131B] dark:bg-[#11131B] light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-amber-400 mb-2">
             <Sparkles className="w-5 h-5" />
@@ -95,7 +160,6 @@ export function DashboardView({
           <p className="text-xs text-slate-400 mt-0.5 font-medium">Rangkuman Siap</p>
         </div>
 
-        {/* Metric 5 */}
         <div className="p-4 rounded-xl bg-[#11131B] dark:bg-[#11131B] light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm col-span-2 sm:col-span-1">
           <div className="flex items-center justify-between text-emerald-400 mb-2">
             <CheckCircle2 className="w-5 h-5" />
@@ -108,14 +172,14 @@ export function DashboardView({
         </div>
       </div>
 
-      {/* Continue Studying Card (Binder.txt requirement) */}
+      {/* Continue Studying Card */}
       {continueItem && (
         <div className="p-5 sm:p-6 rounded-2xl bg-[#181B26] dark:bg-[#181B26] light:bg-white border-2 border-indigo-500/30 shadow-lg relative overflow-hidden">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
                 <Clock className="w-4 h-4" />
-                <span>Continue Studying • Belum Selesai Dicatat</span>
+                <span>Continue Studying • Belum Selesai Dicatat ke Buku</span>
               </div>
               <h3 className="text-lg sm:text-xl font-bold font-heading text-white dark:text-white light:text-slate-900">
                 {continueItem.subject.name} — Pertemuan {continueItem.meeting.meeting_number}: {continueItem.meeting.title}
@@ -138,6 +202,70 @@ export function DashboardView({
         </div>
       )}
 
+      {/* CHEATSHEET & INFOGRAPHIC GALLERY SHOWCASE */}
+      <div className="p-6 rounded-2xl bg-[#11131B] border border-white/10 shadow-md space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+              <ImageIcon className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-base sm:text-lg font-bold font-heading text-white flex items-center gap-2">
+                <span>Kartu Infografis & Cheatsheet HD (Format JPG)</span>
+                <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono font-bold">
+                  6 Kartu Siap Cetak
+                </span>
+              </h2>
+              <p className="text-xs text-slate-400">
+                Formula matematika, simbol ANSI flowchart, aturan EYD V, dan konsep kunci terkunci permanen dalam resolusi tinggi.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {CHEATSHEET_GALLERY.map((card) => (
+            <div
+              key={card.id}
+              className="p-4 rounded-xl bg-[#181B26] border border-white/10 hover:border-cyan-500/40 transition-all flex flex-col justify-between group shadow-sm"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xl">{card.icon}</span>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
+                    {card.code}
+                  </span>
+                </div>
+                <h3 className="font-heading font-bold text-sm text-white group-hover:text-cyan-300 transition-colors">
+                  {card.title}
+                </h3>
+                <p className="text-xs text-slate-400 mt-1 leading-relaxed line-clamp-2">
+                  {card.topics}
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
+                <button
+                  onClick={() => setSelectedPreviewImage(card)}
+                  className="flex-1 py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-1.5"
+                >
+                  <ImageIcon className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>Preview</span>
+                </button>
+                <a
+                  href={card.image}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-1.5 px-3 rounded-lg bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 text-xs font-semibold transition-all flex items-center gap-1"
+                >
+                  <span>Buka HD ↗</span>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Subjects Grid & Progress Breakdown */}
       <div>
         <div className="flex items-center justify-between mb-4">
@@ -146,7 +274,7 @@ export function DashboardView({
               Overview 8 Mata Kuliah Semester 1
             </h2>
             <p className="text-xs text-slate-400">
-              Klik kartu mata kuliah untuk melihat seluruh pertemuan dan mengelola materi
+              Klik kartu mata kuliah untuk melihat seluruh pertemuan dan membaca modul lengkap dosen
             </p>
           </div>
           <button
@@ -222,6 +350,52 @@ export function DashboardView({
           })}
         </div>
       </div>
+
+      {/* Lightbox Modal for Cheatsheet Preview */}
+      {selectedPreviewImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setSelectedPreviewImage(null)}
+        >
+          <div
+            className="max-w-4xl w-full bg-[#11131B] border border-white/20 rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-4 bg-[#181B26] border-b border-white/10 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">{selectedPreviewImage.icon}</span>
+                <span className="font-bold text-white text-sm">
+                  {selectedPreviewImage.title} • Cheatsheet UTS
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href={selectedPreviewImage.image}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold rounded-lg flex items-center gap-1"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Buka Tab Baru</span>
+                </a>
+                <button
+                  onClick={() => setSelectedPreviewImage(null)}
+                  className="px-3 py-1 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-lg"
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+            <div className="max-h-[80vh] overflow-y-auto p-2 bg-[#090A0F] flex justify-center">
+              <img
+                src={selectedPreviewImage.image}
+                alt={selectedPreviewImage.title}
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

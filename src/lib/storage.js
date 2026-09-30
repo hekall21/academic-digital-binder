@@ -1,19 +1,81 @@
 // Local Storage & Backup Persistence Utilities
+// Versioned to ensure curriculum updates are automatically synced to the user's browser
 
-const STORAGE_KEY_SUBJECTS = 'academic_binder_subjects_v1';
-const STORAGE_KEY_PROFILE = 'academic_binder_profile_v1';
-const STORAGE_KEY_SEMESTERS = 'academic_binder_semesters_v1';
+export const CURRENT_DATA_VERSION = 'v3_unindra_full_academic_2026';
+const STORAGE_KEY_VERSION = 'academic_binder_data_version';
+const STORAGE_KEY_SUBJECTS = 'academic_binder_subjects_v3';
+const STORAGE_KEY_PROFILE = 'academic_binder_profile_v3';
+const STORAGE_KEY_SEMESTERS = 'academic_binder_semesters_v3';
 
 export function loadSavedData(initialSubjects, initialProfile, initialSemesters) {
   try {
-    const savedSubjects = localStorage.getItem(STORAGE_KEY_SUBJECTS);
-    const savedProfile = localStorage.getItem(STORAGE_KEY_PROFILE);
-    const savedSemesters = localStorage.getItem(STORAGE_KEY_SEMESTERS);
+    const savedVersion = localStorage.getItem(STORAGE_KEY_VERSION);
+    const savedSubjectsStr = localStorage.getItem(STORAGE_KEY_SUBJECTS) || localStorage.getItem('academic_binder_subjects_v1');
+    const savedProfileStr = localStorage.getItem(STORAGE_KEY_PROFILE) || localStorage.getItem('academic_binder_profile_v1');
+    const savedSemestersStr = localStorage.getItem(STORAGE_KEY_SEMESTERS) || localStorage.getItem('academic_binder_semesters_v1');
+
+    // If version is missing or old, automatically merge progress with latest initialSubjects
+    if (savedVersion !== CURRENT_DATA_VERSION) {
+      console.log(`[Storage] Upgrading academic binder data from version "${savedVersion}" to "${CURRENT_DATA_VERSION}"`);
+      
+      let mergedSubjects = initialSubjects;
+      if (savedSubjectsStr) {
+        try {
+          const oldSubjects = JSON.parse(savedSubjectsStr);
+          // Preserve progress flags and user notes, but upgrade curriculum content & summaries
+          mergedSubjects = initialSubjects.map((freshSubj) => {
+            const oldSubj = oldSubjects.find((s) => s.id === freshSubj.id || s.name === freshSubj.name);
+            if (!oldSubj) return freshSubj;
+
+            const mergedMeetings = (freshSubj.meetings || []).map((freshMeeting) => {
+              const oldMeeting = (oldSubj.meetings || []).find((m) => m.meeting_number === freshMeeting.meeting_number);
+              if (!oldMeeting) return freshMeeting;
+
+              return {
+                ...freshMeeting,
+                notes: oldMeeting.notes || freshMeeting.notes,
+                progress: {
+                  is_read: oldMeeting.progress?.is_read || false,
+                  is_summarized: oldMeeting.progress?.is_summarized || true,
+                  is_studied: oldMeeting.progress?.is_studied || false,
+                  is_noted_in_binder: oldMeeting.progress?.is_noted_in_binder || false,
+                },
+                materials: [
+                  ...(freshMeeting.materials || []),
+                  // Retain any user-uploaded custom materials
+                  ...(oldMeeting.materials || []).filter(
+                    (om) => !(freshMeeting.materials || []).some((fm) => fm.title === om.title)
+                  ),
+                ],
+              };
+            });
+
+            return {
+              ...freshSubj,
+              meetings: mergedMeetings,
+            };
+          });
+        } catch (mergeErr) {
+          console.warn('[Storage] Error during smart merge, defaulting to fresh curriculum:', mergeErr);
+          mergedSubjects = initialSubjects;
+        }
+      }
+
+      // Persist upgraded version
+      localStorage.setItem(STORAGE_KEY_VERSION, CURRENT_DATA_VERSION);
+      saveSubjectsToLocal(mergedSubjects);
+
+      return {
+        subjects: mergedSubjects,
+        profile: savedProfileStr ? JSON.parse(savedProfileStr) : initialProfile,
+        semesters: savedSemestersStr ? JSON.parse(savedSemestersStr) : initialSemesters,
+      };
+    }
 
     return {
-      subjects: savedSubjects ? JSON.parse(savedSubjects) : initialSubjects,
-      profile: savedProfile ? JSON.parse(savedProfile) : initialProfile,
-      semesters: savedSemesters ? JSON.parse(savedSemesters) : initialSemesters,
+      subjects: savedSubjectsStr ? JSON.parse(savedSubjectsStr) : initialSubjects,
+      profile: savedProfileStr ? JSON.parse(savedProfileStr) : initialProfile,
+      semesters: savedSemestersStr ? JSON.parse(savedSemestersStr) : initialSemesters,
     };
   } catch (error) {
     console.error('Failed to parse localStorage data:', error);
@@ -25,9 +87,21 @@ export function loadSavedData(initialSubjects, initialProfile, initialSemesters)
   }
 }
 
+export function forceSyncCurriculum(initialSubjects) {
+  try {
+    localStorage.setItem(STORAGE_KEY_VERSION, CURRENT_DATA_VERSION);
+    saveSubjectsToLocal(initialSubjects);
+    return initialSubjects;
+  } catch (e) {
+    console.error('Failed to force sync curriculum:', e);
+    return initialSubjects;
+  }
+}
+
 export function saveSubjectsToLocal(subjects) {
   try {
     localStorage.setItem(STORAGE_KEY_SUBJECTS, JSON.stringify(subjects));
+    localStorage.setItem(STORAGE_KEY_VERSION, CURRENT_DATA_VERSION);
   } catch (e) {
     console.warn('LocalStorage save error:', e);
   }
@@ -52,7 +126,8 @@ export function saveSemestersToLocal(semesters) {
 export function exportBackupJSON(state) {
   const data = {
     app: 'Academic Digital Binder',
-    version: '1.0.0',
+    version: '3.0.0',
+    data_version: CURRENT_DATA_VERSION,
     export_date: new Date().toISOString(),
     profile: state.profile,
     semesters: state.semesters,
