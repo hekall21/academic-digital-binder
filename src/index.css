@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #090A0F;
+    --surface-main: #11131B;
+    --surface-elevated: #181B26;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+  }
+
+  .light {
+    --bg-main: #F8FAFC;
+    --surface-main: #FFFFFF;
+    --surface-elevated: #F1F5F9;
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.16);
+  }
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* Print Specific Rules for Physical Notebook Transcriptions */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .printable-note {
+    border: 1px solid #000000 !important;
+    padding: 16px !important;
+    page-break-after: always;
+  }
+}
