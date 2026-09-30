@@ -1,5 +1,5 @@
 // Pre-seeded academic data for 8 subjects and 32 meetings (Unindra Semester 1)
-// Extracted from verified master compendium
+// Enriched with real PDF lecture modules from Downloads, Tugas_Kuliah, and RPS Pancasila
 
 export const initialSubjects = [
   {
@@ -1384,10 +1384,10 @@ export const initialSubjects = [
   },
   {
     "id": "subject-pancasila",
-    "name": "Pendidikan Pancasila",
-    "code": "TI-107",
-    "lecturer": "Tim Dosen Pancasila Unindra",
-    "schedule": "Jumat • 07:30 - 09:10 WIB • Ruang R.4.4-1",
+    "name": "Pendidikan Pancasila (MK02)",
+    "code": "MK02",
+    "lecturer": "Dr. Ida Rosida, MH. / Dr. Julia Bea Kurniawaty, SH., MH. / Tim Dosen Pancasila Unindra",
+    "schedule": "Jumat • 07:30 - 09:10 WIB",
     "room": "Ruang R.4.4-1",
     "color": "#3B82F6",
     "target_meetings": 16,
@@ -1399,45 +1399,44 @@ export const initialSubjects = [
         "subject_id": "subject-pancasila",
         "meeting_number": 1,
         "date": "2026-09-25",
-        "title": "Landasan & Tujuan Pendidikan Pancasila di Perguruan Tinggi",
-        "description": "Materi perkuliahan pekan ke-1 mata kuliah Pendidikan Pancasila.",
+        "title": "Hakikat, Visi, Misi, Landasan Pendidikan Pancasila & Implementasi Lingkungan Hidup",
+        "description": "Membahas RPS resmi MK02 Unindra, urgensi mata kuliah di perguruan tinggi, landasan historis/kultural/yuridis/filosofis, serta pembagian tugas proyek kolaboratif MKWK dan pembuatan slide PPT mandiri per kelompok.",
         "notes": "Catatan penting persiapan kuis & UTS: perhatikan definisi dosen dan contoh soal praktikum.",
         "materials": [
           {
-            "id": "mat_subject-pancasila_1_1",
-            "type": "pptx",
-            "title": "Slide Dosen - Pertemuan 1: Landasan & Tujuan Pendidikan Pancasila di Perguruan Tinggi.pptx",
-            "file_url": "#",
-            "file_size": 2450000,
-            "date_added": "2026-09-12"
-          },
-          {
-            "id": "mat_subject-pancasila_1_2",
+            "id": "mat_pancasila_rps",
             "type": "pdf",
-            "title": "Modul Diktat Praktikum P1.pdf",
-            "file_url": "#",
-            "file_size": 1120000,
-            "date_added": "2026-09-14"
+            "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (RPS Resmi Unindra)",
+            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_size": 245000,
+            "date_added": "2026-09-30"
           },
           {
-            "id": "mat_subject-pancasila_1_3",
-            "type": "link",
-            "title": "Portal Akademik LMS Unindra & Materi Terkait",
-            "file_url": "https://unindra.ac.id",
-            "file_size": 0,
-            "date_added": "2026-09-15"
+            "id": "mat_pancasila_kelompok",
+            "type": "txt",
+            "title": "Daftar 10 Kelompok Presentasi & Tema RPS (Binder.txt).txt",
+            "file_url": "file:///C:/Users/haike/Downloads/Binder.txt",
+            "file_size": 15000,
+            "date_added": "2026-09-30"
+          },
+          {
+            "id": "mat_pancasila_mkwk_proj",
+            "type": "docx",
+            "title": "PROPOSAL_UMKM_KASIR_UTI_ZAZA_FINAL.docx (Contoh Proyek MKWK Kolaborasi)",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/05_Projek_Kasir_UMKM/Proposal/PROPOSAL_UMKM_KASIR_UTI_ZAZA_FINAL.docx",
+            "file_size": 125000,
+            "date_added": "2026-09-30"
           }
         ],
         "transcripts": [
           {
-            "id": "trans_subject-pancasila_1",
-            "audio_url": null,
-            "content": "Transkrip perkuliahan tatap muka: Dosen menekankan bahwa pemahaman konsep fundamental pada materi ini (Pertemuan 1: Landasan & Tujuan Pendidikan Pancasila di Perguruan Tinggi) adalah kunci untuk menjawab 40% soal pada Ujian Tengah Semester (UTS). Pastikan menghafal istilah penting dan mampu merekonstruksi skema atau diagram terkait.",
+            "id": "trans_pancasila_1",
+            "content": "[00:01:20] Dosen: Assalamu'alaikum wr. wb. Selamat pagi rekan-rekan mahasiswa kelas R1G. Hari ini kita membuka perkuliahan Pendidikan Pancasila sesuai RPS resmi MK02 Unindra.\n[00:06:45] Dosen: Perhatikan bahwa untuk mata kuliah ini, sistem pembelajarannya berbasis Project Based Learning (PBL) dan presentasi kelompok. Kalian tidak hanya mendengarkan ceramah, melainkan membuat slide PPT sendiri berdasarkan topik RPS dan mempresentasikannya di depan kelas.\n[00:15:30] Dosen: Kelas ini telah kita bagi menjadi 10 kelompok (4-5 orang per kelompok) sesuai daftar di RPS dan lembar penugasan. Setiap kelompok wajib menguasai materi dari buku ajar Dikti dan buku Dr. Julia Bea Kurniawaty.\n[00:28:10] Dosen: Selain presentasi PPT per kelompok, ada tugas Proyek MKWK yang merupakan kolaborasi lintas mata kuliah: Agama Islam, Bahasa Indonesia, Kewarganegaraan, dan Pancasila. Silakan mulai rancang temanya sejak sekarang.",
             "status": "completed"
           }
         ],
         "summaries": {
-          "standar": "<h4>1. 4 Pilar Landasan Penyelenggaraan Kuliah Pancasila</h4>\r\n<ol>\r\n  <li><strong>Landasan Historis:</strong> Nilai-nilai Pancasila bukan diciptakan secara mendadak oleh para pendiri bangsa pada tahun 1945, melainkan digali langsung dari bumi pertiwi Indonesia. Nilai-nilai religius, kekeluargaan, kemanusiaan, musyawarah mufakat, dan gotong royong telah hidup, mengakar, dan dipraktikkan oleh nenek moyang bangsa Nusantara selama berabad-abad dalam kehidupan adat istiadat dan kebudayaannya.</li>\r\n  <li><strong>Landasan Kultural:</strong> Pancasila adalah kristalisasi dari nilai-nilai budaya luhur bangsa Indonesia sendiri. Setiap bangsa di dunia memiliki kepribadian kulturalnya masing-masing. Pancasila menjamin bangsa Indonesia tidak kehilangan identitas kultural dan jati dirinya di tengah arus globalisasi dan gempuran ideologi asing (individualisme, liberalisme, marxisme).</li>\r\n  <li><strong>Landasan Yuridis:</strong> Berpijak kokoh pada ketentuan hukum positif Indonesia:\r\n    <ul>\r\n      <li>Pembukaan UUD 1945 alinea ke-4 (penetapan 5 sila Pancasila sebagai dasar negara Republik Indonesia).</li>\r\n      <li><strong>Undang-Undang No. 12 Tahun 2012 tentang Pendidikan Tinggi (Pasal 35 ayat 3):</strong> Menegaskan bahwa kurikulum pendidikan tinggi <em>wajib</em> memuat mata kuliah Agama, Pancasila, Kewarganegaraan, dan Bahasa Indonesia.</li>\r\n      <li>Surat Keputusan Dirjen Dikti No. 84/E/KPT/2020 tentang Panduan Pelaksanaan Mata Kuliah Wajib Kurikulum (MKWK).</li>\r\n    </ul>\r\n  </li>\r\n  <li><strong>Landasan Filosofis:</strong> Pancasila berkedudukan sebagai pandangan hidup bangsa (<em>Weltanschauung</em>) dan dasar filsafat negara (<em>Philosophische Grondslag</em>). Secara ontologis, epistemologis, dan aksiologis, Pancasila mengandung sistem pemikiran rasional dan filosofis tentang hakikat manusia Indonesia dan tatanan kenegaraan yang adil.</li>\r\n</ol>\r\n\r\n<h4>2. Tujuan Pendidikan Pancasila bagi Mahasiswa IT & Sistem Informasi</h4>\r\n<ul>\r\n  <li>Membentuk kepribadian intelektual yang beriman, bertakwa kepada Tuhan YME, berbudi pekerti luhur, dan berdisiplin tinggi.</li>\r\n  <li>Menumbuhkan etika profesi di bidang teknologi informasi (mencegah cybercrime, kejahatan pembobolan data, korupsi digital, dan ujaran kebencian).</li>\r\n  <li>Membekali mahasiswa dengan daya kritis untuk menyaring hoaks dan pengaruh destruktif di era transformasi digital.</li>\r\n</ul>",
+          "standar": "\n<h4>1. Hakikat, Visi, Misi, dan Tujuan Pendidikan Pancasila di Perguruan Tinggi</h4>\n<p>Berdasarkan <strong>RPS Resmi MK02 Universitas Indraprasta PGRI (Unindra)</strong>, Pendidikan Pancasila diselenggarakan untuk membentuk mahasiswa sebagai insan cendekia yang beriman, bermoral, beretika luhur, dan memiliki komitmen kebangsaan yang kokoh.</p>\n<ul>\n  <li><strong>Visi Pendidikan Pancasila:</strong> Terwujudnya kepribadian civitas akademika yang bersumber pada nilai-nilai Pancasila sebagai pedoman hidup bermasyarakat, berbangsa, dan bernegara.</li>\n  <li><strong>Misi Pendidikan Pancasila:</strong>\n    <ol>\n      <li>Mengembangkan potensi spiritual, intelektual, dan etika mahasiswa.</li>\n      <li>Menanamkan kesadaran kritis terhadap persoalan bangsa dan ideologi transnasional.</li>\n      <li>Mendorong mahasiswa menjadi agen perubahan (<em>agent of change</em>) yang peduli kelestarian lingkungan dan keadilan sosial.</li>\n    </ol>\n  </li>\n  <li><strong>Empat Landasan Pendidikan Pancasila:</strong>\n    <ul>\n      <li><em>Landasan Historis:</em> Berakar dari perjuangan ratusan tahun bangsa Indonesia merebut kemerdekaan.</li>\n      <li><em>Landasan Kultural:</em> Nilai gotong royong, religiusitas, dan musyawarah telah hidup ribuan tahun di Nusantara.</li>\n      <li><em>Landasan Yuridis:</em> Diamanatkan oleh UU No. 12 Tahun 2012 tentang Pendidikan Tinggi (Pasal 35 Ayat 3) sebagai mata kuliah wajib kurikulum (MKWK).</li>\n      <li><em>Landasan Filosofis:</em> Pancasila sebagai pandangan hidup bangsa (<em>Weltanschauung</em>) dan dasar filsafat negara (<em>Philosophische Grondslag</em>).</li>\n    </ul>\n  </li>\n</ul>\n\n<h4>2. Pembagian Tugas Kelompok & Pembuatan Slide PPT Mandiri</h4>\n<p>Berdasarkan instruksi dosen dan acuan <strong>Binder.txt</strong>, mahasiswa kelas dibagi ke dalam <strong>10 Kelompok</strong> yang wajib membuat slide presentasi PowerPoint (PPT) secara mandiri dari bahan kajian RPS:</p>\n<div class=\"table-wrap\">\n  <table>\n    <thead><tr><th>Kelompok</th><th>Tema Materi RPS</th><th>Daftar Anggota Mahasiswa</th><th>Jadwal Pertemuan</th></tr></thead>\n    <tbody>\n      <tr><td><strong>Kelompok 1</strong></td><td>Pancasila dalam Lintasan Sejarah Bangsa [SEBELUM KEMERDEKAAN]</td><td>1. A Alif Assyafiyyah<br>2. Aila Az Zahra Zainuddin<br>3. Achmad Miko Al Torik<br>4. Aini Kurnia Sari</td><td>Pertemuan 2</td></tr>\n      <tr><td><strong>Kelompok 2</strong></td><td>Pancasila dalam Lintasan Sejarah Bangsa [SESUDAH KEMERDEKAAN]</td><td>1. Ahmad Hafizh Iswhyudi<br>2. Delysia Vala Putri Dwi Callista<br>3. Ahmad Raihan Primadiawan Hermansyah<br>4. Hikmatus Sholawat</td><td>Pertemuan 3</td></tr>\n      <tr><td><strong>Kelompok 3</strong></td><td>Pancasila sebagai Dasar Negara</td><td>1. Akmal Thoriq Ramadhan<br>2. Kiara Brezenska<br>3. Alfi Muhidin Matdoan<br>4. Nabila Berlian Brizky Siregar</td><td>Pertemuan 4</td></tr>\n      <tr><td><strong>Kelompok 4</strong></td><td>Pancasila sebagai Ideologi Negara</td><td>1. Hanif Fadhil Hawarizmi<br>2. Salma Nur Aulia Muthmainah<br>3. Muhamad Nizar Haqiqi<br>4. Vanda Rangelis Syafina</td><td>Pertemuan 5</td></tr>\n      <tr><td><strong>Kelompok 5</strong></td><td>Radikalisme dan Terorisme</td><td>1. Dodi Alfayed<br>2. Ratu Bilkis Aliza<br>3. Esa Rizky Al Fathir<br>4. Zahran Firzatullah</td><td>Pertemuan 7</td></tr>\n      <tr><td><strong>Kelompok 6</strong></td><td>Pancasila sebagai Sistem Filsafat</td><td>1. Fachri Darmawan<br>2. Amanda Zahra Bilnina<br>3. Mohamad Nur Ramaday<br>4. Roshayyatinah</td><td>Pertemuan 9</td></tr>\n      <tr><td><strong>Kelompok 7</strong></td><td>Pancasila sebagai Sistem Etika</td><td>1. Dava Dwi Riandono<br>2. Nazwa Siti Azizah<br>3. Dimas Iswanto<br>4. Putri Aliya Mulyono</td><td>Pertemuan 10</td></tr>\n      <tr><td><strong>Kelompok 8</strong></td><td>Pancasila sebagai Nilai Dasar Pengembangan Ilmu</td><td>1. Margareta Triyani Dahom<br>2. Sera Prisilia<br>3. Tria Fitriani Pasaribu<br>4. Albani Ahmad Munawar</td><td>Pertemuan 11-12</td></tr>\n      <tr><td><strong>Kelompok 9</strong></td><td>Pendidikan Anti Korupsi</td><td>1. Muhammad Zacki Arr Rosis<br>2. Rafi Al Jabbar<br>3. Vika Ardita<br>4. Nathalie Theophilia<br>5. Wahyu Arif H</td><td>Pertemuan 13-14</td></tr>\n      <tr><td><strong>Kelompok 10</strong></td><td>Keanekaragaman di Indonesia & Kerukunan Berbangsa</td><td>1. Iskan Ahmad Ramza<br>2. Santa Eklesia Tampubolon<br>3. Yohanes Aril Dovris Gon<br>4. Siti Fathiyah Imarah</td><td>Pertemuan 15</td></tr>\n    </tbody>\n  </table>\n</div>\n\n<h4>3. Ketentuan Slide Presentasi PPT Mandiri:</h4>\n<ul>\n  <li>Slide dibuat menggunakan template berdesain profesional, bersih, dan kontras tinggi.</li>\n  <li>Struktur wajib: (1) Judul & Anggota, (2) Latar Belakang & Urgensi RPS, (3) Pembahasan Inti Teori, (4) Studi Kasus Nyata / Masalah di Masyarakat, (5) Solusi Berbasis Nilai Sila Pancasila, (6) Kesimpulan & Referensi Buku Ajar.</li>\n  <li>Dilarang membaca teks penuh dari slide (gunakan poin-poin grafis dan kuasai materi saat tanya jawab).</li>\n</ul>\n",
           "ringkas": null,
           "detail": null
         },
@@ -1453,45 +1452,36 @@ export const initialSubjects = [
         "subject_id": "subject-pancasila",
         "meeting_number": 2,
         "date": "2026-09-28",
-        "title": "Pancasila dalam Lintas Sejarah Bangsa (Era Pra-Kemerdekaan)",
-        "description": "Materi perkuliahan pekan ke-2 mata kuliah Pendidikan Pancasila.",
+        "title": "Pancasila dalam Lintasan Sejarah [SEBELUM KEMERDEKAAN] • Presentasi Kelompok 1",
+        "description": "Materi RPS Sub-CPMK 1: Perkembangan nilai Pancasila masa pra-kemerdekaan (Kutai, Sriwijaya, Majapahit), Sumpah Pemuda 1928, Pembentukan BPUPKI, Sidang I BPUPKI (29 Mei - 1 Juni 1945), Panitia Sembilan, dan Piagam Jakarta (22 Juni 1945).",
         "notes": "Catatan penting persiapan kuis & UTS: perhatikan definisi dosen dan contoh soal praktikum.",
         "materials": [
           {
-            "id": "mat_subject-pancasila_2_1",
+            "id": "mat_p2_ppt_kel1",
             "type": "pptx",
-            "title": "Slide Dosen - Pertemuan 2: Pancasila dalam Lintas Sejarah Bangsa (Era Pra-Kemerdekaan).pptx",
-            "file_url": "#",
-            "file_size": 2450000,
-            "date_added": "2026-09-12"
+            "title": "Slide PPT Kelompok 1 - Pancasila Sebelum Kemerdekaan.pptx",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/",
+            "file_size": 3100000,
+            "date_added": "2026-09-30"
           },
           {
-            "id": "mat_subject-pancasila_2_2",
+            "id": "mat_p2_rps",
             "type": "pdf",
-            "title": "Modul Diktat Praktikum P2.pdf",
-            "file_url": "#",
-            "file_size": 1120000,
-            "date_added": "2026-09-14"
-          },
-          {
-            "id": "mat_subject-pancasila_2_3",
-            "type": "link",
-            "title": "Portal Akademik LMS Unindra & Materi Terkait",
-            "file_url": "https://unindra.ac.id",
-            "file_size": 0,
-            "date_added": "2026-09-15"
+            "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (Minggu Ke-2)",
+            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_size": 245000,
+            "date_added": "2026-09-30"
           }
         ],
         "transcripts": [
           {
-            "id": "trans_subject-pancasila_2",
-            "audio_url": null,
-            "content": "Transkrip perkuliahan tatap muka: Dosen menekankan bahwa pemahaman konsep fundamental pada materi ini (Pertemuan 2: Pancasila dalam Lintas Sejarah Bangsa (Era Pra-Kemerdekaan)) adalah kunci untuk menjawab 40% soal pada Ujian Tengah Semester (UTS). Pastikan menghafal istilah penting dan mampu merekonstruksi skema atau diagram terkait.",
+            "id": "trans_p2_kel1",
+            "content": "[00:01:10] Moderator Kelompok 1 (Aila): Selamat pagi rekan-rekan. Kami dari Kelompok 1 yang beranggotakan Alif, saya sendiri Aila, Miko, dan Aini akan mempresentasikan materi: Pancasila dalam Lintasan Sejarah Bangsa Era Pra-Kemerdekaan.\n[00:07:30] Pemateri (Alif): Nilai-nilai Pancasila sesungguhnya bukan barang impor, melainkan kristalisasi kearifan lokal Nusantara sejak zaman Kerajaan Kutai, Sriwijaya yang menjunjung toleransi agama, hingga Majapahit dengan semboyan Bhinneka Tunggal Ika Tan Hana Dharma Mangrwa karya Mpu Tantular.\n[00:19:45] Pemateri (Miko): Memasuki abad ke-20, perumusan formal dimulai saat Jepang mendesak dan membentuk BPUPKI pada 29 April 1945. Dalam Sidang Pertama, tiga tokoh bangsa mengajukan gagasan: M. Yamin pada 29 Mei 1945, Prof. Dr. Soepomo pada 31 Mei 1945 dengan paham integralistik, dan Ir. Soekarno pada 1 Juni 1945 yang pertama kali mencetuskan nama 'Pancasila'.\n[00:32:00] Pemateri (Aini): Panitia Sembilan kemudian dibentuk untuk menuntaskan kompromi antara golongan kebangsaan dan Islam, melahirkan Piagam Jakarta 22 Juni 1945 yang menjadi cikal bakal Pembukaan UUD 1945.\n[00:44:15] Dosen: Penjelasan kelompok 1 sangat baik. Pertanyaan untuk diskusi: mengapa perubahan 7 kata dalam Piagam Jakarta menjadi bukti puncak kenegarawanan para pendiri bangsa?",
             "status": "completed"
           }
         ],
         "summaries": {
-          "standar": "<h4>1. Jejak Nilai Pancasila pada Kerajaan Kuno Nusantara</h4>\r\n<ul>\r\n  <li><strong>Kerajaan Kutai Kertanegara (Kalimantan Timur, 350–400 M):</strong> Prasasti <em>Yupa</em> mencatat nilai Ketuhanan dan kedermawanan Raja Mulawarman yang menyedekahkan 20.000 ekor sapi kepada para brahmana (cerminan sila ke-1 dan ke-2).</li>\r\n  <li><strong>Kemaharajaan Sriwijaya (Sumatera Selatan, Abad VII–XII):</strong>\r\n    <p>Menurut Mr. Muhammad Yamin, Sriwijaya adalah perwujudan <em>Negara Kebangsaan Pertama</em>. Mencerminkan nilai persatuan maritim kepulauan, keadilan tata niaga pelayaran, serta toleransi keagamaan yang tinggi (menjadi pusat studi agama Buddha internasional di Asia Tenggara di bawah bimbingan guru agung Dharmapala dan Sakyakirti).</p>\r\n  </li>\r\n  <li><strong>Kemaharajaan Majapahit (Jawa Timur, Abad XIII–XVI):</strong>\r\n    <p>Di bawah Raja Hayam Wuruk dan Mahapatih Gajah Mada (Sumpah Palapa), Majapahit mewujudkan <em>Negara Kebangsaan Kedua</em>.</p>\r\n    <ul>\r\n      <li><strong>Kitab Negarakertagama (Kakawin Desa Warnana, 1365 M) oleh Mpu Prapanca:</strong> Ditemukan istilah <strong>Pancasila</strong> dalam bahasa Sanskerta yang bermakna \"lima asas moral/tata susila\" (<em>Pancasila Krama</em>): (1) Tidak boleh membunuh, (2) Tidak boleh mencuri, (3) Tidak boleh berzina, (4) Tidak boleh berbohong, (5) Tidak boleh meminum minuman keras yang memabukkan.</li>\r\n      <li><strong>Kitab Sutasoma oleh Mpu Tantular:</strong> Mencetuskan kalimat abadi yang menjadi semboyan resmi lambang Garuda Indonesia:\r\n        <blockquote style=\"border-left:4px solid var(--primary); padding:6px 12px; font-style:italic; background:var(--surface-elevated);\">\r\n          \"Rwaneka dhatu winuwus Buddha Wiswa, Bhinêki rakwa ring apan kena parwanosen, Mangka ng Jinatwa kalawan Siwatatwa tunggal, <strong>Bhinneka Tunggal Ika Tan Hana Dharma Mangrwa</strong>\"\r\n        </blockquote>\r\n        Artinya: Walaupun Buddha dan Siwa berbeda, keduanya adalah satu. Berbeda-beda itu, tetapi satu jua; tidak ada kebenaran yang mendua (prinsip persatuan dalam keanekaragaman agama dan suku).\r\n      </li>\r\n    </ul>\r\n  </li>\r\n</ul>\r\n\r\n<h4>2. Era Penjajahan Barat & Kebangkitan Nasional 1908</h4>\r\n<p>Perjuangan kedaerahan sebelum abad ke-20 selalu mengalami kegagalan akibat politik adu domba Belanda (<em>Devide et Impera</em>). Berdirinya <strong>Boedi Oetomo</strong> (20 Mei 1908) menandai era baru pergerakan nasional berbasis persatuan intelektual modern, disusul oleh Ikrar <strong>Sumpah Pemuda 1928</strong> yang mengkristalkan ikrar satu tanah air, satu bangsa, dan satu bahasa persatuan.</p>",
+          "standar": "\n<div class=\"group-presentation-badge\" style=\"background:rgba(99,102,241,0.15); border:1px solid var(--primary); padding:10px 14px; border-radius:8px; margin-bottom:16px;\">\n  <strong>👥 TUGAS PRESENTASI KELOMPOK 1:</strong><br>\n  <strong>Anggota:</strong> 1. A Alif Assyafiyyah • 2. Aila Az Zahra Zainuddin • 3. Achmad Miko Al Torik • 4. Aini Kurnia Sari<br>\n  <strong>Fokus RPS:</strong> Nilai-nilai Pancasila dalam Lintasan Sejarah Bangsa (Masa Pra-Kemerdekaan, BPUPKI, Panitia Sembilan & Piagam Jakarta).\n</div>\n\n<h4>1. Nilai Religio-Kultural Nusantara sebagai Akar Pancasila</h4>\n<p>Sebelum dirumuskan secara yuridis-formal pada tahun 1945, nilai-nilai Pancasila telah berurat berakar dalam kehidupan peradaban bangsa Indonesia selama berabad-abad:</p>\n<ul>\n  <li><strong>Zaman Kerajaan Kutai (400 M):</strong> Prasasti Yupa membuktikan adanya nilai Ketuhanan (upaya sedekah kepada Brahmana) dan nilai Kemanusiaan serta Keadilan Sosial.</li>\n  <li><strong>Zaman Kerajaan Sriwijaya (Abad VII - XIII):</strong> Pusat pembelajaran Buddha bertaraf internasional; mencerminkan nilai persatuan maritim dan keterbukaan peradaban global.</li>\n  <li><strong>Zaman Kerajaan Majapahit (1293 - 1520):</strong> Di bawah Raja Hayam Wuruk dan Mahapatih Gajah Mada, kitab <em>Sutasoma</em> karya Mpu Tantular melahirkan semboyan <strong>\"Bhinneka Tunggal Ika Tan Hana Dharma Mangrwa\"</strong> (Berbeda-beda tetapi satu jua, tidak ada kebenaran yang mendua). Istilah <em>Pancasila</em> juga termaktub dalam kitab <em>Negarakertagama</em> karya Mpu Prapanca.</li>\n</ul>\n\n<h4>2. Kronologi Sidang BPUPKI & Perumusan Konsep Dasar Negara</h4>\n<p>BPUPKI (<em>Dokuritsu Junbi Cosakai</em>) dibentuk pada 29 April 1945 dan dilantik 28 Mei 1945 beranggotakan 62 orang tokoh bangsa diketuai Dr. K.R.T. Radjiman Wedyodiningrat:</p>\n<ol>\n  <li><strong>Sidang Pertama BPUPKI (29 Mei - 1 Juni 1945):</strong> Membahas satu pertanyaan mendasar Radjiman: <em>\"Apa dasar negara Indonesia merdeka yang akan kita bangun?\"</em>\n    <ul>\n      <li><strong>Mr. Muhammad Yamin (29 Mei 1945):</strong> Menyampaikan 5 azas dasar: (1) Peri Kebangsaan, (2) Peri Kemanusiaan, (3) Peri Ketuhanan, (4) Peri Kerakyatan, (5) Kesejahteraan Rakyat.</li>\n      <li><strong>Prof. Dr. Soepomo (31 Mei 1945):</strong> Mengajukan teori Negara Integralistik (Persatuan): negara tidak memihak kepada golongan terbesar atau terkuat, melainkan mengatasi segala paham golongan untuk kepentingan seluruh rakyat.</li>\n      <li><strong>Ir. Soekarno (1 Juni 1945):</strong> Menyampaikan pidato monumental tanpa teks yang memperkenalkan nama <strong>Pancasila</strong>: (1) Kebangsaan Indonesia / Nasionalisme, (2) Internasionalisme / Peri Kemanusiaan, (3) Mufakat / Demokrasi, (4) Kesejahteraan Sosial, (5) Ketuhanan yang Berkebudayaan. Kelima sila dapat diperas menjadi <em>Trisila</em> (Socio-nasionalisme, Socio-demokrasi, Ketuhanan), dan diperas lagi menjadi <em>Ekasila</em>, yaitu <strong>Gotong Royong</strong>.</li>\n    </ul>\n  </li>\n  <li><strong>Panitia Sembilan & Piagam Jakarta (22 Juni 1945):</strong> Panitia kecil terdiri atas Soekarno, Hatta, A.A. Maramis, Abikoesno Tjokrosoejoso, Abdoel Kahar Muzakir, H. Agus Salim, Achmad Soebardjo, K.H. Wachid Hasjim, dan M. Yamin. Mereka merumuskan naskah mukadimah konstitusi yang memuat rumusan sila pertama: <em>\"Ketuhanan dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya\"</em> (Tujuh Kata).</li>\n</ol>\n",
           "ringkas": null,
           "detail": null
         },
@@ -1507,45 +1497,36 @@ export const initialSubjects = [
         "subject_id": "subject-pancasila",
         "meeting_number": 3,
         "date": "2026-09-31",
-        "title": "Perumusan & Pengesahan Pancasila sebagai Dasar Negara",
-        "description": "Materi perkuliahan pekan ke-3 mata kuliah Pendidikan Pancasila.",
+        "title": "Pancasila dalam Lintasan Sejarah [SESUDAH KEMERDEKAAN] • Presentasi Kelompok 2",
+        "description": "Materi RPS Sub-CPMK 1: Perjalanan Pancasila era Kemerdekaan (1945), Dinamika Konstitusi RIS & UUDS 1950, Orde Lama (Dekrit Presiden 5 Juli 1959, Demokrasi Terpimpin, Nasakom), Orde Baru (P-4 & Asas Tunggal), hingga Era Reformasi.",
         "notes": "Catatan penting persiapan kuis & UTS: perhatikan definisi dosen dan contoh soal praktikum.",
         "materials": [
           {
-            "id": "mat_subject-pancasila_3_1",
+            "id": "mat_p3_ppt_kel2",
             "type": "pptx",
-            "title": "Slide Dosen - Pertemuan 3: Perumusan & Pengesahan Pancasila sebagai Dasar Negara.pptx",
-            "file_url": "#",
-            "file_size": 2450000,
-            "date_added": "2026-09-12"
+            "title": "Slide PPT Kelompok 2 - Pancasila Sesudah Kemerdekaan.pptx",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/",
+            "file_size": 2800000,
+            "date_added": "2026-09-30"
           },
           {
-            "id": "mat_subject-pancasila_3_2",
+            "id": "mat_p3_rps",
             "type": "pdf",
-            "title": "Modul Diktat Praktikum P3.pdf",
-            "file_url": "#",
-            "file_size": 1120000,
-            "date_added": "2026-09-14"
-          },
-          {
-            "id": "mat_subject-pancasila_3_3",
-            "type": "link",
-            "title": "Portal Akademik LMS Unindra & Materi Terkait",
-            "file_url": "https://unindra.ac.id",
-            "file_size": 0,
-            "date_added": "2026-09-15"
+            "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (Minggu Ke-3)",
+            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_size": 245000,
+            "date_added": "2026-09-30"
           }
         ],
         "transcripts": [
           {
-            "id": "trans_subject-pancasila_3",
-            "audio_url": null,
-            "content": "Transkrip perkuliahan tatap muka: Dosen menekankan bahwa pemahaman konsep fundamental pada materi ini (Pertemuan 3: Perumusan & Pengesahan Pancasila sebagai Dasar Negara) adalah kunci untuk menjawab 40% soal pada Ujian Tengah Semester (UTS). Pastikan menghafal istilah penting dan mampu merekonstruksi skema atau diagram terkait.",
+            "id": "trans_p3_kel2",
+            "content": "[00:01:30] Moderator Kelompok 2 (Delysia): Selamat pagi Bapak Dosen dan rekan-rekan. Kami dari Kelompok 2 (Ahmad Hafizh, Delysia, Raihan Hermansyah, dan Hikmatus Sholawat) akan menyajikan evaluasi sejarah Pancasila pasca-kemerdekaan 1945 hingga reformasi.\n[00:11:15] Pemateri (Hafizh): Sehari setelah proklamasi, tepatnya 18 Agustus 1945, PPKI mengesahkan UUD 1945 setelah Mohammad Hatta berhasil meyakinkan tokoh-tokoh Islam untuk mengganti 7 kata Piagam Jakarta menjadi 'Ketuhanan Yang Maha Esa' demi menyelamatkan persatuan bangsa Indonesia dari Sabang sampai Merauke.\n[00:24:40] Pemateri (Raihan): Di era Orde Lama, terjadi pergantian konstitusi ke RIS 1949 dan UUDS 1950 yang bercorak parlementer liberal. Ketidakstabilan politik mendorong lahirnya Dekrit Presiden 5 Juli 1959 untuk kembali ke UUD 1945, namun pelaksanaannya melenceng ke arah Demokrasi Terpimpin dan ajaran Nasakom yang berujung pada peristiwa G30S/PKI 1965.\n[00:36:20] Pemateri (Hikmatus): Orde Baru lahir dengan tekad melaksanakan Pancasila secara murni dan konsekuen. Namun, Orde Baru justru memonopoli tafsir ideologis melalui penataran P-4 dan menjadikannya alat membungkam kritik. Akhirnya, reformasi 1998 merevitalisasi Pancasila tanpa monopoli kekuasaan negara.",
             "status": "completed"
           }
         ],
         "summaries": {
-          "standar": "<h4>1. Sidang BPUPKI I (29 Mei – 1 Juni 1945)</h4>\r\n<p>Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia (BPUPKI / <em>Dokuritsu Junbi Cosakai</em>) dipimpin Dr. K.R.T. Radjiman Wedyodiningrat. Membahas pertanyaan mendasar: <em>\"Apa dasar negara Indonesia merdeka yang akan kita bentuk?\"</em></p>\r\n<div class=\"table-wrap\">\r\n  <table>\r\n    <thead><tr><th>Tokoh Perumus</th><th>Tanggal Pidato</th><th>Gagasan 5 Dasar Negara yang Diajukan</th></tr></thead>\r\n    <tbody>\r\n      <tr><td><strong>Mr. Muhammad Yamin</strong></td><td>29 Mei 1945</td><td>1. Peri Kebangsaan, 2. Peri Kemanusiaan, 3. Peri Ketuhanan, 4. Peri Kerakyatan, 5. Kesejahteraan Rakyat. (Usulan tertulis: Ketuhanan Yang Maha Esa, Kebangsaan Persatuan Indonesia, Rasa Kemanusiaan yang Adil dan Beradab, Kerakyatan yang dipimpin oleh hikmat kebijaksanaan..., Keadilan sosial bagi seluruh rakyat Indonesia).</td></tr>\r\n      <tr><td><strong>Prof. Dr. Soepomo</strong></td><td>31 Mei 1945</td><td>Mengajukan <strong>Teori Negara Integralistik (Negara Persatuan)</strong>: Menolak teori individualisme (Eropa barat) dan teori kelas/Marxisme. Negara adalah satu kesatuan organik dengan rakyatnya; mengatasi semua golongan dan agama. 5 Prinsip: 1. Persatuan, 2. Kekeluargaan, 3. Keseimbangan lahir dan batin, 4. Musyawarah, 5. Keadilan rakyat.</td></tr>\r\n      <tr><td><strong>Ir. Soekarno</strong></td><td>1 Juni 1945</td><td>Berpidato tanpa teks mencetuskan nama <strong>Pancasila</strong>: 1. Kebangsaan Indonesia (Nasionalisme), 2. Internasionalisme atau Peri-Kemanusiaan, 3. Mufakat atau Demokrasi, 4. Kesejahteraan Sosial, 5. Ketuhanan yang Berkebudayaan.<br>Diperas menjadi <strong>Trisila</strong> (Sosio-Nasionalisme, Sosio-Demokrasi, Ketuhanan) dan diperas lagi menjadi <strong>Ekasila</strong> (Gotong Royong). Hari ini diperingati sebagai <strong>Hari Lahir Pancasila</strong>.</td></tr>\r\n    </tbody>\r\n  </table>",
+          "standar": "\n<div class=\"group-presentation-badge\" style=\"background:rgba(99,102,241,0.15); border:1px solid var(--primary); padding:10px 14px; border-radius:8px; margin-bottom:16px;\">\n  <strong>👥 TUGAS PRESENTASI KELOMPOK 2:</strong><br>\n  <strong>Anggota:</strong> 1. Ahmad Hafizh Iswhyudi • 2. Delysia Vala Putri Dwi Callista • 3. Ahmad Raihan Primadiawan Hermansyah • 4. Hikmatus Sholawat<br>\n  <strong>Fokus RPS:</strong> Pancasila Masa Kemerdekaan, Orde Lama, Orde Baru, dan Dinamika Era Reformasi.\n</div>\n\n<h4>1. Pengesahan Pancasila pada 18 Agustus 1945 & Sikap Kenegarawanan</h4>\n<p>Pada pagi hari menjelang sidang PPKI 18 Agustus 1945, Drs. Mohammad Hatta menerima pesan dari opsir AL Jepang bahwa perwakilan Indonesia Timur akan memisahkan diri jika kalimat <em>\"dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya\"</em> dipertahankan.</p>\n<ul>\n  <li>Dengan kebesaran jiwa para tokoh Islam (K.H. Wachid Hasjim, Ki Bagoes Hadikoesoemo, Kasman Singodimedjo, Teuku M. Hasan), disepakati penggantian sila pertama menjadi: <strong>\"Ketuhanan Yang Maha Esa\"</strong>.</li>\n  <li>Hal ini membuktikan komitmen persatuan nasional dan asas inklusif Pancasila sebagai payung kebhinekaan.</li>\n</ul>\n\n<h4>2. Dialektika Tiga Orde Kepemimpinan Nasional</h4>\n<div class=\"table-wrap\">\n  <table>\n    <thead><tr><th>Periode / Orde</th><th>Karakteristik Politik</th><th>Tantangan & Deviasi Ideologis</th><th>Pelajaran Sejarah bagi Mahasiswa</th></tr></thead>\n    <tbody>\n      <tr><td><strong>Era Awal Kemerdekaan (1945-1959)</strong></td><td>Demokrasi Parlementer, multipartai ekstrem, kabinet jatuh bangun</td><td>Pemberontakan ideologis bersenjata (PKI Madiun 1948, DI/TII, PRRI/Permesta) dan kebuntuan Konstituante</td><td>Pancasila terbukti tangguh mengatasi perpecahan dan disintegrasi teritorial.</td></tr>\n      <tr><td><strong>Orde Lama (1959-1965)</strong></td><td>Dekrit Presiden 5 Juli 1959, Demokrasi Terpimpin</td><td>Pemimpin Besar Revolusi seumur hidup, sentralisasi kekuasaan, subordinasi Pancasila di bawah Nasakom</td><td>Kekuasaan tanpa kontrol demokratis akan memicu instabilitas fatal (tragedi 1965).</td></tr>\n      <tr><td><strong>Orde Baru (1966-1998)</strong></td><td>Demokrasi Pancasila, pembangunan ekonomi Repelita, stabilitas keamanan</td><td>Monopoli penafsiran kebenaran tunggal (Penataran P-4), sentralistik, hegemoni militer, pembungkaman suara kritis</td><td>Pancasila adalah ideologi terbuka, bukan alat legitimasi rezim yang represif.</td></tr>\n      <tr><td><strong>Era Reformasi (1998 - Sekarang)</strong></td><td>Demokrasi deliberatif, otonomi daerah, kebebasan pers dan berserikat</td><td>Ancaman disinformasi digital, polarisasi politik identitas, korupsi struktural, infiltrasi radikalisme transnasional</td><td>Pancasila harus diaktualisasikan dalam etika bermedia sosial, keadilan hukum, dan integritas moral.</td></tr>\n    </tbody>\n  </table>\n</div>\n",
           "ringkas": null,
           "detail": null
         },
@@ -1561,45 +1542,36 @@ export const initialSubjects = [
         "subject_id": "subject-pancasila",
         "meeting_number": 4,
         "date": "2026-09-34",
-        "title": "Dinamika & Dialektika Pancasila Pasca Kemerdekaan",
-        "description": "Materi perkuliahan pekan ke-4 mata kuliah Pendidikan Pancasila.",
+        "title": "Pancasila sebagai Dasar Negara • Presentasi Kelompok 3 & Kisi-Kisi UTS RPS",
+        "description": "Materi RPS Sub-CPMK 2: Esensi dan urgensi Pancasila sebagai Dasar Negara, Sumber historis, yuridis, sosiologis, dan politis, kedudukan hukum dalam hierarki perundang-undangan (UU No. 12 Tahun 2011), serta 15 Soal Latihan Persiapan UTS Resmi dari Dosen.",
         "notes": "Catatan penting persiapan kuis & UTS: perhatikan definisi dosen dan contoh soal praktikum.",
         "materials": [
           {
-            "id": "mat_subject-pancasila_4_1",
+            "id": "mat_p4_ppt_kel3",
             "type": "pptx",
-            "title": "Slide Dosen - Pertemuan 4: Dinamika & Dialektika Pancasila Pasca Kemerdekaan.pptx",
-            "file_url": "#",
-            "file_size": 2450000,
-            "date_added": "2026-09-12"
+            "title": "Slide PPT Kelompok 3 - Pancasila sebagai Dasar Negara.pptx",
+            "file_url": "file:///C:/Users/haike/Downloads/Tugas_Kuliah/",
+            "file_size": 2900000,
+            "date_added": "2026-09-30"
           },
           {
-            "id": "mat_subject-pancasila_4_2",
+            "id": "mat_p4_rps_soal",
             "type": "pdf",
-            "title": "Modul Diktat Praktikum P4.pdf",
-            "file_url": "#",
-            "file_size": 1120000,
-            "date_added": "2026-09-14"
-          },
-          {
-            "id": "mat_subject-pancasila_4_3",
-            "type": "link",
-            "title": "Portal Akademik LMS Unindra & Materi Terkait",
-            "file_url": "https://unindra.ac.id",
-            "file_size": 0,
-            "date_added": "2026-09-15"
+            "title": "RPS MK02 Pancasila Pusat Gemini 010926.pdf (Bank Soal UTS & UAS)",
+            "file_url": "file:///C:/Users/haike/Downloads/RPS%20MK02%20Pancasila%20Pusat%20Gemini%20010926.pdf",
+            "file_size": 245000,
+            "date_added": "2026-09-30"
           }
         ],
         "transcripts": [
           {
-            "id": "trans_subject-pancasila_4",
-            "audio_url": null,
-            "content": "Transkrip perkuliahan tatap muka: Dosen menekankan bahwa pemahaman konsep fundamental pada materi ini (Pertemuan 4: Dinamika & Dialektika Pancasila Pasca Kemerdekaan) adalah kunci untuk menjawab 40% soal pada Ujian Tengah Semester (UTS). Pastikan menghafal istilah penting dan mampu merekonstruksi skema atau diagram terkait.",
+            "id": "trans_p4_kel3",
+            "content": "[00:01:15] Moderator Kelompok 3 (Kiara): Assalamu'alaikum wr. wb. Kami dari Kelompok 3 (Akmal Thoriq, Kiara Brezenska, Alfi Muhidin, dan Nabila Berlian) mempersembahkan topik sentral: Pancasila sebagai Dasar Negara Republik Indonesia.\n[00:10:40] Pemateri (Akmal): Sebagai dasar negara, Pancasila berkedudukan sebagai norma dasar fundamental (Staatsfundamentalnorm). Artinya, seluruh peraturan perundang-undangan, mulai dari UUD 1945, UU, Perppu, PP, Perpres, hingga Perda tidak boleh bertentangan sedikit pun dengan nilai lima sila Pancasila.\n[00:23:15] Pemateri (Alfi): Landasan yuridis ditegaskan dalam Pembukaan UUD 1945 Alinea Keempat. Secara sosiologis, Pancasila mencerminkan kebiasaan hidup guyub, tolong-menolong, dan musyawarah mufakat masyarakat Indonesia.\n[00:35:50] Pemateri (Nabila): Pada lampiran RPS resmi dosen, terdapat 15 butir soal latihan UTS resmi. Kami membedah jawaban setiap butir soal tersebut agar rekan-rekan mahasiswa siap menghadapi ujian tulis.\n[00:48:10] Dosen: Sangat memuaskan. Mohon seluruh mahasiswa mencatat 15 soal latihan persiapan UTS ini ke buku binder fisik masing-masing.",
             "status": "completed"
           }
         ],
         "summaries": {
-          "standar": "<h4>1. Periode 1945 – 1950 (Awal Kemerdekaan)</h4>\r\n<p>Penerapan Pancasila menghadapi ancaman pemberontakan bersenjata yang berupaya mengganti ideologi negara:</p>\r\n<ul>\r\n  <li><strong>Pemberontakan PKI Madiun (18 September 1948):</strong> Dipimpin oleh Musso dan Amir Sjarifuddin yang ingin mendirikan Republik Soviet Indonesia berideologi Komunis/Marxisme-Leninisme. Berhasil ditumpas TNI.</li>\r\n  <li><strong>Pemberontakan DI/TII (Darul Islam / Tentara Islam Indonesia - 1949):</strong> Dipimpin oleh S.M. Kartosuwiryo di Jawa Barat yang memproklamasikan Negara Islam Indonesia (NII) untuk menggantikan Pancasila dengan dasar syariat Islam murni.</li>\r\n</ul>\r\n\r\n<h4>2. Periode 1950 – 1959 (Era Demokrasi Liberal & UUDS 1950)</h4>\r\n<ul>\r\n  <li>Penerapan sistem kabinet parlementer barat menyebabkan instabilitas politik nasional; terjadi pergantian kabinet sebanyak 7 kali dalam kurun waktu 9 tahun.</li>\r\n  <li>Meskipun Pemilu 1955 berlangsung sangat demokratis, Dewan Konstituante mengalami <em>deadlock</em> (kebuntuan total) dalam merumuskan UUD baru karena perdebatan tanpa ujung antara blok dasar negara Pancasila vs blok dasar negara Islam.</li>\r\n  <li>Presiden Soekarno mengeluarkan <strong>Dekrit Presiden 5 Juli 1959</strong>: (1) Membubarkan Konstituante, (2) Memberlakukan kembali UUD 1945 dan tidak berlakunya UUDS 1950, (3) Membentuk MPRS dan DPAS.</li>\r\n</ul>\r\n\r\n<h4>3. Periode 1959 – 1965 (Orde Lama / Demokrasi Terpimpin)</h4>\r\n<div class=\"callout callout-warning\">\r\n  <div class=\"callout-title\">⚠️ Penyimpangan Konstitusional Orde Lama terhadap Pancasila",
+          "standar": "\n<div class=\"group-presentation-badge\" style=\"background:rgba(99,102,241,0.15); border:1px solid var(--primary); padding:10px 14px; border-radius:8px; margin-bottom:16px;\">\n  <strong>👥 TUGAS PRESENTASI KELOMPOK 3:</strong><br>\n  <strong>Anggota:</strong> 1. Akmal Thoriq Ramadhan • 2. Kiara Brezenska • 3. Alfi Muhidin Matdoan • 4. Nabila Berlian Brizky Siregar<br>\n  <strong>Fokus RPS:</strong> Esensi dan Urgensi Pancasila sebagai Dasar Negara, Sumber Historis, Yuridis, Sosiologis, Politis, dan Hubungan Hierarkis Perundang-undangan.\n</div>\n\n<h4>1. Kedudukan Pancasila sebagai Dasar Negara (Staatsfundamentalnorm)</h4>\n<p>Pancasila sebagai dasar negara berkedudukan sebagai <strong>Norma Fundamental Negara (Staatsfundamentalnorm)</strong> menurut teori jenjang norma hukum Hans Nawiasky. Konsekuensinya:</p>\n<ul>\n  <li>Pancasila merupakan sumber dari segala sumber hukum negara (Pasal 2 UU No. 12 Tahun 2011).</li>\n  <li>Menjadi landasan moral, etika, dan yuridis bagi penyelenggara negara dalam membuat kebijakan publik di bidang politik, ekonomi, sosial budaya, dan pertahanan keamanan.</li>\n</ul>\n\n<h4>2. Empat Sumber Landasan Dasar Negara</h4>\n<ul>\n  <li><strong>Sumber Historis:</strong> Berasal dari konsensus nasional pendiri bangsa (<em>founding fathers</em>) dalam sidang BPUPKI dan PPKI 1945.</li>\n  <li><strong>Sumber Yuridis:</strong> Termaktub secara sah dalam Alinea IV Pembukaan UUD NRI 1945.</li>\n  <li><strong>Sumber Sosiologis:</strong> Bersumber dari adat istiadat, nilai gotong royong, kearifan lokal, dan religiusitas masyarakat Indonesia.</li>\n  <li><strong>Sumber Politis:</strong> Menjadi kaidah penuntun (<em>guiding principles</em>) dalam sistem politik demokrasi perwakilan yang beretika.</li>\n</ul>\n\n<h4>3. Bank Soal Latihan Persiapan UTS Resmi dari RPS Unindra (Wajib Dicatat ke Binder)</h4>\n<div class=\"table-wrap\">\n  <table>\n    <thead><tr><th>No</th><th>Soal Latihan UTS RPS</th><th>Kunci Jawaban Komprehensif</th></tr></thead>\n    <tbody>\n      <tr><td>1</td><td>Apa tujuan mempelajari mata kuliah Pancasila di perguruan tinggi?</td><td>Membangun karakter mahasiswa beriman, berakhlak mulia, cerdas kritis, menjunjung etika akademik, serta berkomitmen menjadi warga negara yang cinta tanah air dan mampu berkomunikasi global (CPMK 1 & 2).</td></tr>\n      <tr><td>2</td><td>Upaya mempertahankan ideologi Pancasila di tengah peradaban global?</td><td>Melakukan internalisasi nilai sejak dini, memperkuat literasi digital melawan hoaks dan radikalisme, mempraktikkan toleransi nyata, serta mengembangkan IPTEK berlandaskan etika ketuhanan dan kemanusiaan.</td></tr>\n      <tr><td>3</td><td>Isi rumusan Pancasila dalam Piagam Jakarta 22 Juni 1945?</td><td>1. Ketuhanan dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya, 2. Kemanusiaan yang adil dan beradab, 3. Persatuan Indonesia, 4. Kerakyatan yang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan perwakilan, 5. Keadilan sosial bagi seluruh rakyat Indonesia.</td></tr>\n      <tr><td>4</td><td>Bagaimana proses perumusan Pancasila?</td><td>Diawali dari gagasan M. Yamin, Soepomo, dan Soekarno pada sidang BPUPKI I, dimatangkan oleh Panitia Sembilan dalam Piagam Jakarta, lalu disempurnakan dan disahkan secara aklamasi oleh PPKI pada 18 Agustus 1945.</td></tr>\n      <tr><td>5</td><td>Mengapa Indonesia menggunakan Ideologi Pancasila?</td><td>Karena Pancasila digali langsung dari jiwa dan kepribadian bangsa sendiri (tidak meniru kapitalisme-liberalis yang individualistis maupun sosialisme-komunis yang menafikan hak milik pribadi dan agama).</td></tr>\n      <tr><td>6</td><td>Perbedaan sosialisme dan kapitalisme?</td><td>Kapitalisme mendewakan kebebasan individu, pasar bebas, dan kepemilikan modal privat; sedangkan sosialisme mengutamakan kontrol kolektif negara atas alat produksi untuk kesetaraan tanpa persaingan bebas.</td></tr>\n      <tr><td>7</td><td>Apakah demokrasi di Indonesia sudah sesuai nilai Pancasila?</td><td>Secara prosedural pemilu telah berjalan, namun secara substantif masih menghadapi tantangan politik uang (money politics), polarisasi identitas, dan oligarki yang perlu diperbaiki dengan hikmat kebijaksanaan permusyawaratan.</td></tr>\n      <tr><td>8</td><td>Sikap terhadap konflik suku/agama agar persatuan terjaga?</td><td>Menegakkan hukum secara adil, memperkuat dialog moderasi beragama, menghapus diskriminasi, dan mengamalkan semboyan Bhinneka Tunggal Ika dalam kehidupan bertetangga dan kampus.</td></tr>\n      <tr><td>9</td><td>Bagaimana hubungan Pancasila dengan UUD 1945?</td><td>Pancasila adalah roh/jiwa yang menjiwai Pembukaan UUD 1945, dan dijabarkan secara rinci dalam pasal-pasal batang tubuh UUD 1945 sebagai hukum dasar tertulis.</td></tr>\n      <tr><td>10</td><td>Potensi kekayaan bangsa Indonesia yang beraneka ragam?</td><td>Kekayaan 1.340 suku bangsa, kearifan lokal, posisi geografis silang strategis, sumber daya alam melimpah, dan modal sosial gotong royong yang menjadi daya saing internasional.</td></tr>\n    </tbody>\n  </table>\n</div>\n",
           "ringkas": null,
           "detail": null
         },
@@ -1847,7 +1819,7 @@ export const initialSubjects = [
 export const initialProfile = {
   id: "usr_haikel_2026",
   email: "haikel@unindra.ac.id",
-  full_name: "Muhammad Haikel",
+  full_name: "Muhammad Haikel Saleh",
   university: "Universitas Indraprasta PGRI (Unindra)",
   major: "Teknik Informatika / Sistem Informasi",
   class_code: "R1G Reguler",
