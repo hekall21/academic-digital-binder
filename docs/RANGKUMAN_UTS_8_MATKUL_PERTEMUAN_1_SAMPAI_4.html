@@ -586,6 +586,12 @@
     }
 
 </style>
+
+  <!-- KaTeX CSS & JS for elegant math typography -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="if (window.renderMathInElement) renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
 </head>
 <body>
   <header class="topbar">
@@ -1071,7 +1077,7 @@
             <div class="meeting-header">
               <div>
                 <span class="meeting-tag">Pertemuan 3</span>
-                <h3 class="meeting-title">Pertemuan 3: Sejarah & Tonggak Perkembangan Bahasa Indonesia</h3>
+                <h3 class="meeting-title">Pertemuan 3: Kaidah Baku EYD Edisi V (Pemakaian Huruf, Tanda Baca & Penulisan Kata)</h3>
               </div>
               <div class="checklist-4">
   <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
@@ -1136,7 +1142,7 @@
             <div class="meeting-header">
               <div>
                 <span class="meeting-tag">Pertemuan 4</span>
-                <h3 class="meeting-title">Pertemuan 4: Kaidah Baku EYD Edisi V (Pemakaian Huruf, Kata & Tanda Baca)</h3>
+                <h3 class="meeting-title">Pertemuan 4: Bentuk dan Pilihan Kata (Diksi) & Aturan Hukum K/T/S/P</h3>
               </div>
               <div class="checklist-4">
   <button class="btn-ai-pill" onclick="openMediaTranscribeModal(this)" title="Upload MP4/Audio & Transkrip AI">🎙️ Transkrip MP4</button>
@@ -1731,6 +1737,21 @@ end;
 <div class="code-box">
   <div class="code-header"><span class="code-lang">Contoh Lengkap Program Kelulusan Mahasiswa</span><button class="copy-btn" onclick="copyCode(this)">Salin</button></div>
   <pre><code>program CekKelulusan;
+uses crt;
+
+{ Kode Praktikum 1: Cek Tahun Kabisat }
+{
+program tahun_kabisat;
+uses crt;
+var tahun: integer;
+begin
+  clrscr;
+  write('Masukkan tahun: '); readln(tahun);
+  if (tahun mod 4 = 0) then writeln('TAHUN KABISAT') else writeln('BUKAN KABISAT');
+  readln;
+end.
+}
+
 uses crt;
 
 var

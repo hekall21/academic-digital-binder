@@ -363,14 +363,14 @@ export const initialSubjects = [
         "subject_id": "subject-indo",
         "meeting_number": 3,
         "date": "2026-09-21",
-        "title": "Sejarah & Tonggak Perkembangan Bahasa Indonesia",
+        "title": "EYD Edisi V: Pemakaian Huruf, Tanda Baca, dan Penulisan Kata",
         "description": "Materi perkuliahan pekan ke-3 mata kuliah Bahasa Indonesia (MKWK107).",
         "notes": "Catatan penting persiapan kuis & UTS: perhatikan definisi dosen dan contoh soal praktikum.",
         "materials": [
           {
             "id": "mat_subject-indo_3_1",
             "type": "pptx",
-            "title": "Slide Dosen - Pertemuan 3: Sejarah & Tonggak Perkembangan Bahasa Indonesia.pptx",
+            "title": "Pertemuan 3-Bahasa Indonesia Unindra OBE.pdf (Slide 99 Halaman)",
             "file_url": "#",
             "file_size": 2450000,
             "date_added": "2026-09-12"
@@ -418,14 +418,14 @@ export const initialSubjects = [
         "subject_id": "subject-indo",
         "meeting_number": 4,
         "date": "2026-09-24",
-        "title": "Kaidah Baku EYD Edisi V (Pemakaian Huruf, Kata & Tanda Baca)",
+        "title": "Bentuk dan Pilihan Kata (Diksi) & Aturan Hukum K/T/S/P",
         "description": "Materi perkuliahan pekan ke-4 mata kuliah Bahasa Indonesia (MKWK107).",
         "notes": "Catatan penting persiapan kuis & UTS: perhatikan definisi dosen dan contoh soal praktikum.",
         "materials": [
           {
             "id": "mat_subject-indo_4_1",
             "type": "pptx",
-            "title": "Slide Dosen - Pertemuan 4: Kaidah Baku EYD Edisi V (Pemakaian Huruf, Kata & Tanda Baca).pptx",
+            "title": "1790563821_Pertemuan_4-Bahasa_Indonesia_Unindra_OBE.pdf (Slide 55 Halaman)",
             "file_url": "#",
             "file_size": 2450000,
             "date_added": "2026-09-12"
@@ -456,7 +456,7 @@ export const initialSubjects = [
           }
         ],
         "summaries": {
-          "standar": "<h4>1. Kaidah Kritis Pemakaian Huruf Kapital</h4>\r\n<ul>\r\n  <li>Huruf pertama pada awal kalimat (<em>Mahasiswa sedang belajar.</em>).</li>\r\n  <li>Huruf pertama unsur nama orang, termasuk julukan (<em>Amir Hamzah</em>, <em>Ayam Jantan dari Timur</em>).</li>\r\n  <li>Huruf pertama nama tahun, bulan, hari, dan hari besar/keagamaan (<em>tahun Masehi, bulan Agustus, hari Jumat, hari Idulfitri</em>).</li>\r\n  <li>Huruf pertama nama bangsa, suku bangsa, dan bahasa (<em>bangsa Indonesia, suku Sunda, bahasa Inggris</em>; catatan: jika menjadi kata turunan, huruf kecil: <em>mengindonesiakan</em>, <em>keinggris-inggrisan</em>).</li>\r\n  <li>Huruf pertama nama geografi spesifik (<em>Gunung Merapi, Danau Toba, Selat Sunda, Jalan Sudirman</em>).<br>\r\n    ⚠️ <strong>Pengecualian Penting UTS:</strong>\r\n    <ul>\r\n      <li>Nama geografi yang BUKAN nama diri ditulis kecil: <em>berlayar ke teluk, menyeberangi selat, mendaki gunung</em>.</li>\r\n      <li>Nama geografi yang dipakai sebagai nama jenis makanan/benda ditulis huruf kecil: <em>jeruk bali, kunci inggris, petai cina, pisang ambon, kacang bogor</em>.</li>\r\n      <li>Tetapi corak/khas budaya daerah tetap kapital: <em>batik Solo, tarian Bali, masakan Padang</em>.</li>\r\n    </ul>\r\n  </li>\r\n</ul>\r\n\r\n<h4>2. Kaidah Pemakaian Huruf Miring (Italic)</h4>\r\n<ul>\r\n  <li>Menuliskan judul buku, majalah, atau surat kabar yang dikutip dalam tulisan (<em>Majalah Tempo, buku Pengantar Ilmu Komputer</em>).</li>\r\n  <li>Menegaskan atau mengkhususkan huruf, bagian kata, atau kelompok kata (<em>Huruf pertama kata abad adalah a.</em>).</li>\r\n  <li>Menuliskan kata atau ungkapan dalam bahasa daerah atau bahasa asing yang belum dibakukan ke dalam bahasa Indonesia (<em>Sistem ini menggunakan metode waterfall.</em>).</li>\r\n</ul>\r\n\r\n<h4>3. Kaidah Penulisan Kata: Kata Depan vs Awalan</h4>\r\n<div class=\"table-wrap\">\r\n  <table>\r\n    <thead><tr><th>Bentuk</th><th>Fungsi Gramatikal</th><th>Aturan Penulisan</th><th>Contoh Penulisan Benar</th><th>Contoh Salah (Jebakan UTS)</th></tr></thead>\r\n    <tbody>\r\n      <tr><td><strong>Kata Depan (Preposisi) <code>di</code>, <code>ke</code>, <code>dari</code></strong></td><td>Menunjukkan tempat keberadaan, arah tujuan, atau asal</td><td>Ditulis <strong>TERPISAH</strong> dengan spasi dari kata yang mengikutinya</td><td><code>di kampus</code>, <code>di rumah</code>, <code>ke Jakarta</code>, <code>ke atas</code>, <code>dari Bogor</code></td><td><span style=\"color:var(--rose)\">diperkuliahan</span>, <span style=\"color:var(--rose)\">dirumah</span>, <span style=\"color:var(--rose)\">kekampus</span></td></tr>\r\n      <tr><td><strong>Awalan (Prefiks) <code>di-</code>, <code>ke-</code></strong></td><td>Membentuk kata kerja pasif atau kata benda/bilangan</td><td>Ditulis <strong>SERANGKAI</strong> (menyatu tanpa spasi) dengan kata dasarnya</td><td><code>ditulis</code>, <code>dianalisis</code>, <code>dikerjakan</code>, <code>ketua</code>, <code>kehendak</code>, <code>kesatu</code></td><td><span style=\"color:var(--rose)\">di tulis</span>, <span style=\"color:var(--rose)\">di analisis</span>, <span style=\"color:var(--rose)\">di kerjakan</span></td></tr>\r\n    </tbody>\r\n  </table>",
+          "standar": '<h4>1. Taksonomi Bentuk Kata</h4><p>Bentuk kata terbagi atas: kata dasar, kata berimbuhan (afiksasi), kata ulang (reduplikasi), dan akronim.</p><ul>  <li><strong>Prefiks (Awalan):</strong> ber-, di-, ke-, me-, pe-, se-, ter-</li>  <li><strong>Infiks (Sisipan):</strong> -el- (telunjuk), -er- (gerigi), -em- (gemetar)</li>  <li><strong>Sufiks (Akhiran):</strong> -an, -kan, -i</li>  <li><strong>Konfiks (Gabungan Serentak):</strong> ke-...-an, pe-...-an, per-...-an</li></ul><h4>2. Hukum Emas Peluluhan Fonem K/T/S/P (Krusial UTS)</h4><ul>  <li><strong>Aturan LULUH (KTSP + Vokal):</strong> Awalan me-/pe- bertemu huruf K, T, S, P yang diikuti vokal WAJIB luluh menjadi nasal.    <ul>      <li>K: me- + kupas &rarr; <strong>mengupas</strong></li>      <li>T: me- + tulis &rarr; <strong>menulis</strong></li>      <li>S: me- + siram &rarr; <strong>menyiram</strong></li>      <li>P: me- + pilih &rarr; <strong>memilih</strong></li>    </ul>  </li>  <li><strong>Aturan TIDAK LULUH (KTSP + Konsonan):</strong> Awalan me-/pe- bertemu huruf K, T, S, P yang diikuti konsonan (kluster) TIDAK luluh.    <ul>      <li>K: me- + klasifikasi &rarr; <strong>mengklasifikasi</strong></li>      <li>T: me- + transfer &rarr; <strong>mentransfer</strong></li>      <li>S: me- + stempel &rarr; <strong>menstempel</strong></li>      <li>P: me- + program &rarr; <strong>memprogram</strong> (nomina pelaku: <em>pemrogram</em>)</li>    </ul>  </li></ul><h4>3. Kriteria Pilihan Kata (Diksi) Ilmiah</h4><p>Ketepatan (denotatif vs konotatif), keserasian konteks formal, dan kelaziman kolokasi kata baku sesuai KBBI.</p>',
           "ringkas": null,
           "detail": null
         },

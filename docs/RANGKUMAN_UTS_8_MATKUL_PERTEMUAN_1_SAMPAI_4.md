@@ -3,8 +3,9 @@
 > **Institusi:** Universitas Indraprasta PGRI (UNINDRA)  
 > **Fakultas / Program Studi:** Teknik & Ilmu Komputer (FTIK) / Sistem Informasi  
 > **Kelas / Semester:** R1G / Semester 1 (Reguler RG)  
-> **Status:** Kompendium Lengkap & Mendalam Persiapan Ujian Tengah Semester (UTS)  
-> **Acuan Validasi:** Master Index Kuliah, Modul Praktikum PDF, Slide PPTX Dosen, dan Transkripsi Rekaman Kuliah.
+> **Status:** Kompendium Lengkap & Terpadu Persiapan Ujian Tengah Semester (UTS)  
+> **Acuan Kurikulum & Berkas:** Master RPS, Modul Praktikum PDF, Slide Dosen di `Tugas_Kuliah/`, dan Rekaman Perkuliahan.  
+> **Standar Notasi:** Unicode Math Presisi Tinggi (Bebas dari kode LaTeX mentah / broken escape), Siap Salin ke Lembar Catatan Binder Fisik.
 
 ---
 
@@ -14,1024 +15,801 @@
 3. [⚡ Algoritma 1 (Selasa 07:30)](#3-algoritma-1)
 4. [💻 Pemrograman 1 - Pascal (Selasa 09:10)](#4-pemrograman-1-pascal)
 5. [🇬🇧 Bahasa Inggris 1 (Kamis 07:30)](#5-bahasa-inggris-1)
-6. [📐 Matematika Dasar (Kamis 09:10)](#6-matematika-dasar)
-7. [🇮🇩 Pendidikan Pancasila (Jumat 07:30)](#7-pendidikan-pancasila)
+6. [📐 Matematika Dasar (Kamis 09:10)](#6-matematika-dasar-kalkulus-sistem-informasi)
+7. [🇮🇩 Pendidikan Pancasila (Jumat 07:30)](#7-pendidikan-pancasila-mk02--berbasis-rps--tugas-presentasi-kelompok)
 8. [🕌 Pendidikan Agama Islam (Jumat 09:10)](#8-pendidikan-agama-islam-pai)
 
 ---
-
 ## 1. Konsep Sistem Informasi (KSI)
 * **Dosen Pengampu:** Pak Dheni, M.Kom.
 * **Jadwal & Ruang:** Senin • 07:30 - 10:00 WIB • Ruang R.4.4-4
-
-### Pertemuan 1: Konsep Dasar Data, Informasi, dan Transformasi Pengetahuan
-- [ ] *Sudah disalin ke lembar binder fisik*
-
-
-#### 1. Hakikat Data dan Epistemologi Komputasi
-<p>Secara epistemologis dan praktis, **Data** didefinisikan sebagai representasi mentah dari fakta (*raw facts*), kejadian (*events*), atau entitas nyata (orang, tempat, benda, uang, transaksi) yang terekam atau terdokumentasi tanpa makna bawaan yang dapat langsung dipakai untuk pengambilan keputusan strategis.</p>
-<ul>
-  <li>**Sifat Data:** Atomik, belum terstruktur secara semantik, berdiri sendiri, dan berorientasi historis operasional.</li>
-  <li>**Klasifikasi Data Berdasarkan Format:**
-    <ul>
-      <li>*Data Terstruktur:* Angka, tanggal, dan teks dalam basis data relasional (RDBMS) yang memiliki tipe dan panjang kolom pasti.</li>
-      <li>*Data Semi-Terstruktur:* Berkas JSON, XML, log web server yang memiliki tag identitas namun struktur fleksibel.</li>
-      <li>*Data Tidak Terstruktur:* Dokumen PDF, video rekaman CCTV, foto kwitansi, percakapan suara pelanggan yang memerlukan pemrosesan khusus untuk diekstraksi.</li>
-    </ul>
-  </li>
-</ul>
-
-#### 2. Definisi Informasi Menurut Gordon B. Davis & Pakar Klasik
-<p>Dalam karya monumentalnya *Management Information Systems: Conceptual Foundations, Structure, and Development*, **Gordon B. Davis** merumuskan definisi standar yang menjadi rujukan kurikulum akademis:</p>
-<blockquote style="border-left: 4px solid var(--primary); padding-left: 14px; margin: 10px 0; color: var(--text-main); font-style: italic; background: var(--surface-elevated); padding: 10px 14px; border-radius: 4px;">
-  "Informasi adalah data yang telah diproses ke dalam suatu bentuk yang mempunyai arti bagi si penerima (meaningful) dan mempunyai nilai nyata serta terasa bagi pengambilan keputusan saat ini maupun keputusan masa mendatang."
-</blockquote>
-<p>Kunci distingsi Davis terletak pada 3 kata kunci:</p>
-<ol>
-  <li>**Telah Diproses:** Telah melalui operasi matematis, pengelompokan, agregasi, atau penyaringan.</li>
-  <li>**Mempunyai Arti bagi Penerima:** Harus berada dalam konteks penerima (data penjualan raw tidak berarti bagi teknisi AC, tetapi sangat bernilai bagi manajer pemasaran).</li>
-  <li>**Mempunyai Nilai Nyata dalam Pengambilan Keputusan:** Mengurangi ketidakpastian (*reducing uncertainty*) bagi pengambil kebijakan.</li>
-</ol>
-
-#### 3. Hierarki DIKW (Data -> Information -> Knowledge -> Wisdom)
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Tingkatan</th><th>Pertanyaan Kunci</th><th>Karakteristik & Nilai Guna</th><th>Contoh Konkret Bisnis Retail</th></tr></thead>
-    <tbody>
-      <tr><td>**Data**</td><td>*What? (Fakta)*</td><td>Catatan transaksi tanpa konteks relasional</td><td>`100, "2026-09-30", "SKU-992", 45000`</td></tr>
-      <tr><td>**Information**</td><td>*Who, When, Where?*</td><td>Data yang diagregasi dan memiliki label relasional</td><td>"Pada 30 September 2026, terjual 100 unit SKU-992 dengan omset Rp4.500.000 di Cabang Jakarta."</td></tr>
-      <tr><td>**Knowledge**</td><td>*How? (Pola & Kaidah)*</td><td>Informasi yang dipadukan dengan pengalaman dan pemahaman pola</td><td>"Penjualan SKU-992 selalu melonjak 300% pada akhir bulan saat hari gajian karena produk tersebut adalah kebutuhan pokok."</td></tr>
-      <tr><td>**Wisdom**</td><td>*Why? (Kebijaksanaan)*</td><td>Kemampuan memproyeksikan wawasan untuk strategi masa depan</td><td>"Mengalokasikan stok penyangga (buffer stock) 500 unit setiap tanggal 25 dan meluncurkan promo bundling gajian untuk memaksimalkan margin laba."</td></tr>
-    </tbody>
-  </table>
-</div>
-
-#### 4. Peran Pengolah Informasi (Information Processor)
-<p>Agar data mentah dapat bermetamorfosis menjadi informasi berharga, diperlukan subsistem pengolah informasi (*Information Processor*) yang dapat bekerja secara:</p>
-<ul>
-  <li>**Manual:** Menggunakan tenaga klerikal manusia, buku besar akuntansi, kalkulator, dan filling cabinet (rentan human-error, lambat, biaya skalabilitas tinggi).</li>
-  <li>**Berbasis Komputer (CBIS - Computer Based Information System):** Menggunakan algoritma software, database server, query SQL otomatis, dan jaringan telekomunikasi (presisi tinggi, latensi milidetik, kapasitas masif).</li>
-</ul>
-
+* **Berkas Rujukan:** `1789306851_SISTEM_INFORMASI_1.pdf` & `1789306879_SISTEM_INFORMASI_2.pdf`
 
 ---
 
-### Pertemuan 2: Karakteristik, Batasan & Taksonomi Sistem
+### Pertemuan 1: Konsep Dasar Data, Karakteristik Sistem & Transformasi Pengetahuan
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Definisi Data Menurut Konsep Klasik Komputasi
+Data adalah kenyataan yang menggambarkan kejadian-kejadian nyata (*raw facts*), berupa representasi simbol, angka, huruf, gambar, atau suara yang berdiri sendiri tanpa makna intrinsik sebelum diolah.
+* **Sifat Dasar Data:** Bersifat atomik, mentah (*unprocessed*), statis, dan belum memiliki nilai langsung untuk pengambilan keputusan.
+* **Contoh Data Mentah:** Angka `45`, teks `"2026-09-30"`, kode barang `"KSR-01"`.
 
-#### 1. 8 Karakteristik Wajib Suatu Sistem (Sistematika Utuh)
-<p>Suatu kesatuan hanya berhak disebut sebagai **Sistem** jika memenuhi 8 karakteristik terpadu berikut:</p>
-<ol>
-  <li>**Komponen Sistem (Components):** Suatu sistem terdiri dari sejumlah komponen yang saling berinteraksi, bekerja sama membentuk satu kesatuan. Komponen dapat berupa subsistem-subsistem yang masing-masing menjalankan fungsinya sendiri namun tetap terintegrasi.</li>
-  <li>**Batas Sistem (Boundary):** Daerah pemisah antara suatu sistem dengan sistem yang lain atau dengan lingkungan luarnya. Batas sistem menentukan konfigurasi, ruang lingkup, dan kemampuan sistem.</li>
-  <li>**Lingkungan Luar Sistem (Environment):** Apapun di luar batas sistem yang mempengaruhi operasi sistem. Lingkungan luar dapat bersifat menguntungkan (energi, modal, bahan baku yang harus dijaga) atau merugikan (regulasi pesaing, serangan siber yang harus dikendalikan).</li>
-  <li>**Penghubung Sistem (Interface):** Media perantara yang memungkinkan sumber daya atau data mengalir dari satu subsistem ke subsistem lainnya. Format output subsistem A harus kompatibel dengan format input subsistem B.</li>
-  <li>**Masukan Sistem (Input):** Energi yang dimasukkan ke dalam sistem. Dibagi 2:
-    <ul>
-      <li>*Maintenance Input:* Energi yang dimasukkan agar sistem terus beroperasi (misal: listrik, operating system, pemeliharaan server).</li>
-      <li>*Signal Input:* Energi yang diproses untuk menghasilkan keluaran (misal: data transaksi penjualan yang diinput kasir).</li>
-    </ul>
-  </li>
-  <li>**Pengolahan Sistem (Process):** Bagian yang mengolah dan mentransformasikan masukan menjadi keluaran. Pada sistem informasi, pengolahan berupa pemrosesan program logika, perhitungan, dan penyimpanan data.</li>
-  <li>**Keluaran Sistem (Output):** Hasil olahan dari energi yang dimasukkan. Dapat berupa keluaran yang berguna (informasi laporan manajemen) maupun sisa buangan/sampah (*waste/log error*).</li>
-  <li>**Sasaran dan Tujuan (Goal & Objective):** Sistem pasti memiliki tujuan (*goal* untuk ruang lingkup luas) atau sasaran (*objective* untuk batasan operasional terukur). Kinerja sistem dievaluasi dari seberapa tepat sasaran tercapai.</li>
-</ol>
+#### 2. Tiga Sumbu Klasifikasi Data (Slide 6 - 1789306851):
+| Sumbu Klasifikasi | Kategori Data | Penjelasan Konseptual | Contoh Kasus Nyata |
+| :--- | :--- | :--- | :--- |
+| **Berdasarkan Jenis / Cara Perolehan** | **Data Hitung (Discrete)** | Diperoleh dari hasil mencacah / membilang unit bilangan bulat. | Jumlah mahasiswa kelas R1G (45 orang), jumlah printer (3 unit). |
+| | **Data Ukur (Continuous)** | Diperoleh dari pengukuran alat ukur berskala kontinu/desimal. | Berat paket (4,75 kg), suhu server room (21,5°C), jarak kabel (12,8 meter). |
+| **Berdasarkan Sifat Mutu** | **Data Kualitatif** | Menggambarkan mutu, kualitas, atau kategori non-numerik. | Kualitas layanan ("Sangat Memuaskan"), warna casing ("Hitam Doff"). |
+| | **Data Kuantitatif** | Dinyatakan dalam angka pasti yang dapat dihitung secara matematis. | Total pendapatan kasir (Rp 4.500.000), stok barang (150 pcs). |
+| **Berdasarkan Sumber Asal** | **Data Internal** | Bersumber dari dalam lingkungan organisasi itu sendiri. | Data absensi karyawan, catatan persediaan gudang internal. |
+| | **Data Eksternal** | Bersumber dari luar lingkungan organisasi. | Data inflasi dari BPS, kurs valuta asing Bank Indonesia, harga kompetitor. |
 
-#### 2. Taksonomi & Klasifikasi Sistem
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Dimensi Klasifikasi</th><th>Tipe Sistem A</th><th>Tipe Sistem B</th><th>Contoh Pembeda Nyata</th></tr></thead>
-    <tbody>
-      <tr><td>**Bentuk Wujud**</td><td>**Sistem Abstrak:** Berupa gagasan, ide, teologi pemikiran manusia.</td><td>**Sistem Fisik:** Memiliki wujud materiil dan komponen kebendaan.</td><td>Sistem Filsafat Etika vs Perangkat Keras Komputer</td></tr>
-      <tr><td>**Asal Kejadian**</td><td>**Sistem Alamiah:** Terbentuk secara alami oleh hukum semesta tanpa campur tangan manusia.</td><td>**Sistem Buatan Manusia:** Dirancang dan diimplementasikan oleh manusia.</td><td>Sistem Peredaran Darah Manusia vs Sistem Penggajian Karyawan</td></tr>
-      <tr><td>**Kepastian Operasi**</td><td>**Sistem Deterministik:** Bekerja dengan tingkah laku yang dapat diprediksi secara presisi 100%.</td><td>**Sistem Probabilistik:** Mengandung faktor ketidakpastian dan peluang.</td><td>Program perkalian dua angka vs Sistem Prediksi Harga Saham</td></tr>
-      <tr><td>**Interaksi Lingkungan**</td><td>**Sistem Tertutup:** Terisolasi mandiri, tidak menerima pengaruh energi dari luar.</td><td>**Sistem Terbuka:** Berinteraksi dinamis dengan lingkungan luarnya.</td><td>Eksperimen kimia dalam tabung vakum vs Organisasi Perusahaan Modern</td></tr>
-    </tbody>
-  </table>
-</div>
+#### 3. Definisi Informasi Menurut Gordon B. Davis
+Dalam buku legendaris *Management Information Systems*, Gordon B. Davis merumuskan definisi standar:
+> *"Informasi adalah data yang telah diproses ke dalam suatu bentuk yang mempunyai arti bagi si penerima (meaningful) dan mempunyai nilai nyata serta terasa bagi keputusan saat itu atau keputusan mendatang."*
 
-> [!WARNING]
-> **⚠️ Waspada Jebakan UTS: Hukum Entropi Sistem**
-> Dalam kenyataan empiris, **sistem tertutup mutlak tidak pernah ada** dalam organisasi bisnis. Menurut hukum termodinamika dan teori sistem umum, sistem yang benar-benar tertutup akan mengalami peningkatan **Entropi** (keausan, disintegrasi, hilangnya energi dan informasi) yang berujung pada kepunahan sistem. Oleh karena itu, sistem informasi selalu berkarakteristik **Sistem Terbuka** yang membutuhkan umpan balik (*feedback loop*) untuk mencapai *homeostasis* (keseimbangan dinamis).
+Tiga kata kunci Gordon B. Davis:
+1. **Telah Diproses (*Processed*):** Melalui seleksi, pengurutan, agregasi, atau perhitungan rumus.
+2. **Mempunyai Arti (*Meaningful*):** Memiliki konteks relevan bagi penerimanya.
+3. **Mengurangi Ketidakpastian (*Reducing Uncertainty*):** Membantu pimpinan mengambil keputusan dengan risiko lebih kecil.
 
+#### 4. Hierarki DIKW (Data ➔ Information ➔ Knowledge ➔ Wisdom)
+* **Data (Fakta Mentah):** Angka penjualan harian tanpa ringkasan (`Rp 150.000`, `Rp 200.000`).
+* **Information (Data Berkonteks):** Rekapitulasi penjualan mingguan cabang Pasar Rebo mencapai Rp 15.000.000.
+* **Knowledge (Pola & Wawasan):** Mengetahui bahwa setiap akhir pekan penjualan melonjak karena banyak pembeli keluarga.
+* **Wisdom (Kebijaksanaan & Strategi):** Menambah shift kasir dan stok produk terlaris setiap hari Jumat sore untuk memaksimalkan omset.
+
+---
+
+### Pertemuan 2: Konsep Dasar Informasi, Nilai Informasi & Siklus Pengolahan Data
+- [ ] *Sudah disalin ke lembar binder fisik*
+
+#### 1. Transformasi Data Menjadi Informasi (Slide 3 - 1789306879)
+Sistem pengolahan informasi bertugas mengolah data dari **bentuk tidak berguna** menjadi **bentuk yang berguna** bagi penerimanya.
+* **Contoh Kasus Salesman:** Faktur-faktur penjualan individu dari puluhan salesman merupakan data mentah. Setelah diolah oleh sistem, dihasilkan *Laporan Kinerja Penjualan Bulanan* dan *Laporan Komisi Salesman* yang siap digunakan direktur untuk evaluasi bonus.
+
+#### 2. Siklus Informasi (Information Processing Cycle)
+```text
+[ DATA INPUT ] ────> [ MODEL PROSES / LOGIKA ] ────> [ INFORMASI OUTPUT ]
+      ▲                                                      │
+      │                                                      ▼
+[ HASIL TINDAKAN ] <─── [ KEPUTUSAN & TINDAKAN ] <─── [ PENERIMA KEPUTUSAN ]
+```
+Siklus ini bersifat melingkar tanpa henti: keputusan yang dieksekusi menghasilkan realitas baru yang dicatat kembali sebagai data baru.
+
+#### 3. Nilai Informasi (Value of Information)
+Nilai informasi ditentukan oleh pengaruhnya terhadap perbaikan kualitas keputusan.
+* **Rumus Nilai Bersih Informasi:**
+  `Nilai Bersih Informasi = (Manfaat Keputusan DENGAN Informasi - Manfaat Keputusan TANPA Informasi) - Biaya Memperoleh Informasi`
+* Informasi dikatakan bernilai ekonomis apabila manfaat tambahan yang didapat melampaui seluruh biaya yang dikeluarkan untuk mengumpulkan dan memproses data tersebut.
 
 ---
 
 ### Pertemuan 3: Sumber, Kualitas Informasi & Arsitektur 6 Blok Pembangun SI
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Empat Pilar Kualitas Informasi
+1. **Akurat (Accurate):** Bebas dari kesalahan, tidak menyesatkan, dan mencerminkan maksud sebenarnya.
+2. **Tepat Waktu (Timeliness):** Tiba sebelum keputusan diambil (informasi yang basi tidak memiliki nilai guna).
+3. **Relevan (Relevance):** Sesuai dengan kebutuhan spesifik pihak pemakai (kebutuhan kasir berbeda dengan kebutuhan direktur).
+4. **Ekonomis (Economical):** Biaya produksi informasi tidak boleh melebihi nilai manfaatnya.
 
-#### 1. Siklus Pengolahan Informasi (Information Cycle)
-<p>Siklus informasi menggambarkan bagaimana data mengalir dalam loop tak berujung (*closed-loop feedback*):</p>
-```text
-
-[DATA BARU / FAKTA LAPANGAN]
-             │
-             ▼
-   ┌──────────────────┐
-   │ MASUKAN (INPUT)  │ <── Formulir, sensor, input user
-   └─────────┬────────┘
-             │
-             ▼
-   ┌──────────────────┐
-   │ PENGOLAHAN DATA  │ <── Model logika, program software, rumus
-   └─────────┬────────┘
-             │
-             ▼
-   ┌──────────────────┐
-   │ KELUARAN (OUTPUT)│ <── Laporan, visualisasi grafik, notifikasi
-   └─────────┬────────┘
-             │
-             ▼
-   ┌──────────────────┐
-   │     PENERIMA     │ <── Pengambil keputusan (Manajer / User)
-   └─────────┬────────┘
-             │
-             ▼
-   ┌──────────────────┐
-   │ KEPUTUSAN / AKSI │ <── Tindakan operasional organisasi
-   └─────────┬────────┘
-             │ (Menghasilkan transaksi baru)
-             ▼
-       [DATA BARU] ─── (Kembali berputar ke Siklus Input)
-
-```
-
-#### 2. 4 Pilar Kualitas Informasi
-<ol>
-  <li>**Akurat (Accurate):** Informasi harus bebas dari kesalahan-kesalahan, tidak bias, tidak menyesatkan, dan secara presisi mencerminkan fakta maksudnya. Kesalahan data masukan akan berakibat pada output yang salah (prinsip *GIGO: Garbage In, Garbage Out*). Sub-komponen akurat:
-    <ul>
-      <li>*Kelengkapan (Completeness):* Seluruh data pendukung tersedia utuh tanpa ada yang terpotong.</li>
-      <li>*Kebenaran (Correctness):* Bebas dari salah hitung atau kesalahan pengetikan.</li>
-    </ul>
-  </li>
-  <li>**Tepat Waktu (Timeliness):** Informasi yang datang pada penerima tidak boleh terlambat (usang). Informasi yang kadaluarsa tidak mempunyai nilai guna lagi dalam pengambilan keputusan kompetitif dan justru berisiko menimbulkan kerugian finansial.</li>
-  <li>**Relevan (Relevance):** Informasi harus mempunyai manfaat pemakaian spesifik bagi penerimanya. Relevansi informasi berbeda untuk tiap orang tergantung tingkat jabatan dan fungsinya (misal: manajer keuangan memerlukan laporan neraca laba rugi, bukan log IP address jaringan server).</li>
-  <li>**Ekonomis (Value of Information):** Nilai suatu informasi diukur dari perbandingan antara manfaat (*benefit*) yang didapat dengan biaya (*cost*) yang dikeluarkan untuk memperolehnya. Suatu sistem informasi tidak layak diimplementasikan jika biaya pembuatannya lebih besar daripada nilai tambah operasionalnya.</li>
-</ol>
-
-#### 3. Arsitektur 6 Blok Pembangun Sistem Informasi (John Burch Framework)
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Nama Blok</th><th>Fungsi Spesifik</th><th>Komponen & Contoh Implementasi</th></tr></thead>
-    <tbody>
-      <tr><td>**1. Blok Masukan (Input Block)**</td><td>Metode dan media untuk menangkap data dari sumber aslinya masuk ke sistem</td><td>Keyboard, barcode scanner QRIS, formulir registrasi online, sensor IoT, RFID reader</td></tr>
-      <tr><td>**2. Blok Model (Model Block)**</td><td>Kombinasi prosedur, logika pemrograman, dan model matematika yang memanipulasi data</td><td>Logika perhitungan PPh 21, algoritma rekomendasi e-commerce, rumus depresiasi aset</td></tr>
-      <tr><td>**3. Blok Keluaran (Output Block)**</td><td>Penyajian hasil pemrosesan ke format yang bermakna bagi pengguna</td><td>Faktur tagihan PDF, grafik analitik dashboard React, pesan SMS konfirmasi OTP, laporan audit</td></tr>
-      <tr><td>**4. Blok Teknologi (Technology Block)**</td><td>Kotak alat (tool-box) perangkat penopang jalannya sistem</td><td>Hardware (Server Xeon, PC, RAM), Software (Linux, Windows Server), Jaringan (Router, Fiber Optic, Wi-Fi)</td></tr>
-      <tr><td>**5. Blok Basis Data (Database Block)**</td><td>Tempat penyimpanan kumpulan data terorganisir yang saling berelasi</td><td>RDBMS (PostgreSQL, MySQL, Oracle), NoSQL (MongoDB), Schema tabel, primary key, foreign key</td></tr>
-      <tr><td>**6. Blok Kendali (Control Block)**</td><td>Mekanisme proteksi dan pengamanan sistem dari gangguan, kerusakan, dan serangan</td><td>Enkripsi AES-256, otentikasi 2FA, firewall, sistem backup rutin off-site, uninterruptible power supply (UPS)</td></tr>
-    </tbody>
-  </table>
-</div>
-
+#### 2. 6 Blok Pembangun Sistem Informasi (John Burch Framework)
+| Blok Pembangun | Peran & Fungsi | Komponen Nyata |
+| :--- | :--- | :--- |
+| **1. Blok Masukan (Input)** | Menangkap data mentah dari transaksi | Barcode scanner, formulir web, keyboard, file excel |
+| **2. Blok Model (Model)** | Logika matematika dan aturan bisnis | Rumus diskon, formula laba, algoritma pengurutan |
+| **3. Blok Keluaran (Output)** | Menyajikan informasi berkualitas | Struk kasir, dashboard analitik grafik, laporan PDF |
+| **4. Blok Teknologi (Technology)** | Mesin penggerak perangkat keras & lunak | Server, PC kasir, sistem operasi Linux/Windows, router Wi-Fi |
+| **5. Blok Basis Data (Database)** | Menyimpan data secara aman dan terstruktur | PostgreSQL, MySQL, tabel relasional, media storage SSD |
+| **6. Blok Kendali (Control)** | Melindungi sistem dari kerusakan & serangan | Password bcrypt, otentikasi peran (RBAC), backup berkala |
 
 ---
 
 ### Pertemuan 4: Tingkat Manajemen & Karakteristik Pengambilan Keputusan
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Piramida Tiga Tingkat Manajemen (Robert N. Anthony)
+1. **Top Management (Manajemen Puncak):**
+   * *Aktor:* Direktur Utama, CEO, Rektor.
+   * *Fokus:* Perencanaan strategis jangka panjang (3–5 tahun).
+   * *Karakteristik Informasi:* Ringkasan global, tren eksternal, berorientasi masa depan.
+2. **Middle Management (Manajemen Madya):**
+   * *Aktor:* Kepala Cabang, Manajer Pemasaran, Dekan.
+   * *Fokus:* Pengendalian manajemen taktis (bulanan s.d tahunan).
+   * *Karakteristik Informasi:* Laporan perbandingan realisasi vs anggaran biaya, tren divisi.
+3. **Lower Management (Manajemen Lini Pertama):**
+   * *Aktor:* Supervisor shift kasir, kepala regu operasional.
+   * *Fokus:* Pengendalian operasional teknis harian.
+   * *Karakteristik Informasi:* Terperinci, detail, bersumber internal, real-time transaksi harian.
 
-#### 1. Piramida Tingkat Manajemen (Model Robert N. Anthony)
-<p>Dalam teori manajemen dan sistem informasi, struktur organisasi terbagi menjadi 3 tingkatan manajerial dengan spektrum kebutuhan informasi yang sangat kontras:</p>
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Tingkat Manajerial</th><th>Posisi & Jabatan</th><th>Fokus Perencanaan</th><th>Karakteristik Informasi yang Dibutuhkan</th></tr></thead>
-    <tbody>
-      <tr><td>**Top Management (Manajemen Puncak)**</td><td>CEO, Direktur Utama, Komisaris, Rektor</td><td>Perencanaan Strategis Jangka Panjang (3 - 5 tahun ke depan)</td><td>Sangat ringkas, berorientasi masa depan, bersumber dari lingkungan eksternal (regulasi, makro ekonomi, tren pasar global), non-rutin.</td></tr>
-      <tr><td>**Middle Management (Manajemen Madya)**</td><td>Manajer Pemasaran, Kepala Cabang, Dekan</td><td>Pengendalian Manajemen & Taktis (Bulanan s.d Tahunan)</td><td>Informasi varians anggaran, perbandingan target vs realisasi, ringkasan kinerja per departemen, informasi taktis periodik.</td></tr>
-      <tr><td>**Lower / First-Line Management (Manajemen Lini Pertama)**</td><td>Supervisor, Kepala Regu, Mandor</td><td>Pengendalian Operasional (Harian s.d Mingguan)</td><td>Sangat detail, terperinci, akurat, bersumber internal, repetitif, data transaksi langsung saat itu juga (real-time).</td></tr>
-    </tbody>
-  </table>
-</div>
+#### 2. Taksonomi Tipe Pengambilan Keputusan (Herbert A. Simon)
+* **Keputusan Terstruktur (Structured):** Berulang, rutin, memiliki SOP baku, dapat diotomatisasi 100% oleh software (contoh: kalkulasi denda keterlambatan buku, diskon member).
+* **Keputusan Semi-Terstruktur (Semi-Structured):** Memerlukan kombinasi kalkulasi sistem dan intuisi manajer (contoh: persetujuan limit kredit pelanggan, penentuan alokasi anggaran promo).
+* **Keputusan Tidak Terstruktur (Unstructured):** Kompleks, tidak berpola, sarat ketidakpastian, mengandalkan visi kepemimpinan manusia (contoh: membuka cabang baru di luar negeri, pergantian model bisnis).
 
-#### 2. Taksonomi Tipe Pengambilan Keputusan (Model Herbert A. Simon)
-<ol>
-  <li>**Keputusan Terstruktur (Structured Decision):**
-    <ul>
-      <li>*Definisi:* Keputusan yang berulang-ulang, rutin, dan memiliki prosedur standar operasi (SOP) atau formula algoritma yang pasti sehingga cara penyelesaiannya sudah baku.</li>
-      <li>*Tingkat Keterlibatan Manusia:* Sangat minim; dapat didelegasikan 100% pada sistem perangkat lunak otomatis.</li>
-      <li>*Contoh:* Perhitungan denda keterlambatan buku perpustakaan, penentuan pemotongan pajak PPh 21, auto-reorder stok barang saat menyentuh batas minimum.</li>
-    </ul>
-  </li>
-  <li>**Keputusan Semi-Terstruktur (Semi-Structured Decision):**
-    <ul>
-      <li>*Definisi:* Keputusan yang sebagian prosedurnya terdefinisi dengan jelas oleh aturan/model analitik, tetapi sebagian lainnya tetap memerlukan intuisi, kebijaksanaan, dan pertimbangan subjektif pengambil keputusan manusia.</li>
-      <li>*Tingkat Keterlibatan Manusia:* Kolaboratif; sistem menyediakan model kalkulasi (DSS - Decision Support System), manusia memutuskan pilihan akhir.</li>
-      <li>*Contoh:* Persetujuan permohonan kredit pinjaman bank, alokasi biaya anggaran kampanye iklan digital, penetapan harga sewa properti komersial.</li>
-    </ul>
-  </li>
-  <li>**Keputusan Tidak Terstruktur (Unstructured Decision):**
-    <ul>
-      <li>*Definisi:* Keputusan yang baru pertama kali dihadapi, kompleks, tidak memiliki pedoman baku, dan parameter kondisinya sarat dengan ketidakpastian.</li>
-      <li>*Tingkat Keterlibatan Manusia:* Sangat tinggi; sistem informasi hanya mampu memberikan data ringkasan tren global (EIS - Executive Information System), keputusan murni dari intuisi dan visi strategis pemimpin.</li>
-      <li>*Contoh:* Keputusan melakukan akuisisi perusahaan kompetitor, penutupan pabrik cabang di masa krisis perang, perubahan total model bisnis perusahaan.</li>
-    </ul>
-  </li>
-</ol>
-
+---
+## 2. Bahasa Indonesia (MKWK107)
+* **Dosen Pengampu:** Tim Dosen MKWK Bahasa Indonesia Universitas Indraprasta PGRI
+* **Jadwal & Ruang:** Senin • 10:00 - 11:40 WIB • Ruang R.4.4-4
+* **Berkas Rujukan Asli:** Slide PDF Pertemuan 1–4 di `Tugas_Kuliah/03_Bahasa_Indonesia/Materi_dan_Rangkuman/`
 
 ---
 
-## 2. Bahasa Indonesia (MKWK107)
-* **Dosen Pengampu:** Tim Dosen Bahasa Indonesia Unindra
-* **Jadwal & Ruang:** Senin • 10:00 - 11:40 WIB • Ruang R.4.4-4
-
-### Pertemuan 1: Hakikat Bahasa, Kedudukan & Fungsi Bahasa Indonesia
+### Pertemuan 1: Hakikat, Kedudukan & Fungsi Bahasa Indonesia
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Hakikat Bahasa Menurut Pakar Linguistik (Slide PDF 1789103790)
+* **Harimurti Kridalaksana:** *"Bahasa adalah sistem lambang bunyi yang arbitrer yang digunakan oleh para anggota kelompok sosial untuk bekerja sama, berkomunikasi, dan mengidentifikasikan diri."*
+* **Jos Daniel Parera:** Bahasa sebagai alat komunikasi berperan utama memudahkan interaksi antarmanusia.
+* **KBBI:** Bahasa diartikan sebagai sistem lambang bunyi yang arbitrer yang disepakati untuk berinteraksi.
 
-#### 1. Hakikat Bahasa Menurut Para Ahli Linguistik
-<p>Kajian ilmiah bahasa Indonesia di perguruan tinggi bertumpu pada definisi formal linguistik:</p>
-<ul>
-  <li>**Harimurti Kridalaksana (1993):** *"Bahasa adalah sistem lambang bunyi yang arbitrer yang digunakan oleh para anggota kelompok sosial untuk bekerja sama, berkomunikasi, dan mengidentifikasikan diri."*</li>
-  <li>**Kamus Besar Bahasa Indonesia (KBBI):** Bahasa adalah sistem lambang bunyi yang arbitrer yang digunakan oleh semua anggota masyarakat untuk bekerja sama, berinteraksi, dan mengidentifikasikan diri.</li>
-  <li>**12 Ciri Hakiki Bahasa:**
-    <ol>
-      <li>*Bahasa adalah Sistem:* Bersifat sistematis (tersusun menurut pola teratur) dan sistemik (terdiri atas subsistem fonologi, morfologi, sintaksis, semantik).</li>
-      <li>*Bahasa adalah Lambang:* Memiliki tanda yang mewakili suatu konsep atau makna dalam alam nyata.</li>
-      <li>*Bahasa adalah Bunyi:* Bunyi vokal yang dihasilkan oleh alat ucap manusia (organ of speech). Bunyi non-alat ucap (tepuk tangan, siulan) bukan bahasa.</li>
-      <li>*Bahasa bersifat Arbitrer:* Sewenang-wenang, tidak ada hubungan logis wajib antara lambang bunyi dengan benda yang dilambangkannya (contoh: mengapa hewan berkaki empat pemakan rumput disebut "kuda", bukan "meja").</li>
-      <li>*Bahasa itu Bermakna:* Mengandung konsep atau pesan yang dapat dipahami.</li>
-      <li>*Bahasa bersifat Konvensional:* Disepakati bersama oleh komunitas pemakai bahasa.</li>
-      <li>*Bahasa bersifat Unik:* Memiliki ciri khas spesifik yang tidak dimiliki bahasa lain (misal: bahasa Indonesia tidak mengenal tenses konjugasi kata kerja seperti bahasa Inggris).</li>
-      <li>*Bahasa bersifat Universal:* Semua bahasa memiliki kesamaan universal dasar (memiliki vokal dan konsonan, memiliki subjek dan predikat).</li>
-      <li>*Bahasa bersifat Produktif:* Dari sejumlah unsur terbatas (26 huruf abjad), dapat dihasilkan kalimat yang jumlahnya tidak terhingga.</li>
-      <li>*Bahasa itu Bervariasi:* Memiliki ragam dialek, sosiolek, dan fungsiolek.</li>
-      <li>*Bahasa itu Dinamis:* Selalu berkembang mengikuti perkembangan zaman dan teknologi.</li>
-      <li>*Bahasa itu Manusiawi:* Hanya dimiliki dan digunakan secara sempurna oleh manusia.</li>
-    </ol>
-  </li>
-</ul>
+#### 2. Dua Belas Ciri Hakiki Bahasa:
+1. **Bersistem:** Memiliki pola keteraturan terstruktur (S-P-O-K). Kalimat bermakna harus mematuhi kaidah sistematis.
+2. **Lambang:** Berwujud satuan simbol bunyi yang mewakili benda, konsep, atau perbuatan nyata.
+3. **Bunyi:** Berupa getaran udara yang dihasilkan oleh alat ucap manusia (*organs of speech*).
+4. **Bermakna:** Memiliki konsep rujukan semantik yang dapat dipahami lawan bicara.
+5. **Arbitrer (Manasuka):** Tidak ada hubungan wajib alami antara lambang bunyi dengan wujud bendanya (mengapa disebut "kuda", bukan "kursi").
+6. **Konvensional:** Berdasarkan kesepakatan mufakat antarpengguna bahasa dalam masyarakat tutur.
+7. **Produktif:** Dari 26 huruf alfabet dapat dibentuk kata dan kalimat dalam jumlah tak terhingga.
+8. **Unik:** Memiliki ciri struktur spesifik (misal: bahasa Indonesia tidak mengenal konjugasi waktu/tenses seperti bahasa Inggris).
+9. **Universal:** Semua bahasa memiliki unsur universal dasar (memiliki vokal dan konsonan, memiliki pola kalimat).
+10. **Dinamis:** Terus tumbuh dan berkembang menyerap kosakata baru seiring kemajuan ilmu pengetahuan dan teknologi.
+11. **Bervariasi:** Memiliki aneka ragam dialek geografis, kronolek waktu, dan sosiolek jabatan.
+12. **Manusiawi:** Hanya dimiliki dan digunakan secara sempurna oleh manusia.
 
-#### 2. Kedudukan Bahasa Indonesia: Bahasa Nasional vs Bahasa Negara
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Aspek Pembeda</th><th>Bahasa Indonesia sebagai BAHASA NASIONAL</th><th>Bahasa Indonesia sebagai BAHASA NEGARA</th></tr></thead>
-    <tbody>
-      <tr><td>**Landasan Yuridis**</td><td>**Ikrar Sumpah Pemuda** (28 Oktober 1928, Butir ke-3: *"Menjunjung bahasa persatuan, bahasa Indonesia"*)</td><td>**UUD 1945 Bab XV Pasal 36** (Disahkan pada 18 Agustus 1945: *"Bahasa Negara ialah Bahasa Indonesia"*)</td></tr>
-      <tr><td>**Fungsi 1**</td><td>**Lambang Kebanggaan Kebangsaan:** Mencerminkan nilai-nilai luhur dan kebanggaan jati diri bangsa Indonesia.</td><td>**Bahasa Resmi Kenegaraan:** Dipakai dalam upacara kenegaraan, sidang parlemen, pidato kenegaraan, dokumen resmi hukum.</td></tr>
-      <tr><td>**Fungsi 2**</td><td>**Lambang Identitas Nasional:** Pembeda unik bangsa Indonesia dari bangsa-bangsa lain di pentas global.</td><td>**Bahasa Pengantar Resmi Pendidikan:** Dipakai dari jenjang taman kanak-kanak hingga perguruan tinggi.</td></tr>
-      <tr><td>**Fungsi 3**</td><td>**Alat Pemersatu Bangsa:** Menghubungkan ratusan suku bangsa yang berbeda bahasa daerah tanpa menghilangkan identitas kesukuannya.</td><td>**Alat Perhubungan Tingkat Nasional:** Dipakai dalam perencanaan pembangunan, administrasi pemerintahan, dan rapat koordinasi nasional.</td></tr>
-      <tr><td>**Fungsi 4**</td><td>**Alat Perhubungan Antardaerah & Antarbudaya:** Sarana komunikasi perdagangan dan sosial lintas pulau di Nusantara.</td><td>**Sarana Pengembangan IPTEK & Kebudayaan:** Wahana penulisan jurnal ilmiah, publikasi buku cetak, dan kebudayaan nasional.</td></tr>
-    </tbody>
-  </table>
-</div>
+#### 3. Dualisme Kedudukan Bahasa Indonesia:
+| Aspek Pembeda | Bahasa Nasional | Bahasa Negara |
+| :--- | :--- | :--- |
+| **Landasan Yuridis** | **Ikrar Sumpah Pemuda 28 Oktober 1928** (Butir 3) | **UUD 1945 Bab XV Pasal 36** (18 Agustus 1945) |
+| **Fungsi 1** | Lambang kebanggaan kebangsaan | Bahasa resmi kenegaraan dalam administrasi publik |
+| **Fungsi 2** | Lambang identitas nasional di forum dunia | Bahasa pengantar resmi di institusi pendidikan |
+| **Fungsi 3** | Alat perhubungan antardaerah dan antarsuku | Alat perhubungan tingkat nasional (perencanaan & pembangunan) |
+| **Fungsi 4** | Alat pemersatu aneka ragam suku bangsa | Media pengembangan ilmu pengetahuan, teknologi & kebudayaan |
 
+*Catatan Sejarah Rumpun:* Bahasa Indonesia berakar dari rumpun **Austronesia**, tepatnya dialek **Melayu Riau Tinggi** yang menjadi *Lingua Franca* perdagangan Nusantara dan dibuktikan secara epigrafi pada Prasasti Kedukan Bukit (683 M) serta Talang Tuwo (684 M) Sriwijaya.
 
 ---
 
 ### Pertemuan 2: Menumbuhkan Sikap Positif Terhadap Bahasa Indonesia
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Urgensi Sikap Positif dalam Keberhasilan (Slide PDF 1789341355)
+Mengutip temuan riset Harvard University & pakar Urban: **85% kesuksesan seseorang ditentukan oleh sikapnya (attitude)**, sedangkan hanya 15% ditentukan oleh kecerdasan teknis semata. Titik awal kesuksesan mahasiswa diawali oleh sikap positif terhadap bahasa persatuannya.
 
-#### 1. Teori Sosiolinguistik Sikap Bahasa (Garvin & Mathiot)
-<p>Dalam kajian sosiolinguistik oleh **Paul L. Garvin dan Madeleine Mathiot (1968)**, kualitas pemakaian bahasa suatu masyarakat sangat ditentukan oleh sikap bahasa (*language attitude*). Sikap positif terhadap bahasa ditandai oleh 3 pilar perilaku:</p>
-<ol>
-  <li>**Kesetiaan Berbahasa (Language Loyalty):** Sikap batin yang mendorong suatu kelompok masyarakat penutur untuk mempertahankan kemandirian bahasanya, mencegah masuknya pengaruh bahasa asing secara berlebihan yang berpotensi merusak tatanan gramatikal baku, serta gigih membela eksistensi bahasanya dari ancaman kepunahan.</li>
-  <li>**Kebanggaan Berbahasa (Language Pride):** Sikap emosional yang mendorong orang atau masyarakat mengutamakan bahasanya dan menggunakannya sebagai lambang identitas dan kesatuan bangsa. Lawan dari kebanggaan bahasa adalah sikap *inferioritas* (merasa lebih keren atau lebih terpelajar jika mencampuradukkan istilah asing yang sebenarnya sudah ada padanan bakunya dalam bahasa Indonesia).</li>
-  <li>**Kesadaran akan Adanya Norma/Kaidah Bahasa (Awareness of the Norm):** Kesadaran sukarela untuk menggunakan bahasa secara tertib, cermat, santun, dan taat asas sesuai dengan kaidah baku tata bahasa dan ejaan yang berlaku (EYD V). Sikap ini menjadi faktor pendorong utama seseorang untuk selalu memeriksa kebenaran penulisan karyanya melalui KBBI.</li>
-</ol>
+#### 2. Tiga Pilar Sikap Positif Bahasa (E. Zaenal Arifin, 2009):
+1. **Kesetiaan Berbahasa (*Language Loyalty*):** Keinginan batin untuk mempertahankan kemandirian bahasa Indonesia, mencegah campur aduk istilah asing secara latah tanpa alasan ilmiah.
+2. **Kebanggaan Berbahasa (*Language Pride*):** Rasa bangga mengutamakan bahasa Indonesia sebagai lambang jati diri dan kedaulatan bangsa.
+3. **Kesadaran akan Kaidah Bahasa (*Awareness of Norms*):** Kesadaran sukarela untuk selalu menggunakan kaidah ejaan baku (EYD V) dan tata bahasa yang benar dalam situasi resmi.
 
-#### 2. Paradigma: "Bahasa Indonesia yang Baik dan Benar"
-<ul>
-  <li>**Berbahasa yang BAIK:** Penggunaan bahasa yang sesuai dengan situasi, kondisi, dan konteks komunikasi (siapa yang diajak bicara, topik apa yang dibahas, di mana tempatnya). Situasi non-formal santai di warung kopi tidak perlu menggunakan bahasa baku akademis kaku.</li>
-  <li>**Berbahasa yang BENAR:** Penggunaan bahasa yang patuh dan taat asas terhadap seluruh kaidah gramatikal, fonologi, morfologi, sintaksis, dan kaidah ejaan resmi (EYD).</li>
-  <li>**Kombinasi Sempurna:** Menggunakan bahasa yang tepat sasaran konteksnya (BAIK) dan sekaligus taat asas aturan kaidahnya (BENAR) pada ranah formal seperti penulisan artikel ilmiah, skripsi, presentasi akademik, dan surat kedinasan.</li>
-</ul>
+#### 3. Tiga Komponen Sikap (Lambert & Chaer):
+* **Komponen Kognisi (Pengetahuan):** Pemahaman akan aturan ejaan, pilihan kata, dan struktur tata bahasa.
+* **Komponen Afeksi (Emosi/Perasaan):** Rasa cinta, bangga, dan menghargai nilai luhur bahasa Indonesia.
+* **Komponen Konasi (Perilaku Nyata):** Tindakan konkret menulis dan berbicara secara santun, tertib kaidah, dan tidak menyalahi aturan tata tulis.
 
+#### 4. Kaidah Emas: Berbahasa yang BAIK dan BENAR
+* **Bahasa yang Baik:** Sesuai konteks situasi komunikasi (santai dengan kawan sebaya, formal saat presentasi kelas).
+* **Bahasa yang Benar:** Tunduk patuh pada kaidah tata bahasa, ejaan resmi EYD V, dan kamus resmi KBBI.
 
 ---
 
-### Pertemuan 3: Sejarah & Tonggak Perkembangan Bahasa Indonesia
+### Pertemuan 3: EYD Edisi V (Pemakaian Huruf, Tanda Baca & Penulisan Kata)
 - [ ] *Sudah disalin ke lembar binder fisik*
+* **Acuan Resmi:** *Keputusan Kepala Badan Pengembangan dan Pembinaan Bahasa No. 0424/I/BS.00.01/2022* (Slide Modul 99 Halaman).
 
+#### 1. Pemakaian Huruf dalam EYD Edisi V
+* **26 Huruf Alfabet:** Terdiri dari 5 huruf vokal (A, E, I, O, U) dan 21 konsonan.
+* **Diakritik Huruf E Pepet [ə] vs E Taling [e]:**
+  Untuk menghindari salah tafsir makna, tanda diakritik (ê) dapat dicantumkan pada e pepet:
+  * `teras` (lantai pelataran rumah) vs `têras` (pejabat utama bank/pemerintahan).
+  * `seri` (berurutan) vs `sêri` (imbang tanpa pemenang).
+  * `seret` (menarik paksa benda berat) vs `sêrêt` (tersendat di kerongkongan).
+* **Huruf Konsonan Khusus Q dan X:** Khusus untuk nama diri atau istilah ilmiah. Huruf `x` di awal kata dilafalkan [s] (contoh: *xenon* dibaca *senon*), di tengah/akhir dilafalkan [ks] (contoh: *kompleks*).
+* **1 Monoftong Baru:** Gabungan vokal `eu` yang dilafalkan [ɘ] khas serapan bahasa daerah (contoh: *eurih*, *seudati*, *sadeu*).
+* **4 Diftong Resmi:** Gabungan vokal `ai`, `au`, `ei`, `oi` (contoh: *aikido*, *kailan*, *pandai*, *taufik*, *survei*, *amboi*).
 
-#### 1. Asal-Usul Rumpun Austronesia & Dialek Melayu Riau
-<p>Berdasarkan kajian linguistik historis komparatif, bahasa Indonesia berinduk dari rumpun **Austronesia** (bahasa kepulauan selatan). Sekitar 25 abad lalu terjadi migrasi bangsa dari daratan Formosa (Taiwan) menuju selatan menyusuri Filipina, Kalimantan, Sumatera, hingga Madagaskar.</p>
-<p>Bahasa Melayu yang berkembang pesat adalah **Melayu Riau** (Melayu Tinggi di sekitar Kepulauan Riau dan Semenanjung Malaka). Sejak abad ke-7, bahasa Melayu telah berfungsi sebagai *Lingua Franca* (bahasa perantara/pergaulan) bagi para pedagang antarpulau, pelaut, dan penyebar agama di kawasan Nusantara.</p>
+#### 2. Kaidah Kritis Huruf Kapital, Miring, dan Tebal
+* **Kapital Nama Geografi:**
+  * Wajib kapital jika diikuti nama diri geografis: *Gunung Rinjani*, *Danau Toba*, *Selat Sunda*, *Jalan Margonda*.
+  * Tulis huruf kecil jika bukan nama diri: *berlayar ke selat*, *mendaki gunung*.
+  * **Jebakan Ujian:** Nama diri geografi yang menjadi nama jenis makanan/benda ditulis huruf kecil: *jeruk bali*, *kunci inggris*, *petai cina*, *pisang ambon*, *gula jawa*.
+  * Tetapi corak khas budaya daerah tetap kapital: *batik Pekalongan*, *tarian Bali*, *soto Madura*.
+* **Huruf Miring (Italics):** Judul buku/majalah yang dikutip (*Buku Algoritma Pemrograman*), kata asing/daerah yang belum diserap (*metode waterfall*, *online*).
 
-#### 2. Bukti Epigrafi Abad ke-7 Kerajaan Sriwijaya
-<p>Keberadaan bahasa Melayu Kuno terekam abadi dalam prasasti-prasasti batu bertuliskan aksara Pallawa peninggalan Kemaharajaan Sriwijaya:</p>
-<ol>
-  <li>**Prasasti Kedukan Bukit (683 M)** di Palembang, menceritakan perjalanan suci (*siddhayatra*) Dapunta Hyang membawa 20.000 tentara.</li>
-  <li>**Prasasti Talang Tuwo (684 M)** di Palembang, tentang pembangunan Taman Sriksetra untuk kemakmuran semua makhluk.</li>
-  <li>**Prasasti Kota Kapur (686 M)** di Pulau Bangka, memuat kutukan bagi mereka yang memberontak kepada Sriwijaya.</li>
-  <li>**Prasasti Karang Brahi (686 M)** di Jambi, berisi doa keselamatan dan kepatuhan rakyat.</li>
-</ol>
+#### 3. Penulisan Kata Depan (Preposisi) vs Awalan (Prefiks)
+| Kategori | Posisi & Bentuk | Aturan Baku EYD | Contoh Benar | Jebakan Salah (UTS) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Kata Depan (`di`, `ke`, `dari`)** | Menunjukkan arah/tempat | **DIPISAH** dengan spasi | `di kampus`, `ke Jakarta`, `dari Depok` | ❌ *dikampus*, *keatas* |
+| **Awalan (`di-`, `ke-`)** | Membentuk kata kerja/benda | **DISERANGKAIKAN** (menyatu) | `ditulis`, `dikerjakan`, `ketua`, `kehendak` | ❌ *di tulis*, *di kerjakan* |
 
-#### 3. 4 Alasan Mengapa Bahasa Melayu Diangkat Menjadi Bahasa Indonesia
-> [!NOTE]
-> **💡 4 Faktor Penentu Pengangkatan Bahasa Melayu (Sidang Kongres Pemuda 1928)**
-> <ol>
-    <li>**Sudah Menjadi Lingua Franca:** Bahasa Melayu sudah berabad-abad menjadi bahasa pergaulan antarsuku di seluruh Nusantara tanpa menimbulkan kesulitan komunikasi.</li>
-    <li>**Sistem Sederhana & Demokratis:** Tata bahasa Melayu tidak mengenal tingkatan tutur sosial yang rumit (berbeda dengan bahasa Jawa atau Sunda yang memiliki undak-usuk/tingkatan bahasa kasar, menengah, dan halus). Bahasa Melayu mudah dipelajari oleh siapapun.</li>
-    <li>**Keikhlasan dan Kerelaan Suku Lain:** Suku Jawa, Sunda, Madura, dan suku-suku lain dengan sukarela dan lapang dada menerima bahasa Melayu menjadi bahasa persatuan demi integrasi nasional.</li>
-    <li>**Kemampuan Psikologis & Fleksibilitas:** Bahasa Melayu memiliki kesanggupan luar biasa untuk menyerap kosakata asing (Arab, Sanskerta, Belanda, Inggris) dan berkembang dinamis menjadi bahasa ilmu pengetahuan modern.</li>
-  </ol>
-
-#### 4. Periodisasi Evolusi Ejaan Resmi Bahasa Indonesia
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Nama Ejaan</th><th>Tahun Berlaku</th><th>Karakteristik & Ciri Huruf Khas</th><th>Contoh Kata</th></tr></thead>
-    <tbody>
-      <tr><td>**Ejaan Van Ophuijsen**</td><td>1901 – 1947</td><td>Disusun oleh Ch. A. Van Ophuijsen (Belanda). Memakai huruf `oe` untuk /u/, huruf `dj` untuk /j/, `tj` untuk /c/, `ch` untuk /kh/, tanda diakritik trema (ä, ï) dan tanda koma ain.</td><td>*Soerabaia, djoewal, tjoetji, ma'moer*</td></tr>
-      <tr><td>**Ejaan Soewandi (Ejaan Republik)**</td><td>1947 – 1972</td><td>Diresmikan Menteri PPK Mr. Soewandi. Mengganti `oe` menjadi `u`. Tanda koma ain diganti huruf `k`. Angka 2 dipakai untuk kata ulang.</td><td>*Surabaja, jual, tjuci, makmur, anak2*</td></tr>
-      <tr><td>**Ejaan Yang Disempurnakan (EYD I)**</td><td>1972 – 2015</td><td>Diresmikan Presiden Soeharto. Standardisasi besar-besaran: `dj` -> `j`, `tj` -> `c`, `j` -> `y`, `ch` -> `kh`, `nj` -> `ny`, `sj` -> `sy`. Penulisan kata ulang wajib tanda hubung (-).</td><td>*Surabaya, jual, cuci, makmur, anak-anak*</td></tr>
-      <tr><td>**PUEBI (Pedoman Umum Ejaan Bahasa Indonesia)**</td><td>2015 – 2022</td><td>Diterbitkan Badan Bahasa Kemendikbud. Menambahkan diftong `ei`, huruf kapital untuk julukan, aturan huruf tebal.</td><td>*survei, geiser*</td></tr>
-      <tr><td>**EYD Edisi V**</td><td>2022 – Sekarang</td><td>Ditetapkan via Kepmendikbudristek No. 396/P/2022. Penambahan monoftong `eu` (Sunda/Aceh), penegasan tanda baca modern, aturan penyerapan istilah ilmiah baru.</td><td>*seuleukeub, sadeu*</td></tr>
-    </tbody>
-  </table>
-</div>
-
+#### 4. Kaidah Tanda Baca Penting
+* **Tanda Koma (`,`):** Wajib dipakai sebelum konjungsi perincian terakhir (*buku, pena, dan penggaris*), serta setelah konjungsi antarkalimat (*Oleh karena itu, ...*, *Namun, ...*).
+* **Tanda Titik Dua (`:`):** Dipakai di akhir pernyataan lengkap yang diikuti rincian. Jika perincian itu kelanjutan langsung kalimat, tanda titik dua TIDAK boleh digunakan.
+* **Tanda Hubung (`-`) vs Tanda Pisah (`—` / em dash):** Tanda hubung merangkai kata ulang (*anak-anak*) atau se-Indonesia (*se-DKI*). Tanda pisah membatasi penyisipan keterangan tambahan (*kemerdekaan bangsa—saya yakin akan tercapai—diperjuangkan oleh rakyat*).
 
 ---
 
-### Pertemuan 4: Kaidah Baku EYD Edisi V (Pemakaian Huruf, Kata & Tanda Baca)
+### Pertemuan 4: Bentuk dan Pilihan Kata (Diksi) & Aturan Hukum K/T/S/P
 - [ ] *Sudah disalin ke lembar binder fisik*
+* **Acuan Resmi:** `1790563821_Pertemuan_4-Bahasa_Indonesia_Unindra_OBE.pdf` (55 Slide Lengkap).
 
+#### 1. Taksonomi Bentuk Kata
+1. **Kata Dasar:** Satuan bahasa paling sederhana yang belum memiliki afiksasi (contoh: *nanti*, *siang*, *pergi*, *kampus*).
+2. **Kata Berimbuhan (Afiksasi):** Penambahan morfem terikat pada bentuk dasar:
+   * **Prefiks (Awalan):** `ber-`, `di-`, `ke-`, `me-`, `pe-`, `se-`, `ter-`.
+   * **Infiks (Sisipan):** `-el-` (telunjuk), `-er-` (gerigi), `-em-` (gemetar).
+   * **Sufiks (Akhiran):** `-an`, `-kan`, `-i`.
+   * **Konfiks (Gabungan Serentak):** `ke-...-an`, `pe-...-an`, `per-...-an`.
+3. **Kata Ulang (Reduplikasi):** Dwipurwa (pepohonan), dwilingga (buku-buku), salin suara (sayur-mayur).
+4. **Akronim:** Singkatan yang dilafalkan sebagai kata wajar (contoh: *Unindra*, *kaltim*, *pemilu*).
 
-#### 1. Kaidah Kritis Pemakaian Huruf Kapital
-<ul>
-  <li>Huruf pertama pada awal kalimat (*Mahasiswa sedang belajar.*).</li>
-  <li>Huruf pertama unsur nama orang, termasuk julukan (*Amir Hamzah*, *Ayam Jantan dari Timur*).</li>
-  <li>Huruf pertama nama tahun, bulan, hari, dan hari besar/keagamaan (*tahun Masehi, bulan Agustus, hari Jumat, hari Idulfitri*).</li>
-  <li>Huruf pertama nama bangsa, suku bangsa, dan bahasa (*bangsa Indonesia, suku Sunda, bahasa Inggris*; catatan: jika menjadi kata turunan, huruf kecil: *mengindonesiakan*, *keinggris-inggrisan*).</li>
-  <li>Huruf pertama nama geografi spesifik (*Gunung Merapi, Danau Toba, Selat Sunda, Jalan Sudirman*).<br>
-    ⚠️ **Pengecualian Penting UTS:**
-    <ul>
-      <li>Nama geografi yang BUKAN nama diri ditulis kecil: *berlayar ke teluk, menyeberangi selat, mendaki gunung*.</li>
-      <li>Nama geografi yang dipakai sebagai nama jenis makanan/benda ditulis huruf kecil: *jeruk bali, kunci inggris, petai cina, pisang ambon, kacang bogor*.</li>
-      <li>Tetapi corak/khas budaya daerah tetap kapital: *batik Solo, tarian Bali, masakan Padang*.</li>
-    </ul>
-  </li>
-</ul>
+#### 2. HUKUM EMAS PELULUHAN FONEM K / T / S / P (SANGAT SERING KELUAR DI UTS!)
+Aturan baku pengimbuhan awalan `me-` atau `pe-` pada kata dasar:
 
-#### 2. Kaidah Pemakaian Huruf Miring (Italic)
-<ul>
-  <li>Menuliskan judul buku, majalah, atau surat kabar yang dikutip dalam tulisan (*Majalah Tempo, buku Pengantar Ilmu Komputer*).</li>
-  <li>Menegaskan atau mengkhususkan huruf, bagian kata, atau kelompok kata (*Huruf pertama kata abad adalah a.*).</li>
-  <li>Menuliskan kata atau ungkapan dalam bahasa daerah atau bahasa asing yang belum dibakukan ke dalam bahasa Indonesia (*Sistem ini menggunakan metode waterfall.*).</li>
-</ul>
+##### Aturan A (LULUH):
+Jika kata dasar diawali fonem **K, T, S, P** dan huruf KEDUA adalah **VOKAL (a, i, u, e, o)**, maka fonem tersebut **WAJIB LULUH** menjadi bunyi sengau:
+* **K + Vokal ➔ Luluh Menjadi Meng- / Peng-:**
+  * `me-` + **k**upas ➔ **mengupas** (BUKAN *mengkupas*)
+  * `pe-` + **k**elola ➔ **pengelola** (BUKAN *pengkelola*)
+* **T + Vokal ➔ Luluh Menjadi Men- / Pen-:**
+  * `me-` + **t**ulis ➔ **menulis** (BUKAN *mentulis*)
+  * `pe-` + **t**olong ➔ **penolong** (BUKAN *pentolong*)
+* **S + Vokal ➔ Luluh Menjadi Meny- / Peny-:**
+  * `me-` + **s**iram ➔ **menyiram** (BUKAN *mensiram*)
+  * `pe-` + **s**ewa ➔ **penyewa** (BUKAN *ponsewa / pensewa*)
+* **P + Vokal ➔ Luluh Menjadi Mem- / Pem-:**
+  * `me-` + **p**ilih ➔ **memilih** (BUKAN *mempilih*)
+  * `pe-` + **p**andu ➔ **pemandu** (BUKAN *pempandu*)
 
-#### 3. Kaidah Penulisan Kata: Kata Depan vs Awalan
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Bentuk</th><th>Fungsi Gramatikal</th><th>Aturan Penulisan</th><th>Contoh Penulisan Benar</th><th>Contoh Salah (Jebakan UTS)</th></tr></thead>
-    <tbody>
-      <tr><td>**Kata Depan (Preposisi) `di`, `ke`, `dari`**</td><td>Menunjukkan tempat keberadaan, arah tujuan, atau asal</td><td>Ditulis **TERPISAH** dengan spasi dari kata yang mengikutinya</td><td>`di kampus`, `di rumah`, `ke Jakarta`, `ke atas`, `dari Bogor`</td><td><span style="color:var(--rose)">diperkuliahan</span>, <span style="color:var(--rose)">dirumah</span>, <span style="color:var(--rose)">kekampus</span></td></tr>
-      <tr><td>**Awalan (Prefiks) `di-`, `ke-`**</td><td>Membentuk kata kerja pasif atau kata benda/bilangan</td><td>Ditulis **SERANGKAI** (menyatu tanpa spasi) dengan kata dasarnya</td><td>`ditulis`, `dianalisis`, `dikerjakan`, `ketua`, `kehendak`, `kesatu`</td><td><span style="color:var(--rose)">di tulis</span>, <span style="color:var(--rose)">di analisis</span>, <span style="color:var(--rose)">di kerjakan</span></td></tr>
-    </tbody>
-  </table>
-</div>
+##### Aturan B (TIDAK LULUH / KEKAL):
+Jika kata dasar diawali fonem **K, T, S, P** dan huruf KEDUA adalah **KONSONAN (Kluster / Gugus Konsonan)**, maka fonem tersebut **TIDAK BOLEH LULUH**:
+* `me-` + **kl**asifikasi ➔ **mengklasifikasi** (huruf kedua konsonan 'l')
+* `me-` + **tr**ansfer ➔ **mentransfer** (huruf kedua konsonan 'r')
+* `me-` + **st**empel ➔ **menstempel** (huruf kedua konsonan 't')
+* `me-` + **pr**ogram ➔ **memprogram** (huruf kedua konsonan 'r')
+* *Pengecualian Pelaku:* Kata turunan `pe-` + program dapat membentuk nomina pelaku: **pemrogram** atau proses: **pemrograman**.
 
-#### 4. Kaidah Tanda Baca Esensial (Titik Koma, Titik Dua & Koma)
-<ul>
-  <li>**Tanda Koma (`,`):**
-    <ul>
-      <li>Wajib diletakkan di antara unsur-unsur dalam suatu perincian atau pembilangan (*Saya membeli kertas, tinta, dan printer.*). Perhatikan tanda koma sebelum kata "dan" adalah **wajib** dalam EYD!</li>
-      <li>Wajib diletakkan di belakang kata atau ungkapan penghubung antarkalimat (*Oleh karena itu, ...*; *Namun, ...*; *Meskipun demikian, ...*; *Jadi, ...*).</li>
-    </ul>
-  </li>
-  <li>**Tanda Titik Dua (`:`):** Digunakan pada akhir suatu pernyataan lengkap yang diikuti rincian atau penjelasan. Jika rincian itu merupakan pelengkap kalimat yang menyatu, tanda titik dua **TIDAK** digunakan (contoh benar: *Kita memerlukan perabot: kursi, meja, dan lemari.* &bull; contoh salah: *Kita memerlukan: kursi, meja, dan lemari.*).</li>
-</ul>
-
+#### 3. Syarat Pemilihan Kata (Diksi) dalam Tulisan Akademik
+1. **Ketepatan (Accuracy):** Membedakan makna denotasi (makna lugas kamus) vs konotasi (makna asosiatif emosional). Menghindari kata ambigu.
+2. **Kesesuaian (Appropriateness):** Memilih kata yang cocok dengan ranah ilmiah (gunakan *membuat*, bukan *bikin*; gunakan *karena*, bukan *lantaran*).
+3. **Kelaziman (Idiomatic Usage):** Memperhatikan kolokasi kata yang lazim (contoh: *menyampaikan pendapat*, *mengambil keputusan*).
 
 ---
-
 ## 3. Algoritma 1
-* **Dosen Pengampu:** Pak Rizki / Pak Rahmat
+* **Dosen Pengampu:** Tim Dosen Algoritma FTIK Unindra
 * **Jadwal & Ruang:** Selasa • 07:30 - 09:10 WIB • Ruang R.4.5-3
+* **Berkas Rujukan:** Slide Pertemuan 1–4 di `Tugas_Kuliah/01_Algoritma_dan_Pemrograman_1/Rangkuman/`
+
+---
 
 ### Pertemuan 1: Pengantar Logika Komputasi, Etimologi & Kriteria Algoritma
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-
 #### 1. Sejarah & Asal-Usul Etimologi Algoritma
-<p>Kata **Algoritma** berasal dari pelafalan bangsa barat terhadap nama ilmuwan dan matematikawan muslim terkemuka abad pertengahan (abad ke-9 Masehi), **Abu Ja'far Muhammad bin Musa Al-Khawarizmi** (780–850 M) yang lahir di Khwarazm (sekarang Khiva, Uzbekistan). Melalui kitab monumentalnya *Al-Kitab al-mukhtasar fi hisab al-jabr wa'l-muqabala* (Buku Rangkuman Perhitungan dengan Penyelesaian dan Pengimbangan), beliau meletakkan dasar-dasar ilmu Aljabar dan sistem penomoran desimal dengan angka nol.</p>
-<p>Dalam bahasa Latin, namanya diterjemahkan menjadi *Algoritmi*, yang kemudian berevolusi menjadi *algorism* (metode berhitung dengan angka Arab), dan akhirnya menjadi **algorithm** (algoritma).</p>
+Kata **Algoritma** berasal dari nama matematikawan muslim abad ke-9, **Abu Ja'far Muhammad bin Musa Al-Khawarizmi** (780–850 M). Melalui karyanya *Al-Kitab al-mukhtasar fi hisab al-jabr wa'l-muqabala*, beliau meletakkan fondasi ilmu hitung desimal dan Aljabar modern. Di dunia barat, namanya dilafalkan sebagai *Algorismus*, lalu berevolusi menjadi istilah *algorithm*.
 
-#### 2. Definisi Formal Algoritma
-<ul>
-  <li>**KBBI:** *Urutan logis pengambilan putusan untuk pemecahan suatu masalah.*</li>
-  <li>**Ilmu Komputer Modern:** Suatu himpunan berhingga dari instruksi-instruksi yang terdefinisi secara jelas, logis, dan sistematis yang mentransformasikan data masukan (*input*) menjadi keluaran (*output*) yang memenuhi spesifikasi yang diinginkan dalam jumlah langkah yang berhingga.</li>
-  <li>**Hubungan Program dan Algoritma:**
-    <p>Menurut Bapak Pemrograman Terstruktur, **Prof. Niklaus Wirth**:</p>
-    <div style="background:var(--surface-elevated); padding:8px 14px; border-left:4px solid var(--primary); font-family:var(--font-mono); font-weight:700;">
-      PROGRAM = ALGORITMA + STRUKTUR DATA
-    </div>
-    <p>Algoritma adalah otak/logika dari penyelesaian masalah, sedangkan bahasa pemrograman adalah alat/kendaraan untuk mengekspresikan algoritma tersebut agar dapat dipahami dan dijalankan oleh prosesor komputer.</p>
-  </li>
-</ul>
+#### 2. Definisi & Rumus Klasik Niklaus Wirth
+Prof. Niklaus Wirth merumuskan kaitan fundamental pemrograman:
+> **PROGRAM = ALGORITMA + STRUKTUR DATA**
+* *Algoritma:* Langkah logika terstruktur pemecah masalah.
+* *Struktur Data:* Cara pengorganisasian data dalam memori komputer.
 
-#### 3. 5 Kriteria Wajib Algoritma Baik (Donald E. Knuth)
-<p>Dalam mahakaryanya *The Art of Computer Programming*, Donald Ervin Knuth menetapkan 5 kriteria mutlak yang harus dipenuhi oleh setiap algoritma:</p>
-<ol>
-  <li>**Finiteness (Keterbatasan):** Algoritma harus berakhir (berhenti) setelah melakukan sejumlah langkah komputasi yang berhingga. Algoritma yang berjalan selamanya tanpa akhir (mengalami *infinite loop*) dianggap cacat secara komputasi.</li>
-  <li>**Definiteness (Kepastian / Tidak Ambigu):** Setiap langkah instruksi harus didefinisikan secara tepat, gamblang, dan tidak memiliki makna ganda (ambiguitas). Sebagai contoh: instruksi "tambahkan sedikit garam" adalah tidak definitif, sedangkan "tambahkan 5 gram garam" adalah definitif.</li>
-  <li>**Input (Masukan):** Algoritma memiliki nol atau lebih masukan (*input*) yang diberikan kepada algoritma sebelum algoritma mulai bekerja atau saat algoritma sedang berjalan. Batasan dan tipe domain input harus didefinisikan dengan jelas.</li>
-  <li>**Output (Keluaran):** Algoritma memiliki satu atau lebih keluaran (*output*). Keluaran ini merupakan hasil pemrosesan dan solusi atas masalah yang diselesaikan. Algoritma yang tidak menghasilkan keluaran apapun adalah sia-sia.</li>
-  <li>**Effectiveness (Efektivitas / Keterlaksanaan):** Setiap langkah instruksi harus bersifat sederhana, mekanis, dan mendasar sehingga dapat benar-benar dikerjakan oleh komputer atau manusia dalam rentang waktu yang wajar (kompleksitas waktu dan memori yang realistis).</li>
-</ol>
-
-#### 4. 3 Metode Penyajian Algoritma
-<ol>
-  <li>**Deskriptif (Bahasa Alami):** Menuliskan instruksi langkah demi langkah menggunakan kalimat bahasa manusia sehari-hari. Kelemahan: bertele-tele dan rentan ambigu.</li>
-  <li>**Pseudocode:** Kode semu yang meniru struktur sintaks bahasa pemrograman tingkat tinggi (seperti Pascal atau C) namun tanpa terikat aturan sintaks compiler yang ketat. Menggunakan kata kunci seperti `READ`, `WRITE`, `IF-THEN-ELSE`, `WHILE-DO`.</li>
-  <li>**Flowchart:** Penyajian algoritma menggunakan simbol-simbol grafis terstandar yang dihubungkan dengan garis alir panah untuk menunjukkan arah eksekusi logika.</li>
-</ol>
-
+#### 3. Lima Kriteria Mutlak Algoritma Baik (Donald E. Knuth):
+1. **Finiteness (Keterbatasan):** Algoritma wajib berhenti setelah sejumlah langkah berhingga (dilarang *infinite loop*).
+2. **Definiteness (Kepastian):** Setiap instruksi harus jelas, eksplisit, dan tidak menimbulkan makna ganda.
+3. **Input (Masukan):** Memiliki nol atau lebih nilai masukan yang diberikan dari luar.
+4. **Output (Keluaran):** Memiliki satu atau lebih hasil keluaran sebagai solusi masalah.
+5. **Effectiveness (Efektivitas):** Setiap langkah harus cukup sederhana sehingga dapat dikerjakan dalam waktu yang wajar.
 
 ---
 
 ### Pertemuan 2: Tipe Data Primitif, Operator Komputasi & Hierarki Presedensi
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Klasifikasi Tipe Data Standar
+* **Integer:** Bilangan bulat tanpa koma desimal (`Shortint`, `Integer`, `Longint`).
+* **Real:** Bilangan pecahan/desimal berkoma mengambang (`Real`, `Single`, `Double`).
+* **Char:** Karakter tunggal alfanumerik (diapit petik tunggal, misal `'A'`, `'9'`).
+* **String:** Untaian beberapa karakter teks (misal `'Universitas Indraprasta'`).
+* **Boolean:** Nilai logika kebenaran biner (`TRUE` atau `FALSE`).
 
-#### 1. Tipe Data Primitif & Karakteristik Komputasi
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Tipe Data</th><th>Domain & Rentang Nilai</th><th>Ukuran Memori</th><th>Karakteristik & Contoh Nilai</th></tr></thead>
-    <tbody>
-      <tr><td>**Integer**</td><td>Bilangan bulat negatif, nol, positif: `-32.768` s.d `32.767` (16-bit)</td><td>2 atau 4 byte</td><td>Tidak memuat pecahan desimal. Contoh: `-15, 0, 100`</td></tr>
-      <tr><td>**Real / Float**</td><td>Bilangan pecahan / desimal: `2.9e-39` s.d `1.7e38`</td><td>4 atau 8 byte</td><td>Menggunakan titik sebagai pemisah desimal. Contoh: `3.14159, -0.05`</td></tr>
-      <tr><td>**Char**</td><td>Satu karakter tunggal kode ASCII (0 - 255)</td><td>1 byte (8-bit)</td><td>Diapit tanda petik tunggal. Contoh: `'A', '9', '%', ' '`</td></tr>
-      <tr><td>**String**</td><td>Rangkaian teks / untaian karakter (array of char)</td><td>1 s.d 256 byte</td><td>Diapit tanda petik tunggal. Contoh: `'FTIK Unindra 2026'`</td></tr>
-      <tr><td>**Boolean**</td><td>Nilai logika biner: hanya `TRUE` atau `FALSE`</td><td>1 byte</td><td>Hasil dari operasi relasional atau kondisi logika.</td></tr>
-    </tbody>
-  </table>
-</div>
-
-#### 2. Operator Aritmatika, Relasional & Logika
-<ul>
-  <li>**Operator Aritmatika:** `+` (penjumlahan), `-` (pengurangan), `*` (perkalian), `/` (pembagian real), `DIV` (pembagian bulat), `MOD` (sisa hasil bagi).</li>
-  <li>**Operator Relasional (Pembanding):** `=` (sama dengan), `&lt;&gt;` (tidak sama dengan), `&lt;` (kurang dari), `&gt;` (lebih dari), `&lt;=` (kurang dari atau sama dengan), `&gt;=` (lebih dari atau sama dengan). Hasil evaluasi selalu berupa tipe data **Boolean** (True/False).</li>
-  <li>**Operator Logika (Aljabar Boolean):**
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>P</th><th>Q</th><th>NOT P</th><th>P AND Q</th><th>P OR Q</th><th>P XOR Q</th></tr></thead>
-        <tbody>
-          <tr><td>TRUE</td><td>TRUE</td><td>FALSE</td><td>**TRUE**</td><td>TRUE</td><td>FALSE</td></tr>
-          <tr><td>TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>**TRUE**</td><td>**TRUE**</td></tr>
-          <tr><td>FALSE</td><td>TRUE</td><td>TRUE</td><td>FALSE</td><td>**TRUE**</td><td>**TRUE**</td></tr>
-          <tr><td>FALSE</td><td>FALSE</td><td>TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </li>
-</ul>
-
-#### 3. Presedensi Operator (Urutan Tingkat Kekuatan Eksekusi)
-<ol>
-  <li>Tingkat 1 (Paling Tinggi): Tanda kurung `( ... )`</li>
-  <li>Tingkat 2: Operator negasi logika `NOT`, tanda minus unari `-`</li>
-  <li>Tingkat 3 (Multiplikatif): `*`, `/`, `DIV`, `MOD`, `AND`</li>
-  <li>Tingkat 4 (Aditif): `+`, `-`, `OR`, `XOR`</li>
-  <li>Tingkat 5 (Paling Rendah): Operator relasional `=`, `&lt;&gt;`, `&lt;`, `&lt;=`, `&gt;`, `&gt;=`</li>
-</ol>
-<p>*Contoh Soal UTS:* Hitung nilai ekspresi logika: `(5 + 3 * 2 > 10) AND NOT (4 MOD 2 = 0)`<br>
-Langkah: `3 * 2 = 6` -> `5 + 6 = 11` -> `11 > 10` (TRUE). Sisi kanan: `4 MOD 2 = 0` -> `0 = 0` (TRUE) -> `NOT(TRUE)` = FALSE. Maka: `TRUE AND FALSE` = **FALSE**.</p>
-
+#### 2. Operator Komputasi & Presedensi:
+* **Aritmatika:** `+` (tambah), `-` (kurang), `*` (kali), `/` (bagi real), `div` (bagi bulat integer), `mod` (sisa bagi modulo).
+* **Relasional:** `=` (sama dengan), `<>` (tidak sama dengan), `<`, `>`, `<=`, `>=`.
+* **Logika:** `NOT` (kebalikan), `AND` (keduanya benar), `OR` (salah satu benar).
+* **Urutan Presedensi Tertinggi ke Terendah:**
+  1. Ekspresi di dalam kurung `( )`
+  2. Operator `NOT`
+  3. Operator perkalian/pembagian: `*`, `/`, `div`, `mod`, `AND`
+  4. Operator penjumlahan/pengurangan: `+`, `-`, `OR`
+  5. Operator relasional: `=`, `<>`, `<`, `>`, `<=`, `>=`
 
 ---
 
-### Pertemuan 3: Representasi Flowchart & Standar Simbol ANSI
+### Pertemuan 3: Standar Simbol Flowchart ANSI & Logika Alur
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-
-#### 1. Definisi & Fungsi Flowchart
-<p>**Flowchart (Bagan Alir)** adalah representasi grafis dari langkah-langkah penyelesaian masalah dalam suatu program yang dinyatakan melalui simbol-simbol geometris berstandar ANSI (*American National Standards Institute*) dan dihubungkan oleh garis arah aliran instruksi.</p>
-<p>**Fungsi Utama:**</p>
-<ul>
-  <li>Sebagai cetak biru (blueprint) perancangan program sebelum menulis kode.</li>
-  <li>Memudahkan identifikasi kesalahan logika (*logic debugging*).</li>
-  <li>Media dokumentasi teknis dan komunikasi alur kerja program kepada tim developer lain.</li>
-</ul>
-
-#### 2. Daftar Simbol Baku Flowchart Program (ANSI)
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Simbol</th><th>Bentuk Geometri</th><th>Nama Baku</th><th>Penjelasan Fungsi & Kaidah Pemakaian</th></tr></thead>
-    <tbody>
-      <tr><td><span style="font-size:18px;">⬭</span></td><td>Oval / Kapsul</td><td>**Terminator**</td><td>Menandai awal program (`START`/`MULAI`) atau akhir program (`END`/`SELESAI`). Hanya memiliki 1 garis alir keluar (pada Start) atau 1 garis alir masuk (pada End).</td></tr>
-      <tr><td><span style="font-size:18px;">▱</span></td><td>Jajar Genjang</td><td>**Input / Output**</td><td>Menunjukkan operasi pembacaan data masukan dari keyboard (`Read/Input`) atau pencetakan keluaran ke layar monitor/printer (`Write/Print`).</td></tr>
-      <tr><td><span style="font-size:18px;">▭</span></td><td>Persegi Panjang</td><td>**Process**</td><td>Operasi pengolahan internal sistem komputasi (perhitungan aritmatika, manipulasi string, penugasan variabel).</td></tr>
-      <tr><td><span style="font-size:18px;">◇</span></td><td>Belah Ketupat (Diamond)</td><td>**Decision**</td><td>Pengambilan keputusan percabangan berdasarkan kondisi Boolean. Memiliki 1 garis masuk dan minimal 2 garis keluar berlabel kondisi (*Ya/Tidak* atau *True/False*).</td></tr>
-      <tr><td><span style="font-size:18px;">⬡</span></td><td>Segi Enam (Hexagon)</td><td>**Preparation**</td><td>Inisialisasi variabel, penentuan nilai awal pencacah (counter), atau pemberian dimensi awal array.</td></tr>
-      <tr><td><span style="font-size:18px;">○</span></td><td>Lingkaran Kecil</td><td>**On-Page Connector**</td><td>Penghubung alur flowchart yang terputus dalam **satu halaman** yang sama untuk menghindari garis panah yang saling silang. Diisi huruf identitas (A, B, C).</td></tr>
-      <tr><td><span style="font-size:18px;">⌂</span></td><td>Segi Lima</td><td>**Off-Page Connector**</td><td>Penghubung alur flowchart yang melompat ke **halaman kertas lain**.</td></tr>
-      <tr><td><span style="font-size:18px;">➔</span></td><td>Garis Panah</td><td>**Flowline**</td><td>Menunjukkan arah urutan eksekusi langkah instruksi (dari atas ke bawah atau kiri ke kanan).</td></tr>
-    </tbody>
-  </table>
-</div>
-
+#### Simbol Standar ANSI (American National Standards Institute):
+| Nama Simbol | Bentuk Geometris | Fungsi Spesifik |
+| :--- | :--- | :--- |
+| **Terminator** | Kapsul Oval | Menandai titik Mulai (*Start*) atau Selesai (*End/Stop*) alur program. |
+| **Process** | Persegi Panjang | Operasi kalkulasi internal, penugasan variabel (`x := y + 2`). |
+| **Decision** | Belah Ketupat (Diamond) | Evaluasi kondisi logika; memiliki 2 jalur panah keluar (*Yes/No* atau *True/False*). |
+| **Input / Output** | Jajar Genjang | Operasi masukan data (`Read`) atau keluaran data (`Write/Print`). |
+| **On-Page Connector** | Lingkaran Kecil | Titik temu penyambung alur panah dalam lembar halaman yang sama. |
+| **Off-Page Connector**| Bentuk Segi Lima | Penyambung alur panah antarhalaman yang berbeda. |
+| **Flow Line** | Garis Panah Berarah | Menunjukkan arah runtunan urutan eksekusi langkah komputasi. |
 
 ---
 
-### Pertemuan 4: Struktur Dasar Algoritma (Struktur Sequence / Runtunan)
+### Pertemuan 4: Tiga Struktur Kontrol Algoritma (Sequence, Selection, Repetition)
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-
-#### 1. 3 Struktur Kontrol Dasar Teori Bohm-Jacopini
-<p>Menurut Teorema Struktur **Corrado Böhm dan Giuseppe Jacopini (1966)**, setiap permasalahan komputasi serumit apapun dapat diselesaikan hanya dengan mengombinasikan 3 struktur kendali dasar:</p>
-<ol>
-  <li>**Struktur Sequence (Runtunan):** Langkah demi langkah dieksekusi secara sekuensial.</li>
-  <li>**Struktur Selection (Pemilihan/Percabangan):** Memilih jalur eksekusi berdasarkan kondisi.</li>
-  <li>**Struktur Repetition (Perulangan/Iterasi):** Mengulang blok instruksi selama kondisi terpenuhi.</li>
-</ol>
-
-#### 2. Karakteristik Mutlak Struktur Runtunan (Sequence)
-<ul>
-  <li>Instruksi dikerjakan secara berurutan baris demi baris, dimulai dari baris pertama hingga baris terakhir.</li>
-  <li>Tiap instruksi dilaksanakan tepat satu kali (tidak ada instruksi yang melompat dan tidak ada yang diulang).</li>
-  <li>Urutan instruksi yang dilaksanakan oleh prosesor sama persis dengan urutan instruksi yang tertulis dalam teks algoritma.</li>
-  <li>Akhir dari instruksi terakhir menandai selesainya eksekusi algoritma.</li>
-</ul>
-
-#### 3. Studi Kasus Kritis: Algoritma Penukaran Nilai (Swap Values)
-<p>Masalah: Diberikan dua variabel $A = 10$ dan $B = 25$. Tukarlah nilainya sehingga $A = 25$ dan $B = 10$.</p>
-<div class="code-box">
-  <div class="code-header">
-    <span class="code-lang">Analisis Kesalahan Logika Pemula vs Solusi Benar</span>
-  </div>
-  ```pascal
-{ SALAH FATAL (Data B hilang tertimpa) }
-A := B;    { Nilai A sekarang menjadi 25. Nilai asli A (10) lenyap dari memori! }
-B := A;    { Nilai B diisi A (yang sudah 25). Hasil akhir: A=25, B=25 (GAGAL!) }
-
-{ SOLUSI BENAR (Menggunakan Variabel Penampung Sementara 'Temp') }
-Temp := A; { 1. Amankan nilai asli A (10) ke dalam variabel Temp }
-A := B;    { 2. Salin nilai B (25) ke dalam variabel A (A sekarang 25) }
-B := Temp; { 3. Salin nilai asli A yang ada di Temp (10) ke dalam B (B sekarang 10) }
-{ Hasil Akhir: A=25, B=10 (BERHASIL!) }
-```
-</div>
-
+1. **Struktur Runtunan (Sequence):** Langkah instruksi dijalankan berurutan dari atas ke bawah tanpa lompatan.
+2. **Struktur Percabangan (Selection):** Memilih blok perintah berdasarkan hasil kondisi:
+   * Percabangan tunggal (`IF - THEN`)
+   * Percabangan ganda (`IF - THEN - ELSE`)
+   * Percabangan majemuk / bertingkat (`IF - ELSE IF - ELSE` atau `CASE - OF`)
+3. **Struktur Perulangan (Repetition / Looping):** Mengulang eksekusi instruksi:
+   * `FOR ... TO ... DO` (perulangan dengan batas hitungan pasti).
+   * `WHILE ... DO` (evaluasi kondisi di awal; jika salah dari awal, tidak dijalankan).
+   * `REPEAT ... UNTIL` (evaluasi kondisi di akhir; minimal dieksekusi 1 kali).
 
 ---
-
 ## 4. Pemrograman 1 (Pascal)
-* **Dosen Pengampu:** Pak Zaeni Miftah / Pak Rizki
+* **Dosen Pengampu:** Tim Dosen Pemrograman FTIK Unindra
 * **Jadwal & Ruang:** Selasa • 09:10 - 10:50 WIB • Ruang R.4.5-3
+* **Kompiler Standar:** Free Pascal Compiler (FPC 3.2.2) & Lazarus IDE
+* **Berkas Praktikum:** Kode sumber `.pas` di `Tugas_Kuliah/01_Algoritma_dan_Pemrograman_1/Tugas_dan_Praktikum/`
+
+---
 
 ### Pertemuan 1: Filosofi Bahasa Pascal & Struktur Anatomi Program
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### Anatomi Tiga Blok Struktur Pascal:
+```pascal
+{ 1. BLOK JUDUL PROGRAM }
+program NamaProgram;
 
-#### 1. Sejarah & Filosofi Desain Bahasa Pascal
-<p>Bahasa Pascal dirancang oleh **Prof. Niklaus Wirth** di Eidgenössische Technische Hochschule (ETH) Zurich, Swiss pada tahun 1970. Nama Pascal diabadikan untuk menghormati **Blaise Pascal**, filsuf dan matematikawan Prancis penemu kalkulator mekanik roda putar pertama di dunia (*Pascaline*, 1642).</p>
-<p>**Ciri Khas Bahasa Pascal:**</p>
-<ul>
-  <li>**Terstruktur & Prosedural:** Mendorong modularitas kode menggunakan prosedur dan fungsi.</li>
-  <li>**Explicit Declaration:** Setiap variabel, konstanta, dan tipe data wajib dideklarasikan di awal blok deklarasi sebelum digunakan dalam blok pernyataan. Pascal menolak variabel liar yang tiba-tiba muncul di tengah eksekusi.</li>
-  <li>**Strongly Typed:** Penggunaan tipe data sangat ketat. Anda tidak dapat memasukkan tipe string ke dalam variabel integer tanpa konversi eksplisit. Hal ini mencegah bug memori saat runtime.</li>
-  <li>**Case-Insensitive:** Pascal tidak membedakan huruf besar dan huruf kecil. Kata `PROGRAM`, `Program`, dan `program`, serta variabel `NilaiAkhir` dan `nilaiahkir` diperlakukan sama persis oleh kompiler.</li>
-</ul>
-
-#### 2. Anatomi Baku Program Pascal
-<div class="code-box">
-  <div class="code-header">
-    <span class="code-lang">Pascal Structure (FPC 3.2.2)</span>
-    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-  </div>
-  ```pascal
-program HitungGajiKaryawan; { 1. Kepala Program (Wajib titik koma ';') }
-
-uses
-  crt;                      { 2. Uses Clause: Unit CRT untuk manipulasi layar konsol }
-
+{ 2. BLOK DEKLARASI }
+uses crt;          { Mengimpor unit CRT untuk manipulasi layar terminal }
 const
-  TUNJANGAN_MAKAN = 250000; { 3. Blok Deklarasi Konstanta (Nilai Tetap) }
-  PAJAK_PERSEN = 0.05;
-
-type
-  HurufMutu = char;         { 4. Blok Deklarasi Tipe Data Bentukan }
-
+  PI = 3.14159;    { Nilai konstanta tetap }
 var
-  Nama : string[40];        { 5. Blok Deklarasi Variabel }
-  GajiPokok, GajiBersih : real;
-  HariKerja : integer;
+  jari_jari, luas : real;  { Deklarasi variabel dan tipe data }
 
-begin                       { 6. Awal Blok Pernyataan Utama }
-  clrscr;                   { Membersihkan layar output terminal }
-  
-  write('Masukkan Nama Karyawan : ');
-  readln(Nama);
-  write('Masukkan Gaji Pokok    : Rp');
-  readln(GajiPokok);
-  
-  GajiBersih := GajiPokok + TUNJANGAN_MAKAN - (GajiPokok * PAJAK_PERSEN);
-  
-  writeln('---------------------------------------');
-  writeln('Karyawan Bernama    : ', Nama);
-  writeln('Total Gaji Diterima : Rp', GajiBersih:0:2);
-  
-  readln;                   { Menahan jendela terminal agar tidak tertutup otomatis }
-end.                        { 7. Akhir Program Utama (WAJIB DIAKHIRI TANDA TITIK '.') }
-```
-</div>
-
-
----
-
-### Pertemuan 2: Variabel, Konstanta, Tipe Data & Operator Penugasan
-- [ ] *Sudah disalin ke lembar binder fisik*
-
-
-#### 1. Aturan Penamaan Pengenal (Identifier) di Pascal
-<ul>
-  <li>Karakter pertama wajib berupa huruf abjad (`A-Z`, `a-z`) atau garis bawah (*underscore* `_`). Tidak boleh diawali oleh angka!</li>
-  <li>Karakter kedua dan seterusnya dapat berupa kombinasi huruf, angka, atau underscore.</li>
-  <li>**Dilarang Menggunakan Spasi:** Gunakan pola *camelCase* (contoh: `gajiBersih`) atau underscore (contoh: `gaji_bersih`).</li>
-  <li>**Dilarang Menggunakan Simbol Khusus:** Karakter seperti `-`, `+`, `*`, `/`, `@`, `#`, `$`, `%`, `^`, `&` tidak diizinkan karena merupakan operator reserved.</li>
-  <li>**Dilarang Menggunakan Reserved Words:** Kata kunci cadangan compiler seperti `program`, `var`, `begin`, `end`, `if`, `then`, `else`, `integer`, `real` tidak boleh dijadikan nama variabel.</li>
-</ul>
-
-#### 2. Operator Aritmatika & Perbedaan Kritis Pembagian di Pascal
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Operator</th><th>Nama Operasi</th><th>Tipe Data Masukan</th><th>Tipe Data Hasil</th><th>Contoh Evaluasi</th></tr></thead>
-    <tbody>
-      <tr><td>`+`</td><td>Penjumlahan</td><td>Integer atau Real</td><td>Mengikuti tipe operand</td><td>`10 + 5 = 15`</td></tr>
-      <tr><td>`-`</td><td>Pengurangan</td><td>Integer atau Real</td><td>Mengikuti tipe operand</td><td>`10 - 3 = 7`</td></tr>
-      <tr><td>`*`</td><td>Perkalian</td><td>Integer atau Real</td><td>Mengikuti tipe operand</td><td>`4 * 5 = 20`</td></tr>
-      <tr><td>`/`</td><td>**Pembagian Real (Pecahan)**</td><td>Integer atau Real</td><td>**SELALU REAL**</td><td>`7 / 2 = 3.50000000000000E+000`</td></tr>
-      <tr><td>`div`</td><td>**Pembagian Bulat (Truncation)**</td><td>Wajib Integer</td><td>**INTEGER**</td><td>`7 div 2 = 3` (membuang 0.5)</td></tr>
-      <tr><td>`mod`</td><td>**Sisa Hasil Bagi (Modulo)**</td><td>Wajib Integer</td><td>**INTEGER**</td><td>`7 mod 2 = 1`</td></tr>
-      <tr><td>`:=`</td><td>**Assignment (Penugasan)**</td><td>Variabel di sisi kiri</td><td>-</td><td>`x := 100;`</td></tr>
-    </tbody>
-  </table>
-</div>
-> [!WARNING]
-> **⚠️ Jebakan Ujian Pascal: Tipe Hasil Pembagian Real**
-> Jika Anda mendeklarasikan variabel `Hasil : integer;` kemudian menuliskan `Hasil := 10 / 2;`, kompiler Free Pascal akan mengeluarkan pesan kesalahan: **Error: Incompatible types: got "Extended" expected "LongInt"**. Mengapa? Karena operator garis miring tunggal (`/`) SELALU menghasilkan tipe bilangan berkoma (Real/Extended) meskipun hasil pembagiannya bulat! Untuk bilangan bulat, Anda wajib menggunakan operator `div` (contoh: `Hasil := 10 div 2;`).
-
-
----
-
-### Pertemuan 3: Instruksi Input & Output (I/O) dan Pemformatan Real
-- [ ] *Sudah disalin ke lembar binder fisik*
-
-
-#### 1. Perbedaan Mendasar write() vs writeln()
-<ul>
-  <li>`write(parameter);` : Mencetak isi parameter (teks string, nilai variabel, atau konstanta) ke layar monitor. Setelah mencetak, **kursor output tetap berada tepat di sebelah kanan karakter terakhir** yang dicetak (tidak membuat baris baru).</li>
-  <li>`writeln(parameter);` : Merupakan singkatan dari *write line*. Mencetak isi parameter ke layar, lalu **otomatis memindahkan kursor ke awal baris baru berikutnya** (menambahkan karakter Enter / Newline).</li>
-  <li>`writeln;` (tanpa parameter): Berfungsi mencetak baris kosong (menggeser kursor ke baris baru).</li>
-</ul>
-
-#### 2. Perbedaan Mendasar read() vs readln()
-<ul>
-  <li>`read(variabel);` : Membaca data masukan dari keyboard ke dalam variabel penampung. Posisi kursor pembacaan berhenti tepat setelah karakter terakhir dibaca tanpa membuang karakter Enter. Instruksi pembacaan berikutnya akan terus membaca buffer yang sama.</li>
-  <li>`readln(variabel);` : Merupakan singkatan dari *read line*. Membaca masukan data dari keyboard hingga pengguna menekan tombol Enter, lalu **membuang sisa buffer Enter tersebut dan memindahkan pembacaan ke baris berikutnya**.</li>
-  <li>*Rekomendasi Praktikum Dosen:* Selalu gunakan `readln` untuk membaca input keyboard mahasiswa agar buffer input tidak macet.</li>
-</ul>
-
-#### 3. Format Angka Real (Formatting Float Output)
-<p>Secara default, jika variabel real dicetak langsung tanpa pemformatan, Pascal akan menampilkannya dalam notasi eksponensial ilmiah yang membingungkan orang awam (misal: `3.50000000000000E+001` untuk angka 35).</p>
-<p>Untuk menampilkannya dalam format desimal baku, gunakan sintaks pemformatan titik dua ganda:</p>
-<div style="background:var(--surface-elevated); padding:8px 14px; border-left:4px solid var(--primary); font-family:var(--font-mono); font-weight:700;">
-  variabel_real : lebar_kolom_total : jumlah_digit_desimal
-</div>
-<p>**Contoh Pemakaian:**</p>
-```text
-
-writeln(NilaiAkhir:0:2);  { Mencetak dengan 2 digit di belakang koma, misal: 87.50 }
-writeln(NilaiAkhir:8:2);  { Mencetak rata kanan selebar 8 karakter, misal: '   87.50' }
-writeln(NilaiAkhir:0:0);  { Mencetak angka bulat tanpa angka di belakang koma, misal: 88 }
-
-```
-
-
----
-
-### Pertemuan 4: Struktur Kontrol Percabangan (IF-THEN, IF-THEN-ELSE)
-- [ ] *Sudah disalin ke lembar binder fisik*
-
-
-#### 1. Struktur Percabangan Tunggal (IF - THEN)
-<p>Digunakan jika sebuah blok instruksi hanya akan dieksekusi jika kondisi bernilai TRUE, dan tidak melakukan apa-apa jika kondisi FALSE.</p>
-```text
-
-if (Kondisi_Boolean) then
-  Pernyataan_Tunggal;
-
-{ Jika pernyataan lebih dari satu (Compound Statement), wajib diapit BEGIN - END; }
-if (Kondisi_Boolean) then
+{ 3. BLOK PROGRAM UTAMA }
 begin
-  Pernyataan_1;
-  Pernyataan_2;
-end;
-
+  clrscr;          { Membersihkan layar konsol }
+  write('Masukkan jari-jari lingkaran: ');
+  readln(jari_jari);
+  luas := PI * jari_jari * jari_jari;
+  writeln('Luas Lingkaran = ', luas:0:2);
+  readln;          { Menahan jendela terminal sebelum keluar }
+end.               { Titik '.' menandakan akhir mutlak program }
 ```
 
-#### 2. Struktur Percabangan Ganda (IF - THEN - ELSE)
-<p>Digunakan untuk memilih satu dari dua kemungkinan jalur alternatif berdasarkan hasil evaluasi kondisi.</p>
+---
+
+### Pertemuan 2: Variabel, Konstanta, Tipe Data & Penugasan
+- [ ] *Sudah disalin ke lembar binder fisik*
+
+* **Karakteristik Pascal:** Bersifat *Strongly Typed* (tipe variabel harus dideklarasikan sebelum dipakai) dan *Case Insensitive* (`A` sama dengan `a`).
+* **Operator Penugasan (Assignment):** Menggunakan simbol `:=` (titik dua sama dengan).
+* **Perbedaan `write` vs `writeln`:**
+  * `write('...')` mencetak teks tanpa ganti baris (kursor tetap di sebelah kanan).
+  * `writeln('...')` mencetak teks lalu memindahkan kursor ke baris baru di bawahnya.
+* **Format Penulisan Angka Real:** `variabel:lebar_total:jumlah_desimal` (contoh `luas:0:2` membulatkan hasil cetak ke 2 digit desimal).
+
+---
+
+### Pertemuan 3: Struktur Kontrol Percabangan (IF-THEN, IF-THEN-ELSE)
+- [ ] *Sudah disalin ke lembar binder fisik*
+
 > [!CAUTION]
-> **🚨 ATURAN EMAS KOMPILER PASCAL: PANTANGAN TITIK KOMA SEBELUM ELSE!**
-> Di dalam tata bahasa sintaks Pascal, tanda titik koma (`;`) bertindak sebagai **Pemisah Instruksi (Statement Separator)**. Struktur `IF ... THEN ... ELSE ...` diakui oleh kompiler sebagai **SATU KALIMAT UTUH**.<br>
-  Jika Anda memberi tanda titik koma tepat sebelum kata kunci `else`, kompiler menganggap kalimat IF telah selesai! Akibatnya, saat kompiler membaca kata `else`, kompiler akan langsung melempar pesan kesalahan fatal: **Fatal: Syntax error, ";" expected but "ELSE" found**.
-<div class="code-box">
-  <div class="code-header"><span class="code-lang">Contoh Lengkap Program Kelulusan Mahasiswa</span><button class="copy-btn" onclick="copyCode(this)">Salin</button></div>
-  ```pascal
-program CekKelulusan;
+> **🚨 ATURAN EMAS KOMPILER PASCAL: PANTANGAN TITIK KOMA SEBELUM ELSE!**  
+> Di dalam tata bahasa sintaks Pascal, tanda titik koma (`;`) bertindak sebagai pemisah instruksi (*statement separator*). Struktur `if ... then ... else` merupakan **SATU KALIMAT UTUH**. Jika Anda memberi tanda `;` tepat sebelum kata `else`, kompiler menganggap pernyataan `if` telah selesai, sehingga saat membaca `else` akan melempar error: **Fatal: Syntax error, ";" expected but "ELSE" found**.
+
+#### Praktikum Nyata 1: Uji Tahun Kabisat (`latihan1_kabisat.pas`)
+```pascal
+program tahun_kabisat;
 uses crt;
 
 var
-  Nama : string;
-  NilaiUTS, NilaiUAS, NilaiAkhir : real;
+  tahun : integer;
 
 begin
   clrscr;
-  write('Masukkan Nama Mahasiswa : '); readln(Nama);
-  write('Masukkan Nilai UTS       : '); readln(NilaiUTS);
-  write('Masukkan Nilai UAS       : '); readln(NilaiUAS);
-  
-  NilaiAkhir := (0.4 * NilaiUTS) + (0.6 * NilaiUAS);
-  writeln('------------------------------------------');
-  writeln('Nilai Akhir : ', NilaiAkhir:0:2);
-  
-  if (NilaiAkhir >= 60.0) then
-    writeln('Status : SELAMAT ANDA LULUS!') { <--- PERHATIKAN: TIDAK ADA TITIK KOMA DI SINI! }
+  writeln('   PROGRAM CEK TAHUN KABISAT       ');
+  write('Masukkan tahun : ');
+  readln(tahun);
+
+  if (tahun mod 4 = 0) then
+    writeln('Tahun ', tahun, ' adalah TAHUN KABISAT') { <--- TIDAK ADA TITIK KOMA }
   else
-    writeln('Status : MOHON MAAF ANDA REMEDIAL');
-    
+    writeln('Tahun ', tahun, ' BUKAN TAHUN KABISAT');
+
   readln;
 end.
 ```
-</div>
 
+#### Praktikum Nyata 2: Menentukan Angka Terbesar (`latihan2_terbesar.pas`)
+```pascal
+program cari_angka_terbesar;
+uses crt;
+
+var
+  angka1, angka2, terbesar : integer;
+
+begin
+  clrscr;
+  write('Input angka pertama : '); readln(angka1);
+  write('Input angka kedua   : '); readln(angka2);
+
+  if (angka1 > angka2) then
+    terbesar := angka1   { <--- TIDAK ADA TITIK KOMA }
+  else
+    terbesar := angka2;
+
+  writeln('Angka terbesar adalah ', terbesar);
+  readln;
+end.
+```
 
 ---
 
+### Pertemuan 4: Percabangan Majemuk & Perhitungan Nilai Akhir
+- [ ] *Sudah disalin ke lembar binder fisik*
+
+#### Praktikum Nyata 3: Program Perhitungan Nilai Akhir (`latihan_nilai_akhir.pas`)
+```pascal
+program hitung_nilai_akhir;
+uses crt;
+
+var
+  tugas, uts, uas, nilai_akhir : real;
+  nilai_huruf                  : char;
+
+begin
+  clrscr;
+  writeln('==========================================');
+  writeln('   PROGRAM HITUNG NILAI AKHIR MAHASISWA   ');
+  writeln('==========================================');
+
+  write('Input nilai Tugas : '); readln(tugas);
+  write('Input nilai UTS   : '); readln(uts);
+  write('Input nilai UAS   : '); readln(uas);
+
+  { Bobot: Tugas 20%, UTS 30%, UAS 50% }
+  nilai_akhir := (0.20 * tugas) + (0.30 * uts) + (0.50 * uas);
+
+  { Seleksi Nilai Huruf }
+  if (nilai_akhir >= 91) then
+    nilai_huruf := 'A'
+  else if (nilai_akhir >= 76) then
+    nilai_huruf := 'B'
+  else if (nilai_akhir >= 61) then
+    nilai_huruf := 'C'
+  else if (nilai_akhir >= 41) then
+    nilai_huruf := 'D'
+  else
+    nilai_huruf := 'E';
+
+  writeln('------------------------------------------');
+  writeln('Nilai Akhir       : ', nilai_akhir:0:2);
+  writeln('Nilai Huruf       : ', nilai_huruf);
+
+  { Seleksi Kelulusan }
+  if (nilai_akhir >= 70) then
+    writeln('Selamat anda dinyatakan lulus')
+  else
+    writeln('Maaf anda dinyatakan tidak lulus');
+
+  readln;
+end.
+```
+
+#### Praktikum Nyata 4: Konversi Suhu Celcius (`Celcius.pas`)
+```pascal
+program KonversiSuhuCelcius;
+uses crt;
+
+var
+  celcius, reamur, fahrenheit : real;
+
+begin
+  clrscr;
+  writeln('=========================================');
+  writeln('  PROGRAM KONVERSI SUHU CELCIUS (GENAP)  ');
+  writeln('=========================================');
+  writeln('NPM  : 202633500386 (Digit Genap: 6)');
+  writeln('Nama : Muhammad Haikel Saleh');
+  writeln('-----------------------------------------');
+
+  write('Masukkan Nilai Suhu Celcius (C) : ');
+  readln(celcius);
+
+  { Rumus konversi suhu }
+  reamur := (4.0 / 5.0) * celcius;
+  fahrenheit := ((9.0 / 5.0) * celcius) + 32.0;
+
+  writeln('-----------------------------------------');
+  writeln('HASIL KONVERSI SUHU:');
+  writeln('Suhu Reamur     (R) : ', reamur:0:2, ' R');
+  writeln('Suhu Fahrenheit (F) : ', fahrenheit:0:2, ' F');
+  writeln('=========================================');
+  readln;
+end.
+```
+
+---
 ## 5. Bahasa Inggris 1
 * **Dosen Pengampu:** Tim Dosen Bahasa Inggris FTIK Unindra
 * **Jadwal & Ruang:** Kamis • 07:30 - 09:10 WIB • Ruang R.4.4-4
 
+---
+
 ### Chapter I: Self-Introduction, Professional Profiling & Daily Activities
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Pola Baku Subject-Verb Agreement
+| Subject Pronoun | To Be (Present) | Verb Form (Present Simple) | Contoh Kalimat IT |
+| :--- | :--- | :--- | :--- |
+| **I** | `am` | Verb 1 (*work*) | *I develop web applications using React.* |
+| **You / We / They** | `are` | Verb 1 (*code*) | *They analyze database queries every Monday.* |
+| **He / She / It** | `is` | Verb 1 + `s/es` (*analyzes*) | *He designs modern database schemas.* |
 
-#### 1. Formal vs Informal Self-Introduction in Academic & Tech Settings
-<ul>
-  <li>**Formal Introduction (Academic & Workplace):**
-    <p>*"Good morning, Ladies and Gentlemen. Allow me to introduce myself. My name is Muhammad Haikel Saleh. I am a first-semester undergraduate student majoring in Information Systems at Universitas Indraprasta PGRI. I specialize in frontend development and database design."*</p>
-  </li>
-  <li>**Key Phrases for Personal Profiling:**
-    <ul>
-      <li>*"I am currently studying..."* / *"I am enrolled in..."*</li>
-      <li>*"My main field of interest is software architecture..."*</li>
-      <li>*"I spend most of my time coding in Pascal and Python..."*</li>
-    </ul>
-  </li>
-</ul>
-
-#### 2. Grammar Focus: Simple Present Tense (Habitual Actions & General Truths)
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Pola Kalimat</th><th>Subjek Jamak (I / You / We / They)</th><th>Subjek Tunggal Orang Ketiga (He / She / It)</th></tr></thead>
-    <tbody>
-      <tr><td>**Verbal (+)**</td><td>`S + Verb 1 + Object`<br>*"They compile the Pascal code every day."*</td><td>`S + Verb 1(-s/-es) + Object`<br>*"He compiles the Pascal code every day."*</td></tr>
-      <tr><td>**Verbal (-)**</td><td>`S + do not (don't) + Verb 1 + Object`<br>*"We do not encounter syntax errors."*</td><td>`S + does not (doesn't) + Verb 1 + Object`<br>*"She does not encounter syntax errors."*</td></tr>
-      <tr><td>**Verbal (?)**</td><td>`Do + S + Verb 1 + Object?`<br>*"Do you attend the algorithm lab session?"*</td><td>`Does + S + Verb 1 + Object?`<br>*"Does he understand Boolean logic?"*</td></tr>
-      <tr><td>**Nominal**</td><td>`S + are / am + Complement`<br>*"I am an IT student."* / *"We are diligent."*</td><td>`S + is + Complement`<br>*"The compiler is fast."*</td></tr>
-    </tbody>
-  </table>
-</div>
-
-#### 3. Aturan Penambahan Akhiran `-s / -es` pada Verb 3rd Person Singular
-<ul>
-  <li>Verb berakhiran `-ch, -sh, -s, -x, -z` atau `-o` ditambah `-es`: *watch -> watches*, *fix -> fixes*, *pass -> passes*, *go -> goes*, *do -> does*.</li>
-  <li>Verb berakhiran huruf konsonan + `y`, ubah `y` menjadi `-ies`: *study -> studies*, *modify -> modifies*.</li>
-  <li>Verb berakhiran huruf vokal + `y`, cukup ditambah `-s`: *play -> plays*, *buy -> buys*.</li>
-</ul>
-
-#### 4. Adverbs of Frequency & Syntactic Placement
-<p>Keterangan frekuensi rutinitas harian dan letak sintaksisnya:</p>
-<ul>
-  <li>*Always (100%), Usually (80%), Often (70%), Sometimes (50%), Seldom/Rarely (20%), Never (0%)*.</li>
-  <li>**Aturan Letak:** Terletak **SEBELUM** Main Verb (*"Haikel <u>always studies</u> algorithm before the exam"*) atau **SETELAH** Auxiliary / To Be (*"He <u>is always</u> punctual in attending lectures"*).</li>
-</ul>
-
+*Pola Kalimat Negatif & Tanya:*
+* Negatif: `Subject + do/does not + Verb 1` (*She does not write Pascal code.*)
+* Tanya: `Do/Does + Subject + Verb 1?` (*Do you study system architecture?*)
 
 ---
 
-### Chapter II: Procedural Texts & Technical Instructions (How to Make Something)
+### Chapter II: Procedural Texts & Technical Instructions
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-
-#### 1. Generic Structure of Procedural Text
-<ol>
-  <li>**Goal / Aim:** Menyatakan tujuan atau sasaran tugas yang akan dicapai (seringkali dijadikan judul: *"How to Set Up Free Pascal Compiler on Windows 11"*).</li>
-  <li>**Materials / Tools / Prerequisites:** Daftar perangkat keras, perangkat lunak, dependensi, atau pustaka yang diperlukan sebelum memulai (contoh: *PC with Windows OS, FPC 3.2.2 installer file, 500 MB free storage*).</li>
-  <li>**Steps / Methods:** Serangkaian instruksi kerja yang disusun secara runut kronologis dan tidak boleh diacak-acak.</li>
-</ol>
-
-#### 2. Language Features of Procedural Texts
-<ul>
-  <li>**Imperative Sentences (Kalimat Perintah):** Dimulai langsung dengan Kata Kerja Bentuk Pertama (Verb 1) tanpa subjek nominal:
-    <ul>
-      <li>*"Download the executable installer from the official website."*</li>
-      <li>*"Extract the zip file to the local directory."*</li>
-      <li>*"Do not close the terminal window while compiling."* (Negative imperative).</li>
-    </ul>
-  </li>
-  <li>**Temporal Conjunctions & Sequence Connectors:**
-    <p>*First, ...* -> *Second, ...* -> *Then, ...* -> *Next, ...* -> *After that, ...* -> *Finally, ...*</p>
-  </li>
-  <li>**Action Verbs in Computing:** *install, execute, initialize, configure, debug, compile, deploy, terminate*.</li>
-</ul>
-
+#### Struktur Tiga Bagian Teks Prosedural:
+1. **Goal / Aim:** Menyatakan tujuan (*How to Install Free Pascal on Windows 11*).
+2. **Materials / Tools:** Menyebutkan alat dan bahan yang dibutuhkan (*PC, Installer setup file, Internet connection*).
+3. **Steps / Methods:** Runtunan instruksi menggunakan kalimat imperatif (*First, download the installer. Second, run setup.exe. Finally, verify the compiler path.*).
 
 ---
 
 ### Chapter III: Recount Texts & Talking about Past Holiday / Experiences
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-
-#### 1. Grammar Focus: Simple Past Tense (Past Incident / Historical Fact)
-<p>Digunakan untuk menceritakan aktivitas, kejadian, atau peristiwa yang telah dimulai dan selesai di masa lampau pada titik waktu spesifik yang definitif.</p>
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Pola Kalimat</th><th>Bentuk Pola</th><th>Contoh Kalimat Akademis / Liburan</th></tr></thead>
-    <tbody>
-      <tr><td>**Verbal (+)**</td><td>`S + Verb 2 (Past Form) + Object + Time Adverb`</td><td>*"Our class visited the National Museum last month."*</td></tr>
-      <tr><td>**Verbal (-)**</td><td>`S + did not (didn't) + Verb 1 + Object`</td><td>*"We did not study programming during the holiday."*</td></tr>
-      <tr><td>**Verbal (?)**</td><td>`Did + S + Verb 1 + Object?`</td><td>*"Did you write the project proposal yesterday?"*</td></tr>
-      <tr><td>**Nominal (+)**</td><td>`S + was / were + Complement (Adj/Noun)`</td><td>*"The assignment was very challenging."* / *"They were in Bandung."*</td></tr>
-    </tbody>
-  </table>
-</div>
-
-#### 2. Regular vs Irregular Verbs (50 Essential Verbs in Tech & Daily Life)
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Verb 1 (Infinitive)</th><th>Verb 2 (Simple Past)</th><th>Verb 3 (Past Participle)</th><th>Makna Bahasa Indonesia</th></tr></thead>
-    <tbody>
-      <tr><td>Go</td><td>Went</td><td>Gone</td><td>Pergi</td></tr>
-      <tr><td>Write</td><td>Wrote</td><td>Written</td><td>Menulis</td></tr>
-      <tr><td>Build</td><td>Built</td><td>Built</td><td>Membangun</td></tr>
-      <tr><td>See</td><td>Saw</td><td>Seen</td><td>Melihat</td></tr>
-      <tr><td>Take</td><td>Took</td><td>Taken</td><td>Mengambil / Mengikuti Ujian</td></tr>
-      <tr><td>Find</td><td>Found</td><td>Found</td><td>Menemukan</td></tr>
-      <tr><td>Run</td><td>Ran</td><td>Run</td><td>Menjalankan program</td></tr>
-      <tr><td>Read</td><td>Read /rɛd/</td><td>Read /rɛd/</td><td>Membaca</td></tr>
-    </tbody>
-  </table>
-</div>
-
+#### Pola Simple Past Tense (Kejadian Masa Lampau)
+* **Kalimat Positif:** `Subject + Verb 2`
+  * Regular Verbs: `install` ➔ `installed`, `compile` ➔ `compiled`.
+  * Irregular Verbs: `write` ➔ `wrote`, `build` ➔ `built`, `see` ➔ `saw`, `go` ➔ `went`.
+* **Kalimat Negatif:** `Subject + did not + Verb 1` (*We did not encounter any runtime errors yesterday.*)
+* **Kalimat Tanya:** `Did + Subject + Verb 1?` (*Did you finish the algorithm assignment?*)
 
 ---
 
 ### Chapter IV: Talking about Future Intentions & Planning (Will vs Be Going To)
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-
-#### 1. Komparasi Gramatikal: WILL vs BE GOING TO
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Aspek Pembeda</th><th>WILL (Modal Auxiliary)</th><th>BE GOING TO (Semi-Modal)</th></tr></thead>
-    <tbody>
-      <tr><td>**Struktur Rumus**</td><td>`S + will + Verb 1 + Object`</td><td>`S + am / is / are + going to + Verb 1 + Object`</td></tr>
-      <tr><td>**Waktu Pengambilan Niat / Keputusan**</td><td>**Spontan (On the spot):** Keputusan baru saja diputuskan pada saat berbicara tanpa rencana sebelumnya.</td><td>**Rencana Terencana (Pre-meditated plan):** Sudah dipikirkan, dirancang, dan diniatkan sebelum saat berbicara.</td></tr>
-      <tr><td>**Contoh Niat**</td><td>*"Someone is ringing the doorbell. I will open the door."*</td><td>*"I am going to submit my algorithm project next Tuesday because I finished it yesterday."*</td></tr>
-      <tr><td>**Sifat Prediksi Masa Depan**</td><td>**Prediksi Subjektif:** Berdasarkan opini pribadi, harapan, firasat, atau dugaan tanpa bukti fisik konkret.</td><td>**Prediksi Berbasis Bukti Nyata:** Ada tanda-tanda atau bukti fisik konkret yang sedang terlihat saat ini.</td></tr>
-      <tr><td>**Contoh Prediksi**</td><td>*"I think artificial intelligence will transform education in 2030."*</td><td>*"Look at the dark clouds gathering above! It is going to rain in a few minutes."*</td></tr>
-      <tr><td>**Fungsi Khusus Lainnya**</td><td>Janji (*"I will always help you"*), Penawaran bantuan (*"Will you take a cup of coffee?"*), Penolakan (*"The laptop will not boot"*).</td><td>Peristiwa tak terelakkan yang segera terjadi di depan mata (*"Watch out! The glass is going to fall!"*).</td></tr>
-    </tbody>
-  </table>
-</div>
-
+| Aspek Komparasi | Modal `Will` | Frasa `Be Going To` |
+| :--- | :--- | :--- |
+| **Karakteristik Keputusan** | Keputusan spontan saat berbicara (*Spontaneous decision*) | Rencana yang telah diatur sebelumnya (*Prior plan/arrangement*) |
+| **Bentuk Prediksi** | Prediksi berdasarkan opini atau firasat subjektif | Prediksi berdasarkan bukti nyata yang tampak di depan mata |
+| **Contoh 1 (Keputusan)** | *"The phone is ringing. I will answer it."* | *"I am going to submit my algorithm proposal tomorrow morning."* |
+| **Contoh 2 (Prediksi)** | *"I think technology will change education in 2030."* | *"Look at those dark clouds! It is going to rain in a few minutes."* |
 
 ---
-
 ## 6. Matematika Dasar (Kalkulus Sistem Informasi)
 * **Dosen Pengampu:** Dr. Munali, M.Pd.
-* **Jadwal & Ruang:** Kamis • 07:30 - 10:00 WIB • Ruang R.4.3-2
+* **Jadwal & Ruang:** Kamis • 09:10 - 10:50 WIB • Ruang R.4.3-2
 * **Berkas Rujukan Asli:** Slide PDF & PPT Dosen di `Tugas_Kuliah/06_Matematika_Dasar/Materi_dan_Rangkuman/`
+* **Standar Notasi:** Pure Unicode Symbols (Bebas dari kode LaTeX mentah pecahan atau simbol himpunan).
 
 ---
 
 ### Pertemuan 1: Sistem Bilangan Real, Operasi Aljabar & Notasi Interval
 - [ ] *Sudah disalin ke lembar binder fisik*
+* **Acuan:** `1789117602_Pert_1_Matematika_-_Sistem_Bilangan_Real (1).pdf` (17 Slide).
 
-#### 📖 A. Materi Asli Slide Dosen (PDF 1789117602):
-1. **10 Himpunan Bilangan:**
-   * Bilangan Asli ($\mathbb{N}$): $\{1, 2, 3, 4, ...\}$
-   * Bilangan Cacah: $\{0, 1, 2, 3, ...\}$
-   * Bilangan Bulat ($\mathbb{Z}$): $\{..., -2, -1, 0, 1, 2, ...\}$
-   * Bilangan Rasional ($\mathbb{Q}$): Pecahan $rac{p}{q}$ ($q 
-eq 0$), desimal berhenti ($rac{3}{8}=0.375$) atau berulang ($rac{13}{11}=1.181818...$).
-   * Bilangan Irasional: Desimal tak berulang ($\sqrt{2}=1.41421...$, $\pi=3.14159...$).
-   * Bilangan Real ($\mathbb{R}$): Gabungan bilangan rasional dan irasional ($\mathbb{R} = \mathbb{Q} \cup \mathbb{Q}'$).
-   * Imajiner ($i = \sqrt{-1}$), Kompleks ($a + bi$), Prima, dan Komposit.
-2. **5 Sifat Operasi Aljabar:**
-   * Komutatif: $x + y = y + x$ dan $x \cdot y = y \cdot x$
-   * Asosiatif: $(x+y)+z = x+(y+z)$ dan $(x \cdot y) \cdot z = x \cdot (y \cdot z)$
-   * Distributif: $x(y+z) = xy + xz$
-   * Elemen Identitas: Penjumlahan ($0$), Perkalian ($1$)
-   * Balikan (Invers): Invers aditif ($-x$), Invers perkalian ($x^{-1} = rac{1}{x}$)
-3. **4 Sifat Urutan Garis Bilangan:**
-   * Trikotomi: Tepat satu berlaku ($x < y$, $x = y$, atau $x > y$).
-   * Ketransitifan: $x < y \land y < z \implies x < z$.
-   * Penambahan: $x < y \iff x + z < y + z$.
-   * Perkalian: Jika $z > 0 \implies xz < yz$. **Jika $z < 0 \implies xz > yz$ (Tanda dibalik!)**.
-4. **Notasi Selang (Interval):**
-   * $(a, b) = \{x \in \mathbb{R} \mid a < x < b\}$ (terbuka)
-   * $[a, b] = \{x \in \mathbb{R} \mid a \le x \le b\}$ (tertutup)
+#### 1. Klasifikasi 10 Himpunan Bilangan:
+Hierarki Himpunan: **ℕ ⊂ 𝕎 ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ**
+1. **Bilangan Asli (ℕ / Natural):** Himpunan bilangan hitung bulat positif: `{ 1, 2, 3, 4, 5, ... }`.
+2. **Bilangan Cacah (𝕎 / Whole):** Gabungan bilangan nol dan bilangan asli: `{ 0, 1, 2, 3, 4, ... }`.
+3. **Bilangan Bulat (ℤ / Integers):** Seluruh bilangan bulat negatif, nol, dan positif: `{ ..., -3, -2, -1, 0, 1, 2, 3, ... }`.
+4. **Bilangan Rasional (ℚ / Rational):** Bilangan yang dapat dinyatakan dalam bentuk pecahan `p / q` dengan `p, q ∈ ℤ` dan `q ≠ 0`.
+   * *Desimal Berhenti:* `3/8 = 0,375`.
+   * *Desimal Berulang Teratur:* `13/11 = 1,181818...`.
+5. **Bilangan Irasional (ℚ' / Irrational):** Bilangan desimal tak terhingga yang tidak pernah berulang periodik dan tidak dapat dijadikan pecahan rasio dua bilangan bulat.
+   * *Contoh:* `√2 ≈ 1,41421356...`, `π ≈ 3,14159265...`, `e ≈ 2,71828182...`.
+6. **Bilangan Real (ℝ / Real Numbers):** Gabungan seluruh bilangan rasional dan irasional (`ℝ = ℚ ∪ ℚ'`). Mengisi setiap titik kontinu pada garis bilangan real.
+7. **Bilangan Imajiner:** Satuan akar bilangan negatif `i = √(-1)` dimana `i² = -1`.
+8. **Bilangan Kompleks (ℂ / Complex):** Pasangan bilangan riil dan imajiner dalam bentuk `z = a + bi` (dengan `a, b ∈ ℝ`).
+9. **Bilangan Prima:** Bilangan bulat positif > 1 yang hanya memiliki tepat 2 pembagi bulat: `{ 2, 3, 5, 7, 11, 13, 17, 19, ... }`.
+10. **Bilangan Komposit:** Bilangan asli > 1 selain bilangan prima: `{ 4, 6, 8, 9, 10, 12, 14, ... }`.
 
-#### 🤖 B. Rangkuman Cerdas AI (Logika Sistem Informasi):
-* **Mengapa Mahasiswa IT Wajib Memahami Ini?** Pembagian tipe data komputasi (Integer vs Float/Double) didasarkan pada karakteristik desimal rasional dan irasional.
-* **Aturan Kurung:** Kurung siku `[ ]` jika ada tanda sama dengan ($\le$ atau $\ge$). Kurung biasa `( )` jika murni $<$ atau $>$ atau $\pm\infty$.
+#### 2. Lima Sifat Operasi Hitung Aljabar Bilangan Real:
+| Sifat Aljabar | Operasi Penjumlahan | Operasi Perkalian |
+| :--- | :--- | :--- |
+| **1. Komutatif (Pertukaran)** | `x + y = y + x` | `x · y = y · x` |
+| **2. Asosiatif (Pengelompokan)** | `(x + y) + z = x + (y + z)` | `(x · y) · z = x · (y · z)` |
+| **3. Distributif (Penyebaran)** | `x · (y + z) = (x · y) + (x · z)` | |
+| **4. Elemen Identitas (Netral)** | `x + 0 = x` (identitas penjumlahan: 0) | `x · 1 = x` (identitas perkalian: 1) |
+| **5. Elemen Invers (Balikan)** | `x + (-x) = 0` (invers aditif / lawan) | `x · (1/x) = 1` untuk `x ≠ 0` (invers multiplikatif / kebalikan) |
+
+#### 3. Empat Sifat Urutan Garis Bilangan Real:
+1. **Trikotomi:** Untuk dua bilangan real sembarang `x` dan `y`, pasti tepat satu relasi yang berlaku: `x < y`, `x = y`, atau `x > y`.
+2. **Ketransitifan:** Jika `x < y` dan `y < z`, maka pasti `x < z`.
+3. **Penambahan:** `x < y ⟺ x + z < y + z` (menambah bilangan yang sama pada kedua ruas tidak mengubah arah pertidaksamaan).
+4. **Perkalian (ATURAN EMAS KETAKSAMAAN):**
+   * Jika dikalikan bilangan **positif (`z > 0`)**: tanda ketaksamaan **TETAP** (`x < y ⟺ x·z < y·z`).
+   * Jika dikalikan bilangan **negatif (`z < 0`)**: arah tanda ketaksamaan **WAJIB DIBALIK** (`x < y ⟺ x·z > y·z`).
+
+#### 4. Notasi Selang (Interval) Garis Bilangan:
+| Notasi Interval | Definisi Notasi Himpunan | Penjelasan Batas & Bentuk Kurung |
+| :--- | :--- | :--- |
+| `(a, b)` | `{ x ∈ ℝ \| a < x < b }` | Selang terbuka: titik a dan b TIDAK masuk (kurung biasa). |
+| `[a, b]` | `{ x ∈ ℝ \| a ≤ x ≤ b }` | Selang tertutup: titik a dan b IKUT masuk (kurung siku). |
+| `[a, b)` | `{ x ∈ ℝ \| a ≤ x < b }` | Setengah terbuka: a ikut masuk, b tidak masuk. |
+| `(a, b]` | `{ x ∈ ℝ \| a < x ≤ b }` | Setengah terbuka: a tidak masuk, b ikut masuk. |
+| `(-∞, b)` | `{ x ∈ ℝ \| x < b }` | Selang tak hingga ke kiri tanpa titik b. |
+| `(-∞, b]` | `{ x ∈ ℝ \| x ≤ b }` | Selang tak hingga ke kiri termasuk titik b. |
+| `(a, ∞)` | `{ x ∈ ℝ \| x > a }` | Selang tak hingga ke kanan tanpa titik a. |
+| `[a, ∞)` | `{ x ∈ ℝ \| x ≥ a }` | Selang tak hingga ke kanan termasuk titik a. |
 
 ---
 
-### Pertemuan 2: Pertidaksamaan Bilangan Real & Himpunan Penyelesaian (HP)
+### Pertemuan 2: Pertidaksamaan Bilangan Real & Langkah Penentuan HP
 - [ ] *Sudah disalin ke lembar binder fisik*
+* **Acuan:** `1789631769_Pert_2_Matematika_-_Pertidaksamaan_Bilangan_Real_RG (1).pdf` (14 Slide).
 
-#### 📖 A. Materi Asli Slide Dosen (PDF 1789631769):
-1. **5 Langkah Baku Menentukan HP (Slide 6):**
-   * Buat ruas kanan menjadi nol ($f(x) < 0$ atau $f(x) > 0$).
-   * Faktorkan persamaan dan cari titik-titik pemecah (pembuat nol pembilang dan penyebut).
-   * Plot titik-titik pemecah pada garis bilangan.
-   * Uji titik (gunakan $x = 0$) untuk menentukan tanda interval ($+$ atau $-$).
-   * Tuliskan Himpunan Penyelesaian (HP) dalam notasi selang/interval.
-2. **Pembahasan Latihan Soal Slide 7:**
-   * **Soal a:** $2x - 7 < 4x - 2 \iff -2x < 5 \iff x > -rac{5}{2} \implies HP = (-rac{5}{2}, \infty)$.
-   * **Soal b:** $-5 \le 2x + 6 < 4 \iff -11 \le 2x < -2 \iff -rac{11}{2} \le x < -1 \implies HP = [-rac{11}{2}, -1)$.
-   * **Soal g (Kuadrat):** $x^2 - x < 6 \iff (x-3)(x+2) < 0 \implies HP = (-2, 3)$.
-   * **Soal Rasional (Slide 13 a):** $rac{x-1}{x+2} \ge 0 \implies HP = (-\infty, -2) \cup [1, \infty)$ (syarat penyebut $x 
-eq -2$).
+#### 1. Lima Langkah Baku Menentukan Himpunan Penyelesaian (HP):
+1. **Sederhanakan Ruas:** Pindahkan semua suku ke ruas kiri sehingga ruas kanan menjadi nol (`f(x) < 0` atau `f(x) > 0`).
+2. **Faktorkan Persamaan:** Cari pembuat nol pembilang dan pembuat nol penyebut untuk memperoleh titik-titik pemecah.
+3. **Plot pada Garis Bilangan:** Letakkan seluruh titik pemecah pada garis bilangan real terurut dari terkecil ke terbesar.
+4. **Lakukan Uji Titik:** Pilih satu angka uji (paling mudah `x = 0`) untuk menentukan tanda interval (`+` atau `-`).
+5. **Tentukan HP:** Jika tanda soal `> 0` atau `≥ 0`, ambil daerah bertanda `(+)`. Jika tanda `< 0` atau `≤ 0`, ambil daerah bertanda `(-)`. Tuliskan dalam notasi selang.
 
-#### 🤖 B. Rangkuman Cerdas AI (Tips Ujian UTS):
-* **Dilarang kali silang variabel** pada bentuk pecahan karena tanda $x$ belum tentu positif. Selalu pindah ke ruas kiri dan samakan penyebut.
-* **Titik penyebut selalu lingkaran kosong** (tidak boleh kurung siku) karena pembagian dengan nol tidak terdefinisi.
+#### 2. Pembahasan Lengkap Latihan Soal Slide Dosen (Step-by-Step):
+* **Soal a (Pertidaksamaan Linier):**
+  `2x - 7 < 4x - 2`  
+  ⟺ `2x - 4x < -2 + 7`  
+  ⟺ `-2x < 5`  
+  ⟺ `x > -5/2` (dibagi -2, tanda `<` dibalik menjadi `>`)  
+  **HP = { x ∈ ℝ | x > -2,5 } = ( -5/2, ∞ )**
+
+* **Soal b (Pertidaksamaan Ganda):**
+  `-5 ≤ 2x + 6 < 4`  
+  ⟺ `-5 - 6 ≤ 2x < 4 - 6`  
+  ⟺ `-11 ≤ 2x < -2`  
+  ⟺ `-11/2 ≤ x < -1` (dibagi 2 ketiga ruas)  
+  **HP = [ -11/2, -1 )**
+
+* **Soal c:**
+  `13 ≥ 2x - 3 ≥ 5`  
+  ⟺ `16 ≥ 2x ≥ 8`  
+  ⟺ `8 ≥ x ≥ 4`  (ekuivalen dengan: `4 ≤ x ≤ 8`)  
+  **HP = [ 4, 8 ]**
+
+* **Soal g (Pertidaksamaan Kuadrat):**
+  `x² - x < 6`  
+  ⟺ `x² - x - 6 < 0`  
+  ⟺ `(x - 3)(x + 2) < 0`  
+  Titik pemecah: `x = 3` dan `x = -2`  
+  Uji titik `x = 0`: `(0 - 3)(0 + 2) = -6` (Tanda Negatif `-`)  
+  Garis bilangan: `(+) --- (-2) --- (-) --- (3) --- (+)`  
+  Karena yang diminta `< 0`, ambil daerah negatif:  
+  **HP = { x ∈ ℝ | -2 < x < 3 } = ( -2, 3 )**
+
+* **Soal Pecahan Rasional (Slide 13 a):**
+  `(x - 1) / (x + 2) ≥ 0`  
+  Pembuat nol pembilang: `x - 1 = 0 ⟹ x = 1` (lingkaran penuh, ikut masuk karena `≥`).  
+  Pembuat nol penyebut: `x + 2 = 0 ⟹ x = -2` (lingkaran KOSONG, syarat penyebut `≠ 0`).  
+  Uji titik `x = 0`: `(0 - 1) / (0 + 2) = -1/2` (Negatif).  
+  Garis bilangan: `(+) --- (-2) --- (-) --- [1] --- (+)`  
+  Karena diminta `≥ 0`, ambil daerah positif:  
+  **HP = ( -∞, -2 ) ∪ [ 1, ∞ )**
 
 ---
 
 ### Pertemuan 3: Pertidaksamaan Nilai Mutlak & Konsep Pemetaan Fungsi
 - [ ] *Sudah disalin ke lembar binder fisik*
+* **Acuan:** `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi (1).pdf` (18 Slide).
 
-#### 📖 A. Materi Asli Slide Dosen (PDF 1790406762):
-1. **Definisi Nilai Mutlak:** Jarak non-negatif dari titik 0 pada garis bilangan:
-   $$|x| = x 	ext{ (jika } x \ge 0) \quad 	ext{dan} \quad |x| = -x 	ext{ (jika } x < 0)$$
-2. **Sifat Penting:**
-   * $|x| < a \iff -a < x < a$ (interval di dalam)
-   * $|x| > a \iff x < -a \lor x > a$ (sayap di luar)
-   * $|x| \le |y| \iff x^2 \le y^2$
-3. **Pembahasan Latihan Soal Slide 3:**
-   * $|2x + 3| \ge |4x + 5| \iff (2x+3)^2 - (4x+5)^2 \ge 0 \iff (6x+8)(-2x-2) \ge 0 \iff (3x+4)(x+1) \le 0 \implies HP = [-rac{4}{3}, -1]$.
-4. **Konsep Fungsi $f: X 	o Y$:**
-   * Setiap $x \in X$ (Domain) dipetakan tepat ke satu $f(x) \in Y$ (Kodomain). Himpunan nilai output disebut Range ($R_f$).
-   * Fungsi Genap: $f(-x) = f(x)$ (simetris sumbu Y, contoh $f(x) = x^2 - 2$).
-   * Fungsi Ganjil: $f(-x) = -f(x)$ (simetris titik origin, contoh $g(x) = x^3 - 2x$).
-   * Syarat Domain Alami: bentuk akar $\sqrt{p(x)} \implies p(x) \ge 0$; bentuk pecahan $rac{p(x)}{q(x)} \implies q(x) 
-eq 0$.
+#### 1. Definisi Geometris & Delapan Sifat Nilai Mutlak:
+Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bilangan real (selalu bernilai non-negatif `|x| ≥ 0`):
+* `|x| = x` jika `x ≥ 0`
+* `|x| = -x` jika `x < 0`
 
-#### 🤖 B. Rangkuman Cerdas AI:
-* Jika kedua ruas bernilai mutlak ($|A| \ge |B|$), jangan buka 4 kondisi! Cukup gunakan rumus $(A+B)(A-B) \ge 0$ untuk menghemat waktu saat UTS.
+**Delapan Sifat Utama:**
+1. `|a · b| = |a| · |b|`
+2. `|a / b| = |a| / |b|` (untuk `b ≠ 0`)
+3. `|a + b| ≤ |a| + |b|` (*Ketaksamaan Segitiga*)
+4. `|a - b| ≥ ||a| - |b||`
+5. `|x| = √(x²)`
+6. `|x| < a ⟺ -a < x < a` (daerah di dalam interval)
+7. `|x| > a ⟺ x < -a atau x > a` (daerah di sayap luar)
+8. `|x| ≤ |y| ⟺ x² ≤ y²` (metode kuadrat kedua ruas)
+
+#### 2. Pembahasan Latihan Soal Nilai Mutlak Slide Dosen:
+* **Contoh 1:** Selesaikan `|3x - 5| ≥ 1`  
+  Gunakan sifat 7:  
+  `3x - 5 ≤ -1` atau `3x - 5 ≥ 1`  
+  ⟺ `3x ≤ 4 ⟹ x ≤ 4/3`  atau  `3x ≥ 6 ⟹ x ≥ 2`  
+  **HP = ( -∞, 4/3 ] ∪ [ 2, ∞ )**
+
+* **Contoh 2 (Kedua Ruas Memuat Nilai Mutlak):** Selesaikan `|2x + 3| ≥ |4x + 5|`  
+  Gunakan sifat 8 (kuadratkan kedua ruas):  
+  `(2x + 3)² ≥ (4x + 5)²`  
+  ⟺ `(2x + 3)² - (4x + 5)² ≥ 0`  
+  Gunakan rumus faktorisasi selisih kuadrat: `A² - B² = (A + B)(A - B)`  
+  ⟺ `[(2x + 3) + (4x + 5)] · [(2x + 3) - (4x + 5)] ≥ 0`  
+  ⟺ `(6x + 8)(-2x - 2) ≥ 0`  
+  Bagi kedua ruas dengan `-4` (**TANDA PERTIDAKSAMAAN WAJIB DIBALIK!**):  
+  ⟺ `(3x + 4)(x + 1) ≤ 0`  
+  Titik pemecah: `x = -4/3` dan `x = -1`  
+  Uji titik `x = 0`: `(3(0) + 4)(0 + 1) = +4` (Positif)  
+  Garis bilangan: `(+) --- [-4/3] --- (-) --- [-1] --- (+)`  
+  Karena diminta `≤ 0`, ambil daerah negatif di antara dua pemecah:  
+  **HP = [ -4/3, -1 ]**
+
+#### 3. Konsep Pemetaan Fungsi `f : X ➔ Y`:
+* **Definisi Fungsi:** Aturan relasi yang menghubungkan setiap elemen `x` pada himpunan daerah asal (Domain / `D_f`) dengan TEPAT SATU elemen `f(x)` pada himpunan daerah kawan (Kodomain). Himpunan semua bayangan keluaran disebut daerah hasil (Range / `R_f`).
+* **Uji Simetri Fungsi:**
+  * **Fungsi Genap:** `f(-x) = f(x)` (Grafik kurva simetris terhadap sumbu Y). Contoh: `f(x) = x² - 2`.
+  * **Fungsi Ganjil:** `f(-x) = -f(x)` (Grafik kurva simetris terhadap titik pusat asal (0,0)). Contoh: `g(x) = x³ - 2x`.
+* **Syarat Domain Alami (Natural Domain):**
+  * Bentuk Akar Irasional: `f(x) = √(p(x)) ⟹ Syarat: p(x) ≥ 0` (di dalam akar tidak boleh negatif).
+  * Bentuk Pecahan Rasional: `f(x) = p(x) / q(x) ⟹ Syarat: q(x) ≠ 0` (penyebut tidak boleh nol).
 
 ---
 
 ### Pertemuan 4: Persamaan Garis Lurus, Gradien & Grafik Parabola Kuadrat
 - [ ] *Sudah disalin ke lembar binder fisik*
+* **Acuan:** Slide PPT Dosen Persamaan Garis Lurus & Modul Kuadrat.
 
-#### 📖 A. Materi Asli Slide PPT Dosen (PPT 1695823532):
-1. **Koordinat Kartesius 2D:** Kuadran I ($+,+$), Kuadran II ($-,+$), Kuadran III ($-, -$), Kuadran IV ($+, -$).
-2. **Bentuk Garis Lurus & Rumus Gradien ($m$):**
-   * Eksplisit: $y = mx + c$
-   * Implisit: $Ax + By + C = 0 \implies m = -rac{A}{B}$
-   * Melalui 2 titik: $m = rac{y_2 - y_1}{x_2 - x_1}$
-   * Melalui 1 titik: $y - y_1 = m(x - x_1)$
-3. **Hubungan Dua Garis:**
-   * Sejajar: $m_1 = m_2$
-   * Tegak Lurus: $m_1 \cdot m_2 = -1 \iff m_2 = -rac{1}{m_1}$
-4. **Grafik Parabola Kuadrat $f(x) = ax^2 + bx + c$:**
-   * $a > 0$: terbuka ke atas (titik minimum); $a < 0$: terbuka ke bawah (titik maksimum).
-   * Diskriminan $D = b^2 - 4ac$: $D > 0$ memotong di 2 titik; $D = 0$ menyinggung sumbu X; $D < 0$ tidak memotong sumbu X.
+#### 1. Koordinat Kartesius 2D & Rumus Gradien (Kemiringan `m`):
+* Kuadran I (`+x, +y`), Kuadran II (`-x, +y`), Kuadran III (`-x, -y`), Kuadran IV (`+x, -y`).
+* **Rumus Gradien Garis Melalui Dua Titik `(x₁, y₁)` dan `(x₂, y₂)`:**
+  `m = Δy / Δx = (y₂ - y₁) / (x₂ - x₁)`
+* **Bentuk Persamaan Garis:**
+  * Bentuk Eksplisit: `y = m·x + c` (gradien `m`, memotong sumbu Y di `(0, c)`).
+  * Bentuk Implisit Umum: `Ax + By + C = 0` ⟹ Gradien `m = -A / B`.
+  * Persamaan Garis Melalui Titik `(x₁, y₁)` Bergradien `m`: `y - y₁ = m · (x - x₁)`.
 
-#### 🤖 B. Rangkuman Cerdas AI:
-* Formula garis lurus $y = mx + c$ adalah model dasar algoritma **Linear Regression** pada Machine Learning untuk membaca tren data.
-* Hafalan kilat tegak lurus: "Lawan dan kebalikan" (misal $m_1 = 3 \implies m_2 = -rac{1}{3}$).
+#### 2. Hubungan Antar-Dua Garis Lurus:
+* **Dua Garis Sejajar (Parallel):** Memiliki gradien identik sama persis: `m₁ = m₂`.
+* **Dua Garis Tegak Lurus (Perpendicular):** Berpotongan saling membentuk sudut 90°:
+  `m₁ · m₂ = -1 ⟺ m₂ = -1 / m₁` (Prinsip: "Lawan dan Kebalikan").
+
+#### 3. Karakteristik Parabola Fungsi Kuadrat `f(x) = a·x² + b·x + c`:
+* **Bukaan Kurva:**
+  * Jika `a > 0`: Parabola terbuka ke atas (memiliki titik minimum lembah).
+  * Jika `a < 0`: Parabola terbuka ke bawah (memiliki titik maksimum bukit).
+* **Diskriminan `D = b² - 4·a·c`:**
+  * `D > 0`: Kurva memotong sumbu X di 2 titik berlainan (`x₁ ≠ x₂`).
+  * `D = 0`: Kurva menyinggung sumbu X di 1 titik tunggal kembar (`x₁ = x₂`).
+  * `D < 0`: Kurva tidak memotong sumbu X (melayang pasti/definit).
+    * *Definit Positif (selalu positif untuk semua x):* `a > 0` dan `D < 0`.
+    * *Definit Negatif (selalu negatif untuk semua x):* `a < 0` dan `D < 0`.
+* **Titik Puncak Puncakan Parabola:** `P(x_p, y_p) = ( -b / (2a), -D / (4a) )`.
 
 ---
-
 ## 7. Pendidikan Pancasila (MK02) • Berbasis RPS & Tugas Presentasi Kelompok
 * **Koordinator Pengembang RPS:** Dr. Ida Rosida, MH. • Dr. Julia Bea Kurniawaty, SH., MH. • Dr. Iis Dewi Lestari, M.Pd.
 * **Dosen Pengampu:** Tim Dosen Pancasila Universitas Indraprasta PGRI
 * **Jadwal & Ruang:** Jumat • 07:30 - 09:10 WIB • Ruang R.4.4-1
-* **Acuan Resmi:** `RPS MK02 Pancasila Pusat Gemini 010926.pdf` & `Binder.txt`
+* **Acuan Resmi:** `RPS MK02 Pancasila Pusat Gemini 010926.pdf` & Diktat Mahasiswa.
 
 ---
 
-### 📢 DAFTAR PEMBAGIAN 10 KELOMPOK PRESENTASI PPT MANDIRI (RPS & BINDER.TXT)
-Setiap mahasiswa **wajib membuat slide PowerPoint (PPT) secara mandiri** bersama kelompoknya sesuai tema bahan kajian RPS Unindra:
+### 📢 DAFTAR PEMBAGIAN 10 KELOMPOK PRESENTASI PPT MANDIRI (RPS MK02)
+Setiap mahasiswa **wajib membuat slide PowerPoint (PPT) secara mandiri** bersama kelompoknya sesuai tema kajian silabus:
 
 | Kelompok | Tema Bahan Kajian RPS MK02 | Anggota Kelompok Mahasiswa | Sesi Pertemuan |
 | :--- | :--- | :--- | :--- |
-| **Kelompok 1** | **Pancasila dalam Lintasan Sejarah Bangsa [SEBELUM KEMERDEKAAN]**<br>*(Pra-Kemerdekaan, BPUPKI, Panitia Sembilan, Piagam Jakarta)* | 1. A ALIF ASSYAFIYYAH<br>2. AILA AZ ZAHRA ZAINUDDIN<br>3. ACHMAD MIKO AL TORIK<br>4. AINI KURNIA SARI | **Pertemuan 2** |
-| **Kelompok 2** | **Pancasila dalam Lintasan Sejarah Bangsa [SESUDAH KEMERDEKAAN]**<br>*(Kemerdekaan, Orde Lama, Orde Baru, Reformasi)* | 1. AHMAD HAFIZH ISWHYUDI<br>2. DELYSIA VALA PUTRI DWI CALLISTA<br>3. AHMAD RAIHAN PRIMADIAWAN HERMANSYAH<br>4. HIKMATUS SHOLAWAT | **Pertemuan 3** |
+| **Kelompok 1** | **Pancasila dalam Lintasan Sejarah [SEBELUM KEMERDEKAAN]**<br>*(Pra-Kemerdekaan, BPUPKI, Panitia Sembilan, Piagam Jakarta)* | 1. A ALIF ASSYAFIYYAH<br>2. AILA AZ ZAHRA ZAINUDDIN<br>3. ACHMAD MIKO AL TORIK<br>4. AINI KURNIA SARI | **Pertemuan 2** |
+| **Kelompok 2** | **Pancasila dalam Lintasan Sejarah [SESUDAH KEMERDEKAAN]**<br>*(Kemerdekaan, Orde Lama, Orde Baru, Reformasi)* | 1. AHMAD HAFIZH ISWHYUDI<br>2. DELYSIA VALA PUTRI DWI CALLISTA<br>3. AHMAD RAIHAN PRIMADIAWAN HERMANSYAH<br>4. HIKMATUS SHOLAWAT | **Pertemuan 3** |
 | **Kelompok 3** | **Pancasila sebagai Dasar Negara**<br>*(Esensi, Urgensi, Sumber Historis, Yuridis, Sosiologis, Politis, UUD 1945)* | 1. AKMAL THORIQ RAMADHAN<br>2. KIARA BREZENSKA<br>3. ALFI MUHIDIN MATDOAN<br>4. NABILA BERLIAN BRIZKY SIREGAR | **Pertemuan 4** |
 | **Kelompok 4** | **Pancasila sebagai Ideologi Negara**<br>*(Fungsi, urgensi ideologi, pengamalan pelestarian lingkungan)* | 1. HANIF FADHIL HAWARIZMI<br>2. SALMA NUR AULIA MUTHMAINAH<br>3. MUHAMAD NIZAR HAQIQI<br>4. VANDA RANGELIS SYAFINA | Pertemuan 5 |
 | **Kelompok 5** | **Radikalisme dan Terorisme**<br>*(Bahaya radikalisme, tantangan ideologi, antisipasi era digital)* | 1. DODI ALFAYED<br>2. RATU BILKIS ALIZA<br>3. ESA RIZKY AL FATHIR<br>4. ZAHRAN FIRZATULLAH | Pertemuan 7 |
@@ -1061,230 +839,129 @@ Setiap mahasiswa **wajib membuat slide PowerPoint (PPT) secara mandiri** bersama
 * **Landasan Yuridis:** UU No. 12 Tahun 2012 tentang Pendidikan Tinggi (Pasal 35 ayat 3) menetapkan Pancasila sebagai mata kuliah wajib kurikulum (MKWK).
 * **Landasan Filosofis:** Pancasila berkedudukan sebagai *Philosophische Grondslag* (dasar filsafat negara) dan *Weltanschauung* (pandangan hidup).
 
-#### 2. Kolaborasi Proyek MKWK:
-Mata kuliah Pancasila berkolaborasi dengan Agama Islam, Bahasa Indonesia, dan Kewarganegaraan dalam merancang proposal proyek kemasyarakatan (contoh: Proposal Kasir UMKM Uti Zaza atau Pengolahan Sampah Galon).
+#### 2. Kolaborasi Proyek MKWK Lapangan:
+Mata kuliah Pancasila berkolaborasi dengan Agama Islam, Bahasa Indonesia, dan Kewarganegaraan dalam merancang tugas proyek kemasyarakatan (contoh proyek kelas: *Proposal Digitalisasi Kasir UMKM Dapoer Uti Zaza*).
 
 ---
 
 ### Pertemuan 2: Pancasila dalam Lintasan Sejarah [SEBELUM KEMERDEKAAN] • TUGAS KELOMPOK 1
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Pelaksana Presentasi (Kelompok 1):** 1. A Alif Assyafiyyah, 2. Aila Az Zahra Zainuddin, 3. Achmad Miko Al Torik, 4. Aini Kurnia Sari.
+* **Pelaksana:** Kelompok 1 (Alif, Aila, Miko, Aini).
 
 #### 1. Nilai Religio-Kultural Pra-Kemerdekaan:
 * **Kutai (400 M):** Prasasti Yupa membuktikan kedermawanan dan nilai Ketuhanan.
 * **Sriwijaya (Abad VII):** Negara kebangsaan pertama berbasis maritim dan toleransi keagamaan.
-* **Majapahit (Abad XIII):** Kitab *Sutasoma* karya Mpu Tantular melahirkan semboyan *"Bhinneka Tunggal Ika Tan Hana Dharma Mangrwa"*. Istilah *Pancasila* termuat dalam *Negarakertagama* karya Mpu Prapanca (Pancasila Krama: 5 norma moral).
+* **Majapahit (Abad XIII):** Kitab *Sutasoma* karya Mpu Tantular melahirkan semboyan *"Bhinneka Tunggal Ika Tan Hana Dharma Mangrwa"*. Istilah *Pancasila* termuat dalam *Negarakertagama* karya Mpu Prapanca (Pancasila Krama: 5 norma moral larangan).
 
 #### 2. Sidang BPUPKI I (29 Mei - 1 Juni 1945):
 * **Mr. Muhammad Yamin (29 Mei):** Peri Kebangsaan, Kemanusiaan, Ketuhanan, Kerakyatan, Kesejahteraan Rakyat.
 * **Prof. Dr. Soepomo (31 Mei):** Teori Negara Integralistik (Persatuan Mengatasi Golongan).
 * **Ir. Soekarno (1 Juni):** Memperkenalkan nama **Pancasila**, diperas menjadi *Trisila*, lalu *Ekasila*: **Gotong Royong**.
-* **Panitia Sembilan (22 Juni 1945):** Merumuskan Piagam Jakarta (Jakarta Charter) dengan sila pertama memuat 7 kata.
+* **Panitia Sembilan (22 Juni 1945):** Merumuskan Piagam Jakarta (*Jakarta Charter*).
 
 ---
 
 ### Pertemuan 3: Pancasila dalam Lintasan Sejarah [SESUDAH KEMERDEKAAN] • TUGAS KELOMPOK 2
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Pelaksana Presentasi (Kelompok 2):** 1. Ahmad Hafizh Iswhyudi, 2. Delysia Vala Putri Dwi Callista, 3. Ahmad Raihan Primadiawan Hermansyah, 4. Hikmatus Sholawat.
+* **Pelaksana:** Kelompok 2 (Hafizh, Delysia, Raihan, Hikmatus).
 
 #### 1. Sidang PPKI 18 Agustus 1945:
 Mohammad Hatta bersama para tokoh Islam menyepakati penggantian 7 kata Piagam Jakarta menjadi **"Ketuhanan Yang Maha Esa"** demi menjaga keutuhan Sabang sampai Merauke.
 
 #### 2. Dialektika Tiga Rezim:
 * **Orde Lama (1945-1965):** Dinamika RIS & UUDS 1950, Dekrit Presiden 5 Juli 1959, Demokrasi Terpimpin, Nasakom, dan tragedi G30S/PKI.
-* **Orde Baru (1966-1998):** Pembangunan ekonomi Repelita, namun disertai penafsiran tunggal ideologi (Penataran P-4) dan sentralisasi kekuasaan.
-* **Era Reformasi (1998 - Sekarang):** Pancasila sebagai ideologi terbuka, tantangan hoaks media sosial, polarisasi politik, dan korupsi.
+* **Orde Baru (1966-1998):** Pembangunan Repelita, namun disertai penafsiran tunggal ideologi (Penataran P-4).
+* **Era Reformasi (1998 - Sekarang):** Pancasila sebagai ideologi terbuka, tantangan era digital, hoaks, polarisasi, dan korupsi.
 
 ---
 
 ### Pertemuan 4: Pancasila sebagai Dasar Negara • TUGAS KELOMPOK 3 & KISI-KISI UTS RPS
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Pelaksana Presentasi (Kelompok 3):** 1. Akmal Thoriq Ramadhan, 2. Kiara Brezenska, 3. Alfi Muhidin Matdoan, 4. Nabila Berlian Brizky Siregar.
+* **Pelaksana:** Kelompok 3 (Akmal, Kiara, Alfi, Nabila).
 
 #### 1. Kedudukan Yuridis sebagai Dasar Negara:
 Pancasila berkedudukan sebagai *Staatsfundamentalnorm* (Norma Fundamental Negara) dan sumber dari segala sumber hukum negara (Pasal 2 UU No. 12 Tahun 2011).
 
 #### 2. Bank Soal Latihan Persiapan UTS Resmi dari RPS Unindra:
-1. **Tujuan mempelajari Pancasila di PT:** Membina karakter beriman, bermoral, beretika, dan cinta tanah air berwawasan global (CPMK 1 & 2).
+1. **Tujuan mempelajari Pancasila di PT:** Membina karakter beriman, bermoral, beretika, dan cinta tanah air berwawasan global.
 2. **Upaya mempertahankan ideologi:** Penguatan pendidikan kewarganegaraan, penegakan hukum adil, literasi digital kritis, dan keteladanan pemimpin.
-3. **Rumusan Piagam Jakarta:** Sila 1 dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya.
+3. **Rumusan Piagam Jakarta:** Sila 1 memuat kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya.
 4. **Proses perumusan:** Sidang BPUPKI I, Panitia Sembilan (Piagam Jakarta), dan pengesahan PPKI 18 Agustus 1945.
 5. **Alasan memilih Pancasila:** Digali dari kepribadian bangsa sendiri, menyeimbangkan hak privat dan sosial kemasyarakatan.
 6. **Kapitalisme vs Sosialisme:** Kapitalisme mengagungkan pasar bebas & kepemilikan modal privat; sosialisme mengontrol alat produksi oleh negara.
-7. **Demokrasi di Indonesia:** Perlu penguatan musyawarah mufakat untuk mengatasi politik transaksional dan polarisasi.
+7. **Demokrasi di Indonesia:** Perlunya penguatan musyawarah mufakat untuk mengatasi politik transaksional.
 8. **Sikap atas keberagaman:** Toleransi aktif, moderasi beragama, dan penghayatan Bhinneka Tunggal Ika.
 9. **Hubungan dengan UUD 1945:** Pancasila menjiwai Pembukaan UUD 1945 dan dijabarkan dalam pasal-pasal konstitusi.
 10. **Potensi bangsa:** Keragaman 1.340 suku bangsa, posisi maritim silang strategis, sumber daya alam melimpah, dan modal gotong royong.
 
 ---
-
 ## 8. Pendidikan Agama Islam (PAI)
-* **Dosen Pengampu:** Tim Dosen PAI Unindra
+* **Dosen Pengampu:** Tim Dosen PAI Universitas Indraprasta PGRI
 * **Jadwal & Ruang:** Jumat • 09:10 - 10:50 WIB • Ruang R.4.4-1
+* **Berkas Rujukan:** Diktat Kuliah PAI & Lembar Jawaban Mahasiswa (`04_Pendidikan_Agama_Islam/Tugas/`).
+
+---
 
 ### Pertemuan 1: Visi Perkuliahan Islam & Fondasi Tauhid Komprehensif
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Visi, Misi & Dua Sumber Primer Hukum Islam
+* **Visi:** Membentuk sarjana muslim yang berintegritas ilmiah, bertakwa, berakhlak mulia (*akhlakul karimah*), dan mampu mengintegrasikan sains dengan tauhid.
+* **Dua Sumber Primer:**
+  1. **Al-Qur'anul Karim:** Kalamullah yang diturunkan kepada Nabi Muhammad SAW sebagai mukjizat dan pedoman mutlak.
+  2. **As-Sunnah An-Nabawiyyah:** Sabda, perbuatan, dan ketetapan Rasulullah SAW yang shahih.
 
-#### 1. Visi, Misi & Tujuan PAI di Perguruan Tinggi
-<ul>
-  <li>Membentuk sarjana muslim yang memiliki integritas ilmiah, profesional, bertakwa kepada Allah SWT, dan berhiaskan akhlak mulia (*akhlakul karimah*).</li>
-  <li>Membangun landasan berpikir berdasar pada dua sumber primer hukum Islam: **Al-Qur'anul Karim** dan **As-Sunnah An-Nabawiyyah Ash-Shahihah**.</li>
-  <li>Mewujudkan jiwa antikorupsi, kejujuran intelektual, dan etika tanggung jawab profesional dalam pemanfaatan sains dan teknologi.</li>
-</ul>
-
-#### 2. Hakikat & Tiga Dimensi Tauhid (Trilogi Tauhid)
-<p>Tauhid secara bahasa berarti mengesakan. Secara terminologi adalah meyakini keesaan Allah SWT dalam segala hal yang menjadi kekhususan bagi-Nya. Menurut para ulama Ahlussunnah wal Jama'ah, tauhid terbagi menjadi 3 dimensi terpadu:</p>
-<ol>
-  <li>**Tauhid Rububiyyah:**
-    <ul>
-      <li>*Definisi:* Mengesakan Allah SWT dalam segala perbuatan-Nya sendiri, meyakini bahwa hanya Allah satu-satunya Pencipta (*Al-Khaliq*), Pemilik, Pemelihara, Pengatur alam semesta (*Al-Mudabbir*), dan Pemberi rezeki (*Ar-Raziq*) bagi seluruh makhluk tanpa sekutu.</li>
-      <li>*Dalil:* QS. Al-Fatihah: 2 (*"Alhamdulillahi Rabbil 'Alamin"* - Segala puji bagi Allah, Tuhan Semesta Alam).</li>
-    </ul>
-  </li>
-  <li>**Tauhid Uluhiyyah (Tauhid Ibadah):**
-    <ul>
-      <li>*Definisi:* Mengesakan Allah SWT dalam seluruh perbuatan dan penghambaan hamba-Nya. Meniatkan seluruh ibadah (shalat, doa, nadzar, tawakkal, takut, harap, sembelihan) hanya murni ditujukan kepada Allah SWT semata. Menolak segala bentuk penyekutuan (*syirik*).</li>
-      <li>*Dalil:* QS. Adz-Dzariyat: 56 (*"Wamaa khalaqtul jinna wal insa illa liya'buduun"* - Dan tidaklah Aku ciptakan jin dan manusia melainkan agar mereka menyembah-Ku).</li>
-    </ul>
-  </li>
-  <li>**Tauhid Asma wa Shifat:**
-    <ul>
-      <li>*Definisi:* Menetapkan nama-nama (*Asmaul Husna*) dan sifat-sifat keagungan bagi Allah SWT sebagaimana yang termaktub dalam Al-Qur'an dan Hadits shahih sesuai dengan kebesaran-Nya, tanpa melakukan:
-        <ul>
-          <li>*Tahrif:* Mengubah lafaz atau makna sifat.</li>
-          <li>*Ta'thil:* Meniadakan atau menolak sifat Allah.</li>
-          <li>*Takyif:* Mempertanyakan bagaimanakah bentuk hakikat sifat tersebut.</li>
-          <li>*Tamtsil:* Menyerupakan sifat Allah dengan makhluk-Nya.</li>
-        </ul>
-      </li>
-      <li>*Dalil:* QS. Asy-Syura: 11 (*"Laisa kamitslihi syai-un wa huwas sami'ul bashir"* - Tidak ada sesuatu pun yang serupa dengan Dia, dan Dialah Yang Maha Mendengar lagi Maha Melihat).</li>
-    </ul>
-  </li>
-</ol>
-
+#### 2. Tiga Dimensi Tauhid (Trilogi Tauhid):
+1. **Tauhid Rububiyyah:** Meyakini bahwa hanya Allah SWT satu-satunya Pencipta (*Al-Khaliq*), Pemelihara, Pengatur alam semesta (*Al-Mudabbir*), dan Pemberi rezeki (*Ar-Raziq*) tanpa sekutu (QS. Al-Fatihah: 2).
+2. **Tauhid Uluhiyyah (Tauhid Ibadah):** Mengesakan Allah SWT dalam seluruh perbuatan ibadah hamba-Nya (shalat, doa, sembelihan, tawakal) hanya murni ditujukan kepada Allah (QS. Adz-Dzariyat: 56).
+3. **Tauhid Asma' wa Shifat:** Menetapkan nama-nama (*Asma'ul Husna*) dan sifat-sifat kemuliaan Allah SWT sebagaimana yang Allah dan Rasul-Nya tetapkan tanpa menyerupakannya dengan makhluk (*bilaa takyif, bilaa tamtsil, bilaa ta'thil*).
 
 ---
 
-### Pertemuan 2: Aqidah Islam, Makna & 4 Ruang Lingkup Kajian
+### Pertemuan 2: Aqidah Islam, Rukun Iman & Hakikat Ihsan
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Rukun Iman Enam Pilar:
+1. Iman kepada Allah SWT.
+2. Iman kepada Malaikat-Malaikat Allah.
+3. Iman kepada Kitab-Kitab Allah (Taurat, Zabur, Injil, Al-Qur'an).
+4. Iman kepada Rasul-Rasul Allah.
+5. Iman kepada Hari Akhir (Kiamat).
+6. Iman kepada Qadha dan Qadar (Takdir baik maupun buruk).
 
-#### 1. Pengertian Aqidah Secara Etimologi & Terminologi
-<ul>
-  <li>**Etimologi:** Berasal dari kata bahasa Arab: *'aqada - ya'qidu - 'aqidatan* yang bermakna ikatan simpul yang sangat kuat, kukuh, dan sulit dilepas.</li>
-  <li>**Terminologi:** Keyakinan dan ketetapan hati yang mantap, mutlak, dan bulat kepada Allah SWT dan perkara-perkara ghaib tanpa ada sedikit pun celah keraguan (*syak*), kebimbangan, atau dugaan di dalam kalbu sanubari seorang muslim.</li>
-</ul>
-
-#### 2. Arkanul Iman (6 Rukun Iman)
-<p>Aqidah bertumpu pada 6 rukun iman dalam Hadits Jibril: (1) Iman kepada Allah, (2) Iman kepada Malaikat-Malaikat-Nya, (3) Iman kepada Kitab-Kitab-Nya, (4) Iman kepada Rasul-Rasul-Nya, (5) Iman kepada Hari Kiamat, dan (6) Iman kepada Qadha dan Qadar (takdir baik dan buruk berasal dari ketetapan Allah).</p>
-
-#### 3. 4 Ruang Lingkup Aqidah Islam (Model Syaikh Hasan Al-Banna)
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Ruang Lingkup</th><th>Fokus Pembahasan</th><th>Objek Kajian Spesifik</th></tr></thead>
-    <tbody>
-      <tr><td>**1. Ilahiyyat**</td><td>Segala hal yang berkaitan langsung dengan Dzat dan Ketuhanan Allah SWT</td><td>Sifat Wajib, Mustahil, Jaiz bagi Allah; Asmaul Husna; Af'alullah (perbuatan Allah).</td></tr>
-      <tr><td>**2. Nubuwwat**</td><td>Segala hal yang berkaitan dengan para Nabi dan Rasul utusan Allah</td><td>Sifat wajib Rasul (Siddiq, Amanah, Tabligh, Fathonah); Mukjizat; Kitab Suci Samawi (Taurat, Zabur, Injil, Al-Qur'an); Sunnah.</td></tr>
-      <tr><td>**3. Ruhaniyyat**</td><td>Segala hal yang berkaitan dengan dimensi alam metafisika dan makhluk halus</td><td>Penciptaan Malaikat dari cahaya; Jin dan Iblis dari nyala api; Hakikat Roh; Setan; Qarin.</td></tr>
-      <tr><td>**4. Sam'iyyat**</td><td>Perkara ghaib eskatologis yang **hanya dapat diketahui melalui pendengaran wahyu** (Al-Qur'an & Sunnah) tanpa bisa dijangkau oleh panca indra manusia</td><td>Tanda-tanda kiamat, sakaratul maut, alam Barzakh (siksa dan nikmat kubur), Yaumul Ba'ats (kebangkitan), Padang Mahsyar, Mizan (timbangan amal), Hisab (perhitungan), Telaga Al-Kautsar, Jembatan Shirath, Surga, dan Neraka.</td></tr>
-    </tbody>
-  </table>
-</div>
-
+#### 2. Hakikat Tingkatan Ihsan
+Sebagaimana dijelaskan dalam Hadits Jibril:
+> *"Ihsan adalah engkau beribadah kepada Allah seakan-akan engkau melihat-Nya. Dan jika engkau tidak mampu melihat-Nya, maka sesungguhnya Dia senantiasa melihatmu."* (HR. Muslim).
 
 ---
 
 ### Pertemuan 3: Syariah Islam, Dimensi Ibadah & 5 Hukum Taklifi
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Lima Hukum Taklifi dalam Ushul Fiqih:
+1. **Wajib (Fardhu):** Dikerjakan berpahala, ditinggalkan berdosa (contoh: shalat lima waktu, puasa Ramadhan).
+2. **Sunnah (Mandub):** Dikerjakan berpahala, ditinggalkan tidak berdosa (contoh: shalat tahajjud, puasa Senin-Kamis).
+3. **Mubah (Ja'iz):** Netral; dikerjakan maupun ditinggalkan tidak berpahala dan tidak berdosa (contoh: makan, minum, memilih tipe font).
+4. **Makruh:** Ditinggalkan berpahala, dikerjakan tidak berdosa namun dibenci Allah (contoh: makan makanan berbau menyengat sebelum shalat berjamaah).
+5. **Haram:** Ditinggalkan berpahala, dikerjakan mendapat dosa dan siksa (contoh: riba, berbohong, menyebarkan virus siber).
 
-#### 1. Pengertian Syariah
-<ul>
-  <li>Secara bahasa (etimologi) berarti *jalan lurus menuju mata air kehidupan*.</li>
-  <li>Secara istilah (terminologi) adalah seperangkat aturan, tata tertib, dan ketentuan hukum yang diwahyukan oleh Allah SWT kepada Rasulullah SAW untuk mengatur perbuatan manusia sebagai hamba Allah, sebagai makhluk sosial, dan sebagai pemakmur bumi.</li>
-</ul>
-
-#### 2. Dua Dimensi Ibadah dalam Syariah
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Dimensi Ibadah</th><th>Ibadah MAKHDAH (Khusus)</th><th>Ibadah GHAIRU MAKHDAH / Muamalah (Umum)</th></tr></thead>
-    <tbody>
-      <tr><td>**Definisi & Relasi**</td><td>Hubungan vertikal langsung antara hamba dengan Allah (*Hablum Minallah*).</td><td>Hubungan horizontal antara manusia dengan sesama manusia dan alam (*Hablum Minannas*).</td></tr>
-      <tr><td>**Kaidah Fiqih Pokok**</td><td>*"Al-ashlu fil 'ibaadati al-buthlanu hatta yadulla ad-dalilu 'ala amrihi"*<br>(Hukum asal ibadah adalah **TERLARANG / BATAL** kecuali jika ada dalil yang memerintahkannya).</td><td>*"Al-ashlu fil mu'amalati al-ibahatu hatta yadulla ad-dalilu 'ala tahrimihi"*<br>(Hukum asal muamalah adalah **BOLEH / HALAL** kecuali jika ada dalil yang mengharamkannya).</td></tr>
-      <tr><td>**Sifat Ketentuan**</td><td>Kaku, baku, terinci, tidak boleh dikurangi atau ditambahi (bid'ah).</td><td>Fleksibel, dinamis, terbuka terhadap inovasi sains dan teknologi modern.</td></tr>
-      <tr><td>**Contoh Konkret**</td><td>Tata cara Shalat 5 waktu, Puasa Ramadhan, Zakat, Ibadah Haji.</td><td>Jual-beli online e-commerce, etika koding AI, tolong-menolong, bekerja profesional.</td></tr>
-    </tbody>
-  </table>
-</div>
-
-#### 3. 5 Hukum Taklifi (Ketentuan Norma Syariat)
-<ol>
-  <li>**Wajib (Fardhu):** Perbuatan yang apabila dikerjakan mendapat pahala, dan apabila ditinggalkan berdosa. Dibagi 2:
-    <ul>
-      <li>*Wajib 'Aini:* Kewajiban personal setiap individu muslim (contoh: shalat 5 waktu).</li>
-      <li>*Wajib Kifa'i:* Kewajiban kolektif komunitas; jika sebagian sudah mengerjakan maka gugur dosa yang lain (contoh: shalat jenazah, mendalami ilmu teknologi untuk ketahanan umat).</li>
-    </ul>
-  </li>
-  <li>**Sunnah (Mandub):** Perbuatan yang apabila dikerjakan mendapat pahala, dan apabila ditinggalkan tidak mendapat dosa.
-    <ul>
-      <li>*Sunnah Muakkad:* Sunnah yang sangat ditekankan dan jarang ditinggalkan Rasulullah (contoh: shalat rawatib, shalat tarawih, qurban).</li>
-      <li>*Sunnah Ghairu Muakkad:* Sunnah biasa yang sesekali dikerjakan (contoh: puasa Senin-Kamis).</li>
-    </ul>
-  </li>
-  <li>**Mubah (Ja'iz):** Perbuatan yang bebas dipilih; apabila dikerjakan atau ditinggalkan sama-sama tidak berpahala dan tidak berdosa (contoh: makan, tidur, memilih bahasa pemrograman). Namun mubah dapat bernilai pahala jika diniatkan untuk ibadah.</li>
-  <li>**Makruh:** Perbuatan yang apabila ditinggalkan mendapat pahala kebaikan, dan apabila dikerjakan tidak berdosa tetapi sangat dibenci oleh Allah (contoh: makan makanan yang berbau menyengat sebelum shalat berjamaah).</li>
-  <li>**Haram:** Perbuatan yang apabila ditinggalkan karena ketaatan kepada Allah mendapat pahala besar, dan apabila dikerjakan mendapat dosa dan siksaan pedih di akhirat (contoh: berzina, korupsi, mencuri, riba, meminum khamr).</li>
-</ol>
-
-#### 4. Maqashid Asy-Syari'ah (5 Tujuan Utama Syariat Islam)
-<p>Seluruh aturan hukum syariat diturunkan Allah demi memelihara 5 kemaslahatan primer (*Adh-Dharuriyyat Al-Khams*):</p>
-<ol>
-  <li>**Hifzh Ad-Din:** Memelihara kesucian agama dan keimanan.</li>
-  <li>**Hifzh An-Nafs:** Memelihara keselamatan jiwa manusia dari pembunuhan dan kekerasan.</li>
-  <li>**Hifzh Al-'Aql:** Memelihara akal pikiran dari kerusakan (larangan narkoba dan khamr).</li>
-  <li>**Hifzh An-Nasl:** Memelihara keturunan, nasab, dan kehormatan keluarga (syariat pernikahan dan larangan zina).</li>
-  <li>**Hifzh Al-Mal:** Memelihara kepemilikan harta kekayaan dari pencurian, riba, manipulasi penipuan (scam), dan korupsi.</li>
-</ol>
-
+#### 2. Dimensi Ibadah Mahdhah vs Ghairu Mahdhah:
+* **Ibadah Mahdhah:** Ibadah murni yang rukun, syarat, dan tata caranya telah ditetapkan secara rinci oleh syariat (contoh: tata cara shalat, thawaf). Kaidah fikih: *"Hukum asal ibadah mahdhah adalah haram/terlarang kecuali ada dalil yang memerintahkannya."*
+* **Ibadah Ghairu Mahdhah:** Seluruh aktivitas keduniaan (kuliah, bekerja, membuat sistem informasi kasir) yang diniatkan ikhlas mencari ridha Allah SWT.
 
 ---
 
-### Pertemuan 4: Akhlak dalam Islam (Komparasi Etika, Moral & Akhlak)
+### Pertemuan 4: Akhlak dalam Islam & Etika Profesi Komputasi
 - [ ] *Sudah disalin ke lembar binder fisik*
 
+#### 1. Tiga Spektrum Akhlakul Karimah:
+1. **Akhlak kepada Allah SWT:** Tawakal, syukur, sabar, ikhlas, dan khauf (takut dosa).
+2. **Akhlak kepada Manusia:** Berbakti kepada orang tua (*birrul walidain*), silaturahmi, jujur (*amanah*), menepati janji, dan tolong-menolong.
+3. **Akhlak kepada Lingkungan Alam:** Memakmurkan bumi, melestarikan alam, dan tidak berbuat kerusakan (*fasad*).
 
-#### 1. Hakikat Akhlak Menurut Hujjatul Islam Imam Al-Ghazali
-<p>Dalam kitab monumentalnya *Ihya' 'Ulumiddin*, **Imam Abu Hamid Al-Ghazali** merumuskan definisi akhlak:</p>
-<blockquote style="border-left:4px solid var(--primary); padding:10px 14px; background:var(--surface-elevated); font-style:italic;">
-  "Al-Khuluqu 'ibaaratun 'an hai-atin fin-nafsi raasikhatin, 'anhaa tashdurul af'aalu bisuhuulatin wa yusrin min ghairi haajatin ilaa fikrin wa ruwiyyah."<br>
-  (Akhlak adalah suatu kondisi atau sifat yang tertanam kuat di dalam jiwa, yang darinya memancar perbuatan-perbuatan dengan mudah dan spontan tanpa memerlukan pemikiran dan pertimbangan yang panjang).
-</blockquote>
-<p>Jika seseorang harus berpikir lama dan menimbang-nimbang sebelum memberi sedekah uang seribu rupiah, kedermawanannya belum menjadi akhlaknya. Namun jika tangan kanannya otomatis memberi dengan ikhlas tanpa riya' begitu melihat orang membutuhkan, kedermawanan telah menjadi akhlak yang mengakar.</p>
-
-#### 2. Matriks Komparasi Ilmiah: Etika vs Moral vs Akhlak
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Dimensi Pembanding</th><th>ETIKA (Ethics)</th><th>MORAL (Morality)</th><th>AKHLAK (Islamic Ethics)</th></tr></thead>
-    <tbody>
-      <tr><td>**Asal Kata & Etimologi**</td><td>Bahasa Yunani *Ethos* (watak, kebiasaan, adat)</td><td>Bahasa Latin *Mos* / jamaknya *Mores* (adat kebiasaan)</td><td>Bahasa Arab *Khuluqun* (tabiat, perangai, ciptaan batin yang serumpun dengan kata *Khaliq* dan *Makhluq*)</td></tr>
-      <tr><td>**Sumber & Tolok Ukur Kebenaran**</td><td>**Akal Pikiran / Rasio Manusia:** Kesimpulan filosofis berbasis logika logis akal sehat manusia.</td><td>**Adat Istiadat / Norma Sosial:** Kesepakatan tradisi budaya yang berlaku dalam suatu komunitas masyarakat tertentu.</td><td>**Wahyu Ilahi (Al-Qur'an & As-Sunnah):** Tuntunan mutlak dari Allah SWT yang dicontohkan Rasulullah SAW.</td></tr>
-      <tr><td>**Sifat Nilai Keberlakuan**</td><td>**Relatif & Teoretis:** Berubah mengikuti paradigma filsafat dan temuan sains baru.</td><td>**Lokal & Terbatas Wilayah:** Berbeda antar daerah (apa yang sopan di Jawa belum tentu sopan di Eropa).</td><td>**Mutlak, Abadi & Universal:** Berlaku kapanpun, dimanapun, untuk siapapun hingga akhir zaman (kejujuran selalu mulia, korupsi selalu terkutuk).</td></tr>
-      <tr><td>**Sanksi Pelanggaran**</td><td>Kritik akal sehat, celaan kaum cendekiawan, diskualifikasi etika profesi.</td><td>Sanksi sosial, gunjingan tetangga, pengucilan dari paguyuban adat.</td><td>Dosa di sisi Allah, kegelisahan batin spiritual, dan pertanggungjawaban hisab di akhirat.</td></tr>
-      <tr><td>**Motivasi Perbuatan**</td><td>Pujian rasionalitas, martabat martir profesional, reputasi gelar.</td><td>Penerimaan sosial warga setempat, menjaga nama baik keluarga.</td><td>**Murni Mengharap Ridha Allah SWT (Ikhlas Lillahi Ta'ala).**</td></tr>
-    </tbody>
-  </table>
-</div>
-
-#### 3. Hadits Pokok Misi Kerasulan Nabi Muhammad SAW
-> [!TIP]
-> **🌟 Hadits Pilar Akhlak (HR. Ahmad No. 8952 & Al-Bukhari dalam Al-Adab Al-Mufrad)**
-> <p style="font-size:15px; font-weight:700; color:var(--text-main); margin-bottom:6px;">
-    إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الْأَخْلَاقِ
-  </p>
-  <p>**Pelafalan:** *"Innama bu'itstu li-utammima makaarimal akhlaaq."*</p>
-  <p>**Artinya:** *"Sesungguhnya aku diutus hanyalah semata-mata untuk menyempurnakan kemuliaan akhlak."*</p>
-  <p>Hadits ini menegaskan bahwa puncak dari seluruh ajaran rukun iman (aqidah) dan rukun Islam (syariah) adalah terwujudnya kemuliaan akhlak dalam tindakan nyata manusia sehari-hari.</p>
-
+#### 2. Integrasi Etika Islam bagi Praktisi Sistem Informasi:
+* **Amanah Data (Kerahasiaan & Privasi):** Menjaga kerahasiaan data pengguna dan pelanggan adalah kewajiban syar'i. Membocorkan data pribadi merupakan bentuk khianat.
+* **Integritas Kode (No Malware):** Haram hukumnya membuat perangkat lunak jahat (*trojan*, *ransomware*, judi online, atau sistem penipuan).
+* **Teknologi sebagai Wasilah Kebaikan:** Menjadikan komputer dan internet sebagai wasilah dakwah, efisiensi zakat, dan peningkatan taraf hidup UMKM.
 
 ---
