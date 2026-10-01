@@ -79,7 +79,7 @@ export function SubjectsView({
                 Daftar Pertemuan ({currentSubject.meetings?.length || 0} Pertemuan)
               </h2>
               <span className="text-xs text-slate-400">
-                Centang status checklist untuk memperbarui progres binder
+                Pilih sesi untuk membaca rangkuman komprehensif dan membuka dokumen PDF dosen
               </span>
             </div>
 
@@ -114,51 +114,20 @@ export function SubjectsView({
                         {m.description || 'Materi perkuliahan.'}
                       </p>
 
-                      {/* 4-Tier Checklist Tracker (Section 10 of Binder.txt) */}
-                      <div className="p-3 rounded-lg bg-slate-900/80 border border-white/5 space-y-2 mb-4">
-                        <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-                          Checklist Akademik:
+                      {/* Academic Resource Info Badges */}
+                      <div className="p-3 rounded-lg bg-slate-900/80 border border-white/5 space-y-1.5 mb-4">
+                        <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                          Materi Perkuliahan:
                         </div>
-                        <div className="grid grid-cols-2 gap-2 text-xs">
-                          <label className="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
-                            <input
-                              type="checkbox"
-                              checked={!!m.progress?.is_read}
-                              onChange={() => onToggleProgress(currentSubject.id, m.id, 'is_read')}
-                              className="rounded border-slate-700 text-indigo-600 focus:ring-indigo-500"
-                            />
-                            <span>Sudah membaca</span>
-                          </label>
-
-                          <label className="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
-                            <input
-                              type="checkbox"
-                              checked={!!m.progress?.is_summarized}
-                              onChange={() => onToggleProgress(currentSubject.id, m.id, 'is_summarized')}
-                              className="rounded border-slate-700 text-cyan-600 focus:ring-cyan-500"
-                            />
-                            <span>Sudah dirangkum</span>
-                          </label>
-
-                          <label className="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
-                            <input
-                              type="checkbox"
-                              checked={!!m.progress?.is_studied}
-                              onChange={() => onToggleProgress(currentSubject.id, m.id, 'is_studied')}
-                              className="rounded border-slate-700 text-violet-600 focus:ring-violet-500"
-                            />
-                            <span>Sudah dipelajari</span>
-                          </label>
-
-                          <label className="flex items-center gap-2 cursor-pointer text-emerald-400 font-semibold hover:text-emerald-300">
-                            <input
-                              type="checkbox"
-                              checked={!!m.progress?.is_noted_in_binder}
-                              onChange={() => onToggleProgress(currentSubject.id, m.id, 'is_noted_in_binder')}
-                              className="rounded border-slate-700 text-emerald-600 focus:ring-emerald-500"
-                            />
-                            <span>Catat di Binder</span>
-                          </label>
+                        <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium">
+                            <FileText className="w-3 h-3 text-indigo-400" />
+                            <span>{(m.materials || []).length} Dokumen PDF</span>
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-medium">
+                            <Sparkles className="w-3 h-3 text-cyan-400" />
+                            <span>Rangkuman Detail</span>
+                          </span>
                         </div>
                       </div>
                     </div>

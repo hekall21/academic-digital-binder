@@ -104,31 +104,31 @@ export function Sidebar({
         </button>
       </div>
 
-      {/* Real-time Binder Progress Card */}
+      {/* Academic Repository Vault Card */}
       <div className="mb-6 p-4 rounded-xl bg-gradient-to-br from-indigo-950/40 via-slate-900 to-cyan-950/30 border border-indigo-500/20 shadow-md">
         <div className="flex items-center justify-between text-xs mb-2">
-          <span className="font-heading font-bold text-white dark:text-white light:text-slate-900 flex items-center gap-1.5">
-            <FileCheck className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Progress Salin Buku</span>
+          <span className="font-heading font-bold text-white flex items-center gap-1.5">
+            <FolderArchive className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Repository Kuliah</span>
           </span>
           <span className="font-mono font-bold text-cyan-400 text-xs">
-            {stats.progressPct}%
+            Semester 1
           </span>
         </div>
 
-        {/* Bar */}
-        <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden mb-2">
-          <div
-            className="h-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-emerald-400 transition-all duration-500"
-            style={{ width: `${stats.progressPct}%` }}
-          />
-        </div>
-
-        <div className="flex items-center justify-between text-[11px] text-slate-400">
-          <span>Tercatat di Binder</span>
-          <span className="font-mono font-semibold text-slate-200">
-            {stats.totalNotedInBinder} / {stats.totalMeetings} Sesi
-          </span>
+        <div className="space-y-1.5 text-[11px] text-slate-300">
+          <div className="flex items-center justify-between">
+            <span className="text-slate-400">Total Sesi:</span>
+            <span className="font-mono font-semibold text-white">32 Pertemuan</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-slate-400">Berkas PDF Tersedia:</span>
+            <span className="font-mono font-semibold text-cyan-400">43 Berkas</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-slate-400">Cheatsheet HD (JPG):</span>
+            <span className="font-mono font-semibold text-amber-400">6 Kartu</span>
+          </div>
         </div>
       </div>
 

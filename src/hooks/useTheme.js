@@ -1,27 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
+/**
+ * Enforces Dark Mode Only across the entire application as requested.
+ * Light mode is completely disabled to ensure visual consistency and eye comfort.
+ */
 export function useTheme() {
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('academic_binder_theme');
-    if (saved) return saved;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark';
-  });
-
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.remove('dark');
-      root.classList.add('light');
-    }
-    localStorage.setItem('academic_binder_theme', theme);
-  }, [theme]);
+    root.classList.add('dark');
+    root.classList.remove('light');
+    localStorage.setItem('academic_binder_theme', 'dark');
+  }, []);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  return {
+    theme: 'dark',
+    toggleTheme: () => {
+      // Locked to dark mode
+      console.log('[Theme] Dark mode is permanently enforced.');
+    },
+    isDark: true,
   };
-
-  return { theme, toggleTheme, isDark: theme === 'dark' };
 }

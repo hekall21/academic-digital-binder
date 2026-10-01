@@ -160,15 +160,15 @@ export function DashboardView({
           <p className="text-xs text-slate-400 mt-0.5 font-medium">Rangkuman Siap</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#11131B] dark:bg-[#11131B] light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 shadow-sm col-span-2 sm:col-span-1">
+        <div className="p-4 rounded-xl bg-[#11131B] border border-white/10 shadow-sm col-span-2 sm:col-span-1">
           <div className="flex items-center justify-between text-emerald-400 mb-2">
             <CheckCircle2 className="w-5 h-5" />
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Buku Fisik</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Berkas PDF</span>
           </div>
-          <div className="text-2xl font-extrabold font-heading text-white dark:text-white light:text-slate-900">
-            {stats.totalNotedInBinder}
+          <div className="text-2xl font-extrabold font-heading text-white">
+            {stats.totalMaterials || 43}
           </div>
-          <p className="text-xs text-slate-400 mt-0.5 font-medium">Sudah Dicatat</p>
+          <p className="text-xs text-slate-400 mt-0.5 font-medium">PDF Siap Akses</p>
         </div>
       </div>
 
@@ -179,7 +179,7 @@ export function DashboardView({
             <div className="space-y-1">
               <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
                 <Clock className="w-4 h-4" />
-                <span>Continue Studying • Belum Selesai Dicatat ke Buku</span>
+                <span>Lanjutkan Membaca Catatan & Berkas PDF</span>
               </div>
               <h3 className="text-lg sm:text-xl font-bold font-heading text-white dark:text-white light:text-slate-900">
                 {continueItem.subject.name} — Pertemuan {continueItem.meeting.meeting_number}: {continueItem.meeting.title}
@@ -329,21 +329,15 @@ export function DashboardView({
                   </p>
                 </div>
 
-                {/* Progress Bar inside Card */}
-                <div className="mt-5 pt-3 border-t border-white/5">
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1.5 font-medium">
-                    <span>Progress Salin</span>
-                    <span className="font-mono text-slate-300">{pct}%</span>
-                  </div>
-                  <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-300"
-                      style={{
-                        width: `${pct}%`,
-                        backgroundColor: subj.color || '#6366F1',
-                      }}
-                    />
-                  </div>
+                {/* Resource Indicator inside Card */}
+                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+                  <span className="flex items-center gap-1 text-cyan-400 font-medium">
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>{(subj.meetings || []).reduce((acc, m) => acc + (m.materials || []).length, 0)} PDF & Diktat</span>
+                  </span>
+                  <span className="font-semibold text-slate-300">
+                    {meetingCount} Sesi
+                  </span>
                 </div>
               </div>
             );

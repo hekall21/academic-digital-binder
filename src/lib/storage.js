@@ -1,7 +1,9 @@
+import { safeJsonParse } from './security';
+
 // Local Storage & Backup Persistence Utilities
 // Versioned to ensure curriculum updates are automatically synced to the user's browser
 
-export const CURRENT_DATA_VERSION = 'v5_unindra_p4_gmeet_sync_2026';
+export const CURRENT_DATA_VERSION = 'v7_unindra_sem1_complete_pdf_and_deep_notes_2026';
 const STORAGE_KEY_VERSION = 'academic_binder_data_version';
 const STORAGE_KEY_SUBJECTS = 'academic_binder_subjects_v3';
 const STORAGE_KEY_PROFILE = 'academic_binder_profile_v3';
@@ -21,7 +23,7 @@ export function loadSavedData(initialSubjects, initialProfile, initialSemesters)
       let mergedSubjects = initialSubjects;
       if (savedSubjectsStr) {
         try {
-          const oldSubjects = JSON.parse(savedSubjectsStr);
+          const oldSubjects = safeJsonParse(savedSubjectsStr, []);
           // Preserve progress flags and user notes, but upgrade curriculum content & summaries
           mergedSubjects = initialSubjects.map((freshSubj) => {
             const oldSubj = oldSubjects.find((s) => s.id === freshSubj.id || s.name === freshSubj.name);
@@ -67,15 +69,15 @@ export function loadSavedData(initialSubjects, initialProfile, initialSemesters)
 
       return {
         subjects: mergedSubjects,
-        profile: savedProfileStr ? JSON.parse(savedProfileStr) : initialProfile,
-        semesters: savedSemestersStr ? JSON.parse(savedSemestersStr) : initialSemesters,
+        profile: savedProfileStr ? safeJsonParse(savedProfileStr, initialProfile) : initialProfile,
+        semesters: savedSemestersStr ? safeJsonParse(savedSemestersStr, initialSemesters) : initialSemesters,
       };
     }
 
     return {
-      subjects: savedSubjectsStr ? JSON.parse(savedSubjectsStr) : initialSubjects,
-      profile: savedProfileStr ? JSON.parse(savedProfileStr) : initialProfile,
-      semesters: savedSemestersStr ? JSON.parse(savedSemestersStr) : initialSemesters,
+      subjects: savedSubjectsStr ? safeJsonParse(savedSubjectsStr, initialSubjects) : initialSubjects,
+      profile: savedProfileStr ? safeJsonParse(savedProfileStr, initialProfile) : initialProfile,
+      semesters: savedSemestersStr ? safeJsonParse(savedSemestersStr, initialSemesters) : initialSemesters,
     };
   } catch (error) {
     console.error('Failed to parse localStorage data:', error);
@@ -150,8 +152,8 @@ export function importBackupJSON(file) {
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
-        const json = JSON.parse(event.target.result);
-        if (!json.subjects || !Array.isArray(json.subjects)) {
+        const json = safeJsonParse(event.target.result);
+        if (!json || !json.subjects || !Array.isArray(json.subjects)) {
           throw new Error('Format file backup tidak valid. Field subjects tidak ditemukan.');
         }
         resolve(json);

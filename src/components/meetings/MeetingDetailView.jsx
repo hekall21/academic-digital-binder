@@ -31,6 +31,9 @@ import {
 } from 'lucide-react';
 import { generateSummary, generateHandwritingFormat, SUMMARY_MODES } from '../../lib/aiSummaryEngine';
 import { transcribeMediaFile } from '../../lib/transcriptionEngine';
+import { sanitizeHtml, sanitizeUrl } from '../../lib/security';
+import { PdfViewerModal } from '../materials/PdfViewerModal';
+import { CheatsheetViewerModal } from '../materials/CheatsheetViewerModal';
 
 const CHEATSHEET_MAP = {
   'subject-matdas': { title: 'Matematika Dasar', image: '/images/MATEMATIKA_DASAR_UTS_P1_P4.jpg' },
@@ -52,13 +55,19 @@ export function MeetingDetailView({
   onUpdateTranscript,
   onUpdateSummary,
 }) {
-  const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'handwriting', 'materials', 'transcript'
+  const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'handwriting', 'materials', 'transcript', 'cheatsheet'
   const [contentSubView, setContentSubView] = useState('slide'); // 'slide' (Isi Lengkap PDF/PPT) vs 'ai' (Rangkuman AI)
   const [summaryMode, setSummaryMode] = useState('standar'); // 'ringkas', 'standar', 'detail'
   const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   const [aiProgress, setAiProgress] = useState({ pct: 0, msg: '' });
   const [copyFeedback, setCopyFeedback] = useState(false);
   const [copyTranscriptFeedback, setCopyTranscriptFeedback] = useState(false);
+
+  // Modals State
+  const [pdfModalOpen, setPdfModalOpen] = useState(false);
+  const [selectedPdfUrl, setSelectedPdfUrl] = useState('');
+  const [selectedPdfTitle, setSelectedPdfTitle] = useState('');
+  const [cheatsheetModalOpen, setCheatsheetModalOpen] = useState(false);
 
   // Materials Modal / Form State
   const [newMaterialTitle, setNewMaterialTitle] = useState('');
@@ -296,44 +305,34 @@ export function MeetingDetailView({
           <span>Kembali ke {subject.name}</span>
         </button>
 
-        {/* 4-Item Quick Progress Indicators */}
-        <div className="hidden sm:flex items-center gap-3 text-xs">
-          <label className="flex items-center gap-1.5 cursor-pointer text-slate-300">
-            <input
-              type="checkbox"
-              checked={!!meeting.progress?.is_read}
-              onChange={() => onToggleProgress(subject.id, meeting.id, 'is_read')}
-              className="rounded text-indigo-600 focus:ring-indigo-500"
-            />
-            <span>Membaca</span>
-          </label>
-          <label className="flex items-center gap-1.5 cursor-pointer text-slate-300">
-            <input
-              type="checkbox"
-              checked={!!meeting.progress?.is_summarized}
-              onChange={() => onToggleProgress(subject.id, meeting.id, 'is_summarized')}
-              className="rounded text-cyan-600 focus:ring-cyan-500"
-            />
-            <span>Dirangkum</span>
-          </label>
-          <label className="flex items-center gap-1.5 cursor-pointer text-slate-300">
-            <input
-              type="checkbox"
-              checked={!!meeting.progress?.is_studied}
-              onChange={() => onToggleProgress(subject.id, meeting.id, 'is_studied')}
-              className="rounded text-violet-600 focus:ring-violet-500"
-            />
-            <span>Dipelajari</span>
-          </label>
-          <label className="flex items-center gap-1.5 cursor-pointer text-emerald-400 font-bold">
-            <input
-              type="checkbox"
-              checked={!!meeting.progress?.is_noted_in_binder}
-              onChange={() => onToggleProgress(subject.id, meeting.id, 'is_noted_in_binder')}
-              className="rounded text-emerald-600 focus:ring-emerald-500"
-            />
-            <span>Catat di Binder</span>
-          </label>
+        {/* Quick Resource Action Buttons */}
+        <div className="flex items-center gap-2 text-xs">
+          {(meeting.materials || []).filter(m => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf'))).length > 0 && (
+            <button
+              onClick={() => {
+                const pdfs = (meeting.materials || []).filter(m => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf')));
+                if (pdfs.length > 0) {
+                  setSelectedPdfUrl(pdfs[0].url);
+                  setSelectedPdfTitle(pdfs[0].title);
+                  setPdfModalOpen(true);
+                }
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600/30 font-medium transition-colors"
+            >
+              <FileText className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Buka Dokumen PDF ({(meeting.materials || []).filter(m => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf'))).length})</span>
+            </button>
+          )}
+
+          {CHEATSHEET_MAP[subject.id] && (
+            <button
+              onClick={() => setCheatsheetModalOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-600/20 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-600/30 font-medium transition-colors"
+            >
+              <ImageIcon className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Lihat Cheatsheet HD (JPG)</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -499,22 +498,40 @@ export function MeetingDetailView({
           {/* VIEW A: SLIDE & MODUL ASLI DARI DOSEN */}
           {contentSubView === 'slide' && (
             <div className="p-6 sm:p-8 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm leading-relaxed space-y-4">
-              <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-3 mb-2 gap-2">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
                   <h3 className="font-heading font-bold text-sm text-white">
                     Materi Asli Slide PDF & Diktat Perkuliahan
                   </h3>
                 </div>
-                <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20">
-                  Verbatim & Ekstraksi Dosen
-                </span>
+                <div className="flex items-center gap-2">
+                  {(meeting.materials || []).some((m) => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf'))) && (
+                    <button
+                      onClick={() => {
+                        const firstPdf = (meeting.materials || []).find((m) => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf')));
+                        if (firstPdf) {
+                          setSelectedPdfUrl(firstPdf.url);
+                          setSelectedPdfTitle(firstPdf.title);
+                          setPdfModalOpen(true);
+                        }
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 text-xs font-semibold hover:bg-indigo-600/50 transition-colors"
+                    >
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Buka Dokumen PDF Asli ↗</span>
+                    </button>
+                  )}
+                  <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20">
+                    Verbatim & Ekstraksi Dosen
+                  </span>
+                </div>
               </div>
 
               <div
                 className="academic-summary-content text-slate-200 text-sm sm:text-base space-y-4"
                 dangerouslySetInnerHTML={{
-                  __html: meeting.raw_slide_content || meeting.summaries?.standar || '<p>Materi slide sedang diproses.</p>',
+                  __html: sanitizeHtml(meeting.raw_slide_content || meeting.summaries?.standar || '<p>Materi slide sedang diproses.</p>'),
                 }}
               />
             </div>
@@ -563,7 +580,7 @@ export function MeetingDetailView({
                 {currentSummaryHtml ? (
                   <div
                     className="academic-summary-content text-slate-200 text-sm sm:text-base space-y-4"
-                    dangerouslySetInnerHTML={{ __html: currentSummaryHtml }}
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentSummaryHtml) }}
                   />
                 ) : (
                   <div className="text-center py-12 text-slate-400 space-y-3">
@@ -683,33 +700,77 @@ export function MeetingDetailView({
               <p className="text-xs text-slate-500 italic">Belum ada materi yang ditambahkan.</p>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {meeting.materials.map((mat) => (
-                  <div
-                    key={mat.id}
-                    className="p-3.5 rounded-xl bg-[#181B26] border border-white/10 flex items-center justify-between gap-3"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-indigo-400 font-mono text-[10px] font-bold uppercase">
-                        {mat.type}
+                {meeting.materials.map((mat) => {
+                  const isPdf = mat.type === 'pdf' || (mat.url && mat.url.toLowerCase().endsWith('.pdf'));
+                  return (
+                    <div
+                      key={mat.id}
+                      className="p-3.5 rounded-xl bg-[#181B26] border border-white/10 flex items-center justify-between gap-3 hover:border-indigo-500/40 transition-all"
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-8 h-8 shrink-0 rounded-lg bg-slate-800 flex items-center justify-center text-indigo-400 font-mono text-[10px] font-bold uppercase">
+                          {mat.type}
+                        </div>
+                        <div className="min-w-0">
+                          <h5 className="text-xs font-bold text-white truncate" title={mat.title}>{mat.title}</h5>
+                          <p className="text-[10px] text-slate-400 font-mono">
+                            {mat.file_size ? `${(mat.file_size / 1000000).toFixed(1)} MB • ` : ''}
+                            {mat.date_added || 'Tersimpan'}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h5 className="text-xs font-bold text-white line-clamp-1">{mat.title}</h5>
-                        <p className="text-[10px] text-slate-400 font-mono">
-                          {mat.file_size ? `${(mat.file_size / 1000000).toFixed(1)} MB • ` : ''}
-                          {mat.date_added || 'Tersimpan'}
-                        </p>
+
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {isPdf && mat.url ? (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedPdfUrl(mat.url);
+                              setSelectedPdfTitle(mat.title);
+                              setPdfModalOpen(true);
+                            }}
+                            className="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1 transition-all shadow"
+                            title="Buka Dokumen PDF di Viewer Interaktif"
+                          >
+                            <FileText className="w-3.5 h-3.5" />
+                            <span className="hidden sm:inline">Buka PDF</span>
+                          </button>
+                        ) : mat.url ? (
+                          <a
+                            href={sanitizeUrl(mat.url)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1 transition-all border border-white/10"
+                            title="Buka Tautan"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span className="hidden sm:inline">Buka</span>
+                          </a>
+                        ) : null}
+
+                        {mat.url && (
+                          <a
+                            href={sanitizeUrl(mat.url)}
+                            download
+                            className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
+                            title="Unduh Berkas"
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={() => onDeleteMaterial(subject.id, meeting.id, mat.id)}
+                          className="p-1.5 rounded-lg hover:bg-rose-950/40 text-slate-500 hover:text-rose-400 transition-colors"
+                          title="Hapus Materi"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
                       </div>
                     </div>
-
-                    <button
-                      onClick={() => onDeleteMaterial(subject.id, meeting.id, mat.id)}
-                      className="p-1.5 text-slate-500 hover:text-rose-400 transition-colors"
-                      title="Hapus Materi"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
@@ -965,6 +1026,28 @@ export function MeetingDetailView({
             />
           </div>
         </div>
+      )}
+
+      {/* Interactive PDF Reader Modal */}
+      <PdfViewerModal
+        isOpen={pdfModalOpen}
+        onClose={() => setPdfModalOpen(false)}
+        initialPdfUrl={selectedPdfUrl}
+        initialTitle={selectedPdfTitle}
+        availableMaterials={meeting.materials || []}
+        subjectName={subject.name}
+        meetingNumber={meeting.meeting_number}
+      />
+
+      {/* Interactive HD Cheatsheet Modal */}
+      {CHEATSHEET_MAP[subject.id] && (
+        <CheatsheetViewerModal
+          isOpen={cheatsheetModalOpen}
+          onClose={() => setCheatsheetModalOpen(false)}
+          imageUrl={CHEATSHEET_MAP[subject.id].image}
+          title={CHEATSHEET_MAP[subject.id].title}
+          subjectName={subject.name}
+        />
       )}
     </div>
   );

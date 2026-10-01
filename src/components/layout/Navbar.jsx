@@ -90,14 +90,14 @@ export function Navbar({
             )}
           </div>
 
-          {/* Theme Switcher */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-slate-800/60 dark:bg-slate-800/60 light:bg-slate-100 border border-white/10 dark:border-white/10 light:border-slate-200 text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-white transition-colors"
-            title={theme === 'dark' ? 'Ganti ke Mode Terang' : 'Ganti ke Mode Gelap'}
+          {/* Dark Mode Permanent Indicator */}
+          <div
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-white/10 text-xs font-semibold text-slate-300"
+            title="Mode Tampilan: Dark Mode Permanen"
           >
-            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
-          </button>
+            <Moon className="w-3.5 h-3.5 text-indigo-400" />
+            <span className="hidden sm:inline text-[11px]">Dark</span>
+          </div>
 
           {/* Backup & Restore Dropdown */}
           <div className="relative">
