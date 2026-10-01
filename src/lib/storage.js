@@ -3,7 +3,7 @@ import { safeJsonParse } from './security';
 // Local Storage & Backup Persistence Utilities
 // Versioned to ensure curriculum updates are automatically synced to the user's browser
 
-export const CURRENT_DATA_VERSION = 'v7_unindra_sem1_complete_pdf_and_deep_notes_2026';
+export const CURRENT_DATA_VERSION = 'v8_unindra_sem1_pdf_url_fix_2026';
 const STORAGE_KEY_VERSION = 'academic_binder_data_version';
 const STORAGE_KEY_SUBJECTS = 'academic_binder_subjects_v3';
 const STORAGE_KEY_PROFILE = 'academic_binder_profile_v3';

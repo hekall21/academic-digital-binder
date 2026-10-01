@@ -2669,6 +2669,20 @@ const initialSemesters = [
   }
 ];
 
+// Normalize material URLs so both url and file_url are always present
+masterSubjects.forEach((s) => {
+  (s.meetings || []).forEach((m) => {
+    m.materials = (m.materials || []).map((mat) => {
+      const actualUrl = mat.file_url || mat.url || '';
+      return {
+        ...mat,
+        url: actualUrl,
+        file_url: actualUrl,
+      };
+    });
+  });
+});
+
 // File output format
 const outputContent = `// Pre-seeded academic data for 8 subjects and 32 meetings (Unindra Semester 1)
 // Enriched with 43 real lecture PDFs from laptop Kuliah & Tugas_Kuliah repos

@@ -45,6 +45,9 @@ const CHEATSHEET_MAP = {
   'subject-pai': { title: 'Pendidikan Agama Islam', image: '/images/PENDIDIKAN_AGAMA_ISLAM_UTS_P1_P4.jpg' },
 };
 
+export const getMaterialUrl = (m) => m?.url || m?.file_url || '';
+export const isPdfMaterial = (m) => m?.type === 'pdf' || getMaterialUrl(m).toLowerCase().endsWith('.pdf');
+
 export function MeetingDetailView({
   subject,
   meeting,
@@ -307,20 +310,21 @@ export function MeetingDetailView({
 
         {/* Quick Resource Action Buttons */}
         <div className="flex items-center gap-2 text-xs">
-          {(meeting.materials || []).filter(m => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf'))).length > 0 && (
+          {(meeting.materials || []).some(isPdfMaterial) && (
             <button
               onClick={() => {
-                const pdfs = (meeting.materials || []).filter(m => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf')));
+                const pdfs = (meeting.materials || []).filter(isPdfMaterial);
                 if (pdfs.length > 0) {
-                  setSelectedPdfUrl(pdfs[0].url);
+                  const targetUrl = getMaterialUrl(pdfs[0]);
+                  setSelectedPdfUrl(targetUrl);
                   setSelectedPdfTitle(pdfs[0].title);
                   setPdfModalOpen(true);
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600/30 font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-600/50 hover:text-white font-medium transition-all shadow-sm cursor-pointer"
             >
               <FileText className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Buka Dokumen PDF ({(meeting.materials || []).filter(m => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf'))).length})</span>
+              <span>Buka Dokumen PDF ({(meeting.materials || []).filter(isPdfMaterial).length})</span>
             </button>
           )}
 
@@ -506,17 +510,17 @@ export function MeetingDetailView({
                   </h3>
                 </div>
                 <div className="flex items-center gap-2">
-                  {(meeting.materials || []).some((m) => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf'))) && (
+                  {(meeting.materials || []).some(isPdfMaterial) && (
                     <button
                       onClick={() => {
-                        const firstPdf = (meeting.materials || []).find((m) => m.type === 'pdf' || (m.url && m.url.endsWith('.pdf')));
+                        const firstPdf = (meeting.materials || []).find(isPdfMaterial);
                         if (firstPdf) {
-                          setSelectedPdfUrl(firstPdf.url);
+                          setSelectedPdfUrl(getMaterialUrl(firstPdf));
                           setSelectedPdfTitle(firstPdf.title);
                           setPdfModalOpen(true);
                         }
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 text-xs font-semibold hover:bg-indigo-600/50 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 text-xs font-semibold hover:bg-indigo-600/50 hover:text-white transition-all cursor-pointer shadow-sm"
                     >
                       <FileText className="w-3.5 h-3.5" />
                       <span>Buka Dokumen PDF Asli ↗</span>
@@ -701,7 +705,8 @@ export function MeetingDetailView({
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {meeting.materials.map((mat) => {
-                  const isPdf = mat.type === 'pdf' || (mat.url && mat.url.toLowerCase().endsWith('.pdf'));
+                  const matUrl = getMaterialUrl(mat);
+                  const isPdf = isPdfMaterial(mat);
                   return (
                     <div
                       key={mat.id}
@@ -721,23 +726,23 @@ export function MeetingDetailView({
                       </div>
 
                       <div className="flex items-center gap-1.5 shrink-0">
-                        {isPdf && mat.url ? (
+                        {isPdf && matUrl ? (
                           <button
                             type="button"
                             onClick={() => {
-                              setSelectedPdfUrl(mat.url);
+                              setSelectedPdfUrl(matUrl);
                               setSelectedPdfTitle(mat.title);
                               setPdfModalOpen(true);
                             }}
-                            className="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1 transition-all shadow"
+                            className="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1 transition-all shadow cursor-pointer"
                             title="Buka Dokumen PDF di Viewer Interaktif"
                           >
                             <FileText className="w-3.5 h-3.5" />
                             <span className="hidden sm:inline">Buka PDF</span>
                           </button>
-                        ) : mat.url ? (
+                        ) : matUrl ? (
                           <a
-                            href={sanitizeUrl(mat.url)}
+                            href={sanitizeUrl(matUrl)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1 transition-all border border-white/10"
@@ -748,9 +753,9 @@ export function MeetingDetailView({
                           </a>
                         ) : null}
 
-                        {mat.url && (
+                        {matUrl && (
                           <a
-                            href={sanitizeUrl(mat.url)}
+                            href={sanitizeUrl(matUrl)}
                             download
                             className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
                             title="Unduh Berkas"

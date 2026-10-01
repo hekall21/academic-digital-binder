@@ -30,7 +30,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P1: Konsep Dasar Data & Informasi (SISTEM_INFORMASI_1.pdf)",
             "file_url": "/materials/ksi_p1_sistem_informasi_1.pdf",
             "file_size": 1006636,
-            "date_added": "2026-09-15"
+            "date_added": "2026-09-15",
+            "url": "/materials/ksi_p1_sistem_informasi_1.pdf"
           },
           {
             "id": "mat_ksi_1_2",
@@ -38,7 +39,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Mahasiswa P1 & P2 Unindra.pdf",
             "file_url": "/materials/ksi_rangkuman_mandiri_p1_p2.pdf",
             "file_size": 275115,
-            "date_added": "2026-09-16"
+            "date_added": "2026-09-16",
+            "url": "/materials/ksi_rangkuman_mandiri_p1_p2.pdf"
           }
         ],
         "transcripts": [
@@ -76,7 +78,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P2: Karakteristik & Taksonomi Sistem (SISTEM_INFORMASI_2.pdf)",
             "file_url": "/materials/ksi_p2_sistem_informasi_2.pdf",
             "file_size": 825156,
-            "date_added": "2026-09-22"
+            "date_added": "2026-09-22",
+            "url": "/materials/ksi_p2_sistem_informasi_2.pdf"
           },
           {
             "id": "mat_ksi_2_2",
@@ -84,7 +87,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Mahasiswa P1 & P2 Unindra.pdf",
             "file_url": "/materials/ksi_rangkuman_mandiri_p1_p2.pdf",
             "file_size": 275115,
-            "date_added": "2026-09-22"
+            "date_added": "2026-09-22",
+            "url": "/materials/ksi_rangkuman_mandiri_p1_p2.pdf"
           }
         ],
         "transcripts": [
@@ -122,7 +126,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P3: Mutu Informasi & Blok SI (SISTEM_INFORMASI_3.pdf)",
             "file_url": "/materials/ksi_p3_sistem_informasi_3.pdf",
             "file_size": 431592,
-            "date_added": "2026-09-29"
+            "date_added": "2026-09-29",
+            "url": "/materials/ksi_p3_sistem_informasi_3.pdf"
           },
           {
             "id": "mat_ksi_3_2",
@@ -130,7 +135,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Mahasiswa P3 Unindra.pdf",
             "file_url": "/materials/ksi_rangkuman_mandiri_p3.pdf",
             "file_size": 14827,
-            "date_added": "2026-09-30"
+            "date_added": "2026-09-30",
+            "url": "/materials/ksi_rangkuman_mandiri_p3.pdf"
           }
         ],
         "transcripts": [
@@ -168,7 +174,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P4: Aktivitas SI & Manajemen (SISTEM_INFORMASI_4.pdf)",
             "file_url": "/materials/ksi_p4_sistem_informasi_4.pdf",
             "file_size": 674655,
-            "date_added": "2026-10-06"
+            "date_added": "2026-10-06",
+            "url": "/materials/ksi_p4_sistem_informasi_4.pdf"
           },
           {
             "id": "mat_ksi_4_2",
@@ -176,7 +183,8 @@ export const initialSubjects = [
             "title": "Rangkuman Kompendium Lengkap UTS KSI - Haikel Saleh.pdf",
             "file_url": "/materials/ksi_rangkuman_uts_haikel.pdf",
             "file_size": 247047,
-            "date_added": "2026-10-06"
+            "date_added": "2026-10-06",
+            "url": "/materials/ksi_rangkuman_uts_haikel.pdf"
           }
         ],
         "transcripts": [
@@ -228,7 +236,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P1: Hakikat & Kedudukan Bahasa (1789103790.pdf)",
             "file_url": "/materials/indo_p1_hakikat_bahasa.pdf",
             "file_size": 1366043,
-            "date_added": "2026-09-15"
+            "date_added": "2026-09-15",
+            "url": "/materials/indo_p1_hakikat_bahasa.pdf"
           },
           {
             "id": "mat_indo_1_2",
@@ -236,7 +245,8 @@ export const initialSubjects = [
             "title": "Panduan Pembuatan Proposal & Laporan MKWK 2023.pdf",
             "file_url": "/materials/indo_panduan_mkwk_2023.pdf",
             "file_size": 181940,
-            "date_added": "2026-09-15"
+            "date_added": "2026-09-15",
+            "url": "/materials/indo_panduan_mkwk_2023.pdf"
           }
         ],
         "transcripts": [
@@ -274,7 +284,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P2: Sikap Positif Berbahasa (1789341355.pdf)",
             "file_url": "/materials/indo_p2_sikap_positif_bahasa.pdf",
             "file_size": 2851107,
-            "date_added": "2026-09-22"
+            "date_added": "2026-09-22",
+            "url": "/materials/indo_p2_sikap_positif_bahasa.pdf"
           },
           {
             "id": "mat_indo_2_2",
@@ -282,7 +293,8 @@ export const initialSubjects = [
             "title": "Panduan Pembuatan Proposal & Laporan MKWK 2023.pdf",
             "file_url": "/materials/indo_panduan_mkwk_2023.pdf",
             "file_size": 181940,
-            "date_added": "2026-09-22"
+            "date_added": "2026-09-22",
+            "url": "/materials/indo_panduan_mkwk_2023.pdf"
           }
         ],
         "transcripts": [
@@ -320,7 +332,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P3: EYD Edisi V Lengkap (OBE 99 Halaman).pdf",
             "file_url": "/materials/indo_p3_eyd_v.pdf",
             "file_size": 1059650,
-            "date_added": "2026-09-29"
+            "date_added": "2026-09-29",
+            "url": "/materials/indo_p3_eyd_v.pdf"
           },
           {
             "id": "mat_indo_3_2",
@@ -328,7 +341,8 @@ export const initialSubjects = [
             "title": "Panduan Pembuatan Proposal & Laporan MKWK 2023.pdf",
             "file_url": "/materials/indo_panduan_mkwk_2023.pdf",
             "file_size": 181940,
-            "date_added": "2026-09-29"
+            "date_added": "2026-09-29",
+            "url": "/materials/indo_panduan_mkwk_2023.pdf"
           }
         ],
         "transcripts": [
@@ -366,7 +380,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P4: Bentuk, Diksi Kata & Hukum KTSP (1790563821.pdf)",
             "file_url": "/materials/indo_p4_diksi_kata.pdf",
             "file_size": 573788,
-            "date_added": "2026-10-06"
+            "date_added": "2026-10-06",
+            "url": "/materials/indo_p4_diksi_kata.pdf"
           },
           {
             "id": "mat_indo_4_2",
@@ -374,7 +389,8 @@ export const initialSubjects = [
             "title": "Panduan Pembuatan Proposal & Laporan MKWK 2023.pdf",
             "file_url": "/materials/indo_panduan_mkwk_2023.pdf",
             "file_size": 181940,
-            "date_added": "2026-10-06"
+            "date_added": "2026-10-06",
+            "url": "/materials/indo_panduan_mkwk_2023.pdf"
           }
         ],
         "transcripts": [
@@ -426,7 +442,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P1: Pengantar Logika & Algoritma.pdf",
             "file_url": "/materials/algo_p1_pengantar_algoritma.pdf",
             "file_size": 563500,
-            "date_added": "2026-09-16"
+            "date_added": "2026-09-16",
+            "url": "/materials/algo_p1_pengantar_algoritma.pdf"
           },
           {
             "id": "mat_algo_1_2",
@@ -434,7 +451,8 @@ export const initialSubjects = [
             "title": "RPS Kurikulum Resmi Algoritma 1 Unindra.pdf",
             "file_url": "/materials/algo_rps_algoritma_1.pdf",
             "file_size": 397843,
-            "date_added": "2026-09-16"
+            "date_added": "2026-09-16",
+            "url": "/materials/algo_rps_algoritma_1.pdf"
           },
           {
             "id": "mat_algo_1_3",
@@ -442,7 +460,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Mahasiswa P1-P3.pdf",
             "file_url": "/materials/algo_rangkuman_mandiri_p1_p3.pdf",
             "file_size": 592295,
-            "date_added": "2026-09-16"
+            "date_added": "2026-09-16",
+            "url": "/materials/algo_rangkuman_mandiri_p1_p3.pdf"
           }
         ],
         "transcripts": [
@@ -480,7 +499,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P2: Tipe Data & Operator Komputasi.pdf",
             "file_url": "/materials/algo_p2_tipe_data_operator.pdf",
             "file_size": 566311,
-            "date_added": "2026-09-23"
+            "date_added": "2026-09-23",
+            "url": "/materials/algo_p2_tipe_data_operator.pdf"
           },
           {
             "id": "mat_algo_2_2",
@@ -488,7 +508,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Mahasiswa P1-P3.pdf",
             "file_url": "/materials/algo_rangkuman_mandiri_p1_p3.pdf",
             "file_size": 592295,
-            "date_added": "2026-09-23"
+            "date_added": "2026-09-23",
+            "url": "/materials/algo_rangkuman_mandiri_p1_p3.pdf"
           }
         ],
         "transcripts": [
@@ -526,7 +547,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P3: Standar Simbol Bagan Alir ANSI.pdf",
             "file_url": "/materials/algo_p3_flowchart_ansi.pdf",
             "file_size": 736500,
-            "date_added": "2026-09-30"
+            "date_added": "2026-09-30",
+            "url": "/materials/algo_p3_flowchart_ansi.pdf"
           },
           {
             "id": "mat_algo_3_2",
@@ -534,7 +556,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Mahasiswa P1-P3.pdf",
             "file_url": "/materials/algo_rangkuman_mandiri_p1_p3.pdf",
             "file_size": 592295,
-            "date_added": "2026-09-30"
+            "date_added": "2026-09-30",
+            "url": "/materials/algo_rangkuman_mandiri_p1_p3.pdf"
           }
         ],
         "transcripts": [
@@ -572,7 +595,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P4: Tiga Struktur Kontrol Algoritma.pdf",
             "file_url": "/materials/algo_p4_struktur_kontrol.pdf",
             "file_size": 657568,
-            "date_added": "2026-10-07"
+            "date_added": "2026-10-07",
+            "url": "/materials/algo_p4_struktur_kontrol.pdf"
           },
           {
             "id": "mat_algo_4_2",
@@ -580,7 +604,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Mahasiswa P4.pdf",
             "file_url": "/materials/algo_rangkuman_mandiri_p4.pdf",
             "file_size": 203873,
-            "date_added": "2026-10-07"
+            "date_added": "2026-10-07",
+            "url": "/materials/algo_rangkuman_mandiri_p4.pdf"
           },
           {
             "id": "mat_algo_4_3",
@@ -588,7 +613,8 @@ export const initialSubjects = [
             "title": "Rangkuman UTS Algoritma Lengkap - Haikel Saleh.pdf",
             "file_url": "/materials/algo_rangkuman_uts_haikel.pdf",
             "file_size": 559494,
-            "date_added": "2026-10-07"
+            "date_added": "2026-10-07",
+            "url": "/materials/algo_rangkuman_uts_haikel.pdf"
           }
         ],
         "transcripts": [
@@ -640,7 +666,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P1: Pengantar Pemrograman Pascal (Pertemuan_1.pdf)",
             "file_url": "/materials/pascal_p1_pengantar_pascal.pdf",
             "file_size": 1378125,
-            "date_added": "2026-09-16"
+            "date_added": "2026-09-16",
+            "url": "/materials/pascal_p1_pengantar_pascal.pdf"
           },
           {
             "id": "mat_pascal_1_2",
@@ -648,7 +675,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Pemrograman Pascal UTS.pdf",
             "file_url": "/materials/pascal_rangkuman_mandiri_uts.pdf",
             "file_size": 634444,
-            "date_added": "2026-09-16"
+            "date_added": "2026-09-16",
+            "url": "/materials/pascal_rangkuman_mandiri_uts.pdf"
           }
         ],
         "transcripts": [
@@ -686,7 +714,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P2: Variabel & Konstanta (Pertemuan_2.pdf)",
             "file_url": "/materials/pascal_p2_variabel_tipe_data.pdf",
             "file_size": 541898,
-            "date_added": "2026-09-23"
+            "date_added": "2026-09-23",
+            "url": "/materials/pascal_p2_variabel_tipe_data.pdf"
           },
           {
             "id": "mat_pascal_2_2",
@@ -694,7 +723,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Pemrograman Pascal UTS.pdf",
             "file_url": "/materials/pascal_rangkuman_mandiri_uts.pdf",
             "file_size": 634444,
-            "date_added": "2026-09-23"
+            "date_added": "2026-09-23",
+            "url": "/materials/pascal_rangkuman_mandiri_uts.pdf"
           }
         ],
         "transcripts": [
@@ -732,7 +762,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P3: Operasi Write & Read (Pertemuan_3.pdf)",
             "file_url": "/materials/pascal_p3_input_output.pdf",
             "file_size": 464369,
-            "date_added": "2026-09-30"
+            "date_added": "2026-09-30",
+            "url": "/materials/pascal_p3_input_output.pdf"
           },
           {
             "id": "mat_pascal_3_2",
@@ -740,7 +771,8 @@ export const initialSubjects = [
             "title": "Diktat Latihan Praktikum Percabangan IF.pdf",
             "file_url": "/materials/pascal_latihan_percabangan_if.pdf",
             "file_size": 414921,
-            "date_added": "2026-09-30"
+            "date_added": "2026-09-30",
+            "url": "/materials/pascal_latihan_percabangan_if.pdf"
           },
           {
             "id": "mat_pascal_3_3",
@@ -748,7 +780,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Pemrograman Pascal UTS.pdf",
             "file_url": "/materials/pascal_rangkuman_mandiri_uts.pdf",
             "file_size": 634444,
-            "date_added": "2026-09-30"
+            "date_added": "2026-09-30",
+            "url": "/materials/pascal_rangkuman_mandiri_uts.pdf"
           }
         ],
         "transcripts": [
@@ -786,7 +819,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P4: Pemilihan Selection IF Majemuk.pdf",
             "file_url": "/materials/pascal_p4_percabangan_if.pdf",
             "file_size": 424353,
-            "date_added": "2026-10-07"
+            "date_added": "2026-10-07",
+            "url": "/materials/pascal_p4_percabangan_if.pdf"
           },
           {
             "id": "mat_pascal_4_2",
@@ -794,7 +828,8 @@ export const initialSubjects = [
             "title": "Latihan Studi Kasus Program Kasir Sederhana.pdf",
             "file_url": "/materials/pascal_studi_kasus_kasir.pdf",
             "file_size": 24943,
-            "date_added": "2026-10-07"
+            "date_added": "2026-10-07",
+            "url": "/materials/pascal_studi_kasus_kasir.pdf"
           },
           {
             "id": "mat_pascal_4_3",
@@ -802,7 +837,8 @@ export const initialSubjects = [
             "title": "Rangkuman Mandiri Pemrograman Pascal UTS.pdf",
             "file_url": "/materials/pascal_rangkuman_mandiri_uts.pdf",
             "file_size": 634444,
-            "date_added": "2026-10-07"
+            "date_added": "2026-10-07",
+            "url": "/materials/pascal_rangkuman_mandiri_uts.pdf"
           }
         ],
         "transcripts": [
@@ -854,7 +890,8 @@ export const initialSubjects = [
             "title": "Dosen Chapter I: Self Introduction & IT Profiling.pdf",
             "file_url": "/materials/inggris_p1_chapter_1_self_intro.pdf",
             "file_size": 365541,
-            "date_added": "2026-09-18"
+            "date_added": "2026-09-18",
+            "url": "/materials/inggris_p1_chapter_1_self_intro.pdf"
           }
         ],
         "transcripts": [
@@ -892,7 +929,8 @@ export const initialSubjects = [
             "title": "Dosen Chapter II: How to Make Something.pdf",
             "file_url": "/materials/inggris_p2_chapter_2_how_to_make.pdf",
             "file_size": 399442,
-            "date_added": "2026-09-25"
+            "date_added": "2026-09-25",
+            "url": "/materials/inggris_p2_chapter_2_how_to_make.pdf"
           }
         ],
         "transcripts": [
@@ -930,7 +968,8 @@ export const initialSubjects = [
             "title": "Dosen Chapter III: Talking about Holiday & Experiences.pdf",
             "file_url": "/materials/inggris_p3_chapter_3_holiday.pdf",
             "file_size": 420727,
-            "date_added": "2026-10-02"
+            "date_added": "2026-10-02",
+            "url": "/materials/inggris_p3_chapter_3_holiday.pdf"
           }
         ],
         "transcripts": [
@@ -968,7 +1007,8 @@ export const initialSubjects = [
             "title": "Dosen Chapter IV: Talking about Plans & Intentions.pdf",
             "file_url": "/materials/inggris_p4_chapter_4_plans.pdf",
             "file_size": 459737,
-            "date_added": "2026-10-09"
+            "date_added": "2026-10-09",
+            "url": "/materials/inggris_p4_chapter_4_plans.pdf"
           }
         ],
         "transcripts": [
@@ -1020,7 +1060,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P1: Sistem Bilangan Real (1789117602.pdf)",
             "file_url": "/materials/matdas_p1_sistem_bilangan_real.pdf",
             "file_size": 422280,
-            "date_added": "2026-09-18"
+            "date_added": "2026-09-18",
+            "url": "/materials/matdas_p1_sistem_bilangan_real.pdf"
           }
         ],
         "transcripts": [
@@ -1058,7 +1099,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P2: Pertidaksamaan Bilangan Real (1789631769.pdf)",
             "file_url": "/materials/matdas_p2_pertidaksamaan_real.pdf",
             "file_size": 1837126,
-            "date_added": "2026-09-25"
+            "date_added": "2026-09-25",
+            "url": "/materials/matdas_p2_pertidaksamaan_real.pdf"
           }
         ],
         "transcripts": [
@@ -1096,7 +1138,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P3: Pertidaksamaan Nilai Mutlak & Fungsi (1790406762.pdf)",
             "file_url": "/materials/matdas_p3_fungsi_dan_grafik.pdf",
             "file_size": 564156,
-            "date_added": "2026-10-02"
+            "date_added": "2026-10-02",
+            "url": "/materials/matdas_p3_fungsi_dan_grafik.pdf"
           }
         ],
         "transcripts": [
@@ -1134,7 +1177,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P4: Persamaan Garis, Gradien & Parabola Kuadrat.pdf",
             "file_url": "/materials/matdas_p3_fungsi_dan_grafik.pdf",
             "file_size": 564156,
-            "date_added": "2026-10-09"
+            "date_added": "2026-10-09",
+            "url": "/materials/matdas_p3_fungsi_dan_grafik.pdf"
           }
         ],
         "transcripts": [
@@ -1186,7 +1230,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P1: Landasan Pendidikan Pancasila (1694442422.pdf)",
             "file_url": "/materials/pancasila_p1_landasan_pendidikan.pdf",
             "file_size": 452944,
-            "date_added": "2026-09-19"
+            "date_added": "2026-09-19",
+            "url": "/materials/pancasila_p1_landasan_pendidikan.pdf"
           },
           {
             "id": "mat_pancasila_1_2",
@@ -1194,7 +1239,8 @@ export const initialSubjects = [
             "title": "RPS Kurikulum Resmi MK02 Pancasila Unindra (Gemini 2026).pdf",
             "file_url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf",
             "file_size": 1120616,
-            "date_added": "2026-09-19"
+            "date_added": "2026-09-19",
+            "url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf"
           }
         ],
         "transcripts": [
@@ -1232,7 +1278,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P2: Pancasila Pra-Kemerdekaan (1695012147.pdf)",
             "file_url": "/materials/pancasila_p2_pra_kemerdekaan.pdf",
             "file_size": 1885189,
-            "date_added": "2026-09-26"
+            "date_added": "2026-09-26",
+            "url": "/materials/pancasila_p2_pra_kemerdekaan.pdf"
           },
           {
             "id": "mat_pancasila_2_2",
@@ -1240,7 +1287,8 @@ export const initialSubjects = [
             "title": "RPS Kurikulum Resmi MK02 Pancasila Unindra.pdf",
             "file_url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf",
             "file_size": 1120616,
-            "date_added": "2026-09-26"
+            "date_added": "2026-09-26",
+            "url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf"
           }
         ],
         "transcripts": [
@@ -1278,7 +1326,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P3: Pancasila Pasca-Kemerdekaan (1695643952.pdf)",
             "file_url": "/materials/pancasila_p3_pasca_kemerdekaan.pdf",
             "file_size": 286525,
-            "date_added": "2026-10-03"
+            "date_added": "2026-10-03",
+            "url": "/materials/pancasila_p3_pasca_kemerdekaan.pdf"
           },
           {
             "id": "mat_pancasila_3_2",
@@ -1286,7 +1335,8 @@ export const initialSubjects = [
             "title": "RPS Kurikulum Resmi MK02 Pancasila Unindra.pdf",
             "file_url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf",
             "file_size": 1120616,
-            "date_added": "2026-10-03"
+            "date_added": "2026-10-03",
+            "url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf"
           }
         ],
         "transcripts": [
@@ -1324,7 +1374,8 @@ export const initialSubjects = [
             "title": "RPS Kurikulum Resmi MK02 Pancasila Unindra (Gemini 2026).pdf",
             "file_url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf",
             "file_size": 1120616,
-            "date_added": "2026-10-10"
+            "date_added": "2026-10-10",
+            "url": "/materials/pancasila_rps_mk02_resmi_unindra.pdf"
           }
         ],
         "transcripts": [
@@ -1376,7 +1427,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P1: Fondasi Tauhid & Visi Islam.pdf",
             "file_url": "/materials/pai_p1_tauhid_dan_visi_islam.pdf",
             "file_size": 561535,
-            "date_added": "2026-09-19"
+            "date_added": "2026-09-19",
+            "url": "/materials/pai_p1_tauhid_dan_visi_islam.pdf"
           },
           {
             "id": "mat_pai_1_2",
@@ -1384,7 +1436,8 @@ export const initialSubjects = [
             "title": "Tugas Mandiri Scan Lembar Jawaban PAI - Haikel Saleh.pdf",
             "file_url": "/materials/pai_tugas_mandiri_scan_haikel.pdf",
             "file_size": 1052055,
-            "date_added": "2026-09-19"
+            "date_added": "2026-09-19",
+            "url": "/materials/pai_tugas_mandiri_scan_haikel.pdf"
           }
         ],
         "transcripts": [
@@ -1422,7 +1475,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P2: Aqidah, Iman & Ihsan.pdf",
             "file_url": "/materials/pai_p2_iman_dan_ihsan.pdf",
             "file_size": 423685,
-            "date_added": "2026-09-26"
+            "date_added": "2026-09-26",
+            "url": "/materials/pai_p2_iman_dan_ihsan.pdf"
           },
           {
             "id": "mat_pai_2_2",
@@ -1430,7 +1484,8 @@ export const initialSubjects = [
             "title": "Tugas Mandiri Scan Lembar Jawaban PAI - Haikel Saleh.pdf",
             "file_url": "/materials/pai_tugas_mandiri_scan_haikel.pdf",
             "file_size": 1052055,
-            "date_added": "2026-09-26"
+            "date_added": "2026-09-26",
+            "url": "/materials/pai_tugas_mandiri_scan_haikel.pdf"
           }
         ],
         "transcripts": [
@@ -1468,7 +1523,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P3: Syariah & 5 Hukum Taklifi.pdf",
             "file_url": "/materials/pai_p3_syariah_dan_ibadah.pdf",
             "file_size": 490900,
-            "date_added": "2026-10-03"
+            "date_added": "2026-10-03",
+            "url": "/materials/pai_p3_syariah_dan_ibadah.pdf"
           },
           {
             "id": "mat_pai_3_2",
@@ -1476,7 +1532,8 @@ export const initialSubjects = [
             "title": "Tugas Mandiri Scan Lembar Jawaban PAI - Haikel Saleh.pdf",
             "file_url": "/materials/pai_tugas_mandiri_scan_haikel.pdf",
             "file_size": 1052055,
-            "date_added": "2026-10-03"
+            "date_added": "2026-10-03",
+            "url": "/materials/pai_tugas_mandiri_scan_haikel.pdf"
           }
         ],
         "transcripts": [
@@ -1514,7 +1571,8 @@ export const initialSubjects = [
             "title": "Modul Dosen P4: Akhlak & Etika Komputasi.pdf",
             "file_url": "/materials/pai_p4_akhlak_dan_etika_it.pdf",
             "file_size": 407826,
-            "date_added": "2026-10-10"
+            "date_added": "2026-10-10",
+            "url": "/materials/pai_p4_akhlak_dan_etika_it.pdf"
           },
           {
             "id": "mat_pai_4_2",
@@ -1522,7 +1580,8 @@ export const initialSubjects = [
             "title": "Tugas Mandiri Scan Lembar Jawaban PAI - Haikel Saleh.pdf",
             "file_url": "/materials/pai_tugas_mandiri_scan_haikel.pdf",
             "file_size": 1052055,
-            "date_added": "2026-10-10"
+            "date_added": "2026-10-10",
+            "url": "/materials/pai_tugas_mandiri_scan_haikel.pdf"
           }
         ],
         "transcripts": [
