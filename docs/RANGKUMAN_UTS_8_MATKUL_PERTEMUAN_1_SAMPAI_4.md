@@ -601,7 +601,7 @@ end.
 
 ---
 ## 6. Matematika Dasar (Kalkulus Sistem Informasi)
-* **Dosen Pengampu:** Dr. Munali, M.Pd.
+* **Dosen Pengampu:** Dr. Munali, M.Pd. / Syifaafidah, M.Pd. (Dosen Pengajar Kelas Reguler RG)
 * **Jadwal & Ruang:** Kamis • 09:10 - 10:50 WIB • Ruang R.4.3-2
 * **Berkas Rujukan Asli:** Slide PDF & PPT Dosen di `Tugas_Kuliah/06_Matematika_Dasar/Materi_dan_Rangkuman/`
 * **Standar Notasi:** Pure Unicode Symbols (Bebas dari kode LaTeX mentah pecahan atau simbol himpunan).
@@ -755,77 +755,100 @@ Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bi
 
 ---
 
-### Pertemuan 4: Konsep Pemetaan Fungsi, Evaluasi Beda h, Uji Genap/Ganjil, Domain & Range, Komposisi, dan Invers
+### Pertemuan 4: Konsep Pemetaan Fungsi, Evaluasi Beda h, Uji Genap/Ganjil, Domain & Range, dan Komposisi (Sesi Live Google Meet)
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Acuan:** Berkas PDF Dosen `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi.pdf` (Slide 4 - 17) & Catatan Coretan Dosen Langsung di Kelas (Screenshot 1, 2, 3).
-* **Catatan Jadwal:** File dosen tertulis `Pert_3`, namun di kelas tatap muka reguler materi ini diajarkan resmi sebagai **Pertemuan 4**.
+* **Dosen Pengajar:** Ibu Syifaafidah, M.Pd. / Dr. Munali, M.Pd.
+* **Berkas Rujukan:** Slide PDF Dosen `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi.pdf` (Slide 4 - 17) + Papan Tulis Digital & Transkrip Percakapan Google Meet (Tactiq AI).
+* **Catatan Kode Berkas:** File modul tertulis `Pert_3`, tetapi materi ini resmi diajarkan pada **Pertemuan 4**.
 
-#### 1. Definisi Fungsi & Catatan Diagram Panah Dosen (Screenshot 1):
-Fungsi `f` adalah aturan korespondensi yang menghubungkan **setiap** elemen `x` pada himpunan daerah asal (Domain) dengan **tepat satu** nilai `f(x)` pada himpunan daerah kawan (Kodomain). Himpunan semua bayangan keluaran disebut daerah hasil (Range).
-* **Coretan Diagram Panah Dosen:**
+#### 📢 Pengumuman Akademik Unindra & Kebijakan Materi UTS 2026:
+1. **Pengurangan Sesi Luring (Offline):** Perkuliahan luring/tatap muka di kampus dikurangi dari sebelumnya 4 sesi sebelum UTS & 3 sesi setelah UTS menjadi **3 sesi sebelum UTS dan 2 sesi setelah UTS** (sisanya daring via Google Meet / LMS).
+2. **FUNGSI INVERS DITIADAKAN DARI UJIAN UTS!** Dosen Syifaafidah menegaskan bahwa materi *Fungsi Invers* **TIDAK AKAN MASUK DALAM SOAL UTS**. Bahan ujian hanya mencakup sampai: Evaluasi Fungsi, Difference Quotient, Uji Fungsi Genap/Ganjil, Domain Alami & Range, serta Komposisi Fungsi.
+
+#### 1. Definisi Fungsi & Aturan Pemetaan Diagram Panah:
+Fungsi `f` adalah aturan korespondensi yang menghubungkan **setiap** elemen `x` pada daerah asal (**Domain**) dengan **tepat satu** nilai `f(x)` pada daerah kawan (**Kodomain**). Himpunan semua nilai pasangan di kodomain disebut daerah hasil (**Range**).
+* **Kaidah Wajib Domain:** Domain **tidak boleh bercabang** dan **tidak boleh kosong** (setiap elemen wajib memiliki tepat 1 kawan).
+* **Kaidah Kodomain:** Kodomain **boleh bercabang** (banyak domain menuju 1 kodomain yang sama) dan **boleh ada sisa** (elemen yang tidak berpasangan).
+* **Coretan Diagram Panah Dosen di Kelas:**
   * Himpunan Asal: `A = {a, b, c}` ➔ **Domain** = `{a, b, c}`
   * Himpunan Kawan: `B = {1, 2, 3, 4}` ➔ **Kodomain** = `{1, 2, 3, 4}`
   * Relasi Pemetaan: `a ➔ 1`, `b ➔ 2`, `c ➔ 3`
-  * **Daerah Hasil (Range):** `{1, 2, 3}` *(Elemen 4 tidak masuk karena tidak memiliki prapeta dari A)*.
+  * **Daerah Hasil (Range):** `{1, 2, 3}` *(Elemen 4 bukan anggota range karena tidak memiliki prapeta dari A)*.
 
-#### 2. Evaluasi Nilai Fungsi & Rasio Selisih Beda (Screenshot 2):
-Untuk `f(x) = x² - 2x`:
+#### 2. Evaluasi Nilai Fungsi & Rasio Selisih Beda (Difference Quotient):
+Diberikan fungsi `f(x) = x² - 2x`:
 * **a. Nilai `f(4)`:**  
   `f(4) = (4)² - 2(4) = 16 - 8 = 8`
-* **b. Nilai `f(4 + h)`:**  
+* **b. Nilai `f(4 + h)` (Metode Pangkat-Kali-Kali-Pangkat):**  
   `f(4 + h) = (4 + h)² - 2(4 + h) = (16 + 8h + h²) - 8 - 2h = h² + 6h + 8`
 * **c. Nilai `f(4 - h) - f(4)`:**  
   `f(4 - h) = (4 - h)² - 2(4 - h) = 16 - 8h + h² - 8 + 2h = h² - 6h + 8` *(Catatan dosen: (-h)² = h²)*  
   `f(4 - h) - f(4) = (h² - 6h + 8) - 8 = h² - 6h`
-* **d. Rasio Selisih Beda (Difference Quotient):**  
-  `[f(4 + h) - f(4)] / h = [(h² + 6h + 8) - 8] / h = (h² + 6h) / h = (h²/h) + (6h/h) = h + 6` *(Fondasi limit turunan aljabar)*.
+* **d. Difference Quotient (Fondasi Limit Turunan Kalkulus):**  
+  `[f(4 + h) - f(4)] / h = [(h² + 6h + 8) - 8] / h = (h² + 6h) / h = h(h + 6) / h = h + 6`  
+  *⚠️ Peringatan Dosen:* Jangan mencoret variabel `h` pada operasi penjumlahan! Faktorkan perkaliannya terlebih dahulu atau pisah menjadi `(h²/h) + (6h/h)`.
 
-#### 3. Uji Fungsi Genap vs Fungsi Ganjil (Screenshot 3):
+#### 3. Uji Simetri: Fungsi Genap vs Fungsi Ganjil:
 Substitusikan `x` dengan `(-x)` ke seluruh suku fungsi:
 * **Fungsi Genap (Even):** `f(-x) = f(x)` (Grafik kurva simetris terhadap sumbu Y).  
-  *Contoh dosen:* `f(x) = x² - 2 ⟹ f(-x) = (-x)² - 2 = x² - 2 = f(x)` (Genap).
+  *Contoh Dosen:* `f(x) = x² - 2 ⟹ f(-x) = (-x)² - 2 = x² - 2 = f(x)` (Genap).
 * **Fungsi Ganjil (Odd):** `f(-x) = -f(x)` (Grafik kurva simetris terhadap titik pusat asal (0,0)).  
-  *Contoh dosen:* `g(x) = x³ - 2x ⟹ g(-x) = (-x)³ - 2(-x) = -x³ + 2x = -(x³ - 2x) = -g(x)` (Ganjil).
-* **Contoh Soal Ujian Slide Dosen:**  
+  *Contoh Dosen:* `g(x) = x³ - 2x ⟹ g(-x) = (-x)³ - 2(-x) = -x³ + 2x = -(x³ - 2x) = -g(x)` (Ganjil).
+* **Contoh Soal Ujian Slide Dosen (Pecahan Rasional):**  
   Apakah `f(x) = (x³ + 3x) / (x⁴ - 3x² + 4)` termasuk fungsi ganjil atau genap?  
   *Langkah Pengujian Dosen:*  
-  `f(-x) = [(-x)³ + 3(-x)] / [(-x)⁴ - 3(-x)² + 4]`  
-  `f(-x) = (-x³ - 3x) / (x⁴ - 3x² + 4)`  
+  `f(-x) = [(-x)³ + 3(-x)] / [(-x)⁴ - 3(-x)² + 4] = (-x³ - 3x) / (x⁴ - 3x² + 4)`  
   Faktorkan tanda minus keluar dari pembilang:  
   `f(-x) = - (x³ + 3x) / (x⁴ - 3x² + 4) = - f(x)`  
-  **Kesimpulan Dosen: Terbukti FUNGSI GANJIL!**  
-  *💡 Catatan Aljabar Dosen:* `-1/2 = -(1/2) = 1/(-2)` dan `-1/(-2) = 1/2`.
+  **Kesimpulan Dosen: Terbukti FUNGSI GANJIL!**
+* **Contoh Soal GMeet:** `f(x) = x³/5 ⟹ f(-x) = (-x)³/5 = -x³/5 = -f(x)` (Fungsi Ganjil).
+* **💡 Hukum Tanda Minus Pecahan Dosen:** `-a/b = -(a/b) = a/(-b)`. Tanda negatif hanya berlaku pada salah satu (pembilang ATAU penyebut), bukan keduanya. Jika kedua suku negatif, hasilnya positif: `(-a)/(-b) = a/b`.
 
-#### 4. Syarat Daerah Asal Alami (Domain) & Daerah Hasil (Range):
-* **Bentuk Akar Irasional `f(x) = √(p(x))`:** Syarat di dalam akar `p(x) ≥ 0`.  
-  *Contoh:* `f(x) = √(4 - x) ⟹ 4 - x ≥ 0 ⟹ x ≤ 4`. Domain: `(-∞, 4]`, Range: `[0, ∞)`.
-* **Bentuk Pecahan Rasional `f(x) = p(x) / q(x)`:** Syarat penyebut `q(x) ≠ 0`.  
-  *Contoh:* `f(x) = 2 / (x + 3) ⟹ x + 3 ≠ 0 ⟹ x ≠ -3`. Domain: `ℝ \ {-3}`, Range: `ℝ \ {0}` (via invers `x = 2/y - 3`).
-* **Fungsi Kuadrat `g(x) = x² - 5x + 6`:** Parabola terbuka ke atas (`a = 1 > 0`), titik balik minimum `x_p = 5/2 = 2.5`, `y_min = -0.25 = -1/4`.  
-  Domain: `ℝ`, Range: `[ -1/4, ∞ )`.
-* **Fungsi Pecahan Linear `g(x) = (x + 1) / (x - 3)`:** Domain: `x ≠ 3`.  
-  Range via invers: `y(x - 3) = x + 1 ⟹ x(y - 1) = 3y + 1 ⟹ x = (3y + 1)/(y - 1) ⟹ y ≠ 1`. Range: `ℝ \ {1}`.
+#### 4. Penentuan Daerah Asal Alami (Domain) & Daerah Hasil (Range):
+1. **Fungsi Linear `f(x) = mx + c`:**  
+   Tidak ada pembagian nol atau bentuk akar.  
+   **Domain:** `ℝ = ( -∞, ∞ )`, **Range:** `ℝ = ( -∞, ∞ )`.
+2. **Fungsi Kuadrat Polinomial `f(x) = ax² + bx + c`:**  
+   Domain: `ℝ`.  
+   Untuk Range, gunakan rumus titik puncak ordinat: `y_p = -D/(4a) = -(b² - 4ac)/(4a)`.  
+   * Kasus `a > 0` (parabola terbuka ke atas): **Range** = `[ y_min, ∞ )`  
+     *Contoh GMeet:* `f(x) = x² - 5x - 10` (`a = 1 > 0`)  
+     `y_min = -[(-5)² - 4(1)(-10)] / 4(1) = -(25 + 40) / 4 = -65/4`  
+     **Range = [ -65/4, ∞ )**.  
+   * Kasus `a < 0` (parabola terbuka ke bawah): **Range** = `( -∞, y_max ]`  
+     *Contoh GMeet:* `f(x) = -x² + 4x` (`a = -1 < 0`)  
+     `y_max = -[4² - 4(-1)(0)] / 4(-1) = -(16) / (-4) = 4`  
+     **Range = ( -∞, 4 ]**.
+3. **Fungsi Irasional (Akar) `f(x) = √(p(x))`:**  
+   Syarat di dalam akar harus tak-negatif: `p(x) ≥ 0` (jika negatif ➔ bilangan imajiner).  
+   *Contoh GMeet:* `f(x) = √(6 - 2x)`  
+   `6 - 2x ≥ 0 ⟹ -2x ≥ -6 ⟹ x ≤ 3` (dibagi -2, tanda dibalik).  
+   **Domain = ( -∞, 3 ]**, **Range = [ 0, ∞ )**.
+4. **Fungsi Rasional (Pecahan) `f(x) = p(x) / q(x)`:**  
+   Syarat penyebut tidak boleh nol: `q(x) ≠ 0`.  
+   *Contoh GMeet:* `f(x) = 3 / (x - 1)`  
+   Syarat domain: `x - 1 ≠ 0 ⟹ x ≠ 1`. **Domain = ℝ \ {1} = ( -∞, 1 ) ∪ ( 1, ∞ )**.  
+   Range via invers aljabar: `y = 3 / (x - 1) ⟹ x - 1 = 3/y ⟹ x = 3/y + 1`.  
+   Syarat range: `y ≠ 0`. **Range = ℝ \ {0} = ( -∞, 0 ) ∪ ( 0, ∞ )**.
 
-#### 5. Komposisi & Invers Fungsi (Slide 16 & 17):
-* **Komposisi:** `(f ∘ g)(x) = f(g(x))` dan `(g ∘ f)(x) = g(f(x))` (umumnya tidak komutatif).
-* **Invers:** `f(f⁻¹(x)) = f⁻¹(f(x)) = x`. Sifat: `(f ∘ g)⁻¹(x) = (g⁻¹ ∘ f⁻¹)(x)`.
-* **Pembahasan Soal 1:** Invers `f(x) = 2x + 3` ⟹ `y = 2x + 3 ⟹ x = (y - 3)/2` ⟹ **`f⁻¹(x) = (x - 3)/2`**.
-* **Pembahasan Soal 2:** Daerah asal `(f ∘ g)⁻¹(x)` jika `f(x) = 9/(x + 3)` dan `g(x) = x²`:  
-  `(f ∘ g)(x) = 9/(x² + 3)`. Invers: `x² = 9/y - 3 = (9 - 3y)/y ⟹ x = √((9 - 3y)/y)`.  
-  Syarat akar: `(9 - 3x)/x ≥ 0` dan `x ≠ 0`. Pembuat nol: `x = 3` dan `x = 0`.  
-  **Domain `(f ∘ g)⁻¹` = ( 0, 3 ] = { x ∈ ℝ | 0 < x ≤ 3 }**.
-* **Pembahasan Soal 3:** Daerah asal `(f ∘ g)⁻¹(x)` jika `f(x) = x² + 4` dan `g(x) = 1/(x² - 1)`:  
-  *Teorema Kunci:* Domain fungsi invers sama dengan Range fungsi asalnya!  
-  `(f ∘ g)(x) = 1/(x² - 1)² + 4`. Karena `1/(x² - 1)² > 0` untuk semua `x ≠ ±1`, maka `y > 4`.  
-  **Domain `(f ∘ g)⁻¹` = ( 4, ∞ ) = { x ∈ ℝ | x > 4 }**.
+#### 5. Operasi Aljabar & Komposisi Fungsi (Latihan Interaktif Live GMeet):
+Diberikan `f(x) = √x` dan `g(x) = x - 2`:
+* **a. Komposisi `(f ∘ g)(x) = f(g(x))`:**  
+  `(f ∘ g)(x) = f(x - 2) = √(x - 2)`  
+  Syarat domain: `x - 2 ≥ 0 ⟹ x ≥ 2` ➔ **Domain `(f ∘ g)` = [ 2, ∞ )**.  
+  Daerah hasil: Nilai terkecil saat `x = 2 ⟹ √(2 - 2) = 0` ➔ **Range `(f ∘ g)` = [ 0, ∞ )**.
+* **b. Komposisi `(g ∘ f)(x) = g(f(x))`:**  
+  `(g ∘ f)(x) = g(√x) = √x - 2`  
+  Syarat domain: `x ≥ 0` ➔ **Domain `(g ∘ f)` = [ 0, ∞ )**.  
+  Daerah hasil: Nilai terkecil saat `x = 0 ⟹ √0 - 2 = -2` ➔ **Range `(g ∘ f)` = [ -2, ∞ )**.  
+  *(⚠️ Catatan Dosen: Nilai -3 tidak mungkin masuk ke dalam range karena nilai x tidak boleh negatif).*
 
-#### 6. Suplemen Geometri: Sistem Koordinat Cartesius, Gradien & Parabola:
-* **4 Kuadran:** Kuadran I (`+x, +y`), Kuadran II (`-x, +y`), Kuadran III (`-x, -y`), Kuadran IV (`+x, -y`).
-* **Rumus Gradien Garis Melalui Dua Titik:** `m = (y₂ - y₁) / (x₂ - x₁)`.
-* **Garis Sejajar:** `m₁ = m₂`. **Garis Tegak Lurus:** `m₁ · m₂ = -1 ⟺ m₂ = -1 / m₁`.
-* **Karakteristik Parabola `y = ax² + bx + c`:** Bukaan atas (`a > 0`), bukaan bawah (`a < 0`). Diskriminan `D = b² - 4ac`: `D > 0` (memotong 2 titik), `D = 0` (menyinggung 1 titik), `D < 0` (definit melayang). Titik puncak `P(-b/(2a), -D/(4a))`.
+#### 6. Sesi Tanya Jawab Dosen - Mahasiswa (Jessenia Eka):
+* **Pertanyaan Mahasiswa (Jessenia Eka):** *"Ibu, apakah untuk menentukan range kita wajib menggambar kurva grafiknya di kertas ujian?"*
+* **Penjelasan Dosen (Ibu Syifaafidah):** *"Tidak wajib menggambar kurva grafik pada lembar jawaban ujian UTS. Mahasiswa cukup menganalisis nilai batas domain (ekstrem): substitusikan batas domain terkecil ke dalam fungsi. Untuk fungsi kuadrat gunakan rumus titik puncak `y_p = -D/(4a)`, dan untuk pecahan gunakan invers aljabar `x = g(y)`. Menggambar grafik hanya alat bantu visualisasi mandiri."*
 
 ---
+
 ## 7. Pendidikan Pancasila (MK02) • Berbasis RPS & Tugas Presentasi Kelompok
 * **Koordinator Pengembang RPS:** Dr. Ida Rosida, MH. • Dr. Julia Bea Kurniawaty, SH., MH. • Dr. Iis Dewi Lestari, M.Pd.
 * **Dosen Pengampu:** Tim Dosen Pancasila Universitas Indraprasta PGRI
