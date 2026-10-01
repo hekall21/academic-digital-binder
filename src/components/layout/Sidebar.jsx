@@ -82,26 +82,6 @@ export function Sidebar({
           </div>
           <span className="text-[10px] font-mono opacity-80">{stats.totalMeetings} Sesi</span>
         </button>
-
-        <button
-          onClick={() => {
-            setActiveView('handwriting');
-            setSelectedSubjectId(null);
-          }}
-          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
-            activeView === 'handwriting'
-              ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
-          }`}
-        >
-          <div className="flex items-center gap-2.5">
-            <PenTool className="w-4 h-4" />
-            <span>Mode Catatan Fisik</span>
-          </div>
-          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400">
-            Print/Salin
-          </span>
-        </button>
       </div>
 
       {/* Academic Repository Vault Card */}
@@ -138,21 +118,15 @@ export function Sidebar({
           <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
             Daftar Mata Kuliah
           </span>
-          <button
-            onClick={onOpenAddSubject}
-            className="text-[11px] text-indigo-400 hover:text-indigo-300 flex items-center gap-1 font-semibold"
-          >
-            <Plus className="w-3 h-3" />
-            <span>Tambah</span>
-          </button>
+          <span className="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20 font-semibold">
+            {subjects.length} Matkul
+          </span>
         </div>
 
         <div className="space-y-1">
-          {subjects.map((subj, index) => {
+          {subjects.map((subj) => {
             const isSelected = selectedSubjectId === subj.id;
-            const completedCount = (subj.meetings || []).filter(
-              (m) => m.progress?.is_noted_in_binder
-            ).length;
+            const pdfCount = (subj.meetings || []).reduce((acc, m) => acc + (m.materials || []).length, 0);
 
             return (
               <button
@@ -161,7 +135,7 @@ export function Sidebar({
                   setSelectedSubjectId(subj.id);
                   setActiveView('subject_detail');
                 }}
-                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-all text-left ${
+                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-all text-left cursor-pointer ${
                   isSelected
                     ? 'bg-slate-800 border border-indigo-500/40 text-white font-semibold'
                     : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/40'
@@ -174,8 +148,8 @@ export function Sidebar({
                   />
                   <span className="truncate">{subj.name}</span>
                 </div>
-                <span className="text-[10px] font-mono text-slate-400 flex-shrink-0">
-                  {completedCount}/{(subj.meetings || []).length}
+                <span className="text-[10px] font-mono text-cyan-400 flex-shrink-0">
+                  {pdfCount} PDF
                 </span>
               </button>
             );

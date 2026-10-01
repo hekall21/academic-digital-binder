@@ -106,7 +106,7 @@ export function DashboardView({
             Academic Digital Binder: Kurikulum Resmi Dosen
           </h1>
           <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-            Pusat catatan terpadu untuk 8 mata kuliah, ekstraksi verbatim materi PDF/PPT dosen Unindra, transkrip rekaman, rumus matematika presisi, serta panduan salin ke buku binder fisikmu.
+            Pusat catatan terpadu untuk 8 mata kuliah, ekstraksi verbatim materi modul PDF dosen Unindra, rumus matematika presisi, serta arsip dokumen PDF dan cheatsheet HD.
           </p>
         </div>
 
@@ -277,22 +277,16 @@ export function DashboardView({
               Klik kartu mata kuliah untuk melihat seluruh pertemuan dan membaca modul lengkap dosen
             </p>
           </div>
-          <button
-            onClick={onOpenAddSubject}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 text-xs font-bold transition-all"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Mata Kuliah Baru</span>
-          </button>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
+            <GraduationCap className="w-3.5 h-3.5 text-indigo-400" />
+            <span>8 Mata Kuliah Terverifikasi</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {subjects.map((subj, idx) => {
             const meetingCount = (subj.meetings || []).length;
-            const completedCount = (subj.meetings || []).filter(
-              (m) => m.progress?.is_noted_in_binder
-            ).length;
-            const pct = meetingCount > 0 ? Math.round((completedCount / meetingCount) * 100) : 0;
+            const pdfCount = (subj.meetings || []).reduce((acc, m) => acc + (m.materials || []).length, 0);
 
             return (
               <div
@@ -312,8 +306,8 @@ export function DashboardView({
                     >
                       {subj.code || `MATKUL ${idx + 1}`}
                     </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      {completedCount} / {meetingCount} Sesi
+                    <span className="text-[11px] font-mono text-cyan-400">
+                      {pdfCount} Berkas PDF
                     </span>
                   </div>
 

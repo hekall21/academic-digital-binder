@@ -6,9 +6,6 @@ import { Sidebar } from './components/layout/Sidebar';
 import { DashboardView } from './components/dashboard/DashboardView';
 import { SubjectsView } from './components/subjects/SubjectsView';
 import { MeetingDetailView } from './components/meetings/MeetingDetailView';
-import { ModeCatatanFisikView } from './components/handwriting/ModeCatatanFisikView';
-import { AddMeetingModal } from './components/meetings/AddMeetingModal';
-import { AddSubjectModal } from './components/subjects/AddSubjectModal';
 import { GlobalSearchModal } from './components/search/GlobalSearchModal';
 import { SettingsModal } from './components/settings/SettingsModal';
 
@@ -117,7 +114,6 @@ export function App() {
           activeSemesterId={activeSemesterId}
           setActiveSemesterId={setActiveSemesterId}
           stats={stats}
-          onOpenAddSubject={() => setIsAddSubjectOpen(true)}
         />
 
         {/* Dynamic Center Stage Content View */}
@@ -128,8 +124,6 @@ export function App() {
               subjects={subjects}
               onSelectSubject={handleSelectSubject}
               onSelectMeeting={handleSelectMeeting}
-              onOpenAddSubject={() => setIsAddSubjectOpen(true)}
-              onOpenAddMeeting={handleOpenAddMeeting}
             />
           )}
 
@@ -139,10 +133,6 @@ export function App() {
               selectedSubjectId={selectedSubjectId}
               onSelectSubject={handleSelectSubject}
               onSelectMeeting={handleSelectMeeting}
-              onOpenAddMeeting={handleOpenAddMeeting}
-              onOpenAddSubject={() => setIsAddSubjectOpen(true)}
-              onToggleProgress={toggleProgressItem}
-              onDeleteMeeting={deleteMeeting}
             />
           )}
 
@@ -153,18 +143,6 @@ export function App() {
               onBack={() => {
                 setActiveView('subject_detail');
               }}
-              onToggleProgress={toggleProgressItem}
-              onAddMaterial={addMaterial}
-              onDeleteMaterial={deleteMaterial}
-              onUpdateTranscript={updateTranscript}
-              onUpdateSummary={updateSummary}
-            />
-          )}
-
-          {activeView === 'handwriting' && (
-            <ModeCatatanFisikView
-              subjects={subjects}
-              onToggleProgress={toggleProgressItem}
             />
           )}
         </main>
@@ -177,24 +155,6 @@ export function App() {
         subjects={subjects}
         onSelectMeeting={handleSelectMeeting}
       />
-
-      {isAddMeetingOpen && meetingSubjectTarget && (
-        <AddMeetingModal
-          subject={meetingSubjectTarget}
-          onClose={() => {
-            setIsAddMeetingOpen(false);
-            setMeetingSubjectTarget(null);
-          }}
-          onAddMeeting={addMeeting}
-        />
-      )}
-
-      {isAddSubjectOpen && (
-        <AddSubjectModal
-          onClose={() => setIsAddSubjectOpen(false)}
-          onAddSubject={addSubject}
-        />
-      )}
 
       <SettingsModal
         isOpen={isSettingsOpen}

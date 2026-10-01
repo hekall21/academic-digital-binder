@@ -61,13 +61,10 @@ export function SubjectsView({
               </div>
 
               <div className="flex items-center gap-2">
-                <button
-                  onClick={() => onOpenAddMeeting(currentSubject.id)}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-md active:scale-95"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>+ Tambah Pertemuan</span>
-                </button>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Kurikulum Terkunci & Terverifikasi</span>
+                </span>
               </div>
             </div>
           </div>
@@ -133,26 +130,15 @@ export function SubjectsView({
                     </div>
 
                     {/* Actions Bar */}
-                    <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => onSelectMeeting(currentSubject.id, m.id)}
-                          className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
-                        >
-                          <span>Buka Detail</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-
-                      <div className="flex items-center gap-1">
-                        <button
-                          onClick={() => onDeleteMeeting(currentSubject.id, m.id)}
-                          className="p-1.5 rounded-md text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
-                          title="Hapus Pertemuan"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                    <div className="pt-3 border-t border-white/5">
+                      <button
+                        onClick={() => onSelectMeeting(currentSubject.id, m.id)}
+                        className="w-full py-2 px-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
+                      >
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>Buka Rangkuman & Dokumen PDF</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
                     </div>
                   </div>
                 );
@@ -172,22 +158,16 @@ export function SubjectsView({
                 Pilih mata kuliah untuk melihat detail silabus pertemuan dan materi kuliah
               </p>
             </div>
-            <button
-              onClick={onOpenAddSubject}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-md"
-            >
-              <Plus className="w-4 h-4" />
-              <span>+ Mata Kuliah Baru</span>
-            </button>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
+              <GraduationCap className="w-4 h-4 text-indigo-400" />
+              <span>8 Mata Kuliah Terdaftar</span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {subjects.map((subj) => {
               const meetingCount = (subj.meetings || []).length;
-              const completedCount = (subj.meetings || []).filter(
-                (m) => m.progress?.is_noted_in_binder
-              ).length;
-              const pct = meetingCount > 0 ? Math.round((completedCount / meetingCount) * 100) : 0;
+              const pdfCount = (subj.meetings || []).reduce((acc, m) => acc + (m.materials || []).length, 0);
 
               return (
                 <div
@@ -207,8 +187,8 @@ export function SubjectsView({
                       >
                         {subj.code}
                       </span>
-                      <span className="text-xs font-mono text-slate-400">
-                        {completedCount} / {meetingCount} Dicatat
+                      <span className="text-xs font-mono text-cyan-400">
+                        {pdfCount} Berkas PDF
                       </span>
                     </div>
 
@@ -225,10 +205,10 @@ export function SubjectsView({
 
                   <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
                     <span className="text-xs font-semibold text-slate-400">
-                      Progress: <strong className="text-white">{pct}%</strong>
+                      Sesi: <strong className="text-white">{meetingCount} Pertemuan</strong>
                     </span>
                     <span className="text-xs font-bold text-indigo-400 flex items-center gap-1">
-                      <span>Kelola Pertemuan</span>
+                      <span>Buka Silabus & PDF</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
