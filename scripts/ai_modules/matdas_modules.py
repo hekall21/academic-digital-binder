@@ -40,32 +40,66 @@ MATDAS_MEETINGS = [
             {
                 "title": "Lima Aksioma Aljabar Medan Real & Notasi Selang (Interval)",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>5 Sifat Aksioma Aljabar Bilangan Real:</strong>
-    <ol style=\"font-size: 7.7pt;\">
-      <li><strong>Komutatif:</strong> a + b = b + a dan a &times; b = b &times; a</li>
-      <li><strong>Asosiatif:</strong> (a + b) + c = a + (b + c) dan (a &times; b) &times; c = a &times; (b &times; c)</li>
-      <li><strong>Distributif:</strong> a &times; (b + c) = (a &times; b) + (a &times; c)</li>
-      <li><strong>Elemen Identitas:</strong> a + 0 = a (identitas tambah) dan a &times; 1 = a (identitas kali).</li>
-      <li><strong>Elemen Invers:</strong> a + (-a) = 0 dan a &times; (1/a) = 1 (untuk a &ne; 0).</li>
-    </ol>
-  </div>
+<p>Himpunan bilangan real &reals; bersama operasi penjumlahan (+) dan perkalian (&times;) membentuk struktur aljabar <strong>Medan (Field)</strong> yang memenuhi 5 aksioma dasar:</p>
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Aksioma Aljabar Medan</th>
+      <th>Operasi Penjumlahan (+)</th>
+      <th>Operasi Perkalian (&times;)</th>
+      <th>Makna Operasional & Sifat Komputasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Sifat Komutatif</strong></td>
+      <td><code>a + b = b + a</code></td>
+      <td><code>a &times; b = b &times; a</code></td>
+      <td>Urutan posisi operand dapat ditukar tanpa mengubah hasil akhir kalkulasi.</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Sifat Asosiatif</strong></td>
+      <td><code>(a + b) + c = a + (b + c)</code></td>
+      <td><code>(a &times; b) &times; c = a &times; (b &times; c)</code></td>
+      <td>Pengelompokan urutan pengerjaan tanda kurung tidak memengaruhi hasil akhir.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Sifat Distributif</strong></td>
+      <td colspan="2" style="text-align: center;"><code>a &times; (b + c) = (a &times; b) + (a &times; c)</code></td>
+      <td>Operasi perkalian mendistribusikan diri terhadap operasi penjumlahan suku.</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Elemen Identitas (Netral)</strong></td>
+      <td><code>a + 0 = a</code> (Identitas: 0)</td>
+      <td><code>a &times; 1 = a</code> (Identitas: 1)</td>
+      <td>Elemen yang jika dioperasikan dengan bilangan manapun tidak mengubah nilainya.</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Elemen Invers (Balikan)</strong></td>
+      <td><code>a + (-a) = 0</code> (Invers tambah)</td>
+      <td><code>a &times; (1/a) = 1</code> (untuk <code>a &ne; 0</code>)</td>
+      <td>Menghasilkan elemen netral; invers perkalian menjadi dasar operasi pembagian.</td>
+    </tr>
+  </tbody>
+</table>
 
-  <div class=\"card\">
-    <strong>Tabel Notasi Selang (Interval Notation):</strong>
-    <table>
-      <thead><tr><th>Notasi Selang</th><th>Definisi Himpunan</th><th>Makna Titik Ujung</th></tr></thead>
-      <tbody>
-        <tr><td><strong>(a, b)</strong></td><td>{x &in; &reals; | a &lt; x &lt; b}</td><td>Selang Terbuka: a dan b <strong>tidak masuk</strong> (lingkaran kosong &cir;).</td></tr>
-        <tr><td><strong>[a, b]</strong></td><td>{x &in; &reals; | a &le; x &le; b}</td><td>Selang Tertutup: a dan b <strong>ikut masuk</strong> (lingkaran penuh &bull;).</td></tr>
-        <tr><td><strong>[a, b)</strong></td><td>{x &in; &reals; | a &le; x &lt; b}</td><td>Setengah terbuka: a masuk, b tidak masuk.</td></tr>
-        <tr><td><strong>(-&infin;, b]</strong></td><td>{x &in; &reals; | x &le; b}</td><td>Sayap kiri hingga b termasuk b.</td></tr>
-        <tr><td><strong>(a, &infin;)</strong></td><td>{x &in; &reals; | x &gt; a}</td><td>Sayap kanan dari a tanpa batas.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<p style="margin-top: 8px;"><strong>Tabel Representasi Notasi Selang (Interval Notation) pada Garis Bilangan Real:</strong></p>
+<table>
+  <thead><tr><th>Notasi Selang</th><th>Definisi Himpunan Matematis</th><th>Makna Titik Ujung & Grafis Garis Bilangan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>(a, b)</strong></td><td>{x &in; &reals; | a &lt; x &lt; b}</td><td>Selang Terbuka: titik a dan b <strong>tidak termasuk</strong> (simbol lingkaran kosong &cir;).</td></tr>
+    <tr><td><strong>[a, b]</strong></td><td>{x &in; &reals; | a &le; x &le; b}</td><td>Selang Tertutup: titik a dan b <strong>ikut masuk</strong> (simbol lingkaran penuh &bull;).</td></tr>
+    <tr><td><strong>[a, b)</strong></td><td>{x &in; &reals; | a &le; x &lt; b}</td><td>Setengah Terbuka Kanan: titik a masuk, titik b tidak masuk.</td></tr>
+    <tr><td><strong>(-&infin;, b]</strong></td><td>{x &in; &reals; | x &le; b}</td><td>Sayap Kiri tak hingga hingga titik b termasuk b.</td></tr>
+    <tr><td><strong>(a, &infin;)</strong></td><td>{x &in; &reals; | x &gt; a}</td><td>Sayap Kanan dari titik a tanpa batas atas (&infin;).</td></tr>
+  </tbody>
+</table>
 """
             },
             {
@@ -106,13 +140,49 @@ MATDAS_MEETINGS = [
             {
                 "title": "Lima Langkah Baku Menentukan Himpunan Penyelesaian (Metode Anti-Gagal)",
                 "content_html": """
-<ol style=\"font-size: 7.9pt;\">
-  <li><strong>1. Nolkan Ruas Kanan:</strong> Pindahkan semua suku ke ruas kiri sehingga ruas kanan menjadi 0 (f(x) &lt; 0 atau f(x) &gt; 0). <em>Dilarang mengalikan silang variabel jika belum tahu tandanya!</em></li>
-  <li><strong>2. Faktorisasi / Pecahan Tunggal:</strong> Ubah bentuk kuadrat menjadi faktor-faktor linier (x - x<sub>1</sub>)(x - x<sub>2</sub>). Untuk pecahan aljabar, samakan penyebut menjadi P(x) / Q(x).</li>
-  <li><strong>3. Tentukan Titik Pemecah (Split Points):</strong> Cari pembuat nol pembilang (P(x) = 0) dan pembuat nol penyebut (Q(x) = 0). <strong>Ingat:</strong> Titik penyebut SELALU lingkaran kosong (&cir;) karena pembagian nol tidak terdefinisi!</li>
-  <li><strong>4. Plot Garis Bilangan & Uji Titik:</strong> Tarik garis bilangan, letakkan titik pemecah, dan pilih angka uji di luar pemecah (paling mudah <strong>x = 0</strong>) untuk menentukan tanda interval (+ atau -).</li>
-  <li><strong>5. Ambil Daerah Solusi:</strong> Jika soal &gt; 0 atau &ge; 0, ambil daerah positif (+). Jika soal &lt; 0 atau &le; 0, ambil daerah negatif (-).</li>
-</ol>
+<p>Untuk menyelesaikan sembarang pertidaksamaan aljabar kuadrat maupun pecahan rasional, gunakan 5 tahapan baku berikut:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Langkah ke-</th>
+      <th>Tahapan Baku Penentuan HP</th>
+      <th>Tindakan Operasi Aljabar</th>
+      <th>Ketentuan Kritis & Larangan Keras (✗)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Nolkan Ruas Kanan</strong></td>
+      <td>Pindahkan semua suku ke ruas kiri sehingga bentuk persamaan menjadi <code>f(x) &lt; 0</code> atau <code>f(x) &gt; 0</code>.</td>
+      <td><strong>DILARANG KERAS</strong> mengalikan silang penyebut yang mengandung variabel karena tandanya belum tentu positif!</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Faktorisasi / Samakan Penyebut</strong></td>
+      <td>Ubah bentuk polinomial ke faktor linier <code>(x - x₁) (x - x₂)</code>. Untuk pecahan, satukan menjadi <code>P(x) / Q(x)</code>.</td>
+      <td>Pastikan koefisien suku utama bertanda positif untuk mempermudah uji tanda nantinya.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Tentukan Titik Pemecah (Split Points)</strong></td>
+      <td>Cari pembuat nol pembilang (<code>P(x) = 0</code>) dan pembuat nol penyebut (<code>Q(x) = 0</code>).</td>
+      <td>Titik pembuat nol dari <strong>penyebut SELALU lingkaran kosong (&cir;)</strong> karena pembagian dengan nol mustahil!</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Plot Garis Bilangan & Uji Tanda</strong></td>
+      <td>Petakan semua titik pemecah pada garis bilangan berurut dari kecil ke besar, lalu pilih satu angka uji (misal: <code>x = 0</code>).</td>
+      <td>Evaluasi tanda (+ / -) di setiap daerah interval. Tanda berubah berselang-seling kecuali jika ada faktor berpangkat genap.</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Himpunan Penyelesaian (HP)</strong></td>
+      <td>Jika pertidaksamaan bertanda <code>&gt; 0</code> atau <code>&ge; 0</code>, pilih daerah (+). Jika bertanda <code>&lt; 0</code> atau <code>&le; 0</code>, pilih daerah (-).</td>
+      <td>Tuliskan notasi himpunan matematika formal dan notasi selang (interval) secara presisi.</td>
+    </tr>
+  </tbody>
+</table>
 """
             },
             {
@@ -279,27 +349,41 @@ MATDAS_MEETINGS = [
             {
                 "title": "Uji Simetri: Fungsi Genap (Even) vs Fungsi Ganjil (Odd)",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>Fungsi Genap (Even Function):</strong>
-    <ul style=\"font-size: 7.7pt;\">
-      <li>Syarat formal: <strong>f(-x) = f(x)</strong></li>
-      <li>Ciri Geometris: Grafiknya <strong>simetris sempurna terhadap sumbu Y</strong>.</li>
-      <li>Contoh: f(x) = x<sup>2</sup>, f(x) = x<sup>4</sup> - 3x<sup>2</sup>, f(x) = cos(x).</li>
-      <li>Uji: f(-x) = (-x)<sup>2</sup> = x<sup>2</sup> = f(x) (Terbukti Genap).</li>
-    </ul>
-  </div>
-
-  <div class=\"card\">
-    <strong>Fungsi Ganjil (Odd Function):</strong>
-    <ul style=\"font-size: 7.7pt;\">
-      <li>Syarat formal: <strong>f(-x) = -f(x)</strong></li>
-      <li>Ciri Geometris: Grafiknya <strong>simetris terhadap titik pusat asal (0,0)</strong> (rotasi 180&deg;).</li>
-      <li>Contoh: g(x) = x<sup>3</sup>, g(x) = x<sup>3</sup> - 5x, g(x) = sin(x).</li>
-      <li>Uji: g(-x) = (-x)<sup>3</sup> - 5(-x) = -x<sup>3</sup> + 5x = -(x<sup>3</sup> - 5x) = -g(x) (Terbukti Ganjil).</li>
-    </ul>
-  </div>
-</div>
+<p>Karakteristik simetri grafik fungsi dapat diuji secara analitis melalui evaluasi nilai fungsi terhadap masukan negatif <code>f(-x)</code>:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Kategori Fungsi</th>
+      <th>Definisi Aljabar Baku</th>
+      <th>Karakteristik Simetri Geometris Grafis</th>
+      <th>Prosedur Pengujian Aljabar f(-x)</th>
+      <th>Contoh Fungsi Nyata</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Fungsi Genap (Even Function)</strong></td>
+      <td><code>f(-x) = f(x)</code> untuk setiap <code>x &in; D_f</code></td>
+      <td>Grafiknya <strong>simetris sempurna terhadap sumbu Y</strong> (pencerminan cermin tegak).</td>
+      <td>Substitusi <code>x</code> dengan <code>-x</code>; jika tanda negatif lenyap dan kembali ke fungsi asal, fungsi terbukti Genap.</td>
+      <td><code>f(x) = x²</code><br><code>f(x) = x⁴ - 3x²</code><br><code>f(x) = cos(x)</code></td>
+    </tr>
+    <tr>
+      <td><strong>Fungsi Ganjil (Odd Function)</strong></td>
+      <td><code>f(-x) = -f(x)</code> untuk setiap <code>x &in; D_f</code></td>
+      <td>Grafiknya <strong>simetris terhadap titik pusat asal (0,0)</strong> (inversi rotasi 180&deg;).</td>
+      <td>Substitusi <code>x</code> dengan <code>-x</code>; jika seluruh suku bertanda kebalikan mutlak dari fungsi asal, fungsi terbukti Ganjil.</td>
+      <td><code>g(x) = x³</code><br><code>g(x) = x³ - 5x</code><br><code>g(x) = sin(x)</code></td>
+    </tr>
+    <tr>
+      <td><strong>Fungsi Bukan Keduanya</strong></td>
+      <td><code>f(-x) &ne; f(x)</code> dan <code>f(-x) &ne; -f(x)</code></td>
+      <td>Grafik tidak memiliki simetri sumbu Y maupun simetri titik pusat asal (0,0).</td>
+      <td>Hasil evaluasi menghasilkan campuran tanda yang tidak sesuai pola genap maupun ganjil.</td>
+      <td><code>h(x) = x² + 2x + 1</code><br><code>h(x) = 2x - 3</code></td>
+    </tr>
+  </tbody>
+</table>
 """
             },
             {

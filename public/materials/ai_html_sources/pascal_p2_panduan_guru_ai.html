@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -263,31 +276,90 @@
       <div class="section-title">BAB 1. The Big Picture: Konsep Strongly Typed & Case-Insensitive</div>
       
 <p>Dua karakteristik paling fundamental dari bahasa Pascal yang wajib diresapi setiap mahasiswa:</p>
-<div class="grid-2">
-  <div class="card">
-    <strong>1. Strongly Typed Language:</strong><br>
-    Setiap variabel <strong>wajib dideklarasikan tipe datanya secara eksplisit</strong> sebelum blok <code>begin</code>. Kompiler tidak mengizinkan penugasan data yang tidak kompatibel (misal: memasukkan teks ke variabel bertipe bilangan bulat).
-  </div>
-  <div class="card">
-    <strong>2. Case-Insensitive:</strong><br>
-    Pascal <strong>tidak membedakan huruf besar dan huruf kecil</strong>. Variabel <code>TotalGaji</code>, <code>totalgaji</code>, dan <code>TOTALGAJI</code> dianggap sebagai satu entitas yang sama persis oleh kompiler.
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Karakteristik Kompiler</th>
+      <th>Prinsip Fundamental</th>
+      <th>Tindakan Validasi Kompiler</th>
+      <th>Manfaat Bagi Software Engineering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Strongly Typed</strong></td>
+      <td>Setiap variabel <strong>wajib dideklarasikan tipe datanya secara eksplisit</strong> sebelum blok <code>begin</code>.</td>
+      <td>Kompiler menolak penugasan tipe yang tidak kompatibel saat proses kompilasi (<em>type mismatch error</em>).</td>
+      <td>Mencegah bug fatal runtime, kebocoran memori, dan konversi tipe implisit yang berbahaya.</td>
+    </tr>
+    <tr>
+      <td><strong>Case-Insensitive</strong></td>
+      <td>Pascal <strong>tidak membedakan huruf kapital dan huruf kecil</strong> dalam penulisan token/identifier.</td>
+      <td>Pengenal <code>TotalGaji</code>, <code>totalgaji</code>, dan <code>TOTALGAJI</code> dipetakan ke alamat memori yang sama persis.</td>
+      <td>Mempermudah penulisan kode tanpa hambatan tipografi, fokus pada struktur dan konsistensi.</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         
     <div class="section">
       <div class="section-title">BAB 2. Kaidah Baku Penamaan Pengenal (Identifier Rules)</div>
       
-<div class="card">
-  <strong>Empat Hukum Baku Identifier Pascal:</strong>
-  <ol style="font-size: 7.8pt;">
-    <li><strong>Karakter Pertama:</strong> Wajib berupa <strong>huruf alfabet (A-Z / a-z) atau garis bawah (underscore <code>_</code>)</strong>. Dilarang diawali angka (contoh salah: <code>1nilai</code>, contoh benar: <code>nilai1</code>, <code>_nilai</code>).</li>
-    <li><strong>Karakter Berikutnya:</strong> Boleh berupa kombinasi huruf, angka, dan underscore.</li>
-    <li><strong>Dilarang Mengandung Spasi:</strong> Spasi akan dianggap sebagai pemisah token baru. Gunakan underscore (<code>total_bayar</code>) atau CamelCase (<code>totalBayar</code>).</li>
-    <li><strong>Dilarang Simbol Khusus & Reserved Words:</strong> Dilarang memakai simbol matematika/karakter unik (<code>+, -, *, /, @, #, $, %</code>) dan kata kunci yang sudah dipesan bahasa (<code>program, begin, end, var, if, then</code>).</li>
-  </ol>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Hukum Identifier Pascal</th>
+      <th>Ketentuan Validasi Kompiler</th>
+      <th>Contoh Penulisan Benar (✓)</th>
+      <th>Contoh Penulisan Salah (✗)</th>
+      <th>Keterangan Kesalahan Kompiler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Karakter Pertama</strong></td>
+      <td>Wajib berupa huruf alfabet (<code>A-Z</code> / <code>a-z</code>) atau garis bawah (underscore <code>_</code>).</td>
+      <td><code>nilai1</code>, <code>_total</code>, <code>namaMhs</code></td>
+      <td><code>1nilai</code>, <code>9harga</code></td>
+      <td>Dilarang diawali karakter numerik (angka).</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Karakter Lanjutan</strong></td>
+      <td>Boleh berupa kombinasi huruf alfabet, angka desimal (0-9), dan garis bawah.</td>
+      <td><code>npm_2026</code>, <code>gaji_pokok_v2</code></td>
+      <td><code>gaji-pokok</code>, <code>biaya+ongkir</code></td>
+      <td>Tanda hubung minus (<code>-</code>) dianggap operator pengurangan.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Spasi Pemisah Token</strong></td>
+      <td>Dilarang keras mengandung spasi kosong di tengah nama variabel.</td>
+      <td><code>total_bayar</code>, <code>totalBayar</code></td>
+      <td><code>total bayar</code></td>
+      <td>Spasi memecah pengenal menjadi dua token terpisah (syntax error).</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Karakter Khusus & Simbol</strong></td>
+      <td>Dilarang menggunakan simbol matematika atau tanda baca unik (<code>@, #, $, %, ^, &, *, .</code>).</td>
+      <td><code>rate_pajak</code>, <code>uang_kas</code></td>
+      <td><code>rate@pajak</code>, <code>uang$</code></td>
+      <td>Simbol khusus memiliki fungsi sintaks internal pada kompiler.</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Kata Kunci Terpesan (Reserved Words)</strong></td>
+      <td>Dilarang menggunakan kata kunci bahasa pemrograman yang telah dipesan sistem.</td>
+      <td><code>nama_program</code>, <code>jumlah_var</code></td>
+      <td><code>program</code>, <code>begin</code>, <code>var</code>, <code>if</code></td>
+      <td>Reserved words hanya boleh digunakan untuk struktur bahasa resmi.</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         

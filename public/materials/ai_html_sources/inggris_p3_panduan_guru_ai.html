@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -262,10 +275,34 @@
     <div class="section">
       <div class="section-title">BAB 1. Past Simple vs Present Perfect in Engineering Reports</div>
       
-<div class="grid-2">
-  <div class="card"><strong>Past Simple (Definite Past Time):</strong> Used when the time is specified or completed. <em>"We deployed version 1.0 yesterday."</em></div>
-  <div class="card"><strong>Present Perfect (Relevance to Present):</strong> Used when the action happened at an unspecified time with current impact. <em>"Our team has resolved 40 bugs so far."</em></div>
-</div>
+<p>In technical engineering reports, selecting between Past Simple and Present Perfect determines whether an event is viewed as a finished historical milestone or an ongoing operational state:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Tense Structure</th>
+      <th>Grammatical Formula</th>
+      <th>Time Focus & Temporal Aspect</th>
+      <th>Common Signal Words</th>
+      <th>Real-World Engineering Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Past Simple</strong></td>
+      <td><code>Subject + Verb 2 (ed / irregular)</code></td>
+      <td>Definite past time; the action is completely finished at a specified past moment.</td>
+      <td><em>yesterday, last week, in 2024, two hours ago, during sprint 3</em></td>
+      <td><em>"The DevOps team <strong>deployed</strong> hotfix v2.1.0 yesterday at 23:00 UTC."</em></td>
+    </tr>
+    <tr>
+      <td><strong>Present Perfect</strong></td>
+      <td><code>Subject + have/has + Verb 3 (Past Participle)</code></td>
+      <td>Indefinite past time with direct relevance to current operational state or unfinished time window.</td>
+      <td><em>already, yet, so far, recently, since Monday, for three cycles</em></td>
+      <td><em>"Our QA engineers <strong>have resolved</strong> 42 edge cases so far this sprint."</em></td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         

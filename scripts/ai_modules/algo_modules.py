@@ -42,45 +42,54 @@ ALGO_MEETINGS = [
             {
                 "title": "Tiga Notasi Baku Penyajian Algoritma (Komparasi & Implementasi)",
                 "content_html": """
-<div class=\"grid-3\">
-  <div class=\"card\">
-    <strong>1. Bahasa Alami (Deskriptif)</strong><br>
-    <span style=\"font-size: 7.5pt; color: #64748b;\">Menggunakan narasi bahasa manusia (Indonesia/Inggris).</span>
-    <ul style=\"margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;\">
-      <li>Kelebihan: Mudah dipahami orang awam.</li>
-      <li>Kelemahan: Sering bertele-tele dan rentan ambiguitas istilah.</li>
-    </ul>
-  </div>
-  <div class=\"card\">
-    <strong>2. Pseudocode (Kode Semu)</strong><br>
-    <span style=\"font-size: 7.5pt; color: #64748b;\">Notasi terstruktur mirip bahasa pemrograman tingkat tinggi.</span>
-    <ul style=\"margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;\">
-      <li>Kelebihan: Rapi, ringkas, independen dari bahasa apapun.</li>
-      <li>Kelemahan: Tidak dapat dieksekusi langsung oleh mesin compiler.</li>
-    </ul>
-  </div>
-  <div class=\"card\">
-    <strong>3. Flowchart (Diagram Alir)</strong><br>
-    <span style=\"font-size: 7.5pt; color: #64748b;\">Bagan visual geometris standar ANSI/ISO.</span>
-    <ul style=\"margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;\">
-      <li>Kelebihan: Alur logika percabangan terlihat seketika.</li>
-      <li>Kelemahan: Memakan ruang luas jika logika sangat rumit.</li>
-    </ul>
-  </div>
-</div>
+<p>Dalam rekayasa komputasi, algoritma dapat diekspresikan melalui tiga notasi baku dengan karakteristik, kekuatan, dan batasan masing-masing:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Notasi Algoritma</th>
+      <th>Format / Karakteristik Penyajian</th>
+      <th>Kelebihan Utama</th>
+      <th>Kelemahan & Limitasi</th>
+      <th>Kesesuaian Penggunaan Nyata</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Bahasa Alami (Deskriptif)</strong></td>
+      <td>Narasi teks terstruktur memakai bahasa manusia sehari-hari (Indonesia / Inggris).</td>
+      <td>Mudah dipahami dan dikomunikasikan kepada pemangku kepentingan awam non-teknis.</td>
+      <td>Rentan multitafsir (ambigu), panjang bertele-tele, tidak memiliki standar formal.</td>
+      <td>Dokumentasi konseptual awal, penjelasan alur proses bisnis kepada klien non-TI.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Pseudocode (Kode Semu)</strong></td>
+      <td>Notasi terstruktur bergaya bahasa pemrograman imperatif tingkat tinggi tanpa dependensi sintaks spesifik.</td>
+      <td>Ringkas, presisi, independen dari bahasa mesin, mudah ditranslasikan ke bahasa pemrograman apapun.</td>
+      <td>Tidak dapat dieksekusi langsung oleh mesin compiler tanpa dikonversi ke kode nyata.</td>
+      <td>Perancangan logika inti sistem, publikasi paper riset algoritma, standar buku teks ilmu komputer.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Flowchart (Diagram Alir)</strong></td>
+      <td>Representasi grafis dua dimensi menggunakan simbol-simbol geometri standar ANSI / ISO 5807.</td>
+      <td>Alur logika, percabangan, dan perulangan tampak seketika secara visual; mudah ditelusuri alurnya.</td>
+      <td>Membutuhkan ruang gambar luas; sulit digambar ulang saat logika sangat kompleks dan bersarang banyak.</td>
+      <td>Presentasi arsitektur sistem, audit proses bisnis, instruksi operasional standar kerja (SOP).</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class=\"card-dark\">
-  <span style=\"color: #38bdf8; font-weight: bold;\">// Contoh Pseudocode Baku Menghitung Luas Segitiga:</span>
-  <pre><code><span class=\"code-kw\">PROGRAM</span> HitungLuasSegitiga
-<span class=\"code-kw\">DEKLARASI</span>:
-  alas, tinggi, luas : <span class=\"code-type\">real</span>
+<div class="card-dark" style="margin-top: 8px;">
+  <span style="color: #38bdf8; font-weight: bold;">// Contoh Pseudocode Baku Menghitung Luas Segitiga:</span>
+  <pre><code><span class="code-kw">PROGRAM</span> HitungLuasSegitiga
+<span class="code-kw">DEKLARASI</span>:
+  alas, tinggi, luas : <span class="code-type">real</span>
 
-<span class=\"code-kw\">ALGORITMA</span>:
-  <span class=\"code-fn\">read</span>(alas)
-  <span class=\"code-fn\">read</span>(tinggi)
+<span class="code-kw">ALGORITMA</span>:
+  <span class="code-fn">read</span>(alas)
+  <span class="code-fn">read</span>(tinggi)
   luas &larr; 0.5 * alas * tinggi
-  <span class=\"code-fn\">write</span>(luas)
-<span class=\"code-kw\">END PROGRAM</span></code></pre>
+  <span class="code-fn">write</span>(luas)
+<span class="code-kw">END PROGRAM</span></code></pre>
 </div>
 """
             },
@@ -114,16 +123,33 @@ ALGO_MEETINGS = [
                 "title": "The Big Picture: Memori Komputer, Variabel, dan Wadah Data",
                 "content_html": """
 <p>Dalam arsitektur Von Neumann, memori utama (RAM) adalah deretan sel biner beralamat heksadesimal (misal: <code>0x7FFE001A</code>). Manusia mustahil mengingat alamat acak tersebut saat menulis program. Di sinilah peran <strong>Variabel</strong> sebagai label simbolik yang manusiawi untuk memesan dan merujuk lokasi memori tersebut.</p>
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>Variabel (Variable):</strong><br>
-    Pengenal (identifier) di memori yang nilainya <strong>dapat berubah-ubah</strong> secara dinamis sepanjang eksekusi program. Contoh: <code>counter &larr; counter + 1</code>.
-  </div>
-  <div class=\"card\">
-    <strong>Konstanta (Constant):</strong><br>
-    Pengenal di memori yang nilainya <strong>dikunci permanen (read-only)</strong> sejak deklarasi awal. Contoh: <code>PI = 3.14159</code>, <code>PPN = 0.11</code>.
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Kategori Pengenal</th>
+      <th>Karakteristik Nilai di RAM</th>
+      <th>Kata Kunci Deklarasi</th>
+      <th>Contoh Notasi Baku</th>
+      <th>Aturan Mutabilitas & Hak Akses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Variabel (Variable)</strong></td>
+      <td>Lokasi memori yang nilainya dinamis dapat diperbarui (<em>read-write</em>) sepanjang siklus eksekusi program.</td>
+      <td><code>var</code> / <code>DEKLARASI</code></td>
+      <td><code>counter &larr; counter + 1</code><br><code>total := total + harga;</code></td>
+      <td>Dapat dimutasi berulang kali saat iterasi, akumulasi data, atau masukan interaktif user.</td>
+    </tr>
+    <tr>
+      <td><strong>Konstanta (Constant)</strong></td>
+      <td>Lokasi memori yang nilainya dikunci permanen (<em>read-only</em>) sejak saat inisialisasi awal.</td>
+      <td><code>const</code></td>
+      <td><code>PI = 3.14159265</code><br><code>TARIF_PPN = 0.11</code></td>
+      <td>Imutabel (tidak dapat diubah); mencegah <em>magic numbers</em> dan melindungi nilai acuan absolut.</td>
+    </tr>
+  </tbody>
+</table>
 """
             },
             {
@@ -145,18 +171,68 @@ ALGO_MEETINGS = [
                 "title": "Hierarki Presedensi Operator & Tabel Kebenaran Logika",
                 "content_html": """
 <p>Ketika sebuah ekspresi matematika mengandung banyak operator sekaligus, komputer mengeksekusinya berdasarkan <strong>Tingkat Presedensi (Precedence Order)</strong>, bukan semata dari kiri ke kanan:</p>
-<div class=\"card-dark\">
-  <strong>Urutan Prioritas Eksekusi Operator (Tertinggi ke Terendah):</strong>
-  <ol style=\"margin: 4px 0; padding-left: 20px; font-size: 7.8pt;\">
-    <li>Tanda Kurung <code>( ... )</code> &mdash; Mengabaikan semua urutan di bawahnya.</li>
-    <li>Operator Unary & NOT: <code>+</code> (positif), <code>-</code> (negatif), <code>NOT</code>.</li>
-    <li>Operator Perkalian & Pembagian: <code>*</code>, <code>/</code>, <code>div</code> (bagi bulat), <code>mod</code> (sisa bagi).</li>
-    <li>Operator Penjumlahan & Pengurangan: <code>+</code>, <code>-</code>.</li>
-    <li>Operator Relasional / Perbandingan: <code>=</code>, <code>&ne;</code>, <code>&lt;</code>, <code>&le;</code>, <code>&gt;</code>, <code>&ge;</code>.</li>
-    <li>Operator Logika AND: <code>AND</code>.</li>
-    <li>Operator Logika OR & XOR: <code>OR</code>, <code>XOR</code>.</li>
-  </ol>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Tingkat Presedensi</th>
+      <th>Golongan Operator</th>
+      <th>Simbol Komputasi</th>
+      <th>Arah Evaluasi</th>
+      <th>Contoh Ekspresi & Hasil Evaluasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Prioritas 1 (Tertinggi)</strong></td>
+      <td>Tanda Kurung Pengelompokan</td>
+      <td><code>( ... )</code></td>
+      <td>Dari dalam ke luar</td>
+      <td><code>(2 + 3) * 4</code> &rarr; <code>5 * 4 = 20</code> (Mengabaikan presedensi bawaan)</td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 2</strong></td>
+      <td>Unary & Negasi Logika</td>
+      <td><code>+</code>, <code>-</code>, <code>NOT</code></td>
+      <td>Kanan ke Kiri</td>
+      <td><code>NOT TRUE</code> &rarr; <code>FALSE</code>; <code>-5 + 8</code> &rarr; <code>3</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 3</strong></td>
+      <td>Perkalian, Pembagian, Modulo</td>
+      <td><code>*</code>, <code>/</code>, <code>div</code>, <code>mod</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>10 mod 3 * 2</code> &rarr; <code>1 * 2 = 2</code>; <code>15 div 4 = 3</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 4</strong></td>
+      <td>Penjumlahan & Pengurangan</td>
+      <td><code>+</code>, <code>-</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>10 + 5 - 2</code> &rarr; <code>15 - 2 = 13</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 5</strong></td>
+      <td>Relasional (Perbandingan)</td>
+      <td><code>=</code>, <code>&ne;</code>, <code>&lt;</code>, <code>&le;</code>, <code>&gt;</code>, <code>&ge;</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>7 &gt; 5</code> &rarr; <code>TRUE</code>; <code>10 &le; 10</code> &rarr; <code>TRUE</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 6</strong></td>
+      <td>Konjungsi Logika (AND)</td>
+      <td><code>AND</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>(5 &gt; 2) AND (3 &lt; 1)</code> &rarr; <code>TRUE AND FALSE = FALSE</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 7 (Terendah)</strong></td>
+      <td>Disjungsi Logika (OR, XOR)</td>
+      <td><code>OR</code>, <code>XOR</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>FALSE OR TRUE</code> &rarr; <code>TRUE</code>; <code>TRUE XOR TRUE = FALSE</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <div class=\"card\">
   <strong>Tabel Kebenaran Logika (Truth Table):</strong>
@@ -278,11 +354,47 @@ ALGO_MEETINGS = [
             {
                 "title": "Kaidah Mutlak Penggambaran Flowchart Bebas Error",
                 "content_html": """
-<ol style=\"font-size: 7.9pt;\">
-  <li><strong>Arah Aliran Baku:</strong> Alur utama harus mengalir dari <strong>atas ke bawah (top-to-bottom)</strong> atau dari <strong>kiri ke kanan (left-to-right)</strong>.</li>
-  <li><strong>Cabang Decision:</strong> Setiap simbol Decision (Belah Ketupat) <strong>WAJIB memiliki minimal 2 jalur keluar</strong> dengan label kebenaran yang jelas (<code>YA/TIDAK</code> atau <code>TRUE/FALSE</code>). Dilarang hanya memiliki satu jalur keluar.</li>
-  <li><strong>Dilarang Garis Berpotongan:</strong> Garis alir tidak boleh saling memotong tanpa tanda konektor (Connector).</li>
-</ol>
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Kaidah Baku Standar ANSI / ISO</th>
+      <th>Ketentuan Grafis Alur</th>
+      <th>Pola Kesalahan Fatal (✗)</th>
+      <th>Pola Penerapan Benar (✓)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Arah Aliran Utama</strong></td>
+      <td>Alur proses wajib mengalir secara linier dari <strong>atas ke bawah (top-to-bottom)</strong> atau dari <strong>kiri ke kanan (left-to-right)</strong>.</td>
+      <td>Garis alir zig-zag acak dari bawah ke atas tanpa konteks looping.</td>
+      <td>Alur utama lurus ke bawah; loop balik menggunakan garis samping yang teratur.</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Cabang Logika Decision</strong></td>
+      <td>Simbol Decision (Belah Ketupat) <strong>WAJIB memiliki minimal 2 jalur keluar</strong> yang dilabeli eksplisit (<code>YA / TIDAK</code>).</td>
+      <td>Decision hanya memiliki satu garis keluar atau tanpa label keterangan kebenaran.</td>
+      <td>Dua jalur cabang keluar: cabang <code>YA/TRUE</code> dan cabang <code>TIDAK/FALSE</code> yang bermuara jelas.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Penghindaran Garis Silang</strong></td>
+      <td>Garis alir (flowline) tidak boleh saling memotong secara langsung di tengah diagram.</td>
+      <td>Dua panah berpotongan membentuk tanda tambah (+) yang membingungkan alur baca.</td>
+      <td>Gunakan On-Page Connector (Lingkaran kecil) untuk menghubungkan titik temu secara rapi.</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Titik Masuk & Titik Keluar</strong></td>
+      <td>Setiap simbol proses hanya memiliki <strong>1 titik masuk dan 1 titik keluar</strong>. Hanya Decision yang boleh bercabang &gt; 1 keluar.</td>
+      <td>Kotak Process persegi panjang bercabang dua arah keluar secara simultan.</td>
+      <td>Pemisahan cabang divergen hanya dilakukan melalui simbol Decision belah ketupat.</td>
+    </tr>
+  </tbody>
+</table>
 """
             }
         ],
@@ -308,47 +420,83 @@ ALGO_MEETINGS = [
             {
                 "title": "Empat Pola Baku Struktur Percabangan Komputasi",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>1. Percabangan Tunggal (IF - THEN)</strong><br>
-    Hanya mengeksekusi aksi jika kondisi bernilai <code>TRUE</code>. Jika <code>FALSE</code>, tidak ada aksi alternatif yang dijalankan.
-    <pre><code><span class=\"code-kw\">IF</span> (total_belanja &gt; 100000) <span class=\"code-kw\">THEN</span>
+<p>Dalam rekayasa logika pemrograman, pengambilan keputusan dikelompokkan ke dalam empat arsitektur pola baku:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Pola Percabangan</th>
+      <th>Struktur Logika Baku</th>
+      <th>Evaluasi Kondisi Boolean</th>
+      <th>Aksi Alternatif (Else)</th>
+      <th>Kasus Penggunaan Ideal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Percabangan Tunggal</strong></td>
+      <td><code>IF (kondisi) THEN (aksi)</code></td>
+      <td>Kondisi bernilai <code>TRUE</code></td>
+      <td>Tidak ada (dilewati jika <code>FALSE</code>)</td>
+      <td>Pemberian bonus/diskon bersyarat, validasi guard clause.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Percabangan Ganda</strong></td>
+      <td><code>IF (kondisi) THEN (aksi1) ELSE (aksi2)</code></td>
+      <td>Dua kemungkinan: <code>TRUE</code> vs <code>FALSE</code></td>
+      <td>Wajib ada satu blok aksi alternatif</td>
+      <td>Status kelulusan (Lulus / Gagal), penentuan bilangan ganjil-genap.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Percabangan Bersarang (Nested IF)</strong></td>
+      <td><code>IF (k1) THEN ... ELSE IF (k2) THEN ...</code></td>
+      <td>Hierarkis berjenjang dari atas ke bawah</td>
+      <td>Blok <code>ELSE</code> final penampung kondisi sisa</td>
+      <td>Penentuan rentang grade nilai (A, B, C, D, E), zonasi tarif pajak.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Pemilihan Multi-Kondisi (CASE-OF)</strong></td>
+      <td><code>CASE (selector) OF v1: ... v2: ... END</code></td>
+      <td>Pencocokan nilai diskrit tipe Ordinal</td>
+      <td>Blok <code>ELSE</code> opsional (default handler)</td>
+      <td>Menu aplikasi konsol (1-5), konversi hari (1..7), kode status HTTP.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="grid-2" style="margin-top: 8px;">
+  <div class="card">
+    <strong>1. Pseudocode IF Tunggal:</strong>
+    <pre><code><span class="code-kw">IF</span> (total_belanja &gt; 100000) <span class="code-kw">THEN</span>
   diskon &larr; 0.1 * total_belanja;
-<span class=\"code-kw\">END IF</span></code></pre>
+<span class="code-kw">END IF</span></code></pre>
   </div>
 
-  <div class=\"card\">
-    <strong>2. Percabangan Ganda (IF - THEN - ELSE)</strong><br>
-    Menyediakan dua alternatif eksklusif: blok YA jika <code>TRUE</code>, dan blok TIDAK jika <code>FALSE</code>.
-    <pre><code><span class=\"code-kw\">IF</span> (nilai &ge; 60) <span class=\"code-kw\">THEN</span>
+  <div class="card">
+    <strong>2. Pseudocode IF - ELSE:</strong>
+    <pre><code><span class="code-kw">IF</span> (nilai &ge; 60) <span class="code-kw">THEN</span>
   status &larr; 'LULUS'
-<span class=\"code-kw\">ELSE</span>
+<span class="code-kw">ELSE</span>
   status &larr; 'TIDAK LULUS';
-<span class=\"code-kw\">END IF</span></code></pre>
+<span class="code-kw">END IF</span></code></pre>
   </div>
 
-  <div class=\"card\">
-    <strong>3. Percabangan Majemuk / Bertingkat (Nested IF)</strong><br>
-    Kondisi IF di dalam blok IF lainnya untuk menguji hierarki kriteria bersarang.
-    <pre><code><span class=\"code-kw\">IF</span> (nilai &ge; 80) <span class=\"code-kw\">THEN</span>
+  <div class="card">
+    <strong>3. Pseudocode Nested IF:</strong>
+    <pre><code><span class="code-kw">IF</span> (nilai &ge; 80) <span class="code-kw">THEN</span>
   grade &larr; 'A'
-<span class=\"code-kw\">ELSE IF</span> (nilai &ge; 70) <span class=\"code-kw\">THEN</span>
+<span class="code-kw">ELSE IF</span> (nilai &ge; 70) <span class="code-kw">THEN</span>
   grade &larr; 'B'
-<span class=\"code-kw\">ELSE IF</span> (nilai &ge; 60) <span class=\"code-kw\">THEN</span>
-  grade &larr; 'C'
-<span class=\"code-kw\">ELSE</span>
+<span class="code-kw">ELSE</span>
   grade &larr; 'E';</code></pre>
   </div>
 
-  <div class=\"card\">
-    <strong>4. Pemilihan Multi-Kondisi (CASE - OF)</strong><br>
-    Struktur elegan untuk memilih satu dari banyak cabang berdasarkan nilai pencocokan suatu variabel pemilih (<em>selector</em>).
-    <pre><code><span class=\"code-kw\">CASE</span> (nomor_hari) <span class=\"code-kw\">OF</span>
+  <div class="card">
+    <strong>4. Pseudocode CASE - OF:</strong>
+    <pre><code><span class="code-kw">CASE</span> (nomor_hari) <span class="code-kw">OF</span>
   1 : nama &larr; 'Senin';
   2 : nama &larr; 'Selasa';
-  3 : nama &larr; 'Rabu';
-  <span class=\"code-kw\">ELSE</span> nama &larr; 'Hari Libur';
-<span class=\"code-kw\">END CASE</span></code></pre>
+  <span class="code-kw">ELSE</span> nama &larr; 'Hari Libur';
+<span class="code-kw">END CASE</span></code></pre>
   </div>
 </div>
 """

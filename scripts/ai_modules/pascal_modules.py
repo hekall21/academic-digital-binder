@@ -24,22 +24,43 @@ PASCAL_MEETINGS = [
             {
                 "title": "Tiga Blok Anatomi Program Baku Pascal",
                 "content_html": """
-<div class=\"grid-3\">
-  <div class=\"card\">
-    <strong>1. Kepala Program (Heading)</strong><br>
-    Diawali kata kunci <code>program</code> diikuti nama pengenal program dan diakhiri titik koma (<code>;</code>). Sifatnya opsional di compiler modern namun wajib dalam etika akademik Unindra.
-  </div>
-  <div class=\"card\">
-    <strong>2. Bagian Deklarasi</strong><br>
-    Wadah pendaftaran komponen sebelum dieksekusi: unit library (<code>uses</code>), konstanta (<code>const</code>), tipe bentukan (<code>type</code>), dan variabel (<code>var</code>).
-  </div>
-  <div class=\"card\">
-    <strong>3. Bagian Pernyataan (Body)</strong><br>
-    Blok instruksi utama yang diapit pasangan kata kunci <code>begin</code> dan diakhiri <strong><code>end.</code> (titik mutlak penutup program)</strong>.
-  </div>
-</div>
+<p>Kompiler Pascal mewajibkan penulisan program mengikuti struktur hirarkis tiga blok terpisah secara ketat:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Bagian Blok Anatomi</th>
+      <th>Kata Kunci Sintaks</th>
+      <th>Fungsi Kompiler</th>
+      <th>Kaidah Penulisan Baku</th>
+      <th>Contoh Potongan Kode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Kepala Program (Heading)</strong></td>
+      <td><code>program &lt;nama&gt;;</code></td>
+      <td>Memberi identitas unik bagi modul executable program pada OS.</td>
+      <td>Opsional di FPC modern, namun wajib dalam standar kurikulum Unindra; diakhiri titik koma (;).</td>
+      <td><code>program HitungGaji;</code></td>
+    </tr>
+    <tr>
+      <td><strong>2. Bagian Deklarasi</strong></td>
+      <td><code>uses</code>, <code>const</code>, <code>type</code>, <code>var</code></td>
+      <td>Mendaftarkan kebutuhan alokasi memori RAM, pustaka eksternal, dan tipe data sebelum eksekusi.</td>
+      <td>Dilarang meletakkan instruksi kalkulasi di sini; hanya alokasi definisi dan pemesanan simbol.</td>
+      <td><code>uses crt;<br>const PPN = 0.11;<br>var gaji: longint;</code></td>
+    </tr>
+    <tr>
+      <td><strong>3. Bagian Pernyataan (Body)</strong></td>
+      <td><code>begin ... end.</code></td>
+      <td>Wadah eksekusi logika utama tempat CPU memproses instruksi algoritmik baris demi baris.</td>
+      <td>Diawali <code>begin</code> dan <strong>MUTLAK DIAKHIRI tanda titik (<code>end.</code>)</strong> penutup program.</td>
+      <td><code>begin<br>  writeln('Halo');<br>end.</code></td>
+    </tr>
+  </tbody>
+</table>
 
-<div class=\"card-dark\">
+<div class=\"card-dark\" style=\"margin-top: 8px;\">
   <span style=\"color: #38bdf8; font-weight: bold;\">// Kerangka Program Pascal Baku Sesuai Standar Dosen:</span>
   <pre><code><span class=\"code-kw\">program</span> KerangkaProgramBaku;
 <span class=\"code-kw\">uses</span> crt;          <span class=\"code-cmt\">{ Memanggil unit crt untuk manipulasi layar console }</span>
@@ -102,30 +123,89 @@ PASCAL_MEETINGS = [
                 "title": "The Big Picture: Konsep Strongly Typed & Case-Insensitive",
                 "content_html": """
 <p>Dua karakteristik paling fundamental dari bahasa Pascal yang wajib diresapi setiap mahasiswa:</p>
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>1. Strongly Typed Language:</strong><br>
-    Setiap variabel <strong>wajib dideklarasikan tipe datanya secara eksplisit</strong> sebelum blok <code>begin</code>. Kompiler tidak mengizinkan penugasan data yang tidak kompatibel (misal: memasukkan teks ke variabel bertipe bilangan bulat).
-  </div>
-  <div class=\"card\">
-    <strong>2. Case-Insensitive:</strong><br>
-    Pascal <strong>tidak membedakan huruf besar dan huruf kecil</strong>. Variabel <code>TotalGaji</code>, <code>totalgaji</code>, dan <code>TOTALGAJI</code> dianggap sebagai satu entitas yang sama persis oleh kompiler.
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Karakteristik Kompiler</th>
+      <th>Prinsip Fundamental</th>
+      <th>Tindakan Validasi Kompiler</th>
+      <th>Manfaat Bagi Software Engineering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Strongly Typed</strong></td>
+      <td>Setiap variabel <strong>wajib dideklarasikan tipe datanya secara eksplisit</strong> sebelum blok <code>begin</code>.</td>
+      <td>Kompiler menolak penugasan tipe yang tidak kompatibel saat proses kompilasi (<em>type mismatch error</em>).</td>
+      <td>Mencegah bug fatal runtime, kebocoran memori, dan konversi tipe implisit yang berbahaya.</td>
+    </tr>
+    <tr>
+      <td><strong>Case-Insensitive</strong></td>
+      <td>Pascal <strong>tidak membedakan huruf kapital dan huruf kecil</strong> dalam penulisan token/identifier.</td>
+      <td>Pengenal <code>TotalGaji</code>, <code>totalgaji</code>, dan <code>TOTALGAJI</code> dipetakan ke alamat memori yang sama persis.</td>
+      <td>Mempermudah penulisan kode tanpa hambatan tipografi, fokus pada struktur dan konsistensi.</td>
+    </tr>
+  </tbody>
+</table>
 """
             },
             {
                 "title": "Kaidah Baku Penamaan Pengenal (Identifier Rules)",
                 "content_html": """
-<div class=\"card\">
-  <strong>Empat Hukum Baku Identifier Pascal:</strong>
-  <ol style=\"font-size: 7.8pt;\">
-    <li><strong>Karakter Pertama:</strong> Wajib berupa <strong>huruf alfabet (A-Z / a-z) atau garis bawah (underscore <code>_</code>)</strong>. Dilarang diawali angka (contoh salah: <code>1nilai</code>, contoh benar: <code>nilai1</code>, <code>_nilai</code>).</li>
-    <li><strong>Karakter Berikutnya:</strong> Boleh berupa kombinasi huruf, angka, dan underscore.</li>
-    <li><strong>Dilarang Mengandung Spasi:</strong> Spasi akan dianggap sebagai pemisah token baru. Gunakan underscore (<code>total_bayar</code>) atau CamelCase (<code>totalBayar</code>).</li>
-    <li><strong>Dilarang Simbol Khusus & Reserved Words:</strong> Dilarang memakai simbol matematika/karakter unik (<code>+, -, *, /, @, #, $, %</code>) dan kata kunci yang sudah dipesan bahasa (<code>program, begin, end, var, if, then</code>).</li>
-  </ol>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Hukum Identifier Pascal</th>
+      <th>Ketentuan Validasi Kompiler</th>
+      <th>Contoh Penulisan Benar (✓)</th>
+      <th>Contoh Penulisan Salah (✗)</th>
+      <th>Keterangan Kesalahan Kompiler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Karakter Pertama</strong></td>
+      <td>Wajib berupa huruf alfabet (<code>A-Z</code> / <code>a-z</code>) atau garis bawah (underscore <code>_</code>).</td>
+      <td><code>nilai1</code>, <code>_total</code>, <code>namaMhs</code></td>
+      <td><code>1nilai</code>, <code>9harga</code></td>
+      <td>Dilarang diawali karakter numerik (angka).</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Karakter Lanjutan</strong></td>
+      <td>Boleh berupa kombinasi huruf alfabet, angka desimal (0-9), dan garis bawah.</td>
+      <td><code>npm_2026</code>, <code>gaji_pokok_v2</code></td>
+      <td><code>gaji-pokok</code>, <code>biaya+ongkir</code></td>
+      <td>Tanda hubung minus (<code>-</code>) dianggap operator pengurangan.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Spasi Pemisah Token</strong></td>
+      <td>Dilarang keras mengandung spasi kosong di tengah nama variabel.</td>
+      <td><code>total_bayar</code>, <code>totalBayar</code></td>
+      <td><code>total bayar</code></td>
+      <td>Spasi memecah pengenal menjadi dua token terpisah (syntax error).</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Karakter Khusus & Simbol</strong></td>
+      <td>Dilarang menggunakan simbol matematika atau tanda baca unik (<code>@, #, $, %, ^, &, *, .</code>).</td>
+      <td><code>rate_pajak</code>, <code>uang_kas</code></td>
+      <td><code>rate@pajak</code>, <code>uang$</code></td>
+      <td>Simbol khusus memiliki fungsi sintaks internal pada kompiler.</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Kata Kunci Terpesan (Reserved Words)</strong></td>
+      <td>Dilarang menggunakan kata kunci bahasa pemrograman yang telah dipesan sistem.</td>
+      <td><code>nama_program</code>, <code>jumlah_var</code></td>
+      <td><code>program</code>, <code>begin</code>, <code>var</code>, <code>if</code></td>
+      <td>Reserved words hanya boleh digunakan untuk struktur bahasa resmi.</td>
+    </tr>
+  </tbody>
+</table>
 """
             },
             {
@@ -181,23 +261,48 @@ PASCAL_MEETINGS = [
             {
                 "title": "Perbedaan Hakiki: write vs writeln & read vs readln",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>1. Prosedur Output (Mencetak ke Layar):</strong>
-    <ul style=\"font-size: 7.7pt;\">
-      <li><code>write(x);</code> &mdash; Mencetak nilai <code>x</code> ke layar, dan <strong>kursor TETAP BERADA di baris yang sama</strong> tepat di sebelah karakter terakhir. Cocok untuk membuat prompt input (misal: <code>write('Masukkan Nama : ');</code>).</li>
-      <li><code>writeln(x);</code> &mdash; Mencetak nilai <code>x</code> ke layar, kemudian <strong>kursor PINDAH KE BARIS BARU (Line Feed + Carriage Return)</strong>. Perintah <code>writeln;</code> tanpa parameter berfungsi membuat satu baris kosong.</li>
-    </ul>
-  </div>
-
-  <div class=\"card\">
-    <strong>2. Prosedur Input (Membaca dari Keyboard):</strong>
-    <ul style=\"font-size: 7.7pt;\">
-      <li><code>read(v);</code> &mdash; Membaca masukan karakter dan menyimpannya ke variabel <code>v</code>, namun <strong>TIDAK membuang tombol Enter (karakter enter buffer masih tertinggal)</strong>. Hal ini sering memicu bug pada pembacaan string berikutnya!</li>
-      <li><code>readln(v);</code> &mdash; Membaca masukan hingga tombol Enter ditekan dan <strong>SECARA OTOMATIS membersihkan buffer baris masukan</strong>. Inilah prosedur input yang paling direkomendasikan.</li>
-    </ul>
-  </div>
-</div>
+<p>Dalam standard stream Pascal, pemahaman mengenai perilaku buffer layar dan masukan keyboard sangat krusial untuk mencegah bug antarmuka konsol:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Prosedur I/O</th>
+      <th>Arah Aliran Data</th>
+      <th>Perilaku Kursor Layar & Buffer</th>
+      <th>Karakteristik & Respon Sistem</th>
+      <th>Rekomendasi Pemakaian Ideal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>write(x);</code></td>
+      <td>Output (Layar Monitor)</td>
+      <td>Kursor <strong>TETAP BERADA di baris yang sama</strong> di sebelah kanan karakter terakhir.</td>
+      <td>Tidak mengirimkan karakter <em>Carriage Return / Line Feed</em> ke konsol.</td>
+      <td>Membuat teks prompt masukan (misal: <code>write('Masukkan Nilai : ');</code>).</td>
+    </tr>
+    <tr>
+      <td><code>writeln(x);</code></td>
+      <td>Output (Layar Monitor)</td>
+      <td>Kursor <strong>PINDAH KE BARIS BARU</strong> tepat di bawah awal baris berikutnya.</td>
+      <td>Mencetak isi argumen lalu otomatis mengirimkan kode jeda baris baru (CR+LF).</td>
+      <td>Mencetak judul banner, hasil kalkulasi akhir, atau baris jeda (<code>writeln;</code>).</td>
+    </tr>
+    <tr>
+      <td><code>read(v);</code></td>
+      <td>Input (Papan Ketik)</td>
+      <td>Membaca data masukan, namun <strong>TIDAK membuang karakter Enter dari buffer masukan</strong>.</td>
+      <td>Karakter enter tertinggal di buffer antrean I/O, rentan memicu bug pembacaan teks selanjutnya!</td>
+      <td>Hanya digunakan jika membaca deretan angka berdampingan dalam satu baris.</td>
+    </tr>
+    <tr>
+      <td><code>readln(v);</code></td>
+      <td>Input (Papan Ketik)</td>
+      <td>Membaca data masukan hingga tombol Enter ditekan dan <strong>SEGERA membersihkan buffer baris</strong>.</td>
+      <td>Menjamin antrean buffer masukan bersih total; perintah <code>readln;</code> tanpa variabel menahan layar.</td>
+      <td><strong>Standar Baku Utama</strong> untuk semua operasi input data interaktif dari pengguna.</td>
+    </tr>
+  </tbody>
+</table>
 """
             },
             {

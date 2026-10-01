@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -263,16 +276,33 @@
       <div class="section-title">BAB 1. The Big Picture: Memori Komputer, Variabel, dan Wadah Data</div>
       
 <p>Dalam arsitektur Von Neumann, memori utama (RAM) adalah deretan sel biner beralamat heksadesimal (misal: <code>0x7FFE001A</code>). Manusia mustahil mengingat alamat acak tersebut saat menulis program. Di sinilah peran <strong>Variabel</strong> sebagai label simbolik yang manusiawi untuk memesan dan merujuk lokasi memori tersebut.</p>
-<div class="grid-2">
-  <div class="card">
-    <strong>Variabel (Variable):</strong><br>
-    Pengenal (identifier) di memori yang nilainya <strong>dapat berubah-ubah</strong> secara dinamis sepanjang eksekusi program. Contoh: <code>counter &larr; counter + 1</code>.
-  </div>
-  <div class="card">
-    <strong>Konstanta (Constant):</strong><br>
-    Pengenal di memori yang nilainya <strong>dikunci permanen (read-only)</strong> sejak deklarasi awal. Contoh: <code>PI = 3.14159</code>, <code>PPN = 0.11</code>.
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Kategori Pengenal</th>
+      <th>Karakteristik Nilai di RAM</th>
+      <th>Kata Kunci Deklarasi</th>
+      <th>Contoh Notasi Baku</th>
+      <th>Aturan Mutabilitas & Hak Akses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Variabel (Variable)</strong></td>
+      <td>Lokasi memori yang nilainya dinamis dapat diperbarui (<em>read-write</em>) sepanjang siklus eksekusi program.</td>
+      <td><code>var</code> / <code>DEKLARASI</code></td>
+      <td><code>counter &larr; counter + 1</code><br><code>total := total + harga;</code></td>
+      <td>Dapat dimutasi berulang kali saat iterasi, akumulasi data, atau masukan interaktif user.</td>
+    </tr>
+    <tr>
+      <td><strong>Konstanta (Constant)</strong></td>
+      <td>Lokasi memori yang nilainya dikunci permanen (<em>read-only</em>) sejak saat inisialisasi awal.</td>
+      <td><code>const</code></td>
+      <td><code>PI = 3.14159265</code><br><code>TARIF_PPN = 0.11</code></td>
+      <td>Imutabel (tidak dapat diubah); mencegah <em>magic numbers</em> dan melindungi nilai acuan absolut.</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         
@@ -296,18 +326,68 @@
       <div class="section-title">BAB 3. Hierarki Presedensi Operator & Tabel Kebenaran Logika</div>
       
 <p>Ketika sebuah ekspresi matematika mengandung banyak operator sekaligus, komputer mengeksekusinya berdasarkan <strong>Tingkat Presedensi (Precedence Order)</strong>, bukan semata dari kiri ke kanan:</p>
-<div class="card-dark">
-  <strong>Urutan Prioritas Eksekusi Operator (Tertinggi ke Terendah):</strong>
-  <ol style="margin: 4px 0; padding-left: 20px; font-size: 7.8pt;">
-    <li>Tanda Kurung <code>( ... )</code> &mdash; Mengabaikan semua urutan di bawahnya.</li>
-    <li>Operator Unary & NOT: <code>+</code> (positif), <code>-</code> (negatif), <code>NOT</code>.</li>
-    <li>Operator Perkalian & Pembagian: <code>*</code>, <code>/</code>, <code>div</code> (bagi bulat), <code>mod</code> (sisa bagi).</li>
-    <li>Operator Penjumlahan & Pengurangan: <code>+</code>, <code>-</code>.</li>
-    <li>Operator Relasional / Perbandingan: <code>=</code>, <code>&ne;</code>, <code>&lt;</code>, <code>&le;</code>, <code>&gt;</code>, <code>&ge;</code>.</li>
-    <li>Operator Logika AND: <code>AND</code>.</li>
-    <li>Operator Logika OR & XOR: <code>OR</code>, <code>XOR</code>.</li>
-  </ol>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Tingkat Presedensi</th>
+      <th>Golongan Operator</th>
+      <th>Simbol Komputasi</th>
+      <th>Arah Evaluasi</th>
+      <th>Contoh Ekspresi & Hasil Evaluasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Prioritas 1 (Tertinggi)</strong></td>
+      <td>Tanda Kurung Pengelompokan</td>
+      <td><code>( ... )</code></td>
+      <td>Dari dalam ke luar</td>
+      <td><code>(2 + 3) * 4</code> &rarr; <code>5 * 4 = 20</code> (Mengabaikan presedensi bawaan)</td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 2</strong></td>
+      <td>Unary & Negasi Logika</td>
+      <td><code>+</code>, <code>-</code>, <code>NOT</code></td>
+      <td>Kanan ke Kiri</td>
+      <td><code>NOT TRUE</code> &rarr; <code>FALSE</code>; <code>-5 + 8</code> &rarr; <code>3</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 3</strong></td>
+      <td>Perkalian, Pembagian, Modulo</td>
+      <td><code>*</code>, <code>/</code>, <code>div</code>, <code>mod</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>10 mod 3 * 2</code> &rarr; <code>1 * 2 = 2</code>; <code>15 div 4 = 3</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 4</strong></td>
+      <td>Penjumlahan & Pengurangan</td>
+      <td><code>+</code>, <code>-</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>10 + 5 - 2</code> &rarr; <code>15 - 2 = 13</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 5</strong></td>
+      <td>Relasional (Perbandingan)</td>
+      <td><code>=</code>, <code>&ne;</code>, <code>&lt;</code>, <code>&le;</code>, <code>&gt;</code>, <code>&ge;</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>7 &gt; 5</code> &rarr; <code>TRUE</code>; <code>10 &le; 10</code> &rarr; <code>TRUE</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 6</strong></td>
+      <td>Konjungsi Logika (AND)</td>
+      <td><code>AND</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>(5 &gt; 2) AND (3 &lt; 1)</code> &rarr; <code>TRUE AND FALSE = FALSE</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prioritas 7 (Terendah)</strong></td>
+      <td>Disjungsi Logika (OR, XOR)</td>
+      <td><code>OR</code>, <code>XOR</code></td>
+      <td>Kiri ke Kanan</td>
+      <td><code>FALSE OR TRUE</code> &rarr; <code>TRUE</code>; <code>TRUE XOR TRUE = FALSE</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="card">
   <strong>Tabel Kebenaran Logika (Truth Table):</strong>

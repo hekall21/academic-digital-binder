@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -262,7 +275,7 @@
     <div class="section">
       <div class="section-title">BAB 1. The Big Picture: Anatomi Sosio-Teknis Sistem Informasi</div>
       
-<p>Sering terjadi salah kaprah bahwa Sistem Informasi adalah melulu tentang komputer dan perangkat lunak. Pandangan modern menegaskan bahwa Sistem Informasi adalah <strong>Sistem Sosio-Teknis (Socio-Technical System)</strong> yang memadukan komponen teknologis (hardware, software, data, network) dengan komponen sosial manusia (orang, peran, budaya organisasi, dan prosedur kerja bisnis).</p>
+<p>Sistem Informasi adalah <strong>Sistem Sosio-Teknis (Socio-Technical System)</strong> yang memadukan komponen teknologis (hardware, software, data, network) dengan komponen sosial manusia (orang, peran, budaya organisasi, dan prosedur kerja bisnis).</p>
 
     </div>
         
@@ -284,28 +297,17 @@
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Model Cybernetic Sistem: Input, Proses, Output, Feedback & Control</div>
+      <div class="section-title">BAB 3. Model Cybernetic Sistem: Regulasi Umpan Balik & Pengendalian</div>
       
-<p>Sistem Informasi modern bukan sekadar sistem linier searah, melainkan sebuah <strong>Sistem Sibernetik (Cybernetic System)</strong> yang memiliki mekanisme regulasi mandiri (<em>self-regulating system</em>):</p>
+<p>Sistem Informasi modern bekerja sebagai <strong>Sistem Sibernetik (Cybernetic System)</strong> yang memiliki mekanisme regulasi mandiri (<em>self-regulating system</em>):</p>
 
-<div class="card-dark">
-  <strong>Alur Kontrol Sibernetik:</strong>
-  <pre><code>[ INPUT: Data Transaksi Mentah ] ──> [ PROSES: Validasi, Agregasi, Kalkulasi ] ──> [ OUTPUT: Informasi / Laporan ]
-                                                                                              │
-                                                                                              ▼
-        [ KONTROL: Penyesuaian Tindakan ] <── [ FEEDBACK: Evaluasi Deviasi Kinerja vs Standar Target ]</code></pre>
-</div>
-
-<div class="grid-2">
-  <div class="card">
-    <strong>Feedback (Umpan Balik):</strong><br>
-    Data tentang kinerja operasional sistem yang dikirimkan kembali untuk dievaluasi. Contoh: Laporan IPK semesteran mahasiswa menunjukkan 40% mahasiswa kelas mendapat nilai C di mata kuliah X.
-  </div>
-  <div class="card">
-    <strong>Control (Pengendali):</strong><br>
-    Aksi korektif yang diambil pengambil keputusan jika performa menyimpang dari standar target yang ditetapkan. Contoh: Ketua Program Studi mengevaluasi silabus dan menambahkan sesi responsi tutorial tambahan.
-  </div>
-</div>
+<table>
+  <thead><tr><th>Komponen Sibernetik</th><th>Fungsi Regulasi Sistem</th><th>Alur Informasi / Sinyal</th><th>Contoh Kasus Sistem Akademik Unindra</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Feedback (Umpan Balik)</strong></td><td>Pengukuran dan pelaporan data deviasi kinerja aktual terhadap standar target.</td><td>Mengalir dari Output kembali ke Pengambil Keputusan.</td><td>Laporan rekap evaluasi: 35% mahasiswa kelas RG nilainya di bawah ambang batas kelulusan.</td></tr>
+    <tr><td><strong>Control (Pengendali)</strong></td><td>Tindakan intervensi manajerial untuk menyesuaikan input/proses agar kembali ke jalur optimal.</td><td>Mengalir dari Pimpinan ke subsistem Input/Proses.</td><td>Ketua Program Studi menginstruksikan kelas tutorial responsi tambahan dan review kisi-kisi.</td></tr>
+  </tbody>
+</table>
 
     </div>
         

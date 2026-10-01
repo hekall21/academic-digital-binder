@@ -94,10 +94,8 @@ def main():
     
     def worker(task):
         h, p, m = task
-        if os.path.exists(p) and os.path.getsize(p) > 50000:
-            ok = True
-        else:
-            ok = compile_pdf(h, p)
+        # Always compile fresh PDF so new HTML tables are baked into the PDF
+        ok = compile_pdf(h, p)
 
         # Also copy to dist/materials
         dist_p = os.path.join(DIST_MATERIALS, os.path.basename(p))

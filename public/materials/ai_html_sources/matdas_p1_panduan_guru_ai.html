@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -290,32 +303,66 @@
     <div class="section">
       <div class="section-title">BAB 3. Lima Aksioma Aljabar Medan Real & Notasi Selang (Interval)</div>
       
-<div class="grid-2">
-  <div class="card">
-    <strong>5 Sifat Aksioma Aljabar Bilangan Real:</strong>
-    <ol style="font-size: 7.7pt;">
-      <li><strong>Komutatif:</strong> a + b = b + a dan a &times; b = b &times; a</li>
-      <li><strong>Asosiatif:</strong> (a + b) + c = a + (b + c) dan (a &times; b) &times; c = a &times; (b &times; c)</li>
-      <li><strong>Distributif:</strong> a &times; (b + c) = (a &times; b) + (a &times; c)</li>
-      <li><strong>Elemen Identitas:</strong> a + 0 = a (identitas tambah) dan a &times; 1 = a (identitas kali).</li>
-      <li><strong>Elemen Invers:</strong> a + (-a) = 0 dan a &times; (1/a) = 1 (untuk a &ne; 0).</li>
-    </ol>
-  </div>
+<p>Himpunan bilangan real &reals; bersama operasi penjumlahan (+) dan perkalian (&times;) membentuk struktur aljabar <strong>Medan (Field)</strong> yang memenuhi 5 aksioma dasar:</p>
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Aksioma Aljabar Medan</th>
+      <th>Operasi Penjumlahan (+)</th>
+      <th>Operasi Perkalian (&times;)</th>
+      <th>Makna Operasional & Sifat Komputasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Sifat Komutatif</strong></td>
+      <td><code>a + b = b + a</code></td>
+      <td><code>a &times; b = b &times; a</code></td>
+      <td>Urutan posisi operand dapat ditukar tanpa mengubah hasil akhir kalkulasi.</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Sifat Asosiatif</strong></td>
+      <td><code>(a + b) + c = a + (b + c)</code></td>
+      <td><code>(a &times; b) &times; c = a &times; (b &times; c)</code></td>
+      <td>Pengelompokan urutan pengerjaan tanda kurung tidak memengaruhi hasil akhir.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Sifat Distributif</strong></td>
+      <td colspan="2" style="text-align: center;"><code>a &times; (b + c) = (a &times; b) + (a &times; c)</code></td>
+      <td>Operasi perkalian mendistribusikan diri terhadap operasi penjumlahan suku.</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Elemen Identitas (Netral)</strong></td>
+      <td><code>a + 0 = a</code> (Identitas: 0)</td>
+      <td><code>a &times; 1 = a</code> (Identitas: 1)</td>
+      <td>Elemen yang jika dioperasikan dengan bilangan manapun tidak mengubah nilainya.</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Elemen Invers (Balikan)</strong></td>
+      <td><code>a + (-a) = 0</code> (Invers tambah)</td>
+      <td><code>a &times; (1/a) = 1</code> (untuk <code>a &ne; 0</code>)</td>
+      <td>Menghasilkan elemen netral; invers perkalian menjadi dasar operasi pembagian.</td>
+    </tr>
+  </tbody>
+</table>
 
-  <div class="card">
-    <strong>Tabel Notasi Selang (Interval Notation):</strong>
-    <table>
-      <thead><tr><th>Notasi Selang</th><th>Definisi Himpunan</th><th>Makna Titik Ujung</th></tr></thead>
-      <tbody>
-        <tr><td><strong>(a, b)</strong></td><td>{x &in; &reals; | a &lt; x &lt; b}</td><td>Selang Terbuka: a dan b <strong>tidak masuk</strong> (lingkaran kosong &cir;).</td></tr>
-        <tr><td><strong>[a, b]</strong></td><td>{x &in; &reals; | a &le; x &le; b}</td><td>Selang Tertutup: a dan b <strong>ikut masuk</strong> (lingkaran penuh &bull;).</td></tr>
-        <tr><td><strong>[a, b)</strong></td><td>{x &in; &reals; | a &le; x &lt; b}</td><td>Setengah terbuka: a masuk, b tidak masuk.</td></tr>
-        <tr><td><strong>(-&infin;, b]</strong></td><td>{x &in; &reals; | x &le; b}</td><td>Sayap kiri hingga b termasuk b.</td></tr>
-        <tr><td><strong>(a, &infin;)</strong></td><td>{x &in; &reals; | x &gt; a}</td><td>Sayap kanan dari a tanpa batas.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<p style="margin-top: 8px;"><strong>Tabel Representasi Notasi Selang (Interval Notation) pada Garis Bilangan Real:</strong></p>
+<table>
+  <thead><tr><th>Notasi Selang</th><th>Definisi Himpunan Matematis</th><th>Makna Titik Ujung & Grafis Garis Bilangan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>(a, b)</strong></td><td>{x &in; &reals; | a &lt; x &lt; b}</td><td>Selang Terbuka: titik a dan b <strong>tidak termasuk</strong> (simbol lingkaran kosong &cir;).</td></tr>
+    <tr><td><strong>[a, b]</strong></td><td>{x &in; &reals; | a &le; x &le; b}</td><td>Selang Tertutup: titik a dan b <strong>ikut masuk</strong> (simbol lingkaran penuh &bull;).</td></tr>
+    <tr><td><strong>[a, b)</strong></td><td>{x &in; &reals; | a &le; x &lt; b}</td><td>Setengah Terbuka Kanan: titik a masuk, titik b tidak masuk.</td></tr>
+    <tr><td><strong>(-&infin;, b]</strong></td><td>{x &in; &reals; | x &le; b}</td><td>Sayap Kiri tak hingga hingga titik b termasuk b.</td></tr>
+    <tr><td><strong>(a, &infin;)</strong></td><td>{x &in; &reals; | x &gt; a}</td><td>Sayap Kanan dari titik a tanpa batas atas (&infin;).</td></tr>
+  </tbody>
+</table>
 
     </div>
         

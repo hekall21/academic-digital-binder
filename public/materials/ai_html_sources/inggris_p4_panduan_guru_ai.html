@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -261,7 +274,43 @@
   
     <div class="section">
       <div class="section-title">BAB 1. Expressing Future Intent in Software Engineering</div>
-      <p>Differentiating <strong>will + V1</strong> (spontaneous commitment or future prediction) vs <strong>be going to + V1</strong> (prior plan or evidence-based projection). Example: <em>"Look at the memory leak; the container is going to crash!"</em> vs <em>"I will fix this bug right now."</em></p>
+      
+<p>Professional technical communication requires clear distinctions when expressing future plans, commitments, and empirical projections:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Modal Structure</th>
+      <th>Grammar Pattern</th>
+      <th>Degree of Certainty & Intent</th>
+      <th>Software Engineering Context</th>
+      <th>Concrete Professional Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Will + V1</strong></td>
+      <td><code>Subject + will + Verb 1</code></td>
+      <td>Spontaneous decision made at the moment of speaking; formal commitment or promise.</td>
+      <td>Responding to live bug alerts in standup meetings or code review feedback.</td>
+      <td><em>"I see the memory leak in the staging server; I <strong>will inspect</strong> the logs immediately."</em></td>
+    </tr>
+    <tr>
+      <td><strong>Be going to + V1</strong></td>
+      <td><code>Subject + am/is/are + going to + Verb 1</code></td>
+      <td>Premeditated plan / intention, or strong projection based on visible empirical evidence.</td>
+      <td>Sprint roadmap planning or real-time diagnostic telemetry monitoring.</td>
+      <td><em>"Look at the CPU utilization spike (99%); the Kubernetes pod <strong>is going to crash</strong>!"</em></td>
+    </tr>
+    <tr>
+      <td><strong>Present Continuous for Future</strong></td>
+      <td><code>Subject + am/is/are + V-ing</code></td>
+      <td>Fixed future arrangement with external parties and scheduled timestamp.</td>
+      <td>Scheduled client demos, production deployment maintenance windows.</td>
+      <td><em>"We <strong>are migrating</strong> the core SQL database to AWS RDS next Saturday at midnight."</em></td>
+    </tr>
+  </tbody>
+</table>
+
     </div>
         
 

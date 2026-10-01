@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -269,23 +282,48 @@
     <div class="section">
       <div class="section-title">BAB 2. Perbedaan Hakiki: write vs writeln & read vs readln</div>
       
-<div class="grid-2">
-  <div class="card">
-    <strong>1. Prosedur Output (Mencetak ke Layar):</strong>
-    <ul style="font-size: 7.7pt;">
-      <li><code>write(x);</code> &mdash; Mencetak nilai <code>x</code> ke layar, dan <strong>kursor TETAP BERADA di baris yang sama</strong> tepat di sebelah karakter terakhir. Cocok untuk membuat prompt input (misal: <code>write('Masukkan Nama : ');</code>).</li>
-      <li><code>writeln(x);</code> &mdash; Mencetak nilai <code>x</code> ke layar, kemudian <strong>kursor PINDAH KE BARIS BARU (Line Feed + Carriage Return)</strong>. Perintah <code>writeln;</code> tanpa parameter berfungsi membuat satu baris kosong.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <strong>2. Prosedur Input (Membaca dari Keyboard):</strong>
-    <ul style="font-size: 7.7pt;">
-      <li><code>read(v);</code> &mdash; Membaca masukan karakter dan menyimpannya ke variabel <code>v</code>, namun <strong>TIDAK membuang tombol Enter (karakter enter buffer masih tertinggal)</strong>. Hal ini sering memicu bug pada pembacaan string berikutnya!</li>
-      <li><code>readln(v);</code> &mdash; Membaca masukan hingga tombol Enter ditekan dan <strong>SECARA OTOMATIS membersihkan buffer baris masukan</strong>. Inilah prosedur input yang paling direkomendasikan.</li>
-    </ul>
-  </div>
-</div>
+<p>Dalam standard stream Pascal, pemahaman mengenai perilaku buffer layar dan masukan keyboard sangat krusial untuk mencegah bug antarmuka konsol:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Prosedur I/O</th>
+      <th>Arah Aliran Data</th>
+      <th>Perilaku Kursor Layar & Buffer</th>
+      <th>Karakteristik & Respon Sistem</th>
+      <th>Rekomendasi Pemakaian Ideal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>write(x);</code></td>
+      <td>Output (Layar Monitor)</td>
+      <td>Kursor <strong>TETAP BERADA di baris yang sama</strong> di sebelah kanan karakter terakhir.</td>
+      <td>Tidak mengirimkan karakter <em>Carriage Return / Line Feed</em> ke konsol.</td>
+      <td>Membuat teks prompt masukan (misal: <code>write('Masukkan Nilai : ');</code>).</td>
+    </tr>
+    <tr>
+      <td><code>writeln(x);</code></td>
+      <td>Output (Layar Monitor)</td>
+      <td>Kursor <strong>PINDAH KE BARIS BARU</strong> tepat di bawah awal baris berikutnya.</td>
+      <td>Mencetak isi argumen lalu otomatis mengirimkan kode jeda baris baru (CR+LF).</td>
+      <td>Mencetak judul banner, hasil kalkulasi akhir, atau baris jeda (<code>writeln;</code>).</td>
+    </tr>
+    <tr>
+      <td><code>read(v);</code></td>
+      <td>Input (Papan Ketik)</td>
+      <td>Membaca data masukan, namun <strong>TIDAK membuang karakter Enter dari buffer masukan</strong>.</td>
+      <td>Karakter enter tertinggal di buffer antrean I/O, rentan memicu bug pembacaan teks selanjutnya!</td>
+      <td>Hanya digunakan jika membaca deretan angka berdampingan dalam satu baris.</td>
+    </tr>
+    <tr>
+      <td><code>readln(v);</code></td>
+      <td>Input (Papan Ketik)</td>
+      <td>Membaca data masukan hingga tombol Enter ditekan dan <strong>SEGERA membersihkan buffer baris</strong>.</td>
+      <td>Menjamin antrean buffer masukan bersih total; perintah <code>readln;</code> tanpa variabel menahan layar.</td>
+      <td><strong>Standar Baku Utama</strong> untuk semua operasi input data interaktif dari pengguna.</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         

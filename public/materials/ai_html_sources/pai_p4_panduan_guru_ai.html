@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -261,7 +274,45 @@
   
     <div class="section">
       <div class="section-title">BAB 1. Etika Siber Islami: Amanah Data, Anti-Ghibah Digital & Keberkahan Kode</div>
-      <p>Seorang insinyur perangkat lunak muslim memegang prinsip <strong>Amanah</strong> (menjaga privasi data kredensial pengguna, menolak eksploitasi data ilegal), <strong>Shiddiq</strong> (kejujuran dalam membuat laporan pengujian dan algoritma), dan <strong>Tabligh</strong> (menyebarkan ilmu pengetahuan yang bermanfaat bagi umat).</p>
+      
+<p>Pilar akhlak terpuji (<em>akhlakul karimah</em>) seorang software engineer dan praktisi sistem informasi muslim:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Nilai Karakter Akhlak</th>
+      <th>Makna Transendental</th>
+      <th>Manifestasi Perilaku Software Engineer</th>
+      <th>Larangan Mutlak Dunia Siber (&cross;)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Amanah (Dapat Dipercaya)</strong></td>
+      <td>Menjaga setiap titipan hak milik orang lain dengan penuh integritas.</td>
+      <td>Menjaga kerahasiaan kredensial database (API keys, password hashing bcrypt), tidak menjual database pengguna.</td>
+      <td>Membocorkan data pribadi pelanggan, menyisipkan <em>backdoor</em> atau <em>spyware</em> ke aplikasi produksi.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Shiddiq (Kejujuran)</strong></td>
+      <td>Kesesuaian mutlak antara perkataan, data, dan realitas faktual.</td>
+      <td>Jujur dalam estimasi waktu kerja sprint, melaporkan bug kritis secara transparan, tidak memalsukan log audit.</td>
+      <td>Memanipulasi metriks performa sistem, mengklaim kode open source orang lain tanpa atribusi lisensi resmi.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Tabligh (Menyampaikan Kebaikan)</strong></td>
+      <td>Menyebarkan ilmu pengetahuan yang bermanfaat bagi kemaslahatan umat.</td>
+      <td>Menulis dokumentasi teknis yang jelas, aktif mentoring junior engineer, berkontribusi pada proyek open source bermanfaat.</td>
+      <td>Menyembunyikan dokumentasi untuk menciptakan ketergantungan yang tidak sehat (<em>knowledge hoarding</em>).</td>
+    </tr>
+    <tr>
+      <td><strong>4. Fathonah (Kecerdasan Profesional)</strong></td>
+      <td>Menggunakan akal budi untuk menghasilkan solusi paling efektif dan efisien.</td>
+      <td>Menerapkan Clean Architecture, optimasi efisiensi query database, dan pertahanan keamanan siber proaktif.</td>
+      <td>Menulis kode asal jadi (spaghetti code) yang membebani server dan merugikan pengguna.</td>
+    </tr>
+  </tbody>
+</table>
+
     </div>
         
 

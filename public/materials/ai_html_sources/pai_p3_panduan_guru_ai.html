@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -262,14 +275,49 @@
     <div class="section">
       <div class="section-title">BAB 1. Lima Prinsip Pokok Maqashid al-Syari'ah dalam Transaksi Digital</div>
       
-<p>Syariat Islam diturunkan untuk merealisasikan kemaslahatan manusia di dunia dan akhirat melalui 5 perlindungan mutlak (<em>Dharuriyyat al-Khamsah</em>):</p>
-<ol style="font-size: 7.7pt;">
-  <li><strong>Hifz ad-Din:</strong> Menjaga kemurnian agama dan akidah tauhid.</li>
-  <li><strong>Hifz an-Nafs:</strong> Menjaga keselamatan nyawa dan kesehatan raga manusia.</li>
-  <li><strong>Hifz al-'Aql:</strong> Menjaga kesehatan akal pikiran dari zat perusak maupun distorsi informasi jahat.</li>
-  <li><strong>Hifz an-Nasl:</strong> Menjaga kehormatan nasab, keluarga, dan generasi masa depan.</li>
-  <li><strong>Hifz al-Mal:</strong> Menjaga hak milik harta benda dari penipuan digital (phishing, riba, judi online / judol).</li>
-</ol>
+<p>Syariat Islam diturunkan untuk merealisasikan kemaslahatan manusia di dunia dan akhirat melalui lima perlindungan mutlak (<em>Dharuriyyat al-Khamsah</em>):</p>
+<table>
+  <thead>
+    <tr>
+      <th>Prinsip Maqashid Syari'ah</th>
+      <th>Fokus Objek Perlindungan</th>
+      <th>Maksud & Tujuan Universal</th>
+      <th>Aplikasi Konkret pada Ekosistem Sistem Informasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Hifz ad-Din</strong></td>
+      <td>Perlindungan Agama</td>
+      <td>Menjaga kemurnian akidah dan sarana peribadatan umat.</td>
+      <td>Memfilter konten penistaan agama, membangun aplikasi pengingat salat dan pembelajaran Al-Qur'an terverifikasi.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Hifz an-Nafs</strong></td>
+      <td>Perlindungan Jiwa & Raga</td>
+      <td>Menjaga keselamatan fisik manusia dan hak hidup mutlak.</td>
+      <td>Memastikan keandalan sistem software medis rumah sakit, sensor kendaraan otonom, dan sistem deteksi bencana alam.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Hifz al-'Aql</strong></td>
+      <td>Perlindungan Akal Pikiran</td>
+      <td>Menjaga akal dari zat perusak fisik dan distorsi informasi.</td>
+      <td>Memblokir pornografi daring, memitigasi penyebaran disinformasi/hoaks AI, dan menjaga kesehatan mental digital.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Hifz an-Nasl</strong></td>
+      <td>Perlindungan Keturunan & Kehormatan</td>
+      <td>Menjaga kelestarian institusi keluarga dan martabat nasab.</td>
+      <td>Menerapkan <em>parental control</em> ketat pada konten anak, melindungi jejak digital anak, dan mencegah pelecehan siber.</td>
+    </tr>
+    <tr>
+      <td><strong>5. Hifz al-Mal</strong></td>
+      <td>Perlindungan Harta Benda</td>
+      <td>Melindungi hak milik kekayaan dari pencurian dan eksploitasi.</td>
+      <td>Enkripsi transaksi payment gateway (PCI-DSS), perlindungan dari judi online (judol), riba tersembunyi, dan penipuan phishing.</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         

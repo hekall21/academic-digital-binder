@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -274,13 +287,49 @@
     <div class="section">
       <div class="section-title">BAB 2. Lima Langkah Baku Menentukan Himpunan Penyelesaian (Metode Anti-Gagal)</div>
       
-<ol style="font-size: 7.9pt;">
-  <li><strong>1. Nolkan Ruas Kanan:</strong> Pindahkan semua suku ke ruas kiri sehingga ruas kanan menjadi 0 (f(x) &lt; 0 atau f(x) &gt; 0). <em>Dilarang mengalikan silang variabel jika belum tahu tandanya!</em></li>
-  <li><strong>2. Faktorisasi / Pecahan Tunggal:</strong> Ubah bentuk kuadrat menjadi faktor-faktor linier (x - x<sub>1</sub>)(x - x<sub>2</sub>). Untuk pecahan aljabar, samakan penyebut menjadi P(x) / Q(x).</li>
-  <li><strong>3. Tentukan Titik Pemecah (Split Points):</strong> Cari pembuat nol pembilang (P(x) = 0) dan pembuat nol penyebut (Q(x) = 0). <strong>Ingat:</strong> Titik penyebut SELALU lingkaran kosong (&cir;) karena pembagian nol tidak terdefinisi!</li>
-  <li><strong>4. Plot Garis Bilangan & Uji Titik:</strong> Tarik garis bilangan, letakkan titik pemecah, dan pilih angka uji di luar pemecah (paling mudah <strong>x = 0</strong>) untuk menentukan tanda interval (+ atau -).</li>
-  <li><strong>5. Ambil Daerah Solusi:</strong> Jika soal &gt; 0 atau &ge; 0, ambil daerah positif (+). Jika soal &lt; 0 atau &le; 0, ambil daerah negatif (-).</li>
-</ol>
+<p>Untuk menyelesaikan sembarang pertidaksamaan aljabar kuadrat maupun pecahan rasional, gunakan 5 tahapan baku berikut:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Langkah ke-</th>
+      <th>Tahapan Baku Penentuan HP</th>
+      <th>Tindakan Operasi Aljabar</th>
+      <th>Ketentuan Kritis & Larangan Keras (✗)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Nolkan Ruas Kanan</strong></td>
+      <td>Pindahkan semua suku ke ruas kiri sehingga bentuk persamaan menjadi <code>f(x) &lt; 0</code> atau <code>f(x) &gt; 0</code>.</td>
+      <td><strong>DILARANG KERAS</strong> mengalikan silang penyebut yang mengandung variabel karena tandanya belum tentu positif!</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Faktorisasi / Samakan Penyebut</strong></td>
+      <td>Ubah bentuk polinomial ke faktor linier <code>(x - x₁) (x - x₂)</code>. Untuk pecahan, satukan menjadi <code>P(x) / Q(x)</code>.</td>
+      <td>Pastikan koefisien suku utama bertanda positif untuk mempermudah uji tanda nantinya.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Tentukan Titik Pemecah (Split Points)</strong></td>
+      <td>Cari pembuat nol pembilang (<code>P(x) = 0</code>) dan pembuat nol penyebut (<code>Q(x) = 0</code>).</td>
+      <td>Titik pembuat nol dari <strong>penyebut SELALU lingkaran kosong (&cir;)</strong> karena pembagian dengan nol mustahil!</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Plot Garis Bilangan & Uji Tanda</strong></td>
+      <td>Petakan semua titik pemecah pada garis bilangan berurut dari kecil ke besar, lalu pilih satu angka uji (misal: <code>x = 0</code>).</td>
+      <td>Evaluasi tanda (+ / -) di setiap daerah interval. Tanda berubah berselang-seling kecuali jika ada faktor berpangkat genap.</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Himpunan Penyelesaian (HP)</strong></td>
+      <td>Jika pertidaksamaan bertanda <code>&gt; 0</code> atau <code>&ge; 0</code>, pilih daerah (+). Jika bertanda <code>&lt; 0</code> atau <code>&le; 0</code>, pilih daerah (-).</td>
+      <td>Tuliskan notasi himpunan matematika formal dan notasi selang (interval) secara presisi.</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         

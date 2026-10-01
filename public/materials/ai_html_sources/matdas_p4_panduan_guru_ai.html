@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -284,27 +297,41 @@
     <div class="section">
       <div class="section-title">BAB 3. Uji Simetri: Fungsi Genap (Even) vs Fungsi Ganjil (Odd)</div>
       
-<div class="grid-2">
-  <div class="card">
-    <strong>Fungsi Genap (Even Function):</strong>
-    <ul style="font-size: 7.7pt;">
-      <li>Syarat formal: <strong>f(-x) = f(x)</strong></li>
-      <li>Ciri Geometris: Grafiknya <strong>simetris sempurna terhadap sumbu Y</strong>.</li>
-      <li>Contoh: f(x) = x<sup>2</sup>, f(x) = x<sup>4</sup> - 3x<sup>2</sup>, f(x) = cos(x).</li>
-      <li>Uji: f(-x) = (-x)<sup>2</sup> = x<sup>2</sup> = f(x) (Terbukti Genap).</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <strong>Fungsi Ganjil (Odd Function):</strong>
-    <ul style="font-size: 7.7pt;">
-      <li>Syarat formal: <strong>f(-x) = -f(x)</strong></li>
-      <li>Ciri Geometris: Grafiknya <strong>simetris terhadap titik pusat asal (0,0)</strong> (rotasi 180&deg;).</li>
-      <li>Contoh: g(x) = x<sup>3</sup>, g(x) = x<sup>3</sup> - 5x, g(x) = sin(x).</li>
-      <li>Uji: g(-x) = (-x)<sup>3</sup> - 5(-x) = -x<sup>3</sup> + 5x = -(x<sup>3</sup> - 5x) = -g(x) (Terbukti Ganjil).</li>
-    </ul>
-  </div>
-</div>
+<p>Karakteristik simetri grafik fungsi dapat diuji secara analitis melalui evaluasi nilai fungsi terhadap masukan negatif <code>f(-x)</code>:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Kategori Fungsi</th>
+      <th>Definisi Aljabar Baku</th>
+      <th>Karakteristik Simetri Geometris Grafis</th>
+      <th>Prosedur Pengujian Aljabar f(-x)</th>
+      <th>Contoh Fungsi Nyata</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Fungsi Genap (Even Function)</strong></td>
+      <td><code>f(-x) = f(x)</code> untuk setiap <code>x &in; D_f</code></td>
+      <td>Grafiknya <strong>simetris sempurna terhadap sumbu Y</strong> (pencerminan cermin tegak).</td>
+      <td>Substitusi <code>x</code> dengan <code>-x</code>; jika tanda negatif lenyap dan kembali ke fungsi asal, fungsi terbukti Genap.</td>
+      <td><code>f(x) = x²</code><br><code>f(x) = x⁴ - 3x²</code><br><code>f(x) = cos(x)</code></td>
+    </tr>
+    <tr>
+      <td><strong>Fungsi Ganjil (Odd Function)</strong></td>
+      <td><code>f(-x) = -f(x)</code> untuk setiap <code>x &in; D_f</code></td>
+      <td>Grafiknya <strong>simetris terhadap titik pusat asal (0,0)</strong> (inversi rotasi 180&deg;).</td>
+      <td>Substitusi <code>x</code> dengan <code>-x</code>; jika seluruh suku bertanda kebalikan mutlak dari fungsi asal, fungsi terbukti Ganjil.</td>
+      <td><code>g(x) = x³</code><br><code>g(x) = x³ - 5x</code><br><code>g(x) = sin(x)</code></td>
+    </tr>
+    <tr>
+      <td><strong>Fungsi Bukan Keduanya</strong></td>
+      <td><code>f(-x) &ne; f(x)</code> dan <code>f(-x) &ne; -f(x)</code></td>
+      <td>Grafik tidak memiliki simetri sumbu Y maupun simetri titik pusat asal (0,0).</td>
+      <td>Hasil evaluasi menghasilkan campuran tanda yang tidak sesuai pola genap maupun ganjil.</td>
+      <td><code>h(x) = x² + 2x + 1</code><br><code>h(x) = 2x - 3</code></td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         

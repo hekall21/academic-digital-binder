@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -338,11 +351,47 @@
     <div class="section">
       <div class="section-title">BAB 4. Kaidah Mutlak Penggambaran Flowchart Bebas Error</div>
       
-<ol style="font-size: 7.9pt;">
-  <li><strong>Arah Aliran Baku:</strong> Alur utama harus mengalir dari <strong>atas ke bawah (top-to-bottom)</strong> atau dari <strong>kiri ke kanan (left-to-right)</strong>.</li>
-  <li><strong>Cabang Decision:</strong> Setiap simbol Decision (Belah Ketupat) <strong>WAJIB memiliki minimal 2 jalur keluar</strong> dengan label kebenaran yang jelas (<code>YA/TIDAK</code> atau <code>TRUE/FALSE</code>). Dilarang hanya memiliki satu jalur keluar.</li>
-  <li><strong>Dilarang Garis Berpotongan:</strong> Garis alir tidak boleh saling memotong tanpa tanda konektor (Connector).</li>
-</ol>
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Kaidah Baku Standar ANSI / ISO</th>
+      <th>Ketentuan Grafis Alur</th>
+      <th>Pola Kesalahan Fatal (✗)</th>
+      <th>Pola Penerapan Benar (✓)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Arah Aliran Utama</strong></td>
+      <td>Alur proses wajib mengalir secara linier dari <strong>atas ke bawah (top-to-bottom)</strong> atau dari <strong>kiri ke kanan (left-to-right)</strong>.</td>
+      <td>Garis alir zig-zag acak dari bawah ke atas tanpa konteks looping.</td>
+      <td>Alur utama lurus ke bawah; loop balik menggunakan garis samping yang teratur.</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Cabang Logika Decision</strong></td>
+      <td>Simbol Decision (Belah Ketupat) <strong>WAJIB memiliki minimal 2 jalur keluar</strong> yang dilabeli eksplisit (<code>YA / TIDAK</code>).</td>
+      <td>Decision hanya memiliki satu garis keluar atau tanpa label keterangan kebenaran.</td>
+      <td>Dua jalur cabang keluar: cabang <code>YA/TRUE</code> dan cabang <code>TIDAK/FALSE</code> yang bermuara jelas.</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Penghindaran Garis Silang</strong></td>
+      <td>Garis alir (flowline) tidak boleh saling memotong secara langsung di tengah diagram.</td>
+      <td>Dua panah berpotongan membentuk tanda tambah (+) yang membingungkan alur baca.</td>
+      <td>Gunakan On-Page Connector (Lingkaran kecil) untuk menghubungkan titik temu secara rapi.</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Titik Masuk & Titik Keluar</strong></td>
+      <td>Setiap simbol proses hanya memiliki <strong>1 titik masuk dan 1 titik keluar</strong>. Hanya Decision yang boleh bercabang &gt; 1 keluar.</td>
+      <td>Kotak Process persegi panjang bercabang dua arah keluar secara simultan.</td>
+      <td>Pemisahan cabang divergen hanya dilakukan melalui simbol Decision belah ketupat.</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
         

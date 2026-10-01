@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -284,30 +297,27 @@
     <div class="section">
       <div class="section-title">BAB 3. Lima Aktivitas Pokok Sistem Informasi & Perbedaan Hakiki SI vs TI</div>
       
-<div class="grid-2">
-  <div class="card">
-    <strong>5 Aktivitas Dasar Sistem Informasi:</strong>
-    <ol style="font-size: 7.7pt;">
-      <li><strong>Input:</strong> Perekaman dan pemasukan data transaksi mentah ke dalam sistem.</li>
-      <li><strong>Processing:</strong> Pengolahan data (penghitungan aritmatika, klasifikasi, agregasi, pengurutan).</li>
-      <li><strong>Storage:</strong> Penyimpanan data secara teratur dan aman dalam media basis data.</li>
-      <li><strong>Output:</strong> Penyajian informasi yang telah jadi dalam bentuk laporan, grafik dashboard, notifikasi.</li>
-      <li><strong>Control:</strong> Pemantauan dan pengendalian kinerja sistem agar sesuai target kualitas.</li>
-    </ol>
-  </div>
+<p><strong>Lima Aktivitas Pokok Siklus Pengolahan Sistem Informasi:</strong></p>
+<table>
+  <thead><tr><th>No</th><th>Aktivitas Pokok</th><th>Tindakan Pemrosesan Komputasi</th><th>Komponen / Aset yang Terlibat</th><th>Contoh Nyata di Perusahaan</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Input (Masukan)</strong></td><td>Perekaman, pengumpulan, dan pemindaian data transaksi mentah ke format digital.</td><td>Barcode scanner, keyboard, form web, sensor IoT.</td><td>Kasir memindai barcode produk dan menginput jumlah item belanja.</td></tr>
+    <tr><td>2</td><td><strong>Processing (Pemrosesan)</strong></td><td>Transformasi data melalui kalkulasi aritmatika, perbandingan logika, agregasi, dan pengurutan.</td><td>CPU, RAM, algoritma pemrogram, query database.</td><td>Sistem mengalikan harga satuan &times; kuantiti, memotong diskon, dan menghitung PPN 11%.</td></tr>
+    <tr><td>3</td><td><strong>Storage (Penyimpanan)</strong></td><td>Pencatatan data secara terorganisir ke dalam media penyimpanan jangka panjang yang aman.</td><td>Basis data relasional (RDBMS), SSD server, cloud storage.</td><td>Menyimpan record transaksi ke tabel <code>penjualan_header</code> dan <code>penjualan_detail</code>.</td></tr>
+    <tr><td>4</td><td><strong>Output (Keluaran)</strong></td><td>Penyajian dan pendistribusian informasi yang telah jadi kepada pengguna dalam bentuk bernilai.</td><td>Layar monitor, printer struk kasir, PDF laporan, dashboard API.</td><td>Mencetak struk belanja fisik untuk pembeli dan mengirim email invoice otomatis.</td></tr>
+    <tr><td>5</td><td><strong>Control (Pengendalian)</strong></td><td>Pemantauan kinerja sistem, verifikasi integritas data, dan deteksi deviasi kesalahan.</td><td>Log audit trail, modul rekonsiliasi kas, hak akses user role.</td><td>Membandingkan total uang fisik di laci kasir dengan angka rekapitulasi sistem saat tutup toko.</td></tr>
+  </tbody>
+</table>
 
-  <div class="card">
-    <strong>Komparasi Filosofis: SI vs TI</strong>
-    <table>
-      <thead><tr><th>Parameter</th><th>Teknologi Informasi (TI)</th><th>Sistem Informasi (SI)</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Hakikat</strong></td><td>Alat / Instrumen teknologi (Hardware & Software).</td><td>Sistem Sosio-Teknis menyeluruh (Orang + Proses + TI).</td></tr>
-        <tr><td><strong>Fokus</strong></td><td>Kecepatan pemrosesan, throughput, konektivitas kabel, uptime server.</td><td>Efektivitas pencapaian tujuan bisnis dan kepuasan pengguna.</td></tr>
-        <tr><td><strong>Analogi</strong></td><td>Mobil balap berkecepatan tinggi.</td><td>Sistem transportasi kota (mobil, sopir, rambu lalu lintas, penumpang, dan tujuan perjalanan).</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<p style="margin-top: 8px;"><strong>Komparasi Filosofis Mendalam: Sistem Informasi (SI) vs Teknologi Informasi (TI):</strong></p>
+<table>
+  <thead><tr><th>Parameter Pembeda</th><th>Teknologi Informasi (TI)</th><th>Sistem Informasi (SI)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Hakikat</strong></td><td>Alat / Instrumen teknologi fisik dan logis (Hardware & Software).</td><td>Sistem Sosio-Teknis menyeluruh yang memadukan Orang, Proses Bisnis, dan TI.</td></tr>
+    <tr><td><strong>Fokus Perhatian</strong></td><td>Kecepatan clock CPU, throughput jaringan, kapasitas disk, uptime server.</td><td>Efektivitas pencapaian tujuan organisasi bisnis dan kepuasan pengguna.</td></tr>
+    <tr><td><strong>Analogi Riil</strong></td><td>Mesin mobil balap berkekuatan 500 tenaga kuda.</td><td>Sistem transportasi kota (mobil, pengemudi, aturan lalu lintas, penumpang, dan tujuan perjalanan).</td></tr>
+  </tbody>
+</table>
 
     </div>
         

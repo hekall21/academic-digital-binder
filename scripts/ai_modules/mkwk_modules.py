@@ -50,7 +50,39 @@ INDO_MEETINGS = [
         "sections": [
             {
                 "title": "Tiga Dimensi Sikap Positif Berbahasa",
-                "content_html": "<div class=\"grid-3\"><div class=\"card\"><strong>1. Kesetiaan Berbahasa:</strong> Dorongan untuk mempertahankan kemurnian bahasa dari pengaruh asing berlebihan.</div><div class=\"card\"><strong>2. Kebanggaan Berbahasa:</strong> Menggunakan Bahasa Indonesia dengan percaya diri di forum ilmiah dan internasional.</div><div class=\"card\"><strong>3. Kesadaran Norma:</strong> Kepatuhan menggunakan kaidah baku tata bahasa dan ejaan dalam forum formal.</div></div>"
+                "content_html": """
+<p>Sikap bahasa (<em>language attitude</em>) positif masyarakat akademik tercermin dalam tiga dimensi psikososial:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Dimensi Sikap Positif</th>
+      <th>Definisi Konseptual</th>
+      <th>Manifestasi Perilaku Akademik</th>
+      <th>Tantangan Kritis di Era Digital</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Kesetiaan Berbahasa (Language Loyalty)</strong></td>
+      <td>Dorongan internal untuk mempertahankan kemurnian dan eksistensi Bahasa Indonesia dari dominasi bahasa asing.</td>
+      <td>Mengutamakan padanan istilah bahasa Indonesia baku (misal: <em>gawai</em> bukan gadget, <em>tetikus</em> bukan mouse).</td>
+      <td>Gempuran istilah gaul Jaksel dan campur kode bahasa Inggris tanpa konteks resmi.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Kebanggaan Berbahasa (Language Pride)</strong></td>
+      <td>Perasaan percaya diri dan menjunjung tinggi Bahasa Indonesia sebagai lambang kedaulatan bangsa.</td>
+      <td>Menggunakan Bahasa Indonesia dengan bangga di seminar nasional, forum ilmiah, dan jurnal terindeks.</td>
+      <td>Rasa rendah diri menganggap bahasa asing lebih bergengsi dan superior dibanding bahasa nasional.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Kesadaran Norma (Awareness of the Norm)</strong></td>
+      <td>Kepatuhan etis untuk menggunakan kaidah baku tata bahasa, sintaksis, dan ejaan resmi (EYD).</td>
+      <td>Menulis artikel, skripsi, dan surat dinas sesuai kaidah PUEBI/EYD V tanpa penyimpangan sengaja.</td>
+      <td>Kebiasaan penulisan pesan instan (chat) yang merusak sensitivitas ejaan dalam karya formal.</td>
+    </tr>
+  </tbody>
+</table>
+"""
             },
             {
                 "title": "Ragam Bahasa Baku vs Nonbaku & Ciri-Ciri Ilmiah",
@@ -98,7 +130,33 @@ INDO_MEETINGS = [
         "sections": [
             {
                 "title": "Dua Syarat Mutlak Diksi: Ketepatan & Kesesuaian",
-                "content_html": "<div class=\"grid-2\"><div class=\"card\"><strong>1. Ketepatan (Accuracy):</strong> Kemampuan kata mewakili ide penulis secara persis sehingga pembaca menangkap makna tanpa tafsir ganda.</div><div class=\"card\"><strong>2. Kesesuaian (Appropriateness):</strong> Kecocokan pilihan kata dengan situasi komunikasi, norma sopan santun, dan ragam ilmiah.</div></div>"
+                "content_html": """
+<p>Dalam penulisan karya ilmiah, pilihan kata (diksi) wajib memenuhi dua parameter komparasi baku:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Syarat Baku Diksi</th>
+      <th>Fokus Dimensi</th>
+      <th>Definisi Semantis</th>
+      <th>Contoh Kasus Penggunaan yang Tepat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Ketepatan (Accuracy)</strong></td>
+      <td>Denotasi Logis & Ketepatan Makna</td>
+      <td>Kemampuan kata mewakili gagasan secara presisi sehingga pembaca tidak memiliki tafsir ganda.</td>
+      <td>Membedakan kata <em>meneliti</em> (riset ilmiah) dengan <em>melihat</em> (aktivitas sensorik biasa).</td>
+    </tr>
+    <tr>
+      <td><strong>2. Kesesuaian (Appropriateness)</strong></td>
+      <td>Konotasi & Situasi Komunikasi</td>
+      <td>Kesesuaian pilihan kata dengan konteks forum, norma kesopanan, dan sasaran audiens pembaca.</td>
+      <td>Menggunakan kata <em>wafat / meninggal dunia</em> dalam konteks resmi, bukan <em>mampus / tewas</em>.</td>
+    </tr>
+  </tbody>
+</table>
+"""
             },
             {
                 "title": "Kompilasi Kesalahan Pleonasme yang Sering Muncul di Makalah Mahasiswa",
@@ -167,10 +225,34 @@ INGGRIS_MEETINGS = [
             {
                 "title": "Past Simple vs Present Perfect in Engineering Reports",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\"><strong>Past Simple (Definite Past Time):</strong> Used when the time is specified or completed. <em>\"We deployed version 1.0 yesterday.\"</em></div>
-  <div class=\"card\"><strong>Present Perfect (Relevance to Present):</strong> Used when the action happened at an unspecified time with current impact. <em>\"Our team has resolved 40 bugs so far.\"</em></div>
-</div>
+<p>In technical engineering reports, selecting between Past Simple and Present Perfect determines whether an event is viewed as a finished historical milestone or an ongoing operational state:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Tense Structure</th>
+      <th>Grammatical Formula</th>
+      <th>Time Focus & Temporal Aspect</th>
+      <th>Common Signal Words</th>
+      <th>Real-World Engineering Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Past Simple</strong></td>
+      <td><code>Subject + Verb 2 (ed / irregular)</code></td>
+      <td>Definite past time; the action is completely finished at a specified past moment.</td>
+      <td><em>yesterday, last week, in 2024, two hours ago, during sprint 3</em></td>
+      <td><em>"The DevOps team <strong>deployed</strong> hotfix v2.1.0 yesterday at 23:00 UTC."</em></td>
+    </tr>
+    <tr>
+      <td><strong>Present Perfect</strong></td>
+      <td><code>Subject + have/has + Verb 3 (Past Participle)</code></td>
+      <td>Indefinite past time with direct relevance to current operational state or unfinished time window.</td>
+      <td><em>already, yet, so far, recently, since Monday, for three cycles</em></td>
+      <td><em>"Our QA engineers <strong>have resolved</strong> 42 edge cases so far this sprint."</em></td>
+    </tr>
+  </tbody>
+</table>
 """
             }
         ],
@@ -185,7 +267,43 @@ INGGRIS_MEETINGS = [
         "sections": [
             {
                 "title": "Expressing Future Intent in Software Engineering",
-                "content_html": "<p>Differentiating <strong>will + V1</strong> (spontaneous commitment or future prediction) vs <strong>be going to + V1</strong> (prior plan or evidence-based projection). Example: <em>\"Look at the memory leak; the container is going to crash!\"</em> vs <em>\"I will fix this bug right now.\"</em></p>"
+                "content_html": """
+<p>Professional technical communication requires clear distinctions when expressing future plans, commitments, and empirical projections:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Modal Structure</th>
+      <th>Grammar Pattern</th>
+      <th>Degree of Certainty & Intent</th>
+      <th>Software Engineering Context</th>
+      <th>Concrete Professional Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Will + V1</strong></td>
+      <td><code>Subject + will + Verb 1</code></td>
+      <td>Spontaneous decision made at the moment of speaking; formal commitment or promise.</td>
+      <td>Responding to live bug alerts in standup meetings or code review feedback.</td>
+      <td><em>"I see the memory leak in the staging server; I <strong>will inspect</strong> the logs immediately."</em></td>
+    </tr>
+    <tr>
+      <td><strong>Be going to + V1</strong></td>
+      <td><code>Subject + am/is/are + going to + Verb 1</code></td>
+      <td>Premeditated plan / intention, or strong projection based on visible empirical evidence.</td>
+      <td>Sprint roadmap planning or real-time diagnostic telemetry monitoring.</td>
+      <td><em>"Look at the CPU utilization spike (99%); the Kubernetes pod <strong>is going to crash</strong>!"</em></td>
+    </tr>
+    <tr>
+      <td><strong>Present Continuous for Future</strong></td>
+      <td><code>Subject + am/is/are + V-ing</code></td>
+      <td>Fixed future arrangement with external parties and scheduled timestamp.</td>
+      <td>Scheduled client demos, production deployment maintenance windows.</td>
+      <td><em>"We <strong>are migrating</strong> the core SQL database to AWS RDS next Saturday at midnight."</em></td>
+    </tr>
+  </tbody>
+</table>
+"""
             }
         ],
         "references": ["Eastwood, John. (2008). Oxford Practice Grammar with Answers. Oxford University Press."]
@@ -254,7 +372,51 @@ PANCASILA_MEETINGS = [
         "sections": [
             {
                 "title": "Tantangan Ideologis Generasi Z: Polarisasi Siber & Etika Rekayasa Data",
-                "content_html": "<p>Nilai Pancasila dalam rekayasa teknologi: Sila 1 (moralitas ketuhanan dalam teknologi), Sila 2 (penghormatan privasi dan hak asasi data manusia), Sila 3 (penolakan penyebaran ujaran kebencian & hoaks pemecah belah bangsa), Sila 4 (musyawarah digital yang santun), Sila 5 (pemerataan akses digital dan penolakan monopoli teknologi).</p>"
+                "content_html": """
+<p>Aktualisasi nilai-nilai luhur Pancasila dalam etika rekayasa kecerdasan buatan (AI) dan keamanan siber:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Sila Pancasila</th>
+      <th>Nilai Luhur Bangsa</th>
+      <th>Aplikasi Etis dalam Rekayasa Software & AI</th>
+      <th>Bentuk Pelanggaran Siber Mutlak (&cross;)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Sila Ke-1: Ketuhanan Yang Maha Esa</strong></td>
+      <td>Moralitas Spiritual & Integritas Hati</td>
+      <td>Membangun sistem dengan rasa tanggung jawab transendental, kejujuran algoritma, dan anti-penipuan.</td>
+      <td>Membuat situs judi online (judol), aplikasi phishing perbankan, atau skema ponzi digital.</td>
+    </tr>
+    <tr>
+      <td><strong>Sila Ke-2: Kemanusiaan yang Adil dan Beradab</strong></td>
+      <td>Penghormatan Martabat Manusia</td>
+      <td>Melindungi privasi data pribadi (GDPR / UU PDP) dan merancang AI yang bebas dari bias diskriminasi ras/gender.</td>
+      <td>Penyebaran konten deepfake asusila, pencurian data KTP/biometrik, dan perundungan siber (cyberbullying).</td>
+    </tr>
+    <tr>
+      <td><strong>Sila Ke-3: Persatuan Indonesia</strong></td>
+      <td>Konsensus Kebangsaan & Harmoni Sosial</td>
+      <td>Memanfaatkan algoritma rekomendasi media sosial untuk mempromosikan persatuan dan moderasi konten damai.</td>
+      <td>Penyebaran hoaks politik, kampanye buzzer pemecah belah bangsa, dan ujaran kebencian SARA.</td>
+    </tr>
+    <tr>
+      <td><strong>Sila Ke-4: Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan...</strong></td>
+      <td>Musyawarah Mufakat & Dialog Rasional</td>
+      <td>Menyediakan ruang musyawarah publik digital yang inklusif, transparan, dan menghargai keberagaman opini.</td>
+      <td>Manipulasi bot pemilu (astroturfing), pembungkaman kritik ilmiah secara ilegal, dan peretasan sepihak.</td>
+    </tr>
+    <tr>
+      <td><strong>Sila Ke-5: Keadilan Sosial bagi Seluruh Rakyat Indonesia</strong></td>
+      <td>Keadilan Distributif & Akses Merata</td>
+      <td>Mendukung open-source, literasi digital desa, dan pemerataan infrastruktur internet ke daerah 3T.</td>
+      <td>Monopoli platform teknologi, predatory pricing digital, dan eksploitasi upah pekerja gig economy.</td>
+    </tr>
+  </tbody>
+</table>
+"""
             }
         ],
         "references": ["Yudi Latif. (2011). Negara Paripurna: Historisitas, Rasionalitas, dan Aktualitas Pancasila. Gramedia."]
@@ -285,7 +447,39 @@ PAI_MEETINGS = [
         "sections": [
             {
                 "title": "Hadits Jibril: Trilogi Ajaran Islam Menuju Integritas Unggul",
-                "content_html": "<p>Trilogi ajaran Islam bersumber dari Hadits Jibril: (1) <strong>Iman</strong> sebagai fondasi akidah keyakinan internal hati, (2) <strong>Islam</strong> sebagai rukun syariat manifestasi perbuatan lahiriah, dan (3) <strong>Ihsan</strong> sebagai derajat puncak kesadaran spiritual: <em>\"Beribadah dan berkarya seakan-akan engkau melihat Allah; jika engkau tidak melihat-Nya, maka sesungguhnya Dia senantiasa melihatmu.\"</em></p>"
+                "content_html": """
+<p>Trilogi ajaran Islam bersumber dari Hadits Jibril membentuk kerangka integritas paripurna bagi profesional teknologi informasi:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Pilar Trilogi</th>
+      <th>Dimensi Kehidupan</th>
+      <th>Rujukan Landasan Formal</th>
+      <th>Manifestasi Nyata bagi Insan Rekayasa Komputasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Iman (Akidah)</strong></td>
+      <td>Keyakinan Batiniah (Esoteris)</td>
+      <td>Enam Rukun Iman</td>
+      <td>Keyakinan bahwa setiap baris kode dan data yang diproses berada dalam pengawasan mutlak Allah SWT (Muraqabah).</td>
+    </tr>
+    <tr>
+      <td><strong>2. Islam (Syariah)</strong></td>
+      <td>Perbuatan Lahiriah (Eksoteris)</td>
+      <td>Lima Rukun Islam</td>
+      <td>Kepatuhan pada hukum muamalah, kehalalan transaksi finansial digital, dan kepatuhan terhadap kontrak kerja profesional.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Ihsan (Akhlak/Tasawuf)</strong></td>
+      <td>Puncak Mutu Spiritual (Spiritual Quality)</td>
+      <td>Konsep Muraqabah & Musyahadah</td>
+      <td>Menghasilkan arsitektur perangkat lunak dengan standar kualitas tertinggi (<em>work excellence</em>) seakan-akan melihat Allah.</td>
+    </tr>
+  </tbody>
+</table>
+"""
             }
         ],
         "references": ["Imam an-Nawawi. (2014). Syarah Shahih Muslim. Darul Haq."]
@@ -300,14 +494,49 @@ PAI_MEETINGS = [
             {
                 "title": "Lima Prinsip Pokok Maqashid al-Syari'ah dalam Transaksi Digital",
                 "content_html": """
-<p>Syariat Islam diturunkan untuk merealisasikan kemaslahatan manusia di dunia dan akhirat melalui 5 perlindungan mutlak (<em>Dharuriyyat al-Khamsah</em>):</p>
-<ol style=\"font-size: 7.7pt;\">
-  <li><strong>Hifz ad-Din:</strong> Menjaga kemurnian agama dan akidah tauhid.</li>
-  <li><strong>Hifz an-Nafs:</strong> Menjaga keselamatan nyawa dan kesehatan raga manusia.</li>
-  <li><strong>Hifz al-'Aql:</strong> Menjaga kesehatan akal pikiran dari zat perusak maupun distorsi informasi jahat.</li>
-  <li><strong>Hifz an-Nasl:</strong> Menjaga kehormatan nasab, keluarga, dan generasi masa depan.</li>
-  <li><strong>Hifz al-Mal:</strong> Menjaga hak milik harta benda dari penipuan digital (phishing, riba, judi online / judol).</li>
-</ol>
+<p>Syariat Islam diturunkan untuk merealisasikan kemaslahatan manusia di dunia dan akhirat melalui lima perlindungan mutlak (<em>Dharuriyyat al-Khamsah</em>):</p>
+<table>
+  <thead>
+    <tr>
+      <th>Prinsip Maqashid Syari'ah</th>
+      <th>Fokus Objek Perlindungan</th>
+      <th>Maksud & Tujuan Universal</th>
+      <th>Aplikasi Konkret pada Ekosistem Sistem Informasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Hifz ad-Din</strong></td>
+      <td>Perlindungan Agama</td>
+      <td>Menjaga kemurnian akidah dan sarana peribadatan umat.</td>
+      <td>Memfilter konten penistaan agama, membangun aplikasi pengingat salat dan pembelajaran Al-Qur'an terverifikasi.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Hifz an-Nafs</strong></td>
+      <td>Perlindungan Jiwa & Raga</td>
+      <td>Menjaga keselamatan fisik manusia dan hak hidup mutlak.</td>
+      <td>Memastikan keandalan sistem software medis rumah sakit, sensor kendaraan otonom, dan sistem deteksi bencana alam.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Hifz al-'Aql</strong></td>
+      <td>Perlindungan Akal Pikiran</td>
+      <td>Menjaga akal dari zat perusak fisik dan distorsi informasi.</td>
+      <td>Memblokir pornografi daring, memitigasi penyebaran disinformasi/hoaks AI, dan menjaga kesehatan mental digital.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Hifz an-Nasl</strong></td>
+      <td>Perlindungan Keturunan & Kehormatan</td>
+      <td>Menjaga kelestarian institusi keluarga dan martabat nasab.</td>
+      <td>Menerapkan <em>parental control</em> ketat pada konten anak, melindungi jejak digital anak, dan mencegah pelecehan siber.</td>
+    </tr>
+    <tr>
+      <td><strong>5. Hifz al-Mal</strong></td>
+      <td>Perlindungan Harta Benda</td>
+      <td>Melindungi hak milik kekayaan dari pencurian dan eksploitasi.</td>
+      <td>Enkripsi transaksi payment gateway (PCI-DSS), perlindungan dari judi online (judol), riba tersembunyi, dan penipuan phishing.</td>
+    </tr>
+  </tbody>
+</table>
 """
             }
         ],
@@ -322,7 +551,45 @@ PAI_MEETINGS = [
         "sections": [
             {
                 "title": "Etika Siber Islami: Amanah Data, Anti-Ghibah Digital & Keberkahan Kode",
-                "content_html": "<p>Seorang insinyur perangkat lunak muslim memegang prinsip <strong>Amanah</strong> (menjaga privasi data kredensial pengguna, menolak eksploitasi data ilegal), <strong>Shiddiq</strong> (kejujuran dalam membuat laporan pengujian dan algoritma), dan <strong>Tabligh</strong> (menyebarkan ilmu pengetahuan yang bermanfaat bagi umat).</p>"
+                "content_html": """
+<p>Pilar akhlak terpuji (<em>akhlakul karimah</em>) seorang software engineer dan praktisi sistem informasi muslim:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Nilai Karakter Akhlak</th>
+      <th>Makna Transendental</th>
+      <th>Manifestasi Perilaku Software Engineer</th>
+      <th>Larangan Mutlak Dunia Siber (&cross;)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Amanah (Dapat Dipercaya)</strong></td>
+      <td>Menjaga setiap titipan hak milik orang lain dengan penuh integritas.</td>
+      <td>Menjaga kerahasiaan kredensial database (API keys, password hashing bcrypt), tidak menjual database pengguna.</td>
+      <td>Membocorkan data pribadi pelanggan, menyisipkan <em>backdoor</em> atau <em>spyware</em> ke aplikasi produksi.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Shiddiq (Kejujuran)</strong></td>
+      <td>Kesesuaian mutlak antara perkataan, data, dan realitas faktual.</td>
+      <td>Jujur dalam estimasi waktu kerja sprint, melaporkan bug kritis secara transparan, tidak memalsukan log audit.</td>
+      <td>Memanipulasi metriks performa sistem, mengklaim kode open source orang lain tanpa atribusi lisensi resmi.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Tabligh (Menyampaikan Kebaikan)</strong></td>
+      <td>Menyebarkan ilmu pengetahuan yang bermanfaat bagi kemaslahatan umat.</td>
+      <td>Menulis dokumentasi teknis yang jelas, aktif mentoring junior engineer, berkontribusi pada proyek open source bermanfaat.</td>
+      <td>Menyembunyikan dokumentasi untuk menciptakan ketergantungan yang tidak sehat (<em>knowledge hoarding</em>).</td>
+    </tr>
+    <tr>
+      <td><strong>4. Fathonah (Kecerdasan Profesional)</strong></td>
+      <td>Menggunakan akal budi untuk menghasilkan solusi paling efektif dan efisien.</td>
+      <td>Menerapkan Clean Architecture, optimasi efisiensi query database, dan pertahanan keamanan siber proaktif.</td>
+      <td>Menulis kode asal jadi (spaghetti code) yang membebani server dan merugikan pengguna.</td>
+    </tr>
+  </tbody>
+</table>
+"""
             }
         ],
         "references": ["Qardhawi, Yusuf. (2007). Al-Halal wal Haram fil Islam. Maktabah Wahbah Cairo."]

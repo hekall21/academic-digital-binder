@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -269,18 +282,15 @@
     <div class="section">
       <div class="section-title">BAB 2. Hakikat Data & Definisi Legendaris Gordon B. Davis</div>
       
-<div class="grid-2">
-  <div class="card">
-    <strong>Hakikat Data (Data):</strong><br>
-    Fakta mentah (<em>raw facts</em>), catatan transaksi atomik, atau representasi kejadian nyata yang berdiri sendiri tanpa makna relasional. Contoh: <code>45, "2026-09-30", 120000</code>.
-  </div>
-  <div class="card">
-    <strong>Hakikat Informasi (Information):</strong><br>
-    Data yang telah diproses, diklasifikasikan, dan diberi konteks sehingga memiliki arti (<em>meaningful</em>) dan nilai nyata untuk mengurangi ketidakpastian pengambilan keputusan.
-  </div>
-</div>
+<table>
+  <thead><tr><th>Entitas</th><th>Definisi Konseptual</th><th>Karakteristik Komputasi</th><th>Contoh Konkret di Lapangan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Data (Data)</strong></td><td>Kenyataan yang menggambarkan kejadian-kejadian dan kesatuan nyata (<em>raw facts</em>).</td><td>Atomik, belum diproses, berdiri sendiri, belum memiliki nilai langsung bagi manajer.</td><td><code>45, "2026-09-30", 120000, "RG"</code></td></tr>
+    <tr><td><strong>Informasi (Information)</strong></td><td>Data yang telah diproses ke dalam bentuk yang bermakna (<em>meaningful</em>) dan bernilai nyata.</td><td>Terstruktur, teragregasi, mengurangi ketidakpastian pengambilan keputusan.</td><td>Laporan omset kasir harian cabang Pasar Rebo mencapai Rp 12.500.000 (naik 15%).</td></tr>
+  </tbody>
+</table>
 
-<div class="card-dark">
+<div class="card-dark" style="margin-top: 6px;">
   <blockquote style="margin: 0; color: #38bdf8; font-style: italic;">
     "Informasi adalah data yang telah diproses ke dalam suatu bentuk yang mempunyai arti bagi si penerima dan mempunyai nilai nyata serta terasa bagi pengambilan keputusan saat ini maupun keputusan masa mendatang."<br>
     <strong>&mdash; Gordon B. Davis, Management Information Systems</strong>
@@ -290,7 +300,7 @@
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Tiga Sumbu Klasifikasi Data Resmi & 3 Pilar Kualitas Data</div>
+      <div class="section-title">BAB 3. Tiga Sumbu Klasifikasi Data Resmi & Tiga Pilar Kualitas Data</div>
       
 <p>Berdasarkan modul perkuliahan dan catatan kelas Pak Dheni, klasifikasi data terbagi atas 3 sumbu utama:</p>
 <table>
@@ -305,35 +315,31 @@
   </tbody>
 </table>
 
-<div class="grid-3" style="margin-top: 6px;">
-  <div class="card">
-    <strong>1. Ketelitian (Accuracy)</strong><br>
-    Bebas dari kesalahan kalkulasi, bebas bias, dan mencerminkan kebenaran fakta objektif.
-  </div>
-  <div class="card">
-    <strong>2. Komparabilitas (Comparability)</strong><br>
-    Dapat dibandingkan secara adil (*apple-to-apple*) dengan standar konversi setara.
-  </div>
-  <div class="card">
-    <strong>3. Validitas (Validity)</strong><br>
-    Tingkat kebenaran alat ukur dalam mengukur apa yang sebenarnya harus diukur.
-  </div>
-</div>
+<p style="margin-top: 8px;"><strong>Tiga Pilar Mutu Data yang Menjamin Integritas Keputusan:</strong></p>
+<table>
+  <thead><tr><th>Pilar Mutu Data</th><th>Definisi Konseptual</th><th>Mekanisme Verifikasi & Validasi</th><th>Contoh Kasus Riil di Lapangan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Ketelitian (Accuracy)</strong></td><td>Bebas dari kesalahan kalkulasi, bebas bias, dan mencerminkan fakta objektif sesungguhnya.</td><td>Pengecekan digit pembagi, validasi checksum database.</td><td>Pencatatan saldo bank nasabah harus tepat hingga rupiah terakhir.</td></tr>
+    <tr><td><strong>2. Komparabilitas (Comparability)</strong></td><td>Dapat dibandingkan secara adil (<em>apple-to-apple</em>) dengan standar konversi setara.</td><td>Standardisasi mata uang, penyesuaian satuan metrik/imperial.</td><td>Membandingkan laba Rp 10 juta vs RM 10 juta wajib dikonversi ke USD terlebih dahulu.</td></tr>
+    <tr><td><strong>3. Validitas (Validity)</strong></td><td>Tingkat kebenaran alat ukur dalam mengukur apa yang sebenarnya seharusnya diukur.</td><td>Kalibrasi rutin instrumen, audit metodologi pengumpulan data.</td><td>Timbangan semangka yang terkalibrasi normal valid menunjukkan bobot 5 kg, bukan 7 kg.</td></tr>
+  </tbody>
+</table>
 
     </div>
         
     <div class="section">
       <div class="section-title">BAB 4. Hierarki DIKW (Data - Information - Knowledge - Wisdom)</div>
       
-<div class="card">
-  <strong>Piramida DIKW Komputasi:</strong>
-  <ul style="font-size: 7.7pt;">
-    <li><strong>Data (What?):</strong> Catatan atomik fakta: <code>"Pasien A, Tensi 170/100, Usia 58"</code>.</li>
-    <li><strong>Information (Who, When, Where?):</strong> Data diberi label medis: <code>"Pasien A pada tanggal 1 Oktober 2026 mengalami hipertensi stadium 2."</code></li>
-    <li><strong>Knowledge (How?):</strong> Pemahaman pola hubungan: <code>"Pasien usia &gt;50 tahun dengan pola makan asin memiliki risiko stroke 4x lebih tinggi jika tensi &gt;160."</code></li>
-    <li><strong>Wisdom (Why?):</strong> Kebijakan visioner jangka panjang: <code>"Merancang program preventif diet rendah garam di puskesmas dan sistem peringatan dini digital pada rekam medis."</code></li>
-  </ul>
-</div>
+<p>Piramida DIKW menggambarkan evolusi nilai data dari fakta mentah hingga kebijaksanaan strategis eksekutif:</p>
+<table>
+  <thead><tr><th>Tingkatan DIKW</th><th>Pertanyaan Kunci</th><th>Karakteristik Pengolahan Komputasi</th><th>Contoh Konkret Kasus Rekam Medis Pasien</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Data</strong></td><td><em>What? (Fakta Mentah)</em></td><td>Catatan atomik diskrit tanpa konteks relasional pembungkus.</td><td><code>Pasien A, Tensi 170/100, Usia 58</code></td></tr>
+    <tr><td><strong>2. Information</strong></td><td><em>Who, When, Where?</em></td><td>Data yang telah diagregasi, distrukturkan, dan diberi label bermakna.</td><td><code>Pasien A pada 1 Oktober 2026 terdiagnosis hipertensi stadium 2.</code></td></tr>
+    <tr><td><strong>3. Knowledge</strong></td><td><em>How? (Pola & Kaidah)</em></td><td>Sintesis pemahaman kausalitas dari akumulasi data lintas waktu.</td><td><code>Pasien usia &gt;50 thn berdiet tinggi garam berisiko stroke 4x lebih tinggi jika tensi &gt;160.</code></td></tr>
+    <tr><td><strong>4. Wisdom</strong></td><td><em>Why? (Visi & Kebijakan)</em></td><td>Kebijakan preventif jangka panjang untuk memecahkan akar persoalan.</td><td><code>Merancang program preventif diet rendah garam dan integrasi peringatan dini digital pada rekam medis.</code></td></tr>
+  </tbody>
+</table>
 
     </div>
         

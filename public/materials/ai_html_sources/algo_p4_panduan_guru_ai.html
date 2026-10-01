@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -269,18 +282,59 @@
     <div class="section">
       <div class="section-title">BAB 2. Empat Pola Baku Struktur Percabangan Komputasi</div>
       
-<div class="grid-2">
+<p>Dalam rekayasa logika pemrograman, pengambilan keputusan dikelompokkan ke dalam empat arsitektur pola baku:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Pola Percabangan</th>
+      <th>Struktur Logika Baku</th>
+      <th>Evaluasi Kondisi Boolean</th>
+      <th>Aksi Alternatif (Else)</th>
+      <th>Kasus Penggunaan Ideal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Percabangan Tunggal</strong></td>
+      <td><code>IF (kondisi) THEN (aksi)</code></td>
+      <td>Kondisi bernilai <code>TRUE</code></td>
+      <td>Tidak ada (dilewati jika <code>FALSE</code>)</td>
+      <td>Pemberian bonus/diskon bersyarat, validasi guard clause.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Percabangan Ganda</strong></td>
+      <td><code>IF (kondisi) THEN (aksi1) ELSE (aksi2)</code></td>
+      <td>Dua kemungkinan: <code>TRUE</code> vs <code>FALSE</code></td>
+      <td>Wajib ada satu blok aksi alternatif</td>
+      <td>Status kelulusan (Lulus / Gagal), penentuan bilangan ganjil-genap.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Percabangan Bersarang (Nested IF)</strong></td>
+      <td><code>IF (k1) THEN ... ELSE IF (k2) THEN ...</code></td>
+      <td>Hierarkis berjenjang dari atas ke bawah</td>
+      <td>Blok <code>ELSE</code> final penampung kondisi sisa</td>
+      <td>Penentuan rentang grade nilai (A, B, C, D, E), zonasi tarif pajak.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Pemilihan Multi-Kondisi (CASE-OF)</strong></td>
+      <td><code>CASE (selector) OF v1: ... v2: ... END</code></td>
+      <td>Pencocokan nilai diskrit tipe Ordinal</td>
+      <td>Blok <code>ELSE</code> opsional (default handler)</td>
+      <td>Menu aplikasi konsol (1-5), konversi hari (1..7), kode status HTTP.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="grid-2" style="margin-top: 8px;">
   <div class="card">
-    <strong>1. Percabangan Tunggal (IF - THEN)</strong><br>
-    Hanya mengeksekusi aksi jika kondisi bernilai <code>TRUE</code>. Jika <code>FALSE</code>, tidak ada aksi alternatif yang dijalankan.
+    <strong>1. Pseudocode IF Tunggal:</strong>
     <pre><code><span class="code-kw">IF</span> (total_belanja &gt; 100000) <span class="code-kw">THEN</span>
   diskon &larr; 0.1 * total_belanja;
 <span class="code-kw">END IF</span></code></pre>
   </div>
 
   <div class="card">
-    <strong>2. Percabangan Ganda (IF - THEN - ELSE)</strong><br>
-    Menyediakan dua alternatif eksklusif: blok YA jika <code>TRUE</code>, dan blok TIDAK jika <code>FALSE</code>.
+    <strong>2. Pseudocode IF - ELSE:</strong>
     <pre><code><span class="code-kw">IF</span> (nilai &ge; 60) <span class="code-kw">THEN</span>
   status &larr; 'LULUS'
 <span class="code-kw">ELSE</span>
@@ -289,25 +343,20 @@
   </div>
 
   <div class="card">
-    <strong>3. Percabangan Majemuk / Bertingkat (Nested IF)</strong><br>
-    Kondisi IF di dalam blok IF lainnya untuk menguji hierarki kriteria bersarang.
+    <strong>3. Pseudocode Nested IF:</strong>
     <pre><code><span class="code-kw">IF</span> (nilai &ge; 80) <span class="code-kw">THEN</span>
   grade &larr; 'A'
 <span class="code-kw">ELSE IF</span> (nilai &ge; 70) <span class="code-kw">THEN</span>
   grade &larr; 'B'
-<span class="code-kw">ELSE IF</span> (nilai &ge; 60) <span class="code-kw">THEN</span>
-  grade &larr; 'C'
 <span class="code-kw">ELSE</span>
   grade &larr; 'E';</code></pre>
   </div>
 
   <div class="card">
-    <strong>4. Pemilihan Multi-Kondisi (CASE - OF)</strong><br>
-    Struktur elegan untuk memilih satu dari banyak cabang berdasarkan nilai pencocokan suatu variabel pemilih (<em>selector</em>).
+    <strong>4. Pseudocode CASE - OF:</strong>
     <pre><code><span class="code-kw">CASE</span> (nomor_hari) <span class="code-kw">OF</span>
   1 : nama &larr; 'Senin';
   2 : nama &larr; 'Selasa';
-  3 : nama &larr; 'Rabu';
   <span class="code-kw">ELSE</span> nama &larr; 'Hari Libur';
 <span class="code-kw">END CASE</span></code></pre>
   </div>

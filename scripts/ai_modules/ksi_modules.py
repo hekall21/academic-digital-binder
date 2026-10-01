@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Modul Pembelajaran Guru AI: Konsep Sistem Informasi (KSI) (Pertemuan 1 - 4)
+Semua klasifikasi, hierarki, dan perbandingan disajikan dalam TABEL terstruktur rapi.
 """
 
 KSI_MEETINGS = [
@@ -20,18 +21,15 @@ KSI_MEETINGS = [
             {
                 "title": "Hakikat Data & Definisi Legendaris Gordon B. Davis",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>Hakikat Data (Data):</strong><br>
-    Fakta mentah (<em>raw facts</em>), catatan transaksi atomik, atau representasi kejadian nyata yang berdiri sendiri tanpa makna relasional. Contoh: <code>45, \"2026-09-30\", 120000</code>.
-  </div>
-  <div class=\"card\">
-    <strong>Hakikat Informasi (Information):</strong><br>
-    Data yang telah diproses, diklasifikasikan, dan diberi konteks sehingga memiliki arti (<em>meaningful</em>) dan nilai nyata untuk mengurangi ketidakpastian pengambilan keputusan.
-  </div>
-</div>
+<table>
+  <thead><tr><th>Entitas</th><th>Definisi Konseptual</th><th>Karakteristik Komputasi</th><th>Contoh Konkret di Lapangan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Data (Data)</strong></td><td>Kenyataan yang menggambarkan kejadian-kejadian dan kesatuan nyata (<em>raw facts</em>).</td><td>Atomik, belum diproses, berdiri sendiri, belum memiliki nilai langsung bagi manajer.</td><td><code>45, "2026-09-30", 120000, "RG"</code></td></tr>
+    <tr><td><strong>Informasi (Information)</strong></td><td>Data yang telah diproses ke dalam bentuk yang bermakna (<em>meaningful</em>) dan bernilai nyata.</td><td>Terstruktur, teragregasi, mengurangi ketidakpastian pengambilan keputusan.</td><td>Laporan omset kasir harian cabang Pasar Rebo mencapai Rp 12.500.000 (naik 15%).</td></tr>
+  </tbody>
+</table>
 
-<div class=\"card-dark\">
+<div class=\"card-dark\" style=\"margin-top: 6px;\">
   <blockquote style=\"margin: 0; color: #38bdf8; font-style: italic;\">
     \"Informasi adalah data yang telah diproses ke dalam suatu bentuk yang mempunyai arti bagi si penerima dan mempunyai nilai nyata serta terasa bagi pengambilan keputusan saat ini maupun keputusan masa mendatang.\"<br>
     <strong>&mdash; Gordon B. Davis, Management Information Systems</strong>
@@ -40,7 +38,7 @@ KSI_MEETINGS = [
 """
             },
             {
-                "title": "Tiga Sumbu Klasifikasi Data Resmi & 3 Pilar Kualitas Data",
+                "title": "Tiga Sumbu Klasifikasi Data Resmi & Tiga Pilar Kualitas Data",
                 "content_html": """
 <p>Berdasarkan modul perkuliahan dan catatan kelas Pak Dheni, klasifikasi data terbagi atas 3 sumbu utama:</p>
 <table>
@@ -55,34 +53,30 @@ KSI_MEETINGS = [
   </tbody>
 </table>
 
-<div class=\"grid-3\" style=\"margin-top: 6px;\">
-  <div class=\"card\">
-    <strong>1. Ketelitian (Accuracy)</strong><br>
-    Bebas dari kesalahan kalkulasi, bebas bias, dan mencerminkan kebenaran fakta objektif.
-  </div>
-  <div class=\"card\">
-    <strong>2. Komparabilitas (Comparability)</strong><br>
-    Dapat dibandingkan secara adil (*apple-to-apple*) dengan standar konversi setara.
-  </div>
-  <div class=\"card\">
-    <strong>3. Validitas (Validity)</strong><br>
-    Tingkat kebenaran alat ukur dalam mengukur apa yang sebenarnya harus diukur.
-  </div>
-</div>
+<p style=\"margin-top: 8px;\"><strong>Tiga Pilar Mutu Data yang Menjamin Integritas Keputusan:</strong></p>
+<table>
+  <thead><tr><th>Pilar Mutu Data</th><th>Definisi Konseptual</th><th>Mekanisme Verifikasi & Validasi</th><th>Contoh Kasus Riil di Lapangan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Ketelitian (Accuracy)</strong></td><td>Bebas dari kesalahan kalkulasi, bebas bias, dan mencerminkan fakta objektif sesungguhnya.</td><td>Pengecekan digit pembagi, validasi checksum database.</td><td>Pencatatan saldo bank nasabah harus tepat hingga rupiah terakhir.</td></tr>
+    <tr><td><strong>2. Komparabilitas (Comparability)</strong></td><td>Dapat dibandingkan secara adil (<em>apple-to-apple</em>) dengan standar konversi setara.</td><td>Standardisasi mata uang, penyesuaian satuan metrik/imperial.</td><td>Membandingkan laba Rp 10 juta vs RM 10 juta wajib dikonversi ke USD terlebih dahulu.</td></tr>
+    <tr><td><strong>3. Validitas (Validity)</strong></td><td>Tingkat kebenaran alat ukur dalam mengukur apa yang sebenarnya seharusnya diukur.</td><td>Kalibrasi rutin instrumen, audit metodologi pengumpulan data.</td><td>Timbangan semangka yang terkalibrasi normal valid menunjukkan bobot 5 kg, bukan 7 kg.</td></tr>
+  </tbody>
+</table>
 """
             },
             {
                 "title": "Hierarki DIKW (Data - Information - Knowledge - Wisdom)",
                 "content_html": """
-<div class=\"card\">
-  <strong>Piramida DIKW Komputasi:</strong>
-  <ul style=\"font-size: 7.7pt;\">
-    <li><strong>Data (What?):</strong> Catatan atomik fakta: <code>\"Pasien A, Tensi 170/100, Usia 58\"</code>.</li>
-    <li><strong>Information (Who, When, Where?):</strong> Data diberi label medis: <code>\"Pasien A pada tanggal 1 Oktober 2026 mengalami hipertensi stadium 2.\"</code></li>
-    <li><strong>Knowledge (How?):</strong> Pemahaman pola hubungan: <code>\"Pasien usia &gt;50 tahun dengan pola makan asin memiliki risiko stroke 4x lebih tinggi jika tensi &gt;160.\"</code></li>
-    <li><strong>Wisdom (Why?):</strong> Kebijakan visioner jangka panjang: <code>\"Merancang program preventif diet rendah garam di puskesmas dan sistem peringatan dini digital pada rekam medis.\"</code></li>
-  </ul>
-</div>
+<p>Piramida DIKW menggambarkan evolusi nilai data dari fakta mentah hingga kebijaksanaan strategis eksekutif:</p>
+<table>
+  <thead><tr><th>Tingkatan DIKW</th><th>Pertanyaan Kunci</th><th>Karakteristik Pengolahan Komputasi</th><th>Contoh Konkret Kasus Rekam Medis Pasien</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Data</strong></td><td><em>What? (Fakta Mentah)</em></td><td>Catatan atomik diskrit tanpa konteks relasional pembungkus.</td><td><code>Pasien A, Tensi 170/100, Usia 58</code></td></tr>
+    <tr><td><strong>2. Information</strong></td><td><em>Who, When, Where?</em></td><td>Data yang telah diagregasi, distrukturkan, dan diberi label bermakna.</td><td><code>Pasien A pada 1 Oktober 2026 terdiagnosis hipertensi stadium 2.</code></td></tr>
+    <tr><td><strong>3. Knowledge</strong></td><td><em>How? (Pola & Kaidah)</em></td><td>Sintesis pemahaman kausalitas dari akumulasi data lintas waktu.</td><td><code>Pasien usia &gt;50 thn berdiet tinggi garam berisiko stroke 4x lebih tinggi jika tensi &gt;160.</code></td></tr>
+    <tr><td><strong>4. Wisdom</strong></td><td><em>Why? (Visi & Kebijakan)</em></td><td>Kebijakan preventif jangka panjang untuk memecahkan akar persoalan.</td><td><code>Merancang program preventif diet rendah garam dan integrasi peringatan dini digital pada rekam medis.</code></td></tr>
+  </tbody>
+</table>
 """
             }
         ],
@@ -102,7 +96,7 @@ KSI_MEETINGS = [
             {
                 "title": "The Big Picture: Anatomi Sosio-Teknis Sistem Informasi",
                 "content_html": """
-<p>Sering terjadi salah kaprah bahwa Sistem Informasi adalah melulu tentang komputer dan perangkat lunak. Pandangan modern menegaskan bahwa Sistem Informasi adalah <strong>Sistem Sosio-Teknis (Socio-Technical System)</strong> yang memadukan komponen teknologis (hardware, software, data, network) dengan komponen sosial manusia (orang, peran, budaya organisasi, dan prosedur kerja bisnis).</p>
+<p>Sistem Informasi adalah <strong>Sistem Sosio-Teknis (Socio-Technical System)</strong> yang memadukan komponen teknologis (hardware, software, data, network) dengan komponen sosial manusia (orang, peran, budaya organisasi, dan prosedur kerja bisnis).</p>
 """
             },
             {
@@ -122,28 +116,17 @@ KSI_MEETINGS = [
 """
             },
             {
-                "title": "Model Cybernetic Sistem: Input, Proses, Output, Feedback & Control",
+                "title": "Model Cybernetic Sistem: Regulasi Umpan Balik & Pengendalian",
                 "content_html": """
-<p>Sistem Informasi modern bukan sekadar sistem linier searah, melainkan sebuah <strong>Sistem Sibernetik (Cybernetic System)</strong> yang memiliki mekanisme regulasi mandiri (<em>self-regulating system</em>):</p>
+<p>Sistem Informasi modern bekerja sebagai <strong>Sistem Sibernetik (Cybernetic System)</strong> yang memiliki mekanisme regulasi mandiri (<em>self-regulating system</em>):</p>
 
-<div class=\"card-dark\">
-  <strong>Alur Kontrol Sibernetik:</strong>
-  <pre><code>[ INPUT: Data Transaksi Mentah ] ──> [ PROSES: Validasi, Agregasi, Kalkulasi ] ──> [ OUTPUT: Informasi / Laporan ]
-                                                                                              │
-                                                                                              ▼
-        [ KONTROL: Penyesuaian Tindakan ] <── [ FEEDBACK: Evaluasi Deviasi Kinerja vs Standar Target ]</code></pre>
-</div>
-
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>Feedback (Umpan Balik):</strong><br>
-    Data tentang kinerja operasional sistem yang dikirimkan kembali untuk dievaluasi. Contoh: Laporan IPK semesteran mahasiswa menunjukkan 40% mahasiswa kelas mendapat nilai C di mata kuliah X.
-  </div>
-  <div class=\"card\">
-    <strong>Control (Pengendali):</strong><br>
-    Aksi korektif yang diambil pengambil keputusan jika performa menyimpang dari standar target yang ditetapkan. Contoh: Ketua Program Studi mengevaluasi silabus dan menambahkan sesi responsi tutorial tambahan.
-  </div>
-</div>
+<table>
+  <thead><tr><th>Komponen Sibernetik</th><th>Fungsi Regulasi Sistem</th><th>Alur Informasi / Sinyal</th><th>Contoh Kasus Sistem Akademik Unindra</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Feedback (Umpan Balik)</strong></td><td>Pengukuran dan pelaporan data deviasi kinerja aktual terhadap standar target.</td><td>Mengalir dari Output kembali ke Pengambil Keputusan.</td><td>Laporan rekap evaluasi: 35% mahasiswa kelas RG nilainya di bawah ambang batas kelulusan.</td></tr>
+    <tr><td><strong>Control (Pengendali)</strong></td><td>Tindakan intervensi manajerial untuk menyesuaikan input/proses agar kembali ke jalur optimal.</td><td>Mengalir dari Pimpinan ke subsistem Input/Proses.</td><td>Ketua Program Studi menginstruksikan kelas tutorial responsi tambahan dan review kisi-kisi.</td></tr>
+  </tbody>
+</table>
 """
             },
             {
@@ -197,23 +180,15 @@ KSI_MEETINGS = [
             {
                 "title": "Taksonomi Klasifikasi Sistem di Industri",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>Berdasarkan Keterbukaan terhadap Lingkungan:</strong>
-    <ul style=\"font-size: 7.7pt;\">
-      <li><strong>Sistem Tertutup (Closed System):</strong> Sistem yang terisolasi secara mutlak dari lingkungan luar dan tidak menerima input eksternal. Secara murni hanya ada di fisika teoritis (reaksi kimia dalam tabung hampa kedap udara).</li>
-      <li><strong>Sistem Terbuka (Open System):</strong> Sistem yang berinteraksi bebas dengan lingkungan, menerima input, membuang output, dan beradaptasi terhadap perubahan lingkungan luar. <strong>Seluruh Sistem Informasi Bisnis adalah Sistem Terbuka</strong>.</li>
-    </ul>
-  </div>
-
-  <div class=\"card\">
-    <strong>Berdasarkan Kepastian Hasil Operasi:</strong>
-    <ul style=\"font-size: 7.7pt;\">
-      <li><strong>Sistem Deterministik:</strong> Sistem yang operasinya dapat diprediksi secara tepat dan pasti 100%. Contoh: Program kalkulator aritmatika, sistem kompilasi kode Pascal.</li>
-      <li><strong>Sistem Probabilistik:</strong> Sistem yang perilakunya mengandung ketidakpastian dan perkiraan peluang statistik. Contoh: Sistem ramalan cuaca cuaca harian, sistem analisis pergerakan saham di bursa efek.</li>
-    </ul>
-  </div>
-</div>
+<table>
+  <thead><tr><th>Dasar Klasifikasi</th><th>Kategori Sistem</th><th>Karakteristik & Mekanisme Kerja</th><th>Contoh Sistem Nyata</th></tr></thead>
+  <tbody>
+    <tr><td rowspan=\"2\"><strong>Keterbukaan Lingkungan</strong></td><td><strong>Sistem Terbuka (Open System)</strong></td><td>Berinteraksi dinamis dengan lingkungan luar, menerima input, membuang output, dan beradaptasi.</td><td>Seluruh Sistem Informasi Bisnis (SIAKAD, E-Commerce Tokopedia, ERP SAP).</td></tr>
+    <tr><td><strong>Sistem Tertutup (Closed System)</strong></td><td>Terisolasi total secara mandiri tanpa pertukaran energi atau informasi dengan luar.</td><td>Reaksi kimia laboratorium dalam tabung hampa tertutup rapat.</td></tr>
+    <tr><td rowspan=\"2\"><strong>Kepastian Operasi</strong></td><td><strong>Sistem Deterministik</strong></td><td>Beroperasi menurut pola terdefinisi pasti; input sama selalu menghasilkan output sama 100%.</td><td>Program kompilasi Pascal, mesin kalkulator aritmatika kasir.</td></tr>
+    <tr><td><strong>Sistem Probabilistik</strong></td><td>Mengandung faktor acak dan ketidakpastian; output dinyatakan dalam probabilitas statistik.</td><td>Sistem peramalan cuaca radar BMKG, sistem analisis pergerakan saham bursa efek.</td></tr>
+  </tbody>
+</table>
 """
             },
             {
@@ -262,30 +237,27 @@ KSI_MEETINGS = [
             {
                 "title": "Lima Aktivitas Pokok Sistem Informasi & Perbedaan Hakiki SI vs TI",
                 "content_html": """
-<div class=\"grid-2\">
-  <div class=\"card\">
-    <strong>5 Aktivitas Dasar Sistem Informasi:</strong>
-    <ol style=\"font-size: 7.7pt;\">
-      <li><strong>Input:</strong> Perekaman dan pemasukan data transaksi mentah ke dalam sistem.</li>
-      <li><strong>Processing:</strong> Pengolahan data (penghitungan aritmatika, klasifikasi, agregasi, pengurutan).</li>
-      <li><strong>Storage:</strong> Penyimpanan data secara teratur dan aman dalam media basis data.</li>
-      <li><strong>Output:</strong> Penyajian informasi yang telah jadi dalam bentuk laporan, grafik dashboard, notifikasi.</li>
-      <li><strong>Control:</strong> Pemantauan dan pengendalian kinerja sistem agar sesuai target kualitas.</li>
-    </ol>
-  </div>
+<p><strong>Lima Aktivitas Pokok Siklus Pengolahan Sistem Informasi:</strong></p>
+<table>
+  <thead><tr><th>No</th><th>Aktivitas Pokok</th><th>Tindakan Pemrosesan Komputasi</th><th>Komponen / Aset yang Terlibat</th><th>Contoh Nyata di Perusahaan</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Input (Masukan)</strong></td><td>Perekaman, pengumpulan, dan pemindaian data transaksi mentah ke format digital.</td><td>Barcode scanner, keyboard, form web, sensor IoT.</td><td>Kasir memindai barcode produk dan menginput jumlah item belanja.</td></tr>
+    <tr><td>2</td><td><strong>Processing (Pemrosesan)</strong></td><td>Transformasi data melalui kalkulasi aritmatika, perbandingan logika, agregasi, dan pengurutan.</td><td>CPU, RAM, algoritma pemrogram, query database.</td><td>Sistem mengalikan harga satuan &times; kuantiti, memotong diskon, dan menghitung PPN 11%.</td></tr>
+    <tr><td>3</td><td><strong>Storage (Penyimpanan)</strong></td><td>Pencatatan data secara terorganisir ke dalam media penyimpanan jangka panjang yang aman.</td><td>Basis data relasional (RDBMS), SSD server, cloud storage.</td><td>Menyimpan record transaksi ke tabel <code>penjualan_header</code> dan <code>penjualan_detail</code>.</td></tr>
+    <tr><td>4</td><td><strong>Output (Keluaran)</strong></td><td>Penyajian dan pendistribusian informasi yang telah jadi kepada pengguna dalam bentuk bernilai.</td><td>Layar monitor, printer struk kasir, PDF laporan, dashboard API.</td><td>Mencetak struk belanja fisik untuk pembeli dan mengirim email invoice otomatis.</td></tr>
+    <tr><td>5</td><td><strong>Control (Pengendalian)</strong></td><td>Pemantauan kinerja sistem, verifikasi integritas data, dan deteksi deviasi kesalahan.</td><td>Log audit trail, modul rekonsiliasi kas, hak akses user role.</td><td>Membandingkan total uang fisik di laci kasir dengan angka rekapitulasi sistem saat tutup toko.</td></tr>
+  </tbody>
+</table>
 
-  <div class=\"card\">
-    <strong>Komparasi Filosofis: SI vs TI</strong>
-    <table>
-      <thead><tr><th>Parameter</th><th>Teknologi Informasi (TI)</th><th>Sistem Informasi (SI)</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Hakikat</strong></td><td>Alat / Instrumen teknologi (Hardware & Software).</td><td>Sistem Sosio-Teknis menyeluruh (Orang + Proses + TI).</td></tr>
-        <tr><td><strong>Fokus</strong></td><td>Kecepatan pemrosesan, throughput, konektivitas kabel, uptime server.</td><td>Efektivitas pencapaian tujuan bisnis dan kepuasan pengguna.</td></tr>
-        <tr><td><strong>Analogi</strong></td><td>Mobil balap berkecepatan tinggi.</td><td>Sistem transportasi kota (mobil, sopir, rambu lalu lintas, penumpang, dan tujuan perjalanan).</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<p style=\"margin-top: 8px;\"><strong>Komparasi Filosofis Mendalam: Sistem Informasi (SI) vs Teknologi Informasi (TI):</strong></p>
+<table>
+  <thead><tr><th>Parameter Pembeda</th><th>Teknologi Informasi (TI)</th><th>Sistem Informasi (SI)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Hakikat</strong></td><td>Alat / Instrumen teknologi fisik dan logis (Hardware & Software).</td><td>Sistem Sosio-Teknis menyeluruh yang memadukan Orang, Proses Bisnis, dan TI.</td></tr>
+    <tr><td><strong>Fokus Perhatian</strong></td><td>Kecepatan clock CPU, throughput jaringan, kapasitas disk, uptime server.</td><td>Efektivitas pencapaian tujuan organisasi bisnis dan kepuasan pengguna.</td></tr>
+    <tr><td><strong>Analogi Riil</strong></td><td>Mesin mobil balap berkekuatan 500 tenaga kuda.</td><td>Sistem transportasi kota (mobil, pengemudi, aturan lalu lintas, penumpang, dan tujuan perjalanan).</td></tr>
+  </tbody>
+</table>
 """
             },
             {

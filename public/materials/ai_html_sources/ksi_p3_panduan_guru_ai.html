@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -288,23 +301,15 @@
     <div class="section">
       <div class="section-title">BAB 3. Taksonomi Klasifikasi Sistem di Industri</div>
       
-<div class="grid-2">
-  <div class="card">
-    <strong>Berdasarkan Keterbukaan terhadap Lingkungan:</strong>
-    <ul style="font-size: 7.7pt;">
-      <li><strong>Sistem Tertutup (Closed System):</strong> Sistem yang terisolasi secara mutlak dari lingkungan luar dan tidak menerima input eksternal. Secara murni hanya ada di fisika teoritis (reaksi kimia dalam tabung hampa kedap udara).</li>
-      <li><strong>Sistem Terbuka (Open System):</strong> Sistem yang berinteraksi bebas dengan lingkungan, menerima input, membuang output, dan beradaptasi terhadap perubahan lingkungan luar. <strong>Seluruh Sistem Informasi Bisnis adalah Sistem Terbuka</strong>.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <strong>Berdasarkan Kepastian Hasil Operasi:</strong>
-    <ul style="font-size: 7.7pt;">
-      <li><strong>Sistem Deterministik:</strong> Sistem yang operasinya dapat diprediksi secara tepat dan pasti 100%. Contoh: Program kalkulator aritmatika, sistem kompilasi kode Pascal.</li>
-      <li><strong>Sistem Probabilistik:</strong> Sistem yang perilakunya mengandung ketidakpastian dan perkiraan peluang statistik. Contoh: Sistem ramalan cuaca cuaca harian, sistem analisis pergerakan saham di bursa efek.</li>
-    </ul>
-  </div>
-</div>
+<table>
+  <thead><tr><th>Dasar Klasifikasi</th><th>Kategori Sistem</th><th>Karakteristik & Mekanisme Kerja</th><th>Contoh Sistem Nyata</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="2"><strong>Keterbukaan Lingkungan</strong></td><td><strong>Sistem Terbuka (Open System)</strong></td><td>Berinteraksi dinamis dengan lingkungan luar, menerima input, membuang output, dan beradaptasi.</td><td>Seluruh Sistem Informasi Bisnis (SIAKAD, E-Commerce Tokopedia, ERP SAP).</td></tr>
+    <tr><td><strong>Sistem Tertutup (Closed System)</strong></td><td>Terisolasi total secara mandiri tanpa pertukaran energi atau informasi dengan luar.</td><td>Reaksi kimia laboratorium dalam tabung hampa tertutup rapat.</td></tr>
+    <tr><td rowspan="2"><strong>Kepastian Operasi</strong></td><td><strong>Sistem Deterministik</strong></td><td>Beroperasi menurut pola terdefinisi pasti; input sama selalu menghasilkan output sama 100%.</td><td>Program kompilasi Pascal, mesin kalkulator aritmatika kasir.</td></tr>
+    <tr><td><strong>Sistem Probabilistik</strong></td><td>Mengandung faktor acak dan ketidakpastian; output dinyatakan dalam probabilitas statistik.</td><td>Sistem peramalan cuaca radar BMKG, sistem analisis pergerakan saham bursa efek.</td></tr>
+  </tbody>
+</table>
 
     </div>
         

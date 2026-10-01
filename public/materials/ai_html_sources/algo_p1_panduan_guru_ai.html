@@ -147,24 +147,37 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 7.9pt;
-      margin: 5px 0 7px 0;
+      margin: 6px 0 8px 0;
+      border: 1px solid #cbd5e1;
     }
 
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 7px;
+      padding: 5px 8px;
       text-align: left;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     th {
-      background: #f1f5f9;
+      background: #0f172a;
       font-weight: 700;
-      color: #1e293b;
+      color: #ffffff;
+      font-size: 7.8pt;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #2563eb;
     }
 
     tr:nth-child(even) td {
-      background: #fbfcfe;
+      background: #f8fafc;
+    }
+
+    td code {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 7.6pt;
     }
 
     pre, code {
@@ -292,34 +305,43 @@
     <div class="section">
       <div class="section-title">BAB 3. Tiga Notasi Baku Penyajian Algoritma (Komparasi & Implementasi)</div>
       
-<div class="grid-3">
-  <div class="card">
-    <strong>1. Bahasa Alami (Deskriptif)</strong><br>
-    <span style="font-size: 7.5pt; color: #64748b;">Menggunakan narasi bahasa manusia (Indonesia/Inggris).</span>
-    <ul style="margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;">
-      <li>Kelebihan: Mudah dipahami orang awam.</li>
-      <li>Kelemahan: Sering bertele-tele dan rentan ambiguitas istilah.</li>
-    </ul>
-  </div>
-  <div class="card">
-    <strong>2. Pseudocode (Kode Semu)</strong><br>
-    <span style="font-size: 7.5pt; color: #64748b;">Notasi terstruktur mirip bahasa pemrograman tingkat tinggi.</span>
-    <ul style="margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;">
-      <li>Kelebihan: Rapi, ringkas, independen dari bahasa apapun.</li>
-      <li>Kelemahan: Tidak dapat dieksekusi langsung oleh mesin compiler.</li>
-    </ul>
-  </div>
-  <div class="card">
-    <strong>3. Flowchart (Diagram Alir)</strong><br>
-    <span style="font-size: 7.5pt; color: #64748b;">Bagan visual geometris standar ANSI/ISO.</span>
-    <ul style="margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;">
-      <li>Kelebihan: Alur logika percabangan terlihat seketika.</li>
-      <li>Kelemahan: Memakan ruang luas jika logika sangat rumit.</li>
-    </ul>
-  </div>
-</div>
+<p>Dalam rekayasa komputasi, algoritma dapat diekspresikan melalui tiga notasi baku dengan karakteristik, kekuatan, dan batasan masing-masing:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Notasi Algoritma</th>
+      <th>Format / Karakteristik Penyajian</th>
+      <th>Kelebihan Utama</th>
+      <th>Kelemahan & Limitasi</th>
+      <th>Kesesuaian Penggunaan Nyata</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Bahasa Alami (Deskriptif)</strong></td>
+      <td>Narasi teks terstruktur memakai bahasa manusia sehari-hari (Indonesia / Inggris).</td>
+      <td>Mudah dipahami dan dikomunikasikan kepada pemangku kepentingan awam non-teknis.</td>
+      <td>Rentan multitafsir (ambigu), panjang bertele-tele, tidak memiliki standar formal.</td>
+      <td>Dokumentasi konseptual awal, penjelasan alur proses bisnis kepada klien non-TI.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Pseudocode (Kode Semu)</strong></td>
+      <td>Notasi terstruktur bergaya bahasa pemrograman imperatif tingkat tinggi tanpa dependensi sintaks spesifik.</td>
+      <td>Ringkas, presisi, independen dari bahasa mesin, mudah ditranslasikan ke bahasa pemrograman apapun.</td>
+      <td>Tidak dapat dieksekusi langsung oleh mesin compiler tanpa dikonversi ke kode nyata.</td>
+      <td>Perancangan logika inti sistem, publikasi paper riset algoritma, standar buku teks ilmu komputer.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Flowchart (Diagram Alir)</strong></td>
+      <td>Representasi grafis dua dimensi menggunakan simbol-simbol geometri standar ANSI / ISO 5807.</td>
+      <td>Alur logika, percabangan, dan perulangan tampak seketika secara visual; mudah ditelusuri alurnya.</td>
+      <td>Membutuhkan ruang gambar luas; sulit digambar ulang saat logika sangat kompleks dan bersarang banyak.</td>
+      <td>Presentasi arsitektur sistem, audit proses bisnis, instruksi operasional standar kerja (SOP).</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="card-dark">
+<div class="card-dark" style="margin-top: 8px;">
   <span style="color: #38bdf8; font-weight: bold;">// Contoh Pseudocode Baku Menghitung Luas Segitiga:</span>
   <pre><code><span class="code-kw">PROGRAM</span> HitungLuasSegitiga
 <span class="code-kw">DEKLARASI</span>:
