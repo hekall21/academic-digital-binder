@@ -712,9 +712,9 @@ Hierarki Himpunan: **ℕ ⊂ 𝕎 ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ**
 
 ---
 
-### Pertemuan 3: Pertidaksamaan Nilai Mutlak & Konsep Pemetaan Fungsi
+### Pertemuan 3: Pertidaksamaan Nilai Mutlak & Teorema Aljabar Pengkuadratan Dua Ruas
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Acuan:** `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi (1).pdf` (18 Slide).
+* **Acuan:** `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi.pdf` (Slide 1 - 3).
 
 #### 1. Definisi Geometris & Delapan Sifat Nilai Mutlak:
 Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bilangan real (selalu bernilai non-negatif `|x| ≥ 0`):
@@ -727,8 +727,8 @@ Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bi
 3. `|a + b| ≤ |a| + |b|` (*Ketaksamaan Segitiga*)
 4. `|a - b| ≥ ||a| - |b||`
 5. `|x| = √(x²)`
-6. `|x| < a ⟺ -a < x < a` (daerah di dalam interval)
-7. `|x| > a ⟺ x < -a atau x > a` (daerah di sayap luar)
+6. `|x| < a ⟺ -a < x < a` (daerah solusi di dalam interval)
+7. `|x| > a ⟺ x < -a atau x > a` (daerah solusi di sayap luar)
 8. `|x| ≤ |y| ⟺ x² ≤ y²` (metode kuadrat kedua ruas)
 
 #### 2. Pembahasan Latihan Soal Nilai Mutlak Slide Dosen:
@@ -753,46 +753,77 @@ Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bi
   Karena diminta `≤ 0`, ambil daerah negatif di antara dua pemecah:  
   **HP = [ -4/3, -1 ]**
 
-#### 3. Konsep Pemetaan Fungsi `f : X ➔ Y`:
-* **Definisi Fungsi:** Aturan relasi yang menghubungkan setiap elemen `x` pada himpunan daerah asal (Domain / `D_f`) dengan TEPAT SATU elemen `f(x)` pada himpunan daerah kawan (Kodomain). Himpunan semua bayangan keluaran disebut daerah hasil (Range / `R_f`).
-* **Uji Simetri Fungsi:**
-  * **Fungsi Genap:** `f(-x) = f(x)` (Grafik kurva simetris terhadap sumbu Y). Contoh: `f(x) = x² - 2`.
-  * **Fungsi Ganjil:** `f(-x) = -f(x)` (Grafik kurva simetris terhadap titik pusat asal (0,0)). Contoh: `g(x) = x³ - 2x`.
-* **Syarat Domain Alami (Natural Domain):**
-  * Bentuk Akar Irasional: `f(x) = √(p(x)) ⟹ Syarat: p(x) ≥ 0` (di dalam akar tidak boleh negatif).
-  * Bentuk Pecahan Rasional: `f(x) = p(x) / q(x) ⟹ Syarat: q(x) ≠ 0` (penyebut tidak boleh nol).
-
 ---
 
-### Pertemuan 4: Persamaan Garis Lurus, Gradien & Grafik Parabola Kuadrat
+### Pertemuan 4: Konsep Pemetaan Fungsi, Evaluasi Beda h, Uji Genap/Ganjil, Domain & Range, Komposisi, dan Invers
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Acuan:** Slide PPT Dosen Persamaan Garis Lurus & Modul Kuadrat.
+* **Acuan:** Berkas PDF Dosen `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi.pdf` (Slide 4 - 17) & Catatan Coretan Dosen Langsung di Kelas (Screenshot 1, 2, 3).
+* **Catatan Jadwal:** File dosen tertulis `Pert_3`, namun di kelas tatap muka reguler materi ini diajarkan resmi sebagai **Pertemuan 4**.
 
-#### 1. Koordinat Kartesius 2D & Rumus Gradien (Kemiringan `m`):
-* Kuadran I (`+x, +y`), Kuadran II (`-x, +y`), Kuadran III (`-x, -y`), Kuadran IV (`+x, -y`).
-* **Rumus Gradien Garis Melalui Dua Titik `(x₁, y₁)` dan `(x₂, y₂)`:**
-  `m = Δy / Δx = (y₂ - y₁) / (x₂ - x₁)`
-* **Bentuk Persamaan Garis:**
-  * Bentuk Eksplisit: `y = m·x + c` (gradien `m`, memotong sumbu Y di `(0, c)`).
-  * Bentuk Implisit Umum: `Ax + By + C = 0` ⟹ Gradien `m = -A / B`.
-  * Persamaan Garis Melalui Titik `(x₁, y₁)` Bergradien `m`: `y - y₁ = m · (x - x₁)`.
+#### 1. Definisi Fungsi & Catatan Diagram Panah Dosen (Screenshot 1):
+Fungsi `f` adalah aturan korespondensi yang menghubungkan **setiap** elemen `x` pada himpunan daerah asal (Domain) dengan **tepat satu** nilai `f(x)` pada himpunan daerah kawan (Kodomain). Himpunan semua bayangan keluaran disebut daerah hasil (Range).
+* **Coretan Diagram Panah Dosen:**
+  * Himpunan Asal: `A = {a, b, c}` ➔ **Domain** = `{a, b, c}`
+  * Himpunan Kawan: `B = {1, 2, 3, 4}` ➔ **Kodomain** = `{1, 2, 3, 4}`
+  * Relasi Pemetaan: `a ➔ 1`, `b ➔ 2`, `c ➔ 3`
+  * **Daerah Hasil (Range):** `{1, 2, 3}` *(Elemen 4 tidak masuk karena tidak memiliki prapeta dari A)*.
 
-#### 2. Hubungan Antar-Dua Garis Lurus:
-* **Dua Garis Sejajar (Parallel):** Memiliki gradien identik sama persis: `m₁ = m₂`.
-* **Dua Garis Tegak Lurus (Perpendicular):** Berpotongan saling membentuk sudut 90°:
-  `m₁ · m₂ = -1 ⟺ m₂ = -1 / m₁` (Prinsip: "Lawan dan Kebalikan").
+#### 2. Evaluasi Nilai Fungsi & Rasio Selisih Beda (Screenshot 2):
+Untuk `f(x) = x² - 2x`:
+* **a. Nilai `f(4)`:**  
+  `f(4) = (4)² - 2(4) = 16 - 8 = 8`
+* **b. Nilai `f(4 + h)`:**  
+  `f(4 + h) = (4 + h)² - 2(4 + h) = (16 + 8h + h²) - 8 - 2h = h² + 6h + 8`
+* **c. Nilai `f(4 - h) - f(4)`:**  
+  `f(4 - h) = (4 - h)² - 2(4 - h) = 16 - 8h + h² - 8 + 2h = h² - 6h + 8` *(Catatan dosen: (-h)² = h²)*  
+  `f(4 - h) - f(4) = (h² - 6h + 8) - 8 = h² - 6h`
+* **d. Rasio Selisih Beda (Difference Quotient):**  
+  `[f(4 + h) - f(4)] / h = [(h² + 6h + 8) - 8] / h = (h² + 6h) / h = (h²/h) + (6h/h) = h + 6` *(Fondasi limit turunan aljabar)*.
 
-#### 3. Karakteristik Parabola Fungsi Kuadrat `f(x) = a·x² + b·x + c`:
-* **Bukaan Kurva:**
-  * Jika `a > 0`: Parabola terbuka ke atas (memiliki titik minimum lembah).
-  * Jika `a < 0`: Parabola terbuka ke bawah (memiliki titik maksimum bukit).
-* **Diskriminan `D = b² - 4·a·c`:**
-  * `D > 0`: Kurva memotong sumbu X di 2 titik berlainan (`x₁ ≠ x₂`).
-  * `D = 0`: Kurva menyinggung sumbu X di 1 titik tunggal kembar (`x₁ = x₂`).
-  * `D < 0`: Kurva tidak memotong sumbu X (melayang pasti/definit).
-    * *Definit Positif (selalu positif untuk semua x):* `a > 0` dan `D < 0`.
-    * *Definit Negatif (selalu negatif untuk semua x):* `a < 0` dan `D < 0`.
-* **Titik Puncak Puncakan Parabola:** `P(x_p, y_p) = ( -b / (2a), -D / (4a) )`.
+#### 3. Uji Fungsi Genap vs Fungsi Ganjil (Screenshot 3):
+Substitusikan `x` dengan `(-x)` ke seluruh suku fungsi:
+* **Fungsi Genap (Even):** `f(-x) = f(x)` (Grafik kurva simetris terhadap sumbu Y).  
+  *Contoh dosen:* `f(x) = x² - 2 ⟹ f(-x) = (-x)² - 2 = x² - 2 = f(x)` (Genap).
+* **Fungsi Ganjil (Odd):** `f(-x) = -f(x)` (Grafik kurva simetris terhadap titik pusat asal (0,0)).  
+  *Contoh dosen:* `g(x) = x³ - 2x ⟹ g(-x) = (-x)³ - 2(-x) = -x³ + 2x = -(x³ - 2x) = -g(x)` (Ganjil).
+* **Contoh Soal Ujian Slide Dosen:**  
+  Apakah `f(x) = (x³ + 3x) / (x⁴ - 3x² + 4)` termasuk fungsi ganjil atau genap?  
+  *Langkah Pengujian Dosen:*  
+  `f(-x) = [(-x)³ + 3(-x)] / [(-x)⁴ - 3(-x)² + 4]`  
+  `f(-x) = (-x³ - 3x) / (x⁴ - 3x² + 4)`  
+  Faktorkan tanda minus keluar dari pembilang:  
+  `f(-x) = - (x³ + 3x) / (x⁴ - 3x² + 4) = - f(x)`  
+  **Kesimpulan Dosen: Terbukti FUNGSI GANJIL!**  
+  *💡 Catatan Aljabar Dosen:* `-1/2 = -(1/2) = 1/(-2)` dan `-1/(-2) = 1/2`.
+
+#### 4. Syarat Daerah Asal Alami (Domain) & Daerah Hasil (Range):
+* **Bentuk Akar Irasional `f(x) = √(p(x))`:** Syarat di dalam akar `p(x) ≥ 0`.  
+  *Contoh:* `f(x) = √(4 - x) ⟹ 4 - x ≥ 0 ⟹ x ≤ 4`. Domain: `(-∞, 4]`, Range: `[0, ∞)`.
+* **Bentuk Pecahan Rasional `f(x) = p(x) / q(x)`:** Syarat penyebut `q(x) ≠ 0`.  
+  *Contoh:* `f(x) = 2 / (x + 3) ⟹ x + 3 ≠ 0 ⟹ x ≠ -3`. Domain: `ℝ \ {-3}`, Range: `ℝ \ {0}` (via invers `x = 2/y - 3`).
+* **Fungsi Kuadrat `g(x) = x² - 5x + 6`:** Parabola terbuka ke atas (`a = 1 > 0`), titik balik minimum `x_p = 5/2 = 2.5`, `y_min = -0.25 = -1/4`.  
+  Domain: `ℝ`, Range: `[ -1/4, ∞ )`.
+* **Fungsi Pecahan Linear `g(x) = (x + 1) / (x - 3)`:** Domain: `x ≠ 3`.  
+  Range via invers: `y(x - 3) = x + 1 ⟹ x(y - 1) = 3y + 1 ⟹ x = (3y + 1)/(y - 1) ⟹ y ≠ 1`. Range: `ℝ \ {1}`.
+
+#### 5. Komposisi & Invers Fungsi (Slide 16 & 17):
+* **Komposisi:** `(f ∘ g)(x) = f(g(x))` dan `(g ∘ f)(x) = g(f(x))` (umumnya tidak komutatif).
+* **Invers:** `f(f⁻¹(x)) = f⁻¹(f(x)) = x`. Sifat: `(f ∘ g)⁻¹(x) = (g⁻¹ ∘ f⁻¹)(x)`.
+* **Pembahasan Soal 1:** Invers `f(x) = 2x + 3` ⟹ `y = 2x + 3 ⟹ x = (y - 3)/2` ⟹ **`f⁻¹(x) = (x - 3)/2`**.
+* **Pembahasan Soal 2:** Daerah asal `(f ∘ g)⁻¹(x)` jika `f(x) = 9/(x + 3)` dan `g(x) = x²`:  
+  `(f ∘ g)(x) = 9/(x² + 3)`. Invers: `x² = 9/y - 3 = (9 - 3y)/y ⟹ x = √((9 - 3y)/y)`.  
+  Syarat akar: `(9 - 3x)/x ≥ 0` dan `x ≠ 0`. Pembuat nol: `x = 3` dan `x = 0`.  
+  **Domain `(f ∘ g)⁻¹` = ( 0, 3 ] = { x ∈ ℝ | 0 < x ≤ 3 }**.
+* **Pembahasan Soal 3:** Daerah asal `(f ∘ g)⁻¹(x)` jika `f(x) = x² + 4` dan `g(x) = 1/(x² - 1)`:  
+  *Teorema Kunci:* Domain fungsi invers sama dengan Range fungsi asalnya!  
+  `(f ∘ g)(x) = 1/(x² - 1)² + 4`. Karena `1/(x² - 1)² > 0` untuk semua `x ≠ ±1`, maka `y > 4`.  
+  **Domain `(f ∘ g)⁻¹` = ( 4, ∞ ) = { x ∈ ℝ | x > 4 }**.
+
+#### 6. Suplemen Geometri: Sistem Koordinat Cartesius, Gradien & Parabola:
+* **4 Kuadran:** Kuadran I (`+x, +y`), Kuadran II (`-x, +y`), Kuadran III (`-x, -y`), Kuadran IV (`+x, -y`).
+* **Rumus Gradien Garis Melalui Dua Titik:** `m = (y₂ - y₁) / (x₂ - x₁)`.
+* **Garis Sejajar:** `m₁ = m₂`. **Garis Tegak Lurus:** `m₁ · m₂ = -1 ⟺ m₂ = -1 / m₁`.
+* **Karakteristik Parabola `y = ax² + bx + c`:** Bukaan atas (`a > 0`), bukaan bawah (`a < 0`). Diskriminan `D = b² - 4ac`: `D > 0` (memotong 2 titik), `D = 0` (menyinggung 1 titik), `D < 0` (definit melayang). Titik puncak `P(-b/(2a), -D/(4a))`.
 
 ---
 ## 7. Pendidikan Pancasila (MK02) • Berbasis RPS & Tugas Presentasi Kelompok
