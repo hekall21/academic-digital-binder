@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Master Guide: Fondasi Algoritma, Karakteristik Knuth & Notasi Komputasi - Panduan Guru AI Antigravity</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      line-height: 1.48;
+      font-size: 8.8pt;
+      margin: 0;
+      background: #ffffff;
+    }
+
+    .header-container {
+      border-bottom: 2.5px solid #2563eb;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .badge-wrap {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-ai {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-gold {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    h1 {
+      font-size: 13.5pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.3px;
+    }
+
+    h2 {
+      font-size: 9.8pt;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 0;
+    }
+
+    .meta-text {
+      font-size: 7.8pt;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .section {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 9.8pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 3.5px solid #2563eb;
+      padding-left: 7px;
+      margin: 10px 0 6px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sub-title {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 6px 0 3px 0;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 7px;
+    }
+
+    .card-accent {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .card-dark {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 6px 0;
+      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.9pt;
+      margin: 5px 0 7px 0;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    tr:nth-child(even) td {
+      background: #fbfcfe;
+    }
+
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+    }
+
+    code {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    pre {
+      background: #090d16;
+      color: #e2e8f0;
+      padding: 9px 12px;
+      border-radius: 6px;
+      margin: 5px 0 7px 0;
+      line-height: 1.4;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .code-kw { color: #f43f5e; font-weight: bold; }
+    .code-fn { color: #38bdf8; font-weight: bold; }
+    .code-str { color: #4ade80; }
+    .code-num { color: #fbbf24; }
+    .code-cmt { color: #94a3b8; font-style: italic; }
+    .code-type { color: #c084fc; font-weight: bold; }
+
+    .alert {
+      padding: 6px 9px;
+      border-radius: 5px;
+      font-size: 7.9pt;
+      margin: 5px 0;
+      border-left: 3.5px solid;
+    }
+
+    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
+    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+    .alert-success { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+
+    ul, ol {
+      margin: 4px 0 6px 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 2.5px;
+    }
+
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 5px;
+      margin-top: 12px;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <div class="header-container">
+    <div>
+      <div class="badge-wrap">
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
+      </div>
+      <h1>Master Guide: Fondasi Algoritma, Karakteristik Knuth & Notasi Komputasi</h1>
+      <h2>Algoritma 1 • Pertemuan 1</h2>
+    </div>
+    <div style="text-align: right;">
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK</div>
+      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
+    </div>
+  </div>
+
+  <!-- Sections Content -->
+  
+    <div class="section">
+      <div class="section-title">BAB 1. The Big Picture & Intuisi Pertama (Mengapa Belajar Algoritma?)</div>
+      
+<p>Komputer pada dasarnya adalah mesin penghitung yang sangat cepat namun tidak memiliki inisiatif logis (<em>ultra-fast dumb machine</em>). Komputer tidak dapat memecahkan masalah tanpa instruksi presisi langkah-demi-langkah. Di sinilah letak <strong>Algoritma</strong> sebagai cetak biru (<em>blueprint</em>) berpikir logis sebelum kita menyentuh kode pemrograman apapun.</p>
+<div class="card card-accent">
+  <strong>Aksioma Fundamental Niklaus Wirth (1976):</strong><br>
+  <code>Program = Algoritma + Struktur Data</code><br>
+  Jika Struktur Data adalah bahan baku material (batu bata, semen, baja), maka Algoritma adalah rancangan arsitektur dan instruksi perakitannya. Keduanya tidak terpisahkan.
+</div>
+<p>Asal kata <em>algoritma</em> berakar dari nama ilmuwan muslim Persia abad ke-9, <strong>Abu Ja'far Muhammad bin Musa Al-Khwarizmi</strong>, penulis kitab legendaris <em>Al-Jabr wal-Muqabala</em> yang menjadi peletak dasar aljabar modern.</p>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 2. Bedah Materi Dosen: 5 Kriteria Baku Algoritma Donald E. Knuth</div>
+      
+<p>Pakar ilmu komputer terkemuka Donald E. Knuth dalam magnum opus-nya <em>The Art of Computer Programming</em> menetapkan bahwa sebuah urutan instruksi hanya sah disebut <strong>Algoritma</strong> apabila memenuhi 5 syarat mutlak:</p>
+<table>
+  <thead><tr><th>Kriteria Knuth</th><th>Definisi Konseptual</th><th>Dampak Fatal Jika Dilanggar</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Finiteness (Keterbatasan)</strong></td><td>Algoritma harus berhenti (<em>terminate</em>) setelah mengerjakan sejumlah langkah terhingga.</td><td>Menyebabkan <em>Infinite Loop</em>, konsumsi memori tak terbatas, program membeku (<em>freeze / crash</em>).</td></tr>
+    <tr><td><strong>2. Definiteness (Kepastian)</strong></td><td>Setiap langkah harus didefinisikan secara tepat, eksplisit, dan tidak menimbulkan makna ganda (<em>unambiguous</em>).</td><td>Instruksi seperti "tambahkan garam secukupnya" tidak sah dalam algoritma komputer karena ambigu bagi CPU.</td></tr>
+    <tr><td><strong>3. Input (Masukan &ge; 0)</strong></td><td>Algoritma memiliki nol atau lebih masukan yang diberikan dari luar sebelum eksekusi dimulai.</td><td>Algoritma tanpa input tetap sah (misal: algoritma mencetak konstanta Pi atau teks statis).</td></tr>
+    <tr><td><strong>4. Output (Keluaran &ge; 1)</strong></td><td>Algoritma harus menghasilkan minimal satu keluaran yang merupakan solusi permasalahan.</td><td>Algoritma yang berjalan tanpa memproduksi hasil apapun adalah operasi komputasi sia-sia.</td></tr>
+    <tr><td><strong>5. Effectiveness (Efektivitas)</strong></td><td>Setiap instruksi harus sangat sederhana dan mendasar sehingga dapat dikerjakan manusia dengan kertas & pensil dalam waktu wajar.</td><td>Instruksi mustahil (misal: "bagi angka dengan nol") melanggar prinsip efektivitas.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Tiga Notasi Baku Penyajian Algoritma (Komparasi & Implementasi)</div>
+      
+<div class="grid-3">
+  <div class="card">
+    <strong>1. Bahasa Alami (Deskriptif)</strong><br>
+    <span style="font-size: 7.5pt; color: #64748b;">Menggunakan narasi bahasa manusia (Indonesia/Inggris).</span>
+    <ul style="margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;">
+      <li>Kelebihan: Mudah dipahami orang awam.</li>
+      <li>Kelemahan: Sering bertele-tele dan rentan ambiguitas istilah.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <strong>2. Pseudocode (Kode Semu)</strong><br>
+    <span style="font-size: 7.5pt; color: #64748b;">Notasi terstruktur mirip bahasa pemrograman tingkat tinggi.</span>
+    <ul style="margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;">
+      <li>Kelebihan: Rapi, ringkas, independen dari bahasa apapun.</li>
+      <li>Kelemahan: Tidak dapat dieksekusi langsung oleh mesin compiler.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <strong>3. Flowchart (Diagram Alir)</strong><br>
+    <span style="font-size: 7.5pt; color: #64748b;">Bagan visual geometris standar ANSI/ISO.</span>
+    <ul style="margin: 4px 0 0 0; padding-left: 14px; font-size: 7.6pt;">
+      <li>Kelebihan: Alur logika percabangan terlihat seketika.</li>
+      <li>Kelemahan: Memakan ruang luas jika logika sangat rumit.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card-dark">
+  <span style="color: #38bdf8; font-weight: bold;">// Contoh Pseudocode Baku Menghitung Luas Segitiga:</span>
+  <pre><code><span class="code-kw">PROGRAM</span> HitungLuasSegitiga
+<span class="code-kw">DEKLARASI</span>:
+  alas, tinggi, luas : <span class="code-type">real</span>
+
+<span class="code-kw">ALGORITMA</span>:
+  <span class="code-fn">read</span>(alas)
+  <span class="code-fn">read</span>(tinggi)
+  luas &larr; 0.5 * alas * tinggi
+  <span class="code-fn">write</span>(luas)
+<span class="code-kw">END PROGRAM</span></code></pre>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Bedah Jebakan Soal UTS & Tips Menjawab</div>
+      
+<div class="alert alert-warning">
+  <strong>⚠️ Jebakan Soal UTS Khas Unindra:</strong><br>
+  <em>"Apakah sebuah algoritma wajib memiliki masukan (input)?"</em><br>
+  <strong>Jawaban Salah:</strong> Ya, harus memiliki masukan.<br>
+  <strong>Jawaban Benar & Pembahasan Sempurna:</strong> <strong>TIDAK WAJIB.</strong> Syarat Knuth menyatakan jumlah input adalah <strong>nol atau lebih (&ge; 0)</strong>. Contoh: algoritma pembangkit bilangan acak seed statis atau program penampil teks "Hello World" memiliki 0 masukan namun tetap sah sebagai algoritma. Sebaliknya, <strong>output WAJIB minimal satu (&ge; 1)</strong>.
+</div>
+
+    </div>
+        
+
+  <!-- Academic References Box -->
+  <div class="section" style="margin-top: 12px;">
+    <div class="alert alert-info">
+      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
+      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
+        <li>Knuth, Donald E. (1997). The Art of Computer Programming, Vol. 1: Fundamental Algorithms (3rd ed.). Addison-Wesley.</li><li>Wirth, Niklaus. (1976). Algorithms + Data Structures = Programs. Prentice-Hall.</li><li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to Algorithms (4th ed.). MIT Press.</li><li>Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi Unindra (2026).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Academic Digital Binder • Sistem Informasi FTIK Universitas Indraprasta PGRI</span>
+    <span>Dokumen Resmi Pembelajaran Mandiri & Persiapan UTS • Dicetak Secara Otomatis</span>
+  </div>
+
+</body>
+</html>

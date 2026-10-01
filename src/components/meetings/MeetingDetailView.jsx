@@ -46,6 +46,7 @@ export function MeetingDetailView({
   // Available PDF materials for this meeting
   const pdfMaterials = (meeting.materials || []).filter(isPdfMaterial);
   const firstPdf = pdfMaterials[0];
+  const aiGuidePdf = pdfMaterials.find((m) => m.title?.includes('Guru AI') || m.id?.startsWith('mat_ai_'));
 
   // Inline PDF Viewer State
   const [activeInlinePdfUrl, setActiveInlinePdfUrl] = useState(getMaterialUrl(firstPdf));
@@ -116,6 +117,23 @@ export function MeetingDetailView({
             >
               <FileText className="w-3.5 h-3.5 text-indigo-400" />
               <span>Dokumen PDF ({pdfMaterials.length})</span>
+            </button>
+          )}
+
+          {aiGuidePdf && (
+            <button
+              onClick={() => {
+                setActiveTab('pdf');
+                const aiUrl = getMaterialUrl(aiGuidePdf);
+                setActiveInlinePdfUrl(aiUrl);
+                setActiveInlinePdfTitle(aiGuidePdf.title);
+                setSelectedPdfUrl(aiUrl);
+                setSelectedPdfTitle(aiGuidePdf.title);
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/25 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-600/40 hover:text-white font-medium transition-all shadow-sm cursor-pointer"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Modul Guru AI (PDF)</span>
             </button>
           )}
 
@@ -297,11 +315,13 @@ export function MeetingDetailView({
                         onClick={() => setSummaryMode(m)}
                         className={`px-3 py-1 rounded text-xs font-semibold capitalize transition-all cursor-pointer ${
                           summaryMode === m
-                            ? 'bg-indigo-600 text-white shadow'
+                            ? m === 'detail'
+                              ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow font-bold'
+                              : 'bg-indigo-600 text-white shadow'
                             : 'text-slate-400 hover:text-white'
                         }`}
                       >
-                        {m}
+                        {m === 'detail' ? '🤖 Detail (Guru AI)' : m === 'ringkas' ? '⚡ Ringkas' : '✅ Standar'}
                       </button>
                     ))}
                   </div>
@@ -311,7 +331,7 @@ export function MeetingDetailView({
                   {summaryMode === 'ringkas'
                     ? '⚡ Ringkas: Glosarium & Intisari Cepat'
                     : summaryMode === 'detail'
-                    ? '📚 Detail: Penjelasan Komprehensif & Kisi-Kisi UTS'
+                    ? '🤖 Detail Guru AI: Panduan Pembelajaran Lengkap, Intuisi First Principles, Bedah Kasus & Kisi-Kisi UTS'
                     : '✅ Standar: Rangkuman Step-by-Step Berimbang'}
                 </span>
               </div>
@@ -359,6 +379,7 @@ export function MeetingDetailView({
                     {pdfMaterials.map((mat, idx) => {
                       const matUrl = getMaterialUrl(mat);
                       const isSelected = (activeInlinePdfUrl || getMaterialUrl(firstPdf)) === matUrl;
+                      const isAiGuide = mat.title?.includes('Guru AI') || mat.id?.startsWith('mat_ai_');
 
                       return (
                         <button
@@ -371,12 +392,20 @@ export function MeetingDetailView({
                           }}
                           className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                             isSelected
-                              ? 'bg-indigo-600 text-white shadow-md font-bold'
+                              ? isAiGuide
+                                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md font-bold border border-emerald-400/40'
+                                : 'bg-indigo-600 text-white shadow-md font-bold'
+                              : isAiGuide
+                              ? 'bg-emerald-950/40 text-emerald-300 hover:text-white hover:bg-emerald-900/60 border border-emerald-500/30 font-medium'
                               : 'bg-slate-900/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-white/5'
                           }`}
                         >
-                          <FileText className="w-3.5 h-3.5" />
-                          <span className="max-w-[280px] truncate">{mat.title}</span>
+                          {isAiGuide ? (
+                            <Sparkles className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                          ) : (
+                            <FileText className="w-3.5 h-3.5 flex-shrink-0" />
+                          )}
+                          <span className="max-w-[320px] truncate">{mat.title}</span>
                         </button>
                       );
                     })}

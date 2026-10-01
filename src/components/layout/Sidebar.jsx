@@ -103,7 +103,9 @@ export function Sidebar({
           </div>
           <div className="flex items-center justify-between">
             <span className="text-slate-400">Berkas PDF Tersedia:</span>
-            <span className="font-mono font-semibold text-cyan-400">43 Berkas</span>
+            <span className="font-mono font-semibold text-cyan-400">
+              {subjects.reduce((acc, s) => acc + (s.meetings || []).reduce((mAcc, m) => mAcc + (m.materials || []).length, 0), 0)} Berkas
+            </span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-slate-400">Cheatsheet HD (JPG):</span>

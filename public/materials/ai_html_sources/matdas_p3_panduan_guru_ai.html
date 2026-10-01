@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Master Guide: Pertidaksamaan Nilai Mutlak, Sifat Aljabar & Metode Faktorisasi - Panduan Guru AI Antigravity</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      line-height: 1.48;
+      font-size: 8.8pt;
+      margin: 0;
+      background: #ffffff;
+    }
+
+    .header-container {
+      border-bottom: 2.5px solid #2563eb;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .badge-wrap {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-ai {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-gold {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    h1 {
+      font-size: 13.5pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.3px;
+    }
+
+    h2 {
+      font-size: 9.8pt;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 0;
+    }
+
+    .meta-text {
+      font-size: 7.8pt;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .section {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 9.8pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 3.5px solid #2563eb;
+      padding-left: 7px;
+      margin: 10px 0 6px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sub-title {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 6px 0 3px 0;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 7px;
+    }
+
+    .card-accent {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .card-dark {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 6px 0;
+      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.9pt;
+      margin: 5px 0 7px 0;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    tr:nth-child(even) td {
+      background: #fbfcfe;
+    }
+
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+    }
+
+    code {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    pre {
+      background: #090d16;
+      color: #e2e8f0;
+      padding: 9px 12px;
+      border-radius: 6px;
+      margin: 5px 0 7px 0;
+      line-height: 1.4;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .code-kw { color: #f43f5e; font-weight: bold; }
+    .code-fn { color: #38bdf8; font-weight: bold; }
+    .code-str { color: #4ade80; }
+    .code-num { color: #fbbf24; }
+    .code-cmt { color: #94a3b8; font-style: italic; }
+    .code-type { color: #c084fc; font-weight: bold; }
+
+    .alert {
+      padding: 6px 9px;
+      border-radius: 5px;
+      font-size: 7.9pt;
+      margin: 5px 0;
+      border-left: 3.5px solid;
+    }
+
+    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
+    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+    .alert-success { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+
+    ul, ol {
+      margin: 4px 0 6px 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 2.5px;
+    }
+
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 5px;
+      margin-top: 12px;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <div class="header-container">
+    <div>
+      <div class="badge-wrap">
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
+      </div>
+      <h1>Master Guide: Pertidaksamaan Nilai Mutlak, Sifat Aljabar & Metode Faktorisasi</h1>
+      <h2>Matematika Dasar • Pertemuan 3</h2>
+    </div>
+    <div style="text-align: right;">
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Dr. Munali, M.Pd. / Syifaafidah, M.Pd.</div>
+      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
+    </div>
+  </div>
+
+  <!-- Sections Content -->
+  
+    <div class="section">
+      <div class="section-title">BAB 1. The Big Picture: Makna Geometris Nilai Mutlak</div>
+      
+<p>Secara geometris, <strong>Nilai Mutlak |x|</strong> merepresentasikan <strong>jarak skalar suatu titik x dari titik nol pada garis bilangan</strong>. Karena jarak tidak pernah bernilai negatif, maka nilai mutlak selalu non-negatif (|x| &ge; 0). Definisi piecewise mutlak formal:</p>
+<div class="card card-accent">
+  <code>|x| = x</code> jika x &ge; 0<br>
+  <code>|x| = -x</code> jika x &lt; 0
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 2. Delapan Sifat Aljabar Utama Nilai Mutlak</div>
+      
+<table>
+  <thead><tr><th>No</th><th>Teorema / Sifat Aljabar</th><th>Nama Sifat & Makna Operasional</th><th>Metode Penyelesaian di Ujian</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>|a &times; b| = |a| &times; |b|</td><td>Multiplikatif Nilai Mutlak</td><td>Nilai mutlak perkalian sama dengan perkalian nilai mutlak.</td></tr>
+    <tr><td>2</td><td>|a / b| = |a| / |b| (b &ne; 0)</td><td>Pembagian Nilai Mutlak</td><td>Penyebut dipecah terpisah dengan syarat b &ne; 0.</td></tr>
+    <tr><td>3</td><td>|a + b| &le; |a| + |b|</td><td><em>Triangle Inequality (Ketaksamaan Segitiga)</em></td><td>Fondasi pembuktian limit epsilon-delta di analisis riil.</td></tr>
+    <tr><td>4</td><td>|a - b| &ge; ||a| - |b||</td><td>Batas Bawah Selisih</td><td>Estimasi galat aproksimasi komputasi.</td></tr>
+    <tr><td>5</td><td>|x| = &radic;(x<sup>2</sup>)</td><td>Akar Kuadrat Sempurna</td><td>Jembatan konversi bentuk nilai mutlak ke aljabar akar.</td></tr>
+    <tr><td><strong>6</strong></td><td><strong>|x| &lt; a &hArr; -a &lt; x &lt; a</strong></td><td><strong>Sifat Kurung Dalam (a &gt; 0)</strong></td><td>Himpunan penyelesaian berada di <strong>dalam interval pemecah</strong>.</td></tr>
+    <tr><td><strong>7</strong></td><td><strong>|x| &gt; a &hArr; x &lt; -a atau x &gt; a</strong></td><td><strong>Sifat Sayap Luar (a &gt; 0)</strong></td><td>Himpunan penyelesaian berada di <strong>sayap luar garis bilangan</strong>.</td></tr>
+    <tr><td><strong>8</strong></td><td><strong>|x| &le; |y| &hArr; x<sup>2</sup> &le; y<sup>2</sup></strong></td><td><strong>Metode Kuadrat Kedua Ruas</strong></td><td>Digunakan khusus jika <strong>kedua ruas mengandung nilai mutlak</strong>.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Metode Super Cepat Guru AI: Faktorisasi Selisih Kuadrat A² - B²</div>
+      
+<p>Jika kedua ruas memiliki nilai mutlak, <strong>JANGAN menjabarkan kuadrat suku per suku</strong> karena rawan salah hitung. Gunakan rumus faktorisasi selisih kuadrat:</p>
+<div class="card-dark">
+  <strong>A<sup>2</sup> - B<sup>2</sup> = (A + B)(A - B)</strong><br><br>
+  <span style="color: #38bdf8; font-weight: bold;">Contoh Kasus 2 Ruas: |2x + 3| &ge; |4x + 5|</span>
+  <pre><code>1. Kuadratkan kedua ruas (Sifat 8):
+   (2x + 3)<sup>2</sup> &ge; (4x + 5)<sup>2</sup>
+2. Pindahkan ke ruas kiri (Nolkan ruas kanan):
+   (2x + 3)<sup>2</sup> - (4x + 5)<sup>2</sup> &ge; 0
+3. Faktorkan dengan (A + B)(A - B):
+   [(2x + 3) + (4x + 5)] &times; [(2x + 3) - (4x + 5)] &ge; 0
+4. Sederhanakan suku sejenis:
+   (6x + 8)(-2x - 2) &ge; 0
+5. Bagi kedua ruas dengan -4 (INGAT: TANDA WAJIB DIBALIK DARI &ge; MENJADI &le;!):
+   (3x + 4)(x + 1) &le; 0
+6. Titik pemecah:
+   x = -4/3 dan x = -1 (keduanya lingkaran penuh &bull;)
+7. Uji titik x = 0: (3(0) + 4)(0 + 1) = +4 (Positif)
+   Garis Bilangan: (+) --- [-4/3] --- (-) --- [-1] --- (+)
+8. Karena diminta &le; 0, ambil daerah negatif di tengah:
+   <span class="code-str">HP = [ -4/3, -1 ]</span></code></pre>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Jebakan Soal UTS Pertemuan 3</div>
+      
+<div class="alert alert-danger">
+  <strong>⚠️ Jebakan Nilai Mutlak dengan Ruas Kanan Negatif:</strong><br>
+  Perhatikan soal jebakan ujian:<br>
+  1. <code>|2x - 5| &lt; -3</code> &rArr; <strong>HP = &empty; (Himpunan Kosong)</strong>, karena jarak mutlak mustahil lebih kecil dari bilangan negatif!<br>
+  2. <code>|2x - 5| &gt; -3</code> &rArr; <strong>HP = &reals; (Seluruh Bilangan Real)</strong>, karena nilai mutlak selalu &ge; 0 sehingga pasti selalu lebih besar dari -3 untuk nilai x berapapun!
+</div>
+
+    </div>
+        
+
+  <!-- Academic References Box -->
+  <div class="section" style="margin-top: 12px;">
+    <div class="alert alert-info">
+      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
+      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
+        <li>Varberg, D., Purcell, E. J., & Rigdon, S. E. (2007). Calculus (9th ed.), Chapter 0.2: Absolute Values.</li><li>Spivak, M. (2006). Calculus (3rd ed.). Cambridge University Press.</li><li>Diktat Matematika Dasar FTIK Unindra, Pertemuan 3: Pertidaksamaan Nilai Mutlak.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Academic Digital Binder • Sistem Informasi FTIK Universitas Indraprasta PGRI</span>
+    <span>Dokumen Resmi Pembelajaran Mandiri & Persiapan UTS • Dicetak Secara Otomatis</span>
+  </div>
+
+</body>
+</html>

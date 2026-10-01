@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Master Guide: Komponen Pembentuk Sistem Informasi & Model Cybernetic Sistem - Panduan Guru AI Antigravity</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      line-height: 1.48;
+      font-size: 8.8pt;
+      margin: 0;
+      background: #ffffff;
+    }
+
+    .header-container {
+      border-bottom: 2.5px solid #2563eb;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .badge-wrap {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-ai {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-gold {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    h1 {
+      font-size: 13.5pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.3px;
+    }
+
+    h2 {
+      font-size: 9.8pt;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 0;
+    }
+
+    .meta-text {
+      font-size: 7.8pt;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .section {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 9.8pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 3.5px solid #2563eb;
+      padding-left: 7px;
+      margin: 10px 0 6px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sub-title {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 6px 0 3px 0;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 7px;
+    }
+
+    .card-accent {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .card-dark {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 6px 0;
+      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.9pt;
+      margin: 5px 0 7px 0;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    tr:nth-child(even) td {
+      background: #fbfcfe;
+    }
+
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+    }
+
+    code {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    pre {
+      background: #090d16;
+      color: #e2e8f0;
+      padding: 9px 12px;
+      border-radius: 6px;
+      margin: 5px 0 7px 0;
+      line-height: 1.4;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .code-kw { color: #f43f5e; font-weight: bold; }
+    .code-fn { color: #38bdf8; font-weight: bold; }
+    .code-str { color: #4ade80; }
+    .code-num { color: #fbbf24; }
+    .code-cmt { color: #94a3b8; font-style: italic; }
+    .code-type { color: #c084fc; font-weight: bold; }
+
+    .alert {
+      padding: 6px 9px;
+      border-radius: 5px;
+      font-size: 7.9pt;
+      margin: 5px 0;
+      border-left: 3.5px solid;
+    }
+
+    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
+    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+    .alert-success { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+
+    ul, ol {
+      margin: 4px 0 6px 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 2.5px;
+    }
+
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 5px;
+      margin-top: 12px;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <div class="header-container">
+    <div>
+      <div class="badge-wrap">
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
+      </div>
+      <h1>Master Guide: Komponen Pembentuk Sistem Informasi & Model Cybernetic Sistem</h1>
+      <h2>Konsep Sistem Informasi • Pertemuan 2</h2>
+    </div>
+    <div style="text-align: right;">
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Dheni, M.Kom.</div>
+      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
+    </div>
+  </div>
+
+  <!-- Sections Content -->
+  
+    <div class="section">
+      <div class="section-title">BAB 1. The Big Picture: Anatomi Sosio-Teknis Sistem Informasi</div>
+      
+<p>Sering terjadi salah kaprah bahwa Sistem Informasi adalah melulu tentang komputer dan perangkat lunak. Pandangan modern menegaskan bahwa Sistem Informasi adalah <strong>Sistem Sosio-Teknis (Socio-Technical System)</strong> yang memadukan komponen teknologis (hardware, software, data, network) dengan komponen sosial manusia (orang, peran, budaya organisasi, dan prosedur kerja bisnis).</p>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 2. Enam Komponen Pokok Pembentuk Sistem Informasi Modern</div>
+      
+<table>
+  <thead><tr><th>Komponen Pembentuk</th><th>Kategori Arsitektur</th><th>Fungsi Spesifik dalam Ekosistem SI</th><th>Contoh Nyata di Kampus Unindra</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Hardware (Perangkat Keras)</strong></td><td>Fisik / Mesin</td><td>Menjalankan pemrosesan instruksi elektronik, media penyimpanan, dan transmisi sinyal data.</td><td>Server rak data center, PC lab komputer, router fiber optik, printer KRS.</td></tr>
+    <tr><td><strong>2. Software (Perangkat Lunak)</strong></td><td>Instruksi / Logika</td><td>Kumpulan program dan instruksi yang mengarahkan operasi perangkat keras.</td><td>Sistem Operasi Linux Server, Database MySQL, Web Portal Akademik Kampus.</td></tr>
+    <tr><td><strong>3. Data (Basis Data)</strong></td><td>Bahan Baku Informasi</td><td>Fakta mentah terstruktur yang tersimpan rapi dalam tabel relasional.</td><td>Tabel data mahasiswa (NPM, Nama, SKS), tabel presensi, katalog mata kuliah.</td></tr>
+    <tr><td><strong>4. People (Brainware)</strong></td><td>Pengguna & Pengelola</td><td>Pihak yang mengoperasikan, mengembangkan, dan memanfaatkan keluaran sistem.</td><td>Mahasiswa (end-user), Dosen (input nilai), Admin Akademik, Database Administrator.</td></tr>
+    <tr><td><strong>5. Process / Prosedur</strong></td><td>Tata Kelola Bisnis</td><td>SOP, aturan bisnis, dan tata cara tertulis yang mengatur aliran operasional.</td><td>SOP Pengisian KRS online, alur persetujuan skripsi, regulasi pembayaran SPP.</td></tr>
+    <tr><td><strong>6. Network / Komunikasi</strong></td><td>Konektivitas</td><td>Media penghubung antar komputer dan transfer paket data tanpa kabel/kabel.</td><td>Jaringan Wi-Fi kampus, kabel serat optik (fiber optic), internet cloud hosting.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Model Cybernetic Sistem: Input, Proses, Output, Feedback & Control</div>
+      
+<p>Sistem Informasi modern bukan sekadar sistem linier searah, melainkan sebuah <strong>Sistem Sibernetik (Cybernetic System)</strong> yang memiliki mekanisme regulasi mandiri (<em>self-regulating system</em>):</p>
+
+<div class="card-dark">
+  <strong>Alur Kontrol Sibernetik:</strong>
+  <pre><code>[ INPUT: Data Transaksi Mentah ] ──> [ PROSES: Validasi, Agregasi, Kalkulasi ] ──> [ OUTPUT: Informasi / Laporan ]
+                                                                                              │
+                                                                                              ▼
+        [ KONTROL: Penyesuaian Tindakan ] <── [ FEEDBACK: Evaluasi Deviasi Kinerja vs Standar Target ]</code></pre>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <strong>Feedback (Umpan Balik):</strong><br>
+    Data tentang kinerja operasional sistem yang dikirimkan kembali untuk dievaluasi. Contoh: Laporan IPK semesteran mahasiswa menunjukkan 40% mahasiswa kelas mendapat nilai C di mata kuliah X.
+  </div>
+  <div class="card">
+    <strong>Control (Pengendali):</strong><br>
+    Aksi korektif yang diambil pengambil keputusan jika performa menyimpang dari standar target yang ditetapkan. Contoh: Ketua Program Studi mengevaluasi silabus dan menambahkan sesi responsi tutorial tambahan.
+  </div>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Jebakan Soal UTS Pertemuan 2</div>
+      
+<div class="alert alert-warning">
+  <strong>⚠️ Manakah Komponen Paling Kritis dalam Sistem Informasi?</strong><br>
+  Banyak mahasiswa menjawab: <em>Hardware atau Software canggih</em>.<br>
+  <strong>Jawaban Benar Dosen & Guru AI:</strong> <strong>PEOPLE (Brainware) dan PROSEDUR (Business Process)</strong>. Perangkat keras paling mahal dan perangkat lunak termahal di dunia akan menjadi sampah investasi (<em>failed investment</em>) jika orang yang mengoperasikannya tidak kompeten atau jika prosedur bisnisnya korup dan kacau. Lebih dari 70% kegagalan implementasi ERP disebabkan oleh faktor penolakan manusia (<em>change management</em>), bukan karena kerusakan server!
+</div>
+
+    </div>
+        
+
+  <!-- Academic References Box -->
+  <div class="section" style="margin-top: 12px;">
+    <div class="alert alert-info">
+      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
+      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
+        <li>Laudon, K. C., & Laudon, J. P. (2020). Management Information Systems: Managing the Digital Firm (16th ed.). Pearson.</li><li>Wiener, Norbert. (1948). Cybernetics: Or Control and Communication in the Animal and the Machine. MIT Press.</li><li>Buku Materi Pokok Konsep Sistem Informasi (SISTEM_INFORMASI_2.pdf), Unindra (2026).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Academic Digital Binder • Sistem Informasi FTIK Universitas Indraprasta PGRI</span>
+    <span>Dokumen Resmi Pembelajaran Mandiri & Persiapan UTS • Dicetak Secara Otomatis</span>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Master Guide: Tipe Data Pascal, Hierarki Memori & Kaidah Identifier - Panduan Guru AI Antigravity</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      line-height: 1.48;
+      font-size: 8.8pt;
+      margin: 0;
+      background: #ffffff;
+    }
+
+    .header-container {
+      border-bottom: 2.5px solid #2563eb;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .badge-wrap {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-ai {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-gold {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    h1 {
+      font-size: 13.5pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.3px;
+    }
+
+    h2 {
+      font-size: 9.8pt;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 0;
+    }
+
+    .meta-text {
+      font-size: 7.8pt;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .section {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 9.8pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 3.5px solid #2563eb;
+      padding-left: 7px;
+      margin: 10px 0 6px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sub-title {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 6px 0 3px 0;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 7px;
+    }
+
+    .card-accent {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .card-dark {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 6px 0;
+      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.9pt;
+      margin: 5px 0 7px 0;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    tr:nth-child(even) td {
+      background: #fbfcfe;
+    }
+
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+    }
+
+    code {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    pre {
+      background: #090d16;
+      color: #e2e8f0;
+      padding: 9px 12px;
+      border-radius: 6px;
+      margin: 5px 0 7px 0;
+      line-height: 1.4;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .code-kw { color: #f43f5e; font-weight: bold; }
+    .code-fn { color: #38bdf8; font-weight: bold; }
+    .code-str { color: #4ade80; }
+    .code-num { color: #fbbf24; }
+    .code-cmt { color: #94a3b8; font-style: italic; }
+    .code-type { color: #c084fc; font-weight: bold; }
+
+    .alert {
+      padding: 6px 9px;
+      border-radius: 5px;
+      font-size: 7.9pt;
+      margin: 5px 0;
+      border-left: 3.5px solid;
+    }
+
+    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
+    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+    .alert-success { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+
+    ul, ol {
+      margin: 4px 0 6px 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 2.5px;
+    }
+
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 5px;
+      margin-top: 12px;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <div class="header-container">
+    <div>
+      <div class="badge-wrap">
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
+      </div>
+      <h1>Master Guide: Tipe Data Pascal, Hierarki Memori & Kaidah Identifier</h1>
+      <h2>Pemrograman 1 (Pascal) • Pertemuan 2</h2>
+    </div>
+    <div style="text-align: right;">
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Pemrograman FTIK</div>
+      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
+    </div>
+  </div>
+
+  <!-- Sections Content -->
+  
+    <div class="section">
+      <div class="section-title">BAB 1. The Big Picture: Konsep Strongly Typed & Case-Insensitive</div>
+      
+<p>Dua karakteristik paling fundamental dari bahasa Pascal yang wajib diresapi setiap mahasiswa:</p>
+<div class="grid-2">
+  <div class="card">
+    <strong>1. Strongly Typed Language:</strong><br>
+    Setiap variabel <strong>wajib dideklarasikan tipe datanya secara eksplisit</strong> sebelum blok <code>begin</code>. Kompiler tidak mengizinkan penugasan data yang tidak kompatibel (misal: memasukkan teks ke variabel bertipe bilangan bulat).
+  </div>
+  <div class="card">
+    <strong>2. Case-Insensitive:</strong><br>
+    Pascal <strong>tidak membedakan huruf besar dan huruf kecil</strong>. Variabel <code>TotalGaji</code>, <code>totalgaji</code>, dan <code>TOTALGAJI</code> dianggap sebagai satu entitas yang sama persis oleh kompiler.
+  </div>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 2. Kaidah Baku Penamaan Pengenal (Identifier Rules)</div>
+      
+<div class="card">
+  <strong>Empat Hukum Baku Identifier Pascal:</strong>
+  <ol style="font-size: 7.8pt;">
+    <li><strong>Karakter Pertama:</strong> Wajib berupa <strong>huruf alfabet (A-Z / a-z) atau garis bawah (underscore <code>_</code>)</strong>. Dilarang diawali angka (contoh salah: <code>1nilai</code>, contoh benar: <code>nilai1</code>, <code>_nilai</code>).</li>
+    <li><strong>Karakter Berikutnya:</strong> Boleh berupa kombinasi huruf, angka, dan underscore.</li>
+    <li><strong>Dilarang Mengandung Spasi:</strong> Spasi akan dianggap sebagai pemisah token baru. Gunakan underscore (<code>total_bayar</code>) atau CamelCase (<code>totalBayar</code>).</li>
+    <li><strong>Dilarang Simbol Khusus & Reserved Words:</strong> Dilarang memakai simbol matematika/karakter unik (<code>+, -, *, /, @, #, $, %</code>) dan kata kunci yang sudah dipesan bahasa (<code>program, begin, end, var, if, then</code>).</li>
+  </ol>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Tabel Komprehensif Seluruh Tipe Data Pascal & Rentang Memori</div>
+      
+<table>
+  <thead><tr><th>Tipe Data</th><th>Ukuran Memori</th><th>Rentang Nilai Valid</th><th>Karakteristik & Kasus Penggunaan Ideal</th></tr></thead>
+  <tbody>
+    <tr><td><code>Byte</code></td><td>1 Byte (8 bit)</td><td><code>0 s.d 255</code></td><td>Bilangan cacah positif tanpa tanda (usia manusia, tanggal, bulan).</td></tr>
+    <tr><td><code>Shortint</code></td><td>1 Byte (8 bit)</td><td><code>-128 s.d 127</code></td><td>Bilangan bulat bertanda skala kecil.</td></tr>
+    <tr><td><code>Integer</code></td><td>2 Byte (16 bit)</td><td><code>-32.768 s.d 32.767</code></td><td>Tipe standar bilangan bulat (cacah indeks loop, jumlah barang).</td></tr>
+    <tr><td><code>Word</code></td><td>2 Byte (16 bit)</td><td><code>0 s.d 65.535</code></td><td>Bilangan bulat positif 16 bit.</td></tr>
+    <tr><td><code>Longint</code></td><td>4 Byte (32 bit)</td><td><code>-2.147.483.648 s.d 2.147.483.647</code></td><td>Bilangan bulat besar (populasi penduduk, nominal uang rupiah).</td></tr>
+    <tr><td><code>Int64</code></td><td>8 Byte (64 bit)</td><td>&plusmn; 9,22 &times; 10<sup>18</sup></td><td>Komputasi astronomi, transaksi kriptografi besar.</td></tr>
+    <tr><td><code>Real</code></td><td>6 s.d 8 Byte</td><td><code>2.9e-39 s.d 1.7e+38</code></td><td>Bilangan pecahan floating-point desimal (IPK, rata-rata, suhu).</td></tr>
+    <tr><td><code>Char</code></td><td>1 Byte</td><td>1 Karakter ASCII</td><td>Satu karakter tunggal: <code>'A'</code>, <code>'B'</code>, <code>'9'</code>.</td></tr>
+    <tr><td><code>String</code></td><td>Dinamis</td><td>1 s.d 255 Karakter</td><td>Rangkaian teks yang diapit petik satu: <code>'Haikel Saleh'</code>.</td></tr>
+    <tr><td><code>Boolean</code></td><td>1 Byte</td><td><code>TRUE</code> atau <code>FALSE</code></td><td>Pengujian logika biner percabangan dan perulangan.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Jebakan Overflow Tipe Data & Solusi Guru AI</div>
+      
+<div class="alert alert-danger">
+  <strong>⚠️ Fenomena Integer Overflow:</strong><br>
+  Jika sebuah variabel dideklarasikan bertipe <code>Integer</code> (maksimal 32.767) lalu diberi nilai kalkulasi <code>gaji := 50000;</code>, pada kompiler Turbo Pascal akan terjadi <em>Integer Overflow</em> yang menghasilkan angka negatif aneh (misal: <code>-15536</code>)!<br>
+  <strong>Solusi Guru AI:</strong> Untuk penampung nominal uang, NPM mahasiswa, atau perkalian ribuan, <strong>selalu gunakan tipe <code>Longint</code> atau <code>Int64</code></strong>.
+</div>
+
+    </div>
+        
+
+  <!-- Academic References Box -->
+  <div class="section" style="margin-top: 12px;">
+    <div class="alert alert-info">
+      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
+      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
+        <li>ISO/IEC 7185:1990 - Information technology -- Programming languages -- Pascal.</li><li>Free Pascal Programmer's Manual (v3.2.2).</li><li>Materi Kuliah Tipe Data & Identifier, Laboratorium Teknik Informatika Unindra.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Academic Digital Binder • Sistem Informasi FTIK Universitas Indraprasta PGRI</span>
+    <span>Dokumen Resmi Pembelajaran Mandiri & Persiapan UTS • Dicetak Secara Otomatis</span>
+  </div>
+
+</body>
+</html>

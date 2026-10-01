@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Master Guide: Epistemologi Data, Informasi Gordon B. Davis & Hierarki DIKW - Panduan Guru AI Antigravity</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      line-height: 1.48;
+      font-size: 8.8pt;
+      margin: 0;
+      background: #ffffff;
+    }
+
+    .header-container {
+      border-bottom: 2.5px solid #2563eb;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .badge-wrap {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-ai {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-gold {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    h1 {
+      font-size: 13.5pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.3px;
+    }
+
+    h2 {
+      font-size: 9.8pt;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 0;
+    }
+
+    .meta-text {
+      font-size: 7.8pt;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .section {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 9.8pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 3.5px solid #2563eb;
+      padding-left: 7px;
+      margin: 10px 0 6px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sub-title {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 6px 0 3px 0;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 7px;
+    }
+
+    .card-accent {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .card-dark {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 6px 0;
+      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.9pt;
+      margin: 5px 0 7px 0;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    tr:nth-child(even) td {
+      background: #fbfcfe;
+    }
+
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+    }
+
+    code {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    pre {
+      background: #090d16;
+      color: #e2e8f0;
+      padding: 9px 12px;
+      border-radius: 6px;
+      margin: 5px 0 7px 0;
+      line-height: 1.4;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .code-kw { color: #f43f5e; font-weight: bold; }
+    .code-fn { color: #38bdf8; font-weight: bold; }
+    .code-str { color: #4ade80; }
+    .code-num { color: #fbbf24; }
+    .code-cmt { color: #94a3b8; font-style: italic; }
+    .code-type { color: #c084fc; font-weight: bold; }
+
+    .alert {
+      padding: 6px 9px;
+      border-radius: 5px;
+      font-size: 7.9pt;
+      margin: 5px 0;
+      border-left: 3.5px solid;
+    }
+
+    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
+    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+    .alert-success { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+
+    ul, ol {
+      margin: 4px 0 6px 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 2.5px;
+    }
+
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 5px;
+      margin-top: 12px;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <div class="header-container">
+    <div>
+      <div class="badge-wrap">
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
+      </div>
+      <h1>Master Guide: Epistemologi Data, Informasi Gordon B. Davis & Hierarki DIKW</h1>
+      <h2>Konsep Sistem Informasi • Pertemuan 1</h2>
+    </div>
+    <div style="text-align: right;">
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Dheni, M.Kom.</div>
+      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
+    </div>
+  </div>
+
+  <!-- Sections Content -->
+  
+    <div class="section">
+      <div class="section-title">BAB 1. The Big Picture: Mengapa Organisasi Bisnis Membutuhkan Sistem Informasi?</div>
+      
+<p>Dalam era ekonomi digital berbasis data (<em>data-driven economy</em>), data adalah "minyak bumi baru" (<em>the new oil</em>). Namun seperti minyak mentah, data mentah tidak dapat langsung dimasukkan ke dalam mesin pengambilan keputusan. Tanpa proses pengolahan, penyaringan, dan pengorganisasian yang tepat, organisasi akan mengalami <em>Information Overload</em> (kebanjiran data mentah namun kelaparan wawasan bermakna).</p>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 2. Hakikat Data & Definisi Legendaris Gordon B. Davis</div>
+      
+<div class="grid-2">
+  <div class="card">
+    <strong>Hakikat Data (Data):</strong><br>
+    Fakta mentah (<em>raw facts</em>), catatan transaksi atomik, atau representasi kejadian nyata yang berdiri sendiri tanpa makna relasional. Contoh: <code>45, "2026-09-30", 120000</code>.
+  </div>
+  <div class="card">
+    <strong>Hakikat Informasi (Information):</strong><br>
+    Data yang telah diproses, diklasifikasikan, dan diberi konteks sehingga memiliki arti (<em>meaningful</em>) dan nilai nyata untuk mengurangi ketidakpastian pengambilan keputusan.
+  </div>
+</div>
+
+<div class="card-dark">
+  <blockquote style="margin: 0; color: #38bdf8; font-style: italic;">
+    "Informasi adalah data yang telah diproses ke dalam suatu bentuk yang mempunyai arti bagi si penerima dan mempunyai nilai nyata serta terasa bagi pengambilan keputusan saat ini maupun keputusan masa mendatang."<br>
+    <strong>&mdash; Gordon B. Davis, Management Information Systems</strong>
+  </blockquote>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Tiga Sumbu Klasifikasi Data Resmi & 3 Pilar Kualitas Data</div>
+      
+<p>Berdasarkan modul perkuliahan dan catatan kelas Pak Dheni, klasifikasi data terbagi atas 3 sumbu utama:</p>
+<table>
+  <thead><tr><th>Sumbu Klasifikasi</th><th>Kategori Data</th><th>Karakteristik & Alat Perolehan</th><th>Contoh Nyata di Kampus / Bisnis</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="2"><strong>Cara Perolehan</strong></td><td><strong>Data Hitung (Discrete)</strong></td><td>Diperoleh dari <strong>membilang satu per satu</strong>. Nilainya <strong>SELALU bilangan bulat murni (Integer)</strong>.</td><td>Jumlah mahasiswa kelas RG (43 orang), jumlah inventaris server (5 unit).</td></tr>
+    <tr><td><strong>Data Ukur (Continuous)</strong></td><td>Diperoleh dari <strong>pengukuran memakai alat ukur</strong>. Bersifat kontinu dan berderajat desimal.</td><td>Berat paket (3,45 kg), suhu ruang server (21,8 &deg;C), waktu ping jaringan (14,2 ms).</td></tr>
+    <tr><td rowspan="2"><strong>Mutu Nilai</strong></td><td><strong>Data Kuantitatif</strong></td><td>Dinyatakan dalam angka mutlak yang dapat dihitung aritmatika.</td><td>Total omset harian kasir (Rp 5.200.000), kapasitas penyimpanan disk (1 TB).</td></tr>
+    <tr><td><strong>Data Kualitatif</strong></td><td>Menyatakan mutu atau persepsi non-numerik.</td><td>Kepuasan pengguna ("Sangat Puas"), warna indikator status server ("Hijau").</td></tr>
+    <tr><td rowspan="2"><strong>Sumber Asal</strong></td><td><strong>Data Internal</strong></td><td>Timbul dari dalam batas organisasi sendiri.</td><td>Daftar presensi dosen, buku besar akuntansi internal perusahaan.</td></tr>
+    <tr><td><strong>Data Eksternal</strong></td><td>Berasal dari lingkungan luar organisasi.</td><td>Tingkat inflasi BPS, regulasi perpajakan pemerintah, harga kompetitor pasar.</td></tr>
+  </tbody>
+</table>
+
+<div class="grid-3" style="margin-top: 6px;">
+  <div class="card">
+    <strong>1. Ketelitian (Accuracy)</strong><br>
+    Bebas dari kesalahan kalkulasi, bebas bias, dan mencerminkan kebenaran fakta objektif.
+  </div>
+  <div class="card">
+    <strong>2. Komparabilitas (Comparability)</strong><br>
+    Dapat dibandingkan secara adil (*apple-to-apple*) dengan standar konversi setara.
+  </div>
+  <div class="card">
+    <strong>3. Validitas (Validity)</strong><br>
+    Tingkat kebenaran alat ukur dalam mengukur apa yang sebenarnya harus diukur.
+  </div>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Hierarki DIKW (Data - Information - Knowledge - Wisdom)</div>
+      
+<div class="card">
+  <strong>Piramida DIKW Komputasi:</strong>
+  <ul style="font-size: 7.7pt;">
+    <li><strong>Data (What?):</strong> Catatan atomik fakta: <code>"Pasien A, Tensi 170/100, Usia 58"</code>.</li>
+    <li><strong>Information (Who, When, Where?):</strong> Data diberi label medis: <code>"Pasien A pada tanggal 1 Oktober 2026 mengalami hipertensi stadium 2."</code></li>
+    <li><strong>Knowledge (How?):</strong> Pemahaman pola hubungan: <code>"Pasien usia &gt;50 tahun dengan pola makan asin memiliki risiko stroke 4x lebih tinggi jika tensi &gt;160."</code></li>
+    <li><strong>Wisdom (Why?):</strong> Kebijakan visioner jangka panjang: <code>"Merancang program preventif diet rendah garam di puskesmas dan sistem peringatan dini digital pada rekam medis."</code></li>
+  </ul>
+</div>
+
+    </div>
+        
+
+  <!-- Academic References Box -->
+  <div class="section" style="margin-top: 12px;">
+    <div class="alert alert-info">
+      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
+      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
+        <li>Davis, Gordon B., & Olson, M. H. (1985). Management Information Systems: Conceptual Foundations, Structure, and Development. McGraw-Hill.</li><li>O'Brien, J. A., & Marakas, G. M. (2011). Management Information Systems (10th ed.). McGraw-Hill/Irwin.</li><li>Modul Resmi Perkuliahan Konsep Sistem Informasi (SISTEM_INFORMASI_1.pdf), FTIK Unindra (2026).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Academic Digital Binder • Sistem Informasi FTIK Universitas Indraprasta PGRI</span>
+    <span>Dokumen Resmi Pembelajaran Mandiri & Persiapan UTS • Dicetak Secara Otomatis</span>
+  </div>
+
+</body>
+</html>
