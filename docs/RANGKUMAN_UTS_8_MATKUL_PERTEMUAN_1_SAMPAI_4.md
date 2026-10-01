@@ -86,14 +86,20 @@ Nilai informasi ditentukan oleh pengaruhnya terhadap perbaikan kualitas keputusa
 
 ---
 
-### Pertemuan 3: Sumber, Kualitas Informasi & Arsitektur 6 Blok Pembangun SI
+### Pertemuan 3: Sumber, 4 Pilar Kualitas Informasi & Arsitektur 6 Blok Pembangun SI
 - [ ] *Sudah disalin ke lembar binder fisik*
+* **Definisi Sistem Informasi (Budi Sutejo, 2002):** Kumpulan elemen yang saling berhubungan membentuk satu kesatuan untuk mengintegrasikan data, memproses, menyimpan, dan mendistribusikan informasi kepada pengguna akhir (*end-user*).
+* **5 Pilar Pemanfaatan SI:** Perangkat keras (*hardware*), perangkat lunak (*software*), prosedur manual (*SOP*), model manajemen, dan basis data (*DBMS*: relasional, hierarki, jaringan, orientasi objek).
 
-#### 1. Empat Pilar Kualitas Informasi
-1. **Akurat (Accurate):** Bebas dari kesalahan, tidak menyesatkan, dan mencerminkan maksud sebenarnya.
-2. **Tepat Waktu (Timeliness):** Tiba sebelum keputusan diambil (informasi yang basi tidak memiliki nilai guna).
-3. **Relevan (Relevance):** Sesuai dengan kebutuhan spesifik pihak pemakai (kebutuhan kasir berbeda dengan kebutuhan direktur).
-4. **Ekonomis (Economical):** Biaya produksi informasi tidak boleh melebihi nilai manfaatnya.
+#### 1. Empat Pilar Kualitas Informasi (Materi Wajib UTS & Contoh Nyata Dosen)
+1. **Akurat (Accurate):** Bebas dari kesalahan pencatatan/kalkulasi, tidak bias, dan mencerminkan kenyataan fisik di lapangan.
+   * *Contoh Nyata Kelas RG:* Rekapitulasi uang kas kelas selama 4 minggu tercatat Rp 1.000.000. Saat dicek fisik di dompet bendahara, jumlah fisiknya tepat Rp 1.000.000 (akurat). Jika fisik hanya ada Rp 900.000, informasi tersebut tidak akurat.
+2. **Tepat Waktu (Timeliness):** Informasi tersedia saat dibutuhkan sebelum momentum keputusan hilang. Bersifat cepat disajikan (*speed*) dan selalu *up-to-date/real-time*.
+   * *Contoh Nyata Kelas RG:* Ketua kelas meminta transfer uang SPP Rp 3.000.000 ke orang tua. Begitu transfer sukses, notifikasi mutasi rekening langsung muncul seketika secara *real-time* di ponsel meskipun orang tua belum membalas chat WA.
+3. **Relevan (Relevance):** Memiliki hubungan langsung dan memberikan manfaat spesifik bagi kebutuhan penerimanya (*"nyambung"*).
+   * *Contoh Nyata Kelas RG:* Manajer pemasaran membutuhkan laporan volume penjualan produk dari sales lapangan, bukan laporan rincian mesin produksi pabrik atau absensi HRD.
+4. **Lengkap (Completeness):** Menyajikan seluruh fakta/data penting secara utuh tanpa ada bagian yang tertinggal atau disembunyikan.
+   * *Contoh Nyata Kelas RG:* Rekam medis pasien rumah sakit memuat lengkap umur, tinggi/berat badan, golongan darah, riwayat penyakit kronis, alergi obat, hingga alamat tempat tinggal demi mencegah malpraktik.
 
 #### 2. 6 Blok Pembangun Sistem Informasi (John Burch Framework)
 | Blok Pembangun | Peran & Fungsi | Komponen Nyata |
@@ -107,10 +113,23 @@ Nilai informasi ditentukan oleh pengaruhnya terhadap perbaikan kualitas keputusa
 
 ---
 
-### Pertemuan 4: Tingkat Manajemen & Karakteristik Pengambilan Keputusan
+### Pertemuan 4: 5 Aktivitas SI, Hubungan SI-TI, Tingkat Manajemen & Aturan UTS Open Book
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-#### 1. Piramida Tiga Tingkat Manajemen (Robert N. Anthony)
+#### 1. Lima Aktivitas Pokok Sistem Informasi (Siklus Berkelanjutan)
+1. **Input Sumber Daya Data (*Data Input*):** Menangkap data mentah. Contoh: Dosen menginput presensi mahasiswa kelas RG di portal setiap pertemuan.
+2. **Pemrosesan Data (*Processing*):** Mengolah data masukan. Contoh: Sistem menghitung bobot presensi (10%), tugas (20%), UTS (30%), dan UAS (40%).
+3. **Keluaran Produk Informasi (*Output*):** Menyajikan informasi bernilai. Contoh: Munculnya Nilai Akhir angka (82) dan huruf mutu (A- atau C).
+4. **Penyimpanan Sumber Daya Data (*Storage*):** Menyimpan data terorganisir. Contoh: Penyimpanan otomatis di server LMS dan SIKA Unindra.
+5. **Pengendalian Kinerja Sistem (*Control & Feedback*):** Evaluasi standar kinerja dan menghasilkan tindakan keputusan pemakai akhir. Contoh: Mahasiswa yang nilainya D atau di bawah 65 mengambil keputusan mengulang mata kuliah KSI di semester ganjil berikutnya.
+
+#### 2. Hubungan Sistem Informasi (SI) dan Teknologi Informasi (TI) — SOAL KISI-KISI UTS!
+* **Persamaan:** Keduanya sama-sama bergerak di bidang pengelolaan data menjadi informasi.
+* **Hubungan Struktural:** **TI merupakan bagian (sub-sistem / enabler) dari SI**. Suatu SI tersusun atas beberapa TI (hardware, software, jaringan, database).
+* **Ketergantungan Operasional:** Jika TI rusak/bermasalah, SI pasti akan mengalami gangguan/kelumpuhan.
+  * *Analogi Nyata Dosen:* Jika handphone atau laptop kita jatuh dan hardware-nya rusak, maka sistem informasi di dalamnya (LMS kampus, m-banking, data tugas) tidak dapat diakses dan tidak dapat difungsikan.
+
+#### 3. Piramida Tiga Tingkat Manajemen (Robert N. Anthony)
 1. **Top Management (Manajemen Puncak):**
    * *Aktor:* Direktur Utama, CEO, Rektor.
    * *Fokus:* Perencanaan strategis jangka panjang (3–5 tahun).
@@ -124,10 +143,19 @@ Nilai informasi ditentukan oleh pengaruhnya terhadap perbaikan kualitas keputusa
    * *Fokus:* Pengendalian operasional teknis harian.
    * *Karakteristik Informasi:* Terperinci, detail, bersumber internal, real-time transaksi harian.
 
-#### 2. Taksonomi Tipe Pengambilan Keputusan (Herbert A. Simon)
+#### 4. Taksonomi Tipe Pengambilan Keputusan (Herbert A. Simon)
 * **Keputusan Terstruktur (Structured):** Berulang, rutin, memiliki SOP baku, dapat diotomatisasi 100% oleh software (contoh: kalkulasi denda keterlambatan buku, diskon member).
 * **Keputusan Semi-Terstruktur (Semi-Structured):** Memerlukan kombinasi kalkulasi sistem dan intuisi manajer (contoh: persetujuan limit kredit pelanggan, penentuan alokasi anggaran promo).
 * **Keputusan Tidak Terstruktur (Unstructured):** Kompleks, tidak berpola, sarat ketidakpastian, mengandalkan visi kepemimpinan manusia (contoh: membuka cabang baru di luar negeri, pergantian model bisnis).
+
+#### 5. PANDUAN PENTING UTS & TUGAS KELOMPOK DARI DOSEN
+* **Sifat Ujian UTS:** **OPEN BOOK KHUSUS BUKU CATATAN TULISAN TANGAN SENDIRI**. Dilarang keras membawa print-out atau fotokopian PPT!
+* **Jumlah Soal:** 6–7 nomor esai analitis (hindari ujian susulan karena soal susulan dibuat Kaprodi 10 nomor dengan tingkat kesulitan jauh lebih tinggi).
+* **Tugas Presentasi Kelompok (Pertemuan 9–14):**
+  * Wajib membuat luaran dalam bentuk **FILE VIDEO DIGITAL EDUKASI**.
+  * Slide materi PPT dosen yang tebal (ada yang 60 slide) **boleh diringkas dan dipadatkan**.
+  * Format video disarankan: Anggota kelompok memaparkan materi secara bergantian di depan kamera atau rekaman presentasi terstruktur.
+  * **Kelompok Haikel Saleh:** Mengambil topik **Pertemuan 11: E-Business dan E-Commerce**.
 
 ---
 ## 2. Bahasa Indonesia (MKWK107)
@@ -601,7 +629,7 @@ end.
 
 ---
 ## 6. Matematika Dasar (Kalkulus Sistem Informasi)
-* **Dosen Pengampu:** Dr. Munali, M.Pd. / Syifaafidah, M.Pd. (Dosen Pengajar Kelas Reguler RG)
+* **Dosen Pengampu:** Dr. Munali, M.Pd.
 * **Jadwal & Ruang:** Kamis • 09:10 - 10:50 WIB • Ruang R.4.3-2
 * **Berkas Rujukan Asli:** Slide PDF & PPT Dosen di `Tugas_Kuliah/06_Matematika_Dasar/Materi_dan_Rangkuman/`
 * **Standar Notasi:** Pure Unicode Symbols (Bebas dari kode LaTeX mentah pecahan atau simbol himpunan).
@@ -712,9 +740,9 @@ Hierarki Himpunan: **ℕ ⊂ 𝕎 ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ**
 
 ---
 
-### Pertemuan 3: Pertidaksamaan Nilai Mutlak & Teorema Aljabar Pengkuadratan Dua Ruas
+### Pertemuan 3: Pertidaksamaan Nilai Mutlak & Konsep Pemetaan Fungsi
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Acuan:** `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi.pdf` (Slide 1 - 3).
+* **Acuan:** `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi (1).pdf` (18 Slide).
 
 #### 1. Definisi Geometris & Delapan Sifat Nilai Mutlak:
 Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bilangan real (selalu bernilai non-negatif `|x| ≥ 0`):
@@ -727,8 +755,8 @@ Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bi
 3. `|a + b| ≤ |a| + |b|` (*Ketaksamaan Segitiga*)
 4. `|a - b| ≥ ||a| - |b||`
 5. `|x| = √(x²)`
-6. `|x| < a ⟺ -a < x < a` (daerah solusi di dalam interval)
-7. `|x| > a ⟺ x < -a atau x > a` (daerah solusi di sayap luar)
+6. `|x| < a ⟺ -a < x < a` (daerah di dalam interval)
+7. `|x| > a ⟺ x < -a atau x > a` (daerah di sayap luar)
 8. `|x| ≤ |y| ⟺ x² ≤ y²` (metode kuadrat kedua ruas)
 
 #### 2. Pembahasan Latihan Soal Nilai Mutlak Slide Dosen:
@@ -753,102 +781,48 @@ Nilai mutlak `|x|` menyatakan jarak titik `x` dari titik pusat (0) pada garis bi
   Karena diminta `≤ 0`, ambil daerah negatif di antara dua pemecah:  
   **HP = [ -4/3, -1 ]**
 
+#### 3. Konsep Pemetaan Fungsi `f : X ➔ Y`:
+* **Definisi Fungsi:** Aturan relasi yang menghubungkan setiap elemen `x` pada himpunan daerah asal (Domain / `D_f`) dengan TEPAT SATU elemen `f(x)` pada himpunan daerah kawan (Kodomain). Himpunan semua bayangan keluaran disebut daerah hasil (Range / `R_f`).
+* **Uji Simetri Fungsi:**
+  * **Fungsi Genap:** `f(-x) = f(x)` (Grafik kurva simetris terhadap sumbu Y). Contoh: `f(x) = x² - 2`.
+  * **Fungsi Ganjil:** `f(-x) = -f(x)` (Grafik kurva simetris terhadap titik pusat asal (0,0)). Contoh: `g(x) = x³ - 2x`.
+* **Syarat Domain Alami (Natural Domain):**
+  * Bentuk Akar Irasional: `f(x) = √(p(x)) ⟹ Syarat: p(x) ≥ 0` (di dalam akar tidak boleh negatif).
+  * Bentuk Pecahan Rasional: `f(x) = p(x) / q(x) ⟹ Syarat: q(x) ≠ 0` (penyebut tidak boleh nol).
+
 ---
 
-### Pertemuan 4: Konsep Pemetaan Fungsi, Evaluasi Beda h, Uji Genap/Ganjil, Domain & Range, dan Komposisi (Sesi Live Google Meet)
+### Pertemuan 4: Persamaan Garis Lurus, Gradien & Grafik Parabola Kuadrat
 - [ ] *Sudah disalin ke lembar binder fisik*
-* **Dosen Pengajar:** Ibu Syifaafidah, M.Pd. / Dr. Munali, M.Pd.
-* **Berkas Rujukan:** Slide PDF Dosen `1790406762_Pert_3_Matematika_-_Fungsi_RegPagi.pdf` (Slide 4 - 17) + Papan Tulis Digital & Transkrip Percakapan Google Meet (Tactiq AI).
-* **Catatan Kode Berkas:** File modul tertulis `Pert_3`, tetapi materi ini resmi diajarkan pada **Pertemuan 4**.
+* **Acuan:** Slide PPT Dosen Persamaan Garis Lurus & Modul Kuadrat.
 
-#### 📢 Pengumuman Akademik Unindra & Kebijakan Materi UTS 2026:
-1. **Pengurangan Sesi Luring (Offline):** Perkuliahan luring/tatap muka di kampus dikurangi dari sebelumnya 4 sesi sebelum UTS & 3 sesi setelah UTS menjadi **3 sesi sebelum UTS dan 2 sesi setelah UTS** (sisanya daring via Google Meet / LMS).
-2. **FUNGSI INVERS DITIADAKAN DARI UJIAN UTS!** Dosen Syifaafidah menegaskan bahwa materi *Fungsi Invers* **TIDAK AKAN MASUK DALAM SOAL UTS**. Bahan ujian hanya mencakup sampai: Evaluasi Fungsi, Difference Quotient, Uji Fungsi Genap/Ganjil, Domain Alami & Range, serta Komposisi Fungsi.
+#### 1. Koordinat Kartesius 2D & Rumus Gradien (Kemiringan `m`):
+* Kuadran I (`+x, +y`), Kuadran II (`-x, +y`), Kuadran III (`-x, -y`), Kuadran IV (`+x, -y`).
+* **Rumus Gradien Garis Melalui Dua Titik `(x₁, y₁)` dan `(x₂, y₂)`:**
+  `m = Δy / Δx = (y₂ - y₁) / (x₂ - x₁)`
+* **Bentuk Persamaan Garis:**
+  * Bentuk Eksplisit: `y = m·x + c` (gradien `m`, memotong sumbu Y di `(0, c)`).
+  * Bentuk Implisit Umum: `Ax + By + C = 0` ⟹ Gradien `m = -A / B`.
+  * Persamaan Garis Melalui Titik `(x₁, y₁)` Bergradien `m`: `y - y₁ = m · (x - x₁)`.
 
-#### 1. Definisi Fungsi & Aturan Pemetaan Diagram Panah:
-Fungsi `f` adalah aturan korespondensi yang menghubungkan **setiap** elemen `x` pada daerah asal (**Domain**) dengan **tepat satu** nilai `f(x)` pada daerah kawan (**Kodomain**). Himpunan semua nilai pasangan di kodomain disebut daerah hasil (**Range**).
-* **Kaidah Wajib Domain:** Domain **tidak boleh bercabang** dan **tidak boleh kosong** (setiap elemen wajib memiliki tepat 1 kawan).
-* **Kaidah Kodomain:** Kodomain **boleh bercabang** (banyak domain menuju 1 kodomain yang sama) dan **boleh ada sisa** (elemen yang tidak berpasangan).
-* **Coretan Diagram Panah Dosen di Kelas:**
-  * Himpunan Asal: `A = {a, b, c}` ➔ **Domain** = `{a, b, c}`
-  * Himpunan Kawan: `B = {1, 2, 3, 4}` ➔ **Kodomain** = `{1, 2, 3, 4}`
-  * Relasi Pemetaan: `a ➔ 1`, `b ➔ 2`, `c ➔ 3`
-  * **Daerah Hasil (Range):** `{1, 2, 3}` *(Elemen 4 bukan anggota range karena tidak memiliki prapeta dari A)*.
+#### 2. Hubungan Antar-Dua Garis Lurus:
+* **Dua Garis Sejajar (Parallel):** Memiliki gradien identik sama persis: `m₁ = m₂`.
+* **Dua Garis Tegak Lurus (Perpendicular):** Berpotongan saling membentuk sudut 90°:
+  `m₁ · m₂ = -1 ⟺ m₂ = -1 / m₁` (Prinsip: "Lawan dan Kebalikan").
 
-#### 2. Evaluasi Nilai Fungsi & Rasio Selisih Beda (Difference Quotient):
-Diberikan fungsi `f(x) = x² - 2x`:
-* **a. Nilai `f(4)`:**  
-  `f(4) = (4)² - 2(4) = 16 - 8 = 8`
-* **b. Nilai `f(4 + h)` (Metode Pangkat-Kali-Kali-Pangkat):**  
-  `f(4 + h) = (4 + h)² - 2(4 + h) = (16 + 8h + h²) - 8 - 2h = h² + 6h + 8`
-* **c. Nilai `f(4 - h) - f(4)`:**  
-  `f(4 - h) = (4 - h)² - 2(4 - h) = 16 - 8h + h² - 8 + 2h = h² - 6h + 8` *(Catatan dosen: (-h)² = h²)*  
-  `f(4 - h) - f(4) = (h² - 6h + 8) - 8 = h² - 6h`
-* **d. Difference Quotient (Fondasi Limit Turunan Kalkulus):**  
-  `[f(4 + h) - f(4)] / h = [(h² + 6h + 8) - 8] / h = (h² + 6h) / h = h(h + 6) / h = h + 6`  
-  *⚠️ Peringatan Dosen:* Jangan mencoret variabel `h` pada operasi penjumlahan! Faktorkan perkaliannya terlebih dahulu atau pisah menjadi `(h²/h) + (6h/h)`.
-
-#### 3. Uji Simetri: Fungsi Genap vs Fungsi Ganjil:
-Substitusikan `x` dengan `(-x)` ke seluruh suku fungsi:
-* **Fungsi Genap (Even):** `f(-x) = f(x)` (Grafik kurva simetris terhadap sumbu Y).  
-  *Contoh Dosen:* `f(x) = x² - 2 ⟹ f(-x) = (-x)² - 2 = x² - 2 = f(x)` (Genap).
-* **Fungsi Ganjil (Odd):** `f(-x) = -f(x)` (Grafik kurva simetris terhadap titik pusat asal (0,0)).  
-  *Contoh Dosen:* `g(x) = x³ - 2x ⟹ g(-x) = (-x)³ - 2(-x) = -x³ + 2x = -(x³ - 2x) = -g(x)` (Ganjil).
-* **Contoh Soal Ujian Slide Dosen (Pecahan Rasional):**  
-  Apakah `f(x) = (x³ + 3x) / (x⁴ - 3x² + 4)` termasuk fungsi ganjil atau genap?  
-  *Langkah Pengujian Dosen:*  
-  `f(-x) = [(-x)³ + 3(-x)] / [(-x)⁴ - 3(-x)² + 4] = (-x³ - 3x) / (x⁴ - 3x² + 4)`  
-  Faktorkan tanda minus keluar dari pembilang:  
-  `f(-x) = - (x³ + 3x) / (x⁴ - 3x² + 4) = - f(x)`  
-  **Kesimpulan Dosen: Terbukti FUNGSI GANJIL!**
-* **Contoh Soal GMeet:** `f(x) = x³/5 ⟹ f(-x) = (-x)³/5 = -x³/5 = -f(x)` (Fungsi Ganjil).
-* **💡 Hukum Tanda Minus Pecahan Dosen:** `-a/b = -(a/b) = a/(-b)`. Tanda negatif hanya berlaku pada salah satu (pembilang ATAU penyebut), bukan keduanya. Jika kedua suku negatif, hasilnya positif: `(-a)/(-b) = a/b`.
-
-#### 4. Penentuan Daerah Asal Alami (Domain) & Daerah Hasil (Range):
-1. **Fungsi Linear `f(x) = mx + c`:**  
-   Tidak ada pembagian nol atau bentuk akar.  
-   **Domain:** `ℝ = ( -∞, ∞ )`, **Range:** `ℝ = ( -∞, ∞ )`.
-2. **Fungsi Kuadrat Polinomial `f(x) = ax² + bx + c`:**  
-   Domain: `ℝ`.  
-   Untuk Range, gunakan rumus titik puncak ordinat: `y_p = -D/(4a) = -(b² - 4ac)/(4a)`.  
-   * Kasus `a > 0` (parabola terbuka ke atas): **Range** = `[ y_min, ∞ )`  
-     *Contoh GMeet:* `f(x) = x² - 5x - 10` (`a = 1 > 0`)  
-     `y_min = -[(-5)² - 4(1)(-10)] / 4(1) = -(25 + 40) / 4 = -65/4`  
-     **Range = [ -65/4, ∞ )**.  
-   * Kasus `a < 0` (parabola terbuka ke bawah): **Range** = `( -∞, y_max ]`  
-     *Contoh GMeet:* `f(x) = -x² + 4x` (`a = -1 < 0`)  
-     `y_max = -[4² - 4(-1)(0)] / 4(-1) = -(16) / (-4) = 4`  
-     **Range = ( -∞, 4 ]**.
-3. **Fungsi Irasional (Akar) `f(x) = √(p(x))`:**  
-   Syarat di dalam akar harus tak-negatif: `p(x) ≥ 0` (jika negatif ➔ bilangan imajiner).  
-   *Contoh GMeet:* `f(x) = √(6 - 2x)`  
-   `6 - 2x ≥ 0 ⟹ -2x ≥ -6 ⟹ x ≤ 3` (dibagi -2, tanda dibalik).  
-   **Domain = ( -∞, 3 ]**, **Range = [ 0, ∞ )**.
-4. **Fungsi Rasional (Pecahan) `f(x) = p(x) / q(x)`:**  
-   Syarat penyebut tidak boleh nol: `q(x) ≠ 0`.  
-   *Contoh GMeet:* `f(x) = 3 / (x - 1)`  
-   Syarat domain: `x - 1 ≠ 0 ⟹ x ≠ 1`. **Domain = ℝ \ {1} = ( -∞, 1 ) ∪ ( 1, ∞ )**.  
-   Range via invers aljabar: `y = 3 / (x - 1) ⟹ x - 1 = 3/y ⟹ x = 3/y + 1`.  
-   Syarat range: `y ≠ 0`. **Range = ℝ \ {0} = ( -∞, 0 ) ∪ ( 0, ∞ )**.
-
-#### 5. Operasi Aljabar & Komposisi Fungsi (Latihan Interaktif Live GMeet):
-Diberikan `f(x) = √x` dan `g(x) = x - 2`:
-* **a. Komposisi `(f ∘ g)(x) = f(g(x))`:**  
-  `(f ∘ g)(x) = f(x - 2) = √(x - 2)`  
-  Syarat domain: `x - 2 ≥ 0 ⟹ x ≥ 2` ➔ **Domain `(f ∘ g)` = [ 2, ∞ )**.  
-  Daerah hasil: Nilai terkecil saat `x = 2 ⟹ √(2 - 2) = 0` ➔ **Range `(f ∘ g)` = [ 0, ∞ )**.
-* **b. Komposisi `(g ∘ f)(x) = g(f(x))`:**  
-  `(g ∘ f)(x) = g(√x) = √x - 2`  
-  Syarat domain: `x ≥ 0` ➔ **Domain `(g ∘ f)` = [ 0, ∞ )**.  
-  Daerah hasil: Nilai terkecil saat `x = 0 ⟹ √0 - 2 = -2` ➔ **Range `(g ∘ f)` = [ -2, ∞ )**.  
-  *(⚠️ Catatan Dosen: Nilai -3 tidak mungkin masuk ke dalam range karena nilai x tidak boleh negatif).*
-
-#### 6. Sesi Tanya Jawab Dosen - Mahasiswa (Jessenia Eka):
-* **Pertanyaan Mahasiswa (Jessenia Eka):** *"Ibu, apakah untuk menentukan range kita wajib menggambar kurva grafiknya di kertas ujian?"*
-* **Penjelasan Dosen (Ibu Syifaafidah):** *"Tidak wajib menggambar kurva grafik pada lembar jawaban ujian UTS. Mahasiswa cukup menganalisis nilai batas domain (ekstrem): substitusikan batas domain terkecil ke dalam fungsi. Untuk fungsi kuadrat gunakan rumus titik puncak `y_p = -D/(4a)`, dan untuk pecahan gunakan invers aljabar `x = g(y)`. Menggambar grafik hanya alat bantu visualisasi mandiri."*
+#### 3. Karakteristik Parabola Fungsi Kuadrat `f(x) = a·x² + b·x + c`:
+* **Bukaan Kurva:**
+  * Jika `a > 0`: Parabola terbuka ke atas (memiliki titik minimum lembah).
+  * Jika `a < 0`: Parabola terbuka ke bawah (memiliki titik maksimum bukit).
+* **Diskriminan `D = b² - 4·a·c`:**
+  * `D > 0`: Kurva memotong sumbu X di 2 titik berlainan (`x₁ ≠ x₂`).
+  * `D = 0`: Kurva menyinggung sumbu X di 1 titik tunggal kembar (`x₁ = x₂`).
+  * `D < 0`: Kurva tidak memotong sumbu X (melayang pasti/definit).
+    * *Definit Positif (selalu positif untuk semua x):* `a > 0` dan `D < 0`.
+    * *Definit Negatif (selalu negatif untuk semua x):* `a < 0` dan `D < 0`.
+* **Titik Puncak Puncakan Parabola:** `P(x_p, y_p) = ( -b / (2a), -D / (4a) )`.
 
 ---
-
 ## 7. Pendidikan Pancasila (MK02) • Berbasis RPS & Tugas Presentasi Kelompok
 * **Koordinator Pengembang RPS:** Dr. Ida Rosida, MH. • Dr. Julia Bea Kurniawaty, SH., MH. • Dr. Iis Dewi Lestari, M.Pd.
 * **Dosen Pengampu:** Tim Dosen Pancasila Universitas Indraprasta PGRI
