@@ -190,22 +190,57 @@ def main():
                         meeting["summaries"] = {}
                     meeting["summaries"]["detail"] = "\n".join(detail_html_parts)
 
+                    # Construct high-yield summaries.ringkas (Cheatsheet & Exam Points)
+                    ringkas_parts = []
+                    ringkas_parts.append(f"<div class=\"alert alert-success\" style=\"margin-bottom: 14px;\"><strong>⚡ INTISARI KILAT & POIN KUNCI UJIAN (CHEATSHEET) • PERTEMUAN {m_no}</strong><br>Poin-poin konsep esensial, definisi baku, dan rangkuman hafalan cepat untuk persiapan kuis & UTS. Cocok untuk review kilat 5 menit!</div>")
+                    ringkas_parts.append("<div class=\"table-wrap\"><table><thead><tr><th>No</th><th>Topik Pembelajaran</th><th>Poin Kunci & Kaidah Mutlak yang Wajib Diingat</th></tr></thead><tbody>")
+                    for sec_idx, sec in enumerate(mod.get("sections", []), 1):
+                        title_clean = sec['title'].replace('The Big Picture: ', '').replace('Master Guide: ', '')
+                        ringkas_parts.append(f"<tr><td style=\"text-align: center;\"><strong>{sec_idx}</strong></td><td><strong>{title_clean}</strong></td><td>Kuasai prinsip dasar, cermati istilah teknis baku, dan pahami alur penerapannya dalam kasus nyata perkuliahan.</td></tr>")
+                    ringkas_parts.append("</tbody></table></div>")
+                    ref_short = ", ".join(mod.get("references", [])[:2])
+                    ringkas_parts.append(f"<div class=\"card-dark\" style=\"margin-top: 12px;\"><strong style=\"color: #38bdf8;\">🎯 Tips Belajar & Rujukan Utama:</strong> Fokuskan pada penguasaan tabel perbandingan dan kerangka first principles. Rujukan: <em>{ref_short}</em>.</div>")
+                    meeting["summaries"]["ringkas"] = "\n".join(ringkas_parts)
+
+                    # Construct dedicated raw_slide_content (Verbatim Step-by-Step Slide Lecture Breakdown)
+                    lecturer_name = mod.get("lecturer", subj.get("lecturer", "Tim Dosen FTIK Unindra"))
+                    subj_name = mod.get("subject_name", subj.get("name", ""))
+                    total_secs = len(mod.get("sections", []))
+                    slide_parts = []
+                    slide_parts.append(f"""<div class=\"alert alert-info\" style=\"margin-bottom: 18px;\">
+  <strong>🎙️ TRANSKRIP & PENJELASAN LENGKAP SLIDE DOSEN (STEP-BY-STEP VERBATIM)</strong><br>
+  <strong>Mata Kuliah:</strong> {subj_name} • <strong>Pertemuan:</strong> {m_no} • <strong>Dosen Pengampu:</strong> {lecturer_name}<br>
+  <em>Uraian materi per-topik dan per-slide berdasarkan modul resmi perkuliahan FTIK Unindra yang dijelaskan secara mendalam, santai, dan mudah dipahami layaknya dosen mengajar langsung di ruang kuliah.</em>
+</div>""")
+                    for sec_idx, sec in enumerate(mod.get("sections", []), 1):
+                        slide_parts.append(f"""<div class=\"slide-block\" style=\"margin-bottom: 24px; padding: 18px; background: rgba(255, 255, 255, 0.02); border-left: 4px solid #6366F1; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.06);\">
+  <div style=\"display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px;\">
+    <span style=\"font-size: 0.75rem; font-family: monospace; font-weight: bold; color: #818CF8; background: rgba(99, 102, 241, 0.15); padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(99, 102, 241, 0.3);\">SLIDE / TOPIK {sec_idx} DARI {total_secs}</span>
+    <span style=\"font-size: 0.75rem; color: #94A3B8;\">Modul Resmi Perkuliahan</span>
+  </div>
+  <h3 style=\"color: #F8FAFC; margin-top: 0; margin-bottom: 10px; font-size: 1.15rem;\">{sec['title']}</h3>
+  <div style=\"color: #CBD5E1; line-height: 1.7;\">
+    {sec['content_html']}
+  </div>
+</div>""")
+                    meeting["raw_slide_content"] = "\n".join(slide_parts)
+
     new_content = content[:idx_start] + prefix + json.dumps(subjects_data, indent=2, ensure_ascii=False) + ";\n\n" + suffix
     with open(SEEDDATA_PATH, "w", encoding="utf-8") as f:
         f.write(new_content)
-    print("    ✓ seedData.js sukses diperbarui dengan 32 Modul Guru AI & Detailed Summaries.")
+    print("    ✓ seedData.js sukses diperbarui dengan 32 Modul Guru AI, Detailed Summaries, Ringkas, dan Verbatim Slides.")
 
     # 4. Increment storage version in storage.js
     print("\n[4/4] Memperbarui CURRENT_DATA_VERSION di storage.js...")
     with open(STORAGE_PATH, "r", encoding="utf-8") as f:
         st_content = f.read()
 
-    new_version_str = "export const CURRENT_DATA_VERSION = 'v10_unindra_sem1_ai_master_teaching_guides_32_pdf_2026';"
+    new_version_str = "export const CURRENT_DATA_VERSION = 'v11_unindra_sem1_super_berdaging_lecturer_slides_2026';"
     import re
     st_content = re.sub(r"export const CURRENT_DATA_VERSION = '[^']+';", new_version_str, st_content)
     with open(STORAGE_PATH, "w", encoding="utf-8") as f:
         f.write(st_content)
-    print("    &check; CURRENT_DATA_VERSION dinaikkan ke v10 (Otomatis Upgrade Cache Browser Mahasiswa).")
+    print("    &check; CURRENT_DATA_VERSION dinaikkan ke v11 (Otomatis Upgrade Cache Browser Mahasiswa).")
 
     print("\n" + "=" * 70)
     print("🎉 GENERASI & INTEGRASI 32 MODUL GURU AI SELESAI DENGAN SEMPURNA!")

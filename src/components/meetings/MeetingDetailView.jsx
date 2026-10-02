@@ -40,7 +40,7 @@ export function MeetingDetailView({
 }) {
   const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'pdf', 'cheatsheet'
   const [contentSubView, setContentSubView] = useState('slide'); // 'slide' (Isi Lengkap PDF/PPT) vs 'ai' (Rangkuman AI)
-  const [summaryMode, setSummaryMode] = useState('standar'); // 'ringkas', 'standar', 'detail'
+  const [summaryMode, setSummaryMode] = useState('detail'); // 'ringkas', 'standar', 'detail'
   const [copyFeedback, setCopyFeedback] = useState(false);
 
   // Available PDF materials for this meeting
