@@ -508,7 +508,7 @@ ALGO_MEETINGS = [
   <thead><tr><th>Parameter Perbandingan</th><th>Struktur IF - ELSE IF Majemuk</th><th>Struktur CASE - OF</th></tr></thead>
   <tbody>
     <tr><td><strong>Tipe Data Kondisi</strong></td><td>Fleksibel: dapat menguji tipe bilangan riil pecahan (<code>Real</code>), rentang interval dinamis (<code>x &gt; 10 AND y &lt; 5</code>), dan logika relasional majemuk.</td><td><strong>Ketat:</strong> Selector <strong>wajib bertipe Ordinal</strong> (Integer, Char, Boolean, Enumerasi). <strong>Dilarang keras memakai tipe Real/Float!</strong></td></tr>
-    <tr><td><strong>Evaluasi di CPU</strong></td><td>Linear Search: diuji satu persatu dari atas ke bawah ($O(n)$).</td><td>Jump Table / Branch Table: kompiler dapat mengoptimasi lompatan langsung ($O(1)$).</td></tr>
+    <tr><td><strong>Evaluasi di CPU</strong></td><td>Linear Search: diuji satu persatu dari atas ke bawah (<code>O(n)</code>).</td><td>Jump Table / Branch Table: kompiler dapat mengoptimasi lompatan langsung (<code>O(1)</code>).</td></tr>
     <tr><td><strong>Keterbacaan Kode</strong></td><td>Rentan rumit jika cabang bersarang terlalu dalam (<em>Spaghetti Code</em>).</td><td>Sangat bersih, elegan, dan mudah dipelihara (<em>maintainable</em>).</td></tr>
   </tbody>
 </table>
