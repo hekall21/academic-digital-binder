@@ -3,7 +3,7 @@ import { safeJsonParse } from './security';
 // Local Storage & Backup Persistence Utilities
 // Versioned to ensure curriculum updates are automatically synced to the user's browser
 
-export const CURRENT_DATA_VERSION = 'v12_guru_ai_lecturer_slides_pengayaan_sumber_2026';
+export const CURRENT_DATA_VERSION = 'v13_guru_ai_verbatim_slide_by_slide_gmeet_2026';
 const STORAGE_KEY_VERSION = 'academic_binder_data_version';
 const STORAGE_KEY_SUBJECTS = 'academic_binder_subjects_v3';
 const STORAGE_KEY_PROFILE = 'academic_binder_profile_v3';
