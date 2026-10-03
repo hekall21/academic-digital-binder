@@ -39,8 +39,8 @@ export function MeetingDetailView({
   onBack,
 }) {
   const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'pdf', 'cheatsheet'
-  const [contentSubView, setContentSubView] = useState('slide'); // 'slide' (Isi Lengkap PDF/PPT) vs 'ai' (Rangkuman AI)
-  const [summaryMode, setSummaryMode] = useState('detail'); // 'ringkas', 'standar', 'detail'
+  const [contentSubView, setContentSubView] = useState('ai'); // Default to 'ai' (Penjelasan Lengkap Guru AI)
+  const [summaryMode, setSummaryMode] = useState('detail'); // Default to 'detail' (Penjelasan Guru AI)
   const [copyFeedback, setCopyFeedback] = useState(false);
 
   // Available PDF materials for this meeting
@@ -237,8 +237,20 @@ export function MeetingDetailView({
       {/* TAB 1: RANGKUMAN AKADEMIK & KISI-KISI UTS */}
       {activeTab === 'summary' && (
         <div className="space-y-6">
-          {/* Dual-View Switcher: Isi Lengkap PDF/PPT vs Rangkuman Cerdas AI */}
+          {/* Dual-View Switcher: Penjelasan Guru AI (Bedah PPT) vs Transkrip Slide Asli Dosen */}
           <div className="flex flex-col sm:flex-row items-center gap-2 p-1.5 bg-[#181B26] border border-white/10 rounded-2xl no-print shadow-sm">
+            <button
+              onClick={() => setContentSubView('ai')}
+              className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                contentSubView === 'ai'
+                  ? 'bg-gradient-to-r from-emerald-600 via-teal-700 to-indigo-600 text-white shadow-lg'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+              }`}
+            >
+              <Sparkles className="w-4 h-4 text-emerald-300" />
+              <span>🤖 Penjelasan Guru AI (Bedah PPT Dosen, Pengayaan & Sumber)</span>
+            </button>
+
             <button
               onClick={() => setContentSubView('slide')}
               className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
@@ -248,19 +260,7 @@ export function MeetingDetailView({
               }`}
             >
               <FileText className="w-4 h-4 text-cyan-300" />
-              <span>📖 Isi Lengkap Modul PDF & Slide Dosen (Verbatim)</span>
-            </button>
-
-            <button
-              onClick={() => setContentSubView('ai')}
-              className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                contentSubView === 'ai'
-                  ? 'bg-gradient-to-r from-indigo-600 via-indigo-700 to-cyan-600 text-white shadow-lg'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
-              }`}
-            >
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>🤖 Rangkuman Cerdas & Kisi-Kisi UTS</span>
+              <span>📖 Transkrip Slide Modul Dosen (Verbatim)</span>
             </button>
           </div>
 

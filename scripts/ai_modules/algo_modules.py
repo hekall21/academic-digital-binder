@@ -1,536 +1,506 @@
 # -*- coding: utf-8 -*-
 """
 Modul Pembelajaran Guru AI: Algoritma 1 (Pertemuan 1 - 4)
+Bedah komprehensif seluruh materi PPT resmi Algoritma FTIK Unindra.
+Struktur 3 Bagian:
+  1. Penjelasan & Bedah Materi Slide/PPT Dosen (Step-by-Step)
+  2. Tambahan Materi, Insight First Principles & Saran Guru AI (Paling Bawah)
+  3. Sumber Dokumen Perkuliahan & Rujukan Resmi (Paling Bawah)
 """
 
 ALGO_MEETINGS = [
     {
         "meeting_no": 1,
         "filename": "algo_p1_panduan_guru_ai",
-        "title": "Master Guide: Fondasi Algoritma, Karakteristik Knuth & Notasi Komputasi",
+        "title": "Master Guide: Pengantar Algoritma, Asal Usul Al-Khwarizmi, 5 Kriteria Knuth & 3 Notasi Komputasi",
         "subject_name": "Algoritma 1",
         "lecturer": "Pak Rizki / Tim Dosen Algoritma FTIK",
+        "doc_filename": "algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1.pdf)",
+        "slide_count": "14 Slide PPT Resmi Dosen",
         "sections": [
             {
-                "title": "The Big Picture & Intuisi Pertama (Mengapa Belajar Algoritma?)",
+                "title": "Pengantar & Urgensi Algoritma dalam Informatika (Slide 1 - 3 PPT Dosen)",
                 "content_html": """
-<p>Komputer pada dasarnya adalah mesin penghitung yang sangat cepat namun tidak memiliki inisiatif logis (<em>ultra-fast dumb machine</em>). Komputer tidak dapat memecahkan masalah tanpa instruksi presisi langkah-demi-langkah. Di sinilah letak <strong>Algoritma</strong> sebagai cetak biru (<em>blueprint</em>) berpikir logis sebelum kita menyentuh kode pemrograman apapun.</p>
+<p>Slide 3 menjelaskan bahwa <strong>Algoritma adalah jantung dari ilmu komputer atau informatika</strong>. Meskipun sangat identik dengan sistem komputasi, dalam kehidupan sehari-hari manusia sebenarnya telah berulang kali mempraktikkan algoritma tanpa disadari (misalnya resep membuat kue, petunjuk perakitan meja, atau alur transaksi di ATM).</p>
 <div class=\"card card-accent\">
   <strong>Aksioma Fundamental Niklaus Wirth (1976):</strong><br>
   <code>Program = Algoritma + Struktur Data</code><br>
-  Jika Struktur Data adalah bahan baku material (batu bata, semen, baja), maka Algoritma adalah rancangan arsitektur dan instruksi perakitannya. Keduanya tidak terpisahkan.
+  Struktur Data menyediakan wadah penyimpanan informasi (variabel, array, record), sedangkan Algoritma merancang alur logika dan instruksi manipulasi datanya. Keduanya merupakan fondasi mutlak yang tidak terpisahkan.
 </div>
-<p>Asal kata <em>algoritma</em> berakar dari nama ilmuwan muslim Persia abad ke-9, <strong>Abu Ja'far Muhammad bin Musa Al-Khwarizmi</strong>, penulis kitab legendaris <em>Al-Jabr wal-Muqabala</em> yang menjadi peletak dasar aljabar modern.</p>
 """
             },
             {
-                "title": "Bedah Materi Dosen: 5 Kriteria Baku Algoritma Donald E. Knuth",
+                "title": "Asal-Usul Nama & Definisi Baku Algoritma (Slide 4 - 5 PPT Dosen)",
                 "content_html": """
-<p>Pakar ilmu komputer terkemuka Donald E. Knuth dalam magnum opus-nya <em>The Art of Computer Programming</em> menetapkan bahwa sebuah urutan instruksi hanya sah disebut <strong>Algoritma</strong> apabila memenuhi 5 syarat mutlak:</p>
+<p>Slide 4 menguraikan sejarah kata <em>Algoritma</em> yang berakar dari nama ilmuwan muslim Persia terkemuka pada masa keemasan Islam di Baghdad (abad ke-9 Masehi), yaitu <strong>Abu Ja'far Muhammad bin Musa Al-Khwarizmi</strong> (780–846 M). Bangsa barat melafalkan namanya menjadi <em>Algorism</em> yang kemudian berubah menjadi <em>Algorithm</em>. Beliau juga merupakan peletak dasar aljabar modern melalui kitab legendarisnya <em>Al-Jabr wal-Muqabala</em>.</p>
+<div class=\"card-dark\">
+  <strong>Definisi Baku Algoritma (Slide 5 Modul Dosen):</strong><br>
+  <blockquote style=\"margin: 4px 0 0 0; color: #38bdf8; font-style: italic;\">
+    \"Algoritma adalah urutan aksi-aksi yang dinyatakan dengan jelas dan tidak rancu (unambiguous) untuk memecahkan suatu masalah dalam rentang langkah yang berhingga.\"
+  </blockquote>
+</div>
+"""
+            },
+            {
+                "title": "Lima Kriteria Baku Algoritma Menurut Donald E. Knuth (Slide 6 PPT Dosen)",
+                "content_html": """
+<p>Slide 6 menyajikan 5 syarat mutlak yang dirumuskan oleh pakar ilmu komputer legendaris <strong>Donald E. Knuth</strong> dalam karya monumentalnya <em>The Art of Computer Programming</em> agar sebuah urutan instruksi sah disebut sebagai algoritma:</p>
 <table>
-  <thead><tr><th>Kriteria Knuth</th><th>Definisi Konseptual</th><th>Dampak Fatal Jika Dilanggar</th></tr></thead>
+  <thead><tr><th>Kriteria Knuth</th><th>Definisi Konseptual Dosen</th><th>Dampak Fatal Jika Dilanggar</th></tr></thead>
   <tbody>
-    <tr><td><strong>1. Finiteness (Keterbatasan)</strong></td><td>Algoritma harus berhenti (<em>terminate</em>) setelah mengerjakan sejumlah langkah terhingga.</td><td>Menyebabkan <em>Infinite Loop</em>, konsumsi memori tak terbatas, program membeku (<em>freeze / crash</em>).</td></tr>
-    <tr><td><strong>2. Definiteness (Kepastian)</strong></td><td>Setiap langkah harus didefinisikan secara tepat, eksplisit, dan tidak menimbulkan makna ganda (<em>unambiguous</em>).</td><td>Instruksi seperti \"tambahkan garam secukupnya\" tidak sah dalam algoritma komputer karena ambigu bagi CPU.</td></tr>
-    <tr><td><strong>3. Input (Masukan &ge; 0)</strong></td><td>Algoritma memiliki nol atau lebih masukan yang diberikan dari luar sebelum eksekusi dimulai.</td><td>Algoritma tanpa input tetap sah (misal: algoritma mencetak konstanta Pi atau teks statis).</td></tr>
-    <tr><td><strong>4. Output (Keluaran &ge; 1)</strong></td><td>Algoritma harus menghasilkan minimal satu keluaran yang merupakan solusi permasalahan.</td><td>Algoritma yang berjalan tanpa memproduksi hasil apapun adalah operasi komputasi sia-sia.</td></tr>
-    <tr><td><strong>5. Effectiveness (Efektivitas)</strong></td><td>Setiap instruksi harus sangat sederhana dan mendasar sehingga dapat dikerjakan manusia dengan kertas & pensil dalam waktu wajar.</td><td>Instruksi mustahil (misal: \"bagi angka dengan nol\") melanggar prinsip efektivitas.</td></tr>
+    <tr>
+      <td><strong>1. Input (Masukan &ge; 0)</strong></td>
+      <td>Algoritma memiliki <strong>nol atau lebih masukan</strong> yang diberikan dari luar sebelum eksekusi dimulai.</td>
+      <td>Algoritma tanpa input tetap sah (misal: algoritma penampil teks statis \"Hello World\").</td>
+    </tr>
+    <tr>
+      <td><strong>2. Output (Keluaran &ge; 1)</strong></td>
+      <td>Algoritma <strong>WAJIB menghasilkan minimal satu keluaran</strong> yang merupakan solusi dari permasalahan.</td>
+      <td>Instruksi yang berjalan tanpa memproduksi hasil apapun adalah operasi komputasi yang sia-sia.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Definiteness (Kepastian)</strong></td>
+      <td>Setiap langkah instruksi harus didefinisikan secara tepat, eksplisit, dan <strong>tidak menimbulkan makna ganda (tidak ambigu)</strong>.</td>
+      <td>Instruksi samar seperti \"masukkan garam secukupnya\" tidak sah dalam algoritma komputasi.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Finiteness (Keterbatasan)</strong></td>
+      <td>Algoritma <strong>harus berhenti (terminate)</strong> setelah mengerjakan sejumlah langkah terhingga.</td>
+      <td>Terjadi <em>Infinite Loop</em> (perulangan tak terhingga), konsumsi memori tak terkontrol, dan sistem freeze.</td>
+    </tr>
+    <tr>
+      <td><strong>5. Effectiveness (Efektivitas)</strong></td>
+      <td>Setiap instruksi harus sangat sederhana dan mendasar sehingga dapat dikerjakan secara realistis dalam waktu wajar.</td>
+      <td>Instruksi mustahil seperti membagi angka dengan nol (<em>division by zero</em>) melanggar asas efektivitas.</td>
+    </tr>
   </tbody>
 </table>
 """
             },
             {
-                "title": "Tiga Notasi Baku Penyajian Algoritma (Komparasi & Implementasi)",
+                "title": "Tiga Jenis Proses Alur Algoritma (Slide 7 PPT Dosen)",
                 "content_html": """
-<p>Dalam rekayasa komputasi, algoritma dapat diekspresikan melalui tiga notasi baku dengan karakteristik, kekuatan, dan batasan masing-masing:</p>
+<p>Slide 7 membagi seluruh proses penyelesaian masalah dalam algoritma ke dalam 3 jenis bentuk:</p>
 <table>
-  <thead>
-    <tr>
-      <th>Notasi Algoritma</th>
-      <th>Format / Karakteristik Penyajian</th>
-      <th>Kelebihan Utama</th>
-      <th>Kelemahan & Limitasi</th>
-      <th>Kesesuaian Penggunaan Nyata</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Jenis Proses Algoritma</th><th>Mekanisme Eksekusi</th><th>Contoh Kasus</th></tr></thead>
   <tbody>
-    <tr>
-      <td><strong>1. Bahasa Alami (Deskriptif)</strong></td>
-      <td>Narasi teks terstruktur memakai bahasa manusia sehari-hari (Indonesia / Inggris).</td>
-      <td>Mudah dipahami dan dikomunikasikan kepada pemangku kepentingan awam non-teknis.</td>
-      <td>Rentan multitafsir (ambigu), panjang bertele-tele, tidak memiliki standar formal.</td>
-      <td>Dokumentasi konseptual awal, penjelasan alur proses bisnis kepada klien non-TI.</td>
-    </tr>
-    <tr>
-      <td><strong>2. Pseudocode (Kode Semu)</strong></td>
-      <td>Notasi terstruktur bergaya bahasa pemrograman imperatif tingkat tinggi tanpa dependensi sintaks spesifik.</td>
-      <td>Ringkas, presisi, independen dari bahasa mesin, mudah ditranslasikan ke bahasa pemrograman apapun.</td>
-      <td>Tidak dapat dieksekusi langsung oleh mesin compiler tanpa dikonversi ke kode nyata.</td>
-      <td>Perancangan logika inti sistem, publikasi paper riset algoritma, standar buku teks ilmu komputer.</td>
-    </tr>
-    <tr>
-      <td><strong>3. Flowchart (Diagram Alir)</strong></td>
-      <td>Representasi grafis dua dimensi menggunakan simbol-simbol geometri standar ANSI / ISO 5807.</td>
-      <td>Alur logika, percabangan, dan perulangan tampak seketika secara visual; mudah ditelusuri alurnya.</td>
-      <td>Membutuhkan ruang gambar luas; sulit digambar ulang saat logika sangat kompleks dan bersarang banyak.</td>
-      <td>Presentasi arsitektur sistem, audit proses bisnis, instruksi operasional standar kerja (SOP).</td>
-    </tr>
+    <tr><td><strong>1. Sequence Process (Runtunan)</strong></td><td>Instruksi dikerjakan secara berurutan baris demi baris, dari baris pertama hingga baris terakhir tanpa ada yang terlewat.</td><td>Menghitung luas segitiga: baca alas &rarr; baca tinggi &rarr; hitung luas &rarr; tampilkan luas.</td></tr>
+    <tr><td><strong>2. Selection Process (Pemilihan)</strong></td><td>Instruksi tertentu hanya akan dikerjakan apabila memenuhi persyaratan atau kondisi kriteria tertentu.</td><td>Menentukan kelulusan: jika nilai &ge; 60 maka lulus, jika tidak maka gagal.</td></tr>
+    <tr><td><strong>3. Iteration / Repetition Process (Perulangan)</strong></td><td>Instruksi dikerjakan secara berulang-ulang selama suatu kondisi batas pengulangan masih terpenuhi.</td><td>Mencetak deret bilangan 1 sampai 100, pencarian data di database.</td></tr>
   </tbody>
 </table>
-
-<div class="card-dark" style="margin-top: 8px;">
-  <span style="color: #38bdf8; font-weight: bold;">// Contoh Pseudocode Baku Menghitung Luas Segitiga:</span>
-  <pre><code><span class="code-kw">PROGRAM</span> HitungLuasSegitiga
-<span class="code-kw">DEKLARASI</span>:
-  alas, tinggi, luas : <span class="code-type">real</span>
-
-<span class="code-kw">ALGORITMA</span>:
-  <span class="code-fn">read</span>(alas)
-  <span class="code-fn">read</span>(tinggi)
-  luas &larr; 0.5 * alas * tinggi
-  <span class="code-fn">write</span>(luas)
-<span class="code-kw">END PROGRAM</span></code></pre>
-</div>
 """
             },
             {
-                "title": "Bedah Jebakan Soal UTS & Tips Menjawab",
+                "title": "Definisi Program, Pemrograman & 3 Cara Penulisan Algoritma (Slide 8 - 9 PPT Dosen)",
+                "content_html": """
+<p>Slide 8 mendefinisikan <strong>Program</strong> sebagai kumpulan instruksi-instruksi tersendiri (source code) yang dibuat oleh programmer untuk memecahkan masalah. Sedangkan <strong>Pemrograman</strong> adalah proses menulis, menguji, dan memelihara kode tersebut.</p>
+<p>Slide 9 menyajikan 3 cara representasi / notasi penulisan algoritma:</p>
+<table>
+  <thead><tr><th>Notasi Algoritma</th><th>Format Karakteristik</th><th>Kelebihan</th><th>Kelemahan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Bahasa Natural (Deskriptif)</strong></td><td>Narasi bahasa sehari-hari manusia (Indonesia/Inggris).</td><td>Sangat mudah dipahami orang awam.</td><td>Rentan multitafsir (ambigu) dan panjang bertele-tele.</td></tr>
+    <tr><td><strong>2. Flowchart (Diagram Alir)</strong></td><td>Representasi visual menggunakan simbol-simbol bangun datar geometris standar ANSI/ISO.</td><td>Alur logika dan percabangan tampak seketika secara visual.</td><td>Membutuhkan bidang gambar luas; rumit jika logika bersarang banyak.</td></tr>
+    <tr><td><strong>3. Pseudocode (Kode Semu)</strong></td><td>Teks terstruktur bergaya bahasa pemrograman tingkat tinggi tanpa terikat sintaks kaku.</td><td>Ringkas, presisi, dan sangat mudah ditranslasikan ke bahasa Pascal, C, atau Python.</td><td>Tidak dapat dieksekusi langsung oleh mesin sebelum diketik ke kode program nyata.</td></tr>
+  </tbody>
+</table>
+"""
+            },
+            {
+                "title": "Studi Kasus Dosen: Menentukan Bilangan Terbesar dari 3 Bilangan (Slide 10 - 12 PPT Dosen)",
+                "content_html": """
+<p>Slide 10-12 memperlihatkan contoh algoritma untuk menentukan bilangan terbesar di antara 3 buah bilangan masukan (A, B, dan C):</p>
+<div class=\"card-dark\">
+  <span style=\"color: #38bdf8; font-weight: bold;\">// Algoritma Menentukan Nilai Maksimum (Slide 11):</span>
+  <pre><code><span class=\"code-kw\">PROGRAM</span> BilanganTerbesar
+<span class=\"code-kw\">DEKLARASI</span>:
+  A, B, C, max : <span class=\"code-type\">integer</span>
+
+<span class=\"code-kw\">ALGORITMA</span>:
+  <span class=\"code-fn\">read</span>(A, B, C)
+  max &larr; A                <span class=\"code-cmt\">{ Asumsikan sementara bahwa A adalah nilai terbesar }</span>
+  <span class=\"code-kw\">IF</span> (B &gt; max) <span class=\"code-kw\">THEN</span>
+    max &larr; B              <span class=\"code-cmt\">{ Jika ternyata B lebih besar, mutasi max dengan B }</span>
+  <span class=\"code-kw\">IF</span> (C &gt; max) <span class=\"code-kw\">THEN</span>
+    max &larr; C              <span class=\"code-cmt\">{ Jika ternyata C lebih besar, mutasi max dengan C }</span>
+  <span class=\"code-fn\">write</span>(<span class=\"code-str\">'Bilangan Terbesar Adalah: '</span>, max)
+<span class=\"code-kw\">END PROGRAM</span></code></pre>
+</div>
+"""
+            }
+        ],
+        "ai_insights": [
+            {
+                "title": "Intuisi First Principles: Mengapa Finiteness Sangat Krusial Bagi CPU Komputer",
+                "content_html": """
+<p>Di balik kriteria <em>Finiteness</em> Donald Knuth tersimpan batasan fisik arsitektur komputasi. Jika sebuah program tidak memiliki kondisi berhenti (<em>halting condition</em>), CPU akan terus mengeksekusi instruksi perulangan pada kecepatan GHz hingga menghabiskan alokasi memori tumpukan (<em>Stack Overflow</em>) atau mengunci alokasi thread sistem operasi. Karena itu, perancangan algoritma wajib menjamin adanya langkah terminasi yang pasti.</p>
+"""
+            },
+            {
+                "title": "Tips Menjawab Soal Kuis & UTS Algoritma 1",
                 "content_html": """
 <div class=\"alert alert-warning\">
-  <strong>⚠️ Jebakan Soal UTS Khas Unindra:</strong><br>
-  <em>\"Apakah sebuah algoritma wajib memiliki masukan (input)?\"</em><br>
-  <strong>Jawaban Salah:</strong> Ya, harus memiliki masukan.<br>
-  <strong>Jawaban Benar & Pembahasan Sempurna:</strong> <strong>TIDAK WAJIB.</strong> Syarat Knuth menyatakan jumlah input adalah <strong>nol atau lebih (&ge; 0)</strong>. Contoh: algoritma pembangkit bilangan acak seed statis atau program penampil teks \"Hello World\" memiliki 0 masukan namun tetap sah sebagai algoritma. Sebaliknya, <strong>output WAJIB minimal satu (&ge; 1)</strong>.
+  <strong>🎯 Bedah Jebakan Ujian Khas Pertemuan 1:</strong><br>
+  <strong>Soal Jebakan:</strong> <em>\"Apakah sebuah algoritma yang benar WAJIB memiliki masukan (input) dari pengguna?\"</em><br>
+  <strong>Jawaban Salah:</strong> Ya, wajib ada input.<br>
+  <strong>Jawaban Benar & Pembahasan Dosen:</strong> <strong>TIDAK WAJIB.</strong> Syarat Knuth menetapkan jumlah input adalah <strong>nol atau lebih (&ge; 0)</strong>. Contoh: algoritma penampil teks statis atau pembangkit bilangan acak seed statis memiliki 0 input dan tetap sah sebagai algoritma. Sebaliknya, <strong>OUTPUT MUTLAK WAJIB MINIMAL SATU (&ge; 1)</strong>!
 </div>
 """
             }
         ],
         "references": [
+            "Berkas Resmi Perkuliahan: algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1, 14 Slide PPT Dosen FTIK Unindra).",
+            "Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.",
             "Knuth, Donald E. (1997). The Art of Computer Programming, Vol. 1: Fundamental Algorithms (3rd ed.). Addison-Wesley.",
-            "Wirth, Niklaus. (1976). Algorithms + Data Structures = Programs. Prentice-Hall.",
-            "Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to Algorithms (4th ed.). MIT Press.",
-            "Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi Unindra (2026)."
+            "Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026)."
         ]
     },
     {
         "meeting_no": 2,
         "filename": "algo_p2_panduan_guru_ai",
-        "title": "Master Guide: Tipe Data, Variabel, Konstanta & Presedensi Operator Komputasi",
+        "title": "Master Guide: Tipe Data Sederhana, Variabel, Konstanta, Ekspresi & Operator Komputasi",
         "subject_name": "Algoritma 1",
         "lecturer": "Pak Rizki / Tim Dosen Algoritma FTIK",
+        "doc_filename": "algo_p2_tipe_data_operator.pdf (Algoritma 1 - Tipe data dan Operator Pertemuan Ke-2.pdf)",
+        "slide_count": "16 Slide PPT Resmi Dosen",
         "sections": [
             {
-                "title": "The Big Picture: Memori Komputer, Variabel, dan Wadah Data",
+                "title": "Tipe Data Sederhana & Karakteristik Integer (Slide 2 - 4 PPT Dosen)",
                 "content_html": """
-<p>Dalam arsitektur Von Neumann, memori utama (RAM) adalah deretan sel biner beralamat heksadesimal (misal: <code>0x7FFE001A</code>). Manusia mustahil mengingat alamat acak tersebut saat menulis program. Di sinilah peran <strong>Variabel</strong> sebagai label simbolik yang manusiawi untuk memesan dan merujuk lokasi memori tersebut.</p>
+<p>Slide 2 menjelaskan bahwa tipe data dasar sederhana yang paling sering digunakan dalam program meliputi: <strong>Integer, Real, Char, String, dan Boolean</strong>.</p>
+<p>Slide 3-4 menegaskan aturan baku <strong>Integer</strong>:</p>
+<ul>
+  <li>Integer menampung bilangan bulat tanpa pecahan desimal.</li>
+  <li>Dalam tipe data ini <strong>TIDAK DIPERKENANKAN menggunakan tanda koma</strong> antar dua digit angka.</li>
+  <li><strong>Operator pada Tipe Integer (Slide 4):</strong> Penjumlahan (<code>+</code>), Pengurangan (<code>-</code>), Perkalian (<code>*</code>), Pembagian Bulat (<code>div</code>), dan Sisa Bagi / Modulo (<code>mod</code>). Contoh: <code>13 + 4 = 17</code>, <code>10 div 3 = 3</code>, <code>10 mod 3 = 1</code>.</li>
+</ul>
+"""
+            },
+            {
+                "title": "Tipe Data Real & Tabel Jangkauan Ukuran Memori (Slide 5 - 6 PPT Dosen)",
+                "content_html": """
+<p>Slide 5 menerangkan bahwa penulisan untuk jenis data Real <strong>selalu menggunakan titik desimal</strong> (bukan koma). Nilai konstanta numerik real standar berkisar dari 1E-38 s.d 1E+38.</p>
 <table>
-  <thead>
-    <tr>
-      <th>Kategori Pengenal</th>
-      <th>Karakteristik Nilai di RAM</th>
-      <th>Kata Kunci Deklarasi</th>
-      <th>Contoh Notasi Baku</th>
-      <th>Aturan Mutabilitas & Hak Akses</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Tipe Real (Slide 6)</th><th>Jangkauan Nilai</th><th>Digit Presisi</th><th>Ukuran Memori</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Single</strong></td><td>1.5E-45 s.d 3.4E+38</td><td>7 - 8 digit</td><td>4 Byte</td></tr>
+    <tr><td><strong>Real</strong></td><td>2.9E-39 s.d 1.7E+38</td><td>11 - 12 digit</td><td>6 Byte</td></tr>
+    <tr><td><strong>Double</strong></td><td>5.0E-324 s.d 1.7E+308</td><td>15 - 16 digit</td><td>8 Byte</td></tr>
+    <tr><td><strong>Extended</strong></td><td>3.4E-4932 s.d 1.1E+4932</td><td>19 - 20 digit</td><td>10 Byte</td></tr>
+    <tr><td><strong>Comp</strong></td><td>-2E+63 + 1 s.d 2E+63 - 1</td><td>19 - 20 digit</td><td>8 Byte</td></tr>
+  </tbody>
+</table>
+"""
+            },
+            {
+                "title": "Tipe Data Karakter (Char), String & Boolean (Slide 7 - 10 PPT Dosen)",
+                "content_html": """
+<p>Slide 7-8 membedakan Char dan String:</p>
+<table>
+  <thead><tr><th>Tipe Data Teks</th><th>Kapasitas & Karakteristik</th><th>Kaidah Penulisan Baku</th><th>Jumlah Variasi</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Char</strong></td><td>Menyimpan tepat <strong>hanya 1 karakter tunggal</strong> yang diketikkan dari keyboard.</td><td>Diapit tanda petik tunggal: <code>'A'</code>, <code>'9'</code>, <code>'%'</code>.</td><td>Memiliki 256 macam variasi karakter ASCII (0..255).</td></tr>
+    <tr><td><strong>String</strong></td><td>Terdiri dari <strong>beberapa rangkaian karakter</strong> yang membentuk teks kata/kalimat.</td><td>Diapit tanda petik tunggal: <code>'FTIK Unindra'</code>.</td><td>Dinamis hingga 255 karakter (ShortString) atau tak terbatas.</td></tr>
+  </tbody>
+</table>
+<p>Slide 9-10 menguraikan tipe <strong>Boolean</strong>: tipe data logika yang hanya berisi dua kemungkinan nilai: <code>TRUE</code> (Benar) atau <code>FALSE</code> (Salah). Slide 10 menampilkan contoh program <code>display_bool</code> menggunakan unit <code>wincrt</code> untuk mencetak status boolean.</p>
+"""
+            },
+            {
+                "title": "Konsep Variabel, Konstanta & Ekspresi (Slide 11 - 13 PPT Dosen)",
+                "content_html": """
+<table>
+  <thead><tr><th>Entitas Komputasi</th><th>Definisi Konseptual Modul Dosen</th><th>Sifat Mutabilitas</th><th>Contoh Penulisan</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>Variabel (Variable)</strong></td>
-      <td>Lokasi memori yang nilainya dinamis dapat diperbarui (<em>read-write</em>) sepanjang siklus eksekusi program.</td>
-      <td><code>var</code> / <code>DEKLARASI</code></td>
-      <td><code>counter &larr; counter + 1</code><br><code>total := total + harga;</code></td>
-      <td>Dapat dimutasi berulang kali saat iterasi, akumulasi data, atau masukan interaktif user.</td>
+      <td><strong>Variabel (Slide 11)</strong></td>
+      <td>Suatu lokasi memori komputer yang digunakan untuk menampung dan menyimpan data yang akan diolah.</td>
+      <td><strong>Dinamis</strong> (dapat diubah nilainya sewaktu-waktu selama program berjalan).</td>
+      <td><code>var nama: string; total: integer;</code></td>
     </tr>
     <tr>
-      <td><strong>Konstanta (Constant)</strong></td>
-      <td>Lokasi memori yang nilainya dikunci permanen (<em>read-only</em>) sejak saat inisialisasi awal.</td>
-      <td><code>const</code></td>
-      <td><code>PI = 3.14159265</code><br><code>TARIF_PPN = 0.11</code></td>
-      <td>Imutabel (tidak dapat diubah); mencegah <em>magic numbers</em> dan melindungi nilai acuan absolut.</td>
+      <td><strong>Konstanta (Slide 12)</strong></td>
+      <td>Besaran yang mempunyai nilai tetap selama program dijalankan. Nilai disimpan sebelum dieksekusi.</td>
+      <td><strong>Statik / Imutabel</strong> (terkunci permanen; tidak dapat diubah).</td>
+      <td><code>const pi = 3.14; kurs = 15500;</code></td>
+    </tr>
+    <tr>
+      <td><strong>Ekspresi (Slide 13)</strong></td>
+      <td>Pernyataan yang mentransformasikan nilai menjadi keluaran yang diinginkan melalui proses perhitungan (komputasi).</td>
+      <td>Hasil evaluasi dari operand yang dihubungkan oleh operator.</td>
+      <td><code>luas := panjang * lebar;</code></td>
     </tr>
   </tbody>
 </table>
 """
             },
             {
-                "title": "Klasifikasi Tipe Data Primitif Standar Komputasi",
+                "title": "Klasifikasi Operator & Urutan Presedensi (Slide 14 PPT Dosen)",
                 "content_html": """
-<table>
-  <thead><tr><th>Kategori Tipe Data</th><th>Contoh di Pemrograman</th><th>Alokasi Memori Standar</th><th>Rentang Nilai & Domain Karakteristik</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Integer (Bilangan Bulat)</strong></td><td><code>Integer</code>, <code>Longint</code>, <code>Byte</code></td><td>1 s.d 8 Byte (8 - 64 bit)</td><td>Bilangan bulat tanpa pecahan (..., -2, -1, 0, 1, 2, ...). Operasi pembagian bilangan bulat menghasilkan sisa bagi (modulo).</td></tr>
-    <tr><td><strong>Real / Float (Pecahan Desimal)</strong></td><td><code>Real</code>, <code>Single</code>, <code>Double</code></td><td>4 s.d 8 Byte IEEE 754</td><td>Bilangan kontinu dengan pecahan desimal (3.14, -0.005). Memiliki keterbatasan presisi floating-point.</td></tr>
-    <tr><td><strong>Character (Karakter Tunggal)</strong></td><td><code>Char</code></td><td>1 Byte (8 bit ASCII)</td><td>Satu simbol grafis yang diapit tanda petik tunggal: <code>'A'</code>, <code>'9'</code>, <code>'$'</code>.</td></tr>
-    <tr><td><strong>Boolean (Logika Biner)</strong></td><td><code>Boolean</code></td><td>1 Byte (1 bit efektif)</td><td>Hanya memiliki dua keadaan kebenaran mutlak: <code>TRUE</code> (Benar) atau <code>FALSE</code> (Salah).</td></tr>
-    <tr><td><strong>String (Rangkaian Teks)</strong></td><td><code>String</code></td><td>Dinamis (panjang teks + 1)</td><td>Rangkaian karakter: <code>'Universitas Indraprasta PGRI'</code>.</td></tr>
-  </tbody>
-</table>
+<p>Slide 14 membagi operator komputasi menjadi:</p>
+<ol>
+  <li><strong>Operator Aritmatika:</strong> Pangkat, perkalian (<code>*</code>), pembagian real (<code>/</code>), pembagian bulat (<code>div</code>), sisa bagi (<code>mod</code>), penjumlahan (<code>+</code>), pengurangan (<code>-</code>).</li>
+  <li><strong>Operator Relasional:</strong> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>.</li>
+  <li><strong>Operator Logika:</strong> <code>NOT</code> (ingkaran), <code>AND</code> (dan), <code>OR</code> (atau), <code>XOR</code> (exclusive or).</li>
+</ol>
+"""
+            }
+        ],
+        "ai_insights": [
+            {
+                "title": "Intuisi First Principles: Memori Komputer & Alamat Heksadesimal",
+                "content_html": """
+<p>RAM pada hakikatnya adalah jajaran sel transistor beralamat heksadesimal acak (misal <code>0x00FF2A</code>). Variabel bertindak sebagai \"nama alias\" yang memudahkan programmer manusia untuk menunjuk alamat fisik memori tersebut tanpa harus menghafal nomor register heksadesimal.</p>
 """
             },
             {
-                "title": "Hierarki Presedensi Operator & Tabel Kebenaran Logika",
+                "title": "Tips Menjawab Soal UTS: Pembagian Real (/) vs Pembagian Bulat (div)",
                 "content_html": """
-<p>Ketika sebuah ekspresi matematika mengandung banyak operator sekaligus, komputer mengeksekusinya berdasarkan <strong>Tingkat Presedensi (Precedence Order)</strong>, bukan semata dari kiri ke kanan:</p>
-<table>
-  <thead>
-    <tr>
-      <th>Tingkat Presedensi</th>
-      <th>Golongan Operator</th>
-      <th>Simbol Komputasi</th>
-      <th>Arah Evaluasi</th>
-      <th>Contoh Ekspresi & Hasil Evaluasi</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Prioritas 1 (Tertinggi)</strong></td>
-      <td>Tanda Kurung Pengelompokan</td>
-      <td><code>( ... )</code></td>
-      <td>Dari dalam ke luar</td>
-      <td><code>(2 + 3) * 4</code> &rarr; <code>5 * 4 = 20</code> (Mengabaikan presedensi bawaan)</td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 2</strong></td>
-      <td>Unary & Negasi Logika</td>
-      <td><code>+</code>, <code>-</code>, <code>NOT</code></td>
-      <td>Kanan ke Kiri</td>
-      <td><code>NOT TRUE</code> &rarr; <code>FALSE</code>; <code>-5 + 8</code> &rarr; <code>3</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 3</strong></td>
-      <td>Perkalian, Pembagian, Modulo</td>
-      <td><code>*</code>, <code>/</code>, <code>div</code>, <code>mod</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>10 mod 3 * 2</code> &rarr; <code>1 * 2 = 2</code>; <code>15 div 4 = 3</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 4</strong></td>
-      <td>Penjumlahan & Pengurangan</td>
-      <td><code>+</code>, <code>-</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>10 + 5 - 2</code> &rarr; <code>15 - 2 = 13</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 5</strong></td>
-      <td>Relasional (Perbandingan)</td>
-      <td><code>=</code>, <code>&ne;</code>, <code>&lt;</code>, <code>&le;</code>, <code>&gt;</code>, <code>&ge;</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>7 &gt; 5</code> &rarr; <code>TRUE</code>; <code>10 &le; 10</code> &rarr; <code>TRUE</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 6</strong></td>
-      <td>Konjungsi Logika (AND)</td>
-      <td><code>AND</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>(5 &gt; 2) AND (3 &lt; 1)</code> &rarr; <code>TRUE AND FALSE = FALSE</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 7 (Terendah)</strong></td>
-      <td>Disjungsi Logika (OR, XOR)</td>
-      <td><code>OR</code>, <code>XOR</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>FALSE OR TRUE</code> &rarr; <code>TRUE</code>; <code>TRUE XOR TRUE = FALSE</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<div class=\"card\">
-  <strong>Tabel Kebenaran Logika (Truth Table):</strong>
-  <table>
-    <thead><tr><th>A</th><th>B</th><th>NOT A</th><th>A AND B</th><th>A OR B</th><th>A XOR B</th></tr></thead>
-    <tbody>
-      <tr><td>TRUE</td><td>TRUE</td><td>FALSE</td><td><strong>TRUE</strong></td><td>TRUE</td><td>FALSE</td></tr>
-      <tr><td>TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td><strong>TRUE</strong></td><td><strong>TRUE</strong></td></tr>
-      <tr><td>FALSE</td><td>TRUE</td><td>TRUE</td><td>FALSE</td><td><strong>TRUE</strong></td><td><strong>TRUE</strong></td></tr>
-      <tr><td>FALSE</td><td>FALSE</td><td>TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
-    </tbody>
-  </table>
-</div>
-"""
-            },
-            {
-                "title": "Contoh Soal Tracing Aritmatika UTS Beserta Pembahasan",
-                "content_html": """
-<div class=\"card-dark\">
-  <span style=\"color: #f59e0b; font-weight: bold;\">Soal Ujian: Tentukan hasil akhir variabel X dari ekspresi berikut jika A = 10, B = 3, C = 2:</span><br>
-  <code>X &larr; A + B * C - A mod B * C</code>
-  <pre><code><span class=\"code-cmt\">// Langkah Eksekusi Berdasarkan Presedensi:</span>
-1. Evaluasi perkalian pertama : B * C = 3 * 2 = 6
-2. Evaluasi modulo             : A mod B = 10 mod 3 = 1  (karena 10 / 3 = 3 sisa 1)
-3. Evaluasi perkalian kedua    : (A mod B) * C = 1 * 2 = 2
-4. Masukkan kembali ke ekspresi: X = 10 + 6 - 2
-5. Evaluasi dari kiri ke kanan : 16 - 2 = 14
-<span class=\"code-str\">Hasil Akhir: X = 14</span></code></pre>
+<div class=\"alert alert-warning\">
+  <strong>🎯 Bedah Soal Jebakan Ujian:</strong><br>
+  <strong>Soal:</strong> Apakah perbedaan hasil antara <code>7 / 2</code> dan <code>7 div 2</code>?<br>
+  <strong>Pembahasan:</strong><br>
+  &bull; Operator <code>/</code> adalah pembagian real matematika murni, menghasilkan <strong>3.5</strong> bertipe <strong>Real</strong>.<br>
+  &bull; Operator <code>div</code> adalah pembagian bilangan bulat (<em>integer division</em>) yang membuang sisa pecahan, menghasilkan <strong>3</strong> bertipe <strong>Integer</strong>.<br>
+  &bull; Sisa pecahan yang dibuang dapat diambil dengan operator <code>mod</code>: <code>7 mod 2 = 1</code>.
 </div>
 """
             }
         ],
         "references": [
-            "Brookshear, J. G., & Brylow, D. (2019). Computer Science: An Overview (13th ed.). Pearson.",
-            "Kernighan, B. W., & Ritchie, D. M. (1988). The C Programming Language. Prentice Hall.",
-            "Modul Praktikum Algoritma 1 Pertemuan 2, Laboratorium Komputer FTIK Unindra."
+            "Berkas Resmi Perkuliahan: algo_p2_tipe_data_operator.pdf (Algoritma 1 - Tipe data dan Operator Pertemuan Ke-2, 16 Slide PPT Dosen FTIK Unindra).",
+            "Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.",
+            "Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026)."
         ]
     },
     {
         "meeting_no": 3,
         "filename": "algo_p3_panduan_guru_ai",
-        "title": "Master Guide: Standar Bagan Alir (Flowchart ANSI/ISO), Tracing & Analisis Putaran",
+        "title": "Master Guide: Flowchart (Diagram Alir), Simbol Standar ANSI/ISO & Kaidah Perancangan Logika",
         "subject_name": "Algoritma 1",
         "lecturer": "Pak Rizki / Tim Dosen Algoritma FTIK",
+        "doc_filename": "algo_p3_flowchart_ansi.pdf (Algoritma 1 - Flowchart Pertemuan Ke-3.pdf)",
+        "slide_count": "25 Slide PPT Resmi Dosen",
         "sections": [
             {
-                "title": "The Big Picture: Bahasa Visual Rekayasa Perangkat Lunak",
+                "title": "Definisi Flowchart & Konsep Input-Proses-Output (Slide 2 - 3 PPT Dosen)",
                 "content_html": """
-<p>Bagan Alir (<em>Flowchart</em>) adalah notasi grafis dua dimensi yang menggunakan simbol-simbol geometris baku standar <strong>ANSI (American National Standards Institute)</strong> dan <strong>ISO 5807</strong>. Flowchart berfungsi sebagai dokumen komunikasi lintas disiplin antara analis sistem, pemrogram (programmer), dan pengguna bisnis untuk memvalidasi alur kontrol tanpa terikat sintaks bahasa pemrograman tertentu.</p>
+<p>Slide 2 mendefinisikan <strong>Flowchart</strong> sebagai bagan-bagan yang mempunyai arus yang menggambarkan langkah-langkah penyelesaian suatu masalah secara visual.</p>
+<p>Slide 3 menegaskan konsep dasar pemrograman yang selalu berpijak pada siklus tritunggal: <strong>Input &rarr; Proses &rarr; Output</strong>.</p>
 """
             },
             {
-                "title": "Tujuh Simbol Baku Flowchart ANSI & Fungsinya",
+                "title": "Jenis-Jenis Flowchart: System Flowchart vs Program Flowchart (Slide 4 - 6 PPT Dosen)",
                 "content_html": """
 <table>
-  <thead><tr><th>Bentuk Geometri</th><th>Nama Simbol ANSI</th><th>Fungsi Spesifik dalam Eksekusi</th><th>Contoh Penulisan Baku</th></tr></thead>
+  <thead><tr><th>Jenis Flowchart</th><th>Definisi Konseptual Modul Dosen</th><th>Tingkat Kedalaman & Audiens</th></tr></thead>
   <tbody>
-    <tr><td><strong>Oval / Kapsul</strong></td><td>Terminator</td><td>Menandai titik awal (<code>START / MULAI</code>) dan titik henti akhir (<code>END / SELESAI</code>) dari program.</td><td><code>[ MULAI ]</code>, <code>[ SELESAI ]</code></td></tr>
-    <tr><td><strong>Jajar Genjang</strong></td><td>Input / Output</td><td>Membaca data masukan dari keyboard/file atau mencetak keluaran ke layar/printer.</td><td><code>[/ Input Nilai A, B /]</code>, <code>[/ Cetak Hasil /]</code></td></tr>
-    <tr><td><strong>Persegi Panjang</strong></td><td>Process</td><td>Operasi pemrosesan aritmatika, manipulasi data, atau inisialisasi variabel internal.</td><td><code>[ Luas = 0.5 * a * t ]</code>, <code>[ i = i + 1 ]</code></td></tr>
-    <tr><td><strong>Belah Ketupat (Diamond)</strong></td><td>Decision</td><td>Pengujian kondisi logika percabangan. Menghasilkan cabang bercabang dua: <code>YA (TRUE)</code> atau <code>TIDAK (FALSE)</code>.</td><td><code>&lt; Apakah Nilai &ge; 70 ? &gt;</code></td></tr>
-    <tr><td><strong>Segienam Horisontal</strong></td><td>Preparation</td><td>Inisialisasi atau pengaturan parameter perulangan (pemberian harga awal indeks loop).</td><td><code>[ FOR i = 1 TO 100 ]</code></td></tr>
-    <tr><td><strong>Lingkaran Kecil</strong></td><td>On-Page Connector</td><td>Penyambung alur yang terputus pada lembar / halaman yang <strong>sama</strong>.</td><td><code>( A )</code>, <code>( 1 )</code></td></tr>
-    <tr><td><strong>Segilima Terbalik</strong></td><td>Off-Page Connector</td><td>Penyambung alur ke lembar / halaman <strong>berbeda</strong>.</td><td><code>&lang; Hal 2 &rang;</code></td></tr>
+    <tr>
+      <td><strong>1. System Flowchart (Bagan Alir Sistem)</strong></td>
+      <td>Bagan yang menggambarkan urutan proses dalam sistem secara makro dengan menunjukkan alat media input, output, serta jenis media penyimpanan (storage).</td>
+      <td>Tingkat makro konseptual; digunakan oleh Analis Sistem (System Analyst) dan pemangku kepentingan manajemen.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Program Flowchart (Bagan Alir Program)</strong></td>
+      <td>Bagan yang menggambarkan urutan instruksi logika penyelesaian masalah secara rinci langkah demi langkah di dalam suatu modul program.</td>
+      <td>Tingkat mikro teknis; menjadi acuan langsung programmer sebelum mengetik kode sumber.</td>
+    </tr>
   </tbody>
 </table>
 """
             },
             {
-                "title": "Studi Kasus Analisis: Flowchart Deret Ganjil 1 s.d. 100",
+                "title": "Simbol-Simbol Standar Flowchart ANSI / ISO 5807 (Slide 7 - 12 PPT Dosen)",
                 "content_html": """
-<p>Kasus yang dipraktikkan langsung di kelas oleh Pak Rizki adalah algoritma mencetak deret bilangan ganjil dari angka 1 sampai 100. Berikut diagram logika ANSI dan analisis tracing-nya:</p>
-
-<div class=\"grid-2\">
-  <div class=\"card-dark\" style=\"font-size: 7.2pt;\">
-<pre><code>[ MULAI ] (Oval)
-   │
-   ▼
-[ i = 1 ] (Preparation)
-   │
-   ├───────────────────────────────┐
-   ▼                               │ (Looping Back)
-&lt; Apakah i mod 2 = 1 ? &gt; (Decision)│
-   ├── YA    ──> [/ Cetak i /]     │
-   └── TIDAK ──> (Lewati Cetak)    │
-           │                       │
-           ▼                       │
-     [ i = i + 1 ] (Proses)        │
-           │                       │
-           ▼                       │
-     &lt; Apakah i &gt; 100 ? &gt;          │
-           ├── TIDAK ──────────────┘
-           └── YA
-                 │
-                 ▼
-           [ SELESAI ] (Oval)</code></pre>
-  </div>
-
-  <div class=\"card\">
-    <strong>Tabel Tracing Eksekusi (Putaran Demi Putaran):</strong>
-    <table>
-      <thead><tr><th>Putaran</th><th>Nilai i</th><th>i mod 2 = 1 ?</th><th>Aksi Eksekusi</th><th>i Baru</th><th>i &gt; 100 ?</th></tr></thead>
-      <tbody>
-        <tr><td><strong>1</strong></td><td>1</td><td>1 mod 2 = 1 (YA)</td><td><strong>Cetak 1</strong></td><td>2</td><td>2 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>2</strong></td><td>2</td><td>2 mod 2 = 0 (TIDAK)</td><td>Lewati Cetak</td><td>3</td><td>3 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>3</strong></td><td>3</td><td>3 mod 2 = 1 (YA)</td><td><strong>Cetak 3</strong></td><td>4</td><td>4 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>...</strong></td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-        <tr><td><strong>99</strong></td><td>99</td><td>99 mod 2 = 1 (YA)</td><td><strong>Cetak 99</strong></td><td>100</td><td>100 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>100</strong></td><td>100</td><td>100 mod 2 = 0 (TIDAK)</td><td>Lewati Cetak</td><td>101</td><td>101 &gt; 100 (YA) &rarr; <strong>STOP</strong></td></tr>
-      </tbody>
-    </table>
-    <div class=\"alert alert-success\" style=\"margin-top: 4px;\">
-      <strong>Optimasi Guru AI:</strong> Algoritma di atas memutar loop sebanyak 100 kali. Logika ini dapat dioptimasi menjadi 50 kali putaran tanpa operator modulo dan tanpa decision tengah dengan mengubah step proses menjadi <code>i = i + 2</code> setelah inisialisasi <code>i = 1</code>.
-    </div>
-  </div>
+<p>Slide 7-12 mengklasifikasikan simbol flowchart ke dalam 3 kelompok geometri:</p>
+<table>
+  <thead><tr><th>Bentuk Geometri Simbol</th><th>Nama Simbol Standar</th><th>Kategori</th><th>Fungsi Spesifik dalam Algoritma</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Kapsul / Oval (Terminator)</strong></td>
+      <td>Terminator</td>
+      <td>Flow Direction</td>
+      <td>Menandai awal (START/BEGIN) dan akhir (STOP/END) dari sebuah diagram alir.</td>
+    </tr>
+    <tr>
+      <td><strong>Garis Berpanah (Flowline)</strong></td>
+      <td>Flow Direction Line</td>
+      <td>Flow Direction</td>
+      <td>Menunjukkan arah arus aliran instruksi yang sedang diproses.</td>
+    </tr>
+    <tr>
+      <td><strong>Persegi Panjang (Rectangle)</strong></td>
+      <td>Processing Symbol</td>
+      <td>Processing</td>
+      <td>Menyatakan operasi pemrosesan aritmatika, kalkulasi rumus, atau manipulasi data di CPU.</td>
+    </tr>
+    <tr>
+      <td><strong>Jajar Genjang (Parallelogram)</strong></td>
+      <td>Input / Output (I/O)</td>
+      <td>I/O Symbols</td>
+      <td>Menyatakan operasi pembacaan data masukan (read) atau pencetakan keluaran (write).</td>
+    </tr>
+    <tr>
+      <td><strong>Belah Ketupat (Diamond)</strong></td>
+      <td>Decision (Keputusan)</td>
+      <td>Processing</td>
+      <td>Menyatakan pengujian kondisi boolean (percabangan IF). Memiliki minimal dua jalur keluar (Yes/True dan No/False).</td>
+    </tr>
+    <tr>
+      <td><strong>Segienam (Preparation)</strong></td>
+      <td>Preparation</td>
+      <td>Processing</td>
+      <td>Inisialisasi nilai awal variabel pencacah (counter) pada struktur perulangan looping.</td>
+    </tr>
+    <tr>
+      <td><strong>Lingkaran Kecil (Connector)</strong></td>
+      <td>On-Page Connector</td>
+      <td>Flow Direction</td>
+      <td>Penghubung alur diagram yang terputus pada lembar halaman yang sama.</td>
+    </tr>
+    <tr>
+      <td><strong>Segilima (Off-page Connector)</strong></td>
+      <td>Off-Page Connector</td>
+      <td>Flow Direction</td>
+      <td>Penghubung alur diagram yang berpindah ke halaman kertas/layar berbeda.</td>
+    </tr>
+  </tbody>
+</table>
+"""
+            },
+            {
+                "title": "Kaidah Pembuatan & Contoh Flowchart Dosen (Slide 13 - 23 PPT Dosen)",
+                "content_html": """
+<p>Slide 13-17 menegaskan aturan baku penggambaran flowchart:</p>
+<ul>
+  <li>Flowchart selalu diawali dengan simbol <strong>BEGIN / START</strong> dan diakhiri dengan <strong>END / STOP</strong>.</li>
+  <li>Arah aliran standar bergerak dari <strong>atas ke bawah</strong> atau dari <strong>kiri ke kanan</strong>.</li>
+  <li>Garis alur panah tidak boleh saling berpotongan tanpa menggunakan simbol konektor lingkaran.</li>
+</ul>
+<p><strong>Contoh Kasus Dosen (Slide 18 & 19):</strong></p>
+<ol>
+  <li><strong>Menghitung Luas Persegi Panjang:</strong> START &rarr; Masukkan Panjang & Lebar (Jajar Genjang) &rarr; Luas = Panjang * Lebar (Persegi Panjang) &rarr; Tampilkan Luas (Jajar Genjang) &rarr; STOP.</li>
+  <li><strong>Deret Bilangan Ganjil 1 - 100:</strong> Inisialisasi <code>bil = 1</code> &rarr; Cetak <code>bil</code> &rarr; <code>bil = bil + 2</code> &rarr; Uji Decision <code>bil &le; 100</code> (jika Ya kembali looping, jika Tidak selesai).</li>
+</ol>
+"""
+            }
+        ],
+        "ai_insights": [
+            {
+                "title": "Intuisi First Principles: Mengapa Bentuk Geometri Flowchart Wajib Standar?",
+                "content_html": """
+<p>Standar ANSI/ISO 5807 diciptakan agar arsitektur logika sistem dapat dibaca secara universal lintas programmer di seluruh dunia tanpa batasan bahasa manusia. Simbol jajar genjang memberi sinyal seketika kepada pembaca bahwa ada interaksi dengan perangkat luar (I/O), sedangkan belah ketupat memberi peringatan adanya potensi percabangan alur logika sistem.</p>
+"""
+            },
+            {
+                "title": "Tips Menjawab Soal UTS Flowchart",
+                "content_html": """
+<div class=\"alert alert-warning\">
+  <strong>🎯 Bedah Jebakan Ujian Flowchart:</strong><br>
+  <strong>1. Simbol Decision Tanpa Label Keluar:</strong> Simbol belah ketupat (Decision) <strong>WAJIB memiliki label keterangan</strong> pada cabang keluarnya (misal: tulisan <code>Ya / Tidak</code> atau <code>True / False</code>). Jika panah keluar tidak berlabel, nilai jawaban di lembar ujian akan dikurangi.<br>
+  <strong>2. Tertukar Persegi Panjang dan Jajar Genjang:</strong> Instruksi masukan seperti <code>Input Alas</code> WAJIB memakai jajar genjang. Menempatkan input ke dalam persegi panjang adalah kesalahan fatal konvensi diagram alir.
 </div>
-"""
-            },
-            {
-                "title": "Kaidah Mutlak Penggambaran Flowchart Bebas Error",
-                "content_html": """
-<table>
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>Kaidah Baku Standar ANSI / ISO</th>
-      <th>Ketentuan Grafis Alur</th>
-      <th>Pola Kesalahan Fatal (✗)</th>
-      <th>Pola Penerapan Benar (✓)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Arah Aliran Utama</strong></td>
-      <td>Alur proses wajib mengalir secara linier dari <strong>atas ke bawah (top-to-bottom)</strong> atau dari <strong>kiri ke kanan (left-to-right)</strong>.</td>
-      <td>Garis alir zig-zag acak dari bawah ke atas tanpa konteks looping.</td>
-      <td>Alur utama lurus ke bawah; loop balik menggunakan garis samping yang teratur.</td>
-    </tr>
-    <tr>
-      <td><strong>2</strong></td>
-      <td><strong>Cabang Logika Decision</strong></td>
-      <td>Simbol Decision (Belah Ketupat) <strong>WAJIB memiliki minimal 2 jalur keluar</strong> yang dilabeli eksplisit (<code>YA / TIDAK</code>).</td>
-      <td>Decision hanya memiliki satu garis keluar atau tanpa label keterangan kebenaran.</td>
-      <td>Dua jalur cabang keluar: cabang <code>YA/TRUE</code> dan cabang <code>TIDAK/FALSE</code> yang bermuara jelas.</td>
-    </tr>
-    <tr>
-      <td><strong>3</strong></td>
-      <td><strong>Penghindaran Garis Silang</strong></td>
-      <td>Garis alir (flowline) tidak boleh saling memotong secara langsung di tengah diagram.</td>
-      <td>Dua panah berpotongan membentuk tanda tambah (+) yang membingungkan alur baca.</td>
-      <td>Gunakan On-Page Connector (Lingkaran kecil) untuk menghubungkan titik temu secara rapi.</td>
-    </tr>
-    <tr>
-      <td><strong>4</strong></td>
-      <td><strong>Titik Masuk & Titik Keluar</strong></td>
-      <td>Setiap simbol proses hanya memiliki <strong>1 titik masuk dan 1 titik keluar</strong>. Hanya Decision yang boleh bercabang &gt; 1 keluar.</td>
-      <td>Kotak Process persegi panjang bercabang dua arah keluar secara simultan.</td>
-      <td>Pemisahan cabang divergen hanya dilakukan melalui simbol Decision belah ketupat.</td>
-    </tr>
-  </tbody>
-</table>
 """
             }
         ],
         "references": [
-            "ISO 5807:1985 - Information processing -- Documentation symbols and conventions for data, program and system flowcharts.",
-            "ANSI X3.5-1970 - Standard Flowchart Symbols and Their Usage in Information Processing.",
-            "Buku Modul Algoritma & Flowcharting, Program Studi Sistem Informasi Unindra (2026)."
+            "Berkas Resmi Perkuliahan: algo_p3_flowchart_ansi.pdf (Algoritma 1 - Flowchart Pertemuan Ke-3, 25 Slide PPT Dosen FTIK Unindra).",
+            "ANSI X3.5-1970 / ISO 5807: Information Processing - Documentation Symbols and Conventions.",
+            "Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka."
         ]
     },
     {
         "meeting_no": 4,
         "filename": "algo_p4_panduan_guru_ai",
-        "title": "Master Guide: Struktur Kontrol Percabangan Kompleks & Pemilihan Kondisi",
+        "title": "Master Guide: Tiga Struktur Kontrol Algoritma (Sequence, Selection, Looping For/While/Repeat)",
         "subject_name": "Algoritma 1",
         "lecturer": "Pak Rizki / Tim Dosen Algoritma FTIK",
+        "doc_filename": "algo_p4_struktur_kontrol.pdf (Struktur Dasar Algoritma Pertemuan Ke-4.pdf)",
+        "slide_count": "29 Slide PPT Resmi Dosen",
         "sections": [
             {
-                "title": "The Big Picture: Bagaimana Komputer Mengambil Keputusan",
+                "title": "Tiga Struktur Kontrol Dasar Algoritma (Slide 1 - 2 PPT Dosen)",
                 "content_html": """
-<p>Dalam eksekusi sekuensial murni, instruksi dijalankan baris demi baris dari awal hingga akhir. Namun, dunia nyata penuh dengan kondisi selektif: <em>\"Jika nilai &ge; 70 maka lulus, jika tidak maka perbaikan\"</em>. Struktur kontrol percabangan (<em>selection / branching</em>) memberikan kecerdasan adaptif bagi program untuk melompati atau memilih blok instruksi tertentu berdasarkan kebenaran ekspresi logika.</p>
+<p>Slide 2 menetapkan 3 struktur kontrol fundamental yang menjadi fondasi seluruh bahasa pemrograman di dunia:</p>
+<ol>
+  <li><strong>Struktur Sequence (Runtunan)</strong></li>
+  <li><strong>Struktur Selection (Pemilihan)</strong></li>
+  <li><strong>Struktur Looping / Repetition (Perulangan)</strong></li>
+</ol>
 """
             },
             {
-                "title": "Empat Pola Baku Struktur Percabangan Komputasi",
+                "title": "Struktur Sequence & Bukti Pentingnya Urutan Instruksi (Slide 3 - 7 PPT Dosen)",
                 "content_html": """
-<p>Dalam rekayasa logika pemrograman, pengambilan keputusan dikelompokkan ke dalam empat arsitektur pola baku:</p>
-<table>
-  <thead>
-    <tr>
-      <th>Pola Percabangan</th>
-      <th>Struktur Logika Baku</th>
-      <th>Evaluasi Kondisi Boolean</th>
-      <th>Aksi Alternatif (Else)</th>
-      <th>Kasus Penggunaan Ideal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1. Percabangan Tunggal</strong></td>
-      <td><code>IF (kondisi) THEN (aksi)</code></td>
-      <td>Kondisi bernilai <code>TRUE</code></td>
-      <td>Tidak ada (dilewati jika <code>FALSE</code>)</td>
-      <td>Pemberian bonus/diskon bersyarat, validasi guard clause.</td>
-    </tr>
-    <tr>
-      <td><strong>2. Percabangan Ganda</strong></td>
-      <td><code>IF (kondisi) THEN (aksi1) ELSE (aksi2)</code></td>
-      <td>Dua kemungkinan: <code>TRUE</code> vs <code>FALSE</code></td>
-      <td>Wajib ada satu blok aksi alternatif</td>
-      <td>Status kelulusan (Lulus / Gagal), penentuan bilangan ganjil-genap.</td>
-    </tr>
-    <tr>
-      <td><strong>3. Percabangan Bersarang (Nested IF)</strong></td>
-      <td><code>IF (k1) THEN ... ELSE IF (k2) THEN ...</code></td>
-      <td>Hierarkis berjenjang dari atas ke bawah</td>
-      <td>Blok <code>ELSE</code> final penampung kondisi sisa</td>
-      <td>Penentuan rentang grade nilai (A, B, C, D, E), zonasi tarif pajak.</td>
-    </tr>
-    <tr>
-      <td><strong>4. Pemilihan Multi-Kondisi (CASE-OF)</strong></td>
-      <td><code>CASE (selector) OF v1: ... v2: ... END</code></td>
-      <td>Pencocokan nilai diskrit tipe Ordinal</td>
-      <td>Blok <code>ELSE</code> opsional (default handler)</td>
-      <td>Menu aplikasi konsol (1-5), konversi hari (1..7), kode status HTTP.</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="grid-2" style="margin-top: 8px;">
-  <div class="card">
-    <strong>1. Pseudocode IF Tunggal:</strong>
-    <pre><code><span class="code-kw">IF</span> (total_belanja &gt; 100000) <span class="code-kw">THEN</span>
-  diskon &larr; 0.1 * total_belanja;
-<span class="code-kw">END IF</span></code></pre>
-  </div>
-
-  <div class="card">
-    <strong>2. Pseudocode IF - ELSE:</strong>
-    <pre><code><span class="code-kw">IF</span> (nilai &ge; 60) <span class="code-kw">THEN</span>
-  status &larr; 'LULUS'
-<span class="code-kw">ELSE</span>
-  status &larr; 'TIDAK LULUS';
-<span class="code-kw">END IF</span></code></pre>
-  </div>
-
-  <div class="card">
-    <strong>3. Pseudocode Nested IF:</strong>
-    <pre><code><span class="code-kw">IF</span> (nilai &ge; 80) <span class="code-kw">THEN</span>
-  grade &larr; 'A'
-<span class="code-kw">ELSE IF</span> (nilai &ge; 70) <span class="code-kw">THEN</span>
-  grade &larr; 'B'
-<span class="code-kw">ELSE</span>
-  grade &larr; 'E';</code></pre>
-  </div>
-
-  <div class="card">
-    <strong>4. Pseudocode CASE - OF:</strong>
-    <pre><code><span class="code-kw">CASE</span> (nomor_hari) <span class="code-kw">OF</span>
-  1 : nama &larr; 'Senin';
-  2 : nama &larr; 'Selasa';
-  <span class="code-kw">ELSE</span> nama &larr; 'Hari Libur';
-<span class="code-kw">END CASE</span></code></pre>
-  </div>
+<p>Slide 3 menjelaskan bahwa pada struktur sequence, instruksi dikerjakan <strong>secara berurutan baris demi baris</strong>, mulai dari baris pertama hingga baris terakhir.</p>
+<div class=\"alert alert-warning\">
+  <strong>Peringatan Penting Dosen (Slide 7):</strong><br>
+  Jika urutan baris instruksi ditukarkan, algoritma akan menghasilkan keluaran yang <strong>BERBEDA TOTAL atau bahkan ERROR</strong>! Contoh: mencoba menghitung <code>luas := panjang * lebar</code> sebelum membaca nilai variabel <code>panjang</code> dan <code>lebar</code> akan menghasilkan nilai nol atau sampah memori (garbage value).
 </div>
 """
             },
             {
-                "title": "Analisis Efisiensi: Kapan Memakai IF Bertingkat vs CASE-OF?",
+                "title": "Struktur Selection (Pemilihan Kondisi) & Logika AND/OR (Slide 8 - 13 PPT Dosen)",
                 "content_html": """
-<table>
-  <thead><tr><th>Parameter Perbandingan</th><th>Struktur IF - ELSE IF Majemuk</th><th>Struktur CASE - OF</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Tipe Data Kondisi</strong></td><td>Fleksibel: dapat menguji tipe bilangan riil pecahan (<code>Real</code>), rentang interval dinamis (<code>x &gt; 10 AND y &lt; 5</code>), dan logika relasional majemuk.</td><td><strong>Ketat:</strong> Selector <strong>wajib bertipe Ordinal</strong> (Integer, Char, Boolean, Enumerasi). <strong>Dilarang keras memakai tipe Real/Float!</strong></td></tr>
-    <tr><td><strong>Evaluasi di CPU</strong></td><td>Linear Search: diuji satu persatu dari atas ke bawah (<code>O(n)</code>).</td><td>Jump Table / Branch Table: kompiler dapat mengoptimasi lompatan langsung (<code>O(1)</code>).</td></tr>
-    <tr><td><strong>Keterbacaan Kode</strong></td><td>Rentan rumit jika cabang bersarang terlalu dalam (<em>Spaghetti Code</em>).</td><td>Sangat bersih, elegan, dan mudah dipelihara (<em>maintainable</em>).</td></tr>
-  </tbody>
-</table>
+<p>Slide 8-10 menerangkan bahwa tidak setiap baris program harus dikerjakan. Baris program tertentu hanya akan diproses jika memenuhi syarat/kondisi boolean yang bernilai <code>True</code>.</p>
+<p>Slide 12 menampilkan contoh program penentuan kelulusan siswa: baris pencetakan kata \"Lulus\" hanya akan diproses jika kondisi <code>nilai &ge; 60</code> terpenuhi.</p>
 """
             },
             {
-                "title": "Jebakan Soal UTS: Error Logika Percabangan",
+                "title": "Struktur Perulangan (Looping): For-Do, While-Do & Repeat-Until (Slide 14 - 27 PPT Dosen)",
                 "content_html": """
-<div class=\"alert alert-danger\">
-  <strong>⚠️ Jebakan Urutan Pengujian Kondisi (Condition Ordering):</strong><br>
-  Perhatikan kode salah berikut yang sering ditulis mahasiswa:<br>
-  <code>IF (nilai &gt;= 60) THEN grade := 'C' ELSE IF (nilai &gt;= 80) THEN grade := 'A';</code><br>
-  Jika mahasiswa mendapat nilai 95, maka kondisi pertama (<code>95 &gt;= 60</code>) langsung bernilai TRUE sehingga ia mendapatkan grade 'C'!<br>
-  <strong>Kaidah Baku Guru AI:</strong> Pada percabangan rentang bertingkat, pengujian <strong>WAJIB diurutkan dari batas nilai paling ekstrem/tinggi ke batas terendah</strong>, atau sebaliknya dengan pendefinisian interval tertutup yang presisi.
+<p>Slide 14-27 mengupas tuntas tiga bentuk instruksi perulangan:</p>
+<table>
+  <thead><tr><th>Bentuk Perulangan</th><th>Posisi Evaluasi Kondisi</th><th>Karakteristik & Perilaku Eksekusi</th><th>Contoh Kode Dosen</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>1. For - Do</strong></td>
+      <td>Perulangan pasti (<em>counted loop</em>).</td>
+      <td>Jumlah perulangan <strong>sudah diketahui secara pasti</strong> sejak awal melalui nilai awal dan nilai akhir pencacah (counter).</td>
+      <td>Mencetak tulisan \"Saya Mahasiswa Unindra\" sebanyak 100 kali (Slide 17-19):<br><code>for i := 1 to 100 do writeln('Saya Mahasiswa Unindra');</code></td>
+    </tr>
+    <tr>
+      <td><strong>2. While - Do</strong></td>
+      <td>Evaluasi kondisi berada <strong>di AWAL perulangan</strong>.</td>
+      <td>Instruksi hanya akan dikerjakan <strong>SELAMA kondisi bernilai TRUE</strong>. Jika pada evaluasi pertama kondisi sudah bernilai False, maka badan perulangan <strong>TIDAK PERNAH DIKERJAKAN SAMA SEKALI (0 kali)</strong>.</td>
+      <td>Mencetak angka 1 s.d 10 (Slide 20-22):<br><code>i := 1;<br>while (i &le; 10) do<br>begin write(i); i := i + 1; end;</code></td>
+    </tr>
+    <tr>
+      <td><strong>3. Repeat - Until</strong></td>
+      <td>Evaluasi kondisi berada <strong>di AKHIR perulangan</strong>.</td>
+      <td>Perulangan berjalan terus <strong>SAMPAI kondisi bernilai TRUE</strong> (berhenti jika kondisi True). Karena evaluasi di akhir, badan perulangan <strong>PASTI DIKERJAKAN MINIMAL 1 KALI</strong>!</td>
+      <td>Slide 26-27:<br><code>i := 1;<br>repeat write(i); i := i + 1; until (i &gt; 10);</code></td>
+    </tr>
+  </tbody>
+</table>
+"""
+            }
+        ],
+        "ai_insights": [
+            {
+                "title": "Intuisi First Principles: Perbedaan Mendasar While-Do vs Repeat-Until",
+                "content_html": """
+<p>Dua perbedaan esensial yang paling sering ditanyakan dosen:</p>
+<ol>
+  <li><strong>Kondisi Berhenti:</strong> <code>while (kondisi) do</code> terus mengulang selama kondisi bernilai <strong>TRUE</strong>. Sebaliknya, <code>repeat ... until (kondisi)</code> berhenti berulang ketika kondisi bernilai <strong>TRUE</strong> (ia mengulang selama False).</li>
+  <li><strong>Jumlah Eksekusi Minimum:</strong> <code>while-do</code> minimal dieksekusi <strong>0 kali</strong>. <code>repeat-until</code> minimal dieksekusi <strong>1 kali</strong>.</li>
+</ol>
+"""
+            },
+            {
+                "title": "Tips Menjawab Soal UTS Struktur Perulangan",
+                "content_html": """
+<div class=\"alert alert-warning\">
+  <strong>🎯 Bedah Jebakan Infinite Loop pada Looping:</strong><br>
+  Saat menggunakan <code>while-do</code> atau <code>repeat-until</code>, Anda <strong>WAJIB menyertakan instruksi pengubah pencacah (misal: <code>i := i + 1;</code>)</strong> di dalam badan perulangan! Jika lupa menyertakan increment, nilai <code>i</code> akan tetap selamanya sehingga kondisi terminasi tidak pernah tercapai, memicu <em>Infinite Loop</em> yang membuat program membeku (hang).
 </div>
 """
             }
         ],
         "references": [
-            "McConnell, Steve. (2004). Code Complete: A Practical Handbook of Software Construction (2nd ed.). Microsoft Press.",
-            "Sedgewick, R., & Wayne, K. (2016). Computer Science: An Interdisciplinary Approach. Addison-Wesley.",
-            "Diktat Struktur Kontrol Percabangan, Jurusan Teknik Informatika / Sistem Informasi Unindra."
+            "Berkas Resmi Perkuliahan: algo_p4_struktur_kontrol.pdf (Struktur Dasar Algoritma Pertemuan Ke-4, 29 Slide PPT Dosen FTIK Unindra).",
+            "Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.",
+            "Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026)."
         ]
     }
 ]

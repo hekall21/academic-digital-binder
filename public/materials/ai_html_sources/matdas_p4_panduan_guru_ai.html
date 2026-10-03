@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Pemetaan Fungsi, Domain Alami, Uji Simetri & Difference Quotient - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Koordinat Kartesius, Grafik Fungsi Linear/Kuadrat, Domain & Komposisi Invers - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,78 +262,59 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Pemetaan Fungsi, Domain Alami, Uji Simetri & Difference Quotient</h1>
+      <h1>Master Guide: Koordinat Kartesius, Grafik Fungsi Linear/Kuadrat, Domain & Komposisi Invers</h1>
       <h2>Matematika Dasar • Pertemuan 4</h2>
     </div>
     <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Dr. Munali, M.Pd. / Syifaafidah, M.Pd.</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Tim Dosen Matematika FTIK Unindra</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> matdas_p3_fungsi_dan_grafik.pdf (Lanjutan Slide 9 - 18: Grafik, Domain & Invers.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Fungsi Sebagai Mesin Pemroses Data Komputasi</div>
+      <div class="section-title">BAB 1. Sistem Koordinat Kartesius 2D & Pembagian Kuadran (Slide 9 - 10 PPT Dosen)</div>
       
-<p>Dalam ilmu komputer, fungsi matematika f(x) identik dengan fungsi pemrograman (<em>pure function</em>): sebuah mesin yang menerima satu nilai masukan (input) dari himpunan daerah asal (<strong>Domain / D<sub>f</sub></strong>) dan memetakan secara unik ke <strong>TEPAT SATU</strong> nilai keluaran (output) pada himpunan daerah hasil (<strong>Range / R<sub>f</sub></strong>).</p>
-
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 2. Kaidah Menentukan Domain Alami (Natural Domain)</div>
-      
-<p>Jika domain sebuah fungsi tidak disebutkan secara eksplisit, maka domain alaminya adalah himpunan terbesar bilangan real &reals; yang membuat rumus fungsi tersebut <strong>terdefinisi dan menghasilkan bilangan real</strong>:</p>
+<p>Slide 9-10 menjelaskan sistem koordinat bidang dua dimensi (2D) yang membagi ruang menjadi 4 kuadran:</p>
 <table>
-  <thead><tr><th>Bentuk Aljabar Fungsi</th><th>Syarat Mutlak Domain Alami</th><th>Alasan Ilmiah Matematis</th><th>Contoh Soal & Solusi</th></tr></thead>
+  <thead><tr><th>Kuadran</th><th>Tanda Koordinat X</th><th>Tanda Koordinat Y</th><th>Posisi Relatif Titik</th></tr></thead>
   <tbody>
-    <tr><td><strong>Pecahan Aljabar f(x) = P(x) / Q(x)</strong></td><td><strong>Penyebut Q(x) &ne; 0</strong></td><td>Pembagian dengan angka nol tidak terdefinisi (menghasilkan tak hingga/asimtot).</td><td>f(x) = 1/(x - 4) &rArr; Syarat x - 4 &ne; 0 &rArr; <strong>D<sub>f</sub> = &reals; \ {4}</strong>.</td></tr>
-    <tr><td><strong>Akar Pangkat Genap f(x) = &radic;(P(x))</strong></td><td><strong>Radikan P(x) &ge; 0</strong></td><td>Bilangan di dalam akar genap tidak boleh negatif agar tidak menjadi bilangan imajiner.</td><td>f(x) = &radic;(9 - x<sup>2</sup>) &rArr; 9 - x<sup>2</sup> &ge; 0 &rArr; (3-x)(3+x) &ge; 0 &rArr; <strong>D<sub>f</sub> = [-3, 3]</strong>.</td></tr>
-    <tr><td><strong>Kombinasi Akar di Penyebut</strong></td><td><strong>P(x) &gt; 0</strong></td><td>Gabungan syarat: tidak boleh negatif dan tidak boleh nol.</td><td>f(x) = 1 / &radic;(x - 2) &rArr; x - 2 &gt; 0 &rArr; <strong>D<sub>f</sub> = (2, &infin;)</strong>.</td></tr>
+    <tr><td><strong>Kuadran I</strong></td><td><code>x &gt; 0</code> (Positif)</td><td><code>y &gt; 0</code> (Positif)</td><td>Kanan Atas</td></tr>
+    <tr><td><strong>Kuadran II</strong></td><td><code>x &lt; 0</code> (Negatif)</td><td><code>y &gt; 0</code> (Positif)</td><td>Kiri Atas</td></tr>
+    <tr><td><strong>Kuadran III</strong></td><td><code>x &lt; 0</code> (Negatif)</td><td><code>y &lt; 0</code> (Negatif)</td><td>Kiri Bawah</td></tr>
+    <tr><td><strong>Kuadran IV</strong></td><td><code>x &gt; 0</code> (Positif)</td><td><code>y &lt; 0</code> (Negatif)</td><td>Kanan Bawah</td></tr>
   </tbody>
 </table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Uji Simetri: Fungsi Genap (Even) vs Fungsi Ganjil (Odd)</div>
+      <div class="section-title">BAB 2. Grafik Fungsi Linear & Fungsi Kuadrat (Slide 11 PPT Dosen)</div>
       
-<p>Karakteristik simetri grafik fungsi dapat diuji secara analitis melalui evaluasi nilai fungsi terhadap masukan negatif <code>f(-x)</code>:</p>
+<p>Slide 11 menguraikan dua bentuk grafik dasar:</p>
 <table>
-  <thead>
-    <tr>
-      <th>Kategori Fungsi</th>
-      <th>Definisi Aljabar Baku</th>
-      <th>Karakteristik Simetri Geometris Grafis</th>
-      <th>Prosedur Pengujian Aljabar f(-x)</th>
-      <th>Contoh Fungsi Nyata</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Jenis Fungsi</th><th>Bentuk Persamaan Umum</th><th>Bentuk Geometri Grafik</th><th>Parameter Kunci</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>Fungsi Genap (Even Function)</strong></td>
-      <td><code>f(-x) = f(x)</code> untuk setiap <code>x &in; D_f</code></td>
-      <td>Grafiknya <strong>simetris sempurna terhadap sumbu Y</strong> (pencerminan cermin tegak).</td>
-      <td>Substitusi <code>x</code> dengan <code>-x</code>; jika tanda negatif lenyap dan kembali ke fungsi asal, fungsi terbukti Genap.</td>
-      <td><code>f(x) = x²</code><br><code>f(x) = x⁴ - 3x²</code><br><code>f(x) = cos(x)</code></td>
+      <td><strong>Fungsi Linear</strong></td>
+      <td><code>f(x) = mx + b</code></td><td>Garis Lurus</td>
+      <td><code>m</code> = kemiringan garis (gradien), <code>b</code> = titik potong sumbu Y. Rumus gradien: <code>m = (y2 - y1) / (x2 - x1)</code>.</td>
     </tr>
     <tr>
-      <td><strong>Fungsi Ganjil (Odd Function)</strong></td>
-      <td><code>f(-x) = -f(x)</code> untuk setiap <code>x &in; D_f</code></td>
-      <td>Grafiknya <strong>simetris terhadap titik pusat asal (0,0)</strong> (inversi rotasi 180&deg;).</td>
-      <td>Substitusi <code>x</code> dengan <code>-x</code>; jika seluruh suku bertanda kebalikan mutlak dari fungsi asal, fungsi terbukti Ganjil.</td>
-      <td><code>g(x) = x³</code><br><code>g(x) = x³ - 5x</code><br><code>g(x) = sin(x)</code></td>
-    </tr>
-    <tr>
-      <td><strong>Fungsi Bukan Keduanya</strong></td>
-      <td><code>f(-x) &ne; f(x)</code> dan <code>f(-x) &ne; -f(x)</code></td>
-      <td>Grafik tidak memiliki simetri sumbu Y maupun simetri titik pusat asal (0,0).</td>
-      <td>Hasil evaluasi menghasilkan campuran tanda yang tidak sesuai pola genap maupun ganjil.</td>
-      <td><code>h(x) = x² + 2x + 1</code><br><code>h(x) = 2x - 3</code></td>
+      <td><strong>Fungsi Kuadrat</strong></td>
+      <td><code>f(x) = ax^2 + bx + c</code></td><td>Kurva Parabola</td>
+      <td>Terbuka ke atas jika <code>a &gt; 0</code>; terbuka ke bawah jika <code>a &lt; 0</code>. Titik puncak: <code>(-b / (2a), -D / (4a))</code> dengan <code>D = b^2 - 4ac</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -336,39 +322,83 @@
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 4. Hasil Bagi Selisih (Difference Quotient) & Persiapan Turunan UTS</div>
+      <div class="section-title">BAB 3. Daerah Asal Alami (Domain) & Daerah Hasil (Range) (Slide 12 - 14 PPT Dosen)</div>
       
-<p>Sebagaimana ditegaskan dosen di kelas daring Google Meet, evaluasi beda (<em>Difference Quotient</em>) adalah fondasi definisi formal turunan (<em>derivative</em>):</p>
-<div class="card-dark">
-  <strong>Rumus Difference Quotient: [ f(x + h) - f(x) ] / h</strong> (untuk h &ne; 0)<br><br>
-  <span style="color: #38bdf8; font-weight: bold;">Contoh Soal: Tentukan Difference Quotient untuk f(x) = 2x<sup>2</sup> - 3x + 1</span>
-  <pre><code>1. Cari f(x + h):
-   f(x + h) = 2(x + h)<sup>2</sup> - 3(x + h) + 1
-            = 2(x<sup>2</sup> + 2xh + h<sup>2</sup>) - 3x - 3h + 1
-            = 2x<sup>2</sup> + 4xh + 2h<sup>2</sup> - 3x - 3h + 1
+<p>Slide 12-14 menjelaskan <strong>Domain Alami</strong> sebagai himpunan seluruh bilangan real yang mungkin dimasukkan ke dalam fungsi sehingga menghasilkan nilai real yang sah.</p>
+<div class="alert alert-info">
+  <strong>Dua Syarat Mutlak Penentuan Domain Alami:</strong><br>
+  1. <strong>Bentuk Pecahan <code>f(x) / g(x)</code>:</strong> Penyebut <strong>TIDAK BOLEH SAMA DENGAN NOL</strong> (<code>g(x) &ne; 0</code>).<br>
+  2. <strong>Bentuk Akar Genap <code>&radic;g(x)</code>:</strong> Nilai di bawah tanda akar <strong>WAJIB NON-NEGATIF</strong> (<code>g(x) &ge; 0</code>).
+</div>
+<p><strong>Pembahasan Contoh Soal Dosen (Slide 14):</strong></p>
+<ul>
+  <li><code>f(x) = &radic;(x - 5)</code> &rarr; Syarat: <code>x - 5 &ge; 0 &rArr; x &ge; 5</code>. <strong>Domain = [5, &infin;)</strong>.</li>
+  <li><code>f(x) = &radic;(4 - x)</code> &rarr; Syarat: <code>4 - x &ge; 0 &rArr; x &le; 4</code>. <strong>Domain = (-&infin;, 4]</strong>.</li>
+</ul>
 
-2. Kurangkan dengan f(x):
-   f(x + h) - f(x) = [2x<sup>2</sup> + 4xh + 2h<sup>2</sup> - 3x - 3h + 1] - [2x<sup>2</sup> - 3x + 1]
-                   = 4xh + 2h<sup>2</sup> - 3h
-                   = h(4x + 2h - 3)
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Operasi Aljabar, Komposisi Fungsi & Invers Fungsi (Slide 15 - 17 PPT Dosen)</div>
+      
+<p>Slide 15-17 menguraikan operasi fungsi:</p>
+<ol>
+  <li><strong>Operasi Aljabar:</strong> <code>(f &plusmn; g)(x) = f(x) &plusmn; g(x)</code>; <code>(f &times; g)(x) = f(x) &times; g(x)</code>; <code>(f / g)(x) = f(x) / g(x)</code> dengan <code>g(x) &ne; 0</code>.</li>
+  <li><strong>Komposisi Fungsi:</strong> <code>(f &comp; g)(x) = f(g(x))</code> (masukkan fungsi <code>g(x)</code> ke dalam variabel <code>x</code> pada fungsi <code>f</code>).</li>
+  <li><strong>Invers Fungsi:</strong> <code>f^(-1)(x)</code>. Pembahasan Soal Dosen (Slide 17):<br>
+    Cari invers dari <code>f(x) = 2x + 3</code>:<br>
+    Misalkan <code>y = 2x + 3 &rArr; y - 3 = 2x &rArr; x = (y - 3) / 2</code>.<br>
+    Tukar variabel: <strong><code>f^(-1)(x) = (x - 3) / 2</code></strong>.
+  </li>
+</ol>
 
-3. Bagi dengan h:
-   [ f(x + h) - f(x) ] / h = [ h(4x + 2h - 3) ] / h = 4x + 2h - 3
+    </div>
+        
 
-<span class="code-str">Hasil Akhir Evaluasi: 4x + 2h - 3</span>
-(Jika h mendekati 0, hasilnya adalah turunan f'(x) = 4x - 3)</code></pre>
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Hubungan Gradien Garis Tegak Lurus & Sejajar</div>
+      
+<p>Dua konsep analitis geometri yang sering diujikan:</p>
+<ul>
+  <li>Dua garis saling <strong>sejajar</strong> jika gradiennya sama: <code>m1 = m2</code>.</li>
+  <li>Dua garis saling <strong>tegak lurus</strong> jika hasil kali gradiennya sama dengan -1: <code>m1 &times; m2 = -1</code> atau <code>m2 = -1 / m1</code>.</li>
+</ul>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal UTS Invers Fungsi Pecahan Linear</div>
+      
+<div class="alert alert-warning">
+  <strong>🎯 Rumus Cepat Invers Fungsi Pecahan Linear:</strong><br>
+  Jika diberikan fungsi <code>f(x) = (ax + b) / (cx + d)</code>, maka inversnya dapat dihitung seketika dengan menukar posisi <code>a</code> dan <code>d</code> serta mengubah tandanya menjadi negatif:<br>
+  <code>f^(-1)(x) = (-dx + b) / (cx - a)</code>.<br>
+  Rumus ini sangat menghemat waktu saat mengerjakan ujian pilihan ganda atau esai kalkulus!
 </div>
 
     </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>Purcell, E. J., Varberg, D., & Rigdon, S. E. (2007). Calculus (9th ed.), Chapter 0.5: Functions and Their Graphs.</li><li>Notulen Live Google Meet Kelas Reguler RG Matematika Dasar, Unindra (2026).</li><li>Larson, R., & Edwards, B. H. (2018). Calculus (11th ed.). Cengage Learning.</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>matdas_p3_fungsi_dan_grafik.pdf (Lanjutan Slide 9 - 18: Grafik, Domain & Invers.pdf)</code> (18 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Tim Dosen Matematika FTIK Unindra • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: matdas_p3_fungsi_dan_grafik.pdf (Lanjutan Slide 9 - 18, 18 Slide PPT Dosen FTIK Unindra).</li><li>Varberg, D., Purcell, E. J., & Rigdon, S. E. (2010). Calculus (9th ed.). Pearson Prentice Hall.</li><li>Silabus Resmi Mata Kuliah Matematika Dasar, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

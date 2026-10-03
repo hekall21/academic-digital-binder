@@ -2,6 +2,10 @@
 """
 Main Builder & Compiler for 32 AI Master Teaching Guides
 Generates HTML, compiles PDFs with Edge headless, updates seedData.js and storage.js.
+Ensures the 3-part layout requested by the user:
+  1. Penjelasan & Bedah Materi Slide/PPT Dosen (Step-by-Step)
+  2. Tambahan Materi, Insight First Principles & Saran Guru AI (Paling Bawah)
+  3. Sumber Dokumen Perkuliahan & Rujukan Resmi (Paling Bawah)
 """
 
 import os
@@ -64,6 +68,7 @@ def compile_pdf(html_path, pdf_path):
 def main():
     print("=" * 70)
     print("🚀 MEMULAI GENERASI 32 MODUL PEMBELAJARAN GURU AI (PDF + WEB)")
+    print("   Pembaruan Arsitektur: 3 Bagian Jelas (Bedah PPT Dosen -> Pengayaan AI -> Sumber Dokumen)")
     print("=" * 70)
 
     all_modules = []
@@ -75,7 +80,7 @@ def main():
     print(f"[*] Total Modul Terdaftar: {len(all_modules)} Modul Pertemuan (8 Mata Kuliah x 4 Pertemuan)")
 
     # 1. Generate HTML files
-    print("\n[1/4] Menghasilkan Berkas HTML Bersih (Zero LaTeX Artifacts)...")
+    print("\n[1/4] Menghasilkan 32 Berkas HTML dengan Format 3 Bagian Lengkap...")
     compiled_tasks = []
     for mod in all_modules:
         html_content = render_html_page(mod)
@@ -86,7 +91,7 @@ def main():
         pdf_file = os.path.join(PUBLIC_MATERIALS, f"{mod['filename']}.pdf")
         compiled_tasks.append((html_file, pdf_file, mod))
 
-    print(f"    &check; 32 Berkas HTML berhasil dibuat di: {HTML_DIR}")
+    print(f"    ✓ 32 Berkas HTML berhasil dibuat di: {HTML_DIR}")
 
     # 2. Compile to PDF using Edge Headless (threaded for speed)
     print("\n[2/4] Mengompilasi 32 Berkas PDF via Microsoft Edge Headless...")
@@ -94,7 +99,6 @@ def main():
     
     def worker(task):
         h, p, m = task
-        # Always compile fresh PDF so new HTML tables are baked into the PDF
         ok = compile_pdf(h, p)
 
         # Also copy to dist/materials
@@ -107,22 +111,20 @@ def main():
         return m['filename'], False, 0
 
     results = []
-    # Use 4 parallel workers for speed and safety
     with ThreadPoolExecutor(max_workers=4) as executor:
         for res in executor.map(worker, compiled_tasks):
             results.append(res)
-            print(f"    &bull; Kompilasi PDF: {res[0]}.pdf ({round(res[2]/1024, 1)} KB) - {'BERHASIL' if res[1] else 'GAGAL'}")
+            print(f"    • Kompilasi PDF: {res[0]}.pdf ({round(res[2]/1024, 1)} KB) - {'BERHASIL' if res[1] else 'GAGAL'}")
 
     elapsed = round(time.time() - t0, 2)
     success_count = sum(1 for r in results if r[1])
-    print(f"    &check; Selesai dalam {elapsed} detik: {success_count}/{len(results)} PDF Berhasil Dihasilkan.")
+    print(f"    ✓ Selesai dalam {elapsed} detik: {success_count}/{len(results)} PDF Berhasil Dihasilkan.")
 
     # 3. Update seedData.js
     print("\n[3/4] Mengintegrasikan Modul Guru AI & Summaries Detail ke seedData.js...")
     with open(SEEDDATA_PATH, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Extract initialSubjects JSON object from seedData.js
     prefix = "export const initialSubjects = "
     idx_start = content.find(prefix)
     if idx_start == -1:
@@ -143,7 +145,7 @@ def main():
 
     subjects_data = json.loads(json_str)
 
-    # Inject AI Master Guide materials and summaries.detail
+    # Inject AI Master Guide materials, summaries.detail, raw_slide_content, and summaries.ringkas
     for subj in subjects_data:
         subj_id = subj["id"]
         if subj_id in SUBJECT_MAP:
@@ -162,7 +164,7 @@ def main():
                         "title": f"🤖 Modul Guru AI P{m_no}: {mod['title'].replace('Master Guide: ', '')} (Master Teaching Guide)",
                         "file_url": f"/materials/{ai_pdf_filename}",
                         "file_size": file_size,
-                        "date_added": "2026-10-01",
+                        "date_added": "2026-10-03",
                         "url": f"/materials/{ai_pdf_filename}"
                     }
 
@@ -176,15 +178,56 @@ def main():
                         filtered_mats.append(ai_material_entry)
                     meeting["materials"] = filtered_mats
 
-                    # Construct rich summaries.detail from sections
+                    # Construct rich summaries.detail with the 3 distinct parts
                     detail_html_parts = []
-                    detail_html_parts.append(f"<div class=\"alert alert-info\" style=\"margin-bottom: 12px;\"><strong>🤖 PANDUAN GURU AI (MASTER TEACHING GUIDE) • PERTEMUAN {m_no}</strong><br>Sintesis komprehensif materi dosen, catatan praktikum mahasiswa, analisis first principles, bedah jebakan UTS, dan literatur standar dunia.</div>")
+                    detail_html_parts.append(f"""<div class=\"alert alert-info\" style=\"margin-bottom: 16px;\">
+  <strong>🤖 PANDUAN GURU AI (MASTER TEACHING GUIDE) • PERTEMUAN {m_no}</strong><br>
+  Bedah materi presentasi PPT & modul dosen secara lengkap dan bertahap, disertai pengayaan konsep first principles, tips kuis & UTS, serta rujukan berkas resmi dosen di bagian paling bawah.
+</div>""")
+
+                    # BAGIAN 1: Bedah Slide & Materi Resmi Dosen
+                    detail_html_parts.append(f"""<div style=\"background: rgba(99, 102, 241, 0.12); border-left: 4px solid #6366F1; padding: 12px 16px; border-radius: 8px; margin: 16px 0 16px 0;\">
+  <h3 style=\"margin: 0; color: #818CF8; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;\">
+    <span>🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</span>
+  </h3>
+  <p style=\"margin: 4px 0 0 0; font-size: 0.82rem; color: #94A3B8;\">
+    Uraian materi kuliah resmi mengikuti urutan pokok bahasan, slide presentasi, dan berkas modul dari dosen pengampu.
+  </p>
+</div>""")
                     for sec_idx, sec in enumerate(mod.get("sections", []), 1):
                         detail_html_parts.append(f"<h4>BAB {sec_idx}: {sec['title']}</h4>")
                         detail_html_parts.append(sec["content_html"])
 
+                    # BAGIAN 2: Tambahan Materi & Saran Guru AI (Di Bagian Bawah)
+                    if mod.get("ai_insights"):
+                        detail_html_parts.append(f"""<div style=\"background: rgba(16, 185, 129, 0.12); border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 8px; margin: 28px 0 16px 0;\">
+  <h3 style=\"margin: 0; color: #34D399; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;\">
+    <span>💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI</span>
+  </h3>
+  <p style=\"margin: 4px 0 0 0; font-size: 0.82rem; color: #94A3B8;\">
+    Materi pengayaan di luar slide dosen: intuisi first principles, relevansi industri software engineering modern, tips mencatat, serta bedah jebakan soal kuis & UTS.
+  </p>
+</div>""")
+                        for ai_idx, ai_sec in enumerate(mod.get("ai_insights", []), 1):
+                            detail_html_parts.append(f"<h4>PENGAYAAN {ai_idx}: {ai_sec['title']}</h4>")
+                            detail_html_parts.append(ai_sec["content_html"])
+
+                    # BAGIAN 3: Dokumen Sumber & Rujukan Resmi (Di Bagian Paling Bawah)
                     ref_items = "".join(f"<li>{r}</li>" for r in mod.get("references", []))
-                    detail_html_parts.append(f"<div class=\"card\" style=\"margin-top: 14px;\"><strong>📚 Referensi Literatur Akademik & Standar Industri:</strong><ul style=\"font-size: 0.85em; margin-top: 4px;\">{ref_items}</ul></div>")
+                    doc_fn = mod.get('doc_filename', 'Modul Resmi Perkuliahan FTIK Unindra')
+                    slide_cnt = mod.get('slide_count', '')
+                    lect_nm = mod.get('lecturer', subj.get('lecturer', 'Tim Dosen FTIK Unindra'))
+                    detail_html_parts.append(f"""<div class=\"card-dark\" style=\"margin-top: 28px; border: 1px solid rgba(56, 189, 248, 0.3); background: rgba(15, 23, 42, 0.85); border-radius: 10px; padding: 16px;\">
+  <h4 style=\"margin: 0 0 10px 0; color: #38BDF8; font-size: 0.98rem; display: flex; align-items: center; gap: 8px;\">
+    <span>📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</span>
+  </h4>
+  <div style=\"font-size: 0.83rem; color: #CBD5E1; line-height: 1.6;\">
+    <div><strong>📁 Berkas Resmi Dosen:</strong> <code>{doc_fn}</code> {f'({slide_cnt})' if slide_cnt else ''}</div>
+    <div><strong>👨‍🏫 Dosen Pengampu:</strong> {lect_nm} • Program Studi Sistem Informasi FTIK Unindra</div>
+    <div style=\"margin-top: 8px;\"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+    <ul style=\"margin: 4px 0 0 16px; padding: 0; font-size: 0.81rem; color: #94A3B8;\">{ref_items}</ul>
+  </div>
+</div>""")
 
                     if "summaries" not in meeting:
                         meeting["summaries"] = {}
@@ -228,19 +271,19 @@ def main():
     new_content = content[:idx_start] + prefix + json.dumps(subjects_data, indent=2, ensure_ascii=False) + ";\n\n" + suffix
     with open(SEEDDATA_PATH, "w", encoding="utf-8") as f:
         f.write(new_content)
-    print("    ✓ seedData.js sukses diperbarui dengan 32 Modul Guru AI, Detailed Summaries, Ringkas, dan Verbatim Slides.")
+    print("    ✓ seedData.js sukses diperbarui dengan 32 Modul Guru AI, Detailed Summaries (3 Bagian), Ringkas, dan Verbatim Slides.")
 
     # 4. Increment storage version in storage.js
     print("\n[4/4] Memperbarui CURRENT_DATA_VERSION di storage.js...")
     with open(STORAGE_PATH, "r", encoding="utf-8") as f:
         st_content = f.read()
 
-    new_version_str = "export const CURRENT_DATA_VERSION = 'v11_unindra_sem1_super_berdaging_lecturer_slides_2026';"
+    new_version_str = "export const CURRENT_DATA_VERSION = 'v12_guru_ai_lecturer_slides_pengayaan_sumber_2026';"
     import re
     st_content = re.sub(r"export const CURRENT_DATA_VERSION = '[^']+';", new_version_str, st_content)
     with open(STORAGE_PATH, "w", encoding="utf-8") as f:
         f.write(st_content)
-    print("    &check; CURRENT_DATA_VERSION dinaikkan ke v11 (Otomatis Upgrade Cache Browser Mahasiswa).")
+    print("    ✓ CURRENT_DATA_VERSION dinaikkan ke v12 (Otomatis Upgrade Cache Browser Mahasiswa).")
 
     print("\n" + "=" * 70)
     print("🎉 GENERASI & INTEGRASI 32 MODUL GURU AI SELESAI DENGAN SEMPURNA!")

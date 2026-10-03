@@ -1,30 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 HTML Template & Renderer for AI Master Teaching Guides
-Ensures 100% clean typography, dark code cards matching Screenshot 2,
-zero raw LaTeX glitches, and responsive print-to-PDF formatting.
+Ensures 100% clean typography, dark code cards, zero raw LaTeX glitches,
+and responsive print-to-PDF formatting.
+Explicitly divides content into:
+  - BAGIAN 1: 🎙️ BEDAH & PENJELASAN LENGKAP PPT DOSEN (STEP-BY-STEP)
+  - BAGIAN 2: 💡 TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)
+  - BAGIAN 3: 📚 SUMBER DOKUMEN & RUJUKAN RESMI DOSEN
 """
 
 def render_html_page(data):
-    """
-    Renders an HTML document from a structured module dictionary.
-    data format:
-    {
-        "title": str,
-        "subject_name": str,
-        "meeting_no": int,
-        "date_info": str,
-        "lecturer": str,
-        "tagline": str,
-        "sections": [
-            {
-                "title": str,
-                "content_html": str
-            }
-        ],
-        "references": [str]
-    }
-    """
     sections_rendered = []
     for idx, sec in enumerate(data.get("sections", []), 1):
         sec_html = f"""
@@ -35,7 +20,31 @@ def render_html_page(data):
         """
         sections_rendered.append(sec_html)
 
+    ai_insights_rendered = []
+    if data.get("ai_insights"):
+        for idx, ai_sec in enumerate(data.get("ai_insights", []), 1):
+            ai_html = f"""
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN {idx}. {ai_sec['title']}</div>
+      {ai_sec['content_html']}
+    </div>
+            """
+            ai_insights_rendered.append(ai_html)
+
     references_rendered = "".join(f"<li>{r}</li>" for r in data.get("references", []))
+    doc_fn = data.get('doc_filename', 'Modul Resmi Perkuliahan FTIK Unindra')
+    slide_cnt = data.get('slide_count', '')
+
+    ai_part_html = ""
+    if ai_insights_rendered:
+        ai_part_html = f"""
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  {"".join(ai_insights_rendered)}
+        """
 
     return f"""<!DOCTYPE html>
 <html lang="id">
@@ -138,6 +147,11 @@ def render_html_page(data):
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }}
+
+    .section-title-ai {{
+      border-left-color: #059669;
+      color: #065f46;
     }}
 
     .sub-title {{
@@ -296,7 +310,7 @@ def render_html_page(data):
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
       <h1>{data['title']}</h1>
@@ -304,21 +318,34 @@ def render_html_page(data):
     </div>
     <div style="text-align: right;">
       <div class="meta-text"><strong>Dosen Pengampu:</strong> {data['lecturer']}</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> {doc_fn}</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   {"".join(sections_rendered)}
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        {references_rendered}
-      </ul>
+  {ai_part_html}
+
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>{doc_fn}</code> {f'({slide_cnt})' if slide_cnt else ''}</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> {data['lecturer']} • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          {references_rendered}
+        </ul>
+      </div>
     </div>
   </div>
 

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Tipe Data Pascal, Hierarki Memori & Kaidah Identifier - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Variabel, Konstanta, 4 Tipe Data Dasar & Klasifikasi Operator Pascal - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,46 +262,111 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Tipe Data Pascal, Hierarki Memori & Kaidah Identifier</h1>
+      <h1>Master Guide: Variabel, Konstanta, 4 Tipe Data Dasar & Klasifikasi Operator Pascal</h1>
       <h2>Pemrograman 1 (Pascal) • Pertemuan 2</h2>
     </div>
     <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Pemrograman FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> pascal_p2_variabel_tipe_data.pdf (Pertemuan 2 Variabel Konstanta Tipe Data Operator.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Konsep Strongly Typed & Case-Insensitive</div>
+      <div class="section-title">BAB 1. Konsep Variabel & Aturan Penulisan Identifier (Slide 2 - 3 PPT Dosen)</div>
       
-<p>Dua karakteristik paling fundamental dari bahasa Pascal yang wajib diresapi setiap mahasiswa:</p>
+<p>Slide 2 menjelaskan bahwa <strong>Variabel</strong> adalah penanda identitas (identifier) yang digunakan untuk menampung data di dalam memori komputer, di mana nilainya bersifat dinamis dan dapat berubah-ubah selama program dijalankan.</p>
+<p><strong>Aturan Baku Penulisan Identifier Variabel pada Pascal (Slide 3):</strong></p>
+<ol>
+  <li>Harus diawali dengan <strong>karakter huruf alfabet (A-Z, a-z)</strong> atau garis bawah (<em>underscore</em> <code>_</code>). Tidak boleh diawali angka!</li>
+  <li>Karakter berikutnya dapat berupa huruf, angka, atau underscore.</li>
+  <li><strong>DILARANG menggunakan spasi</strong>. Untuk nama variabel dua kata, gunakan underscore (misal: <code>total_harga</code>) atau camelCase (<code>totalHarga</code>).</li>
+  <li>Dilarang menggunakan simbol khusus atau karakter matematis seperti: <code>! @ # $ % ^ & * ( ) + - = / { } [ ] : ; " ' &lt; &gt; , . ?</code>.</li>
+  <li>Dilarang menggunakan kata kunci baku yang sudah dipesan oleh bahasa Pascal (<em>Reserved Words</em>), seperti <code>program</code>, <code>begin</code>, <code>end</code>, <code>var</code>, <code>const</code>, <code>if</code>, <code>then</code>, <code>while</code>.</li>
+</ol>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 2. Deklarasi, Pemberian Nilai & Menampilkan Variabel (Slide 3 - 5 PPT Dosen)</div>
+      
 <table>
-  <thead>
-    <tr>
-      <th>Karakteristik Kompiler</th>
-      <th>Prinsip Fundamental</th>
-      <th>Tindakan Validasi Kompiler</th>
-      <th>Manfaat Bagi Software Engineering</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Operasi Variabel</th><th>Kata Kunci / Sintaks</th><th>Contoh Penulisan Kode</th><th>Keterangan Kompiler</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Deklarasi</strong></td><td><code>var nama: tipe;</code></td><td><code>var umur: integer; nama: string;</code></td><td>Memesan ruang memori RAM berlabel sesuai tipe data yang dialokasikan.</td></tr>
+    <tr><td><strong>2. Assignment (Penugasan)</strong></td><td><code>:=</code> (titik dua sama dengan)</td><td><code>umur := 19;<br>nama := 'Budi';</code></td><td>Memasukkan nilai di sebelah kanan ke dalam wadah variabel di sebelah kiri.</td></tr>
+    <tr><td><strong>3. Menampilkan Nilai</strong></td><td><code>write / writeln</code></td><td><code>writeln('Umur: ', umur);</code></td><td>Mencetak isi memori variabel ke layar monitor console.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Konsep Konstanta (Constant) (Slide 6 - 7 PPT Dosen)</div>
+      
+<p>Slide 6 mendefinisikan <strong>Konstanta</strong> sebagai variabel khusus yang nilainya <strong>bersifat tetap dan tidak dapat diubah-ubah</strong> sepanjang program berjalan setelah diinisialisasi.</p>
+<div class="card-dark">
+  <pre><code><span class="code-kw">const</span>
+  PI = <span class="code-num">3.14159</span>;
+  KURS_DOLLAR = <span class="code-num">15500</span>;
+  NAMA_TOKO = <span class="code-str">'Minimarket Unindra'</span>;</code></pre>
+</div>
+<p>Jika seorang pemrogram mencoba mengubah nilai konstanta di dalam blok pernyataan (misal menuliskan <code>PI := 3.15;</code>), kompiler akan menolak dan memunculkan pesan error: <em>"Variable identifier expected"</em>.</p>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Empat Tipe Data Dasar Pascal & Tipe Bentukan (Slide 8 - 14 PPT Dosen)</div>
+      
+<p>Slide 9-14 menguraikan 4 tipe data dasar (primitif) dan tipe data bentukan di dalam Pascal:</p>
+<table>
+  <thead><tr><th>Tipe Data Dasar</th><th>Definisi & Karakteristik</th><th>Ukuran Memori</th><th>Rentang Nilai</th><th>Contoh Penulisan</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>Strongly Typed</strong></td>
-      <td>Setiap variabel <strong>wajib dideklarasikan tipe datanya secara eksplisit</strong> sebelum blok <code>begin</code>.</td>
-      <td>Kompiler menolak penugasan tipe yang tidak kompatibel saat proses kompilasi (<em>type mismatch error</em>).</td>
-      <td>Mencegah bug fatal runtime, kebocoran memori, dan konversi tipe implisit yang berbahaya.</td>
+      <td><strong>1. Integer</strong></td>
+      <td>Menampung bilangan bulat tanpa pecahan desimal.</td>
+      <td>2 Byte (standar) / 4 Byte</td>
+      <td>-32.768 s.d 32.767 (Integer) / s.d 2 Miliar (Longint)</td>
+      <td><code>10</code>, <code>-25</code>, <code>1500</code></td>
     </tr>
     <tr>
-      <td><strong>Case-Insensitive</strong></td>
-      <td>Pascal <strong>tidak membedakan huruf kapital dan huruf kecil</strong> dalam penulisan token/identifier.</td>
-      <td>Pengenal <code>TotalGaji</code>, <code>totalgaji</code>, dan <code>TOTALGAJI</code> dipetakan ke alamat memori yang sama persis.</td>
-      <td>Mempermudah penulisan kode tanpa hambatan tipografi, fokus pada struktur dan konsistensi.</td>
+      <td><strong>2. Real</strong></td>
+      <td>Menampung bilangan pecahan atau angka berkoma desimal (ditulis dengan titik desimal).</td>
+      <td>4 s.d 8 Byte</td>
+      <td>1.5E-45 s.d 3.4E+38</td>
+      <td><code>3.14</code>, <code>0.005</code>, <code>-12.75</code></td>
+    </tr>
+    <tr>
+      <td><strong>3. Char (Karakter)</strong></td>
+      <td>Menampung satu karakter alfabet, angka, atau simbol tunggal. Wajib diapit tanda petik satu (<code>' '</code>).</td>
+      <td>1 Byte (8 bit)</td>
+      <td>256 karakter kode ASCII (0..255)</td>
+      <td><code>'A'</code>, <code>'8'</code>, <code>'%'</code>, <code>' '</code></td>
+    </tr>
+    <tr>
+      <td><strong>4. Boolean</strong></td>
+      <td>Tipe data logika yang hanya mengenal dua nilai kebenaran.</td>
+      <td>1 Byte</td>
+      <td><code>True</code> (Benar) atau <code>False</code> (Salah)</td>
+      <td><code>status := True;</code></td>
+    </tr>
+    <tr>
+      <td><strong>5. String (Bentukan)</strong></td>
+      <td>Kumpulan deretan karakter yang membentuk teks kalimat. Diapit tanda petik tunggal.</td>
+      <td>Dinamis (1 s.d 255 byte)</td>
+      <td>Teks hingga 255 karakter</td>
+      <td><code>'Teknik Informatika'</code></td>
     </tr>
   </tbody>
 </table>
@@ -304,105 +374,91 @@
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. Kaidah Baku Penamaan Pengenal (Identifier Rules)</div>
+      <div class="section-title">BAB 5. Klasifikasi Operator Pascal: Assignment, Aritmatika, Relasional & Logika (Slide 15 - 21 PPT Dosen)</div>
       
+<p>Slide 15 mendefinisikan <strong>Operator</strong> sebagai simbol atau tanda yang diletakkan di antara operand untuk melakukan suatu operasi manipulasi data tertentu:</p>
 <table>
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>Hukum Identifier Pascal</th>
-      <th>Ketentuan Validasi Kompiler</th>
-      <th>Contoh Penulisan Benar (✓)</th>
-      <th>Contoh Penulisan Salah (✗)</th>
-      <th>Keterangan Kesalahan Kompiler</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Kelompok Operator</th><th>Simbol Operator</th><th>Makna Operasi</th><th>Contoh Ekspresi</th><th>Hasil</th></tr></thead>
   <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Karakter Pertama</strong></td>
-      <td>Wajib berupa huruf alfabet (<code>A-Z</code> / <code>a-z</code>) atau garis bawah (underscore <code>_</code>).</td>
-      <td><code>nilai1</code>, <code>_total</code>, <code>namaMhs</code></td>
-      <td><code>1nilai</code>, <code>9harga</code></td>
-      <td>Dilarang diawali karakter numerik (angka).</td>
-    </tr>
-    <tr>
-      <td><strong>2</strong></td>
-      <td><strong>Karakter Lanjutan</strong></td>
-      <td>Boleh berupa kombinasi huruf alfabet, angka desimal (0-9), dan garis bawah.</td>
-      <td><code>npm_2026</code>, <code>gaji_pokok_v2</code></td>
-      <td><code>gaji-pokok</code>, <code>biaya+ongkir</code></td>
-      <td>Tanda hubung minus (<code>-</code>) dianggap operator pengurangan.</td>
-    </tr>
-    <tr>
-      <td><strong>3</strong></td>
-      <td><strong>Spasi Pemisah Token</strong></td>
-      <td>Dilarang keras mengandung spasi kosong di tengah nama variabel.</td>
-      <td><code>total_bayar</code>, <code>totalBayar</code></td>
-      <td><code>total bayar</code></td>
-      <td>Spasi memecah pengenal menjadi dua token terpisah (syntax error).</td>
-    </tr>
-    <tr>
-      <td><strong>4</strong></td>
-      <td><strong>Karakter Khusus & Simbol</strong></td>
-      <td>Dilarang menggunakan simbol matematika atau tanda baca unik (<code>@, #, $, %, ^, &, *, .</code>).</td>
-      <td><code>rate_pajak</code>, <code>uang_kas</code></td>
-      <td><code>rate@pajak</code>, <code>uang$</code></td>
-      <td>Simbol khusus memiliki fungsi sintaks internal pada kompiler.</td>
-    </tr>
-    <tr>
-      <td><strong>5</strong></td>
-      <td><strong>Kata Kunci Terpesan (Reserved Words)</strong></td>
-      <td>Dilarang menggunakan kata kunci bahasa pemrograman yang telah dipesan sistem.</td>
-      <td><code>nama_program</code>, <code>jumlah_var</code></td>
-      <td><code>program</code>, <code>begin</code>, <code>var</code>, <code>if</code></td>
-      <td>Reserved words hanya boleh digunakan untuk struktur bahasa resmi.</td>
-    </tr>
+    <tr><td><strong>Assignment</strong></td><td><code>:=</code></td><td>Penugasan nilai ke variabel</td><td><code>A := 5;</code></td><td>Nilai 5 disimpan di A</td></tr>
+    <tr><td rowspan="6"><strong>Aritmatika</strong></td><td><code>+</code></td><td>Penjumlahan</td><td><code>7 + 3</code></td><td><code>10</code></td></tr>
+    <tr><td><code>-</code></td><td>Pengurangan</td><td><code>10 - 4</code></td><td><code>6</code></td></tr>
+    <tr><td><code>*</code></td><td>Perkalian</td><td><code>5 * 4</code></td><td><code>20</code></td></tr>
+    <tr><td><code>/</code></td><td>Pembagian Real (menghasilkan pecahan)</td><td><code>10 / 4</code></td><td><code>2.5</code> (Tipe Real)</td></tr>
+    <tr><td><code>div</code></td><td>Pembagian Bulat (membuang sisa pecahan)</td><td><code>10 div 4</code></td><td><code>2</code> (Tipe Integer)</td></tr>
+    <tr><td><code>mod</code></td><td>Sisa Pembagian (Modulo)</td><td><code>10 mod 4</code></td><td><code>2</code> (Tipe Integer)</td></tr>
+    <tr><td rowspan="6"><strong>Relasional (Perbandingan)</strong></td><td><code>=</code></td><td>Sama dengan</td><td><code>5 = 5</code></td><td><code>True</code></td></tr>
+    <tr><td><code>&lt;&gt;</code></td><td>Tidak sama dengan</td><td><code>5 &lt;&gt; 3</code></td><td><code>True</code></td></tr>
+    <tr><td><code>&lt;</code>, <code>&gt;</code></td><td>Kurang dari, Lebih dari</td><td><code>4 &lt; 2</code></td><td><code>False</code></td></tr>
+    <tr><td><code>&lt;=</code>, <code>&gt;=</code></td><td>Kurang dari sama dengan, Lebih dari sama dengan</td><td><code>7 &gt;= 7</code></td><td><code>True</code></td></tr>
+    <tr><td><code>NOT</code></td><td>Negasi / Kebalikan nilai logika</td><td><code>NOT True</code></td><td><code>False</code></td></tr>
+    <tr><td><code>AND</code>, <code>OR</code></td><td>Konjungsi dan Disjungsi logika</td><td><code>(5 &gt; 2) AND (3 &lt; 1)</code></td><td><code>False</code></td></tr>
   </tbody>
 </table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Tabel Komprehensif Seluruh Tipe Data Pascal & Rentang Memori</div>
+      <div class="section-title">BAB 6. Urutan Prioritas / Presedensi Operator Pascal (Slide 22 PPT Dosen)</div>
       
+<p>Slide 22 menyajikan urutan tingkatan prioritas evaluasi operator saat beberapa operator berada dalam satu baris ekspresi:</p>
 <table>
-  <thead><tr><th>Tipe Data</th><th>Ukuran Memori</th><th>Rentang Nilai Valid</th><th>Karakteristik & Kasus Penggunaan Ideal</th></tr></thead>
+  <thead><tr><th>Tingkat Prioritas</th><th>Kelompok Operator</th><th>Simbol Operator</th><th>Urutan Pengerjaan</th></tr></thead>
   <tbody>
-    <tr><td><code>Byte</code></td><td>1 Byte (8 bit)</td><td><code>0 s.d 255</code></td><td>Bilangan cacah positif tanpa tanda (usia manusia, tanggal, bulan).</td></tr>
-    <tr><td><code>Shortint</code></td><td>1 Byte (8 bit)</td><td><code>-128 s.d 127</code></td><td>Bilangan bulat bertanda skala kecil.</td></tr>
-    <tr><td><code>Integer</code></td><td>2 Byte (16 bit)</td><td><code>-32.768 s.d 32.767</code></td><td>Tipe standar bilangan bulat (cacah indeks loop, jumlah barang).</td></tr>
-    <tr><td><code>Word</code></td><td>2 Byte (16 bit)</td><td><code>0 s.d 65.535</code></td><td>Bilangan bulat positif 16 bit.</td></tr>
-    <tr><td><code>Longint</code></td><td>4 Byte (32 bit)</td><td><code>-2.147.483.648 s.d 2.147.483.647</code></td><td>Bilangan bulat besar (populasi penduduk, nominal uang rupiah).</td></tr>
-    <tr><td><code>Int64</code></td><td>8 Byte (64 bit)</td><td>&plusmn; 9,22 &times; 10<sup>18</sup></td><td>Komputasi astronomi, transaksi kriptografi besar.</td></tr>
-    <tr><td><code>Real</code></td><td>6 s.d 8 Byte</td><td><code>2.9e-39 s.d 1.7e+38</code></td><td>Bilangan pecahan floating-point desimal (IPK, rata-rata, suhu).</td></tr>
-    <tr><td><code>Char</code></td><td>1 Byte</td><td>1 Karakter ASCII</td><td>Satu karakter tunggal: <code>'A'</code>, <code>'B'</code>, <code>'9'</code>.</td></tr>
-    <tr><td><code>String</code></td><td>Dinamis</td><td>1 s.d 255 Karakter</td><td>Rangkaian teks yang diapit petik satu: <code>'Haikel Saleh'</code>.</td></tr>
-    <tr><td><code>Boolean</code></td><td>1 Byte</td><td><code>TRUE</code> atau <code>FALSE</code></td><td>Pengujian logika biner percabangan dan perulangan.</td></tr>
+    <tr><td><strong>Prioritas 1 (Tertinggi)</strong></td><td>Tanda Kurung</td><td><code>( ... )</code></td><td>Dikerjakan pertama kali, mulai dari kurung terdalam</td></tr>
+    <tr><td><strong>Prioritas 2</strong></td><td>Operator NOT & Unary</td><td><code>NOT</code>, tanda minus <code>-</code></td><td>Dikerjakan sebelum perkalian</td></tr>
+    <tr><td><strong>Prioritas 3</strong></td><td>Operator Perkalian & Pembagian</td><td><code>*</code>, <code>/</code>, <code>div</code>, <code>mod</code>, <code>AND</code></td><td>Dikerjakan dari kiri ke kanan</td></tr>
+    <tr><td><strong>Prioritas 4</strong></td><td>Operator Penjumlahan & Pengurangan</td><td><code>+</code>, <code>-</code>, <code>OR</code></td><td>Dikerjakan dari kiri ke kanan</td></tr>
+    <tr><td><strong>Prioritas 5 (Terendah)</strong></td><td>Operator Perbandingan / Relasional</td><td><code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td><td>Dikerjakan paling akhir untuk menghasilkan Boolean</td></tr>
   </tbody>
 </table>
 
     </div>
         
+
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
     <div class="section">
-      <div class="section-title">BAB 4. Jebakan Overflow Tipe Data & Solusi Guru AI</div>
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Mengapa Operator / Selalu Menghasilkan Tipe Real?</div>
       
-<div class="alert alert-danger">
-  <strong>⚠️ Fenomena Integer Overflow:</strong><br>
-  Jika sebuah variabel dideklarasikan bertipe <code>Integer</code> (maksimal 32.767) lalu diberi nilai kalkulasi <code>gaji := 50000;</code>, pada kompiler Turbo Pascal akan terjadi <em>Integer Overflow</em> yang menghasilkan angka negatif aneh (misal: <code>-15536</code>)!<br>
-  <strong>Solusi Guru AI:</strong> Untuk penampung nominal uang, NPM mahasiswa, atau perkalian ribuan, <strong>selalu gunakan tipe <code>Longint</code> atau <code>Int64</code></strong>.
+<p>Di bahasa Pascal, operator garis miring biasa (<code>/</code>) didefinisikan secara matematis murni. Meskipun kedua operannya adalah integer murni (misal: <code>4 / 2</code>), hasilnya secara internal bertipe data <strong>Real</strong> (<code>2.0000000000E+00</code>). Jika Anda mencoba menampung hasil <code>4 / 2</code> ke variabel bertipe integer, kompiler akan menolak dengan error <em>"Type mismatch"</em>. Untuk pembagian sesama integer yang menghasilkan integer, <strong>selalu gunakan <code>div</code></strong>!</p>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal Kuis & UTS Variabel dan Operator</div>
+      
+<div class="alert alert-warning">
+  <strong>🎯 Bedah Soal Jebakan UTS:</strong><br>
+  <strong>Soal:</strong> Tentukan hasil dari evaluasi ekspresi: <code>15 - 3 * 2 + 8 div 2</code><br>
+  <strong>Langkah Pengerjaan yang Benar:</strong><br>
+  1. Dahulukan perkalian dan pembagian (prioritas tinggi): <code>3 * 2 = 6</code> dan <code>8 div 2 = 4</code>.<br>
+  2. Ekspresi menjadi: <code>15 - 6 + 4</code>.<br>
+  3. Kerjakan penjumlahan dan pengurangan dari kiri ke kanan: <code>(15 - 6) = 9</code>, lalu <code>9 + 4 = 13</code>.<br>
+  <strong>Jawaban Akhir:</strong> <code>13</code>.
 </div>
 
     </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>ISO/IEC 7185:1990 - Information technology -- Programming languages -- Pascal.</li><li>Free Pascal Programmer's Manual (v3.2.2).</li><li>Materi Kuliah Tipe Data & Identifier, Laboratorium Teknik Informatika Unindra.</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>pascal_p2_variabel_tipe_data.pdf (Pertemuan 2 Variabel Konstanta Tipe Data Operator.pdf)</code> (24 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: pascal_p2_variabel_tipe_data.pdf (Pertemuan 2 Variabel Konstanta Tipe Data Operator.pdf, 24 Slide PPT Zaeni Miftah, FTIK Unindra).</li><li>Jogiyanto, H.M. (2005). Teori dan Aplikasi Program Komputer Bahasa Pascal. Yogyakarta: Andi Offset.</li><li>Silabus Resmi Mata Kuliah Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

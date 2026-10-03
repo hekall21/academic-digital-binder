@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Fondasi Algoritma, Karakteristik Knuth & Notasi Komputasi - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Pengantar Algoritma, Asal Usul Al-Khwarizmi, 5 Kriteria Knuth & 3 Notasi Komputasi - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,126 +262,184 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Fondasi Algoritma, Karakteristik Knuth & Notasi Komputasi</h1>
+      <h1>Master Guide: Pengantar Algoritma, Asal Usul Al-Khwarizmi, 5 Kriteria Knuth & 3 Notasi Komputasi</h1>
       <h2>Algoritma 1 • Pertemuan 1</h2>
     </div>
     <div style="text-align: right;">
       <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture & Intuisi Pertama (Mengapa Belajar Algoritma?)</div>
+      <div class="section-title">BAB 1. Pengantar & Urgensi Algoritma dalam Informatika (Slide 1 - 3 PPT Dosen)</div>
       
-<p>Komputer pada dasarnya adalah mesin penghitung yang sangat cepat namun tidak memiliki inisiatif logis (<em>ultra-fast dumb machine</em>). Komputer tidak dapat memecahkan masalah tanpa instruksi presisi langkah-demi-langkah. Di sinilah letak <strong>Algoritma</strong> sebagai cetak biru (<em>blueprint</em>) berpikir logis sebelum kita menyentuh kode pemrograman apapun.</p>
+<p>Slide 3 menjelaskan bahwa <strong>Algoritma adalah jantung dari ilmu komputer atau informatika</strong>. Meskipun sangat identik dengan sistem komputasi, dalam kehidupan sehari-hari manusia sebenarnya telah berulang kali mempraktikkan algoritma tanpa disadari (misalnya resep membuat kue, petunjuk perakitan meja, atau alur transaksi di ATM).</p>
 <div class="card card-accent">
   <strong>Aksioma Fundamental Niklaus Wirth (1976):</strong><br>
   <code>Program = Algoritma + Struktur Data</code><br>
-  Jika Struktur Data adalah bahan baku material (batu bata, semen, baja), maka Algoritma adalah rancangan arsitektur dan instruksi perakitannya. Keduanya tidak terpisahkan.
+  Struktur Data menyediakan wadah penyimpanan informasi (variabel, array, record), sedangkan Algoritma merancang alur logika dan instruksi manipulasi datanya. Keduanya merupakan fondasi mutlak yang tidak terpisahkan.
 </div>
-<p>Asal kata <em>algoritma</em> berakar dari nama ilmuwan muslim Persia abad ke-9, <strong>Abu Ja'far Muhammad bin Musa Al-Khwarizmi</strong>, penulis kitab legendaris <em>Al-Jabr wal-Muqabala</em> yang menjadi peletak dasar aljabar modern.</p>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. Bedah Materi Dosen: 5 Kriteria Baku Algoritma Donald E. Knuth</div>
+      <div class="section-title">BAB 2. Asal-Usul Nama & Definisi Baku Algoritma (Slide 4 - 5 PPT Dosen)</div>
       
-<p>Pakar ilmu komputer terkemuka Donald E. Knuth dalam magnum opus-nya <em>The Art of Computer Programming</em> menetapkan bahwa sebuah urutan instruksi hanya sah disebut <strong>Algoritma</strong> apabila memenuhi 5 syarat mutlak:</p>
+<p>Slide 4 menguraikan sejarah kata <em>Algoritma</em> yang berakar dari nama ilmuwan muslim Persia terkemuka pada masa keemasan Islam di Baghdad (abad ke-9 Masehi), yaitu <strong>Abu Ja'far Muhammad bin Musa Al-Khwarizmi</strong> (780–846 M). Bangsa barat melafalkan namanya menjadi <em>Algorism</em> yang kemudian berubah menjadi <em>Algorithm</em>. Beliau juga merupakan peletak dasar aljabar modern melalui kitab legendarisnya <em>Al-Jabr wal-Muqabala</em>.</p>
+<div class="card-dark">
+  <strong>Definisi Baku Algoritma (Slide 5 Modul Dosen):</strong><br>
+  <blockquote style="margin: 4px 0 0 0; color: #38bdf8; font-style: italic;">
+    "Algoritma adalah urutan aksi-aksi yang dinyatakan dengan jelas dan tidak rancu (unambiguous) untuk memecahkan suatu masalah dalam rentang langkah yang berhingga."
+  </blockquote>
+</div>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Lima Kriteria Baku Algoritma Menurut Donald E. Knuth (Slide 6 PPT Dosen)</div>
+      
+<p>Slide 6 menyajikan 5 syarat mutlak yang dirumuskan oleh pakar ilmu komputer legendaris <strong>Donald E. Knuth</strong> dalam karya monumentalnya <em>The Art of Computer Programming</em> agar sebuah urutan instruksi sah disebut sebagai algoritma:</p>
 <table>
-  <thead><tr><th>Kriteria Knuth</th><th>Definisi Konseptual</th><th>Dampak Fatal Jika Dilanggar</th></tr></thead>
+  <thead><tr><th>Kriteria Knuth</th><th>Definisi Konseptual Dosen</th><th>Dampak Fatal Jika Dilanggar</th></tr></thead>
   <tbody>
-    <tr><td><strong>1. Finiteness (Keterbatasan)</strong></td><td>Algoritma harus berhenti (<em>terminate</em>) setelah mengerjakan sejumlah langkah terhingga.</td><td>Menyebabkan <em>Infinite Loop</em>, konsumsi memori tak terbatas, program membeku (<em>freeze / crash</em>).</td></tr>
-    <tr><td><strong>2. Definiteness (Kepastian)</strong></td><td>Setiap langkah harus didefinisikan secara tepat, eksplisit, dan tidak menimbulkan makna ganda (<em>unambiguous</em>).</td><td>Instruksi seperti "tambahkan garam secukupnya" tidak sah dalam algoritma komputer karena ambigu bagi CPU.</td></tr>
-    <tr><td><strong>3. Input (Masukan &ge; 0)</strong></td><td>Algoritma memiliki nol atau lebih masukan yang diberikan dari luar sebelum eksekusi dimulai.</td><td>Algoritma tanpa input tetap sah (misal: algoritma mencetak konstanta Pi atau teks statis).</td></tr>
-    <tr><td><strong>4. Output (Keluaran &ge; 1)</strong></td><td>Algoritma harus menghasilkan minimal satu keluaran yang merupakan solusi permasalahan.</td><td>Algoritma yang berjalan tanpa memproduksi hasil apapun adalah operasi komputasi sia-sia.</td></tr>
-    <tr><td><strong>5. Effectiveness (Efektivitas)</strong></td><td>Setiap instruksi harus sangat sederhana dan mendasar sehingga dapat dikerjakan manusia dengan kertas & pensil dalam waktu wajar.</td><td>Instruksi mustahil (misal: "bagi angka dengan nol") melanggar prinsip efektivitas.</td></tr>
+    <tr>
+      <td><strong>1. Input (Masukan &ge; 0)</strong></td>
+      <td>Algoritma memiliki <strong>nol atau lebih masukan</strong> yang diberikan dari luar sebelum eksekusi dimulai.</td>
+      <td>Algoritma tanpa input tetap sah (misal: algoritma penampil teks statis "Hello World").</td>
+    </tr>
+    <tr>
+      <td><strong>2. Output (Keluaran &ge; 1)</strong></td>
+      <td>Algoritma <strong>WAJIB menghasilkan minimal satu keluaran</strong> yang merupakan solusi dari permasalahan.</td>
+      <td>Instruksi yang berjalan tanpa memproduksi hasil apapun adalah operasi komputasi yang sia-sia.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Definiteness (Kepastian)</strong></td>
+      <td>Setiap langkah instruksi harus didefinisikan secara tepat, eksplisit, dan <strong>tidak menimbulkan makna ganda (tidak ambigu)</strong>.</td>
+      <td>Instruksi samar seperti "masukkan garam secukupnya" tidak sah dalam algoritma komputasi.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Finiteness (Keterbatasan)</strong></td>
+      <td>Algoritma <strong>harus berhenti (terminate)</strong> setelah mengerjakan sejumlah langkah terhingga.</td>
+      <td>Terjadi <em>Infinite Loop</em> (perulangan tak terhingga), konsumsi memori tak terkontrol, dan sistem freeze.</td>
+    </tr>
+    <tr>
+      <td><strong>5. Effectiveness (Efektivitas)</strong></td>
+      <td>Setiap instruksi harus sangat sederhana dan mendasar sehingga dapat dikerjakan secara realistis dalam waktu wajar.</td>
+      <td>Instruksi mustahil seperti membagi angka dengan nol (<em>division by zero</em>) melanggar asas efektivitas.</td>
+    </tr>
   </tbody>
 </table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Tiga Notasi Baku Penyajian Algoritma (Komparasi & Implementasi)</div>
+      <div class="section-title">BAB 4. Tiga Jenis Proses Alur Algoritma (Slide 7 PPT Dosen)</div>
       
-<p>Dalam rekayasa komputasi, algoritma dapat diekspresikan melalui tiga notasi baku dengan karakteristik, kekuatan, dan batasan masing-masing:</p>
+<p>Slide 7 membagi seluruh proses penyelesaian masalah dalam algoritma ke dalam 3 jenis bentuk:</p>
 <table>
-  <thead>
-    <tr>
-      <th>Notasi Algoritma</th>
-      <th>Format / Karakteristik Penyajian</th>
-      <th>Kelebihan Utama</th>
-      <th>Kelemahan & Limitasi</th>
-      <th>Kesesuaian Penggunaan Nyata</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Jenis Proses Algoritma</th><th>Mekanisme Eksekusi</th><th>Contoh Kasus</th></tr></thead>
   <tbody>
-    <tr>
-      <td><strong>1. Bahasa Alami (Deskriptif)</strong></td>
-      <td>Narasi teks terstruktur memakai bahasa manusia sehari-hari (Indonesia / Inggris).</td>
-      <td>Mudah dipahami dan dikomunikasikan kepada pemangku kepentingan awam non-teknis.</td>
-      <td>Rentan multitafsir (ambigu), panjang bertele-tele, tidak memiliki standar formal.</td>
-      <td>Dokumentasi konseptual awal, penjelasan alur proses bisnis kepada klien non-TI.</td>
-    </tr>
-    <tr>
-      <td><strong>2. Pseudocode (Kode Semu)</strong></td>
-      <td>Notasi terstruktur bergaya bahasa pemrograman imperatif tingkat tinggi tanpa dependensi sintaks spesifik.</td>
-      <td>Ringkas, presisi, independen dari bahasa mesin, mudah ditranslasikan ke bahasa pemrograman apapun.</td>
-      <td>Tidak dapat dieksekusi langsung oleh mesin compiler tanpa dikonversi ke kode nyata.</td>
-      <td>Perancangan logika inti sistem, publikasi paper riset algoritma, standar buku teks ilmu komputer.</td>
-    </tr>
-    <tr>
-      <td><strong>3. Flowchart (Diagram Alir)</strong></td>
-      <td>Representasi grafis dua dimensi menggunakan simbol-simbol geometri standar ANSI / ISO 5807.</td>
-      <td>Alur logika, percabangan, dan perulangan tampak seketika secara visual; mudah ditelusuri alurnya.</td>
-      <td>Membutuhkan ruang gambar luas; sulit digambar ulang saat logika sangat kompleks dan bersarang banyak.</td>
-      <td>Presentasi arsitektur sistem, audit proses bisnis, instruksi operasional standar kerja (SOP).</td>
-    </tr>
+    <tr><td><strong>1. Sequence Process (Runtunan)</strong></td><td>Instruksi dikerjakan secara berurutan baris demi baris, dari baris pertama hingga baris terakhir tanpa ada yang terlewat.</td><td>Menghitung luas segitiga: baca alas &rarr; baca tinggi &rarr; hitung luas &rarr; tampilkan luas.</td></tr>
+    <tr><td><strong>2. Selection Process (Pemilihan)</strong></td><td>Instruksi tertentu hanya akan dikerjakan apabila memenuhi persyaratan atau kondisi kriteria tertentu.</td><td>Menentukan kelulusan: jika nilai &ge; 60 maka lulus, jika tidak maka gagal.</td></tr>
+    <tr><td><strong>3. Iteration / Repetition Process (Perulangan)</strong></td><td>Instruksi dikerjakan secara berulang-ulang selama suatu kondisi batas pengulangan masih terpenuhi.</td><td>Mencetak deret bilangan 1 sampai 100, pencarian data di database.</td></tr>
   </tbody>
 </table>
 
-<div class="card-dark" style="margin-top: 8px;">
-  <span style="color: #38bdf8; font-weight: bold;">// Contoh Pseudocode Baku Menghitung Luas Segitiga:</span>
-  <pre><code><span class="code-kw">PROGRAM</span> HitungLuasSegitiga
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 5. Definisi Program, Pemrograman & 3 Cara Penulisan Algoritma (Slide 8 - 9 PPT Dosen)</div>
+      
+<p>Slide 8 mendefinisikan <strong>Program</strong> sebagai kumpulan instruksi-instruksi tersendiri (source code) yang dibuat oleh programmer untuk memecahkan masalah. Sedangkan <strong>Pemrograman</strong> adalah proses menulis, menguji, dan memelihara kode tersebut.</p>
+<p>Slide 9 menyajikan 3 cara representasi / notasi penulisan algoritma:</p>
+<table>
+  <thead><tr><th>Notasi Algoritma</th><th>Format Karakteristik</th><th>Kelebihan</th><th>Kelemahan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Bahasa Natural (Deskriptif)</strong></td><td>Narasi bahasa sehari-hari manusia (Indonesia/Inggris).</td><td>Sangat mudah dipahami orang awam.</td><td>Rentan multitafsir (ambigu) dan panjang bertele-tele.</td></tr>
+    <tr><td><strong>2. Flowchart (Diagram Alir)</strong></td><td>Representasi visual menggunakan simbol-simbol bangun datar geometris standar ANSI/ISO.</td><td>Alur logika dan percabangan tampak seketika secara visual.</td><td>Membutuhkan bidang gambar luas; rumit jika logika bersarang banyak.</td></tr>
+    <tr><td><strong>3. Pseudocode (Kode Semu)</strong></td><td>Teks terstruktur bergaya bahasa pemrograman tingkat tinggi tanpa terikat sintaks kaku.</td><td>Ringkas, presisi, dan sangat mudah ditranslasikan ke bahasa Pascal, C, atau Python.</td><td>Tidak dapat dieksekusi langsung oleh mesin sebelum diketik ke kode program nyata.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 6. Studi Kasus Dosen: Menentukan Bilangan Terbesar dari 3 Bilangan (Slide 10 - 12 PPT Dosen)</div>
+      
+<p>Slide 10-12 memperlihatkan contoh algoritma untuk menentukan bilangan terbesar di antara 3 buah bilangan masukan (A, B, dan C):</p>
+<div class="card-dark">
+  <span style="color: #38bdf8; font-weight: bold;">// Algoritma Menentukan Nilai Maksimum (Slide 11):</span>
+  <pre><code><span class="code-kw">PROGRAM</span> BilanganTerbesar
 <span class="code-kw">DEKLARASI</span>:
-  alas, tinggi, luas : <span class="code-type">real</span>
+  A, B, C, max : <span class="code-type">integer</span>
 
 <span class="code-kw">ALGORITMA</span>:
-  <span class="code-fn">read</span>(alas)
-  <span class="code-fn">read</span>(tinggi)
-  luas &larr; 0.5 * alas * tinggi
-  <span class="code-fn">write</span>(luas)
+  <span class="code-fn">read</span>(A, B, C)
+  max &larr; A                <span class="code-cmt">{ Asumsikan sementara bahwa A adalah nilai terbesar }</span>
+  <span class="code-kw">IF</span> (B &gt; max) <span class="code-kw">THEN</span>
+    max &larr; B              <span class="code-cmt">{ Jika ternyata B lebih besar, mutasi max dengan B }</span>
+  <span class="code-kw">IF</span> (C &gt; max) <span class="code-kw">THEN</span>
+    max &larr; C              <span class="code-cmt">{ Jika ternyata C lebih besar, mutasi max dengan C }</span>
+  <span class="code-fn">write</span>(<span class="code-str">'Bilangan Terbesar Adalah: '</span>, max)
 <span class="code-kw">END PROGRAM</span></code></pre>
 </div>
 
     </div>
         
+
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
     <div class="section">
-      <div class="section-title">BAB 4. Bedah Jebakan Soal UTS & Tips Menjawab</div>
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Mengapa Finiteness Sangat Krusial Bagi CPU Komputer</div>
+      
+<p>Di balik kriteria <em>Finiteness</em> Donald Knuth tersimpan batasan fisik arsitektur komputasi. Jika sebuah program tidak memiliki kondisi berhenti (<em>halting condition</em>), CPU akan terus mengeksekusi instruksi perulangan pada kecepatan GHz hingga menghabiskan alokasi memori tumpukan (<em>Stack Overflow</em>) atau mengunci alokasi thread sistem operasi. Karena itu, perancangan algoritma wajib menjamin adanya langkah terminasi yang pasti.</p>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal Kuis & UTS Algoritma 1</div>
       
 <div class="alert alert-warning">
-  <strong>⚠️ Jebakan Soal UTS Khas Unindra:</strong><br>
-  <em>"Apakah sebuah algoritma wajib memiliki masukan (input)?"</em><br>
-  <strong>Jawaban Salah:</strong> Ya, harus memiliki masukan.<br>
-  <strong>Jawaban Benar & Pembahasan Sempurna:</strong> <strong>TIDAK WAJIB.</strong> Syarat Knuth menyatakan jumlah input adalah <strong>nol atau lebih (&ge; 0)</strong>. Contoh: algoritma pembangkit bilangan acak seed statis atau program penampil teks "Hello World" memiliki 0 masukan namun tetap sah sebagai algoritma. Sebaliknya, <strong>output WAJIB minimal satu (&ge; 1)</strong>.
+  <strong>🎯 Bedah Jebakan Ujian Khas Pertemuan 1:</strong><br>
+  <strong>Soal Jebakan:</strong> <em>"Apakah sebuah algoritma yang benar WAJIB memiliki masukan (input) dari pengguna?"</em><br>
+  <strong>Jawaban Salah:</strong> Ya, wajib ada input.<br>
+  <strong>Jawaban Benar & Pembahasan Dosen:</strong> <strong>TIDAK WAJIB.</strong> Syarat Knuth menetapkan jumlah input adalah <strong>nol atau lebih (&ge; 0)</strong>. Contoh: algoritma penampil teks statis atau pembangkit bilangan acak seed statis memiliki 0 input dan tetap sah sebagai algoritma. Sebaliknya, <strong>OUTPUT MUTLAK WAJIB MINIMAL SATU (&ge; 1)</strong>!
 </div>
 
     </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>Knuth, Donald E. (1997). The Art of Computer Programming, Vol. 1: Fundamental Algorithms (3rd ed.). Addison-Wesley.</li><li>Wirth, Niklaus. (1976). Algorithms + Data Structures = Programs. Prentice-Hall.</li><li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to Algorithms (4th ed.). MIT Press.</li><li>Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi Unindra (2026).</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1.pdf)</code> (14 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1, 14 Slide PPT Dosen FTIK Unindra).</li><li>Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.</li><li>Knuth, Donald E. (1997). The Art of Computer Programming, Vol. 1: Fundamental Algorithms (3rd ed.). Addison-Wesley.</li><li>Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

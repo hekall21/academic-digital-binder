@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Anatomi Bahasa Pascal, Struktur Blok & Kompiler Modern - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Pengantar Pemrograman, Blok Komputer, Penerjemah Bahasa & Struktur Dasar Pascal - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,127 +262,239 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Anatomi Bahasa Pascal, Struktur Blok & Kompiler Modern</h1>
+      <h1>Master Guide: Pengantar Pemrograman, Blok Komputer, Penerjemah Bahasa & Struktur Dasar Pascal</h1>
       <h2>Pemrograman 1 (Pascal) • Pertemuan 1</h2>
     </div>
     <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Pemrograman FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Sejarah & Filosofi Bahasa Pascal</div>
+      <div class="section-title">BAB 1. Pengantar Pemrograman & Hakikat Komputer (Slide 3 PPT Dosen)</div>
       
-<p>Bahasa Pascal dirancang oleh <strong>Prof. Niklaus Wirth</strong> di ETH Zurich pada tahun 1970. Nama "Pascal" diambil sebagai penghormatan kepada matematikawan Prancis abad ke-17, <strong>Blaise Pascal</strong>, penemu mesin hitung mekanis pertama (<em>Pascaline</em>).</p>
-<div class="card card-accent">
-  <strong>Filosofi Rancangan Niklaus Wirth:</strong><br>
-  Pascal diciptakan khusus sebagai bahasa untuk <strong>mengajarkan pemrograman terstruktur (Structured Programming)</strong> secara disiplin. Struktur sintaksnya yang tegas dan ketat (<em>strict</em>) memaksa mahasiswa menulis kode yang bersih, terdokumentasi, dan bebas dari lompatan tak tentu (<em>spaghetti code</em>) sebelum melangkah ke bahasa industri seperti C++, Java, atau Rust.
-</div>
+<p>Berdasarkan slide pengantar Pak Zaeni Miftah, istilah <strong>Komputer</strong> berakar dari bahasa Latin <em>Computare</em> yang bermakna "menghitung" (<em>to compute / to calculate</em>). Komputer pada mulanya dirancang sebagai alat bantu kalkulasi matematis cepat, namun telah berevolusi menjadi sistem pemroses informasi elektronik digital.</p>
+<table>
+  <thead><tr><th>Komponen Pembentuk</th><th>Definisi Konseptual</th><th>Fungsi Utama dalam Pemrograman</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Perangkat Keras (Hardware)</strong></td><td>Komponen fisik elektronik yang dapat disentuh (CPU, RAM, Storage, I/O).</td><td>Mengeksekusi sinyal listrik biner (0 dan 1) sesuai instruksi clock CPU.</td></tr>
+    <tr><td><strong>Perangkat Lunak (Software)</strong></td><td>Kumpulan instruksi / program yang mengontrol kerja hardware.</td><td>Memberi petunjuk langkah demi langkah apa yang harus dihitung dan ditampilkan.</td></tr>
+    <tr><td><strong>Pemrogram (Programmer)</strong></td><td>Manusia yang menganalisis masalah dan menyusun kode sumber (source code).</td><td>Merancang logika algoritmik agar dapat diterjemahkan ke bahasa mesin.</td></tr>
+  </tbody>
+</table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. Tiga Blok Anatomi Program Baku Pascal</div>
+      <div class="section-title">BAB 2. Blok Dasar Arsitektur Komputer (Slide 4 - 7 PPT Dosen)</div>
       
-<p>Kompiler Pascal mewajibkan penulisan program mengikuti struktur hirarkis tiga blok terpisah secara ketat:</p>
+<p>Slide 5 menjelaskan bahwa pada dasarnya seluruh jenis komputer di dunia tersusun atas 4 blok subsistem utama yang saling terintegrasi:</p>
 <table>
-  <thead>
-    <tr>
-      <th>Bagian Blok Anatomi</th>
-      <th>Kata Kunci Sintaks</th>
-      <th>Fungsi Kompiler</th>
-      <th>Kaidah Penulisan Baku</th>
-      <th>Contoh Potongan Kode</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Blok Dasar Komputer</th><th>Fungsi Utama</th><th>Contoh Perangkat Riil</th><th>Hubungan dengan Kode Pascal</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>1. Kepala Program (Heading)</strong></td>
+      <td><strong>1. INPUT (Masukan)</strong></td>
+      <td>Menerima data dari pengguna luar untuk dikirim ke dalam memori komputer.</td>
+      <td>Keyboard, Mouse, Barcode Scanner, Mikrofon.</td>
+      <td>Diwakili oleh instruksi pembacaan data: <code>read</code> dan <code>readln</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>2. PROSES: ALU & CU</strong></td>
+      <td><strong>ALU (Arithmetic Logic Unit):</strong> menghitung operasi aritmatika (+, -, *, /) dan logika.<br><strong>CU (Control Unit):</strong> pengendali aliran instruksi dan sinkronisasi seluruh perangkat.</td>
+      <td>Microprocessor (Intel Core, AMD Ryzen, Apple Silicon).</td>
+      <td>Diwakili oleh operator perhitungan dan struktur percabangan (<code>if ... then</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>3. MEMORY / STORAGE</strong></td>
+      <td><strong>RAM:</strong> penyimpanan sementara berkecepatan tinggi.<br><strong>Secondary Storage:</strong> penyimpanan permanen data & berkas.</td>
+      <td>DDR4/DDR5 RAM, SSD NVMe, Harddisk.</td>
+      <td>Diwakili oleh deklarasi <strong>variabel</strong> (<code>var</code>) dan <strong>konstanta</strong> (<code>const</code>).</td>
+    </tr>
+    <tr>
+      <td><strong>4. OUTPUT (Keluaran)</strong></td>
+      <td>Menampilkan atau memproduksi hasil pengolahan data kepada pengguna.</td>
+      <td>Monitor, Printer, Speaker, Proyektor.</td>
+      <td>Diwakili oleh instruksi pencetakan data: <code>write</code> dan <code>writeln</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Tingkatan Bahasa Pemrograman: Mesin, Assembly & Tingkat Tinggi (Slide 8 - 9 PPT Dosen)</div>
+      
+<p>Komputer hanya memahami bahasa mesin berbentuk sinyal biner. Oleh karena itu, perkembangan bahasa pemrograman dibagi ke dalam tiga generasi tingkatan:</p>
+<table>
+  <thead><tr><th>Tingkatan Bahasa</th><th>Karakteristik & Format Notasi</th><th>Kelebihan</th><th>Kelemahan</th><th>Contoh Bahasa</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Bahasa Mesin (Machine Language)</strong></td>
+      <td>Instruksi biner murni berupa angka <code>0</code> dan <code>1</code> yang langsung diproses transistor CPU.</td>
+      <td>Eksekusi tercepat tanpa proses translasi apapun.</td>
+      <td>Sangat sulit dipahami manusia; rawan kesalahan fatal.</td>
+      <td>Kode biner CPU (opcode hex/biner).</td>
+    </tr>
+    <tr>
+      <td><strong>2. Bahasa Tingkat Rendah (Low-Level / Assembly)</strong></td>
+      <td>Menggunakan kode mnemonik singkat yang mewakili instruksi mesin langsung.</td>
+      <td>Sangat hemat memori dan memiliki kontrol perangkat keras mutlak.</td>
+      <td>Terikat kuat pada arsitektur prosesor tertentu (tidak portabel).</td>
+      <td>Bahasa Assembly (NASM, MASM, TASM).</td>
+    </tr>
+    <tr>
+      <td><strong>3. Bahasa Tingkat Tinggi (High-Level Language)</strong></td>
+      <td>Menggunakan kosakata bahasa manusia (bahasa Inggris) seperti <code>begin</code>, <code>if</code>, <code>write</code>.</td>
+      <td>Mudah dipelajari, dibaca, dan dipindahkan antar sistem (portabel).</td>
+      <td>Membutuhkan program penerjemah (kompiler / interpreter) ke bahasa mesin.</td>
+      <td><strong>Pascal</strong>, C, C++, Java, Python, Go.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Penerjemah Bahasa: Interpreter vs Kompiler (Slide 10 - 11 PPT Dosen)</div>
+      
+<p>Slide 10 menerangkan bagaimana program yang ditulis programmer diubah menjadi bahasa mesin:</p>
+<table>
+  <thead><tr><th>Parameter Pembeda</th><th>Kompiler (Compiler) - Digunakan Pascal</th><th>Interpreter (Penerjemah Langsung)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Mekanisme Kerja</strong></td><td>Menerjemahkan <strong>seluruh kode sumber sekaligus</strong> ke dalam berkas mesin executable (<code>.exe</code>).</td><td>Menerjemahkan dan mengeksekusi instruksi <strong>baris demi baris secara berurutan</strong>.</td></tr>
+    <tr><td><strong>Penanganan Kesalahan (Error)</strong></td><td>Jika ada 1 saja kesalahan sintaks, program tidak dapat dikompilasi hingga seluruhnya diperbaiki.</td><td>Program langsung berjalan; eksekusi terhenti seketika saat menemukan baris yang bermasalah.</td></tr>
+    <tr><td><strong>Kecepatan Eksekusi</strong></td><td>Sangat cepat saat dijalankan berulang kali karena sudah berbentuk berkas biner mandiri.</td><td>Lebih lambat karena setiap kali dijalankan harus melalui proses penerjemahan ulang.</td></tr>
+    <tr><td><strong>Contoh Bahasa</strong></td><td><strong>Pascal (Free Pascal / Turbo Pascal)</strong>, C, C++, Rust, Go.</td><td>Python, JavaScript, PHP, Ruby.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 5. Sejarah & Filosofi Bahasa Pascal (Slide 12 - 13 PPT Dosen)</div>
+      
+<p>Slide 12-13 menguraikan tonggak sejarah lahirnya Pascal:</p>
+<ul>
+  <li><strong>Pencipta:</strong> Dirancang oleh <strong>Prof. Niklaus Wirth</strong> di Federal Institute of Technology (ETH) Zurich, Swiss pada tahun 1971.</li>
+  <li><strong>Asal Nama:</strong> Diambil dari nama <strong>Blaise Pascal</strong> (1623–1662), matematikawan dan fisikawan Prancis penemu kalkulator mekanik pertama di dunia yang disebut <em>Pascaline</em>.</li>
+  <li><strong>Tujuan Perancangan:</strong> Diciptakan khusus sebagai bahasa untuk <strong>mengajarkan konsep pemrograman terstruktur (Structured Programming)</strong> secara disiplin bagi mahasiswa komputasi.</li>
+  <li><strong>Era Turbo Pascal:</strong> Pada tahun 1983, Borland International meluncurkan <strong>Turbo Pascal</strong> yang merevolusi dunia TI karena memiliki Integrated Development Environment (IDE) terpadu dengan kecepatan kompilasi luar biasa.</li>
+</ul>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 6. Tiga Blok Anatomi Struktur Program Pascal (Slide 14 - 15 PPT Dosen)</div>
+      
+<p>Sesuai modul perkuliahan FTIK Unindra, program Pascal wajib memiliki struktur tiga blok berurutan:</p>
+<table>
+  <thead><tr><th>Bagian Blok Program</th><th>Kata Kunci Penanda</th><th>Deskripsi & Aturan Penulisan</th><th>Contoh Kode</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Judul Program (Header)</strong></td>
       <td><code>program &lt;nama&gt;;</code></td>
-      <td>Memberi identitas unik bagi modul executable program pada OS.</td>
-      <td>Opsional di FPC modern, namun wajib dalam standar kurikulum Unindra; diakhiri titik koma (;).</td>
-      <td><code>program HitungGaji;</code></td>
+      <td>Memberi nama identitas program. Nama tidak boleh berspasi dan wajib diakhiri titik koma (;).</td>
+      <td><code>program TampilBiodata;</code></td>
     </tr>
     <tr>
       <td><strong>2. Bagian Deklarasi</strong></td>
       <td><code>uses</code>, <code>const</code>, <code>type</code>, <code>var</code></td>
-      <td>Mendaftarkan kebutuhan alokasi memori RAM, pustaka eksternal, dan tipe data sebelum eksekusi.</td>
-      <td>Dilarang meletakkan instruksi kalkulasi di sini; hanya alokasi definisi dan pemesanan simbol.</td>
-      <td><code>uses crt;<br>const PPN = 0.11;<br>var gaji: longint;</code></td>
+      <td>Mendaftarkan unit modul pustaka (misal: <code>uses crt;</code>), mendeklarasikan konstanta, dan memesan tipe variabel ke memori RAM.</td>
+      <td><code>uses crt;<br>var nama: string;<br>    umur: integer;</code></td>
     </tr>
     <tr>
       <td><strong>3. Bagian Pernyataan (Body)</strong></td>
       <td><code>begin ... end.</code></td>
-      <td>Wadah eksekusi logika utama tempat CPU memproses instruksi algoritmik baris demi baris.</td>
-      <td>Diawali <code>begin</code> dan <strong>MUTLAK DIAKHIRI tanda titik (<code>end.</code>)</strong> penutup program.</td>
-      <td><code>begin<br>  writeln('Halo');<br>end.</code></td>
+      <td>Blok eksekusi tempat instruksi algoritmik dijalankan oleh CPU baris demi baris. Diawali <code>begin</code> dan <strong>MUTLAK DIAKHIRI <code>end.</code> (titik)</strong>.</td>
+      <td><code>begin<br>  clrscr;<br>  writeln('Halo');<br>  readln;<br>end.</code></td>
     </tr>
   </tbody>
 </table>
 
-<div class="card-dark" style="margin-top: 8px;">
-  <span style="color: #38bdf8; font-weight: bold;">// Kerangka Program Pascal Baku Sesuai Standar Dosen:</span>
-  <pre><code><span class="code-kw">program</span> KerangkaProgramBaku;
-<span class="code-kw">uses</span> crt;          <span class="code-cmt">{ Memanggil unit crt untuk manipulasi layar console }</span>
-
-<span class="code-kw">const</span>
-  KAMPUS = <span class="code-str">'UNINDRA PGRI'</span>;  <span class="code-cmt">{ Deklarasi nilai konstan }</span>
-
-<span class="code-kw">var</span>
-  nama_mhs : <span class="code-type">string</span>;       <span class="code-cmt">{ Deklarasi variabel penampung data }</span>
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 7. Bedah Contoh Program Lengkap Dosen: tampilNama (Slide 16 - 18 PPT Dosen)</div>
+      
+<p>Berikut adalah kode program resmi yang dicontohkan Pak Zaeni pada slide 16 dan 18 beserta pembedahan barisnya:</p>
+<div class="card-dark">
+  <span style="color: #38bdf8; font-weight: bold;">// Program tampilNama (Slide 18 Modul Dosen):</span>
+  <pre><code><span class="code-kw">program</span> tampilNama;       <span class="code-cmt">{ Judul Program }</span>
+<span class="code-kw">uses</span> crt;                 <span class="code-cmt">{ Panggil unit CRT untuk manajemen layar terminal }</span>
 
 <span class="code-kw">begin</span>
-  clrscr;                  <span class="code-cmt">{ Membersihkan layar console terminal }</span>
-  writeln(<span class="code-str">'Selamat Datang di '</span>, KAMPUS);
-  write(<span class="code-str">'Masukkan Nama Anda: '</span>);
-  readln(nama_mhs);
-  writeln(<span class="code-str">'Halo, '</span>, nama_mhs, <span class="code-str">'! Sukses Praktikum Pascal.'</span>);
-  readln;                  <span class="code-cmt">{ Menahan tampilan console agar tidak langsung tertutup }</span>
-<span class="code-kw">end</span>.</code></pre>
+  clrscr;                 <span class="code-cmt">{ Clear Screen: Bersihkan layar console }</span>
+  writeln(<span class="code-str">'Nama Saya: Zaeni Miftah'</span>);
+  writeln(<span class="code-str">'Mata Kuliah: Pemrograman 1'</span>);
+  readln;                 <span class="code-cmt">{ Menahan tampilan layar console sebelum program keluar }</span>
+<span class="code-kw">end</span>.                      <span class="code-cmt">{ Tanda titik menandakan akhir mutlak berkas program }</span></code></pre>
 </div>
+<p><strong>Pembedahan Alur Logika Dosen:</strong></p>
+<ol>
+  <li><code>program tampilNama;</code>: Menyatakan kepada OS bahwa berkas ini membentuk satu kesatuan unit executable bernama tampilNama.</li>
+  <li><code>uses crt;</code>: Unit runtime library wajib di Unindra agar perintah <code>clrscr</code> dapat berfungsi.</li>
+  <li><code>clrscr;</code>: Menghapus output program sebelumnya agar layar terminal bersih saat eksekusi baru dimulai.</li>
+  <li><code>writeln(...);</code>: Mencetak string teks ke monitor lalu memindahkan posisi kursor ke baris baru di bawahnya.</li>
+  <li><code>readln;</code>: Menunggu mahasiswa menekan tombol Enter pada keyboard sehingga hasil output di layar tidak langsung lenyap menutup sendiri.</li>
+  <li><code>end.</code>: Titik setelah end mutlak diperlukan; jika diganti titik koma (<code>end;</code>) kompiler akan menghasilkan error.</li>
+</ol>
 
     </div>
         
+
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
     <div class="section">
-      <div class="section-title">BAB 3. Kompiler Turbo Pascal vs Free Pascal (FPC)</div>
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Memori RAM & Mengapa Komputer Butuh Pemrograman</div>
       
-<table>
-  <thead><tr><th>Fitur Kompiler</th><th>Turbo Pascal 7.0 (Borland Clasic)</th><th>Free Pascal Compiler (FPC / Lazarus Modern)</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Arsitektur Sistem</strong></td><td>16-bit MS-DOS (memerlukan emulator DOSBox di Windows 64-bit).</td><td><strong>32-bit / 64-bit Native</strong> (berjalan langsung di Windows 10/11, Linux, macOS).</td></tr>
-    <tr><td><strong>Batas Alokasi Memori</strong></td><td>Terbatas segmen 64 KB per variabel (arsitektur real mode DOS).</td><td>Memori tak terbatas mengikuti kapasitas RAM fisik sistem (gigabyte).</td></tr>
-    <tr><td><strong>Tipe Integer 64-bit</strong></td><td>Tidak mendukung tipe <code>Int64</code>.</td><td>Mendukung penuh <code>Int64</code> (rentang hingga &plusmn; 9,22 &times; 10<sup>18</sup>).</td></tr>
-    <tr><td><strong>Perintah Wajib Eksekusi</strong></td><td>Wajib <code>readln;</code> sebelum <code>end.</code> agar jendela output tidak langsung hilang.</td><td>Tetap disarankan memakai <code>readln;</code> untuk kompatibilitas praktikum di CLI.</td></tr>
-  </tbody>
-</table>
+<p>Secara arsitektur mesin Von Neumann, CPU tidak memiliki kecerdasan inisiatif (<em>zero initiative</em>). CPU hanyalah mesin penghitung biner super cepat yang mengeksekusi siklus <em>Fetch-Decode-Execute</em>. Kode sumber Pascal yang kita tulis adalah jembatan logika agar otak manusia dapat memerintah jutaan saklar transistor mikroskopis di dalam CPU secara tertib dan terstruktur.</p>
 
     </div>
-        
+            
     <div class="section">
-      <div class="section-title">BAB 4. Tips Menjawab Soal Teori UTS Pemrograman 1</div>
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Belajar, Praktikum Lab & Bedah Jebakan UTS Pemrograman 1</div>
       
 <div class="alert alert-warning">
-  <strong>⚠️ Jebakan Titik Penutup:</strong><br>
-  Semua pernyataan di Pascal diakhiri titik koma (<code>;</code>), <strong>KECUALI baris <code>end</code> paling akhir program yang WAJIB diakhiri tanda TITIK (<code>end.</code>)</strong>. Jika ditulis <code>end;</code> di akhir program, kompiler akan menampilkan pesan fatal: <em>"Unexpected end of file"</em> atau <em>"Fatal: Syntax error, . expected"</em>.
+  <strong>🎯 Bedah Jebakan Ujian Khas Pemrograman 1:</strong><br>
+  <strong>1. Perbedaan Tanda Akhir:</strong> Penutup program utama WAJIB menggunakan <strong>tanda titik (<code>end.</code>)</strong>. Sedangkan penutup blok percabangan/perulangan majemuk menggunakan <strong>titik koma (<code>end;</code>)</strong>.<br>
+  <strong>2. Lupa Unit CRT:</strong> Menggunakan perintah <code>clrscr;</code> tanpa menuliskan <code>uses crt;</code> di bagian deklarasi akan menyebabkan error kompilasi: <em>"Identifier not found: clrscr"</em>.<br>
+  <strong>3. Sifat Case-Insensitive:</strong> Pascal bersifat tidak membedakan huruf besar dan kecil (<em>case-insensitive</em>). Penulisan <code>WRITELN</code>, <code>writeln</code>, dan <code>WriteLn</code> dianggap identik oleh kompiler.
 </div>
 
     </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>Wirth, Niklaus. (1971). The Programming Language Pascal. Acta Informatica, 1(1), 35-63.</li><li>Free Pascal Team. (2024). Free Pascal Reference Guide (v3.2.2). Free Pascal Foundation.</li><li>Buku Petunjuk Praktikum Pemrograman 1 (Pascal), Laboratorium Komputer FTIK Unindra.</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf)</code> (19 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf, 19 Slide PPT Zaeni Miftah, FTIK Unindra).</li><li>Wirth, Niklaus. (1976). Algorithms + Data Structures = Programs. Prentice-Hall.</li><li>Jogiyanto, H.M. (2005). Teori dan Aplikasi Program Komputer Bahasa Pascal. Yogyakarta: Andi Offset.</li><li>Silabus Resmi Mata Kuliah Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Standar Bagan Alir (Flowchart ANSI/ISO), Tracing & Analisis Putaran - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Flowchart (Diagram Alir), Simbol Standar ANSI/ISO & Kaidah Perancangan Logika - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,152 +262,173 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Standar Bagan Alir (Flowchart ANSI/ISO), Tracing & Analisis Putaran</h1>
+      <h1>Master Guide: Flowchart (Diagram Alir), Simbol Standar ANSI/ISO & Kaidah Perancangan Logika</h1>
       <h2>Algoritma 1 • Pertemuan 3</h2>
     </div>
     <div style="text-align: right;">
       <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> algo_p3_flowchart_ansi.pdf (Algoritma 1 - Flowchart Pertemuan Ke-3.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Bahasa Visual Rekayasa Perangkat Lunak</div>
+      <div class="section-title">BAB 1. Definisi Flowchart & Konsep Input-Proses-Output (Slide 2 - 3 PPT Dosen)</div>
       
-<p>Bagan Alir (<em>Flowchart</em>) adalah notasi grafis dua dimensi yang menggunakan simbol-simbol geometris baku standar <strong>ANSI (American National Standards Institute)</strong> dan <strong>ISO 5807</strong>. Flowchart berfungsi sebagai dokumen komunikasi lintas disiplin antara analis sistem, pemrogram (programmer), dan pengguna bisnis untuk memvalidasi alur kontrol tanpa terikat sintaks bahasa pemrograman tertentu.</p>
+<p>Slide 2 mendefinisikan <strong>Flowchart</strong> sebagai bagan-bagan yang mempunyai arus yang menggambarkan langkah-langkah penyelesaian suatu masalah secara visual.</p>
+<p>Slide 3 menegaskan konsep dasar pemrograman yang selalu berpijak pada siklus tritunggal: <strong>Input &rarr; Proses &rarr; Output</strong>.</p>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. Tujuh Simbol Baku Flowchart ANSI & Fungsinya</div>
+      <div class="section-title">BAB 2. Jenis-Jenis Flowchart: System Flowchart vs Program Flowchart (Slide 4 - 6 PPT Dosen)</div>
       
 <table>
-  <thead><tr><th>Bentuk Geometri</th><th>Nama Simbol ANSI</th><th>Fungsi Spesifik dalam Eksekusi</th><th>Contoh Penulisan Baku</th></tr></thead>
+  <thead><tr><th>Jenis Flowchart</th><th>Definisi Konseptual Modul Dosen</th><th>Tingkat Kedalaman & Audiens</th></tr></thead>
   <tbody>
-    <tr><td><strong>Oval / Kapsul</strong></td><td>Terminator</td><td>Menandai titik awal (<code>START / MULAI</code>) dan titik henti akhir (<code>END / SELESAI</code>) dari program.</td><td><code>[ MULAI ]</code>, <code>[ SELESAI ]</code></td></tr>
-    <tr><td><strong>Jajar Genjang</strong></td><td>Input / Output</td><td>Membaca data masukan dari keyboard/file atau mencetak keluaran ke layar/printer.</td><td><code>[/ Input Nilai A, B /]</code>, <code>[/ Cetak Hasil /]</code></td></tr>
-    <tr><td><strong>Persegi Panjang</strong></td><td>Process</td><td>Operasi pemrosesan aritmatika, manipulasi data, atau inisialisasi variabel internal.</td><td><code>[ Luas = 0.5 * a * t ]</code>, <code>[ i = i + 1 ]</code></td></tr>
-    <tr><td><strong>Belah Ketupat (Diamond)</strong></td><td>Decision</td><td>Pengujian kondisi logika percabangan. Menghasilkan cabang bercabang dua: <code>YA (TRUE)</code> atau <code>TIDAK (FALSE)</code>.</td><td><code>&lt; Apakah Nilai &ge; 70 ? &gt;</code></td></tr>
-    <tr><td><strong>Segienam Horisontal</strong></td><td>Preparation</td><td>Inisialisasi atau pengaturan parameter perulangan (pemberian harga awal indeks loop).</td><td><code>[ FOR i = 1 TO 100 ]</code></td></tr>
-    <tr><td><strong>Lingkaran Kecil</strong></td><td>On-Page Connector</td><td>Penyambung alur yang terputus pada lembar / halaman yang <strong>sama</strong>.</td><td><code>( A )</code>, <code>( 1 )</code></td></tr>
-    <tr><td><strong>Segilima Terbalik</strong></td><td>Off-Page Connector</td><td>Penyambung alur ke lembar / halaman <strong>berbeda</strong>.</td><td><code>&lang; Hal 2 &rang;</code></td></tr>
+    <tr>
+      <td><strong>1. System Flowchart (Bagan Alir Sistem)</strong></td>
+      <td>Bagan yang menggambarkan urutan proses dalam sistem secara makro dengan menunjukkan alat media input, output, serta jenis media penyimpanan (storage).</td>
+      <td>Tingkat makro konseptual; digunakan oleh Analis Sistem (System Analyst) dan pemangku kepentingan manajemen.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Program Flowchart (Bagan Alir Program)</strong></td>
+      <td>Bagan yang menggambarkan urutan instruksi logika penyelesaian masalah secara rinci langkah demi langkah di dalam suatu modul program.</td>
+      <td>Tingkat mikro teknis; menjadi acuan langsung programmer sebelum mengetik kode sumber.</td>
+    </tr>
   </tbody>
 </table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Studi Kasus Analisis: Flowchart Deret Ganjil 1 s.d. 100</div>
+      <div class="section-title">BAB 3. Simbol-Simbol Standar Flowchart ANSI / ISO 5807 (Slide 7 - 12 PPT Dosen)</div>
       
-<p>Kasus yang dipraktikkan langsung di kelas oleh Pak Rizki adalah algoritma mencetak deret bilangan ganjil dari angka 1 sampai 100. Berikut diagram logika ANSI dan analisis tracing-nya:</p>
+<p>Slide 7-12 mengklasifikasikan simbol flowchart ke dalam 3 kelompok geometri:</p>
+<table>
+  <thead><tr><th>Bentuk Geometri Simbol</th><th>Nama Simbol Standar</th><th>Kategori</th><th>Fungsi Spesifik dalam Algoritma</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Kapsul / Oval (Terminator)</strong></td>
+      <td>Terminator</td>
+      <td>Flow Direction</td>
+      <td>Menandai awal (START/BEGIN) dan akhir (STOP/END) dari sebuah diagram alir.</td>
+    </tr>
+    <tr>
+      <td><strong>Garis Berpanah (Flowline)</strong></td>
+      <td>Flow Direction Line</td>
+      <td>Flow Direction</td>
+      <td>Menunjukkan arah arus aliran instruksi yang sedang diproses.</td>
+    </tr>
+    <tr>
+      <td><strong>Persegi Panjang (Rectangle)</strong></td>
+      <td>Processing Symbol</td>
+      <td>Processing</td>
+      <td>Menyatakan operasi pemrosesan aritmatika, kalkulasi rumus, atau manipulasi data di CPU.</td>
+    </tr>
+    <tr>
+      <td><strong>Jajar Genjang (Parallelogram)</strong></td>
+      <td>Input / Output (I/O)</td>
+      <td>I/O Symbols</td>
+      <td>Menyatakan operasi pembacaan data masukan (read) atau pencetakan keluaran (write).</td>
+    </tr>
+    <tr>
+      <td><strong>Belah Ketupat (Diamond)</strong></td>
+      <td>Decision (Keputusan)</td>
+      <td>Processing</td>
+      <td>Menyatakan pengujian kondisi boolean (percabangan IF). Memiliki minimal dua jalur keluar (Yes/True dan No/False).</td>
+    </tr>
+    <tr>
+      <td><strong>Segienam (Preparation)</strong></td>
+      <td>Preparation</td>
+      <td>Processing</td>
+      <td>Inisialisasi nilai awal variabel pencacah (counter) pada struktur perulangan looping.</td>
+    </tr>
+    <tr>
+      <td><strong>Lingkaran Kecil (Connector)</strong></td>
+      <td>On-Page Connector</td>
+      <td>Flow Direction</td>
+      <td>Penghubung alur diagram yang terputus pada lembar halaman yang sama.</td>
+    </tr>
+    <tr>
+      <td><strong>Segilima (Off-page Connector)</strong></td>
+      <td>Off-Page Connector</td>
+      <td>Flow Direction</td>
+      <td>Penghubung alur diagram yang berpindah ke halaman kertas/layar berbeda.</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="grid-2">
-  <div class="card-dark" style="font-size: 7.2pt;">
-<pre><code>[ MULAI ] (Oval)
-   │
-   ▼
-[ i = 1 ] (Preparation)
-   │
-   ├───────────────────────────────┐
-   ▼                               │ (Looping Back)
-&lt; Apakah i mod 2 = 1 ? &gt; (Decision)│
-   ├── YA    ──> [/ Cetak i /]     │
-   └── TIDAK ──> (Lewati Cetak)    │
-           │                       │
-           ▼                       │
-     [ i = i + 1 ] (Proses)        │
-           │                       │
-           ▼                       │
-     &lt; Apakah i &gt; 100 ? &gt;          │
-           ├── TIDAK ──────────────┘
-           └── YA
-                 │
-                 ▼
-           [ SELESAI ] (Oval)</code></pre>
-  </div>
-
-  <div class="card">
-    <strong>Tabel Tracing Eksekusi (Putaran Demi Putaran):</strong>
-    <table>
-      <thead><tr><th>Putaran</th><th>Nilai i</th><th>i mod 2 = 1 ?</th><th>Aksi Eksekusi</th><th>i Baru</th><th>i &gt; 100 ?</th></tr></thead>
-      <tbody>
-        <tr><td><strong>1</strong></td><td>1</td><td>1 mod 2 = 1 (YA)</td><td><strong>Cetak 1</strong></td><td>2</td><td>2 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>2</strong></td><td>2</td><td>2 mod 2 = 0 (TIDAK)</td><td>Lewati Cetak</td><td>3</td><td>3 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>3</strong></td><td>3</td><td>3 mod 2 = 1 (YA)</td><td><strong>Cetak 3</strong></td><td>4</td><td>4 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>...</strong></td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-        <tr><td><strong>99</strong></td><td>99</td><td>99 mod 2 = 1 (YA)</td><td><strong>Cetak 99</strong></td><td>100</td><td>100 &gt; 100 (TIDAK) &rarr; Loop</td></tr>
-        <tr><td><strong>100</strong></td><td>100</td><td>100 mod 2 = 0 (TIDAK)</td><td>Lewati Cetak</td><td>101</td><td>101 &gt; 100 (YA) &rarr; <strong>STOP</strong></td></tr>
-      </tbody>
-    </table>
-    <div class="alert alert-success" style="margin-top: 4px;">
-      <strong>Optimasi Guru AI:</strong> Algoritma di atas memutar loop sebanyak 100 kali. Logika ini dapat dioptimasi menjadi 50 kali putaran tanpa operator modulo dan tanpa decision tengah dengan mengubah step proses menjadi <code>i = i + 2</code> setelah inisialisasi <code>i = 1</code>.
     </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Kaidah Pembuatan & Contoh Flowchart Dosen (Slide 13 - 23 PPT Dosen)</div>
+      
+<p>Slide 13-17 menegaskan aturan baku penggambaran flowchart:</p>
+<ul>
+  <li>Flowchart selalu diawali dengan simbol <strong>BEGIN / START</strong> dan diakhiri dengan <strong>END / STOP</strong>.</li>
+  <li>Arah aliran standar bergerak dari <strong>atas ke bawah</strong> atau dari <strong>kiri ke kanan</strong>.</li>
+  <li>Garis alur panah tidak boleh saling berpotongan tanpa menggunakan simbol konektor lingkaran.</li>
+</ul>
+<p><strong>Contoh Kasus Dosen (Slide 18 & 19):</strong></p>
+<ol>
+  <li><strong>Menghitung Luas Persegi Panjang:</strong> START &rarr; Masukkan Panjang & Lebar (Jajar Genjang) &rarr; Luas = Panjang * Lebar (Persegi Panjang) &rarr; Tampilkan Luas (Jajar Genjang) &rarr; STOP.</li>
+  <li><strong>Deret Bilangan Ganjil 1 - 100:</strong> Inisialisasi <code>bil = 1</code> &rarr; Cetak <code>bil</code> &rarr; <code>bil = bil + 2</code> &rarr; Uji Decision <code>bil &le; 100</code> (jika Ya kembali looping, jika Tidak selesai).</li>
+</ol>
+
+    </div>
+        
+
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
   </div>
+  
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Mengapa Bentuk Geometri Flowchart Wajib Standar?</div>
+      
+<p>Standar ANSI/ISO 5807 diciptakan agar arsitektur logika sistem dapat dibaca secara universal lintas programmer di seluruh dunia tanpa batasan bahasa manusia. Simbol jajar genjang memberi sinyal seketika kepada pembaca bahwa ada interaksi dengan perangkat luar (I/O), sedangkan belah ketupat memberi peringatan adanya potensi percabangan alur logika sistem.</p>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal UTS Flowchart</div>
+      
+<div class="alert alert-warning">
+  <strong>🎯 Bedah Jebakan Ujian Flowchart:</strong><br>
+  <strong>1. Simbol Decision Tanpa Label Keluar:</strong> Simbol belah ketupat (Decision) <strong>WAJIB memiliki label keterangan</strong> pada cabang keluarnya (misal: tulisan <code>Ya / Tidak</code> atau <code>True / False</code>). Jika panah keluar tidak berlabel, nilai jawaban di lembar ujian akan dikurangi.<br>
+  <strong>2. Tertukar Persegi Panjang dan Jajar Genjang:</strong> Instruksi masukan seperti <code>Input Alas</code> WAJIB memakai jajar genjang. Menempatkan input ke dalam persegi panjang adalah kesalahan fatal konvensi diagram alir.
 </div>
 
     </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 4. Kaidah Mutlak Penggambaran Flowchart Bebas Error</div>
-      
-<table>
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>Kaidah Baku Standar ANSI / ISO</th>
-      <th>Ketentuan Grafis Alur</th>
-      <th>Pola Kesalahan Fatal (✗)</th>
-      <th>Pola Penerapan Benar (✓)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Arah Aliran Utama</strong></td>
-      <td>Alur proses wajib mengalir secara linier dari <strong>atas ke bawah (top-to-bottom)</strong> atau dari <strong>kiri ke kanan (left-to-right)</strong>.</td>
-      <td>Garis alir zig-zag acak dari bawah ke atas tanpa konteks looping.</td>
-      <td>Alur utama lurus ke bawah; loop balik menggunakan garis samping yang teratur.</td>
-    </tr>
-    <tr>
-      <td><strong>2</strong></td>
-      <td><strong>Cabang Logika Decision</strong></td>
-      <td>Simbol Decision (Belah Ketupat) <strong>WAJIB memiliki minimal 2 jalur keluar</strong> yang dilabeli eksplisit (<code>YA / TIDAK</code>).</td>
-      <td>Decision hanya memiliki satu garis keluar atau tanpa label keterangan kebenaran.</td>
-      <td>Dua jalur cabang keluar: cabang <code>YA/TRUE</code> dan cabang <code>TIDAK/FALSE</code> yang bermuara jelas.</td>
-    </tr>
-    <tr>
-      <td><strong>3</strong></td>
-      <td><strong>Penghindaran Garis Silang</strong></td>
-      <td>Garis alir (flowline) tidak boleh saling memotong secara langsung di tengah diagram.</td>
-      <td>Dua panah berpotongan membentuk tanda tambah (+) yang membingungkan alur baca.</td>
-      <td>Gunakan On-Page Connector (Lingkaran kecil) untuk menghubungkan titik temu secara rapi.</td>
-    </tr>
-    <tr>
-      <td><strong>4</strong></td>
-      <td><strong>Titik Masuk & Titik Keluar</strong></td>
-      <td>Setiap simbol proses hanya memiliki <strong>1 titik masuk dan 1 titik keluar</strong>. Hanya Decision yang boleh bercabang &gt; 1 keluar.</td>
-      <td>Kotak Process persegi panjang bercabang dua arah keluar secara simultan.</td>
-      <td>Pemisahan cabang divergen hanya dilakukan melalui simbol Decision belah ketupat.</td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>ISO 5807:1985 - Information processing -- Documentation symbols and conventions for data, program and system flowcharts.</li><li>ANSI X3.5-1970 - Standard Flowchart Symbols and Their Usage in Information Processing.</li><li>Buku Modul Algoritma & Flowcharting, Program Studi Sistem Informasi Unindra (2026).</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>algo_p3_flowchart_ansi.pdf (Algoritma 1 - Flowchart Pertemuan Ke-3.pdf)</code> (25 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: algo_p3_flowchart_ansi.pdf (Algoritma 1 - Flowchart Pertemuan Ke-3, 25 Slide PPT Dosen FTIK Unindra).</li><li>ANSI X3.5-1970 / ISO 5807: Information Processing - Documentation Symbols and Conventions.</li><li>Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

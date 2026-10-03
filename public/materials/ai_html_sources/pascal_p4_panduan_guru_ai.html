@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Struktur Percabangan IF-THEN-ELSE & Studi Kasus Suhu Celcius - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Struktur Percabangan Selection IF (IF Tunggal, IF-THEN-ELSE & IF Majemuk) - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,135 +262,175 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Struktur Percabangan IF-THEN-ELSE & Studi Kasus Suhu Celcius</h1>
+      <h1>Master Guide: Struktur Percabangan Selection IF (IF Tunggal, IF-THEN-ELSE & IF Majemuk)</h1>
       <h2>Pemrograman 1 (Pascal) • Pertemuan 4</h2>
     </div>
     <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Pemrograman FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> pascal_p4_percabangan_if.pdf (Pertemuan 4 Pemilihan (Selection) - IF.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Logika Keputusan & Jalur Eksekusi</div>
+      <div class="section-title">BAB 1. Konsep Dasar Struktur Pemilihan / Percabangan (Slide 2 PPT Dosen)</div>
       
-<p>Percabangan <code>if ... then ... else</code> adalah tulang punggung pengambilan keputusan dalam perangkat lunak. Program mengevaluasi ekspresi boolean: jika bernilai <code>TRUE</code>, instruksi di blok <code>then</code> dijalankan; jika <code>FALSE</code>, eksekusi melompat ke blok <code>else</code>.</p>
+<p>Slide 2 menjelaskan bahwa dalam pembuatan program nyata, alur eksekusi tidak selalu berjalan lurus runtut dari atas ke bawah. Seringkali komputer harus <strong>memilih salah satu jalur instruksi</strong> berdasarkan terpenuhi atau tidaknya suatu kondisi (<em>decision making</em>).</p>
+<div class="card card-accent">
+  <strong>Kaidah Dasar Percabangan:</strong><br>
+  Kondisi percabangan selalu berupa <strong>Ekspresi Boolean</strong> yang menghasilkan nilai <code>True</code> (Benar) atau <code>False</code> (Salah). Jalur instruksi tertentu hanya akan dikerjakan jika kondisi bernilai <code>True</code>.
+</div>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. HUKUM KRITIS MUTLAK PASCAL: Aturan Titik Koma Sebelum ELSE</div>
+      <div class="section-title">BAB 2. Bentuk 1: Percabangan IF Tunggal (Satu Kasus) (Slide 3 PPT Dosen)</div>
       
+<p>IF Tunggal digunakan saat program hanya ingin mengambil tindakan khusus jika kondisi terpenuhi, dan <strong>tidak melakukan tindakan apapun jika kondisi tidak terpenuhi</strong>.</p>
+<div class="card-dark">
+  <strong>Sintaks Baku IF Tunggal:</strong><br>
+  <pre><code><span class="code-kw">if</span> (kondisi) <span class="code-kw">then</span>
+  pernyataan;</code></pre>
+</div>
+<p><strong>Contoh Kasus Dosen:</strong> Program Diskon Belanja. Jika total belanja &ge; 100.000, berikan potongan harga Rp 10.000. Jika di bawah itu, tidak ada potongan.</p>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Bentuk 2: Percabangan IF-THEN-ELSE (Dua Kasus) & ATURAN MUTLAK TITIK KOMA (Slide 4 - 5 PPT Dosen)</div>
+      
+<p>Slide 4 menerangkan kondisi IF-THEN-ELSE di mana terdapat dua alternatif tindakan: aksi 1 jika kondisi bernilai <code>True</code>, atau aksi 2 jika kondisi bernilai <code>False</code>.</p>
+<div class="card-dark">
+  <strong>Sintaks Baku IF-THEN-ELSE:</strong><br>
+  <pre><code><span class="code-kw">if</span> (kondisi) <span class="code-kw">then</span>
+  pernyataan_1          <span class="code-cmt">{ DILARANG MENGGUNAKAN TITIK KOMA (;) DI SINI! }</span>
+<span class="code-kw">else</span>
+  pernyataan_2;</code></pre>
+</div>
 <div class="alert alert-danger">
-  <strong>🚨 ATURAN NOMOR SATU PASCAL (WAJIB DIINGAT SEUMUR HIDUP):</strong><br>
-  Baris tepat <strong>SEBELUM KATA KUNCI ELSE DILARANG KERAS MENGGUNAKAN TITIK KOMA (;)</strong>!<br>
-  Di Pascal, titik koma (<code>;</code>) berfungsi sebagai <em>statement separator</em> (pemisah instruksi utuh). Meletakkan titik koma sebelum <code>else</code> memberi tahu kompiler bahwa blok IF telah selesai, sehingga ketika kompiler membaca kata <code>else</code> yang menggantung tanpa pasangan IF, kompiler akan langsung melempar pesan error fatal:<br>
-  <code>Fatal: Syntax error, ; expected but ELSE found</code>
-</div>
-
-<div class="grid-2">
-  <div class="card" style="border-color: #ef4444; background: #fff5f5;">
-    <strong style="color: #b91c1c;">❌ KODE SALAH (MENYEBABKAN ERROR KOMPILASI):</strong>
-    <pre style="background: #090d16;"><code><span class="code-kw">if</span> (nilai &gt;= 60) <span class="code-kw">then</span>
-  writeln(<span class="code-str">'Anda Lulus'</span>);  <span class="code-cmt">{ &lt;-- SALAH FATAL! ADA TITIK KOMA }</span>
-<span class="code-kw">else</span>
-  writeln(<span class="code-str">'Anda Tidak Lulus'</span>);</code></pre>
-  </div>
-
-  <div class="card" style="border-color: #10b981; background: #f0fdf4;">
-    <strong style="color: #047857;">✅ KODE BENAR (KOMPILASI SUKSES 100%):</strong>
-    <pre style="background: #090d16;"><code><span class="code-kw">if</span> (nilai &gt;= 60) <span class="code-kw">then</span>
-  writeln(<span class="code-str">'Anda Lulus'</span>)   <span class="code-cmt">{ &lt;-- BENAR! TIDAK ADA TITIK KOMA }</span>
-<span class="code-kw">else</span>
-  writeln(<span class="code-str">'Anda Tidak Lulus'</span>);</code></pre>
-  </div>
+  <strong>🚨 ATURAN EMAS KOMPILER PASCAL:</strong><br>
+  Sebelum kata kunci <code>else</code>, <strong>MUTLAK TIDAK BOLEH ADA TANDA TITIK KOMA (;)</strong>!<br>
+  Tanda titik koma dianggap oleh kompiler Pascal sebagai akhir dari keseluruhan pernyataan IF. Jika Anda menulis <code>pernyataan_1; else</code>, kompiler akan langsung error dengan pesan: <em>"Syntax error, ';' expected but 'ELSE' found"</em>.
 </div>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Penggunaan Blok Pernyataan Majemuk (begin ... end)</div>
+      <div class="section-title">BAB 4. Bedah Program Dosen: Penentuan Kelulusan Nilai Siswa (Slide 5 PPT Dosen)</div>
       
-<p>Jika di dalam cabang terdapat lebih dari satu baris instruksi yang harus dijalankan, seluruh baris tersebut <strong>wajib dibungkus dengan pasangan kata kunci <code>begin ... end</code></strong>:</p>
 <div class="card-dark">
-  <pre><code><span class="code-kw">if</span> (nilai &gt;= 60) <span class="code-kw">then</span>
-<span class="code-kw">begin</span>
-  writeln(<span class="code-str">'Status: Lulus'</span>);
-  writeln(<span class="code-str">'Selamat atas kelulusan Anda!'</span>);
-<span class="code-kw">end</span>  <span class="code-cmt">{ &lt;-- PERHATIKAN: end DI SINI TIDAK MENGGUNAKAN TITIK KOMA KARENA SEBELUM ELSE! }</span>
-<span class="code-kw">else</span>
-<span class="code-kw">begin</span>
-  writeln(<span class="code-str">'Status: Gagal'</span>);
-  writeln(<span class="code-str">'Silakan mengikuti ujian perbaikan semester depan.'</span>);
-<span class="code-kw">end</span>; <span class="code-cmt">{ &lt;-- end DI SINI MENGGUNAKAN TITIK KOMA KARENA AKHIR STRUKTUR }</span></code></pre>
-</div>
-
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 4. Studi Kasus Nyata Mahasiswa: Program Konversi Suhu Celcius (Celcius.pas)</div>
-      
-<p>Berikut adalah source code utuh tugas praktikum Pertemuan 4 Muhammad Haikel Saleh (NPM Genap: 202633500386) yang menghitung konversi suhu Celcius ke Reamur dan Fahrenheit lengkap dengan header banner:</p>
-
-<div class="card-dark">
-  <pre><code><span class="code-kw">program</span> KonversiSuhuCelcius;
+  <span style="color: #38bdf8; font-weight: bold;">// Program Menentukan Kelulusan (Slide 5 Modul Dosen):</span>
+  <pre><code><span class="code-kw">program</span> CekKelulusan;
 <span class="code-kw">uses</span> crt;
 
 <span class="code-kw">var</span>
-  celcius, reamur, fahrenheit : <span class="code-type">real</span>;
+  nilai : <span class="code-type">integer</span>;
 
 <span class="code-kw">begin</span>
   clrscr;
-  writeln(<span class="code-str">'========================================='</span>);
-  writeln(<span class="code-str">'  PROGRAM KONVERSI SUHU CELCIUS (GENAP)  '</span>);
-  writeln(<span class="code-str">'========================================='</span>);
-  writeln(<span class="code-str">'NPM  : 202633500386 (Digit Akhir Genap: 6)'</span>);
-  writeln(<span class="code-str">'Nama : Muhammad Haikel Saleh'</span>);
-  writeln(<span class="code-str">'-----------------------------------------'</span>);
+  write(<span class="code-str">'Masukkan Nilai Ujian Siswa (0..100): '</span>);
+  readln(nilai);
 
-  write(<span class="code-str">'Masukkan Nilai Suhu Celcius (C) : '</span>);
-  readln(celcius);
-
-  <span class="code-cmt">{ Rumus konversi suhu baku fisika-komputasi }</span>
-  reamur     := (4.0 / 5.0) * celcius;
-  fahrenheit := ((9.0 / 5.0) * celcius) + 32.0;
-
-  writeln(<span class="code-str">'-----------------------------------------'</span>);
-  writeln(<span class="code-str">'HASIL KONVERSI SUHU:'</span>);
-  writeln(<span class="code-str">'Suhu Reamur     (R) : '</span>, reamur:0:2, <span class="code-str">' R'</span>);
-  writeln(<span class="code-str">'Suhu Fahrenheit (F) : '</span>, fahrenheit:0:2, <span class="code-str">' F'</span>);
-  writeln(<span class="code-str">'========================================='</span>);
-
-  <span class="code-cmt">{ Seleksi evaluasi suhu ekstrem }</span>
-  <span class="code-kw">if</span> (celcius &gt;= 100.0) <span class="code-kw">then</span>
-    writeln(<span class="code-str">'Status Air: MENDIDIH'</span>)
-  <span class="code-kw">else if</span> (celcius &lt;= 0.0) <span class="code-kw">then</span>
-    writeln(<span class="code-str">'Status Air: MEMBEKU'</span>)
+  <span class="code-kw">if</span> (nilai &gt;= <span class="code-num">60</span>) <span class="code-kw">then</span>
+    writeln(<span class="code-str">'SELAMAT, ANDA DINYATAKAN LULUS!'</span>)   <span class="code-cmt">{ Tanpa titik koma }</span>
   <span class="code-kw">else</span>
-    writeln(<span class="code-str">'Status Air: CAIR (NORMAL)'</span>);
+    writeln(<span class="code-str">'MOHON MAAF, ANDA TIDAK LULUS.'</span>);   <span class="code-cmt">{ Titik koma di penutup akhir }</span>
 
-  writeln;
-  write(<span class="code-str">'Tekan ENTER untuk mengakhiri program...'</span>);
   readln;
 <span class="code-kw">end</span>.</code></pre>
 </div>
 
     </div>
         
+    <div class="section">
+      <div class="section-title">BAB 5. Bentuk 3: Percabangan Majemuk / Bersarang (Nested IF) & Studi Kasus Bilangan Genap/Ganjil (Slide 6 - 7 PPT Dosen)</div>
+      
+<p>Slide 6-7 memperlihatkan program untuk menguji sifat bilangan bulat (ganjil/genap) dan pengelompokan grade nilai:</p>
+<table>
+  <thead><tr><th>Studi Kasus Percabangan</th><th>Kondisi Logika Boolean</th><th>Implementasi Kode Pascal</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Uji Bilangan Genap / Ganjil</strong></td>
+      <td>Bilangan genap jika habis dibagi 2 (sisa bagi / modulo = 0).</td>
+      <td><code>if (bil mod 2 = 0) then<br>  writeln('Bilangan Genap')<br>else<br>  writeln('Bilangan Ganjil');</code></td>
+    </tr>
+    <tr>
+      <td><strong>Konversi Grade Nilai Majemuk</strong></td>
+      <td>Memiliki lebih dari 2 rentang nilai (Grade A, B, C, D, E).</td>
+      <td><code>if (nilai &gt;= 80) then grade := 'A'<br>else if (nilai &gt;= 70) then grade := 'B'<br>else if (nilai &gt;= 60) then grade := 'C'<br>else grade := 'E';</code></td>
+    </tr>
+    <tr>
+      <td><strong>Uji Tahun Kabisat</strong></td>
+      <td>Habis dibagi 400 atau (habis dibagi 4 dan tidak habis dibagi 100).</td>
+      <td><code>if ((tahun mod 400 = 0) or ((tahun mod 4 = 0) and (tahun mod 100 &lt;&gt; 0))) then writeln('Kabisat');</code></td>
+    </tr>
+  </tbody>
+</table>
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>Dale, N., & Weems, C. (2000). Pascal (5th ed.). Jones & Bartlett Learning.</li><li>Berkas Tugas Praktikum 4 Pascal Mahasiswa, Muhammad Haikel Saleh, NPM 202633500386.</li><li>Silabus Resmi Mata Kuliah Praktikum Pemrograman 1, Unindra (2026).</li>
-      </ul>
+    </div>
+        
+
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Blok Majemuk (Begin - End) dalam Percabangan</div>
+      
+<p>Secara default, kata kunci <code>then</code> dan <code>else</code> hanya mengikat <strong>satu baris pernyataan tunggal</strong>. Jika Anda ingin mengeksekusi lebih dari satu instruksi di dalam satu cabang (misalnya menghitung potongan, menampilkan pesan, dan mengubah status sekaligus), Anda <strong>WAJIB membungkusnya dengan blok majemuk <code>begin ... end</code></strong>:</p>
+<pre><code><span class="code-kw">if</span> (nilai &gt;= <span class="code-num">60</span>) <span class="code-kw">then</span>
+<span class="code-kw">begin</span>
+  status := <span class="code-str">'Lulus'</span>;
+  writeln(<span class="code-str">'Status: '</span>, status);
+  poin := poin + <span class="code-num">10</span>;
+<span class="code-kw">end</span>                  <span class="code-cmt">{ Perhatikan: TIDAK ADA titik koma sebelum else! }</span>
+<span class="code-kw">else</span>
+<span class="code-kw">begin</span>
+  status := <span class="code-str">'Gagal'</span>;
+  writeln(<span class="code-str">'Silakan Remedial'</span>);
+<span class="code-kw">end</span>;</code></pre>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal UTS Percabangan IF Pascal</div>
+      
+<div class="alert alert-warning">
+  <strong>🎯 Bedah Jebakan Ujian Soal IF:</strong><br>
+  <strong>1. Kesalahan Fatal Tanda Sama Dengan:</strong> Dalam kondisi IF, operator perbandingan sama dengan ditulis dengan tanda sama dengan tunggal <code>=</code> (contoh: <code>if a = 5 then</code>), <strong>BUKAN</strong> operator assignment <code>:=</code>!<br>
+  <strong>2. Tanda Kurung Ekspresi Logika Majemuk:</strong> Jika menggabungkan dua kondisi dengan operator <code>AND</code> atau <code>OR</code>, setiap kondisi <strong>WAJIB diapit tanda kurung</strong>. Contoh benar: <code>if (a &gt; 5) and (b &lt; 10) then</code>. Jika kurung dihilangkan (<code>if a &gt; 5 and b &lt; 10 then</code>), kompiler akan error karena operator <code>and</code> memiliki presedensi lebih tinggi daripada <code>&gt;</code>!
+</div>
+
+    </div>
+            
+        
+
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>pascal_p4_percabangan_if.pdf (Pertemuan 4 Pemilihan (Selection) - IF.pdf)</code> (8 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: pascal_p4_percabangan_if.pdf (Pertemuan 4 Pemilihan (Selection) - IF.pdf, 8 Slide PPT Zaeni Miftah, FTIK Unindra).</li><li>Jogiyanto, H.M. (2005). Teori dan Aplikasi Program Komputer Bahasa Pascal. Yogyakarta: Andi Offset.</li><li>Silabus Resmi Mata Kuliah Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

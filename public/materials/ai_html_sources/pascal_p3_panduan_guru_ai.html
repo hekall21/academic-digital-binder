@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Operasi Input/Output, Assignment & Pemformatan Bilangan Riil - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Instruksi Input & Output (Write, Writeln, Read, Readln) dan Pemformatan Nilai - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,70 +262,45 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Operasi Input/Output, Assignment & Pemformatan Bilangan Riil</h1>
+      <h1>Master Guide: Instruksi Input & Output (Write, Writeln, Read, Readln) dan Pemformatan Nilai</h1>
       <h2>Pemrograman 1 (Pascal) • Pertemuan 3</h2>
     </div>
     <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Pemrograman FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> pascal_p3_input_output.pdf (Pertemuan 3 Write & Writeln Read & Readln.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Aliran I/O Standard Stream</div>
+      <div class="section-title">BAB 1. Perbedaan Mendasar Write vs Writeln (Slide 2 - 5 PPT Dosen)</div>
       
-<p>Sebuah program komputer tidak akan berguna jika tidak mampu berinteraksi dengan dunia luar. Di Pascal, komunikasi antara pemakai (user) dan komputer dikelola melalui dua saluran standar: <strong>Standard Input (Keyboard)</strong> melalui prosedur <code>read/readln</code> dan <strong>Standard Output (Layar Monitor)</strong> melalui prosedur <code>write/writeln</code>.</p>
-
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 2. Perbedaan Hakiki: write vs writeln & read vs readln</div>
-      
-<p>Dalam standard stream Pascal, pemahaman mengenai perilaku buffer layar dan masukan keyboard sangat krusial untuk mencegah bug antarmuka konsol:</p>
+<p>Slide 2 menjelaskan bahwa perintah <code>write</code> dan <code>writeln</code> sama-sama berfungsi untuk menampilkan data (output) ke layar monitor, namun memiliki perbedaan krusial pada <strong>posisi akhir kursor teks</strong>:</p>
 <table>
-  <thead>
-    <tr>
-      <th>Prosedur I/O</th>
-      <th>Arah Aliran Data</th>
-      <th>Perilaku Kursor Layar & Buffer</th>
-      <th>Karakteristik & Respon Sistem</th>
-      <th>Rekomendasi Pemakaian Ideal</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Perintah Output</th><th>Perilaku Kursor Layar</th><th>Contoh Kode</th><th>Tampilan Hasil di Layar Console</th></tr></thead>
   <tbody>
     <tr>
-      <td><code>write(x);</code></td>
-      <td>Output (Layar Monitor)</td>
-      <td>Kursor <strong>TETAP BERADA di baris yang sama</strong> di sebelah kanan karakter terakhir.</td>
-      <td>Tidak mengirimkan karakter <em>Carriage Return / Line Feed</em> ke konsol.</td>
-      <td>Membuat teks prompt masukan (misal: <code>write('Masukkan Nilai : ');</code>).</td>
+      <td><strong><code>write(...)</code></strong></td>
+      <td>Setelah mencetak teks/nilai, <strong>kursor TETAP BERADA di baris yang sama</strong> (tepat di sebelah karakter terakhir).</td>
+      <td><code>write('Nama: ');<br>write('Budi');</code></td>
+      <td><code>Nama: Budi</code> (Tersambung dalam 1 baris)</td>
     </tr>
     <tr>
-      <td><code>writeln(x);</code></td>
-      <td>Output (Layar Monitor)</td>
-      <td>Kursor <strong>PINDAH KE BARIS BARU</strong> tepat di bawah awal baris berikutnya.</td>
-      <td>Mencetak isi argumen lalu otomatis mengirimkan kode jeda baris baru (CR+LF).</td>
-      <td>Mencetak judul banner, hasil kalkulasi akhir, atau baris jeda (<code>writeln;</code>).</td>
-    </tr>
-    <tr>
-      <td><code>read(v);</code></td>
-      <td>Input (Papan Ketik)</td>
-      <td>Membaca data masukan, namun <strong>TIDAK membuang karakter Enter dari buffer masukan</strong>.</td>
-      <td>Karakter enter tertinggal di buffer antrean I/O, rentan memicu bug pembacaan teks selanjutnya!</td>
-      <td>Hanya digunakan jika membaca deretan angka berdampingan dalam satu baris.</td>
-    </tr>
-    <tr>
-      <td><code>readln(v);</code></td>
-      <td>Input (Papan Ketik)</td>
-      <td>Membaca data masukan hingga tombol Enter ditekan dan <strong>SEGERA membersihkan buffer baris</strong>.</td>
-      <td>Menjamin antrean buffer masukan bersih total; perintah <code>readln;</code> tanpa variabel menahan layar.</td>
-      <td><strong>Standar Baku Utama</strong> untuk semua operasi input data interaktif dari pengguna.</td>
+      <td><strong><code>writeln(...)</code></strong></td>
+      <td>Setelah mencetak teks/nilai, kursor <strong>OTOMATIS BERPINDAH ke awal baris baru berikutnya</strong> (<em>newline / line feed</em>). Singkatan dari <em>Write Line</em>.</td>
+      <td><code>writeln('Nama: ');<br>writeln('Budi');</code></td>
+      <td><code>Nama: <br>Budi</code> (Terpisah menjadi 2 baris)</td>
     </tr>
   </tbody>
 </table>
@@ -328,69 +308,125 @@
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Operator Penugasan (:=) vs Format Angka Pecahan Real</div>
+      <div class="section-title">BAB 2. Pemformatan Bilangan Desimal Real (Formatting Output) (Slide 6 PPT Dosen)</div>
       
-<p>Dalam Pascal, operator pengisian nilai ke variabel menggunakan simbol titik dua sama dengan <code>:=</code> (<em>Assignment Operator</em>), bukan tanda sama dengan tunggal <code>=</code> (simbol <code>=</code> hanya digunakan untuk konstanta dan perbandingan logika relasional):</p>
+<p>Slide 6 menerangkan cara memformat bilangan pecahan <code>Real</code> agar tidak ditampilkan dalam notasi ilmiah eksponensial standar (misal: <code>3.1400000000E+00</code>):</p>
 <div class="card-dark">
-  <pre><code><span class="code-kw">var</span>
-  alas, tinggi, luas : <span class="code-type">real</span>;
-<span class="code-kw">begin</span>
-  alas := 10.5;   <span class="code-cmt">{ Menggunakan := }</span>
-  tinggi := 4.2;  <span class="code-cmt">{ Menggunakan := }</span>
-  luas := 0.5 * alas * tinggi;</code></pre>
+  <strong>Rumus Sintaks Pemformatan Real:</strong><br>
+  <code>nilai_real : total_lebar_kolom : jumlah_angka_desimal</code>
 </div>
-
-<div class="card">
-  <strong>Sintaks Pemformatan Angka Pecahan Real di Layar:</strong><br>
-  Jika dicetak langsung dengan <code>writeln(luas);</code>, Pascal akan menampilkannya dalam notasi eksponensial ilmiah: <code>2.2050000000E+01</code> (sangat sulit dibaca).<br>
-  Gunakan rumus format baku: <code>variabel : lebar_kolom : jumlah_desimal</code>
-  <pre><code>writeln(<span class="code-str">'Luas Segitiga : '</span>, luas:0:2);  <span class="code-cmt">{ Output bersih: 22.05 }</span></code></pre>
-  <span style="font-size: 7.5pt; color: #64748b;">Arti <code>:0:2</code> adalah: gunakan lebar kolom minimal otomatis (0) dan kunci tepat 2 digit angka di belakang koma (2).</span>
-</div>
+<table>
+  <thead><tr><th>Contoh Penulisan Kode</th><th>Nilai Riil Awal</th><th>Hasil Tampilan Layar</th><th>Penjelasan</th></tr></thead>
+  <tbody>
+    <tr><td><code>write(luas);</code></td><td><code>12.5</code></td><td><code>1.25000000000000E+001</code></td><td>Notasi ilmiah eksponensial default kompiler Pascal.</td></tr>
+    <tr><td><code>write(luas : 0 : 2);</code></td><td><code>12.5</code></td><td><code>12.50</code></td><td>Dicetak dengan tepat 2 digit angka di belakang koma desimal.</td></tr>
+    <tr><td><code>write(luas : 8 : 2);</code></td><td><code>12.5</code></td><td><code>___12.50</code></td><td>Diberi alokasi lebar 8 kolom (rata kanan dengan 3 spasi kosong di depan).</td></tr>
+  </tbody>
+</table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 4. Program Lengkap Praktikum I/O Bersih Bebas Error</div>
+      <div class="section-title">BAB 3. Instruksi Input: Read vs Readln & Fungsi Penahan Layar (Slide 8 - 10 PPT Dosen)</div>
+      
+<p>Slide 8 mendefinisikan <code>read</code> dan <code>readln</code> sebagai perintah untuk membaca input data dari keyboard pengguna ke dalam variabel:</p>
+<table>
+  <thead><tr><th>Perintah Input</th><th>Perilaku Pembacaan Data</th><th>Contoh Pemakaian Ideal</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong><code>read(variabel)</code></strong></td>
+      <td>Membaca nilai masukan dari keyboard tanpa memindahkan kursor ke baris baru. Pembacaan berikutnya akan melanjutkan dari sisa baris yang sama.</td>
+      <td>Membaca beberapa angka sekaligus dalam satu baris: <code>read(a, b);</code></td>
+    </tr>
+    <tr>
+      <td><strong><code>readln(variabel)</code></strong></td>
+      <td>Membaca nilai masukan, menunggu pengguna menekan tombol <strong>Enter</strong>, dan langsung memindahkan kursor ke baris baru berikutnya.</td>
+      <td>Formulir interaktif umum: <code>write('Nama: '); readln(nama);</code></td>
+    </tr>
+    <tr>
+      <td><strong><code>readln;</code> (tanpa parameter)</strong></td>
+      <td>Menunggu satu ketukan tombol Enter dari pengguna. <strong>Fungsi vital:</strong> Digunakan di baris terakhir sebelum <code>end.</code> untuk <strong>menahan layar console terminal</strong> agar jendela hasil program tidak langsung menutup seketika saat selesai eksekusi.</td>
+      <td>Baris wajib di akhir program praktikum Unindra: <code>readln; end.</code></td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Bedah Program Praktikum Dosen: Input Biodata & Hitung Nilai (Slide 11 - 12 PPT Dosen)</div>
       
 <div class="card-dark">
-  <pre><code><span class="code-kw">program</span> DemoOperasiIO;
+  <span style="color: #38bdf8; font-weight: bold;">// Contoh Kode Standar Praktikum Slide 11:</span>
+  <pre><code><span class="code-kw">program</span> HitungNilaiAkhir;
 <span class="code-kw">uses</span> crt;
 
 <span class="code-kw">var</span>
-  nama_barang : <span class="code-type">string</span>[30];
-  harga       : <span class="code-type">longint</span>;
-  jumlah      : <span class="code-type">integer</span>;
-  total_bayar : <span class="code-type">real</span>;
+  nama : <span class="code-type">string</span>;
+  nilai_tugas, nilai_uts, nilai_akhir : <span class="code-type">real</span>;
 
 <span class="code-kw">begin</span>
   clrscr;
-  writeln(<span class="code-str">'=== TOKO SISTEM INFORMASI UNINDRA ==='</span>);
-  write(<span class="code-str">'Nama Produk  : '</span>); readln(nama_barang);
-  write(<span class="code-str">'Harga Satuan : Rp '</span>); readln(harga);
-  write(<span class="code-str">'Jumlah Beli  : '</span>); readln(jumlah);
+  writeln(<span class="code-str">'=== PROGRAM PERHITUNGAN NILAI FTIK ==='</span>);
+  write(<span class="code-str">'Masukkan Nama Mahasiswa : '</span>); readln(nama);
+  write(<span class="code-str">'Masukkan Nilai Tugas     : '</span>); readln(nilai_tugas);
+  write(<span class="code-str">'Masukkan Nilai UTS       : '</span>); readln(nilai_uts);
 
-  total_bayar := harga * jumlah;
+  nilai_akhir := (<span class="code-num">0.4</span> * nilai_tugas) + (<span class="code-num">0.6</span> * nilai_uts);
 
   writeln;
-  writeln(<span class="code-str">'--- STRUK PEMBAYARAN KASIR ---'</span>);
-  writeln(<span class="code-str">'Barang Dibeli: '</span>, nama_barang);
-  writeln(<span class="code-str">'Total Bayar  : Rp '</span>, total_bayar:0:2);
-  writeln(<span class="code-str">'===================================='</span>);
-  write(<span class="code-str">'Tekan ENTER untuk keluar...'</span>); readln;
+  writeln(<span class="code-str">'--- HASIL PENGOLAHAN DATA ---'</span>);
+  writeln(<span class="code-str">'Mahasiswa Bernama : '</span>, nama);
+  writeln(<span class="code-str">'Nilai Akhir       : '</span>, nilai_akhir : <span class="code-num">0</span> : <span class="code-num">2</span>);
+
+  writeln;
+  write(<span class="code-str">'Tekan [ENTER] untuk keluar program...'</span>);
+  readln;
 <span class="code-kw">end</span>.</code></pre>
 </div>
 
     </div>
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>Jensen, K., & Wirth, N. (1974). Pascal User Manual and Report. Springer-Verlag.</li><li>Modul Praktikum Operasi Masukan & Keluaran Pascal, FTIK Unindra (2026).</li>
-      </ul>
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Mekanisme Buffer Keyboard pada Read vs Readln</div>
+      
+<p>Ketika pengguna mengetik di keyboard, karakter tidak langsung dikirim ke variabel, melainkan disimpan di penampung sementara (<em>Keyboard Input Buffer</em>). Perintah <code>read</code> hanya mengambil data yang cocok dan membiarkan karakter <em>newline</em> (Enter) tersisa di dalam buffer. Akibatnya, perintah pembacaan string berikutnya akan langsung menyerap sisa tombol Enter tersebut dan tampak seperti "melompati" input (<em>input skipping bug</em>). Karena itu, <strong>selalu prioritaskan penggunaan <code>readln</code></strong> daripada <code>read</code> saat membuat aplikasi interaktif!</p>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Belajar & Bedah Jebakan UTS Perintah I/O</div>
+      
+<div class="alert alert-warning">
+  <strong>🎯 Bedah Jebakan Ujian Perintah I/O:</strong><br>
+  <strong>1. Memisahkan String dan Variabel:</strong> Di dalam parameter <code>write</code> atau <code>writeln</code>, teks literal wajib diapit petik satu, sedangkan variabel <strong>DILARANG diapit petik</strong> dan harus dipisahkan oleh tanda koma. Contoh benar: <code>writeln('Halo ', nama);</code>. Jika ditulis <code>writeln('Halo nama');</code>, maka teks yang tercetak adalah kata literal "nama", bukan isi variabelnya!<br>
+  <strong>2. Format Real Tanpa Desimal:</strong> Jika Anda menulis <code>nilai : 5</code> untuk variabel real, kompiler akan tetap menampilkan bentuk eksponensial. Format desimal wajib menyertakan dua titik dua: <code>nilai : total_lebar : desimal</code>.
+</div>
+
+    </div>
+            
+        
+
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>pascal_p3_input_output.pdf (Pertemuan 3 Write & Writeln Read & Readln.pdf)</code> (13 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: pascal_p3_input_output.pdf (Pertemuan 3 Write & Writeln Read & Readln.pdf, 13 Slide PPT Zaeni Miftah, FTIK Unindra).</li><li>Jogiyanto, H.M. (2005). Teori dan Aplikasi Program Komputer Bahasa Pascal. Yogyakarta: Andi Offset.</li><li>Silabus Resmi Mata Kuliah Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

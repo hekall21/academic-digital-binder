@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Struktur Kontrol Percabangan Kompleks & Pemilihan Kondisi - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Tiga Struktur Kontrol Algoritma (Sequence, Selection, Looping For/While/Repeat) - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,148 +262,131 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Struktur Kontrol Percabangan Kompleks & Pemilihan Kondisi</h1>
+      <h1>Master Guide: Tiga Struktur Kontrol Algoritma (Sequence, Selection, Looping For/While/Repeat)</h1>
       <h2>Algoritma 1 • Pertemuan 4</h2>
     </div>
     <div style="text-align: right;">
       <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> algo_p4_struktur_kontrol.pdf (Struktur Dasar Algoritma Pertemuan Ke-4.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Bagaimana Komputer Mengambil Keputusan</div>
+      <div class="section-title">BAB 1. Tiga Struktur Kontrol Dasar Algoritma (Slide 1 - 2 PPT Dosen)</div>
       
-<p>Dalam eksekusi sekuensial murni, instruksi dijalankan baris demi baris dari awal hingga akhir. Namun, dunia nyata penuh dengan kondisi selektif: <em>"Jika nilai &ge; 70 maka lulus, jika tidak maka perbaikan"</em>. Struktur kontrol percabangan (<em>selection / branching</em>) memberikan kecerdasan adaptif bagi program untuk melompati atau memilih blok instruksi tertentu berdasarkan kebenaran ekspresi logika.</p>
+<p>Slide 2 menetapkan 3 struktur kontrol fundamental yang menjadi fondasi seluruh bahasa pemrograman di dunia:</p>
+<ol>
+  <li><strong>Struktur Sequence (Runtunan)</strong></li>
+  <li><strong>Struktur Selection (Pemilihan)</strong></li>
+  <li><strong>Struktur Looping / Repetition (Perulangan)</strong></li>
+</ol>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. Empat Pola Baku Struktur Percabangan Komputasi</div>
+      <div class="section-title">BAB 2. Struktur Sequence & Bukti Pentingnya Urutan Instruksi (Slide 3 - 7 PPT Dosen)</div>
       
-<p>Dalam rekayasa logika pemrograman, pengambilan keputusan dikelompokkan ke dalam empat arsitektur pola baku:</p>
-<table>
-  <thead>
-    <tr>
-      <th>Pola Percabangan</th>
-      <th>Struktur Logika Baku</th>
-      <th>Evaluasi Kondisi Boolean</th>
-      <th>Aksi Alternatif (Else)</th>
-      <th>Kasus Penggunaan Ideal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1. Percabangan Tunggal</strong></td>
-      <td><code>IF (kondisi) THEN (aksi)</code></td>
-      <td>Kondisi bernilai <code>TRUE</code></td>
-      <td>Tidak ada (dilewati jika <code>FALSE</code>)</td>
-      <td>Pemberian bonus/diskon bersyarat, validasi guard clause.</td>
-    </tr>
-    <tr>
-      <td><strong>2. Percabangan Ganda</strong></td>
-      <td><code>IF (kondisi) THEN (aksi1) ELSE (aksi2)</code></td>
-      <td>Dua kemungkinan: <code>TRUE</code> vs <code>FALSE</code></td>
-      <td>Wajib ada satu blok aksi alternatif</td>
-      <td>Status kelulusan (Lulus / Gagal), penentuan bilangan ganjil-genap.</td>
-    </tr>
-    <tr>
-      <td><strong>3. Percabangan Bersarang (Nested IF)</strong></td>
-      <td><code>IF (k1) THEN ... ELSE IF (k2) THEN ...</code></td>
-      <td>Hierarkis berjenjang dari atas ke bawah</td>
-      <td>Blok <code>ELSE</code> final penampung kondisi sisa</td>
-      <td>Penentuan rentang grade nilai (A, B, C, D, E), zonasi tarif pajak.</td>
-    </tr>
-    <tr>
-      <td><strong>4. Pemilihan Multi-Kondisi (CASE-OF)</strong></td>
-      <td><code>CASE (selector) OF v1: ... v2: ... END</code></td>
-      <td>Pencocokan nilai diskrit tipe Ordinal</td>
-      <td>Blok <code>ELSE</code> opsional (default handler)</td>
-      <td>Menu aplikasi konsol (1-5), konversi hari (1..7), kode status HTTP.</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="grid-2" style="margin-top: 8px;">
-  <div class="card">
-    <strong>1. Pseudocode IF Tunggal:</strong>
-    <pre><code><span class="code-kw">IF</span> (total_belanja &gt; 100000) <span class="code-kw">THEN</span>
-  diskon &larr; 0.1 * total_belanja;
-<span class="code-kw">END IF</span></code></pre>
-  </div>
-
-  <div class="card">
-    <strong>2. Pseudocode IF - ELSE:</strong>
-    <pre><code><span class="code-kw">IF</span> (nilai &ge; 60) <span class="code-kw">THEN</span>
-  status &larr; 'LULUS'
-<span class="code-kw">ELSE</span>
-  status &larr; 'TIDAK LULUS';
-<span class="code-kw">END IF</span></code></pre>
-  </div>
-
-  <div class="card">
-    <strong>3. Pseudocode Nested IF:</strong>
-    <pre><code><span class="code-kw">IF</span> (nilai &ge; 80) <span class="code-kw">THEN</span>
-  grade &larr; 'A'
-<span class="code-kw">ELSE IF</span> (nilai &ge; 70) <span class="code-kw">THEN</span>
-  grade &larr; 'B'
-<span class="code-kw">ELSE</span>
-  grade &larr; 'E';</code></pre>
-  </div>
-
-  <div class="card">
-    <strong>4. Pseudocode CASE - OF:</strong>
-    <pre><code><span class="code-kw">CASE</span> (nomor_hari) <span class="code-kw">OF</span>
-  1 : nama &larr; 'Senin';
-  2 : nama &larr; 'Selasa';
-  <span class="code-kw">ELSE</span> nama &larr; 'Hari Libur';
-<span class="code-kw">END CASE</span></code></pre>
-  </div>
+<p>Slide 3 menjelaskan bahwa pada struktur sequence, instruksi dikerjakan <strong>secara berurutan baris demi baris</strong>, mulai dari baris pertama hingga baris terakhir.</p>
+<div class="alert alert-warning">
+  <strong>Peringatan Penting Dosen (Slide 7):</strong><br>
+  Jika urutan baris instruksi ditukarkan, algoritma akan menghasilkan keluaran yang <strong>BERBEDA TOTAL atau bahkan ERROR</strong>! Contoh: mencoba menghitung <code>luas := panjang * lebar</code> sebelum membaca nilai variabel <code>panjang</code> dan <code>lebar</code> akan menghasilkan nilai nol atau sampah memori (garbage value).
 </div>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Analisis Efisiensi: Kapan Memakai IF Bertingkat vs CASE-OF?</div>
+      <div class="section-title">BAB 3. Struktur Selection (Pemilihan Kondisi) & Logika AND/OR (Slide 8 - 13 PPT Dosen)</div>
       
+<p>Slide 8-10 menerangkan bahwa tidak setiap baris program harus dikerjakan. Baris program tertentu hanya akan diproses jika memenuhi syarat/kondisi boolean yang bernilai <code>True</code>.</p>
+<p>Slide 12 menampilkan contoh program penentuan kelulusan siswa: baris pencetakan kata "Lulus" hanya akan diproses jika kondisi <code>nilai &ge; 60</code> terpenuhi.</p>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Struktur Perulangan (Looping): For-Do, While-Do & Repeat-Until (Slide 14 - 27 PPT Dosen)</div>
+      
+<p>Slide 14-27 mengupas tuntas tiga bentuk instruksi perulangan:</p>
 <table>
-  <thead><tr><th>Parameter Perbandingan</th><th>Struktur IF - ELSE IF Majemuk</th><th>Struktur CASE - OF</th></tr></thead>
+  <thead><tr><th>Bentuk Perulangan</th><th>Posisi Evaluasi Kondisi</th><th>Karakteristik & Perilaku Eksekusi</th><th>Contoh Kode Dosen</th></tr></thead>
   <tbody>
-    <tr><td><strong>Tipe Data Kondisi</strong></td><td>Fleksibel: dapat menguji tipe bilangan riil pecahan (<code>Real</code>), rentang interval dinamis (<code>x &gt; 10 AND y &lt; 5</code>), dan logika relasional majemuk.</td><td><strong>Ketat:</strong> Selector <strong>wajib bertipe Ordinal</strong> (Integer, Char, Boolean, Enumerasi). <strong>Dilarang keras memakai tipe Real/Float!</strong></td></tr>
-    <tr><td><strong>Evaluasi di CPU</strong></td><td>Linear Search: diuji satu persatu dari atas ke bawah (<code>O(n)</code>).</td><td>Jump Table / Branch Table: kompiler dapat mengoptimasi lompatan langsung (<code>O(1)</code>).</td></tr>
-    <tr><td><strong>Keterbacaan Kode</strong></td><td>Rentan rumit jika cabang bersarang terlalu dalam (<em>Spaghetti Code</em>).</td><td>Sangat bersih, elegan, dan mudah dipelihara (<em>maintainable</em>).</td></tr>
+    <tr>
+      <td><strong>1. For - Do</strong></td>
+      <td>Perulangan pasti (<em>counted loop</em>).</td>
+      <td>Jumlah perulangan <strong>sudah diketahui secara pasti</strong> sejak awal melalui nilai awal dan nilai akhir pencacah (counter).</td>
+      <td>Mencetak tulisan "Saya Mahasiswa Unindra" sebanyak 100 kali (Slide 17-19):<br><code>for i := 1 to 100 do writeln('Saya Mahasiswa Unindra');</code></td>
+    </tr>
+    <tr>
+      <td><strong>2. While - Do</strong></td>
+      <td>Evaluasi kondisi berada <strong>di AWAL perulangan</strong>.</td>
+      <td>Instruksi hanya akan dikerjakan <strong>SELAMA kondisi bernilai TRUE</strong>. Jika pada evaluasi pertama kondisi sudah bernilai False, maka badan perulangan <strong>TIDAK PERNAH DIKERJAKAN SAMA SEKALI (0 kali)</strong>.</td>
+      <td>Mencetak angka 1 s.d 10 (Slide 20-22):<br><code>i := 1;<br>while (i &le; 10) do<br>begin write(i); i := i + 1; end;</code></td>
+    </tr>
+    <tr>
+      <td><strong>3. Repeat - Until</strong></td>
+      <td>Evaluasi kondisi berada <strong>di AKHIR perulangan</strong>.</td>
+      <td>Perulangan berjalan terus <strong>SAMPAI kondisi bernilai TRUE</strong> (berhenti jika kondisi True). Karena evaluasi di akhir, badan perulangan <strong>PASTI DIKERJAKAN MINIMAL 1 KALI</strong>!</td>
+      <td>Slide 26-27:<br><code>i := 1;<br>repeat write(i); i := i + 1; until (i &gt; 10);</code></td>
+    </tr>
   </tbody>
 </table>
 
     </div>
         
+
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
     <div class="section">
-      <div class="section-title">BAB 4. Jebakan Soal UTS: Error Logika Percabangan</div>
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Perbedaan Mendasar While-Do vs Repeat-Until</div>
       
-<div class="alert alert-danger">
-  <strong>⚠️ Jebakan Urutan Pengujian Kondisi (Condition Ordering):</strong><br>
-  Perhatikan kode salah berikut yang sering ditulis mahasiswa:<br>
-  <code>IF (nilai &gt;= 60) THEN grade := 'C' ELSE IF (nilai &gt;= 80) THEN grade := 'A';</code><br>
-  Jika mahasiswa mendapat nilai 95, maka kondisi pertama (<code>95 &gt;= 60</code>) langsung bernilai TRUE sehingga ia mendapatkan grade 'C'!<br>
-  <strong>Kaidah Baku Guru AI:</strong> Pada percabangan rentang bertingkat, pengujian <strong>WAJIB diurutkan dari batas nilai paling ekstrem/tinggi ke batas terendah</strong>, atau sebaliknya dengan pendefinisian interval tertutup yang presisi.
+<p>Dua perbedaan esensial yang paling sering ditanyakan dosen:</p>
+<ol>
+  <li><strong>Kondisi Berhenti:</strong> <code>while (kondisi) do</code> terus mengulang selama kondisi bernilai <strong>TRUE</strong>. Sebaliknya, <code>repeat ... until (kondisi)</code> berhenti berulang ketika kondisi bernilai <strong>TRUE</strong> (ia mengulang selama False).</li>
+  <li><strong>Jumlah Eksekusi Minimum:</strong> <code>while-do</code> minimal dieksekusi <strong>0 kali</strong>. <code>repeat-until</code> minimal dieksekusi <strong>1 kali</strong>.</li>
+</ol>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal UTS Struktur Perulangan</div>
+      
+<div class="alert alert-warning">
+  <strong>🎯 Bedah Jebakan Infinite Loop pada Looping:</strong><br>
+  Saat menggunakan <code>while-do</code> atau <code>repeat-until</code>, Anda <strong>WAJIB menyertakan instruksi pengubah pencacah (misal: <code>i := i + 1;</code>)</strong> di dalam badan perulangan! Jika lupa menyertakan increment, nilai <code>i</code> akan tetap selamanya sehingga kondisi terminasi tidak pernah tercapai, memicu <em>Infinite Loop</em> yang membuat program membeku (hang).
 </div>
 
     </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>McConnell, Steve. (2004). Code Complete: A Practical Handbook of Software Construction (2nd ed.). Microsoft Press.</li><li>Sedgewick, R., & Wayne, K. (2016). Computer Science: An Interdisciplinary Approach. Addison-Wesley.</li><li>Diktat Struktur Kontrol Percabangan, Jurusan Teknik Informatika / Sistem Informasi Unindra.</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>algo_p4_struktur_kontrol.pdf (Struktur Dasar Algoritma Pertemuan Ke-4.pdf)</code> (29 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: algo_p4_struktur_kontrol.pdf (Struktur Dasar Algoritma Pertemuan Ke-4, 29 Slide PPT Dosen FTIK Unindra).</li><li>Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.</li><li>Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Tipe Data, Variabel, Konstanta & Presedensi Operator Komputasi - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Tipe Data Sederhana, Variabel, Konstanta, Ekspresi & Operator Komputasi - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,49 +262,95 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Tipe Data, Variabel, Konstanta & Presedensi Operator Komputasi</h1>
+      <h1>Master Guide: Tipe Data Sederhana, Variabel, Konstanta, Ekspresi & Operator Komputasi</h1>
       <h2>Algoritma 1 • Pertemuan 2</h2>
     </div>
     <div style="text-align: right;">
       <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> algo_p2_tipe_data_operator.pdf (Algoritma 1 - Tipe data dan Operator Pertemuan Ke-2.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Memori Komputer, Variabel, dan Wadah Data</div>
+      <div class="section-title">BAB 1. Tipe Data Sederhana & Karakteristik Integer (Slide 2 - 4 PPT Dosen)</div>
       
-<p>Dalam arsitektur Von Neumann, memori utama (RAM) adalah deretan sel biner beralamat heksadesimal (misal: <code>0x7FFE001A</code>). Manusia mustahil mengingat alamat acak tersebut saat menulis program. Di sinilah peran <strong>Variabel</strong> sebagai label simbolik yang manusiawi untuk memesan dan merujuk lokasi memori tersebut.</p>
+<p>Slide 2 menjelaskan bahwa tipe data dasar sederhana yang paling sering digunakan dalam program meliputi: <strong>Integer, Real, Char, String, dan Boolean</strong>.</p>
+<p>Slide 3-4 menegaskan aturan baku <strong>Integer</strong>:</p>
+<ul>
+  <li>Integer menampung bilangan bulat tanpa pecahan desimal.</li>
+  <li>Dalam tipe data ini <strong>TIDAK DIPERKENANKAN menggunakan tanda koma</strong> antar dua digit angka.</li>
+  <li><strong>Operator pada Tipe Integer (Slide 4):</strong> Penjumlahan (<code>+</code>), Pengurangan (<code>-</code>), Perkalian (<code>*</code>), Pembagian Bulat (<code>div</code>), dan Sisa Bagi / Modulo (<code>mod</code>). Contoh: <code>13 + 4 = 17</code>, <code>10 div 3 = 3</code>, <code>10 mod 3 = 1</code>.</li>
+</ul>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 2. Tipe Data Real & Tabel Jangkauan Ukuran Memori (Slide 5 - 6 PPT Dosen)</div>
+      
+<p>Slide 5 menerangkan bahwa penulisan untuk jenis data Real <strong>selalu menggunakan titik desimal</strong> (bukan koma). Nilai konstanta numerik real standar berkisar dari 1E-38 s.d 1E+38.</p>
 <table>
-  <thead>
-    <tr>
-      <th>Kategori Pengenal</th>
-      <th>Karakteristik Nilai di RAM</th>
-      <th>Kata Kunci Deklarasi</th>
-      <th>Contoh Notasi Baku</th>
-      <th>Aturan Mutabilitas & Hak Akses</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Tipe Real (Slide 6)</th><th>Jangkauan Nilai</th><th>Digit Presisi</th><th>Ukuran Memori</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Single</strong></td><td>1.5E-45 s.d 3.4E+38</td><td>7 - 8 digit</td><td>4 Byte</td></tr>
+    <tr><td><strong>Real</strong></td><td>2.9E-39 s.d 1.7E+38</td><td>11 - 12 digit</td><td>6 Byte</td></tr>
+    <tr><td><strong>Double</strong></td><td>5.0E-324 s.d 1.7E+308</td><td>15 - 16 digit</td><td>8 Byte</td></tr>
+    <tr><td><strong>Extended</strong></td><td>3.4E-4932 s.d 1.1E+4932</td><td>19 - 20 digit</td><td>10 Byte</td></tr>
+    <tr><td><strong>Comp</strong></td><td>-2E+63 + 1 s.d 2E+63 - 1</td><td>19 - 20 digit</td><td>8 Byte</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 3. Tipe Data Karakter (Char), String & Boolean (Slide 7 - 10 PPT Dosen)</div>
+      
+<p>Slide 7-8 membedakan Char dan String:</p>
+<table>
+  <thead><tr><th>Tipe Data Teks</th><th>Kapasitas & Karakteristik</th><th>Kaidah Penulisan Baku</th><th>Jumlah Variasi</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Char</strong></td><td>Menyimpan tepat <strong>hanya 1 karakter tunggal</strong> yang diketikkan dari keyboard.</td><td>Diapit tanda petik tunggal: <code>'A'</code>, <code>'9'</code>, <code>'%'</code>.</td><td>Memiliki 256 macam variasi karakter ASCII (0..255).</td></tr>
+    <tr><td><strong>String</strong></td><td>Terdiri dari <strong>beberapa rangkaian karakter</strong> yang membentuk teks kata/kalimat.</td><td>Diapit tanda petik tunggal: <code>'FTIK Unindra'</code>.</td><td>Dinamis hingga 255 karakter (ShortString) atau tak terbatas.</td></tr>
+  </tbody>
+</table>
+<p>Slide 9-10 menguraikan tipe <strong>Boolean</strong>: tipe data logika yang hanya berisi dua kemungkinan nilai: <code>TRUE</code> (Benar) atau <code>FALSE</code> (Salah). Slide 10 menampilkan contoh program <code>display_bool</code> menggunakan unit <code>wincrt</code> untuk mencetak status boolean.</p>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 4. Konsep Variabel, Konstanta & Ekspresi (Slide 11 - 13 PPT Dosen)</div>
+      
+<table>
+  <thead><tr><th>Entitas Komputasi</th><th>Definisi Konseptual Modul Dosen</th><th>Sifat Mutabilitas</th><th>Contoh Penulisan</th></tr></thead>
   <tbody>
     <tr>
-      <td><strong>Variabel (Variable)</strong></td>
-      <td>Lokasi memori yang nilainya dinamis dapat diperbarui (<em>read-write</em>) sepanjang siklus eksekusi program.</td>
-      <td><code>var</code> / <code>DEKLARASI</code></td>
-      <td><code>counter &larr; counter + 1</code><br><code>total := total + harga;</code></td>
-      <td>Dapat dimutasi berulang kali saat iterasi, akumulasi data, atau masukan interaktif user.</td>
+      <td><strong>Variabel (Slide 11)</strong></td>
+      <td>Suatu lokasi memori komputer yang digunakan untuk menampung dan menyimpan data yang akan diolah.</td>
+      <td><strong>Dinamis</strong> (dapat diubah nilainya sewaktu-waktu selama program berjalan).</td>
+      <td><code>var nama: string; total: integer;</code></td>
     </tr>
     <tr>
-      <td><strong>Konstanta (Constant)</strong></td>
-      <td>Lokasi memori yang nilainya dikunci permanen (<em>read-only</em>) sejak saat inisialisasi awal.</td>
-      <td><code>const</code></td>
-      <td><code>PI = 3.14159265</code><br><code>TARIF_PPN = 0.11</code></td>
-      <td>Imutabel (tidak dapat diubah); mencegah <em>magic numbers</em> dan melindungi nilai acuan absolut.</td>
+      <td><strong>Konstanta (Slide 12)</strong></td>
+      <td>Besaran yang mempunyai nilai tetap selama program dijalankan. Nilai disimpan sebelum dieksekusi.</td>
+      <td><strong>Statik / Imutabel</strong> (terkunci permanen; tidak dapat diubah).</td>
+      <td><code>const pi = 3.14; kurs = 15500;</code></td>
+    </tr>
+    <tr>
+      <td><strong>Ekspresi (Slide 13)</strong></td>
+      <td>Pernyataan yang mentransformasikan nilai menjadi keluaran yang diinginkan melalui proses perhitungan (komputasi).</td>
+      <td>Hasil evaluasi dari operand yang dihubungkan oleh operator.</td>
+      <td><code>luas := panjang * lebar;</code></td>
     </tr>
   </tbody>
 </table>
@@ -307,128 +358,60 @@
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. Klasifikasi Tipe Data Primitif Standar Komputasi</div>
+      <div class="section-title">BAB 5. Klasifikasi Operator & Urutan Presedensi (Slide 14 PPT Dosen)</div>
       
-<table>
-  <thead><tr><th>Kategori Tipe Data</th><th>Contoh di Pemrograman</th><th>Alokasi Memori Standar</th><th>Rentang Nilai & Domain Karakteristik</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Integer (Bilangan Bulat)</strong></td><td><code>Integer</code>, <code>Longint</code>, <code>Byte</code></td><td>1 s.d 8 Byte (8 - 64 bit)</td><td>Bilangan bulat tanpa pecahan (..., -2, -1, 0, 1, 2, ...). Operasi pembagian bilangan bulat menghasilkan sisa bagi (modulo).</td></tr>
-    <tr><td><strong>Real / Float (Pecahan Desimal)</strong></td><td><code>Real</code>, <code>Single</code>, <code>Double</code></td><td>4 s.d 8 Byte IEEE 754</td><td>Bilangan kontinu dengan pecahan desimal (3.14, -0.005). Memiliki keterbatasan presisi floating-point.</td></tr>
-    <tr><td><strong>Character (Karakter Tunggal)</strong></td><td><code>Char</code></td><td>1 Byte (8 bit ASCII)</td><td>Satu simbol grafis yang diapit tanda petik tunggal: <code>'A'</code>, <code>'9'</code>, <code>'$'</code>.</td></tr>
-    <tr><td><strong>Boolean (Logika Biner)</strong></td><td><code>Boolean</code></td><td>1 Byte (1 bit efektif)</td><td>Hanya memiliki dua keadaan kebenaran mutlak: <code>TRUE</code> (Benar) atau <code>FALSE</code> (Salah).</td></tr>
-    <tr><td><strong>String (Rangkaian Teks)</strong></td><td><code>String</code></td><td>Dinamis (panjang teks + 1)</td><td>Rangkaian karakter: <code>'Universitas Indraprasta PGRI'</code>.</td></tr>
-  </tbody>
-</table>
+<p>Slide 14 membagi operator komputasi menjadi:</p>
+<ol>
+  <li><strong>Operator Aritmatika:</strong> Pangkat, perkalian (<code>*</code>), pembagian real (<code>/</code>), pembagian bulat (<code>div</code>), sisa bagi (<code>mod</code>), penjumlahan (<code>+</code>), pengurangan (<code>-</code>).</li>
+  <li><strong>Operator Relasional:</strong> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>.</li>
+  <li><strong>Operator Logika:</strong> <code>NOT</code> (ingkaran), <code>AND</code> (dan), <code>OR</code> (atau), <code>XOR</code> (exclusive or).</li>
+</ol>
 
     </div>
         
-    <div class="section">
-      <div class="section-title">BAB 3. Hierarki Presedensi Operator & Tabel Kebenaran Logika</div>
-      
-<p>Ketika sebuah ekspresi matematika mengandung banyak operator sekaligus, komputer mengeksekusinya berdasarkan <strong>Tingkat Presedensi (Precedence Order)</strong>, bukan semata dari kiri ke kanan:</p>
-<table>
-  <thead>
-    <tr>
-      <th>Tingkat Presedensi</th>
-      <th>Golongan Operator</th>
-      <th>Simbol Komputasi</th>
-      <th>Arah Evaluasi</th>
-      <th>Contoh Ekspresi & Hasil Evaluasi</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Prioritas 1 (Tertinggi)</strong></td>
-      <td>Tanda Kurung Pengelompokan</td>
-      <td><code>( ... )</code></td>
-      <td>Dari dalam ke luar</td>
-      <td><code>(2 + 3) * 4</code> &rarr; <code>5 * 4 = 20</code> (Mengabaikan presedensi bawaan)</td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 2</strong></td>
-      <td>Unary & Negasi Logika</td>
-      <td><code>+</code>, <code>-</code>, <code>NOT</code></td>
-      <td>Kanan ke Kiri</td>
-      <td><code>NOT TRUE</code> &rarr; <code>FALSE</code>; <code>-5 + 8</code> &rarr; <code>3</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 3</strong></td>
-      <td>Perkalian, Pembagian, Modulo</td>
-      <td><code>*</code>, <code>/</code>, <code>div</code>, <code>mod</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>10 mod 3 * 2</code> &rarr; <code>1 * 2 = 2</code>; <code>15 div 4 = 3</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 4</strong></td>
-      <td>Penjumlahan & Pengurangan</td>
-      <td><code>+</code>, <code>-</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>10 + 5 - 2</code> &rarr; <code>15 - 2 = 13</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 5</strong></td>
-      <td>Relasional (Perbandingan)</td>
-      <td><code>=</code>, <code>&ne;</code>, <code>&lt;</code>, <code>&le;</code>, <code>&gt;</code>, <code>&ge;</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>7 &gt; 5</code> &rarr; <code>TRUE</code>; <code>10 &le; 10</code> &rarr; <code>TRUE</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 6</strong></td>
-      <td>Konjungsi Logika (AND)</td>
-      <td><code>AND</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>(5 &gt; 2) AND (3 &lt; 1)</code> &rarr; <code>TRUE AND FALSE = FALSE</code></td>
-    </tr>
-    <tr>
-      <td><strong>Prioritas 7 (Terendah)</strong></td>
-      <td>Disjungsi Logika (OR, XOR)</td>
-      <td><code>OR</code>, <code>XOR</code></td>
-      <td>Kiri ke Kanan</td>
-      <td><code>FALSE OR TRUE</code> &rarr; <code>TRUE</code>; <code>TRUE XOR TRUE = FALSE</code></td>
-    </tr>
-  </tbody>
-</table>
 
-<div class="card">
-  <strong>Tabel Kebenaran Logika (Truth Table):</strong>
-  <table>
-    <thead><tr><th>A</th><th>B</th><th>NOT A</th><th>A AND B</th><th>A OR B</th><th>A XOR B</th></tr></thead>
-    <tbody>
-      <tr><td>TRUE</td><td>TRUE</td><td>FALSE</td><td><strong>TRUE</strong></td><td>TRUE</td><td>FALSE</td></tr>
-      <tr><td>TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td><strong>TRUE</strong></td><td><strong>TRUE</strong></td></tr>
-      <tr><td>FALSE</td><td>TRUE</td><td>TRUE</td><td>FALSE</td><td><strong>TRUE</strong></td><td><strong>TRUE</strong></td></tr>
-      <tr><td>FALSE</td><td>FALSE</td><td>TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
-    </tbody>
-  </table>
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Memori Komputer & Alamat Heksadesimal</div>
+      
+<p>RAM pada hakikatnya adalah jajaran sel transistor beralamat heksadesimal acak (misal <code>0x00FF2A</code>). Variabel bertindak sebagai "nama alias" yang memudahkan programmer manusia untuk menunjuk alamat fisik memori tersebut tanpa harus menghafal nomor register heksadesimal.</p>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal UTS: Pembagian Real (/) vs Pembagian Bulat (div)</div>
+      
+<div class="alert alert-warning">
+  <strong>🎯 Bedah Soal Jebakan Ujian:</strong><br>
+  <strong>Soal:</strong> Apakah perbedaan hasil antara <code>7 / 2</code> dan <code>7 div 2</code>?<br>
+  <strong>Pembahasan:</strong><br>
+  &bull; Operator <code>/</code> adalah pembagian real matematika murni, menghasilkan <strong>3.5</strong> bertipe <strong>Real</strong>.<br>
+  &bull; Operator <code>div</code> adalah pembagian bilangan bulat (<em>integer division</em>) yang membuang sisa pecahan, menghasilkan <strong>3</strong> bertipe <strong>Integer</strong>.<br>
+  &bull; Sisa pecahan yang dibuang dapat diambil dengan operator <code>mod</code>: <code>7 mod 2 = 1</code>.
 </div>
 
     </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 4. Contoh Soal Tracing Aritmatika UTS Beserta Pembahasan</div>
-      
-<div class="card-dark">
-  <span style="color: #f59e0b; font-weight: bold;">Soal Ujian: Tentukan hasil akhir variabel X dari ekspresi berikut jika A = 10, B = 3, C = 2:</span><br>
-  <code>X &larr; A + B * C - A mod B * C</code>
-  <pre><code><span class="code-cmt">// Langkah Eksekusi Berdasarkan Presedensi:</span>
-1. Evaluasi perkalian pertama : B * C = 3 * 2 = 6
-2. Evaluasi modulo             : A mod B = 10 mod 3 = 1  (karena 10 / 3 = 3 sisa 1)
-3. Evaluasi perkalian kedua    : (A mod B) * C = 1 * 2 = 2
-4. Masukkan kembali ke ekspresi: X = 10 + 6 - 2
-5. Evaluasi dari kiri ke kanan : 16 - 2 = 14
-<span class="code-str">Hasil Akhir: X = 14</span></code></pre>
-</div>
-
-    </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>Brookshear, J. G., & Brylow, D. (2019). Computer Science: An Overview (13th ed.). Pearson.</li><li>Kernighan, B. W., & Ritchie, D. M. (1988). The C Programming Language. Prentice Hall.</li><li>Modul Praktikum Algoritma 1 Pertemuan 2, Laboratorium Komputer FTIK Unindra.</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>algo_p2_tipe_data_operator.pdf (Algoritma 1 - Tipe data dan Operator Pertemuan Ke-2.pdf)</code> (16 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: algo_p2_tipe_data_operator.pdf (Algoritma 1 - Tipe data dan Operator Pertemuan Ke-2, 16 Slide PPT Dosen FTIK Unindra).</li><li>Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.</li><li>Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 

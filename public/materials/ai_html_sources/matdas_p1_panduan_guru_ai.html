@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Master Guide: Sistem Bilangan Real, Aksioma Aljabar Medan & Notasi Selang - Panduan Guru AI Antigravity</title>
+  <title>Master Guide: Sistem Bilangan Real, Aksioma Medan Aljabar & Notasi Selang Interval - Panduan Guru AI Antigravity</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
@@ -99,6 +99,11 @@
       margin: 10px 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+    }
+
+    .section-title-ai {
+      border-left-color: #059669;
+      color: #065f46;
     }
 
     .sub-title {
@@ -257,134 +262,143 @@
   <div class="header-container">
     <div>
       <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • ANTIGRAVITY MASTER GUIDE</span>
+        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
         <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
       </div>
-      <h1>Master Guide: Sistem Bilangan Real, Aksioma Aljabar Medan & Notasi Selang</h1>
+      <h1>Master Guide: Sistem Bilangan Real, Aksioma Medan Aljabar & Notasi Selang Interval</h1>
       <h2>Matematika Dasar • Pertemuan 1</h2>
     </div>
     <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Dr. Munali, M.Pd. / Syifaafidah, M.Pd.</div>
-      <div class="meta-text"><strong>Sintesis:</strong> Modul Dosen + Catatan Mahasiswa + Analisis AI</div>
+      <div class="meta-text"><strong>Dosen Pengampu:</strong> Tim Dosen Matematika FTIK Unindra</div>
+      <div class="meta-text"><strong>Berkas Sumber:</strong> matdas_p1_sistem_bilangan_real.pdf (Sistem Bilangan Real Pertemuan Ke-1.pdf)</div>
       <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
     </div>
   </div>
 
-  <!-- Sections Content -->
+  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
+  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
+    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
+    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
+  </div>
+
+  <!-- Sections Content (Bagian 1) -->
   
     <div class="section">
-      <div class="section-title">BAB 1. The Big Picture: Mengapa Mahasiswa Sistem Informasi Wajib Belajar Bilangan Real?</div>
+      <div class="section-title">BAB 1. Urgensi Matematika bagi Mahasiswa Sistem Informasi (Slide 2 - 9 PPT Dosen)</div>
       
-<p>Kalkulus dan matematika terapan adalah bahasa formal komputasi. Mulai dari alokasi memori array, pemodelan machine learning, optimasi biaya logistik, hingga grafika komputer (rasterization 3D) seluruhnya berdiri di atas fondasi <strong>Sistem Bilangan Real (&reals;)</strong>. Memahami struktur bilangan mencegah kesalahan komputasi kritis seperti <em>division by zero</em>, <em>loss of significance</em>, dan <em>arithmetic underflow</em>.</p>
+<p>Slide 9 menegaskan bahwa <strong>mahasiswa Sistem Informasi perlu mempelajari matematika sebagai fondasi bernalar logis, analitis, dan sistematis</strong>. Seluruh arsitektur basis data relasional, algoritma pencarian, kompresi data, enkripsi kriptografi, dan machine learning berakar langsung pada kalkulus dan aljabar sistem bilangan real.</p>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 2. Taksonomi 10 Himpunan Bilangan dalam Matematika</div>
+      <div class="section-title">BAB 2. Hierarki Sistem Bilangan Real (Slide 10 - 11 PPT Dosen)</div>
       
+<p>Slide 10-11 menyajikan struktur pohon himpunan bilangan dalam matematika:</p>
 <table>
-  <thead><tr><th>Nama Himpunan</th><th>Simbol</th><th>Definisi Himpunan & Anggota</th><th>Relevansi Konkret di Ilmu Komputer</th></tr></thead>
+  <thead><tr><th>Simbol Himpunan</th><th>Nama Himpunan Bilangan</th><th>Definisi Konseptual Dosen</th><th>Contoh Anggota Himpunan</th></tr></thead>
   <tbody>
-    <tr><td><strong>Bilangan Asli</strong></td><td>&naturals; (Natural)</td><td>{1, 2, 3, 4, 5, ...}</td><td>Indeks pencacah perulangan (loop index), jumlah node jaringan.</td></tr>
-    <tr><td><strong>Bilangan Cacah</strong></td><td>Whole</td><td>{0, 1, 2, 3, 4, ...}</td><td>Pengalamatan array berbasis nol (<em>zero-based indexing</em>).</td></tr>
-    <tr><td><strong>Bilangan Bulat</strong></td><td>&integers; (Integers)</td><td>{..., -2, -1, 0, 1, 2, ...}</td><td>Tipe data <code>Integer</code>, saldo debit-kredit bank.</td></tr>
-    <tr><td><strong>Bilangan Rasional</strong></td><td>&rationals;</td><td>Bilangan yang dapat dinyatakan dalam pecahan p/q (q &ne; 0).</td><td>Perhitungan probabilitas, rasio aspek layar (16:9, 4:3).</td></tr>
-    <tr><td><strong>Bilangan Irasional</strong></td><td>&rationals;'</td><td>Bilangan dengan desimal tak hingga dan tak berulang (&radic;2, &pi;, e).</td><td>Fungsi eksponensial alamiah AI (e), trigonometri grafika (&pi;).</td></tr>
-    <tr><td><strong>Bilangan Real</strong></td><td>&reals;</td><td>Gabungan lengkap rasional dan irasional (&reals; = &rationals; &cup; &rationals;').</td><td>Domain utama variabel kontinu kalkulus dan machine learning.</td></tr>
-    <tr><td><strong>Bilangan Imajiner</strong></td><td>i</td><td>Bilangan dengan sifat i<sup>2</sup> = -1 (akar bilangan negatif).</td><td>Pemrosesan sinyal digital (DSP), Transformasi Fourier Cepat (FFT).</td></tr>
-    <tr><td><strong>Bilangan Kompleks</strong></td><td>&complexes;</td><td>Bentuk umum z = a + bi dengan a, b &in; &reals;.</td><td>Sistem kontrol robotika, komputasi kuantum (qubit).</td></tr>
-    <tr><td><strong>Bilangan Prima</strong></td><td>Prime</td><td>Bilangan &gt; 1 yang hanya habis dibagi 1 dan dirinya {2, 3, 5, 7, ...}.</td><td>Kriptografi asimetris kunci publik (Enkripsi RSA, HTTPS, SSL).</td></tr>
-    <tr><td><strong>Bilangan Komposit</strong></td><td>Composite</td><td>Bilangan asli &gt; 1 selain bilangan prima {4, 6, 8, 9, 10, ...}.</td><td>Faktorisasi prima untuk uji efisiensi algoritma komputasi.</td></tr>
+    <tr><td><strong>&Nopf; (Natural)</strong></td><td>Bilangan Asli</td><td>Bilangan bulat positif yang digunakan untuk mencacah objek nyata mulai dari satu.</td><td><code>{1, 2, 3, 4, ...}</code></td></tr>
+    <tr><td><strong>&Wopf; (Whole)</strong></td><td>Bilangan Cacah</td><td>Gabungan antara angka nol dan seluruh bilangan asli.</td><td><code>{0, 1, 2, 3, ...}</code></td></tr>
+    <tr><td><strong>&Zopf; (Zahlen)</strong></td><td>Bilangan Bulat</td><td>Himpunan yang terdiri dari bilangan bulat negatif, nol, dan bilangan bulat positif.</td><td><code>{..., -2, -1, 0, 1, 2, ...}</code></td></tr>
+    <tr><td><strong>&Qopf; (Quotient)</strong></td><td>Bilangan Rasional</td><td>Bilangan yang dapat dinyatakan dalam bentuk pecahan <code>a / b</code>, di mana <code>a, b &isin; &Zopf;</code> dan <code>b &ne; 0</code>.</td><td><code>1/2, -3/4, 5 (karena 5/1), 0.25</code></td></tr>
+    <tr><td><strong>&Iopf; (Irrational)</strong></td><td>Bilangan Irasional</td><td>Bilangan riil yang <strong>TIDAK DAPAT</strong> dinyatakan dalam bentuk pecahan <code>a / b</code>.</td><td><code>&radic;2, &radic;3, &pi; (3.14159...), e (2.71828...)</code></td></tr>
+    <tr><td><strong>&Ropf; (Real)</strong></td><td>Bilangan Real</td><td>Gabungan menyeluruh antara himpunan bilangan rasional dan irasional: <code>&Ropf; = &Qopf; &cup; &Iopf;</code>.</td><td>Semua titik koordinat pada garis bilangan kontinu.</td></tr>
   </tbody>
 </table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 3. Lima Aksioma Aljabar Medan Real & Notasi Selang (Interval)</div>
+      <div class="section-title">BAB 3. Bentuk Desimal Bilangan Real (Slide 12 PPT Dosen)</div>
       
-<p>Himpunan bilangan real &reals; bersama operasi penjumlahan (+) dan perkalian (&times;) membentuk struktur aljabar <strong>Medan (Field)</strong> yang memenuhi 5 aksioma dasar:</p>
+<p>Slide 12 menerangkan cara membedakan bilangan rasional dan irasional melalui representasi desimalnya:</p>
 <table>
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>Aksioma Aljabar Medan</th>
-      <th>Operasi Penjumlahan (+)</th>
-      <th>Operasi Perkalian (&times;)</th>
-      <th>Makna Operasional & Sifat Komputasi</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Kategori Desimal</th><th>Karakteristik Pola Angka Desimal</th><th>Klasifikasi Himpunan</th><th>Contoh</th></tr></thead>
   <tbody>
-    <tr>
-      <td><strong>1</strong></td>
-      <td><strong>Sifat Komutatif</strong></td>
-      <td><code>a + b = b + a</code></td>
-      <td><code>a &times; b = b &times; a</code></td>
-      <td>Urutan posisi operand dapat ditukar tanpa mengubah hasil akhir kalkulasi.</td>
-    </tr>
-    <tr>
-      <td><strong>2</strong></td>
-      <td><strong>Sifat Asosiatif</strong></td>
-      <td><code>(a + b) + c = a + (b + c)</code></td>
-      <td><code>(a &times; b) &times; c = a &times; (b &times; c)</code></td>
-      <td>Pengelompokan urutan pengerjaan tanda kurung tidak memengaruhi hasil akhir.</td>
-    </tr>
-    <tr>
-      <td><strong>3</strong></td>
-      <td><strong>Sifat Distributif</strong></td>
-      <td colspan="2" style="text-align: center;"><code>a &times; (b + c) = (a &times; b) + (a &times; c)</code></td>
-      <td>Operasi perkalian mendistribusikan diri terhadap operasi penjumlahan suku.</td>
-    </tr>
-    <tr>
-      <td><strong>4</strong></td>
-      <td><strong>Elemen Identitas (Netral)</strong></td>
-      <td><code>a + 0 = a</code> (Identitas: 0)</td>
-      <td><code>a &times; 1 = a</code> (Identitas: 1)</td>
-      <td>Elemen yang jika dioperasikan dengan bilangan manapun tidak mengubah nilainya.</td>
-    </tr>
-    <tr>
-      <td><strong>5</strong></td>
-      <td><strong>Elemen Invers (Balikan)</strong></td>
-      <td><code>a + (-a) = 0</code> (Invers tambah)</td>
-      <td><code>a &times; (1/a) = 1</code> (untuk <code>a &ne; 0</code>)</td>
-      <td>Menghasilkan elemen netral; invers perkalian menjadi dasar operasi pembagian.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p style="margin-top: 8px;"><strong>Tabel Representasi Notasi Selang (Interval Notation) pada Garis Bilangan Real:</strong></p>
-<table>
-  <thead><tr><th>Notasi Selang</th><th>Definisi Himpunan Matematis</th><th>Makna Titik Ujung & Grafis Garis Bilangan</th></tr></thead>
-  <tbody>
-    <tr><td><strong>(a, b)</strong></td><td>{x &in; &reals; | a &lt; x &lt; b}</td><td>Selang Terbuka: titik a dan b <strong>tidak termasuk</strong> (simbol lingkaran kosong &cir;).</td></tr>
-    <tr><td><strong>[a, b]</strong></td><td>{x &in; &reals; | a &le; x &le; b}</td><td>Selang Tertutup: titik a dan b <strong>ikut masuk</strong> (simbol lingkaran penuh &bull;).</td></tr>
-    <tr><td><strong>[a, b)</strong></td><td>{x &in; &reals; | a &le; x &lt; b}</td><td>Setengah Terbuka Kanan: titik a masuk, titik b tidak masuk.</td></tr>
-    <tr><td><strong>(-&infin;, b]</strong></td><td>{x &in; &reals; | x &le; b}</td><td>Sayap Kiri tak hingga hingga titik b termasuk b.</td></tr>
-    <tr><td><strong>(a, &infin;)</strong></td><td>{x &in; &reals; | x &gt; a}</td><td>Sayap Kanan dari titik a tanpa batas atas (&infin;).</td></tr>
+    <tr><td><strong>Desimal Berhenti (Terminating)</strong></td><td>Angka di belakang koma terhenti pada digit tertentu.</td><td><strong>Bilangan Rasional (&Qopf;)</strong></td><td><code>3/4 = 0.75</code>; <code>1/8 = 0.125</code></td></tr>
+    <tr><td><strong>Desimal Berulang (Repeating)</strong></td><td>Angka di belakang koma berulang tanpa henti dengan pola siklus teratur.</td><td><strong>Bilangan Rasional (&Qopf;)</strong></td><td><code>1/3 = 0.3333...</code>; <code>2/7 = 0.285714285714...</code></td></tr>
+    <tr><td><strong>Desimal Tak Berhenti & Tak Berulang</strong></td><td>Angka di belakang koma tak terhingga dan tidak pernah membentuk pola perulangan.</td><td><strong>Bilangan Irasional (&Iopf;)</strong></td><td><code>&radic;2 = 1.41421356...</code>; <code>&pi; = 3.14159265...</code></td></tr>
   </tbody>
 </table>
 
     </div>
         
     <div class="section">
-      <div class="section-title">BAB 4. Jebakan Soal UTS Pertemuan 1</div>
+      <div class="section-title">BAB 4. Aksioma Medan Aljabar & Operasi Hitung Real (Slide 13 PPT Dosen)</div>
+      
+<p>Slide 13 menyajikan aksioma medan yang berlaku mutlak untuk setiap bilangan real <code>x, y, z &isin; &Ropf;</code>:</p>
+<table>
+  <thead><tr><th>Hukum / Sifat Aljabar</th><th>Operasi Penjumlahan (Addition)</th><th>Operasi Perkalian (Multiplication)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Sifat Komutatif</strong></td><td><code>x + y = y + x</code></td><td><code>x &times; y = y &times; x</code></td></tr>
+    <tr><td><strong>2. Sifat Asosiatif</strong></td><td><code>(x + y) + z = x + (y + z)</code></td><td><code>(x &times; y) &times; z = x &times; (y &times; z)</code></td></tr>
+    <tr><td><strong>3. Sifat Distributif</strong></td><td colspan="2" style="text-align: center;"><code>x &times; (y + z) = (x &times; y) + (x &times; z)</code></td></tr>
+    <tr><td><strong>4. Elemen Identitas</strong></td><td>Ada bilangan <code>0</code> sehingga: <code>x + 0 = x</code></td><td>Ada bilangan <code>1</code> sehingga: <code>x &times; 1 = x</code></td></tr>
+    <tr><td><strong>5. Elemen Invers</strong></td><td>Setiap <code>x</code> memiliki invers aditif <code>(-x)</code>: <code>x + (-x) = 0</code></td><td>Setiap <code>x &ne; 0</code> memiliki invers perkalian <code>(1/x)</code>: <code>x &times; (1/x) = 1</code></td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+    <div class="section">
+      <div class="section-title">BAB 5. Garis Bilangan Real & Notasi Selang Interval (Slide 14 - 16 PPT Dosen)</div>
+      
+<p>Slide 14-15 menjelaskan bahwa setiap bilangan real berkorespondensi satu-satu dengan suatu titik pada garis bilangan. Notasi <code>x &lt; y</code> berarti titik <code>x</code> berada di sebelah kiri titik <code>y</code>.</p>
+<p>Slide 16 merangkum penulisan <strong>Notasi Selang (Interval Notation)</strong> yang menjadi bahasa baku penulisan himpunan penyelesaian:</p>
+<table>
+  <thead><tr><th>Jenis Selang</th><th>Notasi Interval</th><th>Notasi Pembentuk Himpunan</th><th>Karakteristik Ujung Titik</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Selang Terbuka</strong></td><td><code>(a, b)</code></td><td><code>{ x &isin; &Ropf; | a &lt; x &lt; b }</code></td><td>Kedua titik ujung <code>a</code> dan <code>b</code> <strong>TIDAK IKUT</strong> (lingkaran kosong).</td></tr>
+    <tr><td><strong>Selang Tertutup</strong></td><td><code>[a, b]</code></td><td><code>{ x &isin; &Ropf; | a &le; x &le; b }</code></td><td>Kedua titik ujung <code>a</code> dan <code>b</code> <strong>IKUT SERTA</strong> (lingkaran penuh).</td></tr>
+    <tr><td><strong>Setengah Terbuka (Kiri)</strong></td><td><code>(a, b]</code></td><td><code>{ x &isin; &Ropf; | a &lt; x &le; b }</code></td><td>Titik <code>a</code> tidak ikut, titik <code>b</code> ikut serta.</td></tr>
+    <tr><td><strong>Setengah Terbuka (Kanan)</strong></td><td><code>[a, b)</code></td><td><code>{ x &isin; &Ropf; | a &le; x &lt; b }</code></td><td>Titik <code>a</code> ikut serta, titik <code>b</code> tidak ikut.</td></tr>
+    <tr><td><strong>Selang Tak Hingga Positif</strong></td><td><code>(a, &infin;)</code></td><td><code>{ x &isin; &Ropf; | x &gt; a }</code></td><td>Membentang ke kanan tanpa batas.</td></tr>
+    <tr><td><strong>Selang Tak Hingga Negatif</strong></td><td><code>(-&infin;, b]</code></td><td><code>{ x &isin; &Ropf; | x &le; b }</code></td><td>Membentang ke kiri tanpa batas, ujung <code>b</code> tertutup.</td></tr>
+  </tbody>
+</table>
+
+    </div>
+        
+
+  
+  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
+  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
+    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
+    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
+  </div>
+  
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Representasi Bilangan Real di Memori Komputer</div>
+      
+<p>Dalam ilmu komputer, bilangan riil direpresentasikan menggunakan standar biner <strong>IEEE 754 Floating-Point</strong> (1 bit tanda, 8 bit eksponen, 23 bit mantisa pada presisi tunggal 32-bit). Karena keterbatasan digit biner, bilangan desimal seperti <code>0.1</code> tidak dapat direpresentasikan secara eksak sempurna dalam biner, melahirkan fenomena pembulatan kecil (<em>floating-point precision error</em>). Itulah sebabnya dalam sistem keuangan perbankan, penghitungan saldo selalu menggunakan tipe fixed-point atau integer satuan sen.</p>
+
+    </div>
+            
+    <div class="section">
+      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal UTS Notasi Selang</div>
       
 <div class="alert alert-warning">
-  <strong>⚠️ Jebakan Bilangan Nol & Tanda Kurung Tak Hingga:</strong><br>
-  1. Apakah angka 0 termasuk bilangan genap? <strong>YA</strong>, karena 0 habis dibagi 2 (0 mod 2 = 0).<br>
-  2. Lambang tak hingga (&plusmn;&infin;) <strong>SELALU menggunakan kurung biasa <code>(</code> atau <code>)</code>, TIDAK PERNAH menggunakan kurung siku <code>[</code> atau <code>]</code></strong>, karena tak hingga adalah sebuah konsep batas tanpa ujung, bukan sebuah angka terhingga yang dapat disentuh atau dimasukkan ke dalam himpunan.
+  <strong>🎯 Bedah Jebakan Ujian Notasi Selang:</strong><br>
+  <strong>1. Kurung Siku vs Kurung Biasa:</strong> Simbol pertidaksamaan <code>&lt;</code> dan <code>&gt;</code> (tanpa tanda sama dengan) <strong>SELALU menggunakan kurung biasa <code>( )</code></strong>. Simbol <code>&le;</code> dan <code>&ge;</code> menggunakan kurung siku <code>[ ]</code>.<br>
+  <strong>2. Simbol Tak Hingga (&infin;):</strong> Titik tak hingga <code>&infin;</code> atau <code>-&infin;</code> <strong>MUTLAK SELALU menggunakan kurung biasa <code>( )</code></strong> dan tidak pernah boleh menggunakan kurung siku karena tak hingga bukanlah sebuah angka terhenti!
 </div>
 
     </div>
+            
         
 
-  <!-- Academic References Box -->
-  <div class="section" style="margin-top: 12px;">
-    <div class="alert alert-info">
-      <strong>📚 Daftar Rujukan Literatur Akademik & Standar Industri:</strong>
-      <ul style="margin: 3px 0 0 0; padding-left: 16px; font-size: 7.6pt;">
-        <li>Varberg, D., Purcell, E. J., & Rigdon, S. E. (2007). Calculus (9th ed.). Pearson Prentice Hall.</li><li>Stewart, J. (2015). Calculus: Early Transcendentals (8th ed.). Cengage Learning.</li><li>Slide Resmi Matematika Dasar Pertemuan 1: Sistem Bilangan Real, FTIK Unindra (2026).</li>
-      </ul>
+  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
+  <div class="section" style="margin-top: 14px;">
+    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
+      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
+      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
+        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>matdas_p1_sistem_bilangan_real.pdf (Sistem Bilangan Real Pertemuan Ke-1.pdf)</code> (17 Slide PPT Resmi Dosen)</div>
+        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Tim Dosen Matematika FTIK Unindra • Program Studi Sistem Informasi FTIK Unindra</div>
+        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
+        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
+          <li>Berkas Resmi Perkuliahan: matdas_p1_sistem_bilangan_real.pdf (Sistem Bilangan Real Pertemuan Ke-1, 17 Slide PPT Dosen FTIK Unindra).</li><li>Varberg, D., Purcell, E. J., & Rigdon, S. E. (2010). Calculus (9th ed.). Pearson Prentice Hall.</li><li>Silabus Resmi Mata Kuliah Matematika Dasar, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
+        </ul>
+      </div>
     </div>
   </div>
 
