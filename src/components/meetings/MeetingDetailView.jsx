@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowLeft,
   Calendar,
@@ -15,15 +15,6 @@ import {
   Eye,
   ShieldCheck,
   Check,
-  Mic,
-  Upload,
-  Edit3,
-  Save,
-  Trash2,
-  Radio,
-  Square,
-  Play,
-  Volume2,
 } from 'lucide-react';
 import { sanitizeHtml, sanitizeUrl } from '../../lib/security';
 import { PdfViewerModal } from '../materials/PdfViewerModal';
@@ -50,19 +41,11 @@ export function MeetingDetailView({
   meeting,
   onBack,
 }) {
-  const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'transcript', 'pdf', 'cheatsheet'
-  const [summaryMode, setSummaryMode] = useState('standar'); // Default to student summary ('standar'), user can switch to 'detail' (Guru AI) or 'ringkas'
+  const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'pdf', 'cheatsheet'
+  const [summaryMode, setSummaryMode] = useState('detail'); // Default to 'detail' (Guru AI Diktat) or user can switch to 'standar' (Catatan Mahasiswa GMeet) or 'ringkas'
   const [copyFeedback, setCopyFeedback] = useState(false);
 
-  // Transcript states
-  const [isEditingTranscript, setIsEditingTranscript] = useState(false);
-  const [transcriptDraft, setTranscriptDraft] = useState(meeting.transcripts?.[0]?.content || '');
-  const [copyTranscriptFeedback, setCopyTranscriptFeedback] = useState(false);
-  const fileInputRef = useRef(null);
-  const [selectedMediaFile, setSelectedMediaFile] = useState(null);
-  const [mediaPreviewUrl, setMediaPreviewUrl] = useState(null);
-
-  // Available official PDF materials for this meeting (excluding AI duplicates)
+  // Available official PDF materials for this meeting (excluding any AI duplicates)
   const pdfMaterials = (meeting.materials || []).filter(isPdfMaterial);
   const firstPdf = pdfMaterials[0];
 
@@ -77,7 +60,7 @@ export function MeetingDetailView({
   const [selectedPdfTitle, setSelectedPdfTitle] = useState(firstPdf?.title || 'Dokumen PDF Perkuliahan');
   const [cheatsheetModalOpen, setCheatsheetModalOpen] = useState(false);
 
-  // Synchronize inline PDF and transcripts when meeting changes
+  // Synchronize inline PDF when meeting changes
   useEffect(() => {
     const freshPdfs = (meeting.materials || []).filter(isPdfMaterial);
     const freshPdf = freshPdfs[0];
@@ -88,11 +71,8 @@ export function MeetingDetailView({
       setSelectedPdfUrl(freshUrl);
       setSelectedPdfTitle(freshPdf.title);
     }
-    setTranscriptDraft(meeting.transcripts?.[0]?.content || '');
-    setIsEditingTranscript(false);
   }, [meeting]);
 
-  const currentTranscript = meeting.transcripts?.[0]?.content || transcriptDraft;
   const currentSummaryHtml = meeting.summaries?.[summaryMode] || meeting.summaries?.standar || meeting.summaries?.detail || '';
 
   const handleCopySummary = () => {
@@ -103,22 +83,6 @@ export function MeetingDetailView({
       setCopyFeedback(true);
       setTimeout(() => setCopyFeedback(false), 2000);
     });
-  };
-
-  const handleCopyTranscript = () => {
-    navigator.clipboard.writeText(currentTranscript).then(() => {
-      setCopyTranscriptFeedback(true);
-      setTimeout(() => setCopyTranscriptFeedback(false), 2000);
-    });
-  };
-
-  const handleMediaFileChange = (e) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setSelectedMediaFile(file);
-      const url = URL.createObjectURL(file);
-      setMediaPreviewUrl(url);
-    }
   };
 
   const currentSafePdfUrl = sanitizeUrl(activeInlinePdfUrl);
@@ -206,46 +170,32 @@ export function MeetingDetailView({
             <button
               onClick={handleCopySummary}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 text-xs font-semibold transition-all cursor-pointer"
+              title="Salin seluruh isi catatan ke papan klip untuk disalin ke binder fisik"
             >
               {copyFeedback ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copyFeedback ? 'Tersalin!' : 'Salin Teks'}</span>
+              <span>{copyFeedback ? 'Tersalin ke Klip!' : 'Salin Catatan Binder'}</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Primary Detail Navigation Tabs */}
+      {/* Primary Detail Navigation Tabs (Clean 2 Main Tabs + Cheatsheet) */}
       <div className="flex items-center gap-2 border-b border-white/10 pb-2 no-print overflow-x-auto">
         <button
           onClick={() => setActiveTab('summary')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
             activeTab === 'summary'
               ? 'bg-indigo-600 text-white shadow-md'
               : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
           }`}
         >
           <BookOpen className="w-4 h-4" />
-          <span>📖 Rangkuman & Catatan Kuliah</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('transcript')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
-            activeTab === 'transcript'
-              ? 'bg-indigo-600 text-white shadow-md'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
-          }`}
-        >
-          <Mic className="w-4 h-4 text-cyan-400" />
-          <span>🎙️ Rekaman & Transkrip AI (GMeet)</span>
-          {currentTranscript && (
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="Transkrip Tersedia" />
-          )}
+          <span>📖 Rangkuman Akademik & Catatan Kuliah</span>
         </button>
 
         <button
           onClick={() => setActiveTab('pdf')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
             activeTab === 'pdf'
               ? 'bg-indigo-600 text-white shadow-md'
               : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
@@ -258,7 +208,7 @@ export function MeetingDetailView({
         {CHEATSHEET_MAP[subject.id] && (
           <button
             onClick={() => setActiveTab('cheatsheet')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'cheatsheet'
                 ? 'bg-cyan-600 text-white shadow-md'
                 : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
@@ -270,23 +220,11 @@ export function MeetingDetailView({
         )}
       </div>
 
-      {/* TAB 1: RANGKUMAN & CATATAN KULIAH */}
+      {/* TAB 1: RANGKUMAN AKADEMIK & CATATAN KULIAH */}
       {activeTab === 'summary' && (
         <div className="space-y-6">
-          {/* 3-Way Mode Switcher: Catatan Mahasiswa vs Guru AI (Bedah Slide) vs Intisari Kilat */}
+          {/* 3-Way Mode Switcher: Guru AI Diktat vs Catatan Mandiri Mahasiswa (GMeet) vs Intisari Kilat */}
           <div className="flex flex-col sm:flex-row items-center gap-2 p-1.5 bg-[#181B26] border border-white/10 rounded-2xl no-print shadow-sm">
-            <button
-              onClick={() => setSummaryMode('standar')}
-              className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                summaryMode === 'standar'
-                  ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-white shadow-lg'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
-              }`}
-            >
-              <BookOpen className="w-4 h-4 text-cyan-300" />
-              <span>📝 Rangkuman Mahasiswa (Transkripsi GMeet & Catatan Kuliah)</span>
-            </button>
-
             <button
               onClick={() => setSummaryMode('detail')}
               className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
@@ -296,7 +234,19 @@ export function MeetingDetailView({
               }`}
             >
               <Sparkles className="w-4 h-4 text-emerald-300" />
-              <span>🤖 Bedah Slide Guru AI (Slide-by-Slide PPT Dosen & Pengayaan)</span>
+              <span>🤖 Modul Guru AI (Bedah Materi PPT Dosen & Pengayaan)</span>
+            </button>
+
+            <button
+              onClick={() => setSummaryMode('standar')}
+              className={`w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                summaryMode === 'standar'
+                  ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-white shadow-lg'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+              }`}
+            >
+              <BookOpen className="w-4 h-4 text-cyan-300" />
+              <span>📝 Rangkuman Mahasiswa (Transkripsi GMeet & Rekaman Suara)</span>
             </button>
 
             <button
@@ -312,31 +262,31 @@ export function MeetingDetailView({
             </button>
           </div>
 
-          {/* Mode Context Status Badge */}
-          {summaryMode === 'standar' && (
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl bg-blue-950/40 border border-blue-500/30 text-xs text-blue-200 gap-2">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                <span>
-                  <strong>📝 Catatan Asli Mahasiswa:</strong> Disusun dan ditranskripsikan langsung dari rekaman suara Google Meet & kuliah tatap muka dosen oleh Muhammad Haikel Saleh.
-                </span>
-              </div>
-              <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20 whitespace-nowrap self-start sm:self-center">
-                Verbatim Rekaman Kelas
-              </span>
-            </div>
-          )}
-
+          {/* Context Badge for Selected View */}
           {summaryMode === 'detail' && (
             <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-emerald-200 gap-2">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>
-                  <strong>🤖 Bedah Slide Guru AI:</strong> Penjelasan setiap slide PPT dosen secara berurutan, singkat dan padat, disertai materi pengayaan first principles dan sumber resmi di bagian paling bawah.
+                  <strong>🤖 Modul Pembelajaran Guru AI:</strong> Bedah materi presentasi PPT dosen secara komprehensif, terstruktur per pokok bahasan, dilengkapi tabel komparasi, contoh studi kasus nyata, materi pengayaan, dan verifikasi sumber resmi di bagian paling bawah.
                 </span>
               </div>
               <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20 whitespace-nowrap self-start sm:self-center">
-                Slide-by-Slide + Pengayaan
+                Diktat Lengkap PPT Dosen
+              </span>
+            </div>
+          )}
+
+          {summaryMode === 'standar' && (
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl bg-blue-950/40 border border-blue-500/30 text-xs text-blue-200 gap-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span>
+                  <strong>📝 Catatan Mandiri Mahasiswa:</strong> Ditranskripsikan langsung dari rekaman suara Google Meet dan kuliah tatap muka dosen oleh Muhammad Haikel Saleh. Siap disalin langsung ke lembar catatan binder fisik.
+                </span>
+              </div>
+              <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20 whitespace-nowrap self-start sm:self-center">
+                Verbatim Rekaman Kelas
               </span>
             </div>
           )}
@@ -346,16 +296,16 @@ export function MeetingDetailView({
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400 flex-shrink-0" />
                 <span>
-                  <strong>⚡ Intisari Kilat & Poin Kunci Ujian:</strong> Definisi baku, formula, kaidah mutlak, dan rangkuman review cepat 5 menit untuk persiapan kuis & UTS.
+                  <strong>⚡ Intisari Kilat & Poin Kunci Ujian:</strong> Rangkuman definisi baku, formula, kaidah mutlak, dan poin hafalan cepat persiapan kuis & UTS.
                 </span>
               </div>
               <span className="text-[11px] font-mono text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 whitespace-nowrap self-start sm:self-center">
-                Cheatsheet Cepat
+                Cheatsheet 5 Menit
               </span>
             </div>
           )}
 
-          {/* Summary Content Body */}
+          {/* Summary Content Body (Textbook Grade) */}
           <div className="p-6 sm:p-8 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm leading-relaxed">
             <div
               className="academic-summary-content text-slate-200 text-sm sm:text-base space-y-4"
@@ -365,106 +315,7 @@ export function MeetingDetailView({
         </div>
       )}
 
-      {/* TAB 2: REKAMAN SUARA & TRANSKRIP GMEET */}
-      {activeTab === 'transcript' && (
-        <div className="space-y-6 no-print">
-          {/* UPLOAD & RECORDING CONTROL PANEL */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-[#181B26] to-[#12141F] border border-white/10 shadow-lg space-y-4">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-2">
-                  <Mic className="w-3.5 h-3.5" />
-                  <span>Transkrip Perkuliahan Google Meet & Suara Kelas</span>
-                </div>
-                <h3 className="text-lg font-bold font-heading text-white">
-                  Rekaman Suara Dosen & Transkrip Perkuliahan
-                </h3>
-                <p className="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">
-                  Catatan transkripsi suara yang merekam secara langsung saat dosen menerangkan materi kuliah di kelas tatap muka atau Google Meet.
-                </p>
-              </div>
-
-              {/* Action Buttons: Copy, Edit, Upload */}
-              <div className="flex flex-wrap items-center gap-2">
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="audio/*,video/*"
-                  className="hidden"
-                  onChange={handleMediaFileChange}
-                />
-
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold border border-white/10 transition-all cursor-pointer"
-                >
-                  <Upload className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Lampirkan Rekaman Audio</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleCopyTranscript}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-all shadow cursor-pointer"
-                >
-                  {copyTranscriptFeedback ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copyTranscriptFeedback ? 'Tersalin!' : 'Salin Transkrip'}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setIsEditingTranscript(!isEditingTranscript)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-white/10 transition-all cursor-pointer"
-                >
-                  {isEditingTranscript ? <Save className="w-3.5 h-3.5 text-emerald-400" /> : <Edit3 className="w-3.5 h-3.5 text-amber-400" />}
-                  <span>{isEditingTranscript ? 'Selesai Edit' : 'Edit Transkrip'}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Media Player if selected */}
-            {mediaPreviewUrl && (
-              <div className="p-3 bg-black/40 rounded-xl border border-white/10 flex items-center gap-3">
-                <Volume2 className="w-5 h-5 text-cyan-400 flex-shrink-0" />
-                <audio controls src={mediaPreviewUrl} className="w-full h-8" />
-              </div>
-            )}
-          </div>
-
-          {/* Transcript Viewer / Editor */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-400 px-1">
-              <span>Isi Transkrip Rekaman:</span>
-              <span>{currentTranscript.length} karakter</span>
-            </div>
-
-            {isEditingTranscript ? (
-              <textarea
-                value={transcriptDraft}
-                onChange={(e) => setTranscriptDraft(e.target.value)}
-                rows={14}
-                className="w-full p-4 rounded-2xl bg-[#11131B] border border-indigo-500 text-slate-200 text-sm font-sans focus:outline-none leading-relaxed"
-                placeholder="Tuliskan atau tempel transkrip rekaman suara kuliah dosen di sini..."
-              />
-            ) : (
-              <div className="p-6 sm:p-8 rounded-2xl bg-[#11131B] border border-white/10 text-slate-200 text-sm sm:text-base leading-relaxed whitespace-pre-wrap select-text max-h-[600px] overflow-y-auto">
-                {currentTranscript || (
-                  <div className="text-center py-8 text-slate-400 space-y-2">
-                    <Mic className="w-8 h-8 mx-auto text-slate-600" />
-                    <p className="font-semibold text-slate-300">Belum ada transkrip rekaman suara untuk pertemuan ini.</p>
-                    <p className="text-xs text-slate-500">
-                      Anda dapat menekan tombol <strong>"Edit Transkrip"</strong> di atas untuk menambahkan transkripsi rekaman GMeet atau kelas tatap muka.
-                    </p>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* TAB 3: DOKUMEN PDF LENGKAP DARI DOSEN */}
+      {/* TAB 2: DOKUMEN PDF LENGKAP DARI DOSEN */}
       {activeTab === 'pdf' && (
         <div className="space-y-4 no-print">
           {pdfMaterials.length === 0 ? (
@@ -606,7 +457,7 @@ export function MeetingDetailView({
         </div>
       )}
 
-      {/* TAB 4: CHEATSHEET HD (JPG) VIEW */}
+      {/* TAB 3: CHEATSHEET HD (JPG) VIEW */}
       {activeTab === 'cheatsheet' && CHEATSHEET_MAP[subject.id] && (
         <div className="space-y-4">
           <div className="p-4 rounded-xl bg-[#181B26] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">

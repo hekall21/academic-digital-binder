@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Generate Perfect Slide-by-Slide Guru AI Content & Sync SeedData
-1. Extracts EVERY SINGLE SLIDE of lecturer PDFs using pypdf.
-2. Formats Bagian 1: Penjelasan Setiap Slide PPT Dosen (Singkat, Padat & Terstruktur).
-3. Appends Bagian 2: Tambahan Materi, Deep-Dive & Insight Guru AI (Paling Bawah - Sebanyak & Sebagus Mungkin).
-4. Appends Bagian 3: Sumber Dokumen & Verifikasi Resmi Dosen (Paling Bawah).
-5. Generates high-yield, specific exam cheatsheet points for summaries.ringkas (No generic boilerplate!).
-6. Leaves summaries.standar (student's GMeet recordings notes) 100% INTACT!
-7. Removes artificial mat_ai_... duplicate PDFs from meeting.materials.
-8. Updates seedData.js and bumps storage.js version to v13.
+Generate Complete Textbook-Grade Diktat for Guru AI (Full & Unabridged)
+- Uraian materi disajikan utuh, mendalam, dan tuntas (TANPA teks terpotong '...').
+- Dilengkapi tabel konsep, contoh kasus/kode praktikum, dan materi pengayaan yang layak disalin ke binder fisik.
+- Menjaga summaries.standar (Catatan Mahasiswa dari rekaman GMeet) 100% utuh!
+- Cheatsheet ringkas berisi poin-poin kunci ujian nyata per pertemuan.
+- Menjamin 0 simbol LaTeX '$' dan 0 error escape karakter.
 """
 
 import os
@@ -16,7 +13,6 @@ import sys
 import json
 import re
 import html
-import pypdf
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -51,49 +47,6 @@ for m in PANCASILA_MEETINGS:
 for m in PAI_MEETINGS:
     ALL_MODULES_MAP[('subject-pai', m['meeting_no'])] = m
 
-OFFICIAL_PDFS = {
-    ('subject-pascal', 1): ('pascal_p1_pengantar_pascal.pdf', 'Zaeni Miftah, S.Kom., M.Kom.', 'Pertemuan 1 - Pengantar Pemrograman.pdf'),
-    ('subject-pascal', 2): ('pascal_p2_variabel_tipe_data.pdf', 'Zaeni Miftah, S.Kom., M.Kom.', 'Pertemuan 2 - Variabel dan Tipe Data.pdf'),
-    ('subject-pascal', 3): ('pascal_p3_input_output.pdf', 'Zaeni Miftah, S.Kom., M.Kom.', 'Pertemuan 3 - Input dan Output Pascal.pdf'),
-    ('subject-pascal', 4): ('pascal_p4_percabangan_if.pdf', 'Zaeni Miftah, S.Kom., M.Kom.', 'Pertemuan 4 - Percabangan IF Pascal.pdf'),
-
-    ('subject-algo', 1): ('algo_p1_pengantar_algoritma.pdf', 'Tim Dosen Algoritma FTIK Unindra', 'Pertemuan 1 - Pengantar Algoritma.pdf'),
-    ('subject-algo', 2): ('algo_p2_tipe_data_operator.pdf', 'Tim Dosen Algoritma FTIK Unindra', 'Pertemuan 2 - Tipe Data dan Operator.pdf'),
-    ('subject-algo', 3): ('algo_p3_flowchart_ansi.pdf', 'Tim Dosen Algoritma FTIK Unindra', 'Pertemuan 3 - Flowchart Standar ANSI.pdf'),
-    ('subject-algo', 4): ('algo_p4_struktur_kontrol.pdf', 'Tim Dosen Algoritma FTIK Unindra', 'Pertemuan 4 - Struktur Kontrol Algoritma.pdf'),
-
-    ('subject-matdas', 1): ('matdas_p1_sistem_bilangan_real.pdf', 'Dr. Munali, M.Pd.', 'Pertemuan 1 - Sistem Bilangan Real.pdf'),
-    ('subject-matdas', 2): ('matdas_p2_pertidaksamaan_real.pdf', 'Dr. Munali, M.Pd.', 'Pertemuan 2 - Pertidaksamaan Bilangan Real.pdf'),
-    ('subject-matdas', 3): ('matdas_p3_fungsi_dan_grafik.pdf', 'Dr. Munali, M.Pd.', 'Pertemuan 3 - Nilai Mutlak dan Pemetaan Fungsi.pdf'),
-    ('subject-matdas', 4): ('matdas_p3_fungsi_dan_grafik.pdf', 'Dr. Munali, M.Pd.', 'Pertemuan 4 - Persamaan Garis Lurus & Parabola Kuadrat.pdf'),
-
-    ('subject-ksi', 1): ('ksi_p1_sistem_informasi_1.pdf', 'Pak Dheni, M.Kom.', '1789306851_SISTEM_INFORMASI_1.pdf'),
-    ('subject-ksi', 2): ('ksi_p2_sistem_informasi_2.pdf', 'Pak Dheni, M.Kom.', '1789306879_SISTEM_INFORMASI_2.pdf'),
-    ('subject-ksi', 3): ('ksi_p3_sistem_informasi_3.pdf', 'Pak Dheni, M.Kom.', '1789306890_SISTEM_INFORMASI_3.pdf'),
-    ('subject-ksi', 4): ('ksi_p4_sistem_informasi_4.pdf', 'Pak Dheni, M.Kom.', '1789306915_SISTEM_INFORMASI_4.pdf'),
-
-    ('subject-indo', 1): ('indo_p1_hakikat_bahasa.pdf', 'Tim Dosen MKWK Bahasa Indonesia', '1789103790_Pertemuan_1_Bahasa_Indonesia.pdf'),
-    ('subject-indo', 2): ('indo_p2_sikap_positif_bahasa.pdf', 'Tim Dosen MKWK Bahasa Indonesia', '1789341355_Pertemuan_2_Bahasa_Indonesia.pdf'),
-    ('subject-indo', 3): ('indo_p3_eyd_v.pdf', 'Tim Dosen MKWK Bahasa Indonesia', 'Pertemuan_3_Bahasa_Indonesia_EYD_V.pdf'),
-    ('subject-indo', 4): ('indo_p4_diksi_kata.pdf', 'Tim Dosen MKWK Bahasa Indonesia', '1790563821_Pertemuan_4_Bahasa_Indonesia_Diksi.pdf'),
-
-    ('subject-inggris', 1): ('inggris_p1_chapter_1_self_intro.pdf', 'Tim Dosen Bahasa Inggris FTIK Unindra', 'Chapter 1 - Self-Introduction & Profiling.pdf'),
-    ('subject-inggris', 2): ('inggris_p2_chapter_2_how_to_make.pdf', 'Tim Dosen Bahasa Inggris FTIK Unindra', 'Chapter 2 - Procedural Texts & Technical Instructions.pdf'),
-    ('subject-inggris', 3): ('inggris_p3_chapter_3_holiday.pdf', 'Tim Dosen Bahasa Inggris FTIK Unindra', 'Chapter 3 - Recount Texts & Past Experiences.pdf'),
-    ('subject-inggris', 4): ('inggris_p4_chapter_4_plans.pdf', 'Tim Dosen Bahasa Inggris FTIK Unindra', 'Chapter 4 - Talking About Plans & Intentions.pdf'),
-
-    ('subject-pancasila', 1): ('pancasila_p1_landasan_pendidikan.pdf', 'Tim Dosen Pancasila FTIK Unindra', 'Pertemuan 1 - Landasan Pendidikan Pancasila.pdf'),
-    ('subject-pancasila', 2): ('pancasila_p2_pra_kemerdekaan.pdf', 'Tim Dosen Pancasila FTIK Unindra', 'Pertemuan 2 - Pancasila Pra-Kemerdekaan.pdf'),
-    ('subject-pancasila', 3): ('pancasila_p3_pasca_kemerdekaan.pdf', 'Tim Dosen Pancasila FTIK Unindra', 'Pertemuan 3 - Pancasila Pasca-Kemerdekaan.pdf'),
-    ('subject-pancasila', 4): ('pancasila_rps_mk02_resmi_unindra.pdf', 'Tim Dosen Pancasila FTIK Unindra', 'Pertemuan 4 - Pancasila sebagai Dasar Negara.pdf'),
-
-    ('subject-pai', 1): ('pai_p1_tauhid_dan_visi_islam.pdf', 'Tim Dosen PAI FTIK Unindra', 'Pertemuan 1 - Tauhid dan Visi Islam.pdf'),
-    ('subject-pai', 2): ('pai_p2_iman_dan_ihsan.pdf', 'Tim Dosen PAI FTIK Unindra', 'Pertemuan 2 - Aqidah, Iman, dan Ihsan.pdf'),
-    ('subject-pai', 3): ('pai_p3_syariah_dan_ibadah.pdf', 'Tim Dosen PAI FTIK Unindra', 'Pertemuan 3 - Syariah, Ibadah, dan Hukum Taklifi.pdf'),
-    ('subject-pai', 4): ('pai_p4_akhlak_dan_etika_it.pdf', 'Tim Dosen PAI FTIK Unindra', 'Pertemuan 4 - Akhlak dan Etika Profesi IT.pdf'),
-}
-
-# Specific high-yield cheatsheet exam points for each meeting
 CHEATSHEET_EXAM_POINTS = {
     ('subject-pascal', 1): [
         ("Asal Kata Komputer", "Berasal dari bahasa Latin <em>Computare</em> yang berarti menghitung (to compute/calculate)."),
@@ -290,7 +243,6 @@ def clean_html_math(text):
     """Ensure zero unformatted LaTeX dollar signs, converting to clean Unicode/HTML."""
     if not text:
         return ""
-    # Strip any $...$ math blocks
     def math_replacer(match):
         c = match.group(1)
         c = c.replace(r'\in', ' &isin; ').replace(r'\mathbb{R}', ' &Ropf; ').replace(r'\mathbb{Z}', ' &Zopf; ')
@@ -309,154 +261,96 @@ def clean_html_math(text):
     text = text.replace('$', '')
     return text
 
-def parse_pdf_slides(pdf_path):
-    """Extract raw slide texts from PDF using pypdf."""
-    full_path = os.path.join(PUBLIC_MATERIALS, pdf_path)
-    if not os.path.exists(full_path):
-        return []
-    reader = pypdf.PdfReader(full_path)
-    slides = []
-    for idx, page in enumerate(reader.pages, 1):
-        txt = (page.extract_text() or '').strip()
-        lines = [l.strip() for l in txt.split('\n') if l.strip()]
-        title = lines[0] if lines else f'Slide {idx}'
-        if len(lines) > 1 and ('Teknik Informatika' in lines[0] or lines[0].startswith('Pemrograman 1')):
-            title = lines[1] if len(lines) > 1 else lines[0]
-        # Clean up title
-        title = title.replace('➢', '').replace('❑', '').replace('•', '').replace('*)', '').strip()
-        if not title:
-            title = f'Slide {idx}'
+def build_diktat_detail(subj_id, m_no, mod_meta):
+    """Builds a complete, rich textbook-grade diktat without any truncated text."""
+    if not mod_meta:
+        return "<p>Modul materi sedang disiapkan.</p>"
 
-        if lines:
-            body_lines = lines[1:] if (len(lines) > 1 and title == lines[0]) else (lines[2:] if len(lines) > 2 else [])
-        else:
-            body_lines = []
-        bullets = []
-        for bl in body_lines:
-            bl_c = bl.replace('➢', '').replace('❑', '').replace('•', '').strip()
-            if len(bl_c) > 3 and not bl_c.startswith('Slide ') and bl_c not in bullets:
-                bullets.append(bl_c)
-
-        slides.append({
-            'num': idx,
-            'title': title,
-            'raw_text': txt,
-            'bullets': bullets
-        })
-    return slides
-
-def build_slide_card(slide_num, total_slides, title, bullets, explanation):
-    """Generate clean, stylish HTML card for each individual slide."""
-    bullet_items = "".join(f"<li>{html.escape(b)}</li>" for b in bullets[:4]) if bullets else "<li>Memaparkan topik konseptual dan kerangka pengantar perkuliahan.</li>"
-    clean_exp = clean_html_math(explanation)
-    clean_title = clean_html_math(title)
-
-    return f"""<div class="slide-block" style="background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(99, 102, 241, 0.25); border-left: 5px solid #6366F1; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px;">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px;">
-    <span style="font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #818CF8; background: rgba(99, 102, 241, 0.15); padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(99, 102, 241, 0.3);">
-      SLIDE {slide_num} DARI {total_slides}: {clean_title}
-    </span>
-    <span style="font-size: 0.75rem; color: #94A3B8;">Presentasi Dosen Pengampu</span>
-  </div>
-  <div style="margin-bottom: 12px;">
-    <strong style="color: #38BDF8; font-size: 0.88rem; display: flex; align-items: center; gap: 6px;">
-      <span>📌 Inti Materi Slide (Singkat & Padat):</span>
-    </strong>
-    <ul style="margin: 6px 0 0 18px; padding: 0; color: #E2E8F0; font-size: 0.86rem; line-height: 1.6;">
-      {bullet_items}
-    </ul>
-  </div>
-  <div style="background: rgba(15, 23, 42, 0.6); border-radius: 8px; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, 0.05);">
-    <strong style="color: #A78BFA; font-size: 0.86rem; display: flex; align-items: center; gap: 6px;">
-      <span>👨‍🏫 Penjelasan Dosen & Analisis Guru AI:</span>
-    </strong>
-    <p style="margin: 6px 0 0 0; color: #CBD5E1; font-size: 0.85rem; line-height: 1.65;">
-      {clean_exp}
-    </p>
-  </div>
-</div>"""
-
-def generate_meeting_detail_and_ringkas(subj_id, m_no, mod_meta):
-    """Constructs the 3-part Guru AI detail and high-yield cheatsheet ringkas."""
-    pdf_info = OFFICIAL_PDFS.get((subj_id, m_no))
-    pdf_file = pdf_info[0] if pdf_info else f"{subj_id}_p{m_no}.pdf"
-    lecturer = pdf_info[1] if pdf_info else "Tim Dosen FTIK Unindra"
-    doc_name = pdf_info[2] if pdf_info else f"Pertemuan {m_no} - Modul Kuliah.pdf"
-
-    # 1. Parse PDF slides
-    slides = parse_pdf_slides(pdf_file)
-    total_slides = len(slides) if slides else 15
-
-    # If slide list is too long for MKWK (e.g. Indo P3 99 slides, Indo P4 55 slides), select high-yield core cluster slides
-    if total_slides > 30:
-        step = max(1, total_slides // 15)
-        selected_slides = [slides[i] for i in range(0, total_slides, step)][:16]
-    else:
-        selected_slides = slides
+    m_title = mod_meta.get("title", f"Pertemuan {m_no}")
+    lecturer = mod_meta.get("lecturer", "Tim Dosen FTIK Unindra")
+    doc_fn = mod_meta.get("doc_filename", f"Modul_Pertemuan_{m_no}.pdf")
+    slide_cnt = mod_meta.get("slide_count", "Modul Resmi Perkuliahan")
+    sections = mod_meta.get("sections", [])
+    ai_insights = mod_meta.get("ai_insights", [])
+    references = mod_meta.get("references", ["Modul Resmi FTIK Unindra", "Kurikulum Program Studi Sistem Informasi"])
 
     detail_parts = []
-    detail_parts.append(f"""<div class="alert alert-info" style="margin-bottom: 20px;">
-  <strong>🤖 PANDUAN GURU AI (BEDAH SLIDE PPT DOSEN) • PERTEMUAN {m_no}</strong><br>
-  Penjelasan setiap slide presentasi resmi dosen pengampu FTIK Unindra secara berurutan, ringkas, dan padat. Dilengkapi materi pengayaan first principles dan daftar sumber berkas resmi di bagian paling bawah.
+
+    # Alert Header
+    detail_parts.append(f"""<div class="alert alert-info" style="margin-bottom: 24px;">
+  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN {m_no}</strong><br>
+  <strong>Pokok Bahasan:</strong> {clean_html_math(m_title)}<br>
+  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi PPT dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
 </div>""")
 
-    # BAGIAN 1: Slide-by-Slide Walkthrough
-    detail_parts.append(f"""<div style="background: rgba(99, 102, 241, 0.12); border-left: 4px solid #6366F1; padding: 12px 16px; border-radius: 8px; margin: 16px 0 20px 0;">
-  <h3 style="margin: 0; color: #818CF8; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
-    <span>🎙️ BAGIAN 1: PENJELASAN SETIAP SLIDE PPT DOSEN (SINGKAT, PADAT & TERSTRUKTUR)</span>
+    # BAGIAN 1: Bedah Materi Lengkap PPT Dosen (Step-by-Step Tanpa Terpotong)
+    detail_parts.append(f"""<div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
+  <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
   </h3>
-  <p style="margin: 4px 0 0 0; font-size: 0.82rem; color: #94A3B8;">
-    Menjelaskan seluruh slide presentasi resmi dari dosen pengampu langkah demi langkah, menguraikan maksud diagram, formula, dan contoh soal yang dibahas di kelas.
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
   </p>
 </div>""")
 
-    # Build slide cards
-    module_sections = mod_meta.get("sections", []) if mod_meta else []
-    for s_idx, s in enumerate(selected_slides, 1):
-        s_num = s['num']
-        s_title = s['title']
-        s_bullets = s['bullets']
+    for sec_idx, sec in enumerate(sections, 1):
+        sec_title = clean_html_math(sec.get("title", f"Pokok Bahasan {sec_idx}"))
+        sec_content = clean_html_math(sec.get("content_html", ""))
 
-        # Match or synthesize lecturer explanation from module sections
-        sec_match = module_sections[(s_idx - 1) % len(module_sections)] if module_sections else None
-        if sec_match:
-            exp_text = f"Pada slide ini, dosen menerangkan pokok bahasan <strong>{s_title}</strong>. " + re.sub(r'<[^>]+>', ' ', sec_match.get("content_html", "")[:280]).strip() + "..."
-        else:
-            exp_text = f"Pada slide ini dosen menekankan pemahaman konsep <strong>{s_title}</strong> sebagai fondasi perkuliahan pekan ke-{m_no}. Mahasiswa diharapkan menguasai kaidah dasar dan mampu menerapkannya pada contoh kasus nyata perkuliahan."
+        detail_parts.append(f"""<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB {sec_idx}</span>
+      <span>{sec_title}</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    {sec_content}
+  </div>
+</div>""")
 
-        detail_parts.append(build_slide_card(s_num, total_slides, s_title, s_bullets, exp_text))
-
-    # BAGIAN 2: Tambahan Materi & Insight Guru AI (Paling Bawah)
-    ai_insights = mod_meta.get("ai_insights", []) if mod_meta else []
+    # BAGIAN 2: Tambahan Materi, First Principles & Insight Guru AI (Paling Bawah)
     if ai_insights:
-        detail_parts.append(f"""<div style="background: rgba(16, 185, 129, 0.12); border-left: 4px solid #10B981; padding: 14px 18px; border-radius: 10px; margin: 36px 0 20px 0;">
+        detail_parts.append(f"""<div style="background: rgba(16, 185, 129, 0.12); border-left: 5px solid #10B981; padding: 14px 18px; border-radius: 10px; margin: 36px 0 24px 0;">
   <h3 style="margin: 0; color: #34D399; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
-    <span>💡 BAGIAN 2: TAMBAHAN MATERI, DEEP-DIVE & INSIGHT GURU AI (PENGAYAAN DI LUAR SLIDE)</span>
+    <span>💡 BAGIAN 2: TAMBAHAN MATERI, FIRST PRINCIPLES & INSIGHT GURU AI (PENGAYAAN DI LUAR SLIDE)</span>
   </h3>
-  <p style="margin: 6px 0 0 0; font-size: 0.84rem; color: #94A3B8;">
-    Materi pengayaan di luar slide dosen: intuisi first principles, relevansi industri software engineering modern, tips mencatat, serta bedah jebakan soal kuis & UTS.
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Materi pengayaan di luar slide dosen: intuisi first principles, relevansi industri software engineering modern, tips mencatat di binder fisik, serta bedah jebakan soal kuis & UTS.
   </p>
 </div>""")
         for ai_idx, ai_sec in enumerate(ai_insights, 1):
-            detail_parts.append(f"<h4>PENGAYAAN {ai_idx}: {clean_html_math(ai_sec['title'])}</h4>")
-            detail_parts.append(clean_html_math(ai_sec["content_html"]))
-
-    # BAGIAN 3: Sumber Dokumen & Verifikasi Resmi Dosen (Paling Bawah)
-    ref_list = mod_meta.get("references", ["Modul Resmi FTIK Unindra", "Kurikulum & RPS Sistem Informasi"]) if mod_meta else ["Modul Resmi FTIK Unindra"]
-    ref_items = "".join(f"<li>{clean_html_math(r)}</li>" for r in ref_list)
-    detail_parts.append(f"""<div class="card-dark" style="margin-top: 36px; border: 1px solid rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.9); border-radius: 12px; padding: 20px;">
-  <h4 style="margin: 0 0 12px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
-    <span>📚 BAGIAN 3: SUMBER DOKUMEN & VERIFIKASI RESMI DOSEN</span>
+            ai_title = clean_html_math(ai_sec.get("title", f"Pengayaan {ai_idx}"))
+            ai_content = clean_html_math(ai_sec.get("content_html", ""))
+            detail_parts.append(f"""<div class="academic-insight-block" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;">
+  <h4 style="margin: 0 0 12px 0; color: #34D399; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span style="font-family: monospace; font-size: 0.85rem; background: rgba(16, 185, 129, 0.2); padding: 2px 8px; border-radius: 4px;">PENGAYAAN {ai_idx}</span>
+    <span>{ai_title}</span>
   </h4>
-  <div style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.7;">
-    <div><strong>📁 Berkas Modul Resmi Dosen:</strong> <code>{doc_name}</code> ({total_slides} Slide PPT/PDF)</div>
-    <div><strong>👨‍🏫 Dosen Pengampu Resmi:</strong> {lecturer} • Program Studi Sistem Informasi FTIK Unindra</div>
-    <div style="margin-top: 10px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar Dosen:</strong></div>
-    <ul style="margin: 6px 0 0 20px; padding: 0; font-size: 0.83rem; color: #94A3B8;">{ref_items}</ul>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    {ai_content}
   </div>
 </div>""")
 
-    # 3. Construct specific high-yield exam cheatsheet for summaries.ringkas
+    # BAGIAN 3: Sumber Dokumen & Verifikasi Resmi Dosen (Paling Bawah)
+    ref_items = "".join(f"<li>{clean_html_math(r)}</li>" for r in references)
+    detail_parts.append(f"""<div class="card-dark" style="margin-top: 36px; border: 1px solid rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.9); border-radius: 12px; padding: 22px 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span>📚 BAGIAN 3: SUMBER DOKUMEN & VERIFIKASI RESMI DOSEN</span>
+  </h4>
+  <div style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.8;">
+    <div><strong>📁 Berkas Modul Resmi Dosen:</strong> <code>{clean_html_math(doc_fn)}</code> ({clean_html_math(slide_cnt)})</div>
+    <div><strong>👨‍🏫 Dosen Pengampu Resmi:</strong> {clean_html_math(lecturer)} • Program Studi Sistem Informasi FTIK Unindra</div>
+    <div style="margin-top: 10px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar Dosen:</strong></div>
+    <ul style="margin: 6px 0 0 20px; padding: 0; font-size: 0.85rem; color: #94A3B8; line-height: 1.7;">{ref_items}</ul>
+  </div>
+</div>""")
+
+    return "\n".join(detail_parts)
+
+def build_ringkas_cheatsheet(subj_id, m_no):
+    """Builds a clean, customized high-yield exam cheatsheet table for that meeting."""
     exam_pts = CHEATSHEET_EXAM_POINTS.get((subj_id, m_no), [
         ("Konsep Pokok Pertemuan", "Kuasai definisi baku, hafalkan istilah teknis, dan pahami alur penerapannya."),
         ("Poin Kunci Ujian", "Pelajari contoh soal praktikum dan perhatikan instruksi dosen terkait kisi-kisi.")
@@ -488,23 +382,20 @@ def generate_meeting_detail_and_ringkas(subj_id, m_no, mod_meta):
 </div>""")
     ringkas_parts.append(f"""<div class="card-dark" style="margin-top: 14px; padding: 12px 16px; border-left: 4px solid #38BDF8;">
   <strong style="color: #38BDF8;">🎯 Tips Belajar & Menjawab Soal:</strong> 
-  Pahami logika di balik definisi dan rumus, latih menulis ulang skema pada kertas binder tanpa melihat contekan untuk membiasakan ingatan motorik.
+  Pahami logika di balik definisi dan rumus, latih menulis ulang skema pada kertas binder fisik tanpa melihat contekan untuk membiasakan ingatan motorik saat ujian.
 </div>""")
 
-    final_detail = clean_html_math("\n".join(detail_parts))
-    final_ringkas = clean_html_math("\n".join(ringkas_parts))
-
-    return final_detail, final_ringkas
+    return "\n".join(ringkas_parts)
 
 def main():
     print("=" * 70)
-    print("🚀 MEMULAI GENERASI GURU AI: SLIDE-BY-SLIDE VERBATIM & PENGAYAAN LENGKAP")
-    print("   1. Bedah Setiap Slide PPT Dosen (Singkat & Padat)")
-    print("   2. Tambahan Materi & Insight Guru AI (Di Bawah - Sebanyak Mungkin)")
-    print("   3. Sumber Berkas Resmi & Dosen (Paling Bawah)")
-    print("   4. Ringkas: Cheatsheet Poin Kunci Nyata (Bebas Boilerplate)")
-    print("   5. Standar (Catatan Rekaman GMeet Mahasiswa): Dijaga Utuh 100%!")
-    print("   6. Pembersihan Berkas AI Duplikat dari Bahan Kuliah")
+    print("🚀 GENERASI DIKTAT LENGKAP GURU AI (UTUH, MENDALAM & BEBAS DARI '...')")
+    print("   1. Uraian Materi Bab per Bab PPT Dosen Lengkap & Tuntas")
+    print("   2. Pengayaan Materi First Principles, Industri & Jebakan UTS di Bawah")
+    print("   3. Sumber Berkas Resmi Dosen Lengkap di Paling Bawah")
+    print("   4. Cheatsheet Ringkas Poin Kunci Ujian Nyata per Pertemuan")
+    print("   5. Catatan Mahasiswa (Hasil GMeet) Dijaga Utuh 100%!")
+    print("   6. Pembersihan Berkas PDF Tiruan AI")
     print("=" * 70)
 
     with open(SEEDDATA_PATH, "r", encoding="utf-8") as f:
@@ -537,13 +428,14 @@ def main():
             m_no = meeting.get("meeting_number")
             mod_meta = ALL_MODULES_MAP.get((subj_id, m_no))
 
-            # 1. Clean up materials: remove any duplicate mat_ai_ items
+            # Clean up materials: remove any duplicate mat_ai_ items
             mats = meeting.get("materials", [])
             clean_mats = [m for m in mats if not m.get("id", "").startswith("mat_ai_") and "Guru AI" not in m.get("title", "")]
             meeting["materials"] = clean_mats
 
-            # 2. Generate Slide-by-Slide Detail and Custom Ringkas
-            detail_html, ringkas_html = generate_meeting_detail_and_ringkas(subj_id, m_no, mod_meta)
+            # Build full, unabridged detail and custom ringkas
+            detail_html = build_diktat_detail(subj_id, m_no, mod_meta)
+            ringkas_html = build_ringkas_cheatsheet(subj_id, m_no)
 
             if "summaries" not in meeting:
                 meeting["summaries"] = {}
@@ -551,31 +443,30 @@ def main():
             # Assign new Detail and Ringkas
             meeting["summaries"]["detail"] = detail_html
             meeting["summaries"]["ringkas"] = ringkas_html
-            # meeting["summaries"]["standar"] is deliberately LEFT UNTOUCHED!
+            # meeting["summaries"]["standar"] (student's GMeet recordings summary) is 100% untouched!
 
-            # Also assign raw_slide_content
             meeting["raw_slide_content"] = detail_html
 
             total_updated += 1
-            print(f"  • [{subj_id}] Pertemuan {m_no}: Selesai diperbarui dengan Bedah Slide & Cheatsheet Ujian.")
+            print(f"  • [{subj_id}] Pertemuan {m_no}: Selesai diperbarui dengan Diktat Lengkap & Cheatsheet Ujian.")
 
     new_content = content[:idx_start] + prefix + json.dumps(subjects_data, indent=2, ensure_ascii=False) + ";\n\n" + suffix
     with open(SEEDDATA_PATH, "w", encoding="utf-8") as f:
         f.write(new_content)
     print(f"\n✓ Sukses memperbarui {total_updated} pertemuan di seedData.js!")
 
-    # 4. Bump storage version
+    # Bump storage version
     with open(STORAGE_PATH, "r", encoding="utf-8") as f:
         st_content = f.read()
 
-    new_ver = "export const CURRENT_DATA_VERSION = 'v13_guru_ai_verbatim_slide_by_slide_gmeet_2026';"
+    new_ver = "export const CURRENT_DATA_VERSION = 'v14_guru_ai_diktat_lengkap_ppt_dosen_2026';"
     st_content = re.sub(r"export const CURRENT_DATA_VERSION = '[^']+';", new_ver, st_content)
     with open(STORAGE_PATH, "w", encoding="utf-8") as f:
         f.write(st_content)
-    print("✓ CURRENT_DATA_VERSION dinaikkan ke v13 (Otomatis Sync Browser).")
+    print("✓ CURRENT_DATA_VERSION dinaikkan ke v14 (Otomatis Upgrade Browser).")
 
     print("\n" + "=" * 70)
-    print("🎉 GENERASI GURU AI SLIDE-BY-SLIDE & SINKRONISASI SELESAI SEMPURNA!")
+    print("🎉 GENERASI DIKTAT LENGKAP GURU AI SELESAI DENGAN SEMPURNA!")
     print("=" * 70)
 
 if __name__ == "__main__":
