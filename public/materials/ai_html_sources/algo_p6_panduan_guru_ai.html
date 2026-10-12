@@ -1,0 +1,101 @@
+<div class="alert alert-info" style="margin-bottom: 24px;">
+  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN 6</strong><br>
+  <strong>Pokok Bahasan:</strong> Struktur Pemilihan Majemuk & Bersarang (Nested IF & Multikasus)<br>
+  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi dan modul dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum/hitungan, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
+</div>
+
+<div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
+  <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
+  </p>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>1. Konsep Pemilihan Majemuk (Banyak Kasus)</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p><strong>Pemilihan Majemuk</strong> digunakan ketika persoalan memiliki tiga alternatif pilihan atau lebih. Struktur ini dibentuk dengan menggabungkan instruksi <code>if</code> di dalam bagian <code>else</code> dari instruksi sebelumnya:</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>{ Pola Pemilihan Majemuk Bertingkat }
+if (kondisi_1) then
+    aksi_1
+else if (kondisi_2) then
+    aksi_2
+else if (kondisi_3) then
+    aksi_3
+else
+    aksi_default  { penanganan kondisi fallback / nilai default }
+endif</code></pre>
+<ul>
+  <li><strong>Mekanisme Evaluasi:</strong> Kondisi diuji secara berurutan dari atas ke bawah. Begitu salah satu kondisi bernilai TRUE, aksinya langsung dieksekusi dan seluruh cabang di bawahnya dilewati (tidak diuji lagi).</li>
+</ul>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>2. Studi Kasus Konversi Grade Nilai Akademik</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p>Mengonversi nilai angka mahasiswa (0 &ndash; 100) menjadi indeks huruf mutu berdasarkan standar akademik Unindra:</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>{ Algoritma Konversi Grade Nilai }
+input(nilai)
+if (nilai &ge; 80) then
+    grade &larr; 'A'
+else if (nilai &ge; 70) then
+    grade &larr; 'B'
+else if (nilai &ge; 60) then
+    grade &larr; 'C'
+else if (nilai &ge; 50) then
+    grade &larr; 'D'
+else
+    grade &larr; 'E'
+endif
+output("Grade Mutu: ", grade)</code></pre>
+<p><strong>Catatan Kritis:</strong> Perhatikan bahwa pada <code>else if (nilai &ge; 70)</code> tidak perlu lagi ditulis <code>and (nilai &lt; 80)</code>, karena nilai yang mencapai 80 ke atas sudah tersaring dan dieksekusi pada cabang pertama.</p>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>3. Percabangan Bersarang (Nested IF)</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p><strong>Nested IF</strong> adalah struktur di mana di dalam blok aksi suatu pernyataan <code>if</code> terdapat struktur <code>if</code> lainnya. Sangat berguna untuk pengujian bersyarat bertingkat (misal: syarat golongan kerja dan status pernikahan):</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>if (golongan = "III") then
+    gaji_pokok &larr; 4000000
+    if (status_nikah = "Y") then
+        tunjangan &larr; 500000
+    else
+        tunjangan &larr; 0
+    endif
+else
+    gaji_pokok &larr; 3000000
+    tunjangan &larr; 0
+endif
+total_gaji &larr; gaji_pokok + tunjangan</code></pre>
+  </div>
+</div>
+
+<div class="card-dark" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px 24px; margin: 28px 0 20px 0;">
+  <h4 style="margin: 0 0 12px 0; color: #F59E0B; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+    <span>💡</span>
+    <span>BAGIAN 2: PENGAYAAN MATERI FIRST PRINCIPLES, INDUSTRI & JEBAKAN UTS</span>
+  </h4>
+  <ul style="margin: 0; padding-left: 20px; color: #CBD5E1; line-height: 1.65; font-size: 0.9rem;">
+    <li style='margin-bottom: 10px;'><strong>Anti-Redundansi:</strong> Menulis <code>if (x &ge; 70 and x &lt; 80)</code> pada blok <code>else if</code> adalah pemborosan evaluasi logika jika cabang atas sudah menyaring <code>x &ge; 80</code>.</li><li style='margin-bottom: 10px;'><strong>Jebakan Kasus Overlap:</strong> Pastikan urutan kondisi tersusun logis dari angka tertinggi ke terendah saat menggunakan operator <code>&ge;</code>. Jika dibalik (misal <code>if (x &ge; 50)</code> di awal), maka nilai 90 akan salah didiagnosis masuk ke grade D!</li><li style='margin-bottom: 10px;'><strong>Kompilasi Mesin:</strong> Struktur IF bertingkat yang teratur dapat dioptimasi oleh compiler menjadi instruksi jump table assembly berkecepatan tinggi.</li>
+  </ul>
+</div>
+
+<div style="background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(148, 163, 184, 0.25); border-radius: 10px; padding: 14px 18px; margin-top: 24px; font-size: 0.82rem; color: #94A3B8;">
+  <strong style="color: #E2E8F0;">📚 BAGIAN 3: VERIFIKASI SUMBER RUJUKAN RESMI PERKULIAHAN FTIK UNINDRA</strong><br>
+  <span>• Berkas Sumber Materi: <code>Algo1_Pertemuan Ke-6.pptx (16 Slide)</code></span><br>
+  <span>• Dosen Pengampu / Tim Pengajar: <strong>Tim Dosen Algoritma FTIK Unindra</strong></span><br>
+  <span>• Kurikulum: Program Studi S1 Sistem Informasi • Universitas Indraprasta PGRI (Unindra)</span>
+</div>

@@ -1,291 +1,26 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Master Guide: Pengantar Algoritma, Asal Usul Al-Khwarizmi, 5 Kriteria Knuth & 3 Notasi Komputasi - Panduan Guru AI Antigravity</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
-    @page {
-      size: A4;
-      margin: 12mm 14mm;
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #0f172a;
-      line-height: 1.48;
-      font-size: 8.8pt;
-      margin: 0;
-      background: #ffffff;
-    }
-
-    .header-container {
-      border-bottom: 2.5px solid #2563eb;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .badge-wrap {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-
-    .badge {
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 2.5px 8px;
-      border-radius: 4px;
-      font-size: 7.2pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-ai {
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-    }
-
-    .badge-gold {
-      background: #fef3c7;
-      color: #b45309;
-      border: 1px solid #fde68a;
-    }
-
-    h1 {
-      font-size: 13.5pt;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 0 0 2px 0;
-      letter-spacing: -0.3px;
-    }
-
-    h2 {
-      font-size: 9.8pt;
-      font-weight: 600;
-      color: #2563eb;
-      margin: 0;
-    }
-
-    .meta-text {
-      font-size: 7.8pt;
-      color: #64748b;
-      margin-top: 3px;
-    }
-
-    .section {
-      margin-bottom: 12px;
-      page-break-inside: avoid;
-    }
-
-    .section-title {
-      font-size: 9.8pt;
-      font-weight: 800;
-      color: #0f172a;
-      border-left: 3.5px solid #2563eb;
-      padding-left: 7px;
-      margin: 10px 0 6px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .section-title-ai {
-      border-left-color: #059669;
-      color: #065f46;
-    }
-
-    .sub-title {
-      font-size: 8.8pt;
-      font-weight: 700;
-      color: #1e293b;
-      margin: 6px 0 3px 0;
-    }
-
-    .card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      padding: 8px 10px;
-      margin-bottom: 7px;
-    }
-
-    .card-accent {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-    }
-
-    .card-dark {
-      background: #090d16;
-      border: 1px solid #1e293b;
-      color: #e2e8f0;
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin: 6px 0;
-      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 7.9pt;
-      margin: 6px 0 8px 0;
-      border: 1px solid #cbd5e1;
-    }
-
-    th, td {
-      border: 1px solid #cbd5e1;
-      padding: 5px 8px;
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    th {
-      background: #0f172a;
-      font-weight: 700;
-      color: #ffffff;
-      font-size: 7.8pt;
-      letter-spacing: 0.3px;
-      border-bottom: 2px solid #2563eb;
-    }
-
-    tr:nth-child(even) td {
-      background: #f8fafc;
-    }
-
-    td code {
-      background: #eff6ff;
-      color: #1e40af;
-      border: 1px solid #bfdbfe;
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-size: 7.6pt;
-    }
-
-    pre, code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 7.8pt;
-    }
-
-    code {
-      background: #e2e8f0;
-      color: #0f172a;
-      padding: 1px 3px;
-      border-radius: 3px;
-      font-weight: 600;
-    }
-
-    pre {
-      background: #090d16;
-      color: #e2e8f0;
-      padding: 9px 12px;
-      border-radius: 6px;
-      margin: 5px 0 7px 0;
-      line-height: 1.4;
-      border: 1px solid #1e293b;
-      overflow: hidden;
-      white-space: pre-wrap;
-    }
-
-    pre code {
-      background: transparent;
-      padding: 0;
-      color: inherit;
-    }
-
-    .code-kw { color: #f43f5e; font-weight: bold; }
-    .code-fn { color: #38bdf8; font-weight: bold; }
-    .code-str { color: #4ade80; }
-    .code-num { color: #fbbf24; }
-    .code-cmt { color: #94a3b8; font-style: italic; }
-    .code-type { color: #c084fc; font-weight: bold; }
-
-    .alert {
-      padding: 6px 9px;
-      border-radius: 5px;
-      font-size: 7.9pt;
-      margin: 5px 0;
-      border-left: 3.5px solid;
-    }
-
-    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
-    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
-    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
-    .alert-success { background: #f0fdf4; border-color: #10b981; color: #065f46; }
-
-    ul, ol {
-      margin: 4px 0 6px 0;
-      padding-left: 18px;
-    }
-
-    li {
-      margin-bottom: 2.5px;
-    }
-
-    .footer {
-      border-top: 1px solid #cbd5e1;
-      padding-top: 5px;
-      margin-top: 12px;
-      font-size: 7.2pt;
-      color: #94a3b8;
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header Banner -->
-  <div class="header-container">
-    <div>
-      <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
-        <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
-      </div>
-      <h1>Master Guide: Pengantar Algoritma, Asal Usul Al-Khwarizmi, 5 Kriteria Knuth & 3 Notasi Komputasi</h1>
-      <h2>Algoritma 1 • Pertemuan 1</h2>
-    </div>
-    <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK</div>
-      <div class="meta-text"><strong>Berkas Sumber:</strong> algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1.pdf)</div>
-      <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
-    </div>
+<div class="alert alert-info" style="margin-bottom: 24px;">
+  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN 1</strong><br>
+  <strong>Pokok Bahasan:</strong> Master Guide: Pengantar Algoritma, Asal Usul Al-Khwarizmi, 5 Kriteria Knuth & 3 Notasi Komputasi<br>
+  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi PPT dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
+</div>
+<div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
+  <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
+  </p>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 1</span>
+      <span>Pengantar & Urgensi Algoritma dalam Informatika (Slide 1 - 3 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
   </div>
-
-  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
-  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
-    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
-    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
-  </div>
-
-  <!-- Sections Content (Bagian 1) -->
-  
-    <div class="section">
-      <div class="section-title">BAB 1. Pengantar & Urgensi Algoritma dalam Informatika (Slide 1 - 3 PPT Dosen)</div>
-      
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 3 menjelaskan bahwa <strong>Algoritma adalah jantung dari ilmu komputer atau informatika</strong>. Meskipun sangat identik dengan sistem komputasi, dalam kehidupan sehari-hari manusia sebenarnya telah berulang kali mempraktikkan algoritma tanpa disadari (misalnya resep membuat kue, petunjuk perakitan meja, atau alur transaksi di ATM).</p>
 <div class="card card-accent">
   <strong>Aksioma Fundamental Niklaus Wirth (1976):</strong><br>
@@ -293,11 +28,18 @@
   Struktur Data menyediakan wadah penyimpanan informasi (variabel, array, record), sedangkan Algoritma merancang alur logika dan instruksi manipulasi datanya. Keduanya merupakan fondasi mutlak yang tidak terpisahkan.
 </div>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 2. Asal-Usul Nama & Definisi Baku Algoritma (Slide 4 - 5 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 2</span>
+      <span>Asal-Usul Nama & Definisi Baku Algoritma (Slide 4 - 5 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 4 menguraikan sejarah kata <em>Algoritma</em> yang berakar dari nama ilmuwan muslim Persia terkemuka pada masa keemasan Islam di Baghdad (abad ke-9 Masehi), yaitu <strong>Abu Ja'far Muhammad bin Musa Al-Khwarizmi</strong> (780–846 M). Bangsa barat melafalkan namanya menjadi <em>Algorism</em> yang kemudian berubah menjadi <em>Algorithm</em>. Beliau juga merupakan peletak dasar aljabar modern melalui kitab legendarisnya <em>Al-Jabr wal-Muqabala</em>.</p>
 <div class="card-dark">
   <strong>Definisi Baku Algoritma (Slide 5 Modul Dosen):</strong><br>
@@ -306,11 +48,18 @@
   </blockquote>
 </div>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 3. Lima Kriteria Baku Algoritma Menurut Donald E. Knuth (Slide 6 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 3</span>
+      <span>Lima Kriteria Baku Algoritma Menurut Donald E. Knuth (Slide 6 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 6 menyajikan 5 syarat mutlak yang dirumuskan oleh pakar ilmu komputer legendaris <strong>Donald E. Knuth</strong> dalam karya monumentalnya <em>The Art of Computer Programming</em> agar sebuah urutan instruksi sah disebut sebagai algoritma:</p>
 <table>
   <thead><tr><th>Kriteria Knuth</th><th>Definisi Konseptual Dosen</th><th>Dampak Fatal Jika Dilanggar</th></tr></thead>
@@ -343,11 +92,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 4. Tiga Jenis Proses Alur Algoritma (Slide 7 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 4</span>
+      <span>Tiga Jenis Proses Alur Algoritma (Slide 7 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 7 membagi seluruh proses penyelesaian masalah dalam algoritma ke dalam 3 jenis bentuk:</p>
 <table>
   <thead><tr><th>Jenis Proses Algoritma</th><th>Mekanisme Eksekusi</th><th>Contoh Kasus</th></tr></thead>
@@ -358,11 +114,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 5. Definisi Program, Pemrograman & 3 Cara Penulisan Algoritma (Slide 8 - 9 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 5</span>
+      <span>Definisi Program, Pemrograman & 3 Cara Penulisan Algoritma (Slide 8 - 9 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 8 mendefinisikan <strong>Program</strong> sebagai kumpulan instruksi-instruksi tersendiri (source code) yang dibuat oleh programmer untuk memecahkan masalah. Sedangkan <strong>Pemrograman</strong> adalah proses menulis, menguji, dan memelihara kode tersebut.</p>
 <p>Slide 9 menyajikan 3 cara representasi / notasi penulisan algoritma:</p>
 <table>
@@ -374,11 +137,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 6. Studi Kasus Dosen: Menentukan Bilangan Terbesar dari 3 Bilangan (Slide 10 - 12 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 6</span>
+      <span>Studi Kasus Dosen: Menentukan Bilangan Terbesar dari 3 Bilangan (Slide 10 - 12 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 10-12 memperlihatkan contoh algoritma untuk menentukan bilangan terbesar di antara 3 buah bilangan masukan (A, B, dan C):</p>
 <div class="card-dark">
   <span style="color: #38bdf8; font-weight: bold;">// Algoritma Menentukan Nilai Maksimum (Slide 11):</span>
@@ -397,26 +167,34 @@
 <span class="code-kw">END PROGRAM</span></code></pre>
 </div>
 
-    </div>
-        
-
-  
-  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
-  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
-    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
-    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
   </div>
-  
-    <div class="section">
-      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Mengapa Finiteness Sangat Krusial Bagi CPU Komputer</div>
-      
+</div>
+<div style="background: rgba(16, 185, 129, 0.12); border-left: 5px solid #10B981; padding: 14px 18px; border-radius: 10px; margin: 36px 0 24px 0;">
+  <h3 style="margin: 0; color: #34D399; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>💡 BAGIAN 2: TAMBAHAN MATERI, FIRST PRINCIPLES & INSIGHT GURU AI (PENGAYAAN DI LUAR SLIDE)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Materi pengayaan di luar slide dosen: intuisi first principles, relevansi industri software engineering modern, tips mencatat di binder fisik, serta bedah jebakan soal kuis & UTS.
+  </p>
+</div>
+<div class="academic-insight-block" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;">
+  <h4 style="margin: 0 0 12px 0; color: #34D399; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span style="font-family: monospace; font-size: 0.85rem; background: rgba(16, 185, 129, 0.2); padding: 2px 8px; border-radius: 4px;">PENGAYAAN 1</span>
+    <span>Intuisi First Principles: Mengapa Finiteness Sangat Krusial Bagi CPU Komputer</span>
+  </h4>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Di balik kriteria <em>Finiteness</em> Donald Knuth tersimpan batasan fisik arsitektur komputasi. Jika sebuah program tidak memiliki kondisi berhenti (<em>halting condition</em>), CPU akan terus mengeksekusi instruksi perulangan pada kecepatan GHz hingga menghabiskan alokasi memori tumpukan (<em>Stack Overflow</em>) atau mengunci alokasi thread sistem operasi. Karena itu, perancangan algoritma wajib menjamin adanya langkah terminasi yang pasti.</p>
 
-    </div>
-            
-    <div class="section">
-      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Menjawab Soal Kuis & UTS Algoritma 1</div>
-      
+  </div>
+</div>
+<div class="academic-insight-block" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;">
+  <h4 style="margin: 0 0 12px 0; color: #34D399; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span style="font-family: monospace; font-size: 0.85rem; background: rgba(16, 185, 129, 0.2); padding: 2px 8px; border-radius: 4px;">PENGAYAAN 2</span>
+    <span>Tips Menjawab Soal Kuis & UTS Algoritma 1</span>
+  </h4>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <div class="alert alert-warning">
   <strong>🎯 Bedah Jebakan Ujian Khas Pertemuan 1:</strong><br>
   <strong>Soal Jebakan:</strong> <em>"Apakah sebuah algoritma yang benar WAJIB memiliki masukan (input) dari pengguna?"</em><br>
@@ -424,30 +202,16 @@
   <strong>Jawaban Benar & Pembahasan Dosen:</strong> <strong>TIDAK WAJIB.</strong> Syarat Knuth menetapkan jumlah input adalah <strong>nol atau lebih (&ge; 0)</strong>. Contoh: algoritma penampil teks statis atau pembangkit bilangan acak seed statis memiliki 0 input dan tetap sah sebagai algoritma. Sebaliknya, <strong>OUTPUT MUTLAK WAJIB MINIMAL SATU (&ge; 1)</strong>!
 </div>
 
-    </div>
-            
-        
-
-  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
-  <div class="section" style="margin-top: 14px;">
-    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
-      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
-      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
-        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1.pdf)</code> (14 Slide PPT Resmi Dosen)</div>
-        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Pak Rizki / Tim Dosen Algoritma FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
-        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
-        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
-          <li>Berkas Resmi Perkuliahan: algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1, 14 Slide PPT Dosen FTIK Unindra).</li><li>Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.</li><li>Knuth, Donald E. (1997). The Art of Computer Programming, Vol. 1: Fundamental Algorithms (3rd ed.). Addison-Wesley.</li><li>Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
-        </ul>
-      </div>
-    </div>
   </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <span>Academic Digital Binder • Sistem Informasi FTIK Universitas Indraprasta PGRI</span>
-    <span>Dokumen Resmi Pembelajaran Mandiri & Persiapan UTS • Dicetak Secara Otomatis</span>
+</div>
+<div class="card-dark" style="margin-top: 36px; border: 1px solid rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.9); border-radius: 12px; padding: 22px 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span>📚 BAGIAN 3: SUMBER DOKUMEN & VERIFIKASI RESMI DOSEN</span>
+  </h4>
+  <div style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.8;">
+    <div><strong>📁 Berkas Modul Resmi Dosen:</strong> <code>algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1.pdf)</code> (14 Slide PPT Resmi Dosen)</div>
+    <div><strong>👨‍🏫 Dosen Pengampu Resmi:</strong> Pak Rizki / Tim Dosen Algoritma FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+    <div style="margin-top: 10px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar Dosen:</strong></div>
+    <ul style="margin: 6px 0 0 20px; padding: 0; font-size: 0.85rem; color: #94A3B8; line-height: 1.7;"><li>Berkas Resmi Perkuliahan: algo_p1_pengantar_algoritma.pdf (Pengantar Algoritma Pertemuan Ke-1, 14 Slide PPT Dosen FTIK Unindra).</li><li>Anita Sindar RMS, S.T.M.T.I. (2019). Struktur Data Dan Algoritma Dengan C++. Penerbit Pustaka.</li><li>Knuth, Donald E. (1997). The Art of Computer Programming, Vol. 1: Fundamental Algorithms (3rd ed.). Addison-Wesley.</li><li>Silabus Resmi Mata Kuliah Algoritma & Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li></ul>
   </div>
-
-</body>
-</html>
+</div>

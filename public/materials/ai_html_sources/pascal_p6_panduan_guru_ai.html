@@ -1,0 +1,134 @@
+<div class="alert alert-info" style="margin-bottom: 24px;">
+  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN 6</strong><br>
+  <strong>Pokok Bahasan:</strong> Struktur Seleksi Majemuk Terstruktur (CASE-OF) & Nested Selection<br>
+  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi dan modul dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum/hitungan, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
+</div>
+
+<div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
+  <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
+  </p>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>1. Karakteristik & Batasan Struktur CASE-OF</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p><strong>Struktur CASE-OF</strong> adalah struktur percabangan yang digunakan untuk memilih satu aksi dari sekumpulan alternatif berdasarkan pencocokan nilai suatu ekspresi pemilih (<em>selector</em>):</p>
+<ul>
+  <li><strong>Syarat Mutlak Variabel Pemilih:</strong> Tipe data variabel pemilih <strong>WAJIB BERTIPE ORDINAL</strong> (tipe data yang urutan elemennya pasti dan dapat dihitung: <code>integer</code>, <code>char</code>, <code>boolean</code>, atau enumerasi).</li>
+  <li><strong>Larangan Keras:</strong> Tipe data <code>real</code> (pecahan berkoma) dan <code>string</code> <strong>DILARANG</strong> dijadikan variabel pemilih dalam CASE-OF standar.</li>
+  <li><strong>Keunggulan:</strong> Struktur kode jauh lebih rapi, terhindar dari indentasi tangga yang terlalu dalam, serta waktu kompilasi yang efisien.</li>
+</ul>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>2. Sintaks Formal & Ragam Format Selector CASE-OF</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>case variabel_pemilih of
+  nilai_tunggal : aksi_1;
+  nilai_a, nilai_b : aksi_2;         { Daftar nilai jamak dipisah koma }
+  nilai_awal..nilai_akhir : aksi_3;  { Menggunakan rentang subrange (..) }
+else
+  aksi_default;                      { Dikerjakan bila tidak ada nilai yang cocok }
+end;</code></pre>
+<p><strong>Contoh Format Nilai Pemilih:</strong></p>
+<ul>
+  <li>Nilai tunggal integer: <code>1: writeln('Hari Senin');</code></li>
+  <li>Nilai jamak karakter char: <code>'y', 'Y': writeln('Anda menyetujui syarat.');</code></li>
+  <li>Rentang subjangkauan (subrange): <code>80..100: writeln('Grade A');</code></li>
+</ul>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>3. Program Lengkap: Menu Pembelian & Kasir Interaktif</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>program MenuResto;
+uses crt;
+
+var
+  pilihan, jumlah: integer;
+  harga, total: real;
+  nama_menu: string[30];
+
+begin
+  clrscr;
+  writeln('========================================');
+  writeln('       DAFTAR MENU KANTIN MAHASISWA     ');
+  writeln('========================================');
+  writeln('1. Paket Nasi Ayam Geprek  (Rp 15.000)  ');
+  writeln('2. Paket Nasi Soto Ayam    (Rp 12.000)  ');
+  writeln('3. Mie Goreng Spesial      (Rp 10.000)  ');
+  writeln('4. Es Teh Manis Jumbo      (Rp  4.000)  ');
+  writeln('========================================');
+  write('Pilih Nomor Menu [1-4] : '); readln(pilihan);
+
+  case pilihan of
+    1: begin
+         nama_menu := 'Paket Nasi Ayam Geprek';
+         harga := 15000;
+       end;
+    2: begin
+         nama_menu := 'Paket Nasi Soto Ayam';
+         harga := 12000;
+       end;
+    3: begin
+         nama_menu := 'Mie Goreng Spesial';
+         harga := 10000;
+       end;
+    4: begin
+         nama_menu := 'Es Teh Manis Jumbo';
+         harga := 4000;
+       end;
+  else
+    begin
+      writeln('Nomor menu tidak terdaftar!');
+      readln;
+      exit; { Keluar dari program }
+    end;
+  end;
+
+  write('Jumlah Porsi yang Dipesan : '); readln(jumlah);
+  total := harga * jumlah;
+
+  writeln('----------------------------------------');
+  writeln('Pesanan Anda  : ', nama_menu);
+  writeln('Harga Satuan  : Rp ', harga:0:0);
+  writeln('Jumlah Porsi  : ', jumlah);
+  writeln('Total Tagihan : Rp ', total:0:0);
+  writeln('========================================');
+  writeln('Terima kasih atas pesanan Anda!');
+  readln;
+end.</code></pre>
+  </div>
+</div>
+
+<div class="card-dark" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px 24px; margin: 28px 0 20px 0;">
+  <h4 style="margin: 0 0 12px 0; color: #F59E0B; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+    <span>💡</span>
+    <span>BAGIAN 2: PENGAYAAN MATERI FIRST PRINCIPLES, INDUSTRI & JEBAKAN UTS</span>
+  </h4>
+  <ul style="margin: 0; padding-left: 20px; color: #CBD5E1; line-height: 1.65; font-size: 0.9rem;">
+    <li style='margin-bottom: 10px;'><strong>Perbedaan IF vs CASE-OF:</strong> Gunakan <code>if-then-else</code> jika kondisi melibatkan perbandingan relasional kompleks dengan variabel bertipe real/string (misal: <code>ipk &ge; 3.50</code>). Gunakan <code>case-of</code> jika pemilih berupa pilihan diskrit ordinal (menu 1-4, karakter pilihan Y/N).</li><li style='margin-bottom: 10px;'><strong>Penutup Struktur CASE:</strong> Seluruh blok <code>case ... of</code> ditutup dengan kata kunci <code>end;</code> (tanpa membutuhkan <code>begin</code> di awal case).</li><li style='margin-bottom: 10px;'><strong>Rentang Char:</strong> Pada Free Pascal, selector char mendukung subrange alfabet: <code>'a'..'z': writeln('Huruf kecil');</code>.</li>
+  </ul>
+</div>
+
+<div style="background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(148, 163, 184, 0.25); border-radius: 10px; padding: 14px 18px; margin-top: 24px; font-size: 0.82rem; color: #94A3B8;">
+  <strong style="color: #E2E8F0;">📚 BAGIAN 3: VERIFIKASI SUMBER RUJUKAN RESMI PERKULIAHAN FTIK UNINDRA</strong><br>
+  <span>• Berkas Sumber Materi: <code>Pertemuan_6.pdf (14 Halaman)</code></span><br>
+  <span>• Dosen Pengampu / Tim Pengajar: <strong>Tim Dosen Pemrograman FTIK Unindra</strong></span><br>
+  <span>• Kurikulum: Program Studi S1 Sistem Informasi • Universitas Indraprasta PGRI (Unindra)</span>
+</div>

@@ -26,3 +26,7 @@ dist-ssr
 # Environment Variables
 .env
 .env.production
+
+# Python Cache
+__pycache__/
+*.pyc

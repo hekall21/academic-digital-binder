@@ -1,291 +1,26 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Master Guide: Pengantar Pemrograman, Blok Komputer, Penerjemah Bahasa & Struktur Dasar Pascal - Panduan Guru AI Antigravity</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
-    @page {
-      size: A4;
-      margin: 12mm 14mm;
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #0f172a;
-      line-height: 1.48;
-      font-size: 8.8pt;
-      margin: 0;
-      background: #ffffff;
-    }
-
-    .header-container {
-      border-bottom: 2.5px solid #2563eb;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .badge-wrap {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-
-    .badge {
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 2.5px 8px;
-      border-radius: 4px;
-      font-size: 7.2pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-ai {
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-    }
-
-    .badge-gold {
-      background: #fef3c7;
-      color: #b45309;
-      border: 1px solid #fde68a;
-    }
-
-    h1 {
-      font-size: 13.5pt;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 0 0 2px 0;
-      letter-spacing: -0.3px;
-    }
-
-    h2 {
-      font-size: 9.8pt;
-      font-weight: 600;
-      color: #2563eb;
-      margin: 0;
-    }
-
-    .meta-text {
-      font-size: 7.8pt;
-      color: #64748b;
-      margin-top: 3px;
-    }
-
-    .section {
-      margin-bottom: 12px;
-      page-break-inside: avoid;
-    }
-
-    .section-title {
-      font-size: 9.8pt;
-      font-weight: 800;
-      color: #0f172a;
-      border-left: 3.5px solid #2563eb;
-      padding-left: 7px;
-      margin: 10px 0 6px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .section-title-ai {
-      border-left-color: #059669;
-      color: #065f46;
-    }
-
-    .sub-title {
-      font-size: 8.8pt;
-      font-weight: 700;
-      color: #1e293b;
-      margin: 6px 0 3px 0;
-    }
-
-    .card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      padding: 8px 10px;
-      margin-bottom: 7px;
-    }
-
-    .card-accent {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-    }
-
-    .card-dark {
-      background: #090d16;
-      border: 1px solid #1e293b;
-      color: #e2e8f0;
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin: 6px 0;
-      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 7.9pt;
-      margin: 6px 0 8px 0;
-      border: 1px solid #cbd5e1;
-    }
-
-    th, td {
-      border: 1px solid #cbd5e1;
-      padding: 5px 8px;
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    th {
-      background: #0f172a;
-      font-weight: 700;
-      color: #ffffff;
-      font-size: 7.8pt;
-      letter-spacing: 0.3px;
-      border-bottom: 2px solid #2563eb;
-    }
-
-    tr:nth-child(even) td {
-      background: #f8fafc;
-    }
-
-    td code {
-      background: #eff6ff;
-      color: #1e40af;
-      border: 1px solid #bfdbfe;
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-size: 7.6pt;
-    }
-
-    pre, code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 7.8pt;
-    }
-
-    code {
-      background: #e2e8f0;
-      color: #0f172a;
-      padding: 1px 3px;
-      border-radius: 3px;
-      font-weight: 600;
-    }
-
-    pre {
-      background: #090d16;
-      color: #e2e8f0;
-      padding: 9px 12px;
-      border-radius: 6px;
-      margin: 5px 0 7px 0;
-      line-height: 1.4;
-      border: 1px solid #1e293b;
-      overflow: hidden;
-      white-space: pre-wrap;
-    }
-
-    pre code {
-      background: transparent;
-      padding: 0;
-      color: inherit;
-    }
-
-    .code-kw { color: #f43f5e; font-weight: bold; }
-    .code-fn { color: #38bdf8; font-weight: bold; }
-    .code-str { color: #4ade80; }
-    .code-num { color: #fbbf24; }
-    .code-cmt { color: #94a3b8; font-style: italic; }
-    .code-type { color: #c084fc; font-weight: bold; }
-
-    .alert {
-      padding: 6px 9px;
-      border-radius: 5px;
-      font-size: 7.9pt;
-      margin: 5px 0;
-      border-left: 3.5px solid;
-    }
-
-    .alert-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
-    .alert-warning { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
-    .alert-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
-    .alert-success { background: #f0fdf4; border-color: #10b981; color: #065f46; }
-
-    ul, ol {
-      margin: 4px 0 6px 0;
-      padding-left: 18px;
-    }
-
-    li {
-      margin-bottom: 2.5px;
-    }
-
-    .footer {
-      border-top: 1px solid #cbd5e1;
-      padding-top: 5px;
-      margin-top: 12px;
-      font-size: 7.2pt;
-      color: #94a3b8;
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header Banner -->
-  <div class="header-container">
-    <div>
-      <div class="badge-wrap">
-        <span class="badge badge-ai">🤖 PANDUAN GURU AI • BEDAH MODUL & PPT DOSEN</span>
-        <span class="badge badge-gold">SEMESTER 1 • UNINDRA RG</span>
-      </div>
-      <h1>Master Guide: Pengantar Pemrograman, Blok Komputer, Penerjemah Bahasa & Struktur Dasar Pascal</h1>
-      <h2>Pemrograman 1 (Pascal) • Pertemuan 1</h2>
-    </div>
-    <div style="text-align: right;">
-      <div class="meta-text"><strong>Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK</div>
-      <div class="meta-text"><strong>Berkas Sumber:</strong> pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf)</div>
-      <div class="meta-text"><strong>Edisi:</strong> Akademik 2026/2027 • FTIK Unindra</div>
-    </div>
+<div class="alert alert-info" style="margin-bottom: 24px;">
+  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN 1</strong><br>
+  <strong>Pokok Bahasan:</strong> Master Guide: Pengantar Pemrograman, Blok Komputer, Penerjemah Bahasa & Struktur Dasar Pascal<br>
+  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi PPT dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
+</div>
+<div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
+  <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
+  </p>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 1</span>
+      <span>Pengantar Pemrograman & Hakikat Komputer (Slide 3 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
   </div>
-
-  <!-- Bagian 1: Bedah PPT & Modul Dosen -->
-  <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 7px 12px; border-radius: 5px; margin: 10px 0 12px 0;">
-    <strong style="color: #1e40af; font-size: 9pt;">🎙️ BAGIAN 1: PENJELASAN & BEDAH MATERI PPT DOSEN (STEP-BY-STEP)</strong><br>
-    <span style="font-size: 7.6pt; color: #475569;">Uraian materi kuliah resmi mengikuti urutan slide presentasi dan topik modul dari dosen pengampu.</span>
-  </div>
-
-  <!-- Sections Content (Bagian 1) -->
-  
-    <div class="section">
-      <div class="section-title">BAB 1. Pengantar Pemrograman & Hakikat Komputer (Slide 3 PPT Dosen)</div>
-      
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Berdasarkan slide pengantar Pak Zaeni Miftah, istilah <strong>Komputer</strong> berakar dari bahasa Latin <em>Computare</em> yang bermakna "menghitung" (<em>to compute / to calculate</em>). Komputer pada mulanya dirancang sebagai alat bantu kalkulasi matematis cepat, namun telah berevolusi menjadi sistem pemroses informasi elektronik digital.</p>
 <table>
   <thead><tr><th>Komponen Pembentuk</th><th>Definisi Konseptual</th><th>Fungsi Utama dalam Pemrograman</th></tr></thead>
@@ -296,11 +31,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 2. Blok Dasar Arsitektur Komputer (Slide 4 - 7 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 2</span>
+      <span>Blok Dasar Arsitektur Komputer (Slide 4 - 7 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 5 menjelaskan bahwa pada dasarnya seluruh jenis komputer di dunia tersusun atas 4 blok subsistem utama yang saling terintegrasi:</p>
 <table>
   <thead><tr><th>Blok Dasar Komputer</th><th>Fungsi Utama</th><th>Contoh Perangkat Riil</th><th>Hubungan dengan Kode Pascal</th></tr></thead>
@@ -332,11 +74,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 3. Tingkatan Bahasa Pemrograman: Mesin, Assembly & Tingkat Tinggi (Slide 8 - 9 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 3</span>
+      <span>Tingkatan Bahasa Pemrograman: Mesin, Assembly & Tingkat Tinggi (Slide 8 - 9 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Komputer hanya memahami bahasa mesin berbentuk sinyal biner. Oleh karena itu, perkembangan bahasa pemrograman dibagi ke dalam tiga generasi tingkatan:</p>
 <table>
   <thead><tr><th>Tingkatan Bahasa</th><th>Karakteristik & Format Notasi</th><th>Kelebihan</th><th>Kelemahan</th><th>Contoh Bahasa</th></tr></thead>
@@ -365,11 +114,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 4. Penerjemah Bahasa: Interpreter vs Kompiler (Slide 10 - 11 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 4</span>
+      <span>Penerjemah Bahasa: Interpreter vs Kompiler (Slide 10 - 11 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 10 menerangkan bagaimana program yang ditulis programmer diubah menjadi bahasa mesin:</p>
 <table>
   <thead><tr><th>Parameter Pembeda</th><th>Kompiler (Compiler) - Digunakan Pascal</th><th>Interpreter (Penerjemah Langsung)</th></tr></thead>
@@ -381,11 +137,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 5. Sejarah & Filosofi Bahasa Pascal (Slide 12 - 13 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 5</span>
+      <span>Sejarah & Filosofi Bahasa Pascal (Slide 12 - 13 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Slide 12-13 menguraikan tonggak sejarah lahirnya Pascal:</p>
 <ul>
   <li><strong>Pencipta:</strong> Dirancang oleh <strong>Prof. Niklaus Wirth</strong> di Federal Institute of Technology (ETH) Zurich, Swiss pada tahun 1971.</li>
@@ -394,11 +157,18 @@
   <li><strong>Era Turbo Pascal:</strong> Pada tahun 1983, Borland International meluncurkan <strong>Turbo Pascal</strong> yang merevolusi dunia TI karena memiliki Integrated Development Environment (IDE) terpadu dengan kecepatan kompilasi luar biasa.</li>
 </ul>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 6. Tiga Blok Anatomi Struktur Program Pascal (Slide 14 - 15 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 6</span>
+      <span>Tiga Blok Anatomi Struktur Program Pascal (Slide 14 - 15 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Sesuai modul perkuliahan FTIK Unindra, program Pascal wajib memiliki struktur tiga blok berurutan:</p>
 <table>
   <thead><tr><th>Bagian Blok Program</th><th>Kata Kunci Penanda</th><th>Deskripsi & Aturan Penulisan</th><th>Contoh Kode</th></tr></thead>
@@ -424,11 +194,18 @@
   </tbody>
 </table>
 
-    </div>
-        
-    <div class="section">
-      <div class="section-title">BAB 7. Bedah Contoh Program Lengkap Dosen: tampilNama (Slide 16 - 18 PPT Dosen)</div>
-      
+  </div>
+</div>
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+    <h3 style="margin: 0; color: #F8FAFC; font-size: 1.18rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+      <span style="color: #818CF8; font-family: monospace; font-size: 0.95rem; background: rgba(99, 102, 241, 0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">BAB 7</span>
+      <span>Bedah Contoh Program Lengkap Dosen: tampilNama (Slide 16 - 18 PPT Dosen)</span>
+    </h3>
+    <span style="font-size: 0.75rem; color: #94A3B8; font-family: monospace;">Materi Slide Resmi</span>
+  </div>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Berikut adalah kode program resmi yang dicontohkan Pak Zaeni pada slide 16 dan 18 beserta pembedahan barisnya:</p>
 <div class="card-dark">
   <span style="color: #38bdf8; font-weight: bold;">// Program tampilNama (Slide 18 Modul Dosen):</span>
@@ -452,26 +229,34 @@
   <li><code>end.</code>: Titik setelah end mutlak diperlukan; jika diganti titik koma (<code>end;</code>) kompiler akan menghasilkan error.</li>
 </ol>
 
-    </div>
-        
-
-  
-  <!-- Bagian 2: Tambahan Materi & Saran Guru AI -->
-  <div style="background: #ecfdf5; border-left: 4px solid #059669; padding: 7px 12px; border-radius: 5px; margin: 16px 0 10px 0;">
-    <strong style="color: #065f46; font-size: 9pt;">💡 BAGIAN 2: TAMBAHAN MATERI, INSIGHT & SARAN GURU AI (PENGAYAAN)</strong><br>
-    <span style="font-size: 7.6pt; color: #047857;">Materi pengayaan di luar slide: intuisi first principles, relevansi industri, tips belajar & mencatat, serta bedah jebakan UTS.</span>
   </div>
-  
-    <div class="section">
-      <div class="section-title section-title-ai">PENGAYAAN 1. Intuisi First Principles: Memori RAM & Mengapa Komputer Butuh Pemrograman</div>
-      
+</div>
+<div style="background: rgba(16, 185, 129, 0.12); border-left: 5px solid #10B981; padding: 14px 18px; border-radius: 10px; margin: 36px 0 24px 0;">
+  <h3 style="margin: 0; color: #34D399; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>💡 BAGIAN 2: TAMBAHAN MATERI, FIRST PRINCIPLES & INSIGHT GURU AI (PENGAYAAN DI LUAR SLIDE)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Materi pengayaan di luar slide dosen: intuisi first principles, relevansi industri software engineering modern, tips mencatat di binder fisik, serta bedah jebakan soal kuis & UTS.
+  </p>
+</div>
+<div class="academic-insight-block" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;">
+  <h4 style="margin: 0 0 12px 0; color: #34D399; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span style="font-family: monospace; font-size: 0.85rem; background: rgba(16, 185, 129, 0.2); padding: 2px 8px; border-radius: 4px;">PENGAYAAN 1</span>
+    <span>Intuisi First Principles: Memori RAM & Mengapa Komputer Butuh Pemrograman</span>
+  </h4>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <p>Secara arsitektur mesin Von Neumann, CPU tidak memiliki kecerdasan inisiatif (<em>zero initiative</em>). CPU hanyalah mesin penghitung biner super cepat yang mengeksekusi siklus <em>Fetch-Decode-Execute</em>. Kode sumber Pascal yang kita tulis adalah jembatan logika agar otak manusia dapat memerintah jutaan saklar transistor mikroskopis di dalam CPU secara tertib dan terstruktur.</p>
 
-    </div>
-            
-    <div class="section">
-      <div class="section-title section-title-ai">PENGAYAAN 2. Tips Belajar, Praktikum Lab & Bedah Jebakan UTS Pemrograman 1</div>
-      
+  </div>
+</div>
+<div class="academic-insight-block" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;">
+  <h4 style="margin: 0 0 12px 0; color: #34D399; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span style="font-family: monospace; font-size: 0.85rem; background: rgba(16, 185, 129, 0.2); padding: 2px 8px; border-radius: 4px;">PENGAYAAN 2</span>
+    <span>Tips Belajar, Praktikum Lab & Bedah Jebakan UTS Pemrograman 1</span>
+  </h4>
+  <div style="color: #CBD5E1; line-height: 1.75; font-size: 0.92rem;">
+    
 <div class="alert alert-warning">
   <strong>🎯 Bedah Jebakan Ujian Khas Pemrograman 1:</strong><br>
   <strong>1. Perbedaan Tanda Akhir:</strong> Penutup program utama WAJIB menggunakan <strong>tanda titik (<code>end.</code>)</strong>. Sedangkan penutup blok percabangan/perulangan majemuk menggunakan <strong>titik koma (<code>end;</code>)</strong>.<br>
@@ -479,30 +264,16 @@
   <strong>3. Sifat Case-Insensitive:</strong> Pascal bersifat tidak membedakan huruf besar dan kecil (<em>case-insensitive</em>). Penulisan <code>WRITELN</code>, <code>writeln</code>, dan <code>WriteLn</code> dianggap identik oleh kompiler.
 </div>
 
-    </div>
-            
-        
-
-  <!-- Bagian 3: Dokumen Sumber & Rujukan Resmi -->
-  <div class="section" style="margin-top: 14px;">
-    <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 8px 12px;">
-      <strong style="color: #0f172a; font-size: 8.6pt;">📚 BAGIAN 3: SUMBER DOKUMEN & RUJUKAN RESMI DOSEN</strong>
-      <div style="font-size: 7.8pt; color: #334155; margin-top: 4px; line-height: 1.5;">
-        <div><strong>📁 Berkas Resmi Dosen:</strong> <code>pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf)</code> (19 Slide PPT Resmi Dosen)</div>
-        <div><strong>👨‍🏫 Dosen Pengampu:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
-        <div style="margin-top: 5px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar:</strong></div>
-        <ul style="margin: 2px 0 0 14px; padding: 0; font-size: 7.5pt; color: #64748b;">
-          <li>Berkas Resmi Perkuliahan: pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf, 19 Slide PPT Zaeni Miftah, FTIK Unindra).</li><li>Wirth, Niklaus. (1976). Algorithms + Data Structures = Programs. Prentice-Hall.</li><li>Jogiyanto, H.M. (2005). Teori dan Aplikasi Program Komputer Bahasa Pascal. Yogyakarta: Andi Offset.</li><li>Silabus Resmi Mata Kuliah Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li>
-        </ul>
-      </div>
-    </div>
   </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <span>Academic Digital Binder • Sistem Informasi FTIK Universitas Indraprasta PGRI</span>
-    <span>Dokumen Resmi Pembelajaran Mandiri & Persiapan UTS • Dicetak Secara Otomatis</span>
+</div>
+<div class="card-dark" style="margin-top: 36px; border: 1px solid rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.9); border-radius: 12px; padding: 22px 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span>📚 BAGIAN 3: SUMBER DOKUMEN & VERIFIKASI RESMI DOSEN</span>
+  </h4>
+  <div style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.8;">
+    <div><strong>📁 Berkas Modul Resmi Dosen:</strong> <code>pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf)</code> (19 Slide PPT Resmi Dosen)</div>
+    <div><strong>👨‍🏫 Dosen Pengampu Resmi:</strong> Zaeni Miftah / Tim Dosen Pemrograman FTIK • Program Studi Sistem Informasi FTIK Unindra</div>
+    <div style="margin-top: 10px;"><strong>📖 Daftar Rujukan Pustaka & Literatur Standar Dosen:</strong></div>
+    <ul style="margin: 6px 0 0 20px; padding: 0; font-size: 0.85rem; color: #94A3B8; line-height: 1.7;"><li>Berkas Resmi Perkuliahan: pascal_p1_pengantar_pascal.pdf (Pertemuan 1 1ZaeniPemrogramanPascal.pdf, 19 Slide PPT Zaeni Miftah, FTIK Unindra).</li><li>Wirth, Niklaus. (1976). Algorithms + Data Structures = Programs. Prentice-Hall.</li><li>Jogiyanto, H.M. (2005). Teori dan Aplikasi Program Komputer Bahasa Pascal. Yogyakarta: Andi Offset.</li><li>Silabus Resmi Mata Kuliah Pemrograman 1, Program Studi Sistem Informasi FTIK Unindra (2026).</li></ul>
   </div>
-
-</body>
-</html>
+</div>

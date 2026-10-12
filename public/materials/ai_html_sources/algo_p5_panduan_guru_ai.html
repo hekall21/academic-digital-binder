@@ -1,0 +1,88 @@
+<div class="alert alert-info" style="margin-bottom: 24px;">
+  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN 5</strong><br>
+  <strong>Pokok Bahasan:</strong> Struktur Pemilihan Satu & Dua Kasus (IF-THEN & IF-THEN-ELSE)<br>
+  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi dan modul dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum/hitungan, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
+</div>
+
+<div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
+  <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
+  </p>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>1. Konsep Dasar Struktur Pemilihan (Selection)</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p><strong>Struktur Pemilihan (Selection Control Structure)</strong> adalah struktur kontrol algoritma yang digunakan untuk mengevaluasi suatu kondisi logika (ekspresi Boolean) guna menentukan jalur instruksi mana yang akan dieksekusi selanjutnya oleh sistem.</p>
+<ul>
+  <li><strong>Ekspresi Kondisi:</strong> Pernyataan relasional yang selalu menghasilkan nilai bertipe Boolean: <code>TRUE</code> (Benar) atau <code>FALSE</code> (Salah).</li>
+  <li><strong>Operator Relasional:</strong> <code>=</code> (sama dengan), <code>&ne;</code> (tidak sama dengan), <code>&lt;</code> (kurang dari), <code>&gt;</code> (lebih dari), <code>&le;</code> (kurang dari atau sama dengan), <code>&ge;</code> (lebih dari atau sama dengan).</li>
+  <li><strong>Simbol Flowchart:</strong> Direpresentasikan oleh simbol belah ketupat (<em>Decision Diamond</em>) dengan satu jalur panah masuk dan dua jalur panah keluar bertanda label <strong>Ya (True)</strong> dan <strong>Tidak (False)</strong>.</li>
+</ul>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>2. Pemilihan Satu Kasus (Struktur IF-THEN)</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p>Pada struktur satu kasus, instruksi hanya akan dikerjakan jika kondisi yang diuji terpenuhi (bernilai TRUE). Jika kondisi tidak terpenuhi (FALSE), instruksi tersebut dilewati dan alur berlanjut ke baris berikutnya:</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>{ Notasi Pseudocode Pemilihan Satu Kasus }
+if (kondisi) then
+    aksi_instruksi
+endif</code></pre>
+<p><strong>Contoh Studi Kasus:</strong> Menentukan diskon belanja pelanggan jika total belanja minimal Rp 100.000.</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>diskon &larr; 0
+if (total_belanja &ge; 100000) then
+    diskon &larr; 0.10 * total_belanja
+endif
+total_bayar &larr; total_belanja - diskon</code></pre>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>3. Pemilihan Dua Kasus (Struktur IF-THEN-ELSE)</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p>Pada struktur dua kasus, terdapat dua alternatif tindakan yang saling menegasikan (komplementer). Jika kondisi bernilai TRUE maka aksi-1 dieksekusi; namun jika bernilai FALSE maka aksi-2 yang akan dieksekusi:</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>{ Notasi Pseudocode Pemilihan Dua Kasus }
+if (kondisi) then
+    aksi_1   { dikerjakan jika kondisi bernilai TRUE }
+else
+    aksi_2   { dikerjakan jika kondisi bernilai FALSE }
+endif</code></pre>
+<p><strong>Contoh Studi Kasus:</strong> Menentukan bilangan bulat genap atau ganjil menggunakan operator modulus.</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>if (bilangan mod 2 = 0) then
+    output("Bilangan Genap")
+else
+    output("Bilangan Ganjil")
+endif</code></pre>
+  </div>
+</div>
+
+<div class="card-dark" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px 24px; margin: 28px 0 20px 0;">
+  <h4 style="margin: 0 0 12px 0; color: #F59E0B; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+    <span>💡</span>
+    <span>BAGIAN 2: PENGAYAAN MATERI FIRST PRINCIPLES, INDUSTRI & JEBAKAN UTS</span>
+  </h4>
+  <ul style="margin: 0; padding-left: 20px; color: #CBD5E1; line-height: 1.65; font-size: 0.9rem;">
+    <li style='margin-bottom: 10px;'><strong>Prinsip First Principles:</strong> Struktur percabangan mengubah alur eksekusi komputasi dari sekuensial linear menjadi graph terarah (directed acyclic graph).</li><li style='margin-bottom: 10px;'><strong>Jebakan UTS:</strong> Pada penulisan pseudocode baku ANSI, setiap blok <code>if</code> wajib ditutup dengan <code>endif</code> agar cakupan aksi memiliki batasan yang tegas.</li><li style='margin-bottom: 10px;'><strong>Optimasi Logika:</strong> Kondisi yang paling sering bernilai TRUE sebaiknya diuji terlebih dahulu untuk meminimalkan beban evaluasi siklus instruksi CPU.</li>
+  </ul>
+</div>
+
+<div style="background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(148, 163, 184, 0.25); border-radius: 10px; padding: 14px 18px; margin-top: 24px; font-size: 0.82rem; color: #94A3B8;">
+  <strong style="color: #E2E8F0;">📚 BAGIAN 3: VERIFIKASI SUMBER RUJUKAN RESMI PERKULIAHAN FTIK UNINDRA</strong><br>
+  <span>• Berkas Sumber Materi: <code>Algo1_Pertemuan Ke-5.pptx (18 Slide)</code></span><br>
+  <span>• Dosen Pengampu / Tim Pengajar: <strong>Tim Dosen Algoritma FTIK Unindra</strong></span><br>
+  <span>• Kurikulum: Program Studi S1 Sistem Informasi • Universitas Indraprasta PGRI (Unindra)</span>
+</div>

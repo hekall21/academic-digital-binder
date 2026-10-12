@@ -1,0 +1,131 @@
+<div class="alert alert-info" style="margin-bottom: 24px;">
+  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN 5</strong><br>
+  <strong>Pokok Bahasan:</strong> Pemilihan Majemuk (IF-THEN-ELSE IF) & Perhitungan Nilai Akhir<br>
+  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi dan modul dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum/hitungan, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
+</div>
+
+<div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
+  <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
+  </p>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>1. Sintaks Baku IF-THEN-ELSE IF dalam Bahasa Pascal</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p>Dalam bahasa pemrograman Pascal (Free Pascal / Turbo Pascal), percabangan majemuk memiliki aturan tata bahasa yang sangat presisi dan ketat:</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>if (kondisi_1) then
+  pernyataan_1
+else if (kondisi_2) then
+  pernyataan_2
+else if (kondisi_3) then
+  pernyataan_3
+else
+  pernyataan_default;</code></pre>
+<div class="alert alert-danger" style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 8px; margin: 14px 0;">
+  <strong style="color: #F87171;">⚠️ HUKUM MUTLAK PASCAL:</strong> 
+  <span style="color: #FECACA;">Dilarang keras mengetik tanda titik koma (<code>;</code>) tepat sebelum kata kunci <code>else</code>! Tanda titik koma dianggap oleh kompilator sebagai akhir dari seluruh pernyataan IF, sehingga bila kata <code>else</code> ditemukan setelahnya, kompilator akan memunculkan galat sintaks fatal: <code>Fatal: Syntax error, ";" unexpected but "ELSE" found</code>.</span>
+</div>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>2. Compound Statement (Blok begin ... end;)</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p>Bila suatu cabang keputusan memuat lebih dari satu instruksi, seluruh baris instruksi tersebut <strong>WAJIB</strong> dikelompokkan ke dalam blok majemuk menggunakan kata kunci <code>begin</code> dan diakhiri dengan <code>end</code>:</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>if (nilai &ge; 60) then
+begin
+  status := 'LULUS';
+  keterangan := 'Selamat, pertahankan prestasi Anda!';
+end  { &lt;-- PERHATIKAN: Tidak ada titik koma sebelum kata else! }
+else
+begin
+  status := 'GAGAL';
+  keterangan := 'Mohon belajar lebih giat untuk semester depan.';
+end; { &lt;-- Titik koma diletakkan di akhir seluruh struktur }</code></pre>
+  </div>
+</div>
+
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
+    <span>📌</span>
+    <span>3. Program Lengkap: Perhitungan Nilai Akhir & Grade Mahasiswa</span>
+  </h4>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
+    <p>Implementasi studi kasus nyata sesuai berkas modul kuliah perkuliahan Unindra (Bobot: Tugas 20%, UTS 30%, UAS 50%):</p>
+<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto text-emerald-400 font-mono text-sm"><code>program HitungNilaiAkhir;
+uses crt;
+
+var
+  nama: string[30];
+  tugas, uts, uas, na: real;
+  grade: char;
+  status: string[10];
+
+begin
+  clrscr;
+  writeln('========================================');
+  writeln('   SISTEM PENILAIAN AKADEMIK MAHASISWA  ');
+  writeln('========================================');
+  write('Masukkan Nama Mahasiswa : '); readln(nama);
+  write('Masukkan Nilai Tugas    : '); readln(tugas);
+  write('Masukkan Nilai UTS      : '); readln(uts);
+  write('Masukkan Nilai UAS      : '); readln(uas);
+
+  { Rumus Bobot Nilai Akhir }
+  na := (0.20 * tugas) + (0.30 * uts) + (0.50 * uas);
+
+  { Penentuan Grade Mutu }
+  if (na &ge; 80) then
+    grade := 'A'
+  else if (na &ge; 70) then
+    grade := 'B'
+  else if (na &ge; 60) then
+    grade := 'C'
+  else if (na &ge; 50) then
+    grade := 'D'
+  else
+    grade := 'E';
+
+  { Penentuan Status Kelulusan }
+  if (na &ge; 60) then
+    status := 'LULUS'
+  else
+    status := 'TIDAK LULUS';
+
+  writeln('----------------------------------------');
+  writeln('Nama Mahasiswa : ', nama);
+  writeln('Nilai Akhir    : ', na:0:2);
+  writeln('Grade Mutu     : ', grade);
+  writeln('Status Akhir   : ', status);
+  writeln('========================================');
+  readln; { Menahan jendela layar konsol }
+end.</code></pre>
+  </div>
+</div>
+
+<div class="card-dark" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px 24px; margin: 28px 0 20px 0;">
+  <h4 style="margin: 0 0 12px 0; color: #F59E0B; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+    <span>💡</span>
+    <span>BAGIAN 2: PENGAYAAN MATERI FIRST PRINCIPLES, INDUSTRI & JEBAKAN UTS</span>
+  </h4>
+  <ul style="margin: 0; padding-left: 20px; color: #CBD5E1; line-height: 1.65; font-size: 0.9rem;">
+    <li style='margin-bottom: 10px;'><strong>Kaidah Pemformatan Real:</strong> Sintaks <code>na:0:2</code> membulatkan angka pecahan desimal agar tercetak rapi dengan tepat dua angka di belakang koma (misal: <code>82.50</code> bukannya format saintifik <code>8.2500000000E+01</code>).</li><li style='margin-bottom: 10px;'><strong>Tipe Data Grade:</strong> Menggunakan tipe data <code>char</code> untuk grade (karena hanya satu karakter 'A' s.d. 'E') jauh lebih hemat memori dibanding <code>string</code>.</li><li style='margin-bottom: 10px;'><strong>Penanganan Input Nilai:</strong> Dalam Free Pascal, jika pengguna mengetik huruf pada input variabel <code>real</code>, program akan menghasilkan <em>Runtime error 106 (Invalid numeric format)</em>.</li>
+  </ul>
+</div>
+
+<div style="background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(148, 163, 184, 0.25); border-radius: 10px; padding: 14px 18px; margin-top: 24px; font-size: 0.82rem; color: #94A3B8;">
+  <strong style="color: #E2E8F0;">📚 BAGIAN 3: VERIFIKASI SUMBER RUJUKAN RESMI PERKULIAHAN FTIK UNINDRA</strong><br>
+  <span>• Berkas Sumber Materi: <code>Pertemuan 5  Pemilihan Majemuk (Selection) – IF then else IF.pdf (16 Halaman)</code></span><br>
+  <span>• Dosen Pengampu / Tim Pengajar: <strong>Tim Dosen Pemrograman FTIK Unindra</strong></span><br>
+  <span>• Kurikulum: Program Studi S1 Sistem Informasi • Universitas Indraprasta PGRI (Unindra)</span>
+</div>
