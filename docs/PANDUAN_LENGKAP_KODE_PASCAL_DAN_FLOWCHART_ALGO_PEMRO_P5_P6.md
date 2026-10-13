@@ -60,14 +60,16 @@ Dalam pemrograman dan algoritma Pascal, percabangan digunakan untuk mengarahkan 
 * **Jenis Percabangan:** **IF Tunggal (1 Kasus)**.
 * **Logika:** Program membaca input `tinggi`. Jika nilai `tinggi > 170` bernilai benar (True), program mencetak `"Tinggi"`. Jika bernilai salah (False), program langsung selesai tanpa melakukan aksi apapun.
 
-#### Diagram Alir ANSI (Flowchart):
+#### Diagram Alir ANSI (Flowchart Resmi dengan On-Page Connector):
 ```mermaid
 flowchart TD
     Start(["START (Mulai)"]) --> Input[/"Input tinggi"/]
-    Input --> Cond{"tinggi > 170?"}
+    Input --> Cond{"tinggi > 170 ?"}
     Cond -- "Ya (True)" --> Print[/"Cetak 'Tinggi'"/]
-    Cond -- "Tidak (False)" --> End(["END (Selesai)"])
-    Print --> End
+    Print --> Junction(( ))
+    Cond -- "Tidak (Bypass)" --> Junction
+    Junction --> End(["END (Selesai)"])
+    style Junction fill:#38BDF8,stroke:#38BDF8,stroke-width:2px
 ```
 
 #### Kode Pascal:
@@ -96,12 +98,13 @@ end.
 ```mermaid
 flowchart TD
     Start(["START"]) --> Input[/"Input angka"/]
-    Input --> Init["y := 0"]
-    Init --> Cond{"angka > 5?"}
+    Input --> Cond{"angka > 5 ?"}
     Cond -- "Ya (True)" --> Calc["y := (angka * 10) + 100"]
-    Cond -- "Tidak (False)" --> End(["END"])
-    Calc --> Print[/"Cetak 'Nilai y = ', y"/]
-    Print --> End
+    Calc --> Print[/"Cetak Nilai y"/]
+    Print --> Junction(( ))
+    Cond -- "Tidak (Bypass)" --> Junction
+    Junction --> End(["END"])
+    style Junction fill:#38BDF8,stroke:#38BDF8,stroke-width:2px
 ```
 
 #### Kode Pascal:
@@ -133,10 +136,12 @@ end.
 ```mermaid
 flowchart TD
     Start(["START"]) --> Input[/"Input nilai_ujian"/]
-    Input --> Cond{"nilai_ujian < 60?"}
+    Input --> Cond{"nilai_ujian < 60 ?"}
     Cond -- "Ya (True)" --> Print[/"Cetak 'Tidak Lulus'"/]
-    Cond -- "Tidak (False)" --> End(["END"])
-    Print --> End
+    Print --> Junction(( ))
+    Cond -- "Tidak (Bypass)" --> Junction
+    Junction --> End(["END"])
+    style Junction fill:#38BDF8,stroke:#38BDF8,stroke-width:2px
 ```
 
 #### Kode Pascal:
@@ -165,11 +170,13 @@ end.
 ```mermaid
 flowchart TD
     Start(["START"]) --> Input[/"Input total_belanja"/]
-    Input --> Cond{"total_belanja > 5000000?"}
+    Input --> Cond{"total_belanja > 5000000 ?"}
     Cond -- "Ya (True)" --> Calc["diskon := 0.05 * total_belanja<br>total_bayar := total_belanja - diskon"]
-    Cond -- "Tidak (False)" --> End(["END"])
     Calc --> Print[/"Cetak diskon & total_bayar"/]
-    Print --> End
+    Print --> Junction(( ))
+    Cond -- "Tidak (Bypass)" --> Junction
+    Junction --> End(["END"])
+    style Junction fill:#38BDF8,stroke:#38BDF8,stroke-width:2px
 ```
 
 #### Kode Pascal:
@@ -203,10 +210,12 @@ end.
 ```mermaid
 flowchart TD
     Start(["START"]) --> Input[/"Input tahun"/]
-    Input --> Cond{"tahun mod 4 = 0?"}
+    Input --> Cond{"tahun mod 4 = 0 ?"}
     Cond -- "Ya (True)" --> Print[/"Cetak 'Tahun Kabisat'"/]
-    Cond -- "Tidak (False)" --> End(["END"])
-    Print --> End
+    Print --> Junction(( ))
+    Cond -- "Tidak (Bypass)" --> Junction
+    Junction --> End(["END"])
+    style Junction fill:#38BDF8,stroke:#38BDF8,stroke-width:2px
 ```
 
 #### Kode Pascal:
@@ -394,18 +403,25 @@ end.
 #### Diagram Alir ANSI (Flowchart):
 ```mermaid
 flowchart TD
-    Start(["START"]) --> Input[/"Input a, b, c"/]
-    Input --> CheckAB{"a > b?"}
-    CheckAB -- "Ya" --> CheckAC{"a > c?"}
-    CheckAB -- "Tidak" --> CheckBC{"b > c?"}
-    CheckAC -- "Ya" --> MaxA[/"Cetak Terbesar = a"/]
-    CheckAC -- "Tidak" --> MaxC1[/"Cetak Terbesar = c"/]
-    CheckBC -- "Ya" --> MaxB[/"Cetak Terbesar = b"/]
-    CheckBC -- "Tidak" --> MaxC2[/"Cetak Terbesar = c"/]
-    MaxA --> End(["END"])
-    MaxC1 --> End
-    MaxB --> End
-    MaxC2 --> End
+    Start(["START (Mulai)"]) --> Input[/"Input a, b, c"/]
+    Input --> CheckAB{"a > b ?"}
+    
+    CheckAB -- "Ya" --> CheckAC{"a > c ?"}
+    CheckAC -- "Ya" --> SetA["max := a"]
+    CheckAC -- "Tidak" --> SetC1["max := c"]
+    
+    CheckAB -- "Tidak" --> CheckBC{"b > c ?"}
+    CheckBC -- "Ya" --> SetB["max := b"]
+    CheckBC -- "Tidak" --> SetC2["max := c"]
+    
+    SetA --> Merge(( ))
+    SetC1 --> Merge
+    SetB --> Merge
+    SetC2 --> Merge
+    
+    Merge --> Print[/"Cetak 'Bilangan Terbesar : ', max"/]
+    Print --> End(["END (Selesai)"])
+    style Merge fill:#38BDF8,stroke:#38BDF8,stroke-width:2px
 ```
 
 #### Kode Pascal:
