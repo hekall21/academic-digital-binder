@@ -384,7 +384,126 @@ Prof. Niklaus Wirth merumuskan kaitan fundamental pemrograman:
    * `WHILE ... DO` (evaluasi kondisi di awal; jika salah dari awal, tidak dijalankan).
    * `REPEAT ... UNTIL` (evaluasi kondisi di akhir; minimal dieksekusi 1 kali).
 
+
 ---
+
+### Pertemuan 5: Struktur Pemilihan Satu Kasus (IF-THEN) & 5 Kunci Jawaban Tugas P5
+- [ ] *Sudah disalin ke lembar binder fisik*
+* **Dosen Pengampu:** Pak Rizki / Tim Dosen Algoritma FTIK Unindra
+* **Berkas Rujukan:** Slide PPTX Dosen `Algo1_Pertemuan Ke-5.pptx` (18 Slide) + Rekaman Perkuliahan & Notepad Live Coding.
+
+#### 📢 Inti Konsep: Algoritma vs Pemrograman (Panduan Menjawab Tugas)
+* **Kaidah Akademik Unindra:**  
+  Jika soal berbunyi *"Buatlah algoritma..."*, maka **jawaban inti/utama** yang wajib ditulis adalah **PSEUDOCODE** (blok `deklarasi` dan `deskripsi`).  
+* **Nilai Tambah (Pascal):** Menyertakan kode bahasa Pascal di bawahnya sebagai pembuktian implementasi komputasi yang dapat dikompilasi (*compile & run*).
+
+#### 1. Pembahasan 5 Soal Tugas Pertemuan 5 (Slide 8):
+1. **Soal 1 (Tinggi Badan > 170cm):**
+   ```text
+   read(tinggi)
+   if tinggi > 170 then
+       write('Manusia Tinggi')
+   endif
+   ```
+2. **Soal 2 (Rumus Y = angka * 10 + 100 jika angka > 5):** *(Dicontohkan dosen di kelas)*
+   ```text
+   read(angka)
+   if angka > 5 then
+       begin
+           y = (angka * 10) + 100
+           write('Nilai Y adalah : ', y)
+       end
+   endif
+   ```
+3. **Soal 3 (Nilai Ujian < 60 "Tidak Lulus"):**
+   ```text
+   read(nilai_ujian)
+   if nilai_ujian < 60 then
+       write('Status : Tidak Lulus')
+   endif
+   ```
+4. **Soal 4 (Total Belanja > 5 Juta Diskon 5%):** *(Dicontohkan dosen di kelas)*
+   ```text
+   read(total_belanja)
+   diskon = 0
+   if total_belanja > 5000000 then
+       diskon = 0.05 * total_belanja
+   endif
+   total_bayar = total_belanja - diskon
+   write('Diskon: ', diskon, ' Total Bayar: ', total_bayar)
+   ```
+5. **Soal 5 (Menentukan Bilangan Tahun Kabisat):**  
+   Syarat kalender Gregorian: Habis dibagi 400 ATAU (habis dibagi 4 dan tidak habis dibagi 100).
+   ```text
+   read(tahun)
+   if ((tahun mod 400 = 0) or ((tahun mod 4 = 0) and (tahun mod 100 <> 0))) then
+       write(tahun, ' adalah Tahun Kabisat')
+   else
+       write(tahun, ' BUKAN Tahun Kabisat')
+   endif
+   ```
+
+---
+
+### Pertemuan 6: Struktur Pemilihan Majemuk (IF-THEN-ELSE IF), Bedah Live GMeet Pak Rizki & Tugas P6
+- [ ] *Sudah disalin ke lembar binder fisik*
+* **Dosen Pengampu:** Pak Rizki / Tim Dosen Algoritma FTIK Unindra
+* **Berkas Rujukan:** Slide PPTX Dosen `Algo1_Pertemuan Ke-6.pptx` (16 Slide) + Sesi Live GMeet (Tab Notepad `deklar`).
+
+#### 1. Bedah Lengkap Live Coding Notepad Dosen (Tab `deklar`):
+Pada sesi kuliah tatap muka daring Google Meet, Pak Rizki menuliskan pseudocode dan kode Pascal di Notepad:
+```text
+deklarasi
+tb, jb, d: real;
+
+deskripsi
+read(jb);
+if jb > 500000 then
+    begin
+        diskon = 0.15 * jb;
+    end
+else if jb >= 300000 and jb <= 500000 then
+    begin
+        diskon = 0.1 * jb;
+    end
+else
+    diskon = 0;
+endif
+tb = jb - d;
+write(tb);
+```
+
+#### 2. Enam (6) Koreksi Kompilator Pascal yang Wajib Diperhatikan:
+1. **Typo Perintah:** Dosen mengetik `redaln(jb);` &rarr; harus diperbaiki menjadi `readln(jb);`.
+2. **Sinkronisasi Variabel `d` vs `diskon`:** Di deklarasi tertulis `d`, di rumus percabangan tertulis `diskon`, lalu saat pengurangan kembali menggunakan `d` (`tb = jb - d`). Harus diseragamkan memakai variabel `d` atau `diskon` seluruhnya.
+3. **Operator Penugasan:** Di Pascal menggunakan `:=` (assignment), bukan `=`.
+4. **Tanda Kurung Logika AND:** `if (jb >= 300000) and (jb <= 500000) then` &rarr; wajib berkurung karena prioritas operator `and` lebih tinggi daripada operator relasional.
+5. **Larangan Titik Koma Sebelum Else:** Baris `end; else` harus dihapus titik komanya menjadi `end else`.
+6. **Penempatan `readln;`:** Penahan layar diletakkan di akhir program, bukan sebelum mencetak hasil.
+
+#### 3. Pembahasan Tugas 2 Pertemuan 6 (Penentuan Jabatan Karyawan):
+* `JF001` &rarr; Manager
+* `JF002` &rarr; Programmer
+* `JF003` &rarr; Finance
+* `JF004` &rarr; Staff
+```text
+read(id_jabatan)
+if id_jabatan = 'JF001' then
+    nama_jabatan = 'Manager'
+else if id_jabatan = 'JF002' then
+    nama_jabatan = 'Programmer'
+else if id_jabatan = 'JF003' then
+    nama_jabatan = 'Finance'
+else if id_jabatan = 'JF004' then
+    nama_jabatan = 'Staff'
+else
+    nama_jabatan = 'ID Tidak Dikenal'
+endif
+write(id_jabatan, nama_jabatan)
+```
+
+---
+
 ## 4. Pemrograman 1 (Pascal)
 * **Dosen Pengampu:** Tim Dosen Pemrograman FTIK Unindra
 * **Jadwal & Ruang:** Selasa • 09:10 - 10:50 WIB • Ruang R.4.5-3
