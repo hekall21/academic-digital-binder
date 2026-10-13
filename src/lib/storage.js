@@ -3,7 +3,7 @@ import { safeJsonParse } from './security';
 // Local Storage & Backup Persistence Utilities
 // Versioned to ensure curriculum updates are automatically synced to the user's browser
 
-export const CURRENT_DATA_VERSION = 'v17_algo_p5_p6_live_gmeet_pak_rizki_2026';
+export const CURRENT_DATA_VERSION = 'v18_algo_p5_p6_full_transcript_pak_rizki_2026';
 const STORAGE_KEY_VERSION = 'academic_binder_data_version';
 const STORAGE_KEY_SUBJECTS = 'academic_binder_subjects_v3';
 const STORAGE_KEY_PROFILE = 'academic_binder_profile_v3';

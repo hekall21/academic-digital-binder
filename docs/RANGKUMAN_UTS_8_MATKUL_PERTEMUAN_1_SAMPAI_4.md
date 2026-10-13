@@ -390,12 +390,22 @@ Prof. Niklaus Wirth merumuskan kaitan fundamental pemrograman:
 ### Pertemuan 5: Struktur Pemilihan Satu Kasus (IF-THEN) & 5 Kunci Jawaban Tugas P5
 - [ ] *Sudah disalin ke lembar binder fisik*
 * **Dosen Pengampu:** Pak Rizki / Tim Dosen Algoritma FTIK Unindra
-* **Berkas Rujukan:** Slide PPTX Dosen `Algo1_Pertemuan Ke-5.pptx` (18 Slide) + Rekaman Perkuliahan & Notepad Live Coding.
+* **Berkas Rujukan:** Slide PPTX Dosen `Algo1_Pertemuan Ke-5.pptx` (18 Slide) + Rekaman & Transkrip Percakapan Google Meet (Tactiq AI).
 
-#### 📢 Inti Konsep: Algoritma vs Pemrograman (Panduan Menjawab Tugas)
-* **Kaidah Akademik Unindra:**  
-  Jika soal berbunyi *"Buatlah algoritma..."*, maka **jawaban inti/utama** yang wajib ditulis adalah **PSEUDOCODE** (blok `deklarasi` dan `deskripsi`).  
-* **Nilai Tambah (Pascal):** Menyertakan kode bahasa Pascal di bawahnya sebagai pembuktian implementasi komputasi yang dapat dikompilasi (*compile & run*).
+#### 📢 Pengumuman Akademik & Kisi-kisi UTS Open Book (Sesi Live GMeet Pak Rizki):
+1. **UTS RESMI OPEN BOOK:** Pak Rizki mengonfirmasi bahwa Ujian Tengah Semester (UTS) berformat **OPEN BOOK**. Seluruh catatan di buku binder, catatan pseudocode, dan modul program boleh dibuka saat ujian.
+2. **Format Soal UTS Nanti:** Variasi soal percabangan di UTS akan memiliki **4 sampai 5 kondisi** (pengembangan dari model diskon bertingkat dan grade nilai).
+3. **Aturan Identifier (Variabel):**
+   - Nama variabel **dilarang menggunakan spasi** (gunakan garis bawah `total_belanja`, atau disingkat `TB`, `JB`).
+   - Angka 5 juta wajib ditulis numerik penuh `5000000`, bukan `5jt`.
+4. **Keterangan vs Perhitungan:**
+   - Menampilkan keterangan: cukup `write('diskon 5%')`.
+   - Menghitung diskon: `diskon = 0.05 * total_belanja` (ingat desimal 5% adalah 0.05, bukan 0.5!).
+   - *Test Case Live Kelas:* Belanja Rp 4.999.000 tidak mendapat diskon. Belanja Rp 5.500.000 mendapat diskon Rp 275.000, total bayar Rp 5.225.000.
+5. **Test Case Resmi Kelas:**
+   - Soal 2 (Rumus Y): Angka 10 ➔ Y = (10 * 10) + 100 = 200.
+   - Soal 3 (Nilai Ujian): Nilai 60 ➔ Bukan < 60, sehingga tidak mencetak apa-apa (kondisi tidak terpenuhi).
+   - Soal 5 (Kabisat): Tahun 2024 ➔ Habis dibagi 4 (2024 mod 4 = 0) ➔ Cetak "Tahun Kabisat".
 
 #### 1. Pembahasan 5 Soal Tugas Pertemuan 5 (Slide 8):
 1. **Soal 1 (Tinggi Badan > 170cm):**
