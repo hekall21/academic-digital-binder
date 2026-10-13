@@ -20,6 +20,91 @@ import {
 } from 'lucide-react';
 import { PASCAL_FILES } from '../../data/pascalFiles';
 
+// Pascal Keywords, Types, Built-ins for Syntax Highlighting
+const PASCAL_KEYWORDS = new Set([
+  'program', 'uses', 'var', 'const', 'begin', 'end', 'if', 'then', 'else',
+  'case', 'of', 'while', 'do', 'for', 'to', 'downto', 'repeat', 'until',
+  'function', 'procedure', 'array', 'record', 'with', 'and', 'or', 'not', 'mod', 'div'
+]);
+
+const PASCAL_TYPES = new Set([
+  'integer', 'real', 'string', 'char', 'boolean', 'byte', 'word', 'longint', 'single', 'double'
+]);
+
+const PASCAL_BUILTINS = new Set([
+  'writeln', 'write', 'readln', 'read', 'clrscr', 'readkey', 'delay', 'abs', 'sqr', 'sqrt'
+]);
+
+// Helper function to tokenize and highlight a single line of Pascal code
+function renderPascalTokens(line) {
+  if (!line || line.trim() === '') {
+    return ' ';
+  }
+
+  // Regex to capture comments ({...} or //...), string literals ('...'), identifiers, numbers, operators, and whitespace
+  const tokenRegex = /(\{[^}]*\}|\/\/[^\n]*|'[^']*'|[a-zA-Z_][a-zA-Z0-9_]*|\d+(?:\.\d+)?|:=|<=|>=|<>|[+\-*\/=<>():;,.\[\]]|\s+)/g;
+  const elements = [];
+  let match;
+  let keyIdx = 0;
+
+  while ((match = tokenRegex.exec(line)) !== null) {
+    const token = match[0];
+    const lower = token.toLowerCase();
+
+    if (token.startsWith('{') || token.startsWith('//')) {
+      elements.push(
+        <span key={keyIdx++} className="text-emerald-400/90 italic font-medium">
+          {token}
+        </span>
+      );
+    } else if (token.startsWith("'")) {
+      elements.push(
+        <span key={keyIdx++} className="text-amber-300 font-normal">
+          {token}
+        </span>
+      );
+    } else if (PASCAL_KEYWORDS.has(lower)) {
+      elements.push(
+        <span key={keyIdx++} className="text-cyan-400 font-bold">
+          {token}
+        </span>
+      );
+    } else if (PASCAL_TYPES.has(lower)) {
+      elements.push(
+        <span key={keyIdx++} className="text-purple-400 font-semibold">
+          {token}
+        </span>
+      );
+    } else if (PASCAL_BUILTINS.has(lower)) {
+      elements.push(
+        <span key={keyIdx++} className="text-sky-300 font-semibold">
+          {token}
+        </span>
+      );
+    } else if (/^\d+(\.\d+)?$/.test(token)) {
+      elements.push(
+        <span key={keyIdx++} className="text-orange-300 font-mono">
+          {token}
+        </span>
+      );
+    } else if ([':=', '<=', '>=', '<>', '='].includes(token)) {
+      elements.push(
+        <span key={keyIdx++} className="text-rose-400 font-bold">
+          {token}
+        </span>
+      );
+    } else {
+      elements.push(
+        <span key={keyIdx++} className="text-slate-200">
+          {token}
+        </span>
+      );
+    }
+  }
+
+  return elements.length > 0 ? elements : line;
+}
+
 export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = null }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMeetingFilter, setSelectedMeetingFilter] = useState(
@@ -107,7 +192,7 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
               <code className="text-cyan-300 font-mono text-xs px-1.5 py-0.5 bg-black/40 rounded">
                 03_source_code_pascal
               </code>
-              . Tersedia kode program lengkap, penjelasan logika, dan tombol unduh langsung satu klik.
+              . Tersedia kode program terstruktur, nomor baris, pewarnaan sintaks IDE, dan tombol unduh langsung satu klik.
             </p>
           </div>
 
@@ -295,21 +380,24 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
         {activeFile && (
           <div className="lg:col-span-7 space-y-4">
             {/* Active File Header Card */}
-            <div className="p-4 rounded-xl bg-[#181B26] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-bold">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#181B26] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-bold">
                     Pertemuan {activeFile.meeting}
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-white/10">
+                  <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-white/10">
                     {activeFile.category}
                   </span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded text-slate-400 bg-white/5">
+                    {activeFile.linesCount} Baris
+                  </span>
                 </div>
-                <h2 className="text-sm sm:text-base font-extrabold text-white font-heading">
+                <h2 className="text-sm sm:text-base font-extrabold text-white font-heading leading-snug">
                   {activeFile.title}
                 </h2>
-                <div className="text-xs text-cyan-400 font-mono mt-0.5">
-                  {activeFile.filename}
+                <div className="text-xs text-cyan-400 font-mono font-semibold">
+                  📄 {activeFile.filename}
                 </div>
               </div>
 
@@ -323,7 +411,7 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
                   {copied ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-emerald-400">Tersalin!</span>
+                      <span className="text-emerald-400 font-bold">Tersalin!</span>
                     </>
                   ) : (
                     <>
@@ -355,39 +443,42 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
               </div>
             </div>
 
-            {/* Code Viewer Window with Line Numbers */}
-            <div className="rounded-2xl border border-white/10 bg-[#0A0D14] overflow-hidden shadow-2xl">
+            {/* Code Viewer Window with Line Numbers & Syntax Highlighting */}
+            <div className="rounded-2xl border border-white/10 bg-[#080B12] overflow-hidden shadow-2xl">
               {/* Window Header */}
-              <div className="px-4 py-2.5 bg-[#121622] border-b border-white/10 flex items-center justify-between text-xs font-mono">
+              <div className="px-4 py-2.5 bg-[#101420] border-b border-white/10 flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
                   <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
                   <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                  <span className="text-slate-400 ml-2 font-bold text-[11px]">
+                  <span className="text-slate-300 ml-2 font-bold text-[11px]">
                     Free Pascal IDE • {activeFile.filename}
                   </span>
                 </div>
-                <div className="text-[11px] text-slate-400">
-                  {activeFile.linesCount} Lines • ANSI Text
+                <div className="flex items-center gap-2 text-[11px] text-slate-400">
+                  <span className="text-emerald-400 font-semibold font-mono">ANSI Syntax</span>
+                  <span>•</span>
+                  <span>{activeFile.linesCount} Baris</span>
                 </div>
               </div>
 
-              {/* Window Code Content */}
-              <div className="p-4 max-h-[480px] overflow-y-auto overflow-x-auto font-mono text-xs leading-relaxed text-slate-200">
-                <pre className="table w-full">
-                  <code>
-                    {activeFile.rawCode.split('\n').map((line, idx) => (
-                      <div key={idx} className="table-row hover:bg-white/[0.03]">
-                        <span className="table-cell text-right select-none pr-4 text-slate-600 w-10 text-[11px]">
-                          {idx + 1}
-                        </span>
-                        <span className="table-cell whitespace-pre text-slate-200 font-mono">
-                          {line || ' '}
-                        </span>
-                      </div>
-                    ))}
-                  </code>
-                </pre>
+              {/* Window Code Content (Robust Vertical Row Flow) */}
+              <div className="p-3 max-h-[520px] overflow-y-auto overflow-x-auto font-mono text-xs leading-relaxed select-text bg-[#090C15]">
+                <div className="min-w-fit flex flex-col font-mono text-[12px]">
+                  {activeFile.rawCode.split('\n').map((line, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-start hover:bg-white/[0.04] py-[2px] px-1 rounded transition-colors group"
+                    >
+                      <span className="select-none text-right pr-4 text-slate-600 group-hover:text-slate-400 w-10 flex-shrink-0 text-[11px] font-mono tabular-nums">
+                        {idx + 1}
+                      </span>
+                      <span className="whitespace-pre font-mono flex-1 text-slate-200">
+                        {renderPascalTokens(line)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
