@@ -15,10 +15,12 @@ import {
   Eye,
   ShieldCheck,
   Check,
+  Code,
 } from 'lucide-react';
 import { sanitizeHtml, sanitizeUrl } from '../../lib/security';
 import { PdfViewerModal } from '../materials/PdfViewerModal';
 import { CheatsheetViewerModal } from '../materials/CheatsheetViewerModal';
+import { PascalExplorerView } from '../pascal/PascalExplorerView';
 
 const CHEATSHEET_MAP = {
   'subject-matdas': { title: 'Matematika Dasar', image: '/images/MATEMATIKA_DASAR_UTS_P1_P4.jpg' },
@@ -131,6 +133,16 @@ export function MeetingDetailView({
               <span>Cheatsheet HD (JPG)</span>
             </button>
           )}
+
+          {(subject.id === 'subject-algo' || subject.id === 'subject-pascal') && (
+            <button
+              onClick={() => setActiveTab('pascal')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600/30 font-medium transition-colors cursor-pointer"
+            >
+              <Code className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Berkas Pascal (.PAS) (24)</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -216,6 +228,20 @@ export function MeetingDetailView({
           >
             <ImageIcon className="w-4 h-4 text-cyan-300" />
             <span>📐 Cheatsheet Formula HD (JPG)</span>
+          </button>
+        )}
+
+        {(subject.id === 'subject-algo' || subject.id === 'subject-pascal') && (
+          <button
+            onClick={() => setActiveTab('pascal')}
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+              activeTab === 'pascal'
+                ? 'bg-emerald-600 text-white shadow-md'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+            }`}
+          >
+            <Code className="w-4 h-4 text-emerald-300" />
+            <span>💻 Berkas Pascal (.PAS) (24)</span>
           </button>
         )}
       </div>
@@ -501,6 +527,11 @@ export function MeetingDetailView({
             />
           </div>
         </div>
+      )}
+
+      {/* TAB 4: BERKAS PASCAL (.PAS) EXPLORER */}
+      {activeTab === 'pascal' && (
+        <PascalExplorerView initialMeeting={meeting.meeting_number} />
       )}
 
       {/* Interactive PDF Reader Modal (Fullscreen) */}

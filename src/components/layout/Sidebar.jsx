@@ -10,6 +10,7 @@ import {
   FileCheck,
   Calendar,
   ChevronRight,
+  Terminal,
 } from 'lucide-react';
 
 export function Sidebar({
@@ -82,6 +83,24 @@ export function Sidebar({
           </div>
           <span className="text-[10px] font-mono opacity-80">{stats.totalMeetings} Sesi</span>
         </button>
+
+        <button
+          onClick={() => {
+            setActiveView('pascal');
+            setSelectedSubjectId(null);
+          }}
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+            activeView === 'pascal'
+              ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
+              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+          }`}
+        >
+          <div className="flex items-center gap-2.5">
+            <Terminal className="w-4 h-4 text-emerald-400" />
+            <span>Koleksi Pascal (.PAS)</span>
+          </div>
+          <span className="text-[10px] font-mono text-emerald-300 bg-emerald-500/20 px-1.5 py-0.5 rounded font-bold">24 File</span>
+        </button>
       </div>
 
       {/* Academic Repository Vault Card */}
@@ -110,6 +129,16 @@ export function Sidebar({
           <div className="flex items-center justify-between">
             <span className="text-slate-400">Cheatsheet HD (JPG):</span>
             <span className="font-mono font-semibold text-amber-400">6 Kartu</span>
+          </div>
+          <div
+            onClick={() => {
+              setActiveView('pascal');
+              setSelectedSubjectId(null);
+            }}
+            className="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+          >
+            <span className="text-slate-400">Kode Pascal (.PAS):</span>
+            <span className="font-mono font-semibold text-emerald-400 underline decoration-dotted">24 Berkas</span>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { SubjectsView } from './components/subjects/SubjectsView';
 import { MeetingDetailView } from './components/meetings/MeetingDetailView';
 import { GlobalSearchModal } from './components/search/GlobalSearchModal';
 import { SettingsModal } from './components/settings/SettingsModal';
+import { PascalExplorerView } from './components/pascal/PascalExplorerView';
 
 export function App() {
   const { theme, toggleTheme } = useTheme();
@@ -143,6 +144,12 @@ export function App() {
               onBack={() => {
                 setActiveView('subject_detail');
               }}
+            />
+          )}
+
+          {activeView === 'pascal' && (
+            <PascalExplorerView
+              onSelectMeeting={handleSelectMeeting}
             />
           )}
         </main>
