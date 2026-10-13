@@ -516,190 +516,103 @@ write(id_jabatan, nama_jabatan)
 
 ## 4. Pemrograman 1 (Pascal)
 * **Dosen Pengampu:** Tim Dosen Pemrograman FTIK Unindra
-* **Jadwal & Ruang:** Selasa • 09:10 - 10:50 WIB • Ruang R.4.5-3
-* **Kompiler Standar:** Free Pascal Compiler (FPC 3.2.2) & Lazarus IDE
-* **Berkas Praktikum:** Kode sumber `.pas` di `Tugas_Kuliah/01_Algoritma_dan_Pemrograman_1/Tugas_dan_Praktikum/`
+* **Jadwal & Ruang:** Selasa • 10:50 - 12:30 WIB • Laboratorium Komputer
+* **Berkas Rujukan:** Modul Praktikum Lab & Slide Dosen di `Semester 1/Pemrograman/01_materi_pdf/`
 
 ---
 
 ### Pertemuan 1: Filosofi Bahasa Pascal & Struktur Anatomi Program
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-#### Anatomi Tiga Blok Struktur Pascal:
+#### 1. Sejarah Singkat Pascal
+Diciptakan oleh **Prof. Niklaus Wirth** pada tahun 1971 di ETH Zurich, Swiss. Dinamai untuk menghormati **Blaise Pascal**, matematikawan Prancis penemu kalkulator mekanik pertama (*Pascaline*). Dirancang khusus sebagai bahasa terstruktur tinggi (*strongly-typed*) untuk pengajaran ilmu komputer yang disiplin.
+
+#### 2. Anatomi Baku Program Pascal:
 ```pascal
-{ 1. BLOK JUDUL PROGRAM }
-program NamaProgram;
+program NamaProgram;  { Judul Program }
+uses crt;            { Deklarasi Unit }
 
-{ 2. BLOK DEKLARASI }
-uses crt;          { Mengimpor unit CRT untuk manipulasi layar terminal }
-const
-  PI = 3.14159;    { Nilai konstanta tetap }
-var
-  jari_jari, luas : real;  { Deklarasi variabel dan tipe data }
+var                  { Deklarasi Variabel }
+  nama : string;
 
-{ 3. BLOK PROGRAM UTAMA }
-begin
-  clrscr;          { Membersihkan layar konsol }
-  write('Masukkan jari-jari lingkaran: ');
-  readln(jari_jari);
-  luas := PI * jari_jari * jari_jari;
-  writeln('Luas Lingkaran = ', luas:0:2);
-  readln;          { Menahan jendela terminal sebelum keluar }
-end.               { Titik '.' menandakan akhir mutlak program }
+begin                { Blok Eksekusi Utama }
+  clrscr;
+  writeln('Halo Dunia!');
+  readln;
+end.                 { Diakhiri titik mutlak }
 ```
 
 ---
 
-### Pertemuan 2: Variabel, Konstanta, Tipe Data & Penugasan
+### Pertemuan 2: Variabel, Konstanta, Tipe Data & Operator
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-* **Karakteristik Pascal:** Bersifat *Strongly Typed* (tipe variabel harus dideklarasikan sebelum dipakai) dan *Case Insensitive* (`A` sama dengan `a`).
-* **Operator Penugasan (Assignment):** Menggunakan simbol `:=` (titik dua sama dengan).
-* **Perbedaan `write` vs `writeln`:**
-  * `write('...')` mencetak teks tanpa ganti baris (kursor tetap di sebelah kanan).
-  * `writeln('...')` mencetak teks lalu memindahkan kursor ke baris baru di bawahnya.
-* **Format Penulisan Angka Real:** `variabel:lebar_total:jumlah_desimal` (contoh `luas:0:2` membulatkan hasil cetak ke 2 digit desimal).
+* **Tipe Bilangan Bulat:** `Shortint` (-128..127), `Integer` (-32768..32767), `Longint` (sampai 2 miliar), `Byte` (0..255).
+* **Tipe Riil:** `Real`, `Single`, `Double`. Format cetak: `nilai:0:2` (2 angka desimal).
+* **Operator Penugasan:** Wajib menggunakan `:=` (bukan `=`).
+* **Operator Pembagian:** `/` selalu menghasilkan Real, `div` hasil bagi bulat, `mod` sisa bagi.
 
 ---
 
-### Pertemuan 3: Struktur Kontrol Percabangan (IF-THEN, IF-THEN-ELSE)
+### Pertemuan 3: Operasi Input & Output (write, writeln, read, readln)
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-> [!CAUTION]
-> **🚨 ATURAN EMAS KOMPILER PASCAL: PANTANGAN TITIK KOMA SEBELUM ELSE!**  
-> Di dalam tata bahasa sintaks Pascal, tanda titik koma (`;`) bertindak sebagai pemisah instruksi (*statement separator*). Struktur `if ... then ... else` merupakan **SATU KALIMAT UTUH**. Jika Anda memberi tanda `;` tepat sebelum kata `else`, kompiler menganggap pernyataan `if` telah selesai, sehingga saat membaca `else` akan melempar error: **Fatal: Syntax error, ";" expected but "ELSE" found**.
-
-#### Praktikum Nyata 1: Uji Tahun Kabisat (`latihan1_kabisat.pas`)
-```pascal
-program tahun_kabisat;
-uses crt;
-
-var
-  tahun : integer;
-
-begin
-  clrscr;
-  writeln('   PROGRAM CEK TAHUN KABISAT       ');
-  write('Masukkan tahun : ');
-  readln(tahun);
-
-  if (tahun mod 4 = 0) then
-    writeln('Tahun ', tahun, ' adalah TAHUN KABISAT') { <--- TIDAK ADA TITIK KOMA }
-  else
-    writeln('Tahun ', tahun, ' BUKAN TAHUN KABISAT');
-
-  readln;
-end.
-```
-
-#### Praktikum Nyata 2: Menentukan Angka Terbesar (`latihan2_terbesar.pas`)
-```pascal
-program cari_angka_terbesar;
-uses crt;
-
-var
-  angka1, angka2, terbesar : integer;
-
-begin
-  clrscr;
-  write('Input angka pertama : '); readln(angka1);
-  write('Input angka kedua   : '); readln(angka2);
-
-  if (angka1 > angka2) then
-    terbesar := angka1   { <--- TIDAK ADA TITIK KOMA }
-  else
-    terbesar := angka2;
-
-  writeln('Angka terbesar adalah ', terbesar);
-  readln;
-end.
-```
+* `write` vs `writeln`: `write` mencetak tanpa ganti baris; `writeln` mencetak lalu kursor pindah ke baris baru.
+* `read` vs `readln`: `readln` membaca masukan pengguna sampai tombol Enter ditekan dan membuang buffer sisa.
 
 ---
 
-### Pertemuan 4: Percabangan Majemuk & Perhitungan Nilai Akhir
+### Pertemuan 4: Pemilihan Tunggal & Ganda (IF-THEN & IF-THEN-ELSE)
 - [ ] *Sudah disalin ke lembar binder fisik*
 
-#### Praktikum Nyata 3: Program Perhitungan Nilai Akhir (`latihan_nilai_akhir.pas`)
+* **Kaidah Semicolon:** Dilarang meletakkan titik koma `;` sebelum kata kunci `else`.
+
+---
+
+### Pertemuan 5: Pemilihan Majemuk (IF then else IF), Kasus BMI & Tugas Nilai Akhir
+- [ ] *Sudah disalin ke lembar binder fisik*
+* **Berkas Rujukan:** Slide PPT Dosen `Pertemuan 5  Pemilihan Majemuk (Selection) – IF then else IF.pdf` (8 Slide)
+
+#### 1. Format Penulisan IF Majemuk:
 ```pascal
-program hitung_nilai_akhir;
-uses crt;
-
-var
-  tugas, uts, uas, nilai_akhir : real;
-  nilai_huruf                  : char;
-
-begin
-  clrscr;
-  writeln('==========================================');
-  writeln('   PROGRAM HITUNG NILAI AKHIR MAHASISWA   ');
-  writeln('==========================================');
-
-  write('Input nilai Tugas : '); readln(tugas);
-  write('Input nilai UTS   : '); readln(uts);
-  write('Input nilai UAS   : '); readln(uas);
-
-  { Bobot: Tugas 20%, UTS 30%, UAS 50% }
-  nilai_akhir := (0.20 * tugas) + (0.30 * uts) + (0.50 * uas);
-
-  { Seleksi Nilai Huruf }
-  if (nilai_akhir >= 91) then
-    nilai_huruf := 'A'
-  else if (nilai_akhir >= 76) then
-    nilai_huruf := 'B'
-  else if (nilai_akhir >= 61) then
-    nilai_huruf := 'C'
-  else if (nilai_akhir >= 41) then
-    nilai_huruf := 'D'
-  else
-    nilai_huruf := 'E';
-
-  writeln('------------------------------------------');
-  writeln('Nilai Akhir       : ', nilai_akhir:0:2);
-  writeln('Nilai Huruf       : ', nilai_huruf);
-
-  { Seleksi Kelulusan }
-  if (nilai_akhir >= 70) then
-    writeln('Selamat anda dinyatakan lulus')
-  else
-    writeln('Maaf anda dinyatakan tidak lulus');
-
-  readln;
-end.
+if (kondisi-1) then
+  begin ... end
+else if (kondisi-2) then
+  begin ... end
+else
+  begin ... end;
 ```
 
-#### Praktikum Nyata 4: Konversi Suhu Celcius (`Celcius.pas`)
-```pascal
-program KonversiSuhuCelcius;
-uses crt;
+#### 2. Contoh Program Slide:
+* **Slide 4 (Positif/Negatif/Nol):** Mengevaluasi `bilangan > 0`, `bilangan < 0`, dan `else` untuk Nol. Berkas: `pemro_p05_contoh1_bilangan.pas`.
+* **Slide 6 (Indeks Massa Tubuh BMI):** `BMI = berat / (tinggi * tinggi)`. Kategori: Obesitas (>30), Berlebih (>23), Normal (>18.5), Kurang (<=18.5). Berkas: `pemro_p05_contoh2_bmi.pas`.
 
-var
-  celcius, reamur, fahrenheit : real;
+#### 3. TUGAS RESMI PERTEMUAN 5 (Slide 7):
+* **Rumus Nilai Akhir:** `nilai_akhir = (0.20 * tugas) + (0.30 * uts) + (0.50 * uas)`.
+* **Nilai Huruf:** 91-100 (A), 76-90 (B), 61-75 (C), 41-60 (D), 0-40 (E).
+* **Status Kelulusan:** `nilai_akhir >= 70` ("Selamat anda dinyatakan lulus"), jika tidak ("Anda dinyatakan tidak lulus").
+* **Berkas Pascal:** `pemro_p05_tugas_nilai_akhir.pas` (Teruji 100%).
 
-begin
-  clrscr;
-  writeln('=========================================');
-  writeln('  PROGRAM KONVERSI SUHU CELCIUS (GENAP)  ');
-  writeln('=========================================');
-  writeln('NPM  : 202633500386 (Digit Genap: 6)');
-  writeln('Nama : Muhammad Haikel Saleh');
-  writeln('-----------------------------------------');
+---
 
-  write('Masukkan Nilai Suhu Celcius (C) : ');
-  readln(celcius);
+### Pertemuan 6: Pemilihan Bersarang (Nested IF), Kasus 3 Bilangan & Tugas Gaji Karyawan
+- [ ] *Sudah disalin ke lembar binder fisik*
+* **Berkas Rujukan:** Slide PPT Dosen `Pertemuan_6.pdf` (7 Slide)
 
-  { Rumus konversi suhu }
-  reamur := (4.0 / 5.0) * celcius;
-  fahrenheit := ((9.0 / 5.0) * celcius) + 32.0;
+#### 1. Konsep Nested IF:
+Penggunaan struktur `if` di dalam blok `if` lainnya untuk pengujian kondisi bertingkat yang saling bergantung.
 
-  writeln('-----------------------------------------');
-  writeln('HASIL KONVERSI SUHU:');
-  writeln('Suhu Reamur     (R) : ', reamur:0:2, ' R');
-  writeln('Suhu Fahrenheit (F) : ', fahrenheit:0:2, ' F');
-  writeln('=========================================');
-  readln;
-end.
-```
+#### 2. Contoh Program Slide:
+* **Slide 5 (3 Bilangan Terbesar):** Menggunakan Nested IF untuk menentukan angka terbesar dari 3 input bilangan. Berkas: `pemro_p06_contoh1_tiga_bilangan_terbesar.pas`.
+
+#### 3. TUGAS RESMI PERTEMUAN 6 (Slide 6):
+* **Sistem Penggajian Karyawan:** Input Golongan (A/B) dan Pendidikan (SMA/S1).
+* **Tabel Gaji Pokok & Tunjangan:**
+  - Golongan A, SMA: Gaji Pokok 3jt + Tunjangan 2jt = **Total Rp 5.000.000**
+  - Golongan A, S1 : Gaji Pokok 4jt + Tunjangan 3jt = **Total Rp 7.000.000**
+  - Golongan B, SMA: Gaji Pokok 4jt + Tunjangan 3jt = **Total Rp 7.000.000** *(Cocok contoh slide)*
+  - Golongan B, S1 : Gaji Pokok 6jt + Tunjangan 5jt = **Total Rp 11.000.000**
+* **Berkas Pascal:** `pemro_p06_tugas_gaji_karyawan_nested_if.pas` (Teruji 100%).
 
 ---
 ## 5. Bahasa Inggris 1
