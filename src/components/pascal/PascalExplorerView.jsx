@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Code,
   Copy,
@@ -17,8 +17,19 @@ import {
   Info,
   Calendar,
   CheckCircle2,
+  HelpCircle,
+  Lightbulb,
+  ChevronRight,
+  ChevronLeft,
+  ListCollapse,
+  Eye,
+  AlertCircle,
+  ArrowRight,
+  CornerDownRight,
+  Bookmark,
 } from 'lucide-react';
 import { PASCAL_FILES } from '../../data/pascalFiles';
+import { explainPascalLine, analyzeAllPascalLines } from '../../lib/pascalLineExplainer';
 
 // Pascal Keywords, Types, Built-ins for Syntax Highlighting
 const PASCAL_KEYWORDS = new Set([
@@ -32,7 +43,7 @@ const PASCAL_TYPES = new Set([
 ]);
 
 const PASCAL_BUILTINS = new Set([
-  'writeln', 'write', 'readln', 'read', 'clrscr', 'readkey', 'delay', 'abs', 'sqr', 'sqrt'
+  'writeln', 'write', 'readln', 'read', 'clrscr', 'readkey', 'delay', 'abs', 'sqr', 'sqrt', 'upcase'
 ]);
 
 // Helper function to tokenize and highlight a single line of Pascal code
@@ -118,6 +129,12 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
   );
   const [copied, setCopied] = useState(false);
 
+  // View Mode: 'editor' (interactive editor with line inspector) vs 'breakdown' (full table breakdown)
+  const [activeViewMode, setActiveViewMode] = useState('editor');
+  const [selectedLineIndex, setSelectedLineIndex] = useState(0);
+  const [showInlineExplanation, setShowInlineExplanation] = useState(false);
+  const [breakdownCategoryFilter, setBreakdownCategoryFilter] = useState('all');
+
   // Available unique categories
   const categories = useMemo(() => {
     const set = new Set(PASCAL_FILES.map((f) => f.category));
@@ -152,6 +169,32 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
     return filteredFiles[0] || PASCAL_FILES[0];
   }, [selectedFileId, filteredFiles]);
 
+  // Raw lines of active file
+  const rawLines = useMemo(() => {
+    if (!activeFile?.rawCode) return [];
+    return activeFile.rawCode.split('\n');
+  }, [activeFile]);
+
+  // Line-by-line smart explanations
+  const lineExplanations = useMemo(() => {
+    if (!activeFile?.rawCode) return [];
+    return analyzeAllPascalLines(activeFile.rawCode, activeFile);
+  }, [activeFile]);
+
+  // Current active inspected line
+  const currentExplanation = useMemo(() => {
+    if (lineExplanations.length === 0) return null;
+    return lineExplanations[selectedLineIndex] || lineExplanations[0];
+  }, [lineExplanations, selectedLineIndex]);
+
+  // Reset selected line when active file changes
+  useEffect(() => {
+    if (lineExplanations.length > 0) {
+      const firstMeaningful = lineExplanations.findIndex((l) => !l.isEmpty);
+      setSelectedLineIndex(firstMeaningful !== -1 ? firstMeaningful : 0);
+    }
+  }, [activeFile?.id]);
+
   const handleCopyCode = () => {
     if (!activeFile) return;
     navigator.clipboard.writeText(activeFile.rawCode).then(() => {
@@ -163,6 +206,15 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
   const totalLines = useMemo(() => {
     return PASCAL_FILES.reduce((acc, f) => acc + f.linesCount, 0);
   }, []);
+
+  // Quick jump helper for popular syntax questions
+  const jumpToLineMatching = (predicate) => {
+    const idx = lineExplanations.findIndex(predicate);
+    if (idx !== -1) {
+      setSelectedLineIndex(idx);
+      setActiveViewMode('editor');
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -178,21 +230,18 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
               <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
                 Free Pascal & Turbo Pascal
               </span>
-              <span className="text-[11px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
-                Unindra 2026/2027
+              <span className="text-[11px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-indigo-300" />
+                <span>Bedah Baris Interaktif</span>
               </span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-white flex items-center gap-2.5">
-              <span>💻 Berkas Kode Pascal (.PAS) Resmi</span>
+              <span>💻 Berkas Kode Pascal (.PAS) & Bedah Baris Lengkap</span>
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl">
-              Koleksi lengkap <strong>24 berkas kode sumber Pascal (.pas)</strong> dari repositori perkuliahan{' '}
-              <code className="text-cyan-300 font-mono text-xs px-1.5 py-0.5 bg-black/40 rounded">
-                03_source_code_pascal
-              </code>
-              . Tersedia kode program terstruktur, nomor baris, pewarnaan sintaks IDE, dan tombol unduh langsung satu klik.
+              Koleksi lengkap <strong>24 berkas kode Pascal</strong> dengan <strong>fitur inspeksi baris interaktif</strong>. Klik baris kode mana saja untuk mengetahui fungsi perintah, kenapa sintaksnya ditulis seperti itu (kenapa <code className="text-amber-300 font-mono">begin</code> tanpa titik koma, kenapa <code className="text-sky-300 font-mono">writeln</code>, aturan titik koma sebelum <code className="text-rose-400 font-mono">else</code>, dan operator <code className="text-cyan-300 font-mono">:=</code>).
             </p>
           </div>
 
@@ -214,7 +263,7 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
               <div className="text-lg font-mono font-extrabold text-emerald-400">
                 100%
               </div>
-              <div className="text-[10px] text-slate-400 font-medium">Bebas Error FPC</div>
+              <div className="text-[10px] text-slate-400 font-medium">Bedah Baris</div>
             </div>
           </div>
         </div>
@@ -376,7 +425,7 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
           )}
         </div>
 
-        {/* Right Column: Code Viewer & Explanation Panel (7 cols on lg) */}
+        {/* Right Column: Code Viewer & Interactive Line Explainer (7 cols on lg) */}
         {activeFile && (
           <div className="lg:col-span-7 space-y-4">
             {/* Active File Header Card */}
@@ -443,47 +492,380 @@ export function PascalExplorerView({ initialMeeting = null, onSelectMeeting = nu
               </div>
             </div>
 
-            {/* Code Viewer Window with Line Numbers & Syntax Highlighting */}
-            <div className="rounded-2xl border border-white/10 bg-[#080B12] overflow-hidden shadow-2xl">
-              {/* Window Header */}
-              <div className="px-4 py-2.5 bg-[#101420] border-b border-white/10 flex items-center justify-between text-xs font-mono">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                  <span className="text-slate-300 ml-2 font-bold text-[11px]">
-                    Free Pascal IDE • {activeFile.filename}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-[11px] text-slate-400">
-                  <span className="text-emerald-400 font-semibold font-mono">ANSI Syntax</span>
-                  <span>•</span>
-                  <span>{activeFile.linesCount} Baris</span>
-                </div>
+            {/* Quick Syntax Jump Bar (Pertanyaan Umum Mahasiswa) */}
+            <div className="p-3 rounded-xl bg-slate-900/90 border border-cyan-500/20 text-xs">
+              <div className="flex items-center gap-2 text-cyan-300 font-bold mb-2">
+                <Lightbulb className="w-4 h-4 text-amber-400" />
+                <span>💡 Tanya Cepat Aturan Sintaks (Klik untuk Langsung Bedah):</span>
               </div>
-
-              {/* Window Code Content (Robust Vertical Row Flow) */}
-              <div className="p-3 max-h-[520px] overflow-y-auto overflow-x-auto font-mono text-xs leading-relaxed select-text bg-[#090C15]">
-                <div className="min-w-fit flex flex-col font-mono text-[12px]">
-                  {activeFile.rawCode.split('\n').map((line, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start hover:bg-white/[0.04] py-[2px] px-1 rounded transition-colors group"
-                    >
-                      <span className="select-none text-right pr-4 text-slate-600 group-hover:text-slate-400 w-10 flex-shrink-0 text-[11px] font-mono tabular-nums">
-                        {idx + 1}
-                      </span>
-                      <span className="whitespace-pre font-mono flex-1 text-slate-200">
-                        {renderPascalTokens(line)}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <button
+                  onClick={() => jumpToLineMatching(l => /^begin$/i.test(l.code))}
+                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-cyan-900/40 text-slate-300 hover:text-cyan-300 text-[11px] font-mono border border-white/10 transition-all cursor-pointer"
+                >
+                  ❓ Kenapa <code className="text-amber-300 font-bold">begin</code> tanpa ; ?
+                </button>
+                <button
+                  onClick={() => jumpToLineMatching(l => l.category.includes('Sebelum ELSE'))}
+                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-rose-900/40 text-slate-300 hover:text-rose-300 text-[11px] font-mono border border-white/10 transition-all cursor-pointer"
+                >
+                  🚫 Kenapa sebelum <code className="text-rose-400 font-bold">else</code> dilarang ; ?
+                </button>
+                <button
+                  onClick={() => jumpToLineMatching(l => /^writeln/i.test(l.code))}
+                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-sky-900/40 text-slate-300 hover:text-sky-300 text-[11px] font-mono border border-white/10 transition-all cursor-pointer"
+                >
+                  ✍️ Kenapa <code className="text-sky-300 font-bold">writeln</code> vs write?
+                </button>
+                <button
+                  onClick={() => jumpToLineMatching(l => l.code.includes(':='))}
+                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-orange-900/40 text-slate-300 hover:text-orange-300 text-[11px] font-mono border border-white/10 transition-all cursor-pointer"
+                >
+                  🧮 Kenapa operator <code className="text-orange-300 font-bold">:=</code> bukan = ?
+                </button>
+                <button
+                  onClick={() => jumpToLineMatching(l => /^readln;?$/i.test(l.code))}
+                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-emerald-900/40 text-slate-300 hover:text-emerald-300 text-[11px] font-mono border border-white/10 transition-all cursor-pointer"
+                >
+                  🛑 Kenapa <code className="text-emerald-300 font-bold">readln;</code> di akhir?
+                </button>
+                <button
+                  onClick={() => jumpToLineMatching(l => /^end\.$/i.test(l.code))}
+                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-purple-900/40 text-slate-300 hover:text-purple-300 text-[11px] font-mono border border-white/10 transition-all cursor-pointer"
+                >
+                  🏁 Kenapa <code className="text-purple-300 font-bold">end.</code> pakai titik?
+                </button>
               </div>
             </div>
 
-            {/* Explanation and Execution Guide */}
-            <div className="space-y-3">
+            {/* Mode Switcher Tabs (Code Editor vs Line-by-Line Table) */}
+            <div className="flex items-center justify-between bg-[#101420] p-1.5 rounded-xl border border-white/10">
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setActiveViewMode('editor')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+                    activeViewMode === 'editor'
+                      ? 'bg-cyan-600 text-white shadow-md'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <Code className="w-3.5 h-3.5" />
+                  <span>💻 Editor & Inspektur Baris</span>
+                </button>
+                <button
+                  onClick={() => setActiveViewMode('breakdown')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
+                    activeViewMode === 'breakdown'
+                      ? 'bg-cyan-600 text-white shadow-md'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <ListCollapse className="w-3.5 h-3.5" />
+                  <span>📖 Bedah Seluruh Baris ({rawLines.length})</span>
+                </button>
+              </div>
+
+              {activeViewMode === 'editor' && (
+                <button
+                  onClick={() => setShowInlineExplanation(!showInlineExplanation)}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-colors flex items-center gap-1.5 cursor-pointer ${
+                    showInlineExplanation
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                      : 'bg-slate-800 text-slate-400 border-white/10 hover:text-white'
+                  }`}
+                  title="Menampilkan catatan penjelasan tepat di sela-sela baris kode"
+                >
+                  <Eye className="w-3 h-3" />
+                  <span>Penjelasan di Sela Baris: {showInlineExplanation ? 'ON' : 'OFF'}</span>
+                </button>
+              )}
+            </div>
+
+            {/* VIEW MODE 1: Interactive Editor with Click-to-Inspect */}
+            {activeViewMode === 'editor' && (
+              <div className="space-y-4">
+                {/* Code Window */}
+                <div className="rounded-2xl border border-white/10 bg-[#080B12] overflow-hidden shadow-2xl">
+                  {/* Window Header */}
+                  <div className="px-4 py-2.5 bg-[#101420] border-b border-white/10 flex items-center justify-between text-xs font-mono">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+                      <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                      <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                      <span className="text-slate-300 ml-2 font-bold text-[11px]">
+                        Free Pascal IDE • {activeFile.filename}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[11px] text-slate-400">
+                      <span className="text-cyan-400 font-semibold font-mono">
+                        Klik baris mana saja untuk dibedah 👇
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Window Code Content with Row Click Selection */}
+                  <div className="p-3 max-h-[460px] overflow-y-auto overflow-x-auto font-mono text-xs leading-relaxed select-text bg-[#090C15]">
+                    <div className="min-w-fit flex flex-col font-mono text-[12px]">
+                      {rawLines.map((line, idx) => {
+                        const isSelected = selectedLineIndex === idx;
+                        const exp = lineExplanations[idx];
+
+                        return (
+                          <div key={idx} className="flex flex-col">
+                            <div
+                              onClick={() => setSelectedLineIndex(idx)}
+                              className={`flex items-start py-[3px] px-1 rounded transition-all cursor-pointer group ${
+                                isSelected
+                                  ? 'bg-cyan-500/20 border-l-2 border-cyan-400 shadow-inner'
+                                  : 'hover:bg-white/[0.05]'
+                              }`}
+                            >
+                              {/* Line Number */}
+                              <span
+                                className={`select-none text-right pr-3.5 w-10 flex-shrink-0 text-[11px] font-mono tabular-nums ${
+                                  isSelected
+                                    ? 'text-cyan-300 font-bold'
+                                    : 'text-slate-600 group-hover:text-slate-400'
+                                }`}
+                              >
+                                {idx + 1}
+                              </span>
+
+                              {/* Code Text with Syntax Highlighting */}
+                              <span className="whitespace-pre font-mono flex-1 text-slate-200">
+                                {renderPascalTokens(line)}
+                              </span>
+
+                              {/* Active Line Indicator Indicator */}
+                              {isSelected && (
+                                <span className="select-none ml-2 px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-cyan-500/30 text-cyan-200 border border-cyan-400/40 flex items-center gap-1">
+                                  <span>👉 Sedang Dibedah</span>
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Optional Inline Explanation Mode */}
+                            {showInlineExplanation && exp && !exp.isEmpty && (
+                              <div className="ml-10 my-1 p-2 rounded-lg bg-slate-900/90 border border-cyan-500/30 text-[11px] font-sans text-slate-300 space-y-1">
+                                <div className="flex items-center gap-1.5 font-bold text-cyan-300">
+                                  <CornerDownRight className="w-3 h-3 text-cyan-400" />
+                                  <span>{exp.category}:</span>
+                                  <span className="text-white font-normal">{exp.purpose}</span>
+                                </div>
+                                <div className="text-slate-400 text-[10px] pl-4">
+                                  <strong className="text-amber-300">Kenapa begini:</strong> {exp.whySyntax}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* ACTIVE LINE INSPECTOR PANEL (Bedah Baris Terpilih) */}
+                {currentExplanation && (
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#121624] to-[#181D2D] border-2 border-cyan-500/40 shadow-xl space-y-4 animate-in fade-in duration-200">
+                    {/* Header Baris */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <span className="px-3 py-1 rounded-lg bg-cyan-600 text-white font-mono font-extrabold text-xs shadow-md flex items-center gap-1.5">
+                          <span>Baris {currentExplanation.lineNum}</span>
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full bg-slate-800 border border-white/15 text-slate-300 font-mono text-[11px] font-semibold">
+                          {currentExplanation.category}
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[10px] font-mono">
+                          {currentExplanation.badge}
+                        </span>
+                      </div>
+
+                      {/* Navigation Buttons */}
+                      <div className="flex items-center gap-1.5 self-end sm:self-center">
+                        <button
+                          disabled={selectedLineIndex <= 0}
+                          onClick={() => setSelectedLineIndex(prev => Math.max(0, prev - 1))}
+                          className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                        >
+                          <ChevronLeft className="w-3.5 h-3.5" />
+                          <span>Baris Sebelumnya</span>
+                        </button>
+                        <button
+                          disabled={selectedLineIndex >= rawLines.length - 1}
+                          onClick={() => setSelectedLineIndex(prev => Math.min(rawLines.length - 1, prev + 1))}
+                          className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-300 text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                        >
+                          <span>Baris Berikutnya</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Code Snippet Box */}
+                    <div className="p-3 rounded-xl bg-[#090C15] border border-white/10 font-mono text-xs flex items-center justify-between overflow-x-auto">
+                      <div className="flex items-center gap-2">
+                        <span className="text-slate-500 text-[11px]">Kode:</span>
+                        <span className="text-white font-bold whitespace-pre">
+                          {currentExplanation.code || '(Baris kosong / spasi pemisah)'}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono text-slate-400">
+                        ANSI Pascal
+                      </span>
+                    </div>
+
+                    {/* 3 Pillar Explanations */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                      {/* Box 1: Buat Apa Baris Ini? */}
+                      <div className="p-3.5 rounded-xl bg-slate-900/80 border border-cyan-500/20 space-y-1.5">
+                        <div className="flex items-center gap-2 text-cyan-300 font-bold font-heading">
+                          <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                          <span>🎯 Baris Ini Buat Apa? (Fungsi Logika)</span>
+                        </div>
+                        <p className="text-slate-300 leading-relaxed text-[12px]">
+                          {currentExplanation.purpose}
+                        </p>
+                      </div>
+
+                      {/* Box 2: Kenapa Sintaksnya Begitu? */}
+                      <div className="p-3.5 rounded-xl bg-slate-900/80 border border-amber-500/20 space-y-1.5">
+                        <div className="flex items-center gap-2 text-amber-300 font-bold font-heading">
+                          <HelpCircle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                          <span>💡 Kenapa Sintaksnya Begitu? (Aturan Bahasa)</span>
+                        </div>
+                        <p className="text-slate-300 leading-relaxed text-[12px]">
+                          {currentExplanation.whySyntax}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Dosen & Exam Tips */}
+                    {currentExplanation.dosenTip && (
+                      <div className="p-3 rounded-xl bg-indigo-950/40 border border-indigo-500/30 text-xs flex items-start gap-2.5 text-indigo-200">
+                        <Bookmark className="w-4 h-4 text-indigo-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-white">🎓 Catatan Dosen & Tips Praktikum: </strong>
+                          <span className="leading-relaxed">{currentExplanation.dosenTip}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* VIEW MODE 2: Full Line-by-Line Breakdown Table */}
+            {activeViewMode === 'breakdown' && (
+              <div className="space-y-3">
+                <div className="p-4 rounded-xl bg-[#181B26] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                  <div>
+                    <h3 className="font-bold text-white font-heading">
+                      📖 Tabel Bedah Seluruh Baris Program ({rawLines.length} Baris)
+                    </h3>
+                    <p className="text-slate-400 text-[11px]">
+                      Daftar terperinci setiap baris kode dari baris pertama hingga penutup end.
+                    </p>
+                  </div>
+
+                  {/* Filter Pills */}
+                  <div className="flex items-center gap-1 flex-wrap">
+                    <button
+                      onClick={() => setBreakdownCategoryFilter('all')}
+                      className={`px-2.5 py-1 rounded text-[11px] font-semibold cursor-pointer ${
+                        breakdownCategoryFilter === 'all'
+                          ? 'bg-cyan-600 text-white'
+                          : 'bg-slate-800 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      Semua
+                    </button>
+                    <button
+                      onClick={() => setBreakdownCategoryFilter('if')}
+                      className={`px-2.5 py-1 rounded text-[11px] font-semibold cursor-pointer ${
+                        breakdownCategoryFilter === 'if'
+                          ? 'bg-cyan-600 text-white'
+                          : 'bg-slate-800 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      IF / ELSE
+                    </button>
+                    <button
+                      onClick={() => setBreakdownCategoryFilter('io')}
+                      className={`px-2.5 py-1 rounded text-[11px] font-semibold cursor-pointer ${
+                        breakdownCategoryFilter === 'io'
+                          ? 'bg-cyan-600 text-white'
+                          : 'bg-slate-800 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      Input / Output
+                    </button>
+                    <button
+                      onClick={() => setBreakdownCategoryFilter('var')}
+                      className={`px-2.5 py-1 rounded text-[11px] font-semibold cursor-pointer ${
+                        breakdownCategoryFilter === 'var'
+                          ? 'bg-cyan-600 text-white'
+                          : 'bg-slate-800 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      Variabel
+                    </button>
+                  </div>
+                </div>
+
+                {/* List of Breakdown Rows */}
+                <div className="space-y-2 max-h-[620px] overflow-y-auto pr-1">
+                  {lineExplanations
+                    .filter((item) => {
+                      if (item.isEmpty) return false;
+                      if (breakdownCategoryFilter === 'if') {
+                        return item.category.includes('Percabangan') || item.category.includes('ELSE') || item.category.includes('IF');
+                      }
+                      if (breakdownCategoryFilter === 'io') {
+                        return item.category.includes('Input') || item.category.includes('Tampilan');
+                      }
+                      if (breakdownCategoryFilter === 'var') {
+                        return item.category.includes('Variabel') || item.category.includes('VAR');
+                      }
+                      return true;
+                    })
+                    .map((item) => (
+                      <div
+                        key={item.lineNum}
+                        className="p-3.5 rounded-xl bg-[#141724] border border-white/5 hover:border-cyan-500/30 transition-all text-xs space-y-2"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className="font-mono font-bold text-xs px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30">
+                              Baris {item.lineNum}
+                            </span>
+                            <span className="font-mono text-slate-300 font-bold px-2 py-0.5 rounded bg-black/40 border border-white/10 truncate max-w-xs sm:max-w-md">
+                              {item.code}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-white/10 whitespace-nowrap">
+                            {item.category}
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 text-[11px] text-slate-300">
+                          <div>
+                            <span className="font-bold text-cyan-400">🎯 Buat apa: </span>
+                            <span>{item.purpose}</span>
+                          </div>
+                          <div>
+                            <span className="font-bold text-amber-400">💡 Kenapa begini: </span>
+                            <span>{item.whySyntax}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
+
+            {/* General Description and Free Pascal Guide */}
+            <div className="space-y-3 pt-2">
               <div className="p-4 rounded-xl bg-[#181B26] border border-white/10 text-xs text-slate-300 space-y-2">
                 <div className="flex items-center gap-2 text-white font-bold font-heading">
                   <BookOpen className="w-4 h-4 text-cyan-400" />
