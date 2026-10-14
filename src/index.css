@@ -514,6 +514,68 @@
   scroll-margin-top: 80px;
 }
 
+/* Math Badges, Formulas & Calculation Cards */
+.academic-summary-content .math-badge {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "JetBrains Mono", monospace;
+  font-size: 0.88em;
+  font-weight: 600;
+  background: rgba(99, 102, 241, 0.14);
+  color: #818CF8;
+  border: 1px solid rgba(99, 102, 241, 0.28);
+  padding: 2px 8px;
+  margin: 1px 3px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  vertical-align: middle;
+}
+
+.light .academic-summary-content .math-badge {
+  background: rgba(79, 70, 229, 0.08);
+  color: #4F46E5;
+  border-color: rgba(79, 70, 229, 0.22);
+}
+
+.academic-summary-content .math-formula-box {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.65) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-left: 4px solid #6366F1;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+  color: #38BDF8;
+  overflow-x: auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Step-by-step calculation cards (non-cramped list layout) */
+.academic-summary-content .academic-section-content ol > li,
+.academic-summary-content .academic-section-block ol > li {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  line-height: 1.7;
+  transition: all 0.2s ease;
+}
+
+.academic-summary-content .academic-section-content ol > li:hover,
+.academic-summary-content .academic-section-block ol > li:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+.light .academic-summary-content .academic-section-content ol > li,
+.light .academic-summary-content .academic-section-block ol > li {
+  background: #F8FAFC;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+
 /* Print Specific Rules for Physical Notebook Transcriptions */
 @media print {
   body {

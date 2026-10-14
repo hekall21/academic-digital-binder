@@ -38,6 +38,42 @@ export const isPdfMaterial = (m) =>
   !m?.id?.startsWith('mat_ai_') &&
   !m?.title?.includes('Guru AI');
 
+/**
+ * Formats academic summary HTML:
+ * 1. Converts LaTeX math dollar patterns ($...$) into styled readable mathematical badges with Unicode symbols
+ * 2. Cleans up dangling LaTeX tokens (\rightarrow, \times, \le, \ge, \cdot)
+ */
+export function formatAcademicHtml(rawHtml) {
+  if (!rawHtml || typeof rawHtml !== 'string') return '';
+  let html = rawHtml;
+
+  // Convert LaTeX math dollars $...$ into styled badges with proper mathematical symbols
+  html = html.replace(/\$([^$\n]+)\$/g, (match, formula) => {
+    let clean = formula
+      .replace(/\\text\{([^}]+)\}/g, '$1')
+      .replace(/\\times/g, ' × ')
+      .replace(/\\rightarrow/g, ' → ')
+      .replace(/\\le\b|\\leq\b/g, ' ≤ ')
+      .replace(/\\ge\b|\\geq\b/g, ' ≥ ')
+      .replace(/\\ne\b|\\neq\b/g, ' ≠ ')
+      .replace(/\\pm\b/g, ' ± ')
+      .replace(/\\cdot/g, ' · ')
+      .replace(/\\%/g, '%')
+      .replace(/\\pmod\s*([0-9a-zA-Z]+)/g, ' (mod $1)')
+      .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1 / $2)')
+      .trim();
+    return `<span class="math-badge font-mono">${clean}</span>`;
+  });
+
+  // Format standalone LaTeX keywords if any leaked outside dollars
+  html = html
+    .replace(/\\rightarrow/g, ' → ')
+    .replace(/\\times/g, ' × ')
+    .replace(/\\cdot/g, ' · ');
+
+  return html;
+}
+
 export function MeetingDetailView({
   subject,
   meeting,
@@ -79,7 +115,7 @@ export function MeetingDetailView({
 
   const handleCopySummary = () => {
     const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = currentSummaryHtml;
+    tempDiv.innerHTML = formatAcademicHtml(currentSummaryHtml);
     const plainText = tempDiv.textContent || tempDiv.innerText || '';
     navigator.clipboard.writeText(plainText).then(() => {
       setCopyFeedback(true);
@@ -335,7 +371,7 @@ export function MeetingDetailView({
           <div className="p-6 sm:p-10 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm">
             <div
               className="academic-summary-content text-slate-200 text-sm sm:text-base max-w-none"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentSummaryHtml) }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(formatAcademicHtml(currentSummaryHtml)) }}
             />
           </div>
         </div>

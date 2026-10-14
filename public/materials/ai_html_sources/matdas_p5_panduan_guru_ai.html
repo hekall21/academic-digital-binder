@@ -1,106 +1,420 @@
-<div class="alert alert-info" style="margin-bottom: 24px;">
-  <strong>🤖 PANDUAN GURU AI (DIKTAT MATERI LENGKAP PPT DOSEN) • PERTEMUAN 5</strong><br>
-  <strong>Pokok Bahasan:</strong> Limit Fungsi Aljabar: Konsep Intuitif, Sifat Operasi & Metode Penyelesaian<br>
-  <em>Uraian materi kuliah resmi disajikan secara tuntas, mendalam, dan terstruktur bab demi bab mengikuti berkas presentasi dan modul dosen pengampu FTIK Unindra. Dilengkapi tabel komparasi konsep, contoh kasus praktikum/hitungan, materi pengayaan first principles, serta verifikasi rujukan resmi di bagian paling bawah. Siap dipelajari dan disalin ke lembar catatan binder fisik!</em>
+<div class="alert alert-info" style="margin-bottom: 24px; border-left: 5px solid #06B6D4; background: rgba(6, 182, 212, 0.12); padding: 16px 20px; border-radius: 10px;">
+  <strong style="color: #38BDF8; font-size: 1.05rem;">🤖 PANDUAN GURU AI (DIKTAT MATERI RESMI & PEMBAHASAN TUNTAS) • PERTEMUAN 5</strong><br>
+  <strong>Mata Kuliah:</strong> Matematika Dasar (Kalkulus Terapan Sistem Informasi • TI-106)<br>
+  <strong>Pokok Bahasan Resmi:</strong> Limit Aljabar dan Trigonometri (Sifat Teorema, Pemfaktoran, Sekawan, dan Rumus Dasar Trigonometri)<br>
+  <strong>Berkas Sumber Dosen:</strong> <code>1791885965_Pert_5_Matematika_-_Limit_SC.pdf (11 Halaman Lengkap)</code><br>
+  <em>Diktat ini membedah tuntas teori limit, 9 sifat teorema limit utama, tabel sudut istimewa kuadran I-IV, rumus identitas trigonometri, serta PEMBAHASAN LENGKAP SELURUH 17 SOAL LATIHAN (Aljabar & Trigonometri) dengan penjelasan rinci dari mana setiap angka berasal!</em>
 </div>
 
 <div style="background: rgba(99, 102, 241, 0.12); border-left: 5px solid #6366F1; padding: 14px 18px; border-radius: 10px; margin: 20px 0 24px 0;">
   <h3 style="margin: 0; color: #818CF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
-    <span>🎙️ BAGIAN 1: BEDAH MATERI LENGKAP PPT DOSEN (STEP-BY-STEP & TUNTAS)</span>
+    <span>🎙️ BAGIAN 1: KONSEP DASAR, SIFAT TEOREMA & FORMULA RESMI</span>
   </h3>
   <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
-    Uraian materi perkuliahan resmi mengikuti urutan pokok bahasan slide presentasi dosen pengampu secara utuh tanpa ada teks yang terpotong.
+    Uraian materi dasar berdasarkan Slide 2 - 7 dokumen resmi perkuliahan FTIK Unindra.
   </p>
 </div>
 
+<!-- BAB 1: Definisi Limit & Makna 0/0 -->
 <div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
   <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
     <span>📌</span>
-    <span>1. Definisi Intuitif & Teorema Keberadaan Limit</span>
+    <span>1. Definisi Formal & Konsep Intuitif Limit (Slide 2)</span>
   </h4>
-  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
-    <p>Secara intuitif, pernyataan <code>lim<sub>x &rarr; c</sub> f(x) = L</code> berarti bahwa ketika nilai <code>x</code> bergerak mendekati bilangan <code>c</code> (tetapi <code>x &ne; c</code>), maka nilai <code>f(x)</code> akan bergerak mendekati nilai riil <code>L</code>.</p>
-<ul>
-  <li><strong>Limit Kiri:</strong> <code>lim<sub>x &rarr; c⁻</sub> f(x)</code> (nilai x mendekati c dari arah kiri atau nilai yang lebih kecil dari c).</li>
-  <li><strong>Limit Kanan:</strong> <code>lim<sub>x &rarr; c⁺</sub> f(x)</code> (nilai x mendekati c dari arah kanan atau nilai yang lebih besar dari c).</li>
-  <li><strong>Syarat Mutlak Keberadaan Limit:</strong> Suatu fungsi memiliki limit di titik <code>c</code> jika dan hanya jika limit kiri dan limit kanannya bernilai sama:
-    <div style="background: rgba(6, 182, 212, 0.1); border-left: 4px solid #06B6D4; padding: 10px 14px; margin: 10px 0; border-radius: 6px; font-weight: bold; color: #38BDF8;">
-      lim<sub>x &rarr; c</sub> f(x) = L &nbsp;&hArr;&nbsp; lim<sub>x &rarr; c⁻</sub> f(x) = lim<sub>x &rarr; c⁺</sub> f(x) = L
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.75; font-size: 0.93rem;">
+    <p>Pernyataan <code>lim<sub>x &rarr; c</sub> f(x) = L</code> berarti bahwa bilamana nilai <code>x</code> bergerak mendekati <code>c</code> tetapi <strong>berlainan dari c (x &ne; c)</strong>, maka nilai <code>f(x)</code> mendekati bilangan riil <code>L</code>.</p>
+    
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); padding: 14px 18px; border-radius: 8px; margin: 12px 0;">
+      <strong style="color: #FCD34D;">Kasus Kritis Dosen: Mengapa Muncul Bentuk 0 / 0?</strong><br>
+      Tinjau fungsi <code>f(x) = (x² - 1) / (x - 1)</code>.<br>
+      Jika kita langsung memasukkan <code>x = 1</code>, maka:
+      <div style="font-family: monospace; color: #F87171; margin: 6px 0;">f(1) = (1² - 1) / (1 - 1) = 0 / 0 (Tak Terdefinisi / Tanpa Arti)</div>
+      Namun, dengan konsep limit, kita mencari apa yang terjadi saat <code>x mendekati 1</code>:
+      <div style="font-family: monospace; color: #34D399; margin: 6px 0;">lim<sub>x &rarr; 1</sub> [(x - 1)(x + 1)] / (x - 1) = lim<sub>x &rarr; 1</sub> (x + 1) = 1 + 1 = 2</div>
+      <strong>Kesimpulan:</strong> Fungsi tidak terdefinisi di titik x = 1, namun nilai limitnya ada dan bernilai <strong>2</strong>!
     </div>
-  </li>
-</ul>
   </div>
 </div>
 
+<!-- BAB 2: 9 Sifat Teorema Limit Utama & Contoh Slide 3 -->
 <div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
   <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
     <span>📌</span>
-    <span>2. Sifat-Sifat Pokok Teorema Limit Aljabar</span>
+    <span>2. Sembilan Sifat Dasar Teorema Limit & Contoh Soal (Slide 3)</span>
   </h4>
-  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
-    <p>Misalkan <code>k</code> adalah konstanta dan limit fungsi <code>f(x)</code> serta <code>g(x)</code> keduanya ada di <code>x &rarr; c</code>:</p>
-<ol>
-  <li><strong>Limit Konstanta:</strong> <code>lim<sub>x &rarr; c</sub> k = k</code></li>
-  <li><strong>Limit Fungsi Identitas:</strong> <code>lim<sub>x &rarr; c</sub> x = c</code></li>
-  <li><strong>Perkalian Konstanta:</strong> <code>lim<sub>x &rarr; c</sub> [k &middot; f(x)] = k &middot; lim<sub>x &rarr; c</sub> f(x)</code></li>
-  <li><strong>Penjumlahan & Pengurangan:</strong> <code>lim<sub>x &rarr; c</sub> [f(x) &plusmn; g(x)] = lim<sub>x &rarr; c</sub> f(x) &plusmn; lim<sub>x &rarr; c</sub> g(x)</code></li>
-  <li><strong>Perkalian Dua Fungsi:</strong> <code>lim<sub>x &rarr; c</sub> [f(x) &middot; g(x)] = lim<sub>x &rarr; c</sub> f(x) &middot; lim<sub>x &rarr; c</sub> g(x)</code></li>
-  <li><strong>Pembagian Dua Fungsi:</strong> <code>lim<sub>x &rarr; c</sub> [f(x) / g(x)] = lim<sub>x &rarr; c</sub> f(x) / lim<sub>x &rarr; c</sub> g(x)</code>, asalkan <code>lim<sub>x &rarr; c</sub> g(x) &ne; 0</code>.</li>
-  <li><strong>Perpangkatan & Akar:</strong> <code>lim<sub>x &rarr; c</sub> [f(x)]ⁿ = [lim<sub>x &rarr; c</sub> f(x)]ⁿ</code></li>
-</ol>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.75; font-size: 0.93rem;">
+    <ol style="margin-left: 20px; line-height: 1.8;">
+      <li><code>lim<sub>x &rarr; c</sub> k = k</code> (Limit konstanta adalah konstanta itu sendiri)</li>
+      <li><code>lim<sub>x &rarr; c</sub> x = c</code> (Limit fungsi identitas)</li>
+      <li><code>lim<sub>x &rarr; c</sub> [k &middot; f(x)] = k &middot; lim<sub>x &rarr; c</sub> f(x)</code> (Konstanta dapat ditarik ke depan limit)</li>
+      <li><code>lim<sub>x &rarr; c</sub> [f(x) + g(x)] = lim f(x) + lim g(x)</code> (Penjumlahan limit)</li>
+      <li><code>lim<sub>x &rarr; c</sub> [f(x) - g(x)] = lim f(x) - lim g(x)</code> (Pengurangan limit)</li>
+      <li><code>lim<sub>x &rarr; c</sub> [f(x) &middot; g(x)] = lim f(x) &middot; lim g(x)</code> (Perkalian limit)</li>
+      <li><code>lim<sub>x &rarr; c</sub> [f(x) / g(x)] = lim f(x) / lim g(x)</code>, asalkan <code>lim g(x) &ne; 0</code></li>
+      <li><code>lim<sub>x &rarr; c</sub> [f(x)]ⁿ = [lim f(x)]ⁿ</code> (Perpangkatan limit)</li>
+      <li><code>lim<sub>x &rarr; c</sub> ⁿ&radic;f(x) = ⁿ&radic;[lim f(x)]</code>, asalkan <code>lim f(x) > 0</code> untuk n genap</li>
+    </ol>
+
+    <div style="margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 14px;">
+      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.3); padding: 14px 18px; border-radius: 8px;">
+        <strong style="color: #38BDF8;">Contoh Soal a (Slide 3): lim<sub>x &rarr; 4</sub> (3x² - 2x)</strong><br>
+        <strong>Langkah Pengerjaan:</strong><br>
+        = 3 &middot; (lim<sub>x &rarr; 4</sub> x)² - 2 &middot; (lim<sub>x &rarr; 4</sub> x) <em>(Sifat 5, 3, dan 8)</em><br>
+        = 3 &middot; (4)² - 2 &middot; (4)<br>
+        = 3 &middot; 16 - 8 = 48 - 8 = <strong style="color: #34D399; font-size: 1.1rem;">40</strong><br>
+        <span style="color: #94A3B8; font-size: 0.85rem;">🔍 <em>Asal Angka:</em> Angka 16 dari 4², angka 48 dari 3 &times; 16, angka 8 dari 2 &times; 4, hasil 48 - 8 = 40.</span>
+      </div>
+
+      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.3); padding: 14px 18px; border-radius: 8px;">
+        <strong style="color: #38BDF8;">Contoh Soal b (Slide 3): lim<sub>x &rarr; 4</sub> [&radic;(x² + 9) / x]</strong><br>
+        <strong>Langkah Pengerjaan:</strong><br>
+        = [&radic;(lim<sub>x &rarr; 4</sub> (x² + 9))] / [lim<sub>x &rarr; 4</sub> x] <em>(Sifat 7 dan 9)</em><br>
+        = &radic;(4² + 9) / 4<br>
+        = &radic;(16 + 9) / 4 = &radic;25 / 4 = <strong style="color: #34D399; font-size: 1.1rem;">5 / 4 = 1,25</strong><br>
+        <span style="color: #94A3B8; font-size: 0.85rem;">🔍 <em>Asal Angka:</em> Angka 25 dari 16 + 9 di dalam akar, ditarik akar menghasilkan 5, dibagi penyebut 4.</span>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- BAB 3: Rumus Pokok Limit Trigonometri (Slide 5 - 7) -->
 <div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
   <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px;">
     <span>📌</span>
-    <span>3. Tiga Metode Evaluasi Limit Aljabar (Contoh Langkah demi Langkah)</span>
+    <span>3. Sepuluh Rumus Baku Limit Trigonometri di x &rarr; 0 (Slide 5)</span>
   </h4>
-  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.7; font-size: 0.93rem;">
-    <p><strong>Metode 1: Substitusi Langsung</strong><br>
-Jika fungsi terdefinisi di <code>x = c</code> dan menghasilkan bilangan real, maka nilai tersebut adalah nilai limitnya.<br>
-<em>Contoh:</em> <code>lim<sub>x &rarr; 2</sub> (3x² - 5x + 4) = 3(2)² - 5(2) + 4 = 12 - 10 + 4 = 6</code>.</p>
+  <div class="academic-section-content" style="color: #E2E8F0; line-height: 1.75; font-size: 0.93rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; font-family: monospace;">
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">1. lim (sin mx) / (nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">2. lim (mx) / (sin nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">3. lim (sin mx) / (sin nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">4. lim (tan mx) / (nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">5. lim (mx) / (tan nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">6. lim (tan mx) / (tan nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">7. lim (sin mx) / (tan nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">8. lim (tan mx) / (sin nx) = m / n</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">9. lim (sin x) / x = 1</div>
+      <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px;">10. lim (tan x) / x = 1</div>
+    </div>
 
-<p><strong>Metode 2: Pemfaktoran Aljabar (Mengatasi Bentuk 0 / 0)</strong><br>
-Bila substitusi langsung menghasilkan <code>0 / 0</code>, faktorkan pembilang dan penyebut untuk mengeliminasi pembuat nol <code>(x - c)</code>.<br>
-<em>Contoh:</em> Hitunglah <code>lim<sub>x &rarr; 2</sub> (x² - 4) / (x - 2)</code>.<br>
-Langkah penyelesaian:<br>
-1. Substitusi awal: <code>(2² - 4) / (2 - 2) = 0 / 0</code> (Bentuk tak tentu).<br>
-2. Faktorkan selisih kuadrat: <code>x² - 4 = (x - 2)(x + 2)</code>.<br>
-3. Bentuk limit menjadi: <code>lim<sub>x &rarr; 2</sub> [(x - 2)(x + 2)] / (x - 2) = lim<sub>x &rarr; 2</sub> (x + 2)</code>.<br>
-4. Substitusi kembali nilai x = 2: <code>2 + 2 = 4</code>.</p>
-
-<p><strong>Metode 3: Perkalian Sekawan Bentuk Akar</strong><br>
-Digunakan ketika bentuk memuat selisih akar kuadrat yang menghasilkan <code>0 / 0</code>.<br>
-<em>Contoh:</em> Hitunglah <code>lim<sub>x &rarr; 4</sub> (x - 4) / (&radic;x - 2)</code>.<br>
-Langkah penyelesaian:<br>
-1. Kalikan pembilang dan penyebut dengan sekawan penyebut yaitu <code>(&radic;x + 2)</code>:<br>
-<code>lim<sub>x &rarr; 4</sub> [(x - 4)(&radic;x + 2)] / [(&radic;x - 2)(&radic;x + 2)]</code><br>
-2. Perhatikan penyebut: <code>(&radic;x - 2)(&radic;x + 2) = (&radic;x)² - 2² = x - 4</code>.<br>
-3. Bentuk disederhanakan: <code>lim<sub>x &rarr; 4</sub> [(x - 4)(&radic;x + 2)] / (x - 4) = lim<sub>x &rarr; 4</sub> (&radic;x + 2)</code>.<br>
-4. Substitusi nilai x = 4: <code>&radic;4 + 2 = 2 + 2 = 4</code>.</p>
-
-<p><strong>Metode 4: Limit Menuju Tak Hingga (x &rarr; &infin;)</strong><br>
-Bagi seluruh suku pembilang dan penyebut dengan variabel berpangkat tertinggi dari penyebut.<br>
-<em>Contoh:</em> <code>lim<sub>x &rarr; &infin;</sub> (4x² + 3x - 1) / (2x² - 5)</code><br>
-Bagi seluruh suku dengan <code>x²</code>:<br>
-<code>= lim<sub>x &rarr; &infin;</sub> (4 + 3/x - 1/x²) / (2 - 5/x²) = (4 + 0 - 0) / (2 - 0) = 4 / 2 = 2</code>.</p>
+    <div style="background: rgba(245, 158, 11, 0.1); border-left: 4px solid #F59E0B; padding: 12px 16px; border-radius: 6px; margin-top: 14px;">
+      <strong style="color: #FCD34D;">Identitas Kunci Pengubah Kosinus (Paling Sering Digunakan di Ujian):</strong><br>
+      Kosinus tidak memiliki bentuk rasio langsung seperti sin dan tan di x &rarr; 0, sehingga <strong>WAJIB</strong> diubah menggunakan rumus sudut rangkap:
+      <ul style="margin: 6px 0 0 20px; padding: 0;">
+        <li><code>1 - cos 2x = 2 sin² x</code></li>
+        <li><code>1 - cos x = 2 sin²(x / 2)</code></li>
+        <li><code>cos 2x = cos² x - sin² x = 1 - 2 sin² x = 2 cos² x - 1</code></li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<div class="card-dark" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px 24px; margin: 28px 0 20px 0;">
-  <h4 style="margin: 0 0 12px 0; color: #F59E0B; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
-    <span>💡</span>
-    <span>BAGIAN 2: PENGAYAAN MATERI FIRST PRINCIPLES, INDUSTRI & JEBAKAN UTS</span>
-  </h4>
-  <ul style="margin: 0; padding-left: 20px; color: #CBD5E1; line-height: 1.65; font-size: 0.9rem;">
-    <li style='margin-bottom: 10px;'><strong>Makna 0/0:</strong> Dalam kalkulus, <code>0 / 0</code> dinamakan <em>Indeterminate Form</em> (Bentuk Tak Tentu), artinya limit tersebut masih menyimpan nilai riil pasti yang harus diungkap melalui operasi aljabar.</li><li style='margin-bottom: 10px;'><strong>Trik Cepat Limit Tak Hingga:</strong> Jika derajat polinomial pembilang sama dengan penyebut (misal sama-sama berpangkat 2), nilai limit tak hingga cukup diambil dari rasio koefisien pangkat tertingginya: <code>4 / 2 = 2</code>.</li><li style='margin-bottom: 10px;'><strong>Penerapan Sistem Informasi:</strong> Konsep limit adalah fondasi analisis kompleksitas algoritma Big-O, di mana kita menganalisis batas pertumbuhan waktu komputasi saat ukuran input data (n) mendekati tak hingga.</li>
-  </ul>
+<div style="background: rgba(16, 185, 129, 0.12); border-left: 5px solid #10B981; padding: 14px 18px; border-radius: 10px; margin: 36px 0 24px 0;">
+  <h3 style="margin: 0; color: #34D399; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>📝 BAGIAN 2: BEDAH TUNTAS SELURUH SOAL LATIHAN LIMIT ALJABAR (SLIDE 4)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Langkah matematis rinci, analisis bentuk tentu vs tak tentu, dan asal-usul angka setiap baris.
+  </p>
 </div>
 
-<div style="background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(148, 163, 184, 0.25); border-radius: 10px; padding: 14px 18px; margin-top: 24px; font-size: 0.82rem; color: #94A3B8;">
-  <strong style="color: #E2E8F0;">📚 BAGIAN 3: VERIFIKASI SUMBER RUJUKAN RESMI PERKULIAHAN FTIK UNINDRA</strong><br>
-  <span>• Berkas Sumber Materi: <code>1698851800_KULIAH_MINGGU_KE-V_(LIMIT_FUNGSI_ALJABAR).pptx (18 Slide)</code></span><br>
-  <span>• Dosen Pengampu / Tim Pengajar: <strong>Dr. Munali, M.Pd. / Syifaafidah, M.Pd.</strong></span><br>
-  <span>• Kurikulum: Program Studi S1 Sistem Informasi • Universitas Indraprasta PGRI (Unindra)</span>
+<!-- Soal 1 Aljabar -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 1: lim<sub>x &rarr; 1</sub> (3x + 5)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis Bentuk:</strong> Fungsi polinomial linier yang kontinu di seluruh bilangan real. Substitusi langsung menghasilkan nilai pasti (bukan 0/0).<br>
+    <strong>2. Perhitungan Rinci:</strong><br>
+    <code>= 3(1) + 5 = 3 + 5 = </code><strong style="color: #34D399; font-size: 1.05rem;">8</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 3 berasal dari koefisien 3 dikalikan pendekatan x = 1, ditambah konstanta 5 menghasilkan angka 8.
+  </div>
+</div>
+
+<!-- Soal 2 Aljabar -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 2: lim<sub>x &rarr; 1</sub> [(x - 1)³ / (x - 1)]
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis Bentuk:</strong> Substitusi x = 1 menghasilkan (1 - 1)³ / (1 - 1) = 0 / 0 (Bentuk Tak Tentu).<br>
+    <strong>2. Penyelesaian Aljabar:</strong><br>
+    Karena x &rarr; 1 (artinya x &ne; 1), kita dapat membagi faktor pembuat nol <code>(x - 1)</code>:<br>
+    <code>lim<sub>x &rarr; 1</sub> [(x - 1)³ / (x - 1)] = lim<sub>x &rarr; 1</sub> (x - 1)²</code><br>
+    Substitusikan x = 1:<br>
+    <code>= (1 - 1)² = 0² = </code><strong style="color: #34D399; font-size: 1.05rem;">0</strong><br>
+    <strong>3. Asal Angka:</strong> Pangkat 3 dibagi pangkat 1 menjadi pangkat 2, yaitu (x - 1)². Saat x = 1 dimasukkan, 1 - 1 = 0, kuadrat dari 0 adalah 0. <em>Catatan: Angka 0 adalah hasil limit yang sah.</em>
+  </div>
+</div>
+
+<!-- Soal 3 Aljabar -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 3: lim<sub>x &rarr; 2</sub> [(x² - 7x + 10) / (x - 2)]
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis Bentuk:</strong> Substitusi x = 2 &rarr; (4 - 14 + 10) / (2 - 2) = 0 / 0 (Bentuk Tak Tentu).<br>
+    <strong>2. Pemfaktoran Kuadrat Pembilang:</strong><br>
+    Cari dua bilangan yang dikali menghasilkan +10 dan dijumlahkan menghasilkan -7: yaitu <code>-2</code> dan <code>-5</code>.<br>
+    Maka: <code>x² - 7x + 10 = (x - 2)(x - 5)</code>.<br>
+    <strong>3. Eliminasi Faktor Pembuat Nol:</strong><br>
+    <code>lim<sub>x &rarr; 2</sub> [(x - 2)(x - 5)] / (x - 2) = lim<sub>x &rarr; 2</sub> (x - 5)</code><br>
+    Substitusikan x = 2:<br>
+    <code>= 2 - 5 = </code><strong style="color: #34D399; font-size: 1.05rem;">-3</strong><br>
+    <strong>4. Asal Angka:</strong> Faktor (x - 2) saling membatalkan. Tersisa (x - 5). Ketika x diganti angka 2, 2 - 5 menghasilkan -3.
+  </div>
+</div>
+
+<!-- Soal 4 Aljabar -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 4: lim<sub>x &rarr; 1</sub> [(x - 1) / (&radic;x - 1)]
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis Bentuk:</strong> Substitusi x = 1 &rarr; (1 - 1) / (&radic;1 - 1) = 0 / 0 (Bentuk Tak Tentu Memuat Akar).<br>
+    <strong>2. Metode Perkalian Sekawan:</strong><br>
+    Kalikan pembilang dan penyebut dengan sekawan penyebut yaitu <code>(&radic;x + 1)</code>:<br>
+    <code>lim<sub>x &rarr; 1</sub> [(x - 1)(&radic;x + 1)] / [(&radic;x - 1)(&radic;x + 1)]</code><br>
+    Penyebut dikalikan: <code>(&radic;x - 1)(&radic;x + 1) = (&radic;x)² - 1² = x - 1</code>.<br>
+    Bentuk limit menjadi:<br>
+    <code>lim<sub>x &rarr; 1</sub> [(x - 1)(&radic;x + 1)] / (x - 1) = lim<sub>x &rarr; 1</sub> (&radic;x + 1)</code><br>
+    Substitusikan x = 1:<br>
+    <code>= &radic;1 + 1 = 1 + 1 = </code><strong style="color: #34D399; font-size: 1.05rem;">2</strong><br>
+    <strong>3. Asal Angka:</strong> Faktor (x - 1) tercoret habis. Tersisa &radic;x + 1. Nilai akar 1 adalah 1, ditambah 1 menjadi 2.
+  </div>
+</div>
+
+<!-- Soal 5 Aljabar -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 5: lim<sub>x &rarr; 4</sub> [(4x - x²) / (2 - &radic;x)]
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis Bentuk:</strong> Substitusi x = 4 &rarr; (16 - 16) / (2 - 2) = 0 / 0.<br>
+    <strong>2. Faktorkan Pembilang & Kalikan Sekawan:</strong><br>
+    Pembilang: <code>4x - x² = x(4 - x)</code>.<br>
+    Sekawan penyebut <code>(2 - &radic;x)</code> adalah <code>(2 + &radic;x)</code>.<br>
+    Kalikan pembilang dan penyebut dengan <code>(2 + &radic;x)</code>:<br>
+    <code>lim<sub>x &rarr; 4</sub> [x(4 - x)(2 + &radic;x)] / [(2 - &radic;x)(2 + &radic;x)]</code><br>
+    Penyebut: <code>(2)² - (&radic;x)² = 4 - x</code>.<br>
+    Maka faktor <code>(4 - x)</code> saling membatalkan:<br>
+    <code>= lim<sub>x &rarr; 4</sub> [x &middot; (2 + &radic;x)]</code><br>
+    Substitusikan x = 4:<br>
+    <code>= 4 &middot; (2 + &radic;4) = 4 &middot; (2 + 2) = 4 &middot; 4 = </code><strong style="color: #34D399; font-size: 1.05rem;">16</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 4 dari nilai x di luar kurung, angka 2 + 2 = 4 di dalam kurung (karena akar 4 adalah 2). Hasil kali 4 &times; 4 = 16.
+  </div>
+</div>
+
+<!-- Soal Cerita Fisika -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 2px solid rgba(245, 158, 11, 0.4); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px;">
+  <h4 style="margin: 0 0 12px 0; color: #FCD34D; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span>🚀</span>
+    <span>Soal Cerita Terapan Fisika Gerak Lurus S(t) (Slide 4)</span>
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.75;">
+    <em>Sebuah benda bergerak sepanjang garis lurus dengan posisi terhadap waktu t (detik) dan S (meter) dengan fungsi:</em><br>
+    <div style="font-family: monospace; color: #38BDF8; font-size: 1.05rem; margin: 6px 0;">S(t) = (t² + 4t - 12) / (t - 2)</div>
+    
+    <div style="margin-top: 12px;">
+      <strong style="color: #F8FAFC;">a. Hitunglah lim<sub>t &rarr; 2</sub> S(t)!</strong><br>
+      Substitusi awal menghasilkan (4 + 8 - 12) / (2 - 2) = 0 / 0.<br>
+      Faktorkan pembilang: cari dua bilangan yang dikali = -12 dan ditambah = +4 (yaitu +6 dan -2):<br>
+      <code>t² + 4t - 12 = (t - 2)(t + 6)</code><br>
+      Bentuk limit:<br>
+      <code>lim<sub>t &rarr; 2</sub> [(t - 2)(t + 6)] / (t - 2) = lim<sub>t &rarr; 2</sub> (t + 6)</code><br>
+      Substitusikan t = 2:<br>
+      <code>= 2 + 6 = </code><strong style="color: #34D399; font-size: 1.1rem;">8 meter</strong>
+    </div>
+
+    <div style="margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
+      <strong style="color: #F8FAFC;">b. Interpretasikan hasil limit tersebut!</strong><br>
+      <strong>Interpretasi Fisika:</strong> Nilai limit <strong>8 meter</strong> mengindikasikan bahwa ketika waktu t semakin mendekati detik ke-2 (baik dari detik 1,999 maupun 2,001), posisi fisik benda mendekati tepat pada titik koordinat <strong>8 meter</strong> dari titik awal gerak. Meskipun secara rumus matematis murni terjadi pembagian nol pada t = 2, secara kontinuitas fisik benda tersebut tidak melompat melainkan bergerak mulus melintasi posisi 8 meter.
+    </div>
+  </div>
+</div>
+
+<div style="background: rgba(14, 165, 233, 0.12); border-left: 5px solid #0EA5E9; padding: 14px 18px; border-radius: 10px; margin: 36px 0 24px 0;">
+  <h3 style="margin: 0; color: #38BDF8; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+    <span>📐 BAGIAN 3: BEDAH TUNTAS 9 SOAL LATIHAN LIMIT TRIGONOMETRI (SLIDE 8, 9, 10)</span>
+  </h3>
+  <p style="margin: 6px 0 0 0; font-size: 0.85rem; color: #94A3B8;">
+    Langkah matematis detail, penggunaan identitas sudut rangkap, dan penjelasan dari mana setiap angka berasal.
+  </p>
+</div>
+
+<!-- Trigo 1 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 1: lim<sub>x &rarr; 0</sub> [2 sin(4x) / (7 tan(7x))] (Slide 8)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Substitusi x = 0 menghasilkan 0/0. Konstanta koefisien adalah 2 pada pembilang dan 7 pada penyebut.<br>
+    <strong>2. Penyelesaian dengan Rumus Baku:</strong><br>
+    Tarik konstanta ke depan: <code>= (2 / 7) &middot; lim<sub>x &rarr; 0</sub> [sin(4x) / tan(7x)]</code><br>
+    Berdasarkan Rumus Limit Trigonometri No. 7: <code>lim<sub>x &rarr; 0</sub> [sin(mx) / tan(nx)] = m / n</code>.<br>
+    Dengan m = 4 dan n = 7, maka <code>lim [sin(4x) / tan(7x)] = 4 / 7</code>.<br>
+    Kalikan seluruh pecahan:<br>
+    <code>= (2 / 7) &times; (4 / 7) = (2 &times; 4) / (7 &times; 7) = </code><strong style="color: #34D399; font-size: 1.05rem;">8 / 49</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 8 berasal dari 2 &times; 4 di pembilang. Angka 49 berasal dari 7 &times; 7 di penyebut.
+  </div>
+</div>
+
+<!-- Trigo 2 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 2: lim<sub>x &rarr; &pi;/2</sub> (sin x + cos x) (Slide 8)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Titik limit adalah x &rarr; &pi;/2 (90&deg;). Fungsi sinus dan kosinus kontinu di titik ini, sehingga langsung substitusi.<br>
+    <strong>2. Perhitungan Berdasarkan Tabel Sudut Istimewa:</strong><br>
+    <code>= sin(&pi;/2) + cos(&pi;/2) = sin(90&deg;) + cos(90&deg;)</code><br>
+    Dari tabel sudut istimewa Slide 7: <code>sin(90&deg;) = 1</code> dan <code>cos(90&deg;) = 0</code>.<br>
+    <code>= 1 + 0 = </code><strong style="color: #34D399; font-size: 1.05rem;">1</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 1 berasal dari nilai sin(&pi;/2) dan angka 0 berasal dari nilai cos(&pi;/2).
+  </div>
+</div>
+
+<!-- Trigo 3 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 3: lim<sub>x &rarr; 0</sub> [(2x² + x) / sin x] (Slide 9)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Substitusi x = 0 menghasilkan (0 + 0) / 0 = 0/0.<br>
+    <strong>2. Faktorkan Pembilang:</strong><br>
+    Keluarkan faktor x pada pembilang: <code>2x² + x = x(2x + 1)</code>.<br>
+    Tulis ulang limit:<br>
+    <code>lim<sub>x &rarr; 0</sub> [x(2x + 1) / sin x] = lim<sub>x &rarr; 0</sub> [x / sin x] &middot; lim<sub>x &rarr; 0</sub> (2x + 1)</code><br>
+    Berdasarkan Rumus No. 2: <code>lim<sub>x &rarr; 0</sub> [x / sin x] = 1</code>.<br>
+    Substitusikan x = 0 pada bagian kedua: <code>2(0) + 1 = 1</code>.<br>
+    Kalikan keduanya: <code>1 &times; 1 = </code><strong style="color: #34D399; font-size: 1.05rem;">1</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 1 pertama dari sifat limit x/sin x, angka 1 kedua dari 2(0) + 1.
+  </div>
+</div>
+
+<!-- Trigo 4 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 4: lim<sub>x &rarr; 0</sub> [(tan 2x &middot; tan 3x) / 3x²] (Slide 9)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Pembilang memuat perkalian dua fungsi tangen, penyebut memuat x² dengan koefisien 3.<br>
+    <strong>2. Pemisahan Komponen Pecahan:</strong><br>
+    Uraikan penyebut: <code>3x² = 3 &middot; x &middot; x</code>.<br>
+    Bentuk limit menjadi:<br>
+    <code>= (1 / 3) &middot; lim<sub>x &rarr; 0</sub> [tan(2x) / x] &middot; lim<sub>x &rarr; 0</sub> [tan(3x) / x]</code><br>
+    Gunakan Rumus No. 4: <code>lim [tan(2x) / x] = 2</code> dan <code>lim [tan(3x) / x] = 3</code>.<br>
+    Kalikan seluruh bilangan:<br>
+    <code>= (1 / 3) &times; 2 &times; 3 = 6 / 3 = </code><strong style="color: #34D399; font-size: 1.05rem;">2</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 2 dari koefisien tan 2x, angka 3 dari koefisien tan 3x, dikalikan 1/3 menghasilkan 6/3 = 2.
+  </div>
+</div>
+
+<!-- Trigo 5 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 5: lim<sub>x &rarr; 0</sub> [(1 - cos x) / sin x] (Slide 9)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Bentuk 0/0 karena cos 0 = 1 sehingga 1 - 1 = 0, dan sin 0 = 0.<br>
+    <strong>2. Menggunakan Identitas Sudut Setengah (Slide 6):</strong><br>
+    Identitas: <code>1 - cos x = 2 sin²(x / 2)</code>.<br>
+    Identitas: <code>sin x = 2 sin(x / 2) cos(x / 2)</code>.<br>
+    Substitusikan ke limit:<br>
+    <code>lim<sub>x &rarr; 0</sub> [2 sin²(x / 2)] / [2 sin(x / 2) cos(x / 2)]</code><br>
+    Coret <code>2 sin(x / 2)</code> di atas dan di bawah:<br>
+    <code>= lim<sub>x &rarr; 0</sub> [sin(x / 2) / cos(x / 2)] = lim<sub>x &rarr; 0</sub> tan(x / 2)</code><br>
+    Substitusikan x = 0:<br>
+    <code>= tan(0) = </code><strong style="color: #34D399; font-size: 1.05rem;">0</strong><br>
+    <strong>3. Asal Angka:</strong> Pembagian sin² dengan sin menyisakan sin(x/2) di atas dan cos(x/2) di bawah (yaitu tan x/2). Nilai tangen dari 0 adalah 0.
+  </div>
+</div>
+
+<!-- Trigo 6 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 6: lim<sub>x &rarr; 0</sub> [cos 2x / (sin x - cos x)] (Slide 10)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. JEBAKAN KLASIK UJIAN: Uji Substitusi Langsung Terlebih Dahulu!</strong><br>
+    Pembilang: <code>cos(2 &middot; 0) = cos(0) = 1</code>.<br>
+    Penyebut: <code>sin(0) - cos(0) = 0 - 1 = -1</code>.<br>
+    <strong>2. Perhitungan Langsung:</strong><br>
+    Karena penyebut bernilai -1 (BUKAN NOL), ini adalah <strong>BENTUK TENTU</strong>! Tidak perlu difaktorkan.<br>
+    <code>= 1 / (-1) = </code><strong style="color: #34D399; font-size: 1.05rem;">-1</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 1 dari cos(0), angka -1 dari sin(0) - cos(0) = 0 - 1 = -1. Hasil bagi 1 / (-1) = -1.
+  </div>
+</div>
+
+<!-- Trigo 7 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 7: lim<sub>x &rarr; &pi;/6</sub> [(1 / 2) cos 12x] (Slide 10)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Pendekatan ke x &rarr; &pi;/6 (30&deg;). Fungsi kontinu sehingga langsung substitusi.<br>
+    <strong>2. Perhitungan Sudut:</strong><br>
+    Argumen sudut: <code>12 &times; (&pi; / 6) = (12 / 6) &pi; = 2&pi; (360&deg;)</code>.<br>
+    Dari tabel sudut istimewa Slide 7: <code>cos(2&pi;) = cos(360&deg;) = 1</code>.<br>
+    Kalikan dengan koefisien di depan:<br>
+    <code>= (1 / 2) &times; 1 = </code><strong style="color: #34D399; font-size: 1.05rem;">1 / 2 = 0,5</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 12 dibagi 6 menjadi 2&pi;. Nilai kosinus 2&pi; adalah 1. Dikalikan 1/2 menjadi 1/2.
+  </div>
+</div>
+
+<!-- Trigo 8 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 8: lim<sub>x &rarr; 0</sub> [2x sin 3x / tan² 5x] (Slide 10)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Bentuk 0/0. Pembilang berderajat dua (x pangkat 1 dan sin 3x), penyebut berderajat dua (tan² 5x).<br>
+    <strong>2. Penguraian Komponen:</strong><br>
+    Uraikan penyebut: <code>tan² 5x = tan 5x &middot; tan 5x</code>.<br>
+    Bentuk limit menjadi:<br>
+    <code>= 2 &middot; lim<sub>x &rarr; 0</sub> [x / tan 5x] &middot; lim<sub>x &rarr; 0</sub> [sin 3x / tan 5x]</code><br>
+    Berdasarkan Rumus No. 5: <code>lim [x / tan 5x] = 1 / 5</code>.<br>
+    Berdasarkan Rumus No. 7: <code>lim [sin 3x / tan 5x] = 3 / 5</code>.<br>
+    Kalikan seluruh pecahan:<br>
+    <code>= 2 &times; (1 / 5) &times; (3 / 5) = (2 &times; 1 &times; 3) / (5 &times; 5) = </code><strong style="color: #34D399; font-size: 1.05rem;">6 / 25 = 0,24</strong><br>
+    <strong>3. Asal Angka:</strong> Angka 6 di pembilang berasal dari 2 &times; 1 &times; 3. Angka 25 di penyebut berasal dari 5 &times; 5.
+  </div>
+</div>
+
+<!-- Trigo 9 -->
+<div class="academic-section-block" style="background: rgba(30, 41, 59, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px;">
+  <h4 style="margin: 0 0 10px 0; color: #38BDF8; font-size: 1rem;">
+    Soal 9: lim<sub>x &rarr; 0</sub> [(1 - cos 2x) / x²] (Slide 10)
+  </h4>
+  <div style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.7;">
+    <strong>1. Analisis:</strong> Bentuk 0/0 klasik yang sering muncul di kuis dan UTS FTIK Unindra.<br>
+    <strong>2. Gunakan Identitas Sudut Rangkap Kosinus (Slide 6):</strong><br>
+    Rumus: <code>cos 2x = 1 - 2 sin² x &hArr; 1 - cos 2x = 2 sin² x</code>.<br>
+    Substitusikan ke limit:<br>
+    <code>lim<sub>x &rarr; 0</sub> [2 sin² x / x²] = 2 &middot; lim<sub>x &rarr; 0</sub> (sin x / x)²</code><br>
+    Karena <code>lim<sub>x &rarr; 0</sub> (sin x / x) = 1</code>, maka:<br>
+    <code>= 2 &times; (1)² = 2 &times; 1 = </code><strong style="color: #34D399; font-size: 1.05rem;">2</strong><br>
+    <strong>3. Verifikasi dengan Dalil L'Hôpital (Turunan):</strong><br>
+    Turunan pembilang: <code>d/dx (1 - cos 2x) = 2 sin 2x</code>.<br>
+    Turunan penyebut: <code>d/dx (x²) = 2x</code>.<br>
+    Maka: <code>lim [2 sin 2x / 2x] = 2 &times; lim [sin 2x / 2x] = 2 &times; 1 = 2</code>. <em>(Terbukti 100% konsisten!)</em><br>
+    <strong>4. Asal Angka:</strong> Angka 2 berasal dari koefisien identitas 2 sin² x yang dikalikan dengan (1)².
+  </div>
+</div>
+
+<!-- BAGIAN 4: Verifikasi & Rujukan Dokumen -->
+<div class="card-dark" style="margin-top: 36px; border: 1px solid rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.9); border-radius: 12px; padding: 22px 24px;">
+  <h4 style="margin: 0 0 14px 0; color: #38BDF8; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+    <span>📚 BAGIAN 4: SUMBER DOKUMEN & VERIFIKASI RESMI FTIK UNINDRA</span>
+  </h4>
+  <div style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.8;">
+    <div><strong>📁 Berkas Resmi Modul:</strong> <code>1791885965_Pert_5_Matematika_-_Limit_SC.pdf</code> (11 Halaman Presentasi Dosen)</div>
+    <div><strong>👨‍🏫 Dosen Pengampu Resmi:</strong> Dr. Munali, M.Pd. / Syifaafidah, M.Pd. • Program Studi S1 Sistem Informasi Unindra</div>
+    <div style="margin-top: 10px;"><strong>📖 Tabel Rujukan Tambahan:</strong></div>
+    <ul style="margin: 6px 0 0 20px; padding: 0; font-size: 0.85rem; color: #94A3B8; line-height: 1.7;">
+      <li>Varberg, D., Purcell, E. J., & Rigdon, S. E. (2007). <em>Calculus (9th Edition)</em>. Chapter 1: Limits. Pearson.</li>
+      <li>eCalc.com: Trigonometry Laws and Identities (Cheatsheet resmi pada Halaman 6).</li>
+      <li>Tabel Sudut Istimewa Trigonometri Kuadran I - IV (Halaman 7).</li>
+    </ul>
+  </div>
 </div>
