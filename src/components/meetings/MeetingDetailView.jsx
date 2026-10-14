@@ -202,7 +202,7 @@ export function MeetingDetailView({
           }`}
         >
           <BookOpen className="w-4 h-4" />
-          <span>📖 Rangkuman Akademik & Catatan Kuliah</span>
+          <span>Rangkuman Akademik & Catatan Kuliah</span>
         </button>
 
         <button
@@ -214,7 +214,7 @@ export function MeetingDetailView({
           }`}
         >
           <FileText className="w-4 h-4 text-cyan-400" />
-          <span>📄 Dokumen PDF Dosen ({pdfMaterials.length})</span>
+          <span>Dokumen PDF Dosen ({pdfMaterials.length})</span>
         </button>
 
         {CHEATSHEET_MAP[subject.id] && (
@@ -227,7 +227,7 @@ export function MeetingDetailView({
             }`}
           >
             <ImageIcon className="w-4 h-4 text-cyan-300" />
-            <span>📐 Cheatsheet Formula HD (JPG)</span>
+            <span>Cheatsheet Formula HD (JPG)</span>
           </button>
         )}
 
@@ -241,7 +241,7 @@ export function MeetingDetailView({
             }`}
           >
             <Code className="w-4 h-4 text-emerald-300" />
-            <span>💻 Berkas Pascal (.PAS) (24)</span>
+            <span>Berkas Pascal (.PAS) (24)</span>
           </button>
         )}
       </div>
@@ -260,7 +260,7 @@ export function MeetingDetailView({
               }`}
             >
               <Sparkles className="w-4 h-4 text-emerald-300" />
-              <span>🤖 Modul Guru AI (Bedah Materi PPT Dosen & Pengayaan)</span>
+              <span>Modul Guru AI (Bedah Materi PPT Dosen & Pengayaan)</span>
             </button>
 
             <button
@@ -272,7 +272,7 @@ export function MeetingDetailView({
               }`}
             >
               <BookOpen className="w-4 h-4 text-cyan-300" />
-              <span>📝 Rangkuman Mahasiswa (Transkripsi GMeet & Rekaman Suara)</span>
+              <span>Rangkuman Mahasiswa (Transkripsi GMeet & Rekaman Suara)</span>
             </button>
 
             <button
@@ -284,7 +284,7 @@ export function MeetingDetailView({
               }`}
             >
               <Clock className="w-4 h-4 text-amber-300" />
-              <span>⚡ Intisari Kilat UTS (Cheatsheet)</span>
+              <span>Intisari Kilat UTS (Cheatsheet)</span>
             </button>
           </div>
 
@@ -294,7 +294,7 @@ export function MeetingDetailView({
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>
-                  <strong>🤖 Modul Pembelajaran Guru AI:</strong> Bedah materi presentasi PPT dosen secara komprehensif, terstruktur per pokok bahasan, dilengkapi tabel komparasi, contoh studi kasus nyata, materi pengayaan, dan verifikasi sumber resmi di bagian paling bawah.
+                  <strong>Modul Pembelajaran Guru AI:</strong> Bedah materi presentasi PPT dosen secara komprehensif, terstruktur per pokok bahasan, dilengkapi tabel komparasi, contoh studi kasus nyata, materi pengayaan, dan verifikasi sumber resmi di bagian paling bawah.
                 </span>
               </div>
               <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20 whitespace-nowrap self-start sm:self-center">
@@ -308,7 +308,7 @@ export function MeetingDetailView({
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
                 <span>
-                  <strong>📝 Catatan Mandiri Mahasiswa:</strong> Ditranskripsikan langsung dari rekaman suara Google Meet dan kuliah tatap muka dosen oleh Muhammad Haikel Saleh. Siap disalin langsung ke lembar catatan binder fisik.
+                  <strong>Catatan Mandiri Mahasiswa:</strong> Ditranskripsikan langsung dari rekaman suara Google Meet dan kuliah tatap muka dosen oleh Muhammad Haikel Saleh. Siap disalin langsung ke lembar catatan binder fisik.
                 </span>
               </div>
               <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20 whitespace-nowrap self-start sm:self-center">
@@ -322,7 +322,7 @@ export function MeetingDetailView({
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400 flex-shrink-0" />
                 <span>
-                  <strong>⚡ Intisari Kilat & Poin Kunci Ujian:</strong> Rangkuman definisi baku, formula, kaidah mutlak, dan poin hafalan cepat persiapan kuis & UTS.
+                  <strong>Intisari Kilat & Poin Kunci Ujian:</strong> Rangkuman definisi baku, formula, kaidah mutlak, dan poin hafalan cepat persiapan kuis & UTS.
                 </span>
               </div>
               <span className="text-[11px] font-mono text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 whitespace-nowrap self-start sm:self-center">
@@ -331,10 +331,10 @@ export function MeetingDetailView({
             </div>
           )}
 
-          {/* Summary Content Body (Textbook Grade) */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm leading-relaxed">
+          {/* Summary Content Body */}
+          <div className="p-6 sm:p-10 rounded-2xl bg-[#11131B] border border-white/10 shadow-sm">
             <div
-              className="academic-summary-content text-slate-200 text-sm sm:text-base space-y-4"
+              className="academic-summary-content text-slate-200 text-sm sm:text-base max-w-none"
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(currentSummaryHtml) }}
             />
           </div>

@@ -347,6 +347,173 @@
   font-family: monospace;
 }
 
+.academic-summary-content .card-dark {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+.light .academic-summary-content .card-dark {
+  background: #F1F5F9;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.academic-summary-content .alert {
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.academic-summary-content .alert-info {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-left: 4px solid #6366F1;
+  color: #C7D2FE;
+}
+
+.academic-summary-content .alert-warning {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-left: 4px solid #F59E0B;
+  color: #FDE68A;
+}
+
+.academic-summary-content .alert-success {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-left: 4px solid #10B981;
+  color: #A7F3D0;
+}
+
+.light .academic-summary-content .alert-info {
+  background: rgba(79, 70, 229, 0.06);
+  border-color: rgba(79, 70, 229, 0.2);
+  color: #312E81;
+}
+
+.light .academic-summary-content .alert-warning {
+  background: rgba(217, 119, 6, 0.06);
+  border-color: rgba(217, 119, 6, 0.2);
+  color: #78350F;
+}
+
+.light .academic-summary-content .alert-success {
+  background: rgba(5, 150, 105, 0.06);
+  border-color: rgba(5, 150, 105, 0.2);
+  color: #064E3B;
+}
+
+.academic-summary-content .academic-section-block {
+  background: rgba(30, 41, 59, 0.35);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+}
+
+.light .academic-summary-content .academic-section-block {
+  background: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.academic-summary-content .academic-insight-block {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.light .academic-summary-content .academic-insight-block {
+  background: rgba(5, 150, 105, 0.04);
+  border-color: rgba(5, 150, 105, 0.15);
+}
+
+.academic-summary-content > table,
+.academic-summary-content div > table,
+.academic-summary-content .academic-section-block table,
+.academic-summary-content .academic-insight-block table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+  margin: 14px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+}
+
+.academic-summary-content .academic-section-block p,
+.academic-summary-content .academic-insight-block p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.academic-summary-content .academic-section-block li,
+.academic-summary-content .academic-insight-block li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+.academic-summary-content .academic-section-block,
+.academic-summary-content .academic-insight-block {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .academic-summary-content table {
+    font-size: 0.8rem;
+  }
+
+  .academic-summary-content th,
+  .academic-summary-content td {
+    padding: 8px 10px;
+  }
+
+  .academic-summary-content .academic-section-block,
+  .academic-summary-content .academic-insight-block {
+    padding: 14px 16px;
+  }
+
+  .academic-summary-content h1 {
+    font-size: 1.3rem;
+  }
+
+  .academic-summary-content h2 {
+    font-size: 1.15rem;
+  }
+
+  .academic-summary-content h3 {
+    font-size: 1.05rem;
+  }
+}
+
+.academic-summary-content > div + div {
+  margin-top: 8px;
+}
+
+.academic-summary-content td strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.academic-summary-content tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.light .academic-summary-content tbody tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.academic-summary-content [id] {
+  scroll-margin-top: 80px;
+}
+
 /* Print Specific Rules for Physical Notebook Transcriptions */
 @media print {
   body {
