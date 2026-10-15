@@ -100,7 +100,7 @@ export function App() {
   const activeMeeting = activeSubject?.meetings?.find((m) => m.id === selectedMeetingId);
 
   return (
-    <div className="min-h-screen bg-[#090A0F] dark:bg-[#090A0F] light:bg-[#F8FAFC] text-[#F8FAFC] dark:text-[#F8FAFC] light:text-[#0F172A] flex flex-col font-sans transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#090A0F] text-slate-900 dark:text-[#F8FAFC] flex flex-col font-sans transition-colors duration-200">
       {/* Top Navbar */}
       <Navbar
         theme={theme}

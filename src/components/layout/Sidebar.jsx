@@ -5,11 +5,6 @@ import {
   PenTool,
   Sparkles,
   FolderArchive,
-  Plus,
-  CheckCircle,
-  FileCheck,
-  Calendar,
-  ChevronRight,
   Terminal,
 } from 'lucide-react';
 
@@ -23,20 +18,19 @@ export function Sidebar({
   activeSemesterId,
   setActiveSemesterId,
   stats,
-  onOpenAddSubject,
 }) {
   return (
-    <aside className="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-[61px] lg:h-[calc(100vh-61px)] overflow-y-auto p-4 lg:py-6 lg:pl-0 lg:pr-6 border-b lg:border-b-0 lg:border-r border-white/10 dark:border-white/10 light:border-slate-200 no-print">
+    <aside className="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-[61px] lg:h-[calc(100vh-61px)] overflow-y-auto p-4 lg:py-6 lg:pl-0 lg:pr-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-white/10 no-print">
       {/* Semester Selector */}
-      <div className="mb-6 p-3 rounded-xl bg-[#181B26] dark:bg-[#181B26] light:bg-slate-100 border border-white/10 dark:border-white/10 light:border-slate-200">
-        <div className="flex items-center justify-between text-xs text-slate-400 mb-1.5">
+      <div className="mb-5 p-3 rounded-xl bg-slate-100 dark:bg-[#181B26] border border-slate-200 dark:border-white/10">
+        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
           <span className="font-semibold uppercase tracking-wider text-[10px]">Semester Aktif</span>
-          <span className="text-indigo-400 font-mono">2026/2027</span>
+          <span className="text-indigo-600 dark:text-indigo-400 font-mono font-medium">2026/2027</span>
         </div>
         <select
           value={activeSemesterId}
           onChange={(e) => setActiveSemesterId(e.target.value)}
-          className="w-full bg-[#11131B] dark:bg-[#11131B] light:bg-white border border-white/10 dark:border-white/10 light:border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-white dark:text-white light:text-slate-900 focus:outline-none focus:border-indigo-500"
+          className="w-full bg-white dark:bg-[#11131B] border border-slate-200 dark:border-white/10 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:border-indigo-500 cursor-pointer"
         >
           {semesters.map((sem) => (
             <option key={sem.id} value={sem.name}>
@@ -47,23 +41,25 @@ export function Sidebar({
       </div>
 
       {/* Primary Navigation Menu */}
-      <div className="space-y-1 mb-6">
+      <nav className="space-y-1 mb-6">
         <button
           onClick={() => {
             setActiveView('dashboard');
             setSelectedSubjectId(null);
           }}
-          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
             activeView === 'dashboard'
-              ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+              ? 'bg-indigo-600 text-white shadow-sm'
+              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60'
           }`}
         >
           <div className="flex items-center gap-2.5">
             <LayoutDashboard className="w-4 h-4" />
             <span>Dashboard Akademik</span>
           </div>
-          <span className="text-[10px] font-mono opacity-80">{stats.totalSubjects} Matkul</span>
+          <span className={`text-[10px] font-mono ${activeView === 'dashboard' ? 'text-indigo-100' : 'text-slate-400'}`}>
+            {stats.totalSubjects} Matkul
+          </span>
         </button>
 
         <button
@@ -71,17 +67,19 @@ export function Sidebar({
             setActiveView('ai_tutor');
             setSelectedSubjectId(null);
           }}
-          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
             activeView === 'ai_tutor'
-              ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30'
-              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+              ? 'bg-indigo-600 text-white shadow-sm'
+              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60'
           }`}
         >
           <div className="flex items-center gap-2.5">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <Sparkles className="w-4 h-4 text-cyan-500 dark:text-cyan-400" />
             <span>AI Academic Tutor</span>
           </div>
-          <span className="text-[10px] font-mono text-cyan-300 bg-cyan-500/20 px-1.5 py-0.5 rounded font-bold">RAG</span>
+          <span className="text-[10px] font-mono text-cyan-600 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-500/20 px-1.5 py-0.5 rounded font-bold">
+            RAG
+          </span>
         </button>
 
         <button
@@ -89,17 +87,19 @@ export function Sidebar({
             setActiveView('subjects');
             setSelectedSubjectId(null);
           }}
-          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
             activeView === 'subjects' && !selectedSubjectId
-              ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+              ? 'bg-indigo-600 text-white shadow-sm'
+              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60'
           }`}
         >
           <div className="flex items-center gap-2.5">
             <GraduationCap className="w-4 h-4" />
             <span>Semua Mata Kuliah</span>
           </div>
-          <span className="text-[10px] font-mono opacity-80">{stats.totalMeetings} Sesi</span>
+          <span className={`text-[10px] font-mono ${activeView === 'subjects' && !selectedSubjectId ? 'text-indigo-100' : 'text-slate-400'}`}>
+            {stats.totalMeetings} Sesi
+          </span>
         </button>
 
         <button
@@ -107,17 +107,19 @@ export function Sidebar({
             setActiveView('handwriting');
             setSelectedSubjectId(null);
           }}
-          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
             activeView === 'handwriting'
-              ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30'
-              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+              ? 'bg-amber-600 text-white shadow-sm'
+              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60'
           }`}
         >
           <div className="flex items-center gap-2.5">
-            <PenTool className="w-4 h-4 text-amber-400" />
+            <PenTool className="w-4 h-4 text-amber-500 dark:text-amber-400" />
             <span>Salin Catatan Fisik</span>
           </div>
-          <span className="text-[10px] font-mono text-amber-300 bg-amber-500/20 px-1.5 py-0.5 rounded font-bold">Binder</span>
+          <span className="text-[10px] font-mono text-amber-600 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/20 px-1.5 py-0.5 rounded font-bold">
+            Binder
+          </span>
         </button>
 
         <button
@@ -125,67 +127,69 @@ export function Sidebar({
             setActiveView('pascal');
             setSelectedSubjectId(null);
           }}
-          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
             activeView === 'pascal'
-              ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
-              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+              ? 'bg-emerald-600 text-white shadow-sm'
+              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60'
           }`}
         >
           <div className="flex items-center gap-2.5">
-            <Terminal className="w-4 h-4 text-emerald-400" />
+            <Terminal className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
             <span>Koleksi Pascal (.PAS)</span>
           </div>
-          <span className="text-[10px] font-mono text-emerald-300 bg-emerald-500/20 px-1.5 py-0.5 rounded font-bold">24 File</span>
+          <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded font-bold">
+            24 File
+          </span>
         </button>
-      </div>
+      </nav>
 
-      {/* Academic Repository Vault Card */}
-      <div className="mb-6 p-4 rounded-xl bg-gradient-to-br from-indigo-950/40 via-slate-900 to-cyan-950/30 border border-indigo-500/20 shadow-md">
-        <div className="flex items-center justify-between text-xs mb-2">
-          <span className="font-heading font-bold text-white flex items-center gap-1.5">
-            <FolderArchive className="w-3.5 h-3.5 text-cyan-400" />
+      {/* Academic Repository Metadata Card */}
+      <div className="mb-6 p-3.5 rounded-xl bg-slate-100 dark:bg-[#181B26] border border-slate-200 dark:border-white/10 text-xs">
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-heading font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+            <FolderArchive className="w-3.5 h-3.5 text-indigo-500" />
             <span>Repository Kuliah</span>
           </span>
-          <span className="font-mono font-bold text-cyan-400 text-xs">
+          <span className="font-mono font-semibold text-indigo-600 dark:text-indigo-400 text-[11px]">
             Semester 1
           </span>
         </div>
 
-        <div className="space-y-1.5 text-[11px] text-slate-300">
+        <div className="space-y-1.5 text-[11px] text-slate-600 dark:text-slate-300">
           <div className="flex items-center justify-between">
-            <span className="text-slate-400">Total Sesi:</span>
-            <span className="font-mono font-semibold text-white">32 Pertemuan</span>
+            <span className="text-slate-500 dark:text-slate-400">Total Sesi:</span>
+            <span className="font-mono font-semibold text-slate-800 dark:text-white">{stats.totalMeetings} Pertemuan</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-400">Berkas PDF Tersedia:</span>
-            <span className="font-mono font-semibold text-cyan-400">
-              {subjects.reduce((acc, s) => acc + (s.meetings || []).reduce((mAcc, m) => mAcc + (m.materials || []).length, 0), 0)} Berkas
+            <span className="text-slate-500 dark:text-slate-400">Modul PDF Dosen:</span>
+            <span className="font-mono font-semibold text-cyan-600 dark:text-cyan-400">
+              {stats.totalMaterials} Berkas
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-400">Cheatsheet HD (JPG):</span>
-            <span className="font-mono font-semibold text-amber-400">6 Kartu</span>
+            <span className="text-slate-500 dark:text-slate-400">Cheatsheet Formula:</span>
+            <span className="font-mono font-semibold text-amber-600 dark:text-amber-400">6 Kartu HD</span>
           </div>
           <div
             onClick={() => {
               setActiveView('pascal');
               setSelectedSubjectId(null);
             }}
-            className="flex items-center justify-between cursor-pointer hover:text-white transition-colors"
+            className="flex items-center justify-between cursor-pointer hover:text-indigo-600 dark:hover:text-white transition-colors"
           >
-            <span className="text-slate-400">Kode Pascal (.PAS):</span>
-            <span className="font-mono font-semibold text-emerald-400 underline decoration-dotted">24 Berkas</span>
+            <span className="text-slate-500 dark:text-slate-400">Kode Pascal:</span>
+            <span className="font-mono font-semibold text-emerald-600 dark:text-emerald-400 underline decoration-dotted">24 Berkas</span>
           </div>
         </div>
       </div>
 
       {/* Subject Quick Jump Section */}
-      <div className="mb-4">
+      <div>
         <div className="flex items-center justify-between mb-2 px-1">
-          <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
             Daftar Mata Kuliah
           </span>
-          <span className="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20 font-semibold">
+          <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">
             {subjects.length} Matkul
           </span>
         </div>
@@ -204,8 +208,8 @@ export function Sidebar({
                 }}
                 className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-all text-left cursor-pointer ${
                   isSelected
-                    ? 'bg-slate-800 border border-indigo-500/40 text-white font-semibold'
-                    : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/40'
+                    ? 'bg-indigo-50 dark:bg-slate-800 border border-indigo-200 dark:border-indigo-500/40 text-indigo-700 dark:text-white font-semibold'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/40'
                 }`}
               >
                 <div className="flex items-center gap-2 truncate">
@@ -215,7 +219,7 @@ export function Sidebar({
                   />
                   <span className="truncate">{subj.name}</span>
                 </div>
-                <span className="text-[10px] font-mono text-cyan-400 flex-shrink-0">
+                <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 flex-shrink-0">
                   {pdfCount} PDF
                 </span>
               </button>
