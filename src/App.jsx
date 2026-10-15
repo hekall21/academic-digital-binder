@@ -9,6 +9,8 @@ import { MeetingDetailView } from './components/meetings/MeetingDetailView';
 import { GlobalSearchModal } from './components/search/GlobalSearchModal';
 import { SettingsModal } from './components/settings/SettingsModal';
 import { PascalExplorerView } from './components/pascal/PascalExplorerView';
+import { AiTutorChatView } from './components/tutor/AiTutorChatView';
+import { ModeCatatanFisikView } from './components/handwriting/ModeCatatanFisikView';
 
 export function App() {
   const { theme, toggleTheme } = useTheme();
@@ -39,9 +41,13 @@ export function App() {
   } = useBinderStore();
 
   // Navigation State
-  const [activeView, setActiveView] = useState('dashboard'); // 'dashboard', 'subjects', 'subject_detail', 'meeting_detail', 'handwriting'
+  const [activeView, setActiveView] = useState('dashboard'); // 'dashboard', 'ai_tutor', 'subjects', 'subject_detail', 'meeting_detail', 'handwriting', 'pascal'
   const [selectedSubjectId, setSelectedSubjectId] = useState(null);
   const [selectedMeetingId, setSelectedMeetingId] = useState(null);
+
+  // AI Tutor Context Launch State
+  const [tutorInitialSubjectId, setTutorInitialSubjectId] = useState('all');
+  const [tutorInitialQuery, setTutorInitialQuery] = useState('');
 
   // Modals State
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -80,6 +86,13 @@ export function App() {
     const target = subjects.find((s) => s.id === subjectId) || subjects[0];
     setMeetingSubjectTarget(target);
     setIsAddMeetingOpen(true);
+  };
+
+  const handleOpenTutor = (subjectId = 'all', initialQuery = '') => {
+    setTutorInitialSubjectId(subjectId);
+    setTutorInitialQuery(initialQuery);
+    setActiveView('ai_tutor');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Find active subject and meeting instances
@@ -125,6 +138,17 @@ export function App() {
               subjects={subjects}
               onSelectSubject={handleSelectSubject}
               onSelectMeeting={handleSelectMeeting}
+              onOpenAddSubject={() => setIsAddSubjectOpen(true)}
+              onOpenAddMeeting={handleOpenAddMeeting}
+              onOpenTutor={handleOpenTutor}
+            />
+          )}
+
+          {activeView === 'ai_tutor' && (
+            <AiTutorChatView
+              subjects={subjects}
+              initialSubjectId={tutorInitialSubjectId}
+              initialQuery={tutorInitialQuery}
             />
           )}
 
@@ -134,6 +158,10 @@ export function App() {
               selectedSubjectId={selectedSubjectId}
               onSelectSubject={handleSelectSubject}
               onSelectMeeting={handleSelectMeeting}
+              onOpenAddMeeting={handleOpenAddMeeting}
+              onOpenAddSubject={() => setIsAddSubjectOpen(true)}
+              onToggleProgress={toggleProgressItem}
+              onDeleteMeeting={deleteMeeting}
             />
           )}
 
@@ -144,6 +172,17 @@ export function App() {
               onBack={() => {
                 setActiveView('subject_detail');
               }}
+              onOpenTutor={handleOpenTutor}
+              onAddMaterial={addMaterial}
+              onDeleteMaterial={deleteMaterial}
+              onToggleProgress={toggleProgressItem}
+            />
+          )}
+
+          {activeView === 'handwriting' && (
+            <ModeCatatanFisikView
+              subjects={subjects}
+              onToggleProgress={toggleProgressItem}
             />
           )}
 

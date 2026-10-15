@@ -68,6 +68,24 @@ export function Sidebar({
 
         <button
           onClick={() => {
+            setActiveView('ai_tutor');
+            setSelectedSubjectId(null);
+          }}
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+            activeView === 'ai_tutor'
+              ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30'
+              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+          }`}
+        >
+          <div className="flex items-center gap-2.5">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span>AI Academic Tutor</span>
+          </div>
+          <span className="text-[10px] font-mono text-cyan-300 bg-cyan-500/20 px-1.5 py-0.5 rounded font-bold">RAG</span>
+        </button>
+
+        <button
+          onClick={() => {
             setActiveView('subjects');
             setSelectedSubjectId(null);
           }}
@@ -82,6 +100,24 @@ export function Sidebar({
             <span>Semua Mata Kuliah</span>
           </div>
           <span className="text-[10px] font-mono opacity-80">{stats.totalMeetings} Sesi</span>
+        </button>
+
+        <button
+          onClick={() => {
+            setActiveView('handwriting');
+            setSelectedSubjectId(null);
+          }}
+          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+            activeView === 'handwriting'
+              ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30'
+              : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800/60 light:hover:bg-slate-100'
+          }`}
+        >
+          <div className="flex items-center gap-2.5">
+            <PenTool className="w-4 h-4 text-amber-400" />
+            <span>Salin Catatan Fisik</span>
+          </div>
+          <span className="text-[10px] font-mono text-amber-300 bg-amber-500/20 px-1.5 py-0.5 rounded font-bold">Binder</span>
         </button>
 
         <button

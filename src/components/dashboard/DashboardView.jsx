@@ -89,6 +89,7 @@ export function DashboardView({
   onSelectMeeting,
   onOpenAddSubject,
   onOpenAddMeeting,
+  onOpenTutor,
 }) {
   const continueItem = stats.continueStudying;
   const [selectedPreviewImage, setSelectedPreviewImage] = useState(null);
@@ -108,6 +109,25 @@ export function DashboardView({
           <p className="text-sm text-slate-300 mt-2 leading-relaxed">
             Pusat catatan terpadu untuk 8 mata kuliah, ekstraksi verbatim materi modul PDF dosen Unindra, rumus matematika presisi, serta arsip dokumen PDF dan cheatsheet HD.
           </p>
+
+          <div className="flex flex-wrap items-center gap-3 mt-4">
+            {onOpenTutor && (
+              <button
+                onClick={() => onOpenTutor('all')}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white text-xs font-bold transition-all shadow-lg shadow-indigo-600/30 active:scale-95 cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-cyan-300" />
+                <span>Buka AI Academic Tutor</span>
+              </button>
+            )}
+            <button
+              onClick={() => onSelectSubject(subjects[0]?.id || 'subject-matdas')}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 text-xs font-semibold transition-all cursor-pointer"
+            >
+              <BookMarked className="w-4 h-4 text-indigo-400" />
+              <span>Mulai Belajar</span>
+            </button>
+          </div>
         </div>
 
         {/* Semi-transparent decorative pattern */}

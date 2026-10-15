@@ -551,6 +551,63 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
+/* =========================================================================
+   KATEX RESPONSIVE MATH & AI TUTOR TYPOGRAPHY ENHANCEMENTS
+   Guarantees equations and code never cause horizontal overflow
+   ========================================================================= */
+
+.katex-block-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-block-wrapper .katex-display {
+  margin: 0.5rem 0 !important;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-inline-wrapper {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.katex {
+  font-size: 1.05em;
+  text-rendering: auto;
+}
+
+.academic-tutor-content {
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.academic-tutor-content p {
+  margin-bottom: 1rem;
+}
+
+.academic-tutor-content ul,
+.academic-tutor-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+
+.academic-tutor-content li {
+  margin-bottom: 0.35rem;
+}
+
+.academic-tutor-content strong {
+  color: #FFFFFF;
+}
+
+.light .academic-tutor-content strong {
+  color: #0F172A;
+}
+
 /* Step-by-step calculation cards (non-cramped list layout) */
 .academic-summary-content .academic-section-content ol > li,
 .academic-summary-content .academic-section-block ol > li {

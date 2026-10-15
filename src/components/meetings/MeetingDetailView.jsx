@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ArrowLeft,
   Calendar,
@@ -16,8 +16,13 @@ import {
   ShieldCheck,
   Check,
   Code,
+  PenTool,
+  Plus,
+  Upload,
 } from 'lucide-react';
 import { sanitizeHtml, sanitizeUrl } from '../../lib/security';
+import { renderMathInHtml, convertToPhysicalBinderFormat } from '../../lib/latexRenderer';
+import { ingestDocumentIntoRag } from '../../lib/documentRagEngine';
 import { PdfViewerModal } from '../materials/PdfViewerModal';
 import { CheatsheetViewerModal } from '../materials/CheatsheetViewerModal';
 import { PascalExplorerView } from '../pascal/PascalExplorerView';
@@ -40,48 +45,26 @@ export const isPdfMaterial = (m) =>
 
 /**
  * Formats academic summary HTML:
- * 1. Converts LaTeX math dollar patterns ($...$) into styled readable mathematical badges with Unicode symbols
- * 2. Cleans up dangling LaTeX tokens (\rightarrow, \times, \le, \ge, \cdot)
+ * Delegates to high-precision KaTeX engine with responsive overflow protection
  */
 export function formatAcademicHtml(rawHtml) {
   if (!rawHtml || typeof rawHtml !== 'string') return '';
-  let html = rawHtml;
-
-  // Convert LaTeX math dollars $...$ into styled badges with proper mathematical symbols
-  html = html.replace(/\$([^$\n]+)\$/g, (match, formula) => {
-    let clean = formula
-      .replace(/\\text\{([^}]+)\}/g, '$1')
-      .replace(/\\times/g, ' × ')
-      .replace(/\\rightarrow/g, ' → ')
-      .replace(/\\le\b|\\leq\b/g, ' ≤ ')
-      .replace(/\\ge\b|\\geq\b/g, ' ≥ ')
-      .replace(/\\ne\b|\\neq\b/g, ' ≠ ')
-      .replace(/\\pm\b/g, ' ± ')
-      .replace(/\\cdot/g, ' · ')
-      .replace(/\\%/g, '%')
-      .replace(/\\pmod\s*([0-9a-zA-Z]+)/g, ' (mod $1)')
-      .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1 / $2)')
-      .trim();
-    return `<span class="math-badge font-mono">${clean}</span>`;
-  });
-
-  // Format standalone LaTeX keywords if any leaked outside dollars
-  html = html
-    .replace(/\\rightarrow/g, ' → ')
-    .replace(/\\times/g, ' × ')
-    .replace(/\\cdot/g, ' · ');
-
-  return html;
+  return renderMathInHtml(rawHtml);
 }
 
 export function MeetingDetailView({
   subject,
   meeting,
   onBack,
+  onOpenTutor,
+  onAddMaterial,
+  onDeleteMaterial,
+  onToggleProgress,
 }) {
   const [activeTab, setActiveTab] = useState('summary'); // 'summary', 'pdf', 'cheatsheet'
   const [summaryMode, setSummaryMode] = useState('detail'); // Default to 'detail' (Guru AI Diktat) or user can switch to 'standar' (Catatan Mahasiswa GMeet) or 'ringkas'
   const [copyFeedback, setCopyFeedback] = useState(false);
+  const [copyHandwritingFeedback, setCopyHandwritingFeedback] = useState(false);
 
   // Available official PDF materials for this meeting (excluding any AI duplicates)
   const pdfMaterials = (meeting.materials || []).filter(isPdfMaterial);
@@ -115,12 +98,56 @@ export function MeetingDetailView({
 
   const handleCopySummary = () => {
     const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = formatAcademicHtml(currentSummaryHtml);
+    tempDiv.innerHTML = renderMathInHtml(currentSummaryHtml);
     const plainText = tempDiv.textContent || tempDiv.innerText || '';
     navigator.clipboard.writeText(plainText).then(() => {
       setCopyFeedback(true);
       setTimeout(() => setCopyFeedback(false), 2000);
     });
+  };
+
+  const handleCopyHandwriting = () => {
+    const cleanNotes = convertToPhysicalBinderFormat(currentSummaryHtml);
+    navigator.clipboard.writeText(cleanNotes).then(() => {
+      setCopyHandwritingFeedback(true);
+      setTimeout(() => setCopyHandwritingFeedback(false), 2000);
+    });
+  };
+
+  const meetingFileInputRef = useRef(null);
+  const [meetingUploadStatus, setMeetingUploadStatus] = useState(null);
+
+  const handleUploadMeetingPdf = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setMeetingUploadStatus('Mengekstrak dan mengindeks PDF ke RAG...');
+    try {
+      await ingestDocumentIntoRag({
+        fileOrBuffer: file,
+        documentTitle: file.name,
+        subjectId: subject.id,
+        subjectName: subject.name,
+        meetingNumber: meeting.meeting_number,
+      });
+
+      const blobUrl = URL.createObjectURL(file);
+      if (onAddMaterial) {
+        onAddMaterial(subject.id, meeting.id, {
+          type: 'pdf',
+          title: file.name,
+          file_url: blobUrl,
+          file_size: file.size,
+        });
+      }
+      setActiveInlinePdfUrl(blobUrl);
+      setActiveInlinePdfTitle(file.name);
+      setMeetingUploadStatus('PDF berhasil diunggah dan diindeks ke AI Tutor!');
+      setTimeout(() => setMeetingUploadStatus(null), 4000);
+    } catch (err) {
+      setMeetingUploadStatus('Gagal memproses PDF: ' + err.message);
+      setTimeout(() => setMeetingUploadStatus(null), 4000);
+    }
   };
 
   const currentSafePdfUrl = sanitizeUrl(activeInlinePdfUrl);
@@ -214,14 +241,34 @@ export function MeetingDetailView({
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {onOpenTutor && (
+              <button
+                onClick={() => onOpenTutor(subject.id, `Jelaskan secara mendalam materi ${subject.name} Pertemuan ${meeting.meeting_number}: ${meeting.title} dengan rumus LaTeX dan pembahasan langkah demi langkah!`)}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer"
+                title="Buka AI Tutor untuk tanya jawab mendalam mengenai materi pertemuan ini"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
+                <span>Tanya AI Tutor</span>
+              </button>
+            )}
+
+            <button
+              onClick={handleCopyHandwriting}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold transition-all cursor-pointer"
+              title="Salin catatan dengan rumus matematika bersih siap tulis tangan di buku binder"
+            >
+              {copyHandwritingFeedback ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <PenTool className="w-3.5 h-3.5 text-amber-400" />}
+              <span>{copyHandwritingFeedback ? 'Format Binder Tersalin!' : 'Salin Format Binder Kertas'}</span>
+            </button>
+
             <button
               onClick={handleCopySummary}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 text-xs font-semibold transition-all cursor-pointer"
               title="Salin seluruh isi catatan ke papan klip untuk disalin ke binder fisik"
             >
               {copyFeedback ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copyFeedback ? 'Tersalin ke Klip!' : 'Salin Catatan Binder'}</span>
+              <span>{copyFeedback ? 'Tersalin!' : 'Salin Standar'}</span>
             </button>
           </div>
         </div>
@@ -429,7 +476,28 @@ export function MeetingDetailView({
                         </button>
                       );
                     })}
+
+                    <input
+                      type="file"
+                      ref={meetingFileInputRef}
+                      onChange={handleUploadMeetingPdf}
+                      accept=".pdf"
+                      className="hidden"
+                    />
+                    <button
+                      onClick={() => meetingFileInputRef.current?.click()}
+                      className="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5 transition-colors cursor-pointer"
+                      title="Unggah berkas PDF baru untuk sesi ini dan indeks otomatis ke AI Tutor"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>Tambah PDF</span>
+                    </button>
                   </div>
+                  {meetingUploadStatus && (
+                    <div className="text-[11px] text-cyan-400 font-mono mt-1">
+                      {meetingUploadStatus}
+                    </div>
+                  )}
                 </div>
 
                 {/* Toolbar Buttons */}
