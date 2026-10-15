@@ -119,6 +119,34 @@ assert(tutorResponse.includes('### 6. Jawaban Akhir'), 'Tutor response contains 
 assert(tutorResponse.includes('### 7. Kesimpulan'), 'Tutor response contains Section 7: Kesimpulan');
 assert(tutorResponse.includes('### 8. Sumber Materi'), 'Tutor response contains Section 8: Sumber Materi Terverifikasi');
 
+// TEST CASE 6: Verification of User's 10-Problem Assignment (Screenshot Test)
+console.log('\n--- TEST GROUP 6: 10-Problem Drill (User Screenshot Verification) ---');
+const drillResponse = synthesizeLocalTutorResponse({
+  query: 'Tolong jelaskan seperti ini loh di academic digital binder di web saya paket 10 soal limit dan turunan',
+  subjectId: 'subject-matdas',
+  subjectName: 'Matematika Dasar',
+  mode: TUTOR_MODES.COMPREHENSIVE,
+});
+
+assert(drillResponse.includes('\\sqrt{x+5} - 3') && drillResponse.includes('\\frac{1}{6}'), 'Drill Question 1a (Akar Sekawan) Solved Correctly');
+assert(drillResponse.includes('x^2 - 3x + 2') && drillResponse.includes('\\frac{1}{4}'), 'Drill Question 1b (Faktorisasi) Solved Correctly');
+assert(drillResponse.includes('2x^3 - 4x^2 + 3') && drillResponse.includes('3'), 'Drill Question 1c (Substitusi Polinomial) Solved Correctly');
+assert(drillResponse.includes('\\frac{x \\cos x}{\\sin 3x}') && drillResponse.includes('\\frac{1}{3}'), 'Drill Question 2a (Limit Trigonometri x cos x) Solved Correctly');
+assert(drillResponse.includes('1 - \\cos 2x') && drillResponse.includes('\\sin^2 x'), 'Drill Question 2b (Sudut Rangkap) Solved Correctly');
+assert(drillResponse.includes('1 - \\sin 2x') && drillResponse.includes('\\cos^2 2x'), 'Drill Question 2c (Identitas Pythagoras) Solved Correctly');
+assert(drillResponse.includes('f(x) = 3x + 5') && drillResponse.includes('f\'(x) = 3'), 'Drill Question 3a (Definisi Limit 3x+5) Solved Correctly');
+assert(drillResponse.includes('f(x) = x^2 + 4x + 2') && drillResponse.includes('2x + 4'), 'Drill Question 3b (Definisi Limit Kuadrat) Solved Correctly');
+assert(drillResponse.includes('\\frac{x^2 - 2x - 1}{(x - 1)^2}'), 'Drill Question 4a (Aturan Pembagian) Solved Correctly');
+assert(drillResponse.includes('10x^4 - 15x^2 - 12'), 'Drill Question 4b (Aturan Perkalian) Solved Correctly');
+
+const drillHandwriting = synthesizeLocalTutorResponse({
+  query: 'paket 10 soal limit aljabar dan turunan',
+  subjectId: 'subject-matdas',
+  subjectName: 'Matematika Dasar',
+  mode: TUTOR_MODES.HANDWRITING,
+});
+assert(drillHandwriting.includes('lim(x→4)') && drillHandwriting.includes('lim(h→0)'), 'Handwriting Binder format for 10 problems produces natural pen notes');
+
 console.log('\n================================================================');
 console.log(`🏁 TEST SUITE COMPLETE: ${passCount} PASSED, ${failCount} FAILED`);
 console.log('================================================================\n');

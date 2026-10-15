@@ -233,6 +233,51 @@ f'(x) = 2(x^2 - 1) + (2x + 3)(2x) = 2x^2 - 2 + 4x^2 + 6x = 6x^2 + 6x - 2`,
    Bagi pembilang dan penyebut dengan x berpangkat tertinggi dari penyebut.`,
     contentKeywords: ['limit', 'aljabar', 'substitusi', 'faktorisasi', 'sekawan', 'akar', 'tak', 'tentu', 'tak hingga'],
   },
+  {
+    id: 'matdas_drill_limit_aljabar',
+    subjectId: 'subject-matdas',
+    subjectName: 'Matematika Dasar',
+    documentTitle: 'Latihan_Resmi_Limit_Aljabar_Trigonometri_Turunan.pdf',
+    meetingNumber: 5,
+    pageNumber: 1,
+    topic: 'Paket Latihan Limit Aljabar (Akar Sekawan, Faktorisasi, Substitusi)',
+    content: `Latihan Limit Aljabar Resmi:
+1. lim_{x->4} (sqrt(x+5) - 3) / (x - 4) = 1/6 (Metode kali akar sekawan (sqrt(x+5)+3)/(sqrt(x+5)+3)).
+2. lim_{x->2} (x^2 - 3x + 2) / (x^2 - 4) = 1/4 (Metode faktorisasi (x-2)(x-1) / ((x-2)(x+2))).
+3. lim_{x->2} (2x^3 - 4x^2 + 3) = 3 (Metode substitusi langsung polinomial).`,
+    contentKeywords: ['limit', 'aljabar', 'akar', 'sekawan', 'faktorisasi', 'substitusi', 'x4', 'x2', 'sqrt'],
+  },
+  {
+    id: 'matdas_drill_limit_trigonometri',
+    subjectId: 'subject-matdas',
+    subjectName: 'Matematika Dasar',
+    documentTitle: 'Latihan_Resmi_Limit_Aljabar_Trigonometri_Turunan.pdf',
+    meetingNumber: 5,
+    pageNumber: 2,
+    topic: 'Paket Latihan Limit Fungsi Trigonometri (Sudut Rangkap, Rumus Baku, Faktorisasi Cos)',
+    content: `Latihan Limit Trigonometri Resmi:
+1. lim_{x->0} (x * cos x) / sin 3x = 1/3 (Pecah limit (x / sin 3x) * cos x = 1/3 * 1 = 1/3).
+2. lim_{x->0} (1 - cos 2x) / sin^2 x = 2 (Gunakan identitas 1 - cos 2x = 2 sin^2 x sehingga 2 sin^2 x / sin^2 x = 2).
+3. lim_{x->pi/4} (1 - sin 2x) / cos^2 2x = 1/2 (Ubah cos^2 2x = 1 - sin^2 2x = (1 - sin 2x)(1 + sin 2x), coret pembuat nol menjadi 1 / (1 + sin 2x) = 1 / 2).`,
+    contentKeywords: ['limit', 'trigonometri', 'cos', 'sin', 'sudut', 'rangkap', 'identitas', 'pi', 'pi4'],
+  },
+  {
+    id: 'matdas_drill_turunan_aljabar',
+    subjectId: 'subject-matdas',
+    subjectName: 'Matematika Dasar',
+    documentTitle: 'Latihan_Resmi_Limit_Aljabar_Trigonometri_Turunan.pdf',
+    meetingNumber: 6,
+    pageNumber: 3,
+    topic: 'Paket Latihan Turunan Aljabar (Definisi Limit & Aturan Diferensial)',
+    content: `Latihan Turunan Aljabar Resmi:
+A. Turunan Berdasarkan Definisi Limit f'(x) = lim_{h->0} [f(x+h) - f(x)] / h:
+   1. f(x) = 3x + 5 => f'(x) = lim_{h->0} [3(x+h)+5 - (3x+5)] / h = lim_{h->0} 3h / h = 3.
+   2. f(x) = x^2 + 4x + 2 => f'(x) = lim_{h->0} [((x+h)^2 + 4(x+h) + 2) - (x^2 + 4x + 2)] / h = 2x + 4.
+B. Turunan Berdasarkan Aturan Diferensial:
+   1. f(x) = (x^2 + 1) / (x - 1) => Aturan Pembagian (u'v - uv') / v^2 = (2x(x-1) - (x^2+1)(1)) / (x-1)^2 = (x^2 - 2x - 1) / (x - 1)^2.
+   2. f(x) = (x^3 - 4x)(2x^2 + 3) => Aturan Perkalian u'v + uv' = (3x^2 - 4)(2x^2 + 3) + (x^3 - 4x)(4x) = 10x^4 - 15x^2 - 12.`,
+    contentKeywords: ['turunan', 'aljabar', 'definisi', 'limit', 'aturan', 'pembagian', 'perkalian', 'uv', 'fx'],
+  },
 
   // ALGORITMA DAN PEMROGRAMAN 1 - FLOWCHART & STRUKTUR KONTROL
   {

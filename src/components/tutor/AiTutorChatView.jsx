@@ -24,6 +24,11 @@ import { sanitizeHtml } from '../../lib/security';
 
 const QUICK_PROMPTS = [
   {
+    label: 'Paket Latihan Limit & Turunan (10 Soal)',
+    subjectId: 'subject-matdas',
+    text: 'Jelaskan pembahasan tuntas paket latihan Limit Aljabar (akar & faktorisasi), Limit Trigonometri, dan Turunan Aljabar (definisi limit & diferensial) langkah demi langkah dengan rumus KaTeX!',
+  },
+  {
     label: 'Turunan Aljabar via Limit',
     subjectId: 'subject-matdas',
     text: 'Jelaskan turunan fungsi aljabar dari dasar limit, berikan rumus, contoh soal, dan pembahasan langkah demi langkah berdasarkan PDF kuliah saya.',
