@@ -50,7 +50,7 @@ def render_html_page(data):
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>{data['title']} - Panduan Guru AI Antigravity</title>
+  <title>{data['title']} - Panduan Guru AI</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 

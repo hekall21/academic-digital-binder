@@ -6,15 +6,12 @@ import {
   FileText,
   Copy,
   Check,
-  Upload,
-  RefreshCw,
   Brain,
   ShieldCheck,
   PenTool,
   Hash,
 } from 'lucide-react';
 import { askAiTutor, TUTOR_MODES } from '../../lib/aiTutorEngine';
-import { ingestDocumentIntoRag } from '../../lib/documentRagEngine';
 import { formatTutorResponseToHtml, convertToPhysicalBinderFormat } from '../../lib/latexRenderer';
 import { sanitizeHtml } from '../../lib/security';
 
@@ -68,9 +65,7 @@ export function AiTutorChatView({
   const [loadingStatus, setLoadingStatus] = useState('');
   const [copyFeedbackId, setCopyFeedbackId] = useState(null);
   const [copyTypeFeedback, setCopyTypeFeedback] = useState('');
-  const [uploadStatus, setUploadStatus] = useState(null);
 
-  const fileInputRef = useRef(null);
   const chatBottomRef = useRef(null);
 
   // Initial welcome message
@@ -172,45 +167,6 @@ Silakan pilih topik di bawah atau ketikkan pertanyaan Anda secara bebas!`,
     });
   };
 
-  const handleFileUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploadStatus({ loading: true, message: `Membaca & mengekstrak ${file.name}...` });
-
-    try {
-      const result = await ingestDocumentIntoRag({
-        fileOrBuffer: file,
-        documentTitle: file.name,
-        subjectId: selectedSubjectId === 'all' ? 'subject-matdas' : selectedSubjectId,
-        subjectName: activeSubjectName,
-        meetingNumber: 1,
-      });
-
-      if (result.success) {
-        setUploadStatus({
-          loading: false,
-          success: true,
-          message: `Berhasil mengindeks ${result.documentTitle} (${result.totalPages} Halaman, ${result.chunksCreated} potongan semantik)! AI Tutor kini memahami dokumen ini.`,
-        });
-      } else {
-        setUploadStatus({
-          loading: false,
-          success: false,
-          message: result.error || 'Gagal membaca dokumen PDF.',
-        });
-      }
-    } catch (err) {
-      setUploadStatus({
-        loading: false,
-        success: false,
-        message: err.message || 'Terjadi kesalahan sistem.',
-      });
-    }
-
-    setTimeout(() => setUploadStatus(null), 6000);
-  };
-
   return (
     <div className="flex flex-col h-[calc(100vh-100px)] min-h-[600px] rounded-2xl bg-white dark:bg-[#0B0D14] border border-slate-200 dark:border-white/10 shadow-sm overflow-hidden">
       {/* Top Header & Settings Bar */}
@@ -275,47 +231,8 @@ Silakan pilih topik di bawah atau ketikkan pertanyaan Anda secara bebas!`,
               </option>
             </select>
           </div>
-
-          {/* Ingest PDF Button */}
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileUpload}
-            accept=".pdf"
-            className="hidden"
-          />
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-600/30 hover:bg-indigo-100 dark:hover:bg-indigo-600/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/40 font-semibold transition-all cursor-pointer"
-            title="Unggah dan indeks dokumen PDF perkuliahan baru ke dalam memori RAG"
-          >
-            <Upload className="w-3.5 h-3.5" />
-            <span>Indeks PDF Baru</span>
-          </button>
         </div>
       </div>
-
-      {/* Upload Notification Alert */}
-      {uploadStatus && (
-        <div
-          className={`px-4 py-2 text-xs font-medium border-b flex items-center justify-between ${
-            uploadStatus.loading
-              ? 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 border-indigo-200 dark:border-indigo-500/30'
-              : uploadStatus.success
-              ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/30'
-              : 'bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 border-rose-200 dark:border-rose-500/30'
-          }`}
-        >
-          <div className="flex items-center gap-2">
-            {uploadStatus.loading && <RefreshCw className="w-3.5 h-3.5 animate-spin" />}
-            {uploadStatus.success && <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />}
-            <span>{uploadStatus.message}</span>
-          </div>
-          <button onClick={() => setUploadStatus(null)} className="text-slate-500 hover:text-slate-800 dark:hover:text-white">
-            ✕
-          </button>
-        </div>
-      )}
 
       {/* Main Chat Message Scroll View */}
       <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">

@@ -449,7 +449,104 @@ export const PASCAL_FILES = [
     "linesCount": 27,
     "downloadUrl": "/pascal/program_if.pas",
     "rawCode": " program belajar_if_then_else_if;\r\n    uses crt;\r\n\r\n    var\r\n      bilangan : integer;\r\n\r\n    begin\r\n      clrscr;\r\n\r\n write('Input Bilangan : ');\r\n      readln(bilangan);\r\n\r\n      if (bilangan > 0) then\r\n      begin\r\n        writeln('Bilangan Positif');\r\n      end\r\n      else if (bilangan < 0) then\r\n      begin\r\n        writeln('Bilangan Negatif');\r\n      end\r\n      else\r\n      begin\r\n        writeln('Bilangan Nol');\r\n      end;\r\n\r\n      readln;\r\n    end."
-  }
+  },
+  {
+  "id": "pascal_25",
+  "filename": "p07_contoh_angka_kata.pas",
+  "title": "Konversi Angka Bulat ke Kata (1..4) Menggunakan CASE-OF",
+  "meeting": 7,
+  "category": "Struktur Pemilihan CASE-OF",
+  "difficulty": "Dasar",
+  "description": "Contoh materi Slide 4-6 Pertemuan 7: Mengonversi input integer 1 s.d. 4 menjadi representasi kata (satu, dua, tiga, empat). Menggunakan klausa ELSE untuk menangani input di luar rentang.",
+  "tags": [
+    "case-of",
+    "ordinal",
+    "konversi-angka",
+    "pertemuan-7"
+  ],
+  "sizeBytes": 865,
+  "linesCount": 32,
+  "downloadUrl": "/pascal/p07_contoh_angka_kata.pas",
+  "rawCode": "program Konversi_Angka_Ke_Kata;\nuses crt;\n\n{ Program Contoh Materi Slide Pertemuan 7 Algoritma 1\n  Mengonversi input angka 1..4 menjadi kata menggunakan struktur CASE-OF }\n\nvar\n  angka : integer;\n\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('   PROGRAM KONVERSI ANGKA KE KATA (CASE-OF)   ');\n  writeln('        (Materi Slide P7 Algoritma 1)         ');\n  writeln('==============================================');\n  write('Masukkan sebuah angka bulat (1..4): ');\n  readln(angka);\n  writeln('----------------------------------------------');\n\n  write('Hasil Konversi: ');\n  case angka of\n    1 : writeln('satu');\n    2 : writeln('dua');\n    3 : writeln('tiga');\n    4 : writeln('empat');\n  else\n    writeln('Angka yang dimasukkan salah');\n  end;\n\n  writeln('==============================================');\n  readln;\nend.\n"
+},
+  {
+  "id": "pascal_26",
+  "filename": "p07_tugas1_nama_bulan.pas",
+  "title": "Tugas 1: Penentuan Nama Bulan (1..12) & Validasi Kalender",
+  "meeting": 7,
+  "category": "Struktur Pemilihan CASE-OF",
+  "difficulty": "Dasar",
+  "description": "Tugas 1 Slide 9 Pertemuan 7: Membaca angka bulan 1 s.d. 12 dan memetakan ke nama bulan Masehi (Januari s.d. Desember). Menampilkan pesan error validasi jika angka bulan di luar 1..12.",
+  "tags": [
+    "case-of",
+    "nama-bulan",
+    "validasi",
+    "tugas-p7"
+  ],
+  "sizeBytes": 1162,
+  "linesCount": 41,
+  "downloadUrl": "/pascal/p07_tugas1_nama_bulan.pas",
+  "rawCode": "program Menentukan_Nama_Bulan;\nuses crt;\n\n{ Tugas 1 Slide Pertemuan 7 Algoritma 1\n  Membaca angka bulan (integer 1..12) lalu menampilkan nama bulan.\n  Jika angka di luar rentang 1..12, menampilkan pesan error validasi. }\n\nvar\n  angka_bulan : integer;\n\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('        PROGRAM MENENTUKAN NAMA BULAN         ');\n  writeln('        (Tugas 1 Slide P7 Algoritma 1)        ');\n  writeln('==============================================');\n  write('Masukkan nomor bulan (1..12): ');\n  readln(angka_bulan);\n  writeln('----------------------------------------------');\n\n  write('Nama Bulan: ');\n  case angka_bulan of\n    1  : writeln('Januari');\n    2  : writeln('Februari');\n    3  : writeln('Maret');\n    4  : writeln('April');\n    5  : writeln('Mei');\n    6  : writeln('Juni');\n    7  : writeln('Juli');\n    8  : writeln('Agustus');\n    9  : writeln('September');\n    10 : writeln('Oktober');\n    11 : writeln('November');\n    12 : writeln('Desember');\n  else\n    writeln('Bukan nomor bulan yang benar');\n  end;\n\n  writeln('==============================================');\n  readln;\nend.\n"
+},
+  {
+  "id": "pascal_27",
+  "filename": "p07_tugas2_menu_data.pas",
+  "title": "Tugas 2: Sistem Menu Interaktif Manajemen Data 5 Opsi",
+  "meeting": 7,
+  "category": "Menu Interaktif CASE-OF",
+  "difficulty": "Menengah",
+  "description": "Tugas 2 Slide 9 Pertemuan 7: Menampilkan antarmuka menu CLI (1. Baca data, 2. Cetak data, 3. Ubah data, 4. Hapus data, 5. Keluar program) dan mencetak pesan konfirmasi menu yang dipilih.",
+  "tags": [
+    "case-of",
+    "menu-cli",
+    "manajemen-data",
+    "tugas-p7"
+  ],
+  "sizeBytes": 1342,
+  "linesCount": 37,
+  "downloadUrl": "/pascal/p07_tugas2_menu_data.pas",
+  "rawCode": "program Menu_Pengelolaan_Data;\nuses crt;\n\n{ Tugas 2 Slide Pertemuan 7 Algoritma 1\n  Menampilkan menu 5 pilihan pengolahan data, membaca nomor pilihan,\n  dan mencetak pesan konfirmasi menu yang dipilih menggunakan CASE-OF. }\n\nvar\n  pilihan : integer;\n\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('               ===== MENU =====               ');\n  writeln('               1. Baca data                   ');\n  writeln('               2. Cetak data                  ');\n  writeln('               3. Ubah data                   ');\n  writeln('               4. Hapus data                  ');\n  writeln('               5. Keluar program              ');\n  writeln('==============================================');\n  write('Pilihan Anda = ');\n  readln(pilihan);\n  writeln('----------------------------------------------');\n\n  case pilihan of\n    1 : writeln('Anda memilih menu nomor 1 : Baca data');\n    2 : writeln('Anda memilih menu nomor 2 : Cetak data');\n    3 : writeln('Anda memilih menu nomor 3 : Ubah data');\n    4 : writeln('Anda memilih menu nomor 4 : Hapus data');\n    5 : writeln('Anda memilih menu nomor 5 : Keluar program');\n  else\n    writeln('Nomor menu tidak valid! Silakan pilih angka 1 sampai 5.');\n  end;\n\n  writeln('==============================================');\n  readln;\nend.\n"
+},
+  {
+  "id": "pascal_28",
+  "filename": "p07_tugas3_menu_persegi_panjang.pas",
+  "title": "Tugas 3: Menu Kalkulator Geometri Persegi Panjang (Luas, Keliling, Diagonal)",
+  "meeting": 7,
+  "category": "Menu Interaktif & Matematika",
+  "difficulty": "Menengah",
+  "description": "Tugas 3 Slide 9 Pertemuan 7: Program menu pemilihan untuk menghitung Luas (P*L), Keliling (2*P + 2*L), dan Panjang Diagonal (sqrt(P*P + L*L)) dari input Panjang dan Lebar empat persegi panjang.",
+  "tags": [
+    "case-of",
+    "geometri",
+    "persegi-panjang",
+    "sqrt",
+    "tugas-p7"
+  ],
+  "sizeBytes": 2344,
+  "linesCount": 72,
+  "downloadUrl": "/pascal/p07_tugas3_menu_persegi_panjang.pas",
+  "rawCode": "program Menu_Persegi_Panjang;\nuses crt;\n\n{ Tugas 3 Slide Pertemuan 7 Algoritma 1\n  Program menu kalkulasi geometri Empat Persegi Panjang:\n  1) Luas = P * L\n  2) Keliling = 2*P + 2*L\n  3) Panjang diagonal = sqrt(P*P + L*L)\n  4) Keluar program }\n\nvar\n  pilihan  : integer;\n  panjang  : real;\n  lebar    : real;\n  luas     : real;\n  keliling : real;\n  diagonal : real;\n\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('   PROGRAM MENU PERHITUNGAN PERSEGI PANJANG   ');\n  writeln('        (Tugas 3 Slide P7 Algoritma 1)        ');\n  writeln('==============================================');\n  writeln('1. Luas');\n  writeln('2. Keliling');\n  writeln('3. Panjang diagonal');\n  writeln('4. Keluar program');\n  writeln('==============================================');\n  write('Pilihan Anda [1..4] : ');\n  readln(pilihan);\n  writeln('----------------------------------------------');\n\n  case pilihan of\n    1 :\n      begin\n        writeln('>> 1. HITUNG LUAS PERSEGI PANJANG');\n        write('Masukkan Panjang (P) : '); readln(panjang);\n        write('Masukkan Lebar   (L) : '); readln(lebar);\n        luas := panjang * lebar;\n        writeln('----------------------------------------------');\n        writeln('Luas Persegi Panjang (P * L) = ', luas:0:2);\n      end;\n    2 :\n      begin\n        writeln('>> 2. HITUNG KELILING PERSEGI PANJANG');\n        write('Masukkan Panjang (P) : '); readln(panjang);\n        write('Masukkan Lebar   (L) : '); readln(lebar);\n        keliling := (2 * panjang) + (2 * lebar);\n        writeln('----------------------------------------------');\n        writeln('Keliling Persegi Panjang (2*P + 2*L) = ', keliling:0:2);\n      end;\n    3 :\n      begin\n        writeln('>> 3. HITUNG PANJANG DIAGONAL');\n        write('Masukkan Panjang (P) : '); readln(panjang);\n        write('Masukkan Lebar   (L) : '); readln(lebar);\n        diagonal := sqrt((panjang * panjang) + (lebar * lebar));\n        writeln('----------------------------------------------');\n        writeln('Panjang Diagonal sqrt(P^2 + L^2) = ', diagonal:0:2);\n      end;\n    4 :\n      begin\n        writeln('Keluar dari program. Terima kasih!');\n      end;\n  else\n    writeln('Pilihan menu salah! Silakan pilih menu antara 1 sampai 4.');\n  end;\n\n  writeln('==============================================');\n  readln;\nend.\n"
+},
+  {
+  "id": "pascal_29",
+  "filename": "p07_master_case_menu.pas",
+  "title": "Master Workspace Praktikum CASE-OF Terpadu (4 Modul P7 Lengkap)",
+  "meeting": 7,
+  "category": "Aplikasi Praktikum Terpadu",
+  "difficulty": "Lanjutan",
+  "description": "Aplikasi konsol terpadu yang menggabungkan seluruh materi dan tugas Pertemuan 7 dalam satu sistem modular (Procedure + Repeat-Until + Nested Case-Of + CRT Screen Handler).",
+  "tags": [
+    "master-program",
+    "case-of",
+    "procedure",
+    "repeat-until",
+    "crt"
+  ],
+  "sizeBytes": 6239,
+  "linesCount": 201,
+  "downloadUrl": "/pascal/p07_master_case_menu.pas",
+  "rawCode": "program Master_Pertemuan_7_Case_Of;\nuses crt;\n\n{ Program Terpadu Praktikum Algoritma & Pemrograman 1\n  Pertemuan Ke-7: Struktur Pemilihan Diskrit CASE - OF\n  Universitas Indraprasta PGRI (UNINDRA)\n  \n  Mencakup 4 Modul Interaktif:\n  1. Konversi Angka ke Kata (1..4)\n  2. Penentuan Nama Bulan (1..12)\n  3. Simulasi Menu Manajemen Data (1..5)\n  4. Geometri Persegi Panjang (Luas, Keliling, Diagonal) }\n\nvar\n  menu_utama : integer;\n  ulang      : char;\n\n  { Variabel Modul 1 }\n  v_angka    : integer;\n\n  { Variabel Modul 2 }\n  v_bulan    : integer;\n\n  { Variabel Modul 3 }\n  v_submenu  : integer;\n\n  { Variabel Modul 4 }\n  v_geomenu  : integer;\n  p, l       : real;\n  hasil_geo  : real;\n\nprocedure JalankanModul1;\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('   MODUL 1: KONVERSI ANGKA BULAT KE KATA      ');\n  writeln('==============================================');\n  write('Masukkan sebuah angka bulat (1..4): ');\n  readln(v_angka);\n  writeln('----------------------------------------------');\n  write('Hasil Konversi Kata: ');\n  case v_angka of\n    1 : writeln('satu');\n    2 : writeln('dua');\n    3 : writeln('tiga');\n    4 : writeln('empat');\n  else\n    writeln('Angka yang dimasukkan salah!');\n  end;\n  writeln('==============================================');\nend;\n\nprocedure JalankanModul2;\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('   MODUL 2: PENENTUAN NAMA BULAN DARI ANGKA   ');\n  writeln('==============================================');\n  write('Masukkan nomor bulan (1..12): ');\n  readln(v_bulan);\n  writeln('----------------------------------------------');\n  write('Nama Bulan: ');\n  case v_bulan of\n    1  : writeln('Januari');\n    2  : writeln('Februari');\n    3  : writeln('Maret');\n    4  : writeln('April');\n    5  : writeln('Mei');\n    6  : writeln('Juni');\n    7  : writeln('Juli');\n    8  : writeln('Agustus');\n    9  : writeln('September');\n    10 : writeln('Oktober');\n    11 : writeln('November');\n    12 : writeln('Desember');\n  else\n    writeln('Bukan nomor bulan yang benar!');\n  end;\n  writeln('==============================================');\nend;\n\nprocedure JalankanModul3;\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('   MODUL 3: SIMULASI MENU MANAJEMEN DATA      ');\n  writeln('==============================================');\n  writeln('1. Baca data');\n  writeln('2. Cetak data');\n  writeln('3. Ubah data');\n  writeln('4. Hapus data');\n  writeln('5. Kembali ke menu utama');\n  writeln('----------------------------------------------');\n  write('Pilihan Anda [1..5] : ');\n  readln(v_submenu);\n  writeln('----------------------------------------------');\n  case v_submenu of\n    1 : writeln('>> Anda memilih menu nomor 1: Baca data');\n    2 : writeln('>> Anda memilih menu nomor 2: Cetak data');\n    3 : writeln('>> Anda memilih menu nomor 3: Ubah data');\n    4 : writeln('>> Anda memilih menu nomor 4: Hapus data');\n    5 : writeln('>> Anda memilih menu nomor 5: Keluar ke menu utama');\n  else\n    writeln('>> Peringatan: Nomor menu tidak valid (1..5)');\n  end;\n  writeln('==============================================');\nend;\n\nprocedure JalankanModul4;\nbegin\n  clrscr;\n  writeln('==============================================');\n  writeln('   MODUL 4: GEOMETRI EMPAT PERSEGI PANJANG    ');\n  writeln('==============================================');\n  writeln('1. Luas             (L = P * L)');\n  writeln('2. Keliling         (K = 2*P + 2*L)');\n  writeln('3. Panjang Diagonal (D = sqrt(P^2 + L^2))');\n  writeln('4. Kembali ke menu utama');\n  writeln('----------------------------------------------');\n  write('Pilihan Menu [1..4] : ');\n  readln(v_geomenu);\n\n  if (v_geomenu >= 1) and (v_geomenu <= 3) then\n  begin\n    writeln('----------------------------------------------');\n    write('Masukkan Panjang (P) : '); readln(p);\n    write('Masukkan Lebar   (L) : '); readln(l);\n    writeln('----------------------------------------------');\n  end;\n\n  case v_geomenu of\n    1 :\n      begin\n        hasil_geo := p * l;\n        writeln('Hasil Luas Persegi Panjang     : ', hasil_geo:0:2);\n      end;\n    2 :\n      begin\n        hasil_geo := (2 * p) + (2 * l);\n        writeln('Hasil Keliling Persegi Panjang : ', hasil_geo:0:2);\n      end;\n    3 :\n      begin\n        hasil_geo := sqrt((p * p) + (l * l));\n        writeln('Hasil Panjang Diagonal (Hypot) : ', hasil_geo:0:2);\n      end;\n    4 :\n      begin\n        writeln('Kembali ke menu utama.');\n      end;\n  else\n    writeln('Pilihan tidak valid! Masukkan angka 1 sampai 4.');\n  end;\n  writeln('==============================================');\nend;\n\nbegin\n  repeat\n    clrscr;\n    writeln('========================================================');\n    writeln('   MASTER WORKSPACE ALGORITMA & PEMROGRAMAN 1          ');\n    writeln('   PERTEMUAN 7: STRUKTUR PEMILIHAN DISKRIT CASE - OF   ');\n    writeln('   Universitas Indraprasta PGRI (UNINDRA)              ');\n    writeln('========================================================');\n    writeln('1. Contoh Slide Dosen : Konversi Angka ke Kata (1..4)   ');\n    writeln('2. Tugas 1 Dosen      : Menentukan Nama Bulan (1..12)   ');\n    writeln('3. Tugas 2 Dosen      : Menu Interaktif Data (1..5)     ');\n    writeln('4. Tugas 3 Dosen      : Geometri Empat Persegi Panjang  ');\n    writeln('5. Keluar Program                                       ');\n    writeln('========================================================');\n    write('Pilih Modul Praktikum [1..5]: ');\n    readln(menu_utama);\n\n    case menu_utama of\n      1 : JalankanModul1;\n      2 : JalankanModul2;\n      3 : JalankanModul3;\n      4 : JalankanModul4;\n      5 : \n        begin\n          clrscr;\n          writeln('Terima kasih telah menggunakan program praktikum Pertemuan 7!');\n          writeln('Tekan [Enter] untuk menutup terminal...');\n          readln;\n          halt;\n        end;\n    else\n      begin\n        writeln('Pilihan salah! Masukkan angka 1 s.d. 5.');\n      end;\n    end;\n\n    writeln;\n    write('Apakah ingin kembali ke Menu Utama? (Y/T): ');\n    readln(ulang);\n  until (ulang = 'T') or (ulang = 't');\n\n  clrscr;\n  writeln('Program selesai. Sampai jumpa!');\n  readln;\nend.\n"
+}
 ];
 
 export const getPascalFilesByMeeting = (meetingNumber) => {

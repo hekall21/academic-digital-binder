@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowLeft,
   Calendar,
@@ -15,13 +15,11 @@ import {
   Check,
   Code,
   PenTool,
-  Plus,
   Download,
   CheckCircle2,
 } from 'lucide-react';
 import { sanitizeHtml, sanitizeUrl } from '../../lib/security';
 import { renderMathInHtml, convertToPhysicalBinderFormat } from '../../lib/latexRenderer';
-import { ingestDocumentIntoRag } from '../../lib/documentRagEngine';
 import { PdfViewerModal } from '../materials/PdfViewerModal';
 import { CheatsheetViewerModal } from '../materials/CheatsheetViewerModal';
 import { PascalExplorerView } from '../pascal/PascalExplorerView';
@@ -111,42 +109,6 @@ export function MeetingDetailView({
       setCopyHandwritingFeedback(true);
       setTimeout(() => setCopyHandwritingFeedback(false), 2000);
     });
-  };
-
-  const meetingFileInputRef = useRef(null);
-  const [meetingUploadStatus, setMeetingUploadStatus] = useState(null);
-
-  const handleUploadMeetingPdf = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setMeetingUploadStatus('Mengekstrak dan mengindeks PDF ke RAG...');
-    try {
-      await ingestDocumentIntoRag({
-        fileOrBuffer: file,
-        documentTitle: file.name,
-        subjectId: subject.id,
-        subjectName: subject.name,
-        meetingNumber: meeting.meeting_number,
-      });
-
-      const blobUrl = URL.createObjectURL(file);
-      if (onAddMaterial) {
-        onAddMaterial(subject.id, meeting.id, {
-          type: 'pdf',
-          title: file.name,
-          file_url: blobUrl,
-          file_size: file.size,
-        });
-      }
-      setActiveInlinePdfUrl(blobUrl);
-      setActiveInlinePdfTitle(file.name);
-      setMeetingUploadStatus('PDF berhasil diunggah dan diindeks ke AI Tutor!');
-      setTimeout(() => setMeetingUploadStatus(null), 4000);
-    } catch (err) {
-      setMeetingUploadStatus('Gagal memproses PDF: ' + err.message);
-      setTimeout(() => setMeetingUploadStatus(null), 4000);
-    }
   };
 
   const currentSafePdfUrl = sanitizeUrl(activeInlinePdfUrl);
@@ -439,28 +401,7 @@ export function MeetingDetailView({
                         </button>
                       );
                     })}
-
-                    <input
-                      type="file"
-                      ref={meetingFileInputRef}
-                      onChange={handleUploadMeetingPdf}
-                      accept=".pdf"
-                      className="hidden"
-                    />
-                    <button
-                      onClick={() => meetingFileInputRef.current?.click()}
-                      className="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-50 dark:bg-indigo-600/20 hover:bg-indigo-100 dark:hover:bg-indigo-600/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 flex items-center gap-1.5 transition-colors cursor-pointer"
-                      title="Unggah berkas PDF baru untuk sesi ini dan indeks otomatis ke AI Tutor"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                      <span>Tambah PDF</span>
-                    </button>
                   </div>
-                  {meetingUploadStatus && (
-                    <div className="text-[11px] text-cyan-600 dark:text-cyan-400 font-mono mt-1">
-                      {meetingUploadStatus}
-                    </div>
-                  )}
                 </div>
 
                 {/* Toolbar Buttons */}
