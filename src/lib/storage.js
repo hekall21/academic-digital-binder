@@ -3,7 +3,7 @@ import { safeJsonParse } from './security';
 // Local Storage & Backup Persistence Utilities
 // Versioned to ensure curriculum updates are automatically synced to the user's browser
 
-export const CURRENT_DATA_VERSION = 'v28_algo_pascal_p7_case_of_2026';
+export const CURRENT_DATA_VERSION = 'v29_matdas_p7_turunan_trigonometri_uts_2026';
 const STORAGE_KEY_VERSION = 'academic_binder_data_version';
 const STORAGE_KEY_SUBJECTS = 'academic_binder_subjects_v3';
 const STORAGE_KEY_PROFILE = 'academic_binder_profile_v3';
